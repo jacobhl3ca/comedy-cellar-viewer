@@ -13,7 +13,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <link rel="stylesheet" href="style.min.css?v=20260324d">
+  <link rel="stylesheet" href="style.min.css?v=20260324e">
   <script>
     (function() {
       const saved = localStorage.getItem('cellar-theme');
@@ -58,14 +58,10 @@
   <nav id="day-tabs" class="day-tabs"></nav>
 
   <div class="controls-row-1">
-    <label class="quick-mode-toggle" id="quick-mode-label">
-      <input type="checkbox" id="quick-mode">
-      <span class="quick-mode-switch"></span>
-      <span class="quick-mode-text">Fave/Skip mode</span>
+    <label class="toggle">
+      <input type="checkbox" id="picture-mode">
+      <span>Big Picture mode</span>
     </label>
-    <span class="info-icon">&#9432;
-      <span class="info-popup">Click comedians to cycle: Fave → Skip → Neutral. Or tap to expand their bio panel.</span>
-    </span>
     <label class="toggle">
       <input type="checkbox" id="only-faves">
       <span>Only faves</span>
@@ -83,23 +79,27 @@
       <span>Long bios</span>
     </label>
     <label class="toggle">
-      <input type="checkbox" id="picture-mode">
-      <span>Picture mode</span>
-    </label>
-    <label class="toggle">
       <input type="checkbox" id="show-newcomers">
       <span>Flag newcomers</span>
     </label>
+    <label class="quick-mode-toggle" id="quick-mode-label">
+      <input type="checkbox" id="quick-mode">
+      <span class="quick-mode-switch"></span>
+      <span class="quick-mode-text">Fave/Skip mode</span>
+    </label>
+    <span class="info-icon">&#9432;
+      <span class="info-popup">With Fave/Skip mode ON, click comedians to cycle: Fave → Skip → Neutral. With it OFF, click to expand their bio panel.</span>
+    </span>
   </div>
 
   <div class="controls-row-2">
-    <button class="settings-btn" id="open-settings">My Comedians</button>
-    <select id="sort-select" class="sort-select">
-      <option value="none">Sort by...</option>
-      <option value="faves"># of faves</option>
-      <option value="newcomers"># of newcomers</option>
-    </select>
     <button class="reset-filters-btn" id="reset-filters" style="display:none;">Reset</button>
+    <div class="controls-spacer"></div>
+    <button class="settings-btn" id="open-settings">My Comedians</button>
+  </div>
+
+  <div class="controls-row-3">
+    <div class="controls-spacer"></div>
     <div class="time-filter">
       <label class="toggle">
         <span>Latest start</span>
@@ -116,6 +116,11 @@
         <span class="info-popup">Shows last about 1 hr 15 min on average (5-7 comics). Late shows can run longer and have surprise drop-ins.</span>
       </span>
     </div>
+    <select id="sort-select" class="sort-select">
+      <option value="none">Sort by...</option>
+      <option value="faves"># of faves</option>
+      <option value="newcomers"># of newcomers</option>
+    </select>
   </div>
 
   <div class="venue-filters" id="venue-filters"></div>
@@ -162,7 +167,7 @@
     <p><a href="mailto:whos@cellartonight.com">whos@cellartonight.com</a></p>
   </footer>
 
-  <script src="app.min.js?v=20260324d"></script>
+  <script src="app.min.js?v=20260324e"></script>
   <!-- Vercel Web Analytics — auto-injected when enabled in dashboard -->
   <script defer src="/_vercel/insights/script.js"></script>
   <!-- Vercel Speed Insights -->

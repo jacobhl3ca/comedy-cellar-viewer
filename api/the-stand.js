@@ -7,8 +7,14 @@ module.exports = async (req, res) => {
   if (req.method === 'OPTIONS') return res.status(200).end();
 
   try {
-    const html = await fetchPage('https://thestandnyc.com/shows');
-    const shows = parseShows(html);
+    // Fetch multiple pages to get all shows
+    const pages = await Promise.all([
+      fetchPage('https://thestandnyc.com/shows'),
+      fetchPage('https://thestandnyc.com/shows?page=2'),
+      fetchPage('https://thestandnyc.com/shows?page=3'),
+    ]);
+    const allHtml = pages.join('\n');
+    const shows = parseShows(allHtml);
     res.status(200).json({ shows, count: shows.length, source: 'thestandnyc.com' });
   } catch (e) {
     res.status(502).json({ error: e.message });
@@ -28,7 +34,6 @@ function fetchPage(url) {
 }
 
 function parseShows(html) {
-  // Match show titles with URLs
   const pattern = /<h2 class="showtitle[^"]*"><a href="https:\/\/thestandnyc\.com\/?\/?(\/shows\/show\/\d+\/[^"]*)">(.*?)<\/a><\/h2>/gi;
   const matches = [...html.matchAll(pattern)];
   const seen = new Set();
@@ -42,7 +47,6 @@ function parseShows(html) {
     const url = 'https://thestandnyc.com' + path;
     const title = match[2].trim();
 
-    // Extract date/time from URL slug: 2026-03-23-190000
     const dateMatch = path.match(/(\d{4}-\d{2}-\d{2})-(\d{2})(\d{2})/);
     let date = '', time = '';
     if (dateMatch) {
@@ -55,23 +59,43 @@ function parseShows(html) {
       time = `${hour}:${minute} ${ampm}`;
     }
 
-    // Extract comedian names from title
+    // Extract comedian names from title — multiple formats
     let comedians = [];
+
+    // "The Stand Presents: Name1, Name2, Name3, & More!"
     const presentsMatch = title.match(/Presents:\s*(.*?)(?:\s*&\s*More!?)?$/i);
     if (presentsMatch) {
       comedians = presentsMatch[1]
         .split(/,\s*/)
         .map(n => n.replace(/&\s*$/, '').trim())
         .filter(n => n && n !== 'More!' && n !== '& More!' && n !== '&');
-    } else if (title.includes('& Friends')) {
+    }
+    // "Name & Friends"
+    else if (title.includes('& Friends')) {
       const friendsMatch = title.match(/^(.*?)\s*&\s*Friends/i);
       if (friendsMatch) comedians = [friendsMatch[1].trim()];
+    }
+    // "Name1, Name2 & Name3" (no "Presents:")
+    else if (title.includes(',') || title.includes(' & ')) {
+      comedians = title
+        .split(/,\s*|\s+&\s+/)
+        .map(n => n.trim())
+        .filter(n => n && n.length > 1 && !n.match(/^(The|A|An|Live|Show|Comedy|Night|Free|Open|Mic)$/i));
+    }
+    // Single headliner name (no special keywords)
+    else if (!title.match(/WAHO|FEMBOTS|Laughing|Open Mic|Showcase|Workshop|Comedy Class/i)) {
+      // Could be "Robert Kelly: A One Man Show" — extract first name
+      const colonMatch = title.match(/^([^:]+)/);
+      if (colonMatch) {
+        const name = colonMatch[1].trim();
+        if (name.includes(' ') && name.length < 40) comedians = [name];
+      }
     }
 
     shows.push({
       title, date, time, comedians, url,
       venue: 'The Stand NYC',
-      room: '' // Could extract from page if needed
+      room: ''
     });
   }
 

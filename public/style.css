@@ -454,10 +454,12 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .sort-select:hover { border-color: var(--accent); color: var(--text); }
 .sort-select:focus { border-color: var(--accent); }
 
-/* Controls row 3: Sort + Time filter */
+/* Controls row 3: Latest start + Sort */
 .controls-row-3 {
-  display: flex; align-items: center; gap: 12px; padding: 0 0 10px; flex-wrap: wrap;
+  display: flex; align-items: center; gap: 10px; padding: 0 0 10px; flex-wrap: wrap;
+  justify-content: flex-end;
 }
+.controls-spacer { flex: 1; }
 .sort-dropdown {
   display: flex; gap: 6px; align-items: center;
 }

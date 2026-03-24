@@ -697,18 +697,11 @@ function renderSortedByFaves(container) {
     return;
   }
 
-  let lastDateStr = '';
   let html = '';
 
   allShows.forEach(show => {
     const stats = show.stats;
-    const dateLabel = show.dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
-
-    // Show date header when date changes
-    if (show.dateStr !== lastDateStr) {
-      html += `<h2 class="schedule-day-header">${dateLabel}</h2>`;
-      lastDateStr = show.dateStr;
-    }
+    const dateShort = show.dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 
     const cardClass = stats.faves >= 3 ? 'show-card must-go' : 'show-card';
     let badge = '';
@@ -726,7 +719,7 @@ function renderSortedByFaves(container) {
     html += `
       <div class="${cardClass} schedule-card">
         <div class="show-header">
-          <div><span class="show-time">${show.time}</span>${badge}</div>
+          <div><span class="show-time">${show.time}</span> <span style="font-size:11px;color:var(--text-dim);margin-left:6px;">${dateShort}</span>${badge}</div>
           ${!isPlainVenue ? `<span class="show-name">${show.venue}</span>` : ''}
           <span class="show-venue">${isPlainVenue ? normalizedVenue : mappedVenue}</span>
         </div>
