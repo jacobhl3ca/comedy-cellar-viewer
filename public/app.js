@@ -231,7 +231,9 @@ const NAME_FIXES = {
   'Wil Sylvince': 'Wil Sylvince',
 };
 function normalizeName(name) {
-  return NAME_FIXES[name] || name;
+  // Sanitize HTML entities to prevent XSS from API data
+  const clean = name.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return NAME_FIXES[clean] || clean;
 }
 
 // ---- Time helpers ----
