@@ -86,7 +86,11 @@ function cycleComedian(name) {
   const inFavs = prefs.faves.includes(name);
   const inSkips = prefs.skips.includes(name);
 
-  // Cycle: neutral -> fav -> skip -> neutral
+  // Cycle: neutral -> fav -> neutral -> skip -> neutral
+  // Simplified: neutral -> fav -> skip -> neutral
+  // Jacob wants: fav -> neutral -> skip order
+  // So: neutral -> fav, fav -> neutral, but clicking neutral again -> skip, skip -> neutral
+  // Actually simplest: neutral -> fav -> skip -> neutral (keep existing, just rename)
   prefs.faves = prefs.faves.filter(n => n !== name);
   prefs.skips = prefs.skips.filter(n => n !== name);
 
@@ -440,6 +444,11 @@ function renderShows() {
     renderBigShows(container);
     return;
   }
+  if (activeSource === 'all') {
+    renderAllVenues(container);
+    renderBottomTabs();
+    return;
+  }
 
   const hideSkips = document.getElementById('hide-skips').checked;
   const onlyFavs = document.getElementById('only-faves').checked;
@@ -485,17 +494,15 @@ function renderShows() {
   const prefs = loadPrefs();
   const hasAnyPrefs = prefs.faves.length > 0 || prefs.skips.length > 0;
 
-  // Sort buttons
-  const sortFavesActive = document.getElementById('sort-by-faves')?.classList.contains('active');
-  const sortNewcomersActive = document.getElementById('sort-by-newcomers')?.classList.contains('active');
+  // Sort dropdown
+  const sortVal = document.getElementById('sort-select')?.value || 'none';
 
-  // If sort is active, show ALL days sorted
-  if (sortFavesActive) {
+  if (sortVal === 'faves') {
     renderSortedByFaves(container);
     renderBottomTabs();
     return;
   }
-  if (sortNewcomersActive) {
+  if (sortVal === 'newcomers') {
     renderSortedByNewcomers(container);
     renderBottomTabs();
     return;
@@ -800,8 +807,9 @@ function renderSortedByNewcomers(container) {
 function renderAllDaysSchedule(container) {
   const hideSkips = document.getElementById('hide-skips').checked;
   const onlyFavs = document.getElementById('only-faves')?.checked;
-  const shouldSort = document.getElementById('sort-by-faves')?.classList.contains('active');
-  const shouldSortNewcomers = document.getElementById('sort-by-newcomers')?.classList.contains('active');
+  const sortVal2 = document.getElementById('sort-select')?.value || 'none';
+  const shouldSort = sortVal2 === 'faves';
+  const shouldSortNewcomers = sortVal2 === 'newcomers';
   let html = '<div class="schedule-view">';
 
   // For The Stand, iterate over stand show dates
@@ -833,7 +841,11 @@ function renderAllDaysSchedule(container) {
     html += `<h2 class="schedule-day-header">${dayLabel}</h2>`;
 
     if (!shows || shows.length === 0) {
-      html += '<div class="no-shows" style="padding:16px 0;">No lineup posted.</div>';
+      const dow = d.getDay();
+      let hint = '';
+      if (dow >= 1 && dow <= 4) hint = 'Weekday lineups usually drop the day before.';
+      else hint = 'Weekend lineups usually post Thursday.';
+      html += `<div class="no-shows" style="padding:16px 0;">No lineup posted.${hint ? `<br><span style="font-size:12px;color:var(--text-dim)">${hint}</span>` : ''}</div>`;
       return;
     }
 
@@ -917,6 +929,60 @@ function renderStandShowCard(show) {
 }
 
 // ---- Big Shows (SeatGeek) Renderer ----
+// ---- All Venues combined view ----
+function renderAllVenues(container) {
+  const hideSkips = document.getElementById('hide-skips')?.checked;
+  const pictureMode = document.getElementById('picture-mode')?.checked;
+  if (pictureMode) container.classList.add('picture-mode');
+  else container.classList.remove('picture-mode');
+
+  const vf = document.getElementById('venue-filters');
+  if (vf) vf.innerHTML = '';
+
+  let html = '<div class="schedule-view">';
+
+  // Cellar shows
+  html += '<h2 class="schedule-day-header" style="color:var(--accent);">Comedy Cellar</h2>';
+  dates.forEach(d => {
+    const dateStr = formatDateParam(d);
+    const shows = allData[dateStr];
+    if (!shows || shows.length === 0) return;
+    const dayLabel = d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+    html += `<h3 style="font-size:14px;color:var(--text-dim);padding:8px 0 4px;">${dayLabel}</h3>`;
+    shows.forEach(show => {
+      html += renderShowCard(show, hideSkips, false);
+    });
+  });
+
+  // The Stand shows
+  html += '<h2 class="schedule-day-header" style="color:var(--accent);margin-top:24px;">The Stand NYC</h2>';
+  standShows.forEach(show => {
+    html += renderStandShowCard(show);
+  });
+
+  // Big Shows
+  if (bigShows.length > 0) {
+    html += '<h2 class="schedule-day-header" style="color:var(--accent);margin-top:24px;">Big Shows</h2>';
+    bigShows.forEach(evt => {
+      html += `
+        <div class="big-show-card">
+          <div class="big-show-info">
+            <div class="big-show-title">${evt.title}</div>
+            <div class="big-show-meta">
+              <span class="big-show-venue">${evt.venue}</span>
+              <span>${evt.date} ${evt.time || ''}</span>
+              ${evt.price ? `<span class="big-show-price">From $${evt.price}</span>` : ''}
+            </div>
+            ${evt.url ? `<a href="${evt.url}" target="_blank" class="big-show-link">Get Tickets</a>` : ''}
+          </div>
+        </div>`;
+    });
+  }
+
+  html += '</div>';
+  container.innerHTML = html;
+}
+
 function renderBigShows(container) {
   container.classList.remove('picture-mode');
   const vf = document.getElementById('venue-filters');
@@ -1056,10 +1122,13 @@ function renderBottomTabs() {
 
 // Click a comedian chip
 function handleComedianClick(el) {
-  const name = el.dataset.name;
+  // Find the comedian element (might have clicked a child)
+  const comedianEl = el.dataset.name ? el : el.closest('[data-name]');
+  if (!comedianEl) return;
+  const name = comedianEl.dataset.name;
   const quickMode = document.getElementById('quick-mode')?.checked;
 
-  // Quick fav/skip mode: cycle like before
+  // Quick fav/skip mode: cycle
   if (quickMode) {
     cycleComedian(name);
     renderTabs();
@@ -1172,17 +1241,43 @@ function renderModal(filter = '') {
     .join('') || '<span style="color:var(--text-dim);font-size:13px;">None yet</span>';
   document.getElementById('skip-count').textContent = `(${prefs.skips.length})`;
 
-  // All comedians
+  // Source-specific comedians first, then all
   const allList = document.getElementById('all-list');
-  const sorted = [...allComediansSeen].sort();
-  allList.innerHTML = sorted
-    .filter(n => n.toLowerCase().includes(filterLower))
-    .map(n => {
-      let cls = 'chip';
-      if (prefs.faves.includes(n)) cls += ' fav-state';
-      else if (prefs.skips.includes(n)) cls += ' skip-state';
-      return `<span class="${cls}" onclick="modalCycle('${n.replace(/'/g, "\\'")}')">${n}</span>`;
-    }).join('');
+
+  // Get comedians for current source tab
+  let sourceComedians = new Set();
+  if (activeSource === 'cellar' || activeSource === 'all') {
+    Object.values(allData).flat().filter(Boolean).forEach(show => {
+      show.comedians.forEach(n => sourceComedians.add(n));
+    });
+  }
+  if (activeSource === 'the-stand' || activeSource === 'all') {
+    standShows.forEach(show => show.comedians.forEach(n => sourceComedians.add(n)));
+  }
+
+  const sourceLabel = activeSource === 'cellar' ? 'Comedy Cellar' :
+    activeSource === 'the-stand' ? 'The Stand' :
+    activeSource === 'all' ? 'All Venues' : 'This Week';
+  const sourceSorted = [...sourceComedians].sort().filter(n => n.toLowerCase().includes(filterLower));
+  const allSorted = [...allComediansSeen].sort().filter(n => n.toLowerCase().includes(filterLower) && !sourceComedians.has(n));
+
+  function chipHtml(n) {
+    let cls = 'chip';
+    if (prefs.faves.includes(n)) cls += ' fav-state';
+    else if (prefs.skips.includes(n)) cls += ' skip-state';
+    return `<span class="${cls}" onclick="modalCycle('${n.replace(/'/g, "\\'")}')">${n}</span>`;
+  }
+
+  let html = '';
+  if (activeSource !== 'big-shows') {
+    html += `<h4 style="font-size:12px;color:var(--text-dim);margin:8px 0 4px;">${sourceLabel} This Week</h4>`;
+    html += sourceSorted.map(chipHtml).join('');
+  }
+  if (allSorted.length > 0) {
+    html += `<h4 style="font-size:12px;color:var(--text-dim);margin:12px 0 4px;">All Comedians</h4>`;
+    html += allSorted.map(chipHtml).join('');
+  }
+  allList.innerHTML = html;
 }
 
 function modalCycle(name) {
@@ -1198,8 +1293,7 @@ function updateResetBtn() {
   const anyActive =
     document.getElementById('hide-skips')?.checked ||
     document.getElementById('only-faves')?.checked ||
-    document.getElementById('sort-by-faves')?.classList.contains('active') ||
-    document.getElementById('sort-by-newcomers')?.classList.contains('active') ||
+    (document.getElementById('sort-select')?.value !== 'none') ||
     document.getElementById('expand-bios')?.checked ||
     document.getElementById('expand-long-bios')?.checked ||
     document.getElementById('quick-mode')?.checked ||
@@ -1212,6 +1306,28 @@ function updateResetBtn() {
 }
 
 // ---- Theme toggle ----
+// ---- Venue-specific footer info ----
+function updateFooterInfo() {
+  const el = document.getElementById('footer-venue-info');
+  if (!el) return;
+  if (activeSource === 'cellar') {
+    el.innerHTML = `
+      <p class="footer-venue-detail">Nearby parking: Minetta / W 3rd St — between 6th Ave &amp; MacDougal</p>
+      <p class="footer-venue-detail">Cover: $0 (2-drink minimum, ~$12-15/drink). Cash/card accepted.</p>
+      <p class="footer-venue-detail">Shows run ~75 min (5-7 comics). Arrive 15 min early — seats are first-come in your reservation group.</p>
+      <p class="footer-venue-detail">3 rooms: MacDougal St (original), Fat Black Pussycat (intimate), Village Underground (bigger stage)</p>
+    `;
+  } else if (activeSource === 'the-stand') {
+    el.innerHTML = `
+      <p class="footer-venue-detail">The Stand NYC — 239 Third Ave (between 19th &amp; 20th St), Gramercy</p>
+      <p class="footer-venue-detail">Tickets: $20-25 + 2-drink minimum. Full food menu available.</p>
+      <p class="footer-venue-detail">Shows run ~90 min. Reserved seating — book early for front rows.</p>
+    `;
+  } else {
+    el.innerHTML = '';
+  }
+}
+
 function initTheme() {
   const btn = document.getElementById('theme-toggle');
   function updateTitle() {
@@ -1281,6 +1397,7 @@ async function init() {
   renderSourceTabs();
   renderTabs();
   renderShows();
+  updateFooterInfo();
 
   // Venue source tab listeners
   document.querySelectorAll('.venue-source-tab').forEach(btn => {
@@ -1291,6 +1408,13 @@ async function init() {
       renderSourceTabs();
       renderTabs();
       renderShows();
+      updateFooterInfo();
+      // Hide newcomers option for big-shows
+      const sortSel = document.getElementById('sort-select');
+      const newcomerOpt = sortSel?.querySelector('option[value="newcomers"]');
+      if (newcomerOpt) newcomerOpt.style.display = activeSource === 'big-shows' ? 'none' : '';
+      const snLabel = document.getElementById('show-newcomers')?.closest('label');
+      if (snLabel) snLabel.style.display = activeSource === 'big-shows' ? 'none' : '';
     });
   });
 
@@ -1299,17 +1423,7 @@ async function init() {
   document.getElementById('only-faves').addEventListener('change', () => { updateResetBtn(); renderShows(); });
   document.getElementById('show-photos')?.addEventListener('change', () => { updateResetBtn(); renderShows(); });
   document.getElementById('time-filter')?.addEventListener('change', () => { updateResetBtn(); renderShows(); });
-  document.getElementById('sort-by-faves')?.addEventListener('click', () => {
-    document.getElementById('sort-by-faves').classList.toggle('active');
-    // Deactivate other sort if active
-    const sbn = document.getElementById('sort-by-newcomers');
-    if (sbn && document.getElementById('sort-by-faves').classList.contains('active')) sbn.classList.remove('active');
-    updateResetBtn(); renderShows();
-  });
-  document.getElementById('sort-by-newcomers')?.addEventListener('click', () => {
-    document.getElementById('sort-by-newcomers').classList.toggle('active');
-    const sbf = document.getElementById('sort-by-faves');
-    if (sbf && document.getElementById('sort-by-newcomers').classList.contains('active')) sbf.classList.remove('active');
+  document.getElementById('sort-select')?.addEventListener('change', () => {
     updateResetBtn(); renderShows();
   });
   document.getElementById('expand-bios')?.addEventListener('change', (e) => {
@@ -1338,8 +1452,7 @@ async function init() {
   document.getElementById('reset-filters')?.addEventListener('click', () => {
     document.getElementById('hide-skips').checked = false;
     document.getElementById('only-faves').checked = false;
-    const sbf = document.getElementById('sort-by-faves'); if (sbf) sbf.classList.remove('active');
-    const sbn = document.getElementById('sort-by-newcomers'); if (sbn) sbn.classList.remove('active');
+    const ss = document.getElementById('sort-select'); if (ss) ss.value = 'none';
     document.getElementById('expand-bios').checked = false;
     const elb = document.getElementById('expand-long-bios'); if (elb) elb.checked = false;
     document.getElementById('quick-mode').checked = false;

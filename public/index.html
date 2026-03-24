@@ -49,6 +49,7 @@
     <button class="venue-source-tab active" data-source="cellar">Comedy Cellar</button>
     <button class="venue-source-tab" data-source="the-stand">The Stand</button>
     <button class="venue-source-tab" data-source="big-shows">Big Shows</button>
+    <button class="venue-source-tab" data-source="all">All Venues</button>
   </div>
 
   <nav id="day-tabs" class="day-tabs"></nav>
@@ -59,8 +60,8 @@
       <span class="quick-mode-switch"></span>
       <span class="quick-mode-text">Fave/Skip mode</span>
     </label>
-    <span class="info-icon" onclick="this.querySelector('.info-popup').classList.toggle('visible')">&#9432;
-      <span class="info-popup">Cycle through comedians by clicking them in the lineup below. Each click goes: Fave → Skip → Neutral.</span>
+    <span class="info-icon">&#9432;
+      <span class="info-popup">Click comedians to cycle: Fave → Skip → Neutral. Or tap to expand their bio panel.</span>
     </span>
     <label class="toggle">
       <input type="checkbox" id="only-faves">
@@ -90,14 +91,17 @@
 
   <div class="controls-row-2">
     <button class="settings-btn" id="open-settings">My Comedians</button>
+    <div class="controls-right">
+      <button class="reset-filters-btn" id="reset-filters" style="display:none;">Reset</button>
+      <select id="sort-select" class="sort-select">
+        <option value="none">Sort by...</option>
+        <option value="faves"># of faves</option>
+        <option value="newcomers"># of newcomers</option>
+      </select>
+    </div>
   </div>
 
   <div class="controls-row-3">
-    <div class="sort-dropdown" id="sort-dropdown">
-      <button class="reset-filters-btn" id="reset-filters" style="display:none;">Reset</button>
-      <button class="sort-btn" id="sort-by-faves">Sort by # faves</button>
-      <button class="sort-btn" id="sort-by-newcomers">Sort by # newcomers</button>
-    </div>
     <div class="time-filter">
       <label class="toggle">
         <span>Latest start time</span>
@@ -110,7 +114,7 @@
           <option value="23:00">11:00 pm</option>
         </select>
       </label>
-      <span class="info-icon" id="time-info" onclick="this.querySelector('.info-popup').classList.toggle('visible')">&#9432;
+      <span class="info-icon" id="time-info">&#9432;
         <span class="info-popup">Shows last about 1 hour 15 minutes on average (5-7 comics, ~10-15 min each). Late shows can run longer and have surprise drop-ins.</span>
       </span>
     </div>
@@ -129,7 +133,7 @@
         <h2>My Comedians</h2>
         <button class="modal-close" id="modal-close">&times;</button>
       </div>
-      <p class="modal-desc">Tap a name to cycle: <span class="chip-demo fav">Fav</span> &rarr; <span class="chip-demo skip">Skip</span> &rarr; <span class="chip-demo neutral">Neutral</span></p>
+      <p class="modal-desc">Tap a name to cycle: <span class="chip-demo fav">Fave</span> &rarr; <span class="chip-demo skip">Skip</span> &rarr; <span class="chip-demo neutral">Neutral</span></p>
       <div class="modal-search-wrap">
         <input type="text" id="comedian-search" placeholder="Search comedians..." class="modal-search">
       </div>
@@ -156,8 +160,8 @@
   </div>
 
   <footer class="site-footer">
+    <div id="footer-venue-info"></div>
     <p>Built by fans, for fans. Not affiliated with the Comedy Cellar or The Stand.</p>
-    <p class="footer-parking">Nearby parking: Minetta / W 3rd St — between 6th Ave &amp; MacDougal</p>
     <p><a href="mailto:whos@cellartonight.com">whos@cellartonight.com</a></p>
   </footer>
 
