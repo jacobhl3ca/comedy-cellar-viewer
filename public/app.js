@@ -165,6 +165,7 @@ const CELLAR_REGULARS = new Set([
   // Added per Jacob's confirmation
   'Maddie Wiener', 'Emmy Blotnick', 'Sahib Singh', 'Gary Vider', 'Keith Robinson',
   'Wil Sylvince', 'Chris Distefano', 'Jay Jurden', 'Sean Patton', 'Nathan Macintosh',
+  'Chris Redd', 'Neal Brennan', 'Raanan Hershberg', 'Andre De Freitas',
   // Stand regulars (2+ shows/week frequency)
   'Dan St. Germain', 'Oscar Aydin', 'Sienna Hubert-Ross', 'Reggie Conquest',
   'Kyle Dunnigan', 'Rich Vos', 'Bonnie McFarlane', 'TaTa Sherise',
