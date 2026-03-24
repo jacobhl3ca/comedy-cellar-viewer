@@ -34,19 +34,29 @@ function fetchPage(url) {
 }
 
 function parseShows(html) {
-  const pattern = /<h2 class="showtitle[^"]*"><a href="https:\/\/thestandnyc\.com\/?\/?(\/shows\/show\/\d+\/[^"]*)">(.*?)<\/a><\/h2>/gi;
-  const matches = [...html.matchAll(pattern)];
+  // Split by show blocks — each starts with showtitle
+  // Use the desktop version (d-none d-sm-block) which has full lineup
+  const showPattern = /<h2 class="showtitle d-none d-sm-block"><a href="https:\/\/thestandnyc\.com\/?\/?([^"]*)">(.*?)<\/a><\/h2>/g;
+  const blocks = html.split('<h2 class="showtitle d-none d-sm-block">');
   const seen = new Set();
   const shows = [];
 
-  for (const match of matches) {
-    const path = match[1];
+  for (let i = 1; i < blocks.length; i++) {
+    const block = blocks[i];
+
+    // Extract URL and title
+    const urlMatch = block.match(/href="https:\/\/thestandnyc\.com\/?\/?([^"]*)">(.*?)<\/a>/);
+    if (!urlMatch) continue;
+
+    const path = urlMatch[1];
+    const title = urlMatch[2].trim();
+
     if (seen.has(path)) continue;
     seen.add(path);
 
-    const url = 'https://thestandnyc.com' + path;
-    const title = match[2].trim();
+    const url = 'https://thestandnyc.com/' + path;
 
+    // Extract date/time from URL slug
     const dateMatch = path.match(/(\d{4}-\d{2}-\d{2})-(\d{2})(\d{2})/);
     let date = '', time = '';
     if (dateMatch) {
@@ -59,43 +69,27 @@ function parseShows(html) {
       time = `${hour}:${minute} ${ampm}`;
     }
 
-    // Extract comedian names from title — multiple formats
-    let comedians = [];
+    // Extract room from the block
+    const roomMatch = block.match(/list-show-room">(.*?)<\/span>/);
+    const room = roomMatch ? roomMatch[1].trim() : '';
 
-    // "The Stand Presents: Name1, Name2, Name3, & More!"
-    const presentsMatch = title.match(/Presents:\s*(.*?)(?:\s*&\s*More!?)?$/i);
-    if (presentsMatch) {
-      comedians = presentsMatch[1]
-        .split(/,\s*/)
-        .map(n => n.replace(/&\s*$/, '').trim())
-        .filter(n => n && n !== 'More!' && n !== '& More!' && n !== '&');
-    }
-    // "Name & Friends"
-    else if (title.includes('& Friends')) {
-      const friendsMatch = title.match(/^(.*?)\s*&\s*Friends/i);
-      if (friendsMatch) comedians = [friendsMatch[1].trim()];
-    }
-    // "Name1, Name2 & Name3" (no "Presents:")
-    else if (title.includes(',') || title.includes(' & ')) {
-      comedians = title
-        .split(/,\s*|\s+&\s+/)
-        .map(n => n.trim())
-        .filter(n => n && n.length > 1 && !n.match(/^(The|A|An|Live|Show|Comedy|Night|Free|Open|Mic)$/i));
-    }
-    // Single headliner name (no special keywords)
-    else if (!title.match(/WAHO|FEMBOTS|Laughing|Open Mic|Showcase|Workshop|Comedy Class/i)) {
-      // Could be "Robert Kelly: A One Man Show" — extract first name
-      const colonMatch = title.match(/^([^:]+)/);
-      if (colonMatch) {
-        const name = colonMatch[1].trim();
-        if (name.includes(' ') && name.length < 40) comedians = [name];
-      }
-    }
+    // Extract FULL lineup from <small>Name</small> tags in this block
+    const nameMatches = [...block.matchAll(/<small>(.*?)<\/small>/g)];
+    // Dedupe names (mobile + desktop HTML both have them)
+    const comedians = [...new Set(nameMatches
+      .map(m => m[1].trim())
+      .filter(n => n && n.length > 1 && !n.match(/^\$/))
+    )];
+
+    // Extract price
+    const priceMatch = block.match(/\$(\d+\.?\d*)/);
+    const price = priceMatch ? priceMatch[1] : '';
 
     shows.push({
       title, date, time, comedians, url,
       venue: 'The Stand NYC',
-      room: ''
+      room,
+      price
     });
   }
 

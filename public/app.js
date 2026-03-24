@@ -459,6 +459,10 @@ function renderShows() {
     renderBottomTabs();
     return;
   }
+  if (activeSource === 'nycc') {
+    container.innerHTML = '<div class="no-shows" style="padding:40px 20px;"><strong>NY Comedy Club</strong><br>Coming soon — lineup scraper in development.<br><a href="https://newyorkcomedyclub.com/shows" target="_blank" style="color:var(--accent);">View shows on their site →</a></div>';
+    return;
+  }
 
   const hideSkips = document.getElementById('hide-skips').checked;
   const onlyFavs = document.getElementById('only-faves').checked;
@@ -1366,7 +1370,7 @@ function updateFooterInfo() {
       <p class="footer-venue-detail">Nearby parking: Minetta / W 3rd St — between 6th Ave &amp; MacDougal</p>
       <p class="footer-venue-detail">Cover: $0 (2-drink minimum, ~$12-15/drink). Cash &amp; card accepted.</p>
       <p class="footer-venue-detail">Shows are about 1 hour 15 min (5-7 comics). Arrive 15 min early — seats are first-come in your reservation group.</p>
-      <p class="footer-venue-detail">3 rooms: MacDougal St (original), Fat Black Pussycat (intimate), Village Underground (bigger stage)</p>
+      <p class="footer-venue-detail">3 rooms: MacDougal St (original), Village Underground (bigger stage), Fat Black Pussycat (intimate)</p>
     `;
   } else if (activeSource === 'the-stand') {
     el.innerHTML = `
