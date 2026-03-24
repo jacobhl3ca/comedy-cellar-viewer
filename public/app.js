@@ -164,7 +164,18 @@ const CELLAR_REGULARS = new Set([
   'Are You Garbage', 'H.Foley', 'Kevin Ryan', 'Jamie Wolf',
   // Added per Jacob's confirmation
   'Maddie Wiener', 'Emmy Blotnick', 'Sahib Singh', 'Gary Vider', 'Keith Robinson',
-  'Wil Sylvince', 'Chris Distefano', 'Jay Jurden', 'Sean Patton', 'Nathan Macintosh'
+  'Wil Sylvince', 'Chris Distefano', 'Jay Jurden', 'Sean Patton', 'Nathan Macintosh',
+  // Stand regulars (2+ shows/week frequency)
+  'Dan St. Germain', 'Oscar Aydin', 'Sienna Hubert-Ross', 'Reggie Conquest',
+  'Kyle Dunnigan', 'Rich Vos', 'Bonnie McFarlane', 'TaTa Sherise',
+  'Brittany Brave', 'Marito Lopez', 'Olivia Carter', 'Natalie Cuomo',
+  'Mike Figs', 'Crystal Marie', 'Janeane Garofalo', 'Chris Riggins',
+  'Sureni Weerasekera', 'Ian Lara', 'Kerryn Feehan', 'Anna Roisman',
+  'Matthew Broussard', 'Tom McGuire', 'Paul Virzi', 'Derek Drescher',
+  'Carolina Montesquieu', 'Andre Kim', 'Aldo Campana', 'Josh Mandl',
+  'Jourdain Fisher', 'Mark Normand', 'Joe List', 'Nore Davis',
+  'Mark Hayes', 'Jared Freid', 'Phoebe Robinson', 'Monroe Martin',
+  'Derek Gaines', 'Corinne Fisher', 'Maria DeCotis'
 ]);
 
 function isRegular(name) { return CELLAR_REGULARS.has(name); }
@@ -319,6 +330,50 @@ async function fetchTheStand() {
 
 // ---- Big Shows (SeatGeek) fetch ----
 let bigShows = [];
+let nyccShows = [];
+
+async function fetchNYCC() {
+  try {
+    const resp = await fetch('/api/nycc');
+    const data = await resp.json();
+    nyccShows = data.shows || [];
+    return nyccShows;
+  } catch (e) {
+    console.error('Failed to fetch NYCC:', e);
+    return [];
+  }
+}
+
+function renderNYCCShows(container) {
+  container.classList.remove('picture-mode');
+  const vf = document.getElementById('venue-filters');
+  if (vf) vf.innerHTML = '';
+
+  if (nyccShows.length === 0) {
+    container.innerHTML = '<div class="no-shows">Loading NY Comedy Club shows...<br><a href="https://newyorkcomedyclub.com/shows" target="_blank" style="color:var(--accent);font-size:13px;margin-top:8px;display:inline-block;">View on their site →</a></div>';
+    return;
+  }
+
+  let html = '<div class="schedule-view">';
+  html += '<h2 class="schedule-day-header">NY Comedy Club</h2>';
+  nyccShows.forEach(show => {
+    html += `
+      <div class="show-card">
+        <div class="show-header">
+          <div><span class="show-time">${show.time || 'TBD'}</span></div>
+          <span class="show-name">${show.title}</span>
+          <span class="show-venue">NY Comedy Club</span>
+        </div>
+        <div class="show-footer">
+          ${show.url ? `<a href="${show.url}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Tickets</a>` : '<span></span>'}
+          <span class="fav-count">${show.date || ''}</span>
+        </div>
+      </div>`;
+  });
+  html += '</div>';
+  container.innerHTML = html;
+  renderBottomTabs();
+}
 
 async function fetchBigShows() {
   try {
@@ -460,7 +515,7 @@ function renderShows() {
     return;
   }
   if (activeSource === 'nycc') {
-    container.innerHTML = '<div class="no-shows" style="padding:40px 20px;"><strong>NY Comedy Club</strong><br>Coming soon — lineup scraper in development.<br><a href="https://newyorkcomedyclub.com/shows" target="_blank" style="color:var(--accent);">View shows on their site →</a></div>';
+    renderNYCCShows(container);
     return;
   }
 
@@ -932,12 +987,20 @@ function renderStandShowCard(show) {
     ? renderComedianChips(show.comedians, document.getElementById('hide-skips')?.checked)
     : `<span style="color:var(--text-dim);font-size:13px;">Lineup TBD</span>`;
 
+  // Simplify "The Stand Presents: X, Y, Z, & More!" to just "The Stand Presents"
+  let displayTitle = show.title;
+  if (displayTitle.startsWith('The Stand Presents:')) displayTitle = 'The Stand Presents';
+
+  const room = show.room ? show.room.replace('&nbsp;', ' ') : '';
+  const venueText = room ? `The Stand — ${room}` : 'The Stand NYC';
+  const priceText = show.price ? `$${show.price}` : '';
+
   return `
     <div class="show-card">
       <div class="show-header">
-        <div><span class="show-time">${show.time || 'TBD'}</span></div>
-        <span class="show-name">${show.title}</span>
-        <span class="show-venue">The Stand NYC</span>
+        <div><span class="show-time">${show.time || 'TBD'}</span>${priceText ? ` <span style="font-size:12px;color:var(--text-dim);">${priceText}</span>` : ''}</div>
+        <span class="show-name">${displayTitle}</span>
+        <span class="show-venue">${venueText}</span>
       </div>
       <div class="show-lineup">${chips}</div>
       <div class="show-footer">
@@ -1439,6 +1502,7 @@ async function init() {
     Promise.all(dates.map(d => fetchDay(formatDateParam(d)))),
     fetchTheStand(),
     fetchBigShows(),
+    fetchNYCC(),
     loadComedianDB()
   ]);
 
