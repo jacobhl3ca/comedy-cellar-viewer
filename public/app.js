@@ -173,7 +173,7 @@ const API_URL = '/api/lineup';
 function getDateRange() {
   const dates = [];
   const now = new Date();
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < 14; i++) {
     const d = new Date(now);
     d.setDate(now.getDate() + i);
     dates.push(d);
@@ -343,11 +343,6 @@ function renderTabs() {
   const nav = document.getElementById('day-tabs');
   nav.innerHTML = '';
 
-  // Hide day tabs for big-shows view
-  if (activeSource === 'big-shows') {
-    nav.style.display = 'none';
-    return;
-  }
   nav.style.display = '';
 
   // "Full Schedule" tab first (far left)
@@ -377,6 +372,19 @@ function renderTabs() {
         renderTabs();
         renderShows();
       });
+      nav.appendChild(tab);
+    });
+    return;
+  }
+
+  if (activeSource === 'big-shows') {
+    const bigDates = [...new Set(bigShows.map(e => e.date))].sort();
+    bigDates.forEach(dateStr => {
+      const d = new Date(dateStr + 'T12:00:00');
+      const tab = document.createElement('button');
+      tab.className = 'day-tab' + (dateStr === activeDate ? ' active' : '');
+      tab.innerHTML = `<span class="tab-day">${getDayName(d)}</span><span class="tab-date">${getDateLabel(d)}</span>`;
+      tab.addEventListener('click', () => { activeDate = dateStr; renderTabs(); renderShows(); });
       nav.appendChild(tab);
     });
     return;
@@ -578,7 +586,7 @@ function renderShowCard(show, hideSkips, onlyFavs) {
       <div class="show-lineup">${comediansHtml}</div>
       <div class="show-footer">
         ${show.reserveUrl
-          ? `<a href="${show.reserveUrl}" target="_blank" class="reserve-btn">Reserve</a>`
+          ? `<a href="${show.reserveUrl}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Reserve</a>`
           : '<span></span>'}
         <span class="fav-count">
           ${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''}
@@ -722,7 +730,7 @@ function renderSortedByFaves(container) {
         </div>
         <div class="show-lineup">${chips}</div>
         <div class="show-footer">
-          ${show.reserveUrl ? `<a href="${show.reserveUrl}" target="_blank" class="reserve-btn">Reserve</a>` : '<span></span>'}
+          ${show.reserveUrl ? `<a href="${show.reserveUrl}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Reserve</a>` : '<span></span>'}
           <span class="fav-count">${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''}</span>
         </div>
       </div>`;
@@ -794,7 +802,7 @@ function renderSortedByNewcomers(container) {
         </div>
         <div class="show-lineup">${chips}</div>
         <div class="show-footer">
-          ${show.reserveUrl ? `<a href="${show.reserveUrl}" target="_blank" class="reserve-btn">Reserve</a>` : '<span></span>'}
+          ${show.reserveUrl ? `<a href="${show.reserveUrl}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Reserve</a>` : '<span></span>'}
           <span class="fav-count">${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''}</span>
         </div>
       </div>`;
@@ -885,7 +893,7 @@ function renderAllDaysSchedule(container) {
           </div>
           <div class="show-lineup">${chips}</div>
           <div class="show-footer">
-            ${show.reserveUrl ? `<a href="${show.reserveUrl}" target="_blank" class="reserve-btn">Reserve</a>` : '<span></span>'}
+            ${show.reserveUrl ? `<a href="${show.reserveUrl}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Reserve</a>` : '<span></span>'}
             <span class="fav-count">${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''}</span>
           </div>
         </div>`;
@@ -933,7 +941,7 @@ function renderStandShowCard(show) {
       </div>
       <div class="stand-show-lineup show-lineup">${chips}</div>
       <div class="stand-show-footer">
-        ${show.url ? `<a href="${show.url}" target="_blank" class="reserve-btn">Tickets</a>` : '<span></span>'}
+        ${show.url ? `<a href="${show.url}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Tickets</a>` : '<span></span>'}
         <span class="show-venue">The Stand NYC</span>
       </div>
     </div>
@@ -1000,25 +1008,24 @@ function renderBigShows(container) {
   const vf = document.getElementById('venue-filters');
   if (vf) vf.innerHTML = '';
 
-  // Remove bottom tabs for big shows
-  const bt = document.getElementById('bottom-tabs');
-  if (bt) bt.innerHTML = '';
-
   if (bigShows.length === 0) {
     container.innerHTML = '<div class="no-shows">Loading big shows...</div>';
     return;
   }
 
+  // Filter by selected date if not "all"
+  const filtered = activeDate === 'all' ? bigShows : bigShows.filter(e => e.date === activeDate);
+
   // Group by date
   const byDate = {};
-  bigShows.forEach(evt => {
+  filtered.forEach(evt => {
     const date = evt.date || 'Unknown';
     if (!byDate[date]) byDate[date] = [];
     byDate[date].push(evt);
   });
 
   let html = '<div class="big-shows-section">';
-  html += '<h2 class="big-shows-header">Upcoming NYC Comedy Shows</h2>';
+  if (activeDate === 'all') html += '<h2 class="big-shows-header">Upcoming NYC Comedy Shows</h2>';
 
   Object.keys(byDate).sort().forEach(dateStr => {
     const d = new Date(dateStr + 'T12:00:00');
@@ -1045,6 +1052,7 @@ function renderBigShows(container) {
 
   html += '</div>';
   container.innerHTML = html;
+  renderBottomTabs();
 }
 
 function renderVenueFilters(shows) {
@@ -1069,7 +1077,6 @@ function setVenue(v) {
 }
 
 function renderBottomTabs() {
-  if (activeSource === 'big-shows') return;
 
   let nav = document.getElementById('bottom-tabs');
   if (!nav) {
@@ -1107,6 +1114,19 @@ function renderBottomTabs() {
         renderShows();
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
+      nav.appendChild(tab);
+    });
+    return;
+  }
+
+  if (activeSource === 'big-shows') {
+    const bigDates = [...new Set(bigShows.map(e => e.date))].sort();
+    bigDates.forEach(dateStr => {
+      const d = new Date(dateStr + 'T12:00:00');
+      const tab = document.createElement('button');
+      tab.className = 'day-tab' + (dateStr === activeDate ? ' active' : '');
+      tab.innerHTML = `<span class="tab-day">${getDayName(d)}</span><span class="tab-date">${getDateLabel(d)}</span>`;
+      tab.addEventListener('click', () => { activeDate = dateStr; renderTabs(); renderShows(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
       nav.appendChild(tab);
     });
     return;
@@ -1367,6 +1387,16 @@ function toProperCase(str) {
     .replace(/\bIfc\b/g, 'IFC').replace(/\bTbs\b/g, 'TBS').replace(/\bWb\b/g, 'WB')
     .replace(/\bNyc\b/g, 'NYC').replace(/\bNycf\b/g, 'NYCF').replace(/\bUsa\b/g, 'USA')
     .replace(/\bTv\b/gi, 'TV').replace(/\bLgbtq\b/g, 'LGBTQ');
+}
+
+// ---- Reserve button click tracking ----
+function trackReserve(el) {
+  // Increment localStorage counter
+  const count = parseInt(localStorage.getItem('cellar-reserve-clicks') || '0') + 1;
+  localStorage.setItem('cellar-reserve-clicks', count.toString());
+  // Log for Vercel Analytics custom event (if available)
+  if (window.va) window.va('event', { name: 'reserve_click', data: { url: el?.href || '', count } });
+  console.log(`Reserve click #${count}:`, el?.href);
 }
 
 // ---- Close info popups on click outside ----

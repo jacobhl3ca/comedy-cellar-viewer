@@ -442,12 +442,9 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 }
 .toast-close:hover { color: var(--text); }
 
-/* Controls row 2: My Comedians + Sort dropdown */
+/* Controls row 2: My Comedians + Sort + Time */
 .controls-row-2 {
-  display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 0 10px; flex-wrap: wrap;
-}
-.controls-row-2b {
-  display: flex; align-items: center; gap: 8px; padding: 0 0 10px; flex-wrap: wrap;
+  display: flex; align-items: center; gap: 10px; padding: 0 0 10px; flex-wrap: wrap;
 }
 .sort-select {
   padding: 6px 12px; border-radius: 6px; font-size: 13px; font-weight: 500;

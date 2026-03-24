@@ -91,31 +91,26 @@
 
   <div class="controls-row-2">
     <button class="settings-btn" id="open-settings">My Comedians</button>
-  </div>
-  <div class="controls-row-2b">
-    <button class="reset-filters-btn" id="reset-filters" style="display:none;">Reset</button>
     <select id="sort-select" class="sort-select">
       <option value="none">Sort by...</option>
       <option value="faves"># of faves</option>
       <option value="newcomers"># of newcomers</option>
     </select>
-  </div>
-
-  <div class="controls-row-3">
+    <button class="reset-filters-btn" id="reset-filters" style="display:none;">Reset</button>
     <div class="time-filter">
       <label class="toggle">
-        <span>Latest start time</span>
+        <span>Latest start</span>
         <select id="time-filter" class="time-select">
           <option value="any">Any</option>
-          <option value="19:00">7:00 pm</option>
-          <option value="20:00">8:00 pm</option>
-          <option value="21:00">9:00 pm</option>
-          <option value="22:00">10:00 pm</option>
-          <option value="23:00">11:00 pm</option>
+          <option value="19:00">7 pm</option>
+          <option value="20:00">8 pm</option>
+          <option value="21:00">9 pm</option>
+          <option value="22:00">10 pm</option>
+          <option value="23:00">11 pm</option>
         </select>
       </label>
       <span class="info-icon" id="time-info">&#9432;
-        <span class="info-popup">Shows last about 1 hour 15 minutes on average (5-7 comics, ~10-15 min each). Late shows can run longer and have surprise drop-ins.</span>
+        <span class="info-popup">Shows last about 1 hr 15 min on average (5-7 comics). Late shows can run longer and have surprise drop-ins.</span>
       </span>
     </div>
   </div>
