@@ -113,8 +113,8 @@ async function loadComedianDB() {
     comedianDB = await resp.json();
     // Merge photos and bios from DB into runtime maps
     comedianDB.forEach(c => {
-      // Always prefer DB photos (higher quality, more reliable)
-      const photo = c.photo_stand || c.photo_nycc;
+      // Prefer NYCC photos (Stand _square photos are 404 as of 2026-03)
+      const photo = c.photo_nycc; // Skip Stand photos — they 404
       if (photo) comedianPhotos[c.name] = photo;
       if (c.bio && !comedianTaglines[c.name]) comedianTaglines[c.name] = c.bio;
     });
@@ -810,7 +810,19 @@ function renderAllDaysSchedule(container) {
   const sortVal2 = document.getElementById('sort-select')?.value || 'none';
   const shouldSort = sortVal2 === 'faves';
   const shouldSortNewcomers = sortVal2 === 'newcomers';
-  let html = '<div class="schedule-view">';
+  // Show onboarding if no prefs
+  const prefs2 = loadPrefs();
+  const hasAnyPrefs2 = prefs2.faves.length > 0 || prefs2.skips.length > 0;
+  let html = '';
+  if (!hasAnyPrefs2) {
+    html += `
+      <div class="onboard-banner" id="onboard-banner">
+        <p><strong>New here?</strong> Tap comedian names to mark favorites or skips. Or use "My Comedians" to set them all at once.</p>
+        <button class="onboard-btn" onclick="openModal()">Set Up</button>
+      </div>
+    `;
+  }
+  html += '<div class="schedule-view">';
 
   // For The Stand, iterate over stand show dates
   if (activeSource === 'the-stand') {
@@ -1270,12 +1282,12 @@ function renderModal(filter = '') {
 
   let html = '';
   if (activeSource !== 'big-shows') {
-    html += `<h4 style="font-size:12px;color:var(--text-dim);margin:8px 0 4px;">${sourceLabel} This Week</h4>`;
-    html += sourceSorted.map(chipHtml).join('');
+    html += `<h3 class="modal-section-title">${sourceLabel} This Week</h3>`;
+    html += `<div class="chip-list">${sourceSorted.map(chipHtml).join('')}</div>`;
   }
   if (allSorted.length > 0) {
-    html += `<h4 style="font-size:12px;color:var(--text-dim);margin:12px 0 4px;">All Comedians</h4>`;
-    html += allSorted.map(chipHtml).join('');
+    html += `<h3 class="modal-section-title" style="margin-top:16px;">All This Week</h3>`;
+    html += `<div class="chip-list">${allSorted.map(chipHtml).join('')}</div>`;
   }
   allList.innerHTML = html;
 }
@@ -1313,8 +1325,8 @@ function updateFooterInfo() {
   if (activeSource === 'cellar') {
     el.innerHTML = `
       <p class="footer-venue-detail">Nearby parking: Minetta / W 3rd St — between 6th Ave &amp; MacDougal</p>
-      <p class="footer-venue-detail">Cover: $0 (2-drink minimum, ~$12-15/drink). Cash/card accepted.</p>
-      <p class="footer-venue-detail">Shows run ~75 min (5-7 comics). Arrive 15 min early — seats are first-come in your reservation group.</p>
+      <p class="footer-venue-detail">Cover: $0 (2-drink minimum, ~$12-15/drink). Cash &amp; card accepted.</p>
+      <p class="footer-venue-detail">Shows are about 1 hour 15 min (5-7 comics). Arrive 15 min early — seats are first-come in your reservation group.</p>
       <p class="footer-venue-detail">3 rooms: MacDougal St (original), Fat Black Pussycat (intimate), Village Underground (bigger stage)</p>
     `;
   } else if (activeSource === 'the-stand') {

@@ -366,6 +366,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .modal-sections { overflow-y: auto; padding: 8px 20px 16px; flex: 1; }
 .modal-section { margin-bottom: 16px; }
 .modal-section h3 { font-size: 14px; color: var(--text-dim); margin-bottom: 8px; }
+.modal-section-title { font-size: 14px; color: var(--text-dim); margin-bottom: 8px; display: block; }
 .count { font-weight: 400; }
 .chip-list { display: flex; flex-wrap: wrap; gap: 6px; }
 
@@ -445,8 +446,8 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .controls-row-2 {
   display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 0 10px; flex-wrap: wrap;
 }
-.controls-right {
-  display: flex; align-items: center; gap: 8px; margin-left: auto;
+.controls-row-2b {
+  display: flex; align-items: center; gap: 8px; padding: 0 0 10px; flex-wrap: wrap;
 }
 .sort-select {
   padding: 6px 12px; border-radius: 6px; font-size: 13px; font-weight: 500;

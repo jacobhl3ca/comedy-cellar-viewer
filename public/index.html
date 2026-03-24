@@ -10,7 +10,7 @@
   <meta property="og:url" content="https://cellartonight.com">
   <meta property="og:type" content="website">
   <meta name="description" content="A better way to browse Comedy Cellar showtimes. Per-show lineups, favorites, skips, and direct booking.">
-  <link rel="stylesheet" href="style.min.css">
+  <link rel="stylesheet" href="style.min.css?v=20260324b">
   <script>
     (function() {
       const saved = localStorage.getItem('cellar-theme');
@@ -91,14 +91,14 @@
 
   <div class="controls-row-2">
     <button class="settings-btn" id="open-settings">My Comedians</button>
-    <div class="controls-right">
-      <button class="reset-filters-btn" id="reset-filters" style="display:none;">Reset</button>
-      <select id="sort-select" class="sort-select">
-        <option value="none">Sort by...</option>
-        <option value="faves"># of faves</option>
-        <option value="newcomers"># of newcomers</option>
-      </select>
-    </div>
+  </div>
+  <div class="controls-row-2b">
+    <button class="reset-filters-btn" id="reset-filters" style="display:none;">Reset</button>
+    <select id="sort-select" class="sort-select">
+      <option value="none">Sort by...</option>
+      <option value="faves"># of faves</option>
+      <option value="newcomers"># of newcomers</option>
+    </select>
   </div>
 
   <div class="controls-row-3">
@@ -139,7 +139,6 @@
       </div>
       <div class="modal-sections">
         <div class="modal-section">
-          <h3>All This Week</h3>
           <div id="all-list" class="chip-list"></div>
         </div>
         <div class="modal-section">
@@ -165,7 +164,7 @@
     <p><a href="mailto:whos@cellartonight.com">whos@cellartonight.com</a></p>
   </footer>
 
-  <script src="app.min.js"></script>
+  <script src="app.min.js?v=20260324b"></script>
   <!-- Vercel Web Analytics — auto-injected when enabled in dashboard -->
   <script defer src="/_vercel/insights/script.js"></script>
   <!-- Vercel Speed Insights -->
