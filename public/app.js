@@ -936,15 +936,16 @@ function renderStandShowCard(show) {
     : `<span style="color:var(--text-dim);font-size:13px;">Lineup TBD</span>`;
 
   return `
-    <div class="stand-show-card">
-      <div class="stand-show-header">
-        <span class="stand-show-time">${show.time || 'TBD'}</span>
-        <span class="stand-show-title">${show.title}</span>
-      </div>
-      <div class="stand-show-lineup show-lineup">${chips}</div>
-      <div class="stand-show-footer">
-        ${show.url ? `<a href="${show.url}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Tickets</a>` : '<span></span>'}
+    <div class="show-card">
+      <div class="show-header">
+        <div><span class="show-time">${show.time || 'TBD'}</span></div>
+        <span class="show-name">${show.title}</span>
         <span class="show-venue">The Stand NYC</span>
+      </div>
+      <div class="show-lineup">${chips}</div>
+      <div class="show-footer">
+        ${show.url ? `<a href="${show.url}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Tickets</a>` : '<span></span>'}
+        <span class="fav-count"></span>
       </div>
     </div>
   `;

@@ -1382,7 +1382,8 @@
       "nycc",
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/akaash-singh"
+    "stand_profile": "https://thestandnyc.com/comedians/akaash-singh",
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Akaash_Singh.jpg"
   },
   {
     "name": "Nimesh Patel",
@@ -2248,7 +2249,8 @@
       "nycc",
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/adam-ray"
+    "stand_profile": "https://thestandnyc.com/comedians/adam-ray",
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Adam-Ray-Full.jpg"
   },
   {
     "name": "Jackie Fabulous",
@@ -2491,49 +2493,56 @@
     "venues": [
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/abby-rosenquist"
+    "stand_profile": "https://thestandnyc.com/comedians/abby-rosenquist",
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/26-og.jpg"
   },
   {
     "name": "Adam Carolla",
     "venues": [
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/adam-carolla"
+    "stand_profile": "https://thestandnyc.com/comedians/adam-carolla",
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Adam_Carolla.jpg"
   },
   {
     "name": "Adam Ferrara",
     "venues": [
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/adam-ferrara"
+    "stand_profile": "https://thestandnyc.com/comedians/adam-ferrara",
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/adamferrara.jpg"
   },
   {
     "name": "Adam Friedland",
     "venues": [
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/adam-friedland"
+    "stand_profile": "https://thestandnyc.com/comedians/adam-friedland",
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/adam.jpg"
   },
   {
     "name": "Adrienne Iapalucci",
     "venues": [
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/adrienne-iapalucci"
+    "stand_profile": "https://thestandnyc.com/comedians/adrienne-iapalucci",
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Adrienne_Iapalucci_1.jpg"
   },
   {
     "name": "Ahmed Ahmed",
     "venues": [
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/ahmed-ahmed"
+    "stand_profile": "https://thestandnyc.com/comedians/ahmed-ahmed",
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Ahmed_Ahmed.jpg"
   },
   {
     "name": "Aida Rodriguez",
     "venues": [
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/aida-rodriguez"
+    "stand_profile": "https://thestandnyc.com/comedians/aida-rodriguez",
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/19-og.jpeg"
   },
   {
     "name": "Aldo Campana",
@@ -2549,42 +2558,48 @@
       "the_stand",
       "comedy_cellar"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/alex-english"
+    "stand_profile": "https://thestandnyc.com/comedians/alex-english",
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/alexenglish.jpg"
   },
   {
     "name": "Alexis Guerreros",
     "venues": [
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/alexis-guerreros"
+    "stand_profile": "https://thestandnyc.com/comedians/alexis-guerreros",
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Alexis%2BGuerreros%2BHeadshot%2B%281%29.jpg"
   },
   {
     "name": "Ali Macofsky",
     "venues": [
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/ali-macofsky"
+    "stand_profile": "https://thestandnyc.com/comedians/ali-macofsky",
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Ali_Macofsky.jpg"
   },
   {
     "name": "Ali Siddiq",
     "venues": [
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/ali-siddiq"
+    "stand_profile": "https://thestandnyc.com/comedians/ali-siddiq",
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Ali_Siddiq.jpg"
   },
   {
     "name": "Amber Nelson",
     "venues": [
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/amber-nelson"
+    "stand_profile": "https://thestandnyc.com/comedians/amber-nelson",
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/31-og.png"
   },
   {
     "name": "Aminah Imani",
     "venues": [
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/aminah-imani"
+    "stand_profile": "https://thestandnyc.com/comedians/aminah-imani",
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/aminah.jpg"
   },
   {
     "name": "Amy Miller",
@@ -4659,5 +4674,13 @@
     ],
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Tom_McGuire.jpeg",
     "stand_profile": "https://thestandnyc.com/comedians/tom-mcguire"
+  },
+  {
+    "name": "Amos Gil",
+    "venues": [
+      "the_stand"
+    ],
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/191008-Amos-Gill-365-1000px-square_1.jpg",
+    "stand_profile": "https://thestandnyc.com/comedians/amos-gil"
   }
 ]
