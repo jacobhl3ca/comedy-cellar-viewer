@@ -113,9 +113,9 @@ async function loadComedianDB() {
     comedianDB = await resp.json();
     // Merge photos and bios from DB into runtime maps
     comedianDB.forEach(c => {
-      // Use best available photo (Stand re-scraped 2026-03-24)
+      // Only fill in DB photos where Cellar API hasn't already provided one
       const photo = c.photo_stand || c.photo_nycc;
-      if (photo) comedianPhotos[c.name] = photo;
+      if (photo && !comedianPhotos[c.name]) comedianPhotos[c.name] = photo;
       if (c.bio && !comedianTaglines[c.name]) comedianTaglines[c.name] = c.bio;
     });
   } catch (e) {
@@ -162,7 +162,7 @@ const CELLAR_REGULARS = new Set([
   'Are You Garbage', 'H.Foley', 'Kevin Ryan', 'Jamie Wolf',
   // Added per Jacob's confirmation
   'Maddie Wiener', 'Emmy Blotnick', 'Sahib Singh', 'Gary Vider', 'Keith Robinson',
-  'Wil Sylvince', 'Chris Distefano', 'Jay Jurden', 'Sean Patton'
+  'Wil Sylvince', 'Chris Distefano', 'Jay Jurden', 'Sean Patton', 'Nathan Macintosh'
 ]);
 
 function isRegular(name) { return CELLAR_REGULARS.has(name); }
@@ -959,45 +959,67 @@ function renderAllVenues(container) {
   const vf = document.getElementById('venue-filters');
   if (vf) vf.innerHTML = '';
 
-  let html = '<div class="schedule-view">';
+  // Collect ALL shows into one list with date + sort key
+  let allItems = [];
 
   // Cellar shows
-  html += '<h2 class="schedule-day-header" style="color:var(--accent);">Comedy Cellar</h2>';
   dates.forEach(d => {
     const dateStr = formatDateParam(d);
     const shows = allData[dateStr];
-    if (!shows || shows.length === 0) return;
-    const dayLabel = d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
-    html += `<h3 style="font-size:14px;color:var(--text-dim);padding:8px 0 4px;">${dayLabel}</h3>`;
+    if (!shows) return;
     shows.forEach(show => {
-      html += renderShowCard(show, hideSkips, false);
+      const time24 = to24h(show.time) || '00:00';
+      allItems.push({ type: 'cellar', dateStr, time24, show });
     });
   });
 
-  // The Stand shows
-  html += '<h2 class="schedule-day-header" style="color:var(--accent);margin-top:24px;">The Stand NYC</h2>';
+  // Stand shows
   standShows.forEach(show => {
-    html += renderStandShowCard(show);
+    const time24 = to24h(show.time) || '00:00';
+    allItems.push({ type: 'stand', dateStr: show.date, time24, show });
   });
 
   // Big Shows
-  if (bigShows.length > 0) {
-    html += '<h2 class="schedule-day-header" style="color:var(--accent);margin-top:24px;">Big Shows</h2>';
-    bigShows.forEach(evt => {
+  bigShows.forEach(evt => {
+    const time24 = to24h(evt.time) || '00:00';
+    allItems.push({ type: 'big', dateStr: evt.date, time24, show: evt });
+  });
+
+  // Sort by date then time
+  allItems.sort((a, b) => a.dateStr.localeCompare(b.dateStr) || a.time24.localeCompare(b.time24));
+
+  let html = '<div class="schedule-view">';
+  let lastDate = '';
+
+  allItems.forEach(item => {
+    if (item.dateStr !== lastDate) {
+      const d = new Date(item.dateStr + 'T12:00:00');
+      const dayLabel = d.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+      html += `<h2 class="schedule-day-header">${dayLabel}</h2>`;
+      lastDate = item.dateStr;
+    }
+
+    if (item.type === 'cellar') {
+      html += renderShowCard(item.show, hideSkips, false);
+    } else if (item.type === 'stand') {
+      html += renderStandShowCard(item.show);
+    } else {
+      const evt = item.show;
       html += `
         <div class="big-show-card">
-          <div class="big-show-info">
-            <div class="big-show-title">${evt.title}</div>
-            <div class="big-show-meta">
-              <span class="big-show-venue">${evt.venue}</span>
-              <span>${evt.date} ${evt.time || ''}</span>
-              ${evt.price ? `<span class="big-show-price">From $${evt.price}</span>` : ''}
-            </div>
-            ${evt.url ? `<a href="${evt.url}" target="_blank" class="big-show-link">Get Tickets</a>` : ''}
+          <div class="show-header">
+            <div><span class="show-time">${evt.time || 'TBD'}</span></div>
+            <span class="show-name">${evt.title}</span>
+            <span class="show-venue">${evt.venue}</span>
+          </div>
+          <div class="big-show-info" style="padding:10px 16px;">
+            ${evt.performers ? `<div style="font-size:13px;color:var(--text-dim);margin-bottom:8px;">${evt.performers}</div>` : ''}
+            ${evt.price ? `<span class="big-show-price" style="margin-right:12px;">From $${evt.price}</span>` : ''}
+            ${evt.url ? `<a href="${evt.url}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Get Tickets</a>` : ''}
           </div>
         </div>`;
-    });
-  }
+    }
+  });
 
   html += '</div>';
   container.innerHTML = html;
@@ -1447,6 +1469,7 @@ async function init() {
       activeSource = btn.dataset.source;
       activeDate = 'all';
       activeVenue = 'all';
+      if (window.va) window.va('event', { name: 'tab_switch', data: { source: activeSource } });
       renderSourceTabs();
       renderTabs();
       renderShows();
