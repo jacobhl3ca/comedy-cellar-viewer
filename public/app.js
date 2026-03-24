@@ -96,8 +96,10 @@ function cycleComedian(name) {
 
   if (!inFavs && !inSkips) {
     prefs.faves.push(name);
+    if (window.va) window.va('event', { name: 'fave', data: { comedian: name } });
   } else if (inFavs) {
     prefs.skips.push(name);
+    if (window.va) window.va('event', { name: 'skip', data: { comedian: name } });
   }
   // if inSkips, we already removed it — back to neutral
 
@@ -1267,6 +1269,7 @@ function setPref(name, type) {
 function openModal() {
   document.getElementById('modal-overlay').classList.remove('hidden');
   renderModal();
+  if (window.va) window.va('event', { name: 'modal_open' });
 }
 
 function closeModal() {
@@ -1566,3 +1569,14 @@ async function init() {
 }
 
 init();
+
+// Expose functions needed by inline onclick handlers (terser mangles names)
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.modalCycle = modalCycle;
+window.handleComedianClick = handleComedianClick;
+window.copyPrefsUrl = copyPrefsUrl;
+window.setVenue = setVenue;
+window.setPref = setPref;
+window.toggleAlertBtn = toggleAlertBtn;
+window.trackReserve = trackReserve;
