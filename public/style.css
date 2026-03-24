@@ -220,7 +220,39 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .comedian-photo {
   width: 28px; height: 28px; border-radius: 50%; object-fit: cover;
   margin-right: 4px; flex-shrink: 0;
+  transition: width 0.2s, height 0.2s;
 }
+
+/* Picture mode: larger photos, grid layout */
+.picture-mode .show-lineup {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px;
+}
+.picture-mode .comedian {
+  flex-direction: column; padding: 10px 8px; text-align: center;
+  border-radius: 10px; gap: 6px; font-size: 12px;
+}
+.picture-mode .comedian-photo {
+  width: 64px; height: 64px; border-radius: 50%; margin-right: 0;
+}
+.picture-mode .comedian .star { margin-right: 0; }
+
+/* Regulars badge */
+.regular-badge {
+  display: inline-block; font-size: 9px; font-weight: 600;
+  padding: 1px 5px; border-radius: 3px; margin-left: 4px;
+  background: var(--surface2); border: 1px solid var(--border);
+  color: var(--text-dim); vertical-align: middle;
+}
+.newcomer-badge {
+  display: inline-block; font-size: 9px; font-weight: 600;
+  padding: 1px 5px; border-radius: 3px; margin-left: 4px;
+  background: #1a3a1a; border: 1px solid #3a7a3a; color: #7ac47a;
+  vertical-align: middle;
+}
+[data-theme="light"] .newcomer-badge {
+  background: #e8f5e8; border-color: #7ab87a; color: #2a7a2a;
+}
+.comedian.newcomer { border-style: dashed; }
 .comedian.skip .comedian-photo { opacity: 0.3; }
 .comedian-name-wrap { display: flex; flex-direction: column; gap: 2px; }
 .comedian-tagline-inline {
@@ -264,6 +296,8 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .comedian-expanded .exp-btn.is-fav { background: var(--accent); color: #fff; border-color: var(--accent); }
 .comedian-expanded .exp-btn.is-neutral { background: var(--surface2); border-color: var(--text-dim); color: var(--text-dim); }
 .comedian-expanded .exp-btn.is-skip { background: var(--chip-skip-bg); color: var(--chip-skip-text); border-color: var(--chip-skip-border); }
+.comedian-expanded .exp-btn.is-alert { background: #1a2a3a; color: #7eb8e0; border-color: #4a8ab5; }
+[data-theme="light"] .comedian-expanded .exp-btn.is-alert { background: #eaf2f8; color: #2a6fa0; border-color: #7fb5d5; }
 
 /* Comedian tagline tooltip */
 .comedian[title] { position: relative; }
@@ -469,6 +503,63 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 }
 .schedule-day-header:first-child { padding-top: 0; }
 .schedule-card { margin-bottom: 12px; }
+
+/* Venue source tabs */
+.venue-source-tabs {
+  display: flex; gap: 6px; padding: 0 0 12px; border-bottom: 1px solid var(--border); margin-bottom: 12px;
+}
+.venue-source-tab {
+  padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500;
+  background: var(--surface); border: 1px solid var(--border); color: var(--text-dim);
+  cursor: pointer; transition: all 0.15s;
+}
+.venue-source-tab:hover { border-color: var(--accent); color: var(--text); }
+.venue-source-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+.venue-source-tab .source-count {
+  font-size: 10px; font-weight: 400; opacity: 0.7; margin-left: 4px;
+}
+
+/* Big Shows section */
+.big-shows-section { margin-top: 24px; }
+.big-shows-header {
+  font-size: 18px; font-weight: 700; color: var(--accent);
+  padding: 0 0 8px; border-bottom: 1px solid var(--border); margin-bottom: 12px;
+}
+.big-show-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden; margin-bottom: 12px;
+  box-shadow: var(--shadow-card); transition: all 0.2s;
+}
+.big-show-card:hover { border-color: var(--card-hover); box-shadow: var(--shadow-hover); }
+.big-show-info { padding: 14px 16px; }
+.big-show-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.big-show-meta { font-size: 13px; color: var(--text-dim); display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+.big-show-venue { font-weight: 500; }
+.big-show-price { color: var(--accent); font-weight: 600; }
+.big-show-link {
+  display: inline-block; padding: 6px 14px; border-radius: 6px;
+  background: var(--accent); color: #fff; text-decoration: none;
+  font-size: 12px; font-weight: 600; transition: opacity 0.15s;
+}
+.big-show-link:hover { opacity: 0.85; }
+
+/* The Stand show cards */
+.stand-show-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden; margin-bottom: 12px;
+  box-shadow: var(--shadow-card);
+}
+.stand-show-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 16px; background: var(--surface2); border-bottom: 1px solid var(--border);
+}
+.stand-show-time { font-size: 18px; font-weight: 700; color: var(--accent); }
+.stand-show-title { font-size: 14px; color: var(--text); font-weight: 500; text-align: right; max-width: 60%; }
+.stand-show-lineup { padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.stand-show-footer {
+  padding: 10px 16px; border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+}
 
 /* Bottom nav */
 .bottom-tabs { padding: 16px 0 24px; }

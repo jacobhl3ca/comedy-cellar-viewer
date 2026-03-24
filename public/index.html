@@ -10,7 +10,7 @@
   <meta property="og:url" content="https://cellartonight.com">
   <meta property="og:type" content="website">
   <meta name="description" content="A better way to browse Comedy Cellar showtimes. Per-show lineups, favorites, skips, and direct booking.">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.min.css">
   <script>
     (function() {
       const saved = localStorage.getItem('cellar-theme');
@@ -45,6 +45,12 @@
     </button>
   </header>
 
+  <div class="venue-source-tabs" id="venue-source-tabs">
+    <button class="venue-source-tab active" data-source="cellar">Comedy Cellar</button>
+    <button class="venue-source-tab" data-source="the-stand">The Stand</button>
+    <button class="venue-source-tab" data-source="big-shows">Big Shows</button>
+  </div>
+
   <nav id="day-tabs" class="day-tabs"></nav>
 
   <div class="controls-row-1">
@@ -71,6 +77,14 @@
     <label class="toggle">
       <input type="checkbox" id="expand-long-bios">
       <span>Long bios</span>
+    </label>
+    <label class="toggle">
+      <input type="checkbox" id="picture-mode">
+      <span>Picture mode</span>
+    </label>
+    <label class="toggle">
+      <input type="checkbox" id="show-newcomers">
+      <span>Flag newcomers</span>
     </label>
   </div>
 
@@ -141,6 +155,8 @@
     <p><a href="mailto:whos@cellartonight.com">whos@cellartonight.com</a></p>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="app.min.js"></script>
+  <!-- Vercel Analytics — enable in Vercel dashboard > Settings > Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
