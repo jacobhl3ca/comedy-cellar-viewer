@@ -113,8 +113,8 @@ async function loadComedianDB() {
     comedianDB = await resp.json();
     // Merge photos and bios from DB into runtime maps
     comedianDB.forEach(c => {
-      // Prefer NYCC photos (Stand _square photos are 404 as of 2026-03)
-      const photo = c.photo_nycc; // Skip Stand photos — they 404
+      // Use best available photo (Stand re-scraped 2026-03-24)
+      const photo = c.photo_stand || c.photo_nycc;
       if (photo) comedianPhotos[c.name] = photo;
       if (c.bio && !comedianTaglines[c.name]) comedianTaglines[c.name] = c.bio;
     });
