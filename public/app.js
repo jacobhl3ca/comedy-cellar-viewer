@@ -109,8 +109,9 @@ async function loadComedianDB() {
     comedianDB = await resp.json();
     // Merge photos and bios from DB into runtime maps
     comedianDB.forEach(c => {
+      // Always prefer DB photos (higher quality, more reliable)
       const photo = c.photo_stand || c.photo_nycc;
-      if (photo && !comedianPhotos[c.name]) comedianPhotos[c.name] = photo;
+      if (photo) comedianPhotos[c.name] = photo;
       if (c.bio && !comedianTaglines[c.name]) comedianTaglines[c.name] = c.bio;
     });
   } catch (e) {
@@ -154,7 +155,10 @@ const CELLAR_REGULARS = new Set([
   'Leonard Ouzts', 'Michael Rowland', 'Eagle Witt', 'Drew Dunn', 'Seaton C. Smith',
   'Sydnee Washington', 'Simeon Goodson', 'Ryan Reiss', 'Mike Yard', 'Shaun Murphy',
   'Gregg Rogell', 'Hot Soup', 'Ardie Fuqua', 'LeClerc Andre', 'Alex English',
-  'Are You Garbage', 'H.Foley', 'Kevin Ryan', 'Jamie Wolf'
+  'Are You Garbage', 'H.Foley', 'Kevin Ryan', 'Jamie Wolf',
+  // Added per Jacob's confirmation
+  'Maddie Wiener', 'Emmy Blotnick', 'Sahib Singh', 'Gary Vider', 'Keith Robinson',
+  'Wil Sylvince', 'Chris Distefano', 'Jay Jurden', 'Sean Patton'
 ]);
 
 function isRegular(name) { return CELLAR_REGULARS.has(name); }
@@ -258,11 +262,13 @@ function normalizeVenue(venue) {
 function scoreShow(show) {
   let faves = 0;
   let newFaces = 0;
+  let newcomers = 0;
   for (const name of show.comedians) {
     if (isFav(name)) faves++;
     else if (!isSkip(name)) newFaces++;
+    if (!isRegular(name)) newcomers++;
   }
-  return { faves, newFaces };
+  return { faves, newFaces, newcomers };
 }
 
 // ---- Fetch ----
@@ -477,12 +483,18 @@ function renderShows() {
   const prefs = loadPrefs();
   const hasAnyPrefs = prefs.faves.length > 0 || prefs.skips.length > 0;
 
-  // Sort by # faves button
-  const sortActive = document.getElementById('sort-by-faves')?.classList.contains('active');
+  // Sort buttons
+  const sortFavesActive = document.getElementById('sort-by-faves')?.classList.contains('active');
+  const sortNewcomersActive = document.getElementById('sort-by-newcomers')?.classList.contains('active');
 
-  // If sort is active, show ALL days sorted by fave count
-  if (sortActive) {
+  // If sort is active, show ALL days sorted
+  if (sortFavesActive) {
     renderSortedByFaves(container);
+    renderBottomTabs();
+    return;
+  }
+  if (sortNewcomersActive) {
+    renderSortedByNewcomers(container);
     renderBottomTabs();
     return;
   }
@@ -711,10 +723,83 @@ function renderSortedByFaves(container) {
   renderBottomTabs();
 }
 
+function renderSortedByNewcomers(container) {
+  const hideSkips = document.getElementById('hide-skips').checked;
+  const onlyFavs = document.getElementById('only-faves')?.checked;
+
+  let allShows = [];
+  dates.forEach(d => {
+    const dateStr = formatDateParam(d);
+    const shows = allData[dateStr];
+    if (!shows) return;
+    shows.forEach(show => {
+      if (activeVenue !== 'all' && normalizeVenue(show.venue) !== activeVenue) return;
+      const stats = scoreShow(show);
+      if (onlyFavs && stats.faves === 0) return;
+      const timeFilter = document.getElementById('time-filter')?.value;
+      if (timeFilter && timeFilter !== 'any') {
+        const showTime24 = to24h(show.time);
+        if (showTime24 && showTime24 > timeFilter) return;
+      }
+      allShows.push({ ...show, dateStr, dateObj: d, newcomers: stats.newcomers, stats });
+    });
+  });
+
+  allShows.sort((a, b) => b.newcomers - a.newcomers);
+
+  if (allShows.length === 0) {
+    container.innerHTML = '<div class="no-shows">No shows match your filters.</div>';
+    renderBottomTabs();
+    return;
+  }
+
+  let lastDateStr = '';
+  let html = '';
+
+  allShows.forEach(show => {
+    const stats = show.stats;
+    const dateLabel = show.dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+    if (show.dateStr !== lastDateStr) {
+      html += `<h2 class="schedule-day-header">${dateLabel}</h2>`;
+      lastDateStr = show.dateStr;
+    }
+
+    const cardClass = stats.faves >= 3 ? 'show-card must-go' : 'show-card';
+    let badge = '';
+    if (stats.newcomers > 0) badge = `<span class="show-badge" style="background:#3a7a3a;color:#fff;">${stats.newcomers} NEW</span>`;
+
+    const normalizedVenue = normalizeVenue(show.venue);
+    const venueStart = show.venue.toLowerCase();
+    const isPlainVenue = venueStart.startsWith('macdougal') || venueStart.startsWith('fat black') || venueStart.startsWith('village');
+    const knownRooms = ['MacDougal Street', 'Fat Black Pussycat', 'Village Underground'];
+    const mappedVenue = knownRooms.includes(normalizedVenue) ? normalizedVenue : '';
+
+    const chips = renderComedianChips(show.comedians, hideSkips);
+
+    html += `
+      <div class="${cardClass} schedule-card">
+        <div class="show-header">
+          <div><span class="show-time">${show.time}</span>${badge}</div>
+          ${!isPlainVenue ? `<span class="show-name">${show.venue}</span>` : ''}
+          <span class="show-venue">${isPlainVenue ? normalizedVenue : mappedVenue}</span>
+        </div>
+        <div class="show-lineup">${chips}</div>
+        <div class="show-footer">
+          ${show.reserveUrl ? `<a href="${show.reserveUrl}" target="_blank" class="reserve-btn">Reserve</a>` : '<span></span>'}
+          <span class="fav-count">${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''}</span>
+        </div>
+      </div>`;
+  });
+
+  container.innerHTML = html;
+  renderBottomTabs();
+}
+
 function renderAllDaysSchedule(container) {
   const hideSkips = document.getElementById('hide-skips').checked;
   const onlyFavs = document.getElementById('only-faves')?.checked;
   const shouldSort = document.getElementById('sort-by-faves')?.classList.contains('active');
+  const shouldSortNewcomers = document.getElementById('sort-by-newcomers')?.classList.contains('active');
   let html = '<div class="schedule-view">';
 
   // For The Stand, iterate over stand show dates
@@ -750,9 +835,9 @@ function renderAllDaysSchedule(container) {
       return;
     }
 
-    const sorted = shouldSort
-      ? [...shows].sort((a, b) => scoreShow(b).faves - scoreShow(a).faves)
-      : shows;
+    let sorted = shows;
+    if (shouldSort) sorted = [...shows].sort((a, b) => scoreShow(b).faves - scoreShow(a).faves);
+    else if (shouldSortNewcomers) sorted = [...shows].sort((a, b) => scoreShow(b).newcomers - scoreShow(a).newcomers);
 
     sorted.forEach(show => {
       if (activeVenue !== 'all' && normalizeVenue(show.venue) !== activeVenue) return;
@@ -1112,6 +1197,7 @@ function updateResetBtn() {
     document.getElementById('hide-skips')?.checked ||
     document.getElementById('only-faves')?.checked ||
     document.getElementById('sort-by-faves')?.classList.contains('active') ||
+    document.getElementById('sort-by-newcomers')?.classList.contains('active') ||
     document.getElementById('expand-bios')?.checked ||
     document.getElementById('expand-long-bios')?.checked ||
     document.getElementById('quick-mode')?.checked ||
@@ -1213,6 +1299,15 @@ async function init() {
   document.getElementById('time-filter')?.addEventListener('change', () => { updateResetBtn(); renderShows(); });
   document.getElementById('sort-by-faves')?.addEventListener('click', () => {
     document.getElementById('sort-by-faves').classList.toggle('active');
+    // Deactivate other sort if active
+    const sbn = document.getElementById('sort-by-newcomers');
+    if (sbn && document.getElementById('sort-by-faves').classList.contains('active')) sbn.classList.remove('active');
+    updateResetBtn(); renderShows();
+  });
+  document.getElementById('sort-by-newcomers')?.addEventListener('click', () => {
+    document.getElementById('sort-by-newcomers').classList.toggle('active');
+    const sbf = document.getElementById('sort-by-faves');
+    if (sbf && document.getElementById('sort-by-newcomers').classList.contains('active')) sbf.classList.remove('active');
     updateResetBtn(); renderShows();
   });
   document.getElementById('expand-bios')?.addEventListener('change', (e) => {
@@ -1242,6 +1337,7 @@ async function init() {
     document.getElementById('hide-skips').checked = false;
     document.getElementById('only-faves').checked = false;
     const sbf = document.getElementById('sort-by-faves'); if (sbf) sbf.classList.remove('active');
+    const sbn = document.getElementById('sort-by-newcomers'); if (sbn) sbn.classList.remove('active');
     document.getElementById('expand-bios').checked = false;
     const elb = document.getElementById('expand-long-bios'); if (elb) elb.checked = false;
     document.getElementById('quick-mode').checked = false;

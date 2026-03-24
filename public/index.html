@@ -89,6 +89,15 @@
   </div>
 
   <div class="controls-row-2">
+    <button class="settings-btn" id="open-settings">My Comedians</button>
+  </div>
+
+  <div class="controls-row-3">
+    <div class="sort-dropdown" id="sort-dropdown">
+      <button class="reset-filters-btn" id="reset-filters" style="display:none;">Reset</button>
+      <button class="sort-btn" id="sort-by-faves">Sort by # faves</button>
+      <button class="sort-btn" id="sort-by-newcomers">Sort by # newcomers</button>
+    </div>
     <div class="time-filter">
       <label class="toggle">
         <span>Latest start time</span>
@@ -105,9 +114,6 @@
         <span class="info-popup">Shows last about 1 hour 15 minutes on average (5-7 comics, ~10-15 min each). Late shows can run longer and have surprise drop-ins.</span>
       </span>
     </div>
-    <button class="settings-btn" id="open-settings">My Comedians</button>
-    <button class="sort-btn" id="sort-by-faves">Sort by # faves</button>
-    <button class="reset-filters-btn" id="reset-filters" style="display:none;">Reset Filters</button>
   </div>
 
   <div class="venue-filters" id="venue-filters"></div>
@@ -150,13 +156,15 @@
   </div>
 
   <footer class="site-footer">
-    <p>Built by fans, for fans. Not affiliated with the Comedy Cellar.</p>
+    <p>Built by fans, for fans. Not affiliated with the Comedy Cellar or The Stand.</p>
     <p class="footer-parking">Nearby parking: Minetta / W 3rd St — between 6th Ave &amp; MacDougal</p>
     <p><a href="mailto:whos@cellartonight.com">whos@cellartonight.com</a></p>
   </footer>
 
   <script src="app.min.js"></script>
-  <!-- Vercel Analytics — enable in Vercel dashboard > Settings > Analytics -->
+  <!-- Vercel Web Analytics — auto-injected when enabled in dashboard -->
   <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Vercel Speed Insights -->
+  <script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
 </html>

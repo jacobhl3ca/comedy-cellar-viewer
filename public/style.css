@@ -437,9 +437,17 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 }
 .toast-close:hover { color: var(--text); }
 
-/* Controls row 2 */
+/* Controls row 2: My Comedians */
 .controls-row-2 {
   display: flex; align-items: center; gap: 12px; padding: 0 0 10px; flex-wrap: wrap;
+}
+
+/* Controls row 3: Sort + Time filter */
+.controls-row-3 {
+  display: flex; align-items: center; gap: 12px; padding: 0 0 10px; flex-wrap: wrap;
+}
+.sort-dropdown {
+  display: flex; gap: 6px; align-items: center;
 }
 
 /* Time filter */
