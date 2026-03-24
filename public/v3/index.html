@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cellar Tonight v3 — Click to Expand</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+  <script>
+    (function() {
+      const saved = localStorage.getItem('cellar-theme');
+      if (saved) { document.documentElement.dataset.theme = saved; }
+      else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        document.documentElement.dataset.theme = 'light';
+      }
+    })();
+  </script>
+  <style>
+    /* v3: click-to-expand comedian descriptions */
+    .comedian { position: relative; }
+    .comedian-expanded {
+      display: none; width: 100%; padding: 10px 14px;
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 8px; margin-top: 8px; font-size: 13px;
+      color: var(--text-dim); line-height: 1.5;
+    }
+    .comedian-expanded.open { display: flex; gap: 12px; align-items: flex-start; }
+    .comedian-expanded img {
+      width: 64px; height: 64px; border-radius: 8px; object-fit: cover; flex-shrink: 0;
+    }
+    .comedian-expanded .exp-info { flex: 1; }
+    .comedian-expanded .exp-name {
+      font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px;
+    }
+    .comedian-expanded .exp-tagline { font-size: 13px; color: var(--text-dim); }
+    .comedian-expanded .exp-actions { margin-top: 8px; display: flex; gap: 8px; }
+    .comedian-expanded .exp-btn {
+      padding: 4px 12px; border-radius: 5px; font-size: 12px; font-weight: 600;
+      cursor: pointer; border: 1px solid var(--border); background: var(--surface);
+      color: var(--text); transition: all 0.15s;
+    }
+    .comedian-expanded .exp-btn:hover { border-color: var(--accent); }
+    .comedian-expanded .exp-btn.is-fav { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .comedian-expanded .exp-btn.is-skip { background: var(--chip-skip-bg); color: var(--chip-skip-text); border-color: var(--chip-skip-border); }
+
+    .show-lineup { flex-direction: column !important; }
+    .show-lineup-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .v3-banner {
+      background: var(--surface2); border: 1px solid var(--gold); border-radius: 8px;
+      padding: 10px 16px; margin-bottom: 12px; font-size: 13px; color: var(--text-dim);
+      text-align: center;
+    }
+    .v3-banner a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-row">
+      <h1>Cellar <span class="accent">Tonight</span> <span style="font-size:14px;color:var(--text-dim);">v3</span></h1>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
+        <span class="theme-icon" id="theme-icon"></span>
+      </button>
+    </div>
+    <p class="subtitle">Click a comedian to see their bio. Use top filters to fav/skip.</p>
+  </header>
+
+  <nav id="day-tabs" class="day-tabs"></nav>
+
+  <div class="controls">
+    <label class="toggle">
+      <input type="checkbox" id="hide-skips">
+      <span>Hide my skips</span>
+    </label>
+    <label class="toggle">
+      <input type="checkbox" id="only-favs">
+      <span>Only sets with favs</span>
+    </label>
+    <label class="toggle">
+      <input type="checkbox" id="show-photos" checked>
+      <span>Photos</span>
+    </label>
+    <button class="settings-btn" id="open-settings">My Comedians</button>
+  </div>
+
+  <div class="venue-filters" id="venue-filters"></div>
+
+  <div class="v3-banner">Click any comedian to expand their bio. <a href="/">Back to v1</a> | <a href="/v2/">v2 cards</a></div>
+
+  <main id="shows-container" class="shows-container">
+    <div class="loading" id="loading">Loading lineups...</div>
+  </main>
+
+  <div class="modal-overlay hidden" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>My Comedians</h2>
+        <button class="modal-close" id="modal-close">&times;</button>
+      </div>
+      <p class="modal-desc">Tap a name to cycle: <span class="chip-demo fav">Fav</span> &rarr; <span class="chip-demo skip">Skip</span> &rarr; <span class="chip-demo neutral">Neutral</span></p>
+      <div class="modal-search-wrap">
+        <input type="text" id="comedian-search" placeholder="Search comedians..." class="modal-search">
+      </div>
+      <div class="modal-sections">
+        <div class="modal-section">
+          <h3>Your Favorites <span class="count" id="fav-count"></span></h3>
+          <div id="fav-list" class="chip-list"></div>
+        </div>
+        <div class="modal-section">
+          <h3>Your Skips <span class="count" id="skip-count"></span></h3>
+          <div id="skip-list" class="chip-list"></div>
+        </div>
+        <div class="modal-section">
+          <h3>All This Week</h3>
+          <div id="all-list" class="chip-list"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-reset" id="reset-prefs">Reset All</button>
+        <button class="btn-share" id="share-link">Copy Share Link</button>
+        <button class="btn-done" id="modal-done">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.V3_MODE = true;
+  </script>
+  <script src="../app.js"></script>
+</body>
+</html>
