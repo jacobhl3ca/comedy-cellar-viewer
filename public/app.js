@@ -189,11 +189,10 @@ function to24h(timeStr) {
 function normalizeVenue(venue) {
   const v = venue.toLowerCase();
   if (v.includes('macdougal') || v.includes('cq room')) return 'MacDougal Street';
-  if (v.includes('fat black') || v.includes('fbpc') || v.includes('pussycat') || v.includes('new joke')) return 'Fat Black Pussycat';
+  if (v.includes('fat black') || v.includes('fbpc') || v.includes('pussycat') || v.includes('new joke') || v.includes('hot soup')) return 'Fat Black Pussycat';
   if (v.includes('village underground')) return 'Village Underground';
-  // Residencies and special shows — check if venue name contains a known room
-  if (v.includes('hot soup')) return 'Fat Black Pussycat';
-  return venue; // fallback to original
+  // Special shows with no room hint — can't determine venue
+  return venue;
 }
 
 // ---- Show scoring ----
@@ -281,6 +280,10 @@ function renderShows() {
   const hideSkips = document.getElementById('hide-skips').checked;
   const onlyFavs = document.getElementById('only-faves').checked;
 
+  // Always render venue filters
+  const allShowsFlat = Object.values(allData).flat().filter(Boolean);
+  renderVenueFilters(allShowsFlat);
+
   // "All" schedule view — show all days
   if (activeDate === 'all') {
     renderAllDaysSchedule(container);
@@ -294,12 +297,6 @@ function renderShows() {
     container.innerHTML = '<div class="no-shows">Could not load lineup. Try refreshing.</div>';
     return;
   }
-
-  // Render venue filter buttons (use first available day's shows for "all" mode)
-  const venueShows = activeDate === 'all'
-    ? Object.values(allData).flat().filter(Boolean)
-    : allData[activeDate];
-  renderVenueFilters(venueShows);
 
   if (!shows || shows.length === 0) {
     // Figure out which day this is to give a helpful message

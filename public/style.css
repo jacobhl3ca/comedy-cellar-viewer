@@ -135,11 +135,11 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
   to { opacity: 1; transform: translateX(0); }
 }
 
-/* Controls row 1: Fave/Skip mode + My Comedians */
+/* Controls row 1: Fave/Skip mode + checkboxes */
 .controls-row-1 {
-  display: flex; align-items: center; gap: 12px; padding: 0 0 10px;
+  display: flex; align-items: center; gap: 14px; padding: 0 0 10px;
+  flex-wrap: wrap;
 }
-.controls-row-1 .settings-btn { margin-left: auto; }
 
 /* Controls: checkboxes */
 .controls {
@@ -155,7 +155,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .sort-btn {
   padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 500;
   background: var(--surface2); border: 1px solid var(--border); color: var(--text-dim);
-  cursor: pointer; transition: all 0.15s; margin-left: auto; white-space: nowrap;
+  cursor: pointer; transition: all 0.15s; white-space: nowrap;
 }
 .sort-btn:hover { border-color: var(--accent); color: var(--text); }
 .sort-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
