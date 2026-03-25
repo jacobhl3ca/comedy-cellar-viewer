@@ -940,13 +940,16 @@ function renderSortedByFaves(container) {
     return;
   }
 
+  let lastDateStr = '';
   let html = '<div class="schedule-view">';
 
   allShows.forEach(show => {
     const stats = show.stats;
-    // Always show date header for each show so context is clear
     const dayLabel = show.dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
-    html += `<h2 class="schedule-day-header">${dayLabel}</h2>`;
+    if (show.dateStr !== lastDateStr) {
+      html += `<h2 class="schedule-day-header">${dayLabel}</h2>`;
+      lastDateStr = show.dateStr;
+    }
 
     const cardClass = stats.faves >= 3 ? 'show-card must-go' : 'show-card';
     let badge = '';
