@@ -34,18 +34,16 @@ function fetchPage(url) {
 }
 
 function parseShows(html) {
-  // Split by show blocks — each starts with showtitle
-  // Use the desktop version (d-none d-sm-block) which has full lineup
-  const showPattern = /<h2 class="showtitle d-none d-sm-block"><a href="https:\/\/thestandnyc\.com\/?\/?([^"]*)">(.*?)<\/a><\/h2>/g;
-  const blocks = html.split('<h2 class="showtitle d-none d-sm-block">');
+  // Split by show_row container — keeps poster + title together (avoids off-by-one)
+  const blocks = html.split('<div class="row show_row ">');
   const seen = new Set();
   const shows = [];
 
   for (let i = 1; i < blocks.length; i++) {
     const block = blocks[i];
 
-    // Extract URL and title
-    const urlMatch = block.match(/href="https:\/\/thestandnyc\.com\/?\/?([^"]*)">(.*?)<\/a>/);
+    // Extract URL and title from desktop showtitle
+    const urlMatch = block.match(/showtitle d-none d-sm-block"><a href="https:\/\/thestandnyc\.com\/?\/?([^"]*)">(.*?)<\/a>/);
     if (!urlMatch) continue;
 
     const path = urlMatch[1];

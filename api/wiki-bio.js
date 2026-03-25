@@ -16,11 +16,16 @@ module.exports = async (req, res) => {
     try {
       const data = await fetchJSON(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(name.replace(/ /g, '_'))}`);
       if (data.type === 'standard' && data.extract) {
-        results[name] = {
-          bio: data.extract.substring(0, 300),
-          image: data.thumbnail?.source || '',
-          url: data.content_urls?.desktop?.page || ''
-        };
+        // Only accept bios about comedians/performers (avoid wrong-person matches)
+        const lower = data.extract.toLowerCase();
+        const isComedian = /\b(comedian|comedy|stand-up|comic|actor|actress|television|tv show|podcast|improv|sketch|humor|humour|entertainer|writer.*performer)\b/.test(lower);
+        if (isComedian) {
+          results[name] = {
+            bio: data.extract.substring(0, 300),
+            image: data.thumbnail?.source || '',
+            url: data.content_urls?.desktop?.page || ''
+          };
+        }
       }
     } catch (e) {
       // Skip — no Wikipedia entry
