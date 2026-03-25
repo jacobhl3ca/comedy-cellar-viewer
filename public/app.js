@@ -931,8 +931,8 @@ function renderSortedByFaves(container) {
     });
   });
 
-  // Sort by score (faves*2 + likes) descending
-  allShows.sort((a, b) => b.score - a.score || b.faves - a.faves);
+  // Sort purely by fave count per individual show (day headers repeat as needed)
+  allShows.sort((a, b) => b.faves - a.faves || b.score - a.score);
 
   if (allShows.length === 0) {
     container.innerHTML = '<div class="no-shows">No shows match your filters.</div>';
@@ -941,16 +941,12 @@ function renderSortedByFaves(container) {
   }
 
   let html = '<div class="schedule-view">';
-  let lastDate = '';
 
   allShows.forEach(show => {
     const stats = show.stats;
-    // Date header when date changes
-    if (show.dateStr !== lastDate) {
-      const dayLabel = show.dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
-      html += `<h2 class="schedule-day-header">${dayLabel}</h2>`;
-      lastDate = show.dateStr;
-    }
+    // Always show date header for each show so context is clear
+    const dayLabel = show.dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+    html += `<h2 class="schedule-day-header">${dayLabel}</h2>`;
 
     const cardClass = stats.faves >= 3 ? 'show-card must-go' : 'show-card';
     let badge = '';
@@ -1654,9 +1650,16 @@ function handleComedianClick(el) {
     'comedy_cellar': (n) => cellarComedianNames.has(n),
     'the_stand': (n) => standComedianNames.has(n),
   };
-  const currentSourceLabel = activeSource === 'cellar' ? 'comedy_cellar' : activeSource === 'the-stand' ? 'the_stand' : activeSource;
+  // Exclude venues the comedian is already shown in (Cellar comedians don't need "Also at: Comedy Cellar")
+  const excludeVenues = new Set();
+  if (activeSource === 'cellar' || activeSource === 'all') {
+    if (cellarComedianNames.has(name)) excludeVenues.add('comedy_cellar');
+  }
+  if (activeSource === 'the-stand' || activeSource === 'all') {
+    if (standComedianNames.has(name)) excludeVenues.add('the_stand');
+  }
   const venues = dbEntry?.venues
-    ?.filter(v => v !== currentSourceLabel && liveVenueCheck[v]?.(name))
+    ?.filter(v => !excludeVenues.has(v) && liveVenueCheck[v]?.(name))
     ?.map(v => venueNameMap[v] || v.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()))
     ?.join(', ') || '';
 
