@@ -138,7 +138,7 @@ async function loadComedianDB() {
       const external = c.photo_stand || c.photo_nycc;
       if (local) comedianPhotos[c.name] = local;
       else if (external && !comedianPhotos[c.name]) comedianPhotos[c.name] = external;
-      if (c.bio && !comedianTaglines[c.name]) comedianTaglines[c.name] = c.bio;
+      if (c.bio && !comedianTaglines[c.name] && !isGenericBio(c.bio)) comedianTaglines[c.name] = c.bio;
     });
   } catch (e) {
     console.error('Failed to load comedian DB:', e);
@@ -160,7 +160,7 @@ async function enrichBiosFromWikipedia() {
       if (data.results) {
         Object.entries(data.results).forEach(([name, info]) => {
           // Don't overwrite existing bios
-          if (!comedianTaglines[name] && info.bio) comedianTaglines[name] = info.bio;
+          if (!comedianTaglines[name] && info.bio && !isGenericBio(info.bio)) comedianTaglines[name] = info.bio;
           if (!comedianPhotos[name] && info.image) comedianPhotos[name] = info.image;
         });
       }
@@ -330,7 +330,7 @@ function parseShows(html, dateStr) {
   tagMatches.forEach(m => {
     const name = m[1].trim();
     let tagline = m[2].trim().replace(/^,\s*/, '').replace(/<[^>]+>/g, '').trim();
-    if (tagline && !comedianTaglines[name]) {
+    if (tagline && !comedianTaglines[name] && !isGenericBio(tagline)) {
       comedianTaglines[name] = toProperCase(tagline);
     }
   });
@@ -791,9 +791,9 @@ function renderShowCard(show, hideSkips, onlyFavs) {
   let badge = '';
   const totalScore = stats.faves + stats.likes;
   if (stats.faves >= 3) {
-    badge = `<span class="show-badge badge-must-go">${stats.faves} FAVS</span>`;
+    badge = `<span class="show-badge badge-must-go">${stats.faves} FAVES</span>`;
   } else if (stats.faves >= 2) {
-    badge = `<span class="show-badge badge-faves">${stats.faves} FAVS</span>`;
+    badge = `<span class="show-badge badge-faves">${stats.faves} FAVES</span>`;
   }
 
   const cardClass = stats.faves >= 3 ? 'show-card must-go' : 'show-card';
@@ -953,8 +953,8 @@ function renderSortedByFaves(container) {
 
     const cardClass = stats.faves >= 3 ? 'show-card must-go' : 'show-card';
     let badge = '';
-    if (stats.faves >= 3) badge = `<span class="show-badge badge-must-go">${stats.faves} FAVS</span>`;
-    else if (stats.faves >= 2) badge = `<span class="show-badge badge-faves">${stats.faves} FAVS</span>`;
+    if (stats.faves >= 3) badge = `<span class="show-badge badge-must-go">${stats.faves} FAVES</span>`;
+    else if (stats.faves >= 2) badge = `<span class="show-badge badge-faves">${stats.faves} FAVES</span>`;
     if (stats.likes > 0) badge += ` <span class="show-badge badge-likes">${stats.likes} LIKE${stats.likes > 1 ? 'S' : ''}</span>`;
 
     const normalizedVenue = normalizeVenue(show.venue);
@@ -1335,8 +1335,20 @@ function renderAllVenues(container) {
     allItems = allItems.filter(item => item.dateStr === activeDate);
   }
 
-  // Sort by date then time
-  allItems.sort((a, b) => a.dateStr.localeCompare(b.dateStr) || a.time24.localeCompare(b.time24));
+  // Sort — by faves if dropdown selected, otherwise by date+time
+  const sortValAV = document.getElementById('sort-select')?.value || 'none';
+  if (sortValAV === 'faves') {
+    // Score each item by fave count
+    allItems.forEach(item => {
+      const comedians = item.show.comedians || [];
+      let faves = 0;
+      for (const name of comedians) { if (isFav(name) || isLike(name)) faves++; }
+      item.faveCount = faves;
+    });
+    allItems.sort((a, b) => b.faveCount - a.faveCount || a.dateStr.localeCompare(b.dateStr) || a.time24.localeCompare(b.time24));
+  } else {
+    allItems.sort((a, b) => a.dateStr.localeCompare(b.dateStr) || a.time24.localeCompare(b.time24));
+  }
 
   let html = '';
   if (!hasPrefsAV) {
@@ -1873,6 +1885,18 @@ function initTheme() {
 
 // ---- Tagline helpers ----
 const comedianTaglines = {};
+
+function isGenericBio(bio) {
+  if (!bio) return true;
+  const lower = bio.toLowerCase();
+  // Reject bios that are just "[Name] is a stand-up comedian" + generic filler
+  if (/^[a-z\s.'-]+ is a (stand-up )?comedian/.test(lower) &&
+      (/performs regularly on the/.test(lower) || /regular (at|on) the (nyc|new york|comedy) (comedy )?scene/.test(lower) ||
+       /known for (his|her|their) (unique|sharp|fresh|energetic)/.test(lower))) return true;
+  // Reject very short generic descriptions
+  if (bio.length < 40 && /is a (stand-up )?comedian/.test(lower)) return true;
+  return false;
+}
 
 function toProperCase(str) {
   // Convert ALL CAPS taglines to proper case
