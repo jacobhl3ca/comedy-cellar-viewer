@@ -1632,10 +1632,18 @@ function handleComedianClick(el) {
     'nycc': 'NY Comedy Club',
     'ny_comedy_club': 'NY Comedy Club',
   };
-  const activeVenues = new Set(['comedy_cellar', 'the_stand']); // venues with live data on the site
+  // Only show "Also at" if comedian has a live upcoming show at that venue
+  const standComedianNames = new Set();
+  standShows.forEach(show => show.comedians.forEach(n => standComedianNames.add(n)));
+  const cellarComedianNames = new Set();
+  Object.values(allData).forEach(dayShows => dayShows.forEach(show => show.comedians.forEach(n => cellarComedianNames.add(n))));
+  const liveVenueCheck = {
+    'comedy_cellar': (n) => cellarComedianNames.has(n),
+    'the_stand': (n) => standComedianNames.has(n),
+  };
   const currentSourceLabel = activeSource === 'cellar' ? 'comedy_cellar' : activeSource === 'the-stand' ? 'the_stand' : activeSource;
   const venues = dbEntry?.venues
-    ?.filter(v => v !== currentSourceLabel && activeVenues.has(v))
+    ?.filter(v => v !== currentSourceLabel && liveVenueCheck[v]?.(name))
     ?.map(v => venueNameMap[v] || v.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()))
     ?.join(', ') || '';
 

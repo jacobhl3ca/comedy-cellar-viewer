@@ -77,7 +77,7 @@ async function downloadFromWikipedia() {
   const namesNeedingPhotos = db
     .filter(c => !c.photo_stand && !c.photo_nycc)
     .map(c => c.name)
-    .slice(0, 100);
+    .slice(0, 300);
 
   let downloaded = 0;
 
