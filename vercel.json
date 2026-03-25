@@ -1,5 +1,15 @@
 {
   "rewrites": [
     { "source": "/api/lineup", "destination": "/api/lineup" }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/check-alerts",
+      "schedule": "0 14 * * *"
+    },
+    {
+      "path": "/api/cron/scrape-venues",
+      "schedule": "0 6 * * 1"
+    }
   ]
 }

@@ -170,7 +170,7 @@ async function enrichBiosFromWikipedia() {
   }
 }
 
-// ---- Alerts (localStorage-based MVP) ----
+// ---- Alerts (localStorage + backend sync) ----
 const ALERTS_KEY = 'cellar-tonight-alerts';
 
 function loadAlerts() {
@@ -180,6 +180,14 @@ function loadAlerts() {
 
 function saveAlerts(alerts) {
   localStorage.setItem(ALERTS_KEY, JSON.stringify(alerts));
+  // Sync to backend if email is set
+  if (alerts.email) {
+    fetch('/api/alerts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: alerts.email, comedians: alerts.comedians }),
+    }).catch(() => {});
+  }
 }
 
 function isAlerted(name) { return loadAlerts().comedians.includes(name); }
@@ -192,6 +200,16 @@ function toggleAlert(name) {
     alerts.comedians.push(name);
   }
   saveAlerts(alerts);
+}
+
+function setAlertEmail(email) {
+  const alerts = loadAlerts();
+  alerts.email = email;
+  saveAlerts(alerts);
+}
+
+function getAlertEmail() {
+  return loadAlerts().email || '';
 }
 
 // ---- NYC Comedy Regulars (Cellar + Stand + NYC scene) ----
@@ -365,26 +383,26 @@ function to24h(timeStr) {
 // Map all venue variants to the 3 main rooms
 // Map special show names to their known rooms (from comedycellar.com/#showtimes)
 const SPECIAL_SHOW_ROOMS = {
-  'cq room': 'MacDougal Street',
-  'colin quinn': 'MacDougal Street',
-  'robert kelly': 'MacDougal Street',
-  'bobby kelly': 'MacDougal Street',
-  'jim norton': 'MacDougal Street',
+  'cq room': 'Fat Black Pussycat',
+  'colin quinn': 'Fat Black Pussycat',
+  'robert kelly': 'Fat Black Pussycat',
+  'bobby kelly': 'Fat Black Pussycat',
+  'jim norton': 'Fat Black Pussycat',
   'new joke night': 'Fat Black Pussycat',
   'hot soup': 'Fat Black Pussycat',
-  'chris redd': 'Village Underground',
+  'chris redd': 'Fat Black Pussycat',
   'sunday brunch': 'MacDougal Street',
 };
 
 function normalizeVenue(venue) {
   const v = venue.toLowerCase();
-  if (v.includes('macdougal') || v.includes('cq room')) return 'MacDougal Street';
-  if (v.includes('fat black') || v.includes('fbpc') || v.includes('pussycat') || v.includes('new joke') || v.includes('hot soup')) return 'Fat Black Pussycat';
-  if (v.includes('village underground')) return 'Village Underground';
-  // Check special show room map
+  // Check special show room map FIRST (overrides generic venue strings)
   for (const [key, room] of Object.entries(SPECIAL_SHOW_ROOMS)) {
     if (v.includes(key)) return room;
   }
+  if (v.includes('macdougal')) return 'MacDougal Street';
+  if (v.includes('fat black') || v.includes('fbpc') || v.includes('pussycat')) return 'Fat Black Pussycat';
+  if (v.includes('village underground')) return 'Village Underground';
   return '';
 }
 
@@ -1650,6 +1668,12 @@ function handleComedianClick(el) {
 }
 
 function toggleAlertBtn(name, btn) {
+  // Prompt for email on first alert if not set
+  if (!isAlerted(name) && !getAlertEmail()) {
+    const email = prompt('Enter your email to get notified when this comedian is performing:');
+    if (!email || !email.includes('@')) return;
+    setAlertEmail(email.trim());
+  }
   toggleAlert(name);
   const alerted = isAlerted(name);
   btn.className = 'exp-btn' + (alerted ? ' is-alert' : '');
