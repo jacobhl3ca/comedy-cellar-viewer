@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cellar Tonight — Comedy Cellar Lineup Viewer</title>
+  <title>Tonight NYC — NYC Comedy Lineups</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <meta property="og:title" content="Cellar Tonight — Comedy Cellar Lineup Viewer">
-  <meta property="og:description" content="See every Comedy Cellar showtime with its lineup. Mark favorites, skip regulars, book the right set.">
+  <meta property="og:title" content="Tonight NYC — NYC Comedy Lineups">
+  <meta property="og:description" content="Every NYC comedy show, filtered your way. Mark favorites, skip regulars, book the right set.">
   <meta property="og:url" content="https://cellartonight.com">
   <meta property="og:image" content="https://cellartonight.com/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -14,7 +14,7 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://cellartonight.com/og-image.png">
-  <meta name="description" content="A better way to browse Comedy Cellar showtimes. Per-show lineups, favorites, skips, and direct booking.">
+  <meta name="description" content="NYC comedy lineups from Comedy Cellar, The Stand, and more. Per-show breakdowns, favorites, skips, and direct booking.">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
@@ -32,9 +32,9 @@
 <body>
   <header>
     <div class="header-row">
-      <h1>Cellar <span class="accent">Tonight</span></h1>
+      <h1>Tonight <span class="accent">NYC</span></h1>
     </div>
-    <p class="subtitle">Comedy Cellar lineups, filtered your way.</p>
+    <p class="subtitle">NYC comedy lineups, filtered your way.</p>
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
       <svg class="theme-icon-svg" id="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="5"></circle>
@@ -57,7 +57,7 @@
     <button class="venue-source-tab active" data-source="all">All Venues</button>
     <button class="venue-source-tab" data-source="cellar">Comedy Cellar</button>
     <button class="venue-source-tab" data-source="the-stand">The Stand</button>
-    <button class="venue-source-tab" data-source="big-shows">Big Shows</button>
+    <button class="venue-source-tab" data-source="big-shows">Other Shows</button>
     <!-- <button class="venue-source-tab" data-source="gotham">Gotham</button> -->
     <!-- <button class="venue-source-tab" data-source="nycc">NY Comedy Club</button> -->
   </div>
@@ -76,7 +76,7 @@
     </span>
     <label class="toggle" id="only-faves-label" style="display:none;">
       <input type="checkbox" id="only-faves">
-      <span>Only faves</span>
+      <span>Faves</span>
     </label>
     <select id="sort-select" class="sort-select" style="display:none;">
       <option value="none">Sort by...</option>
@@ -106,7 +106,7 @@
   <div class="controls-extra" id="controls-extra" style="display:none;">
     <label class="toggle">
       <input type="checkbox" id="picture-mode">
-      <span>Big Picture</span>
+      <span>Big Pictures</span>
     </label>
     <label class="toggle">
       <input type="checkbox" id="hide-skips">
@@ -169,7 +169,7 @@
 
   <footer class="site-footer">
     <div id="footer-venue-info"></div>
-    <p>Built by fans, for fans. Not affiliated with any venue.</p>
+    <p>Built by fans, for fans.</p>
     <p><a href="mailto:whos@cellartonight.com">whos@cellartonight.com</a></p>
   </footer>
 

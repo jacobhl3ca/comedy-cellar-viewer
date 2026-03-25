@@ -918,28 +918,33 @@ function renderSortedByFaves(container) {
     return;
   }
 
-  let html = '';
+  let html = '<div class="schedule-view">';
+  let lastDate = '';
 
   allShows.forEach(show => {
     const stats = show.stats;
-    const dateShort = show.dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+    // Date header when date changes
+    if (show.dateStr !== lastDate) {
+      const dayLabel = show.dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+      html += `<h2 class="schedule-day-header">${dayLabel}</h2>`;
+      lastDate = show.dateStr;
+    }
 
     const cardClass = stats.faves >= 3 ? 'show-card must-go' : 'show-card';
     let badge = '';
     if (stats.faves >= 3) badge = `<span class="show-badge badge-must-go">${stats.faves} FAVS</span>`;
     else if (stats.faves >= 2) badge = `<span class="show-badge badge-faves">${stats.faves} FAVS</span>`;
+    if (stats.likes > 0) badge += ` <span class="show-badge badge-likes">${stats.likes} LIKE${stats.likes > 1 ? 'S' : ''}</span>`;
 
     const normalizedVenue = normalizeVenue(show.venue);
     const venueStart = show.venue.toLowerCase();
     const isPlainVenue = venueStart.startsWith('macdougal') || venueStart.startsWith('fat black') || venueStart.startsWith('village');
-    // Always show venue on right
-
     const chips = renderComedianChips(show.comedians, hideSkips);
 
     html += `
-      <div class="${cardClass} schedule-card">
+      <div class="${cardClass}">
         <div class="show-header">
-          <div><span class="show-time">${show.time}</span> <span style="font-size:11px;color:var(--text-dim);margin-left:6px;">${dateShort}</span>${badge}</div>
+          <div><span class="show-time">${show.time}</span>${badge}</div>
           ${!isPlainVenue ? (getCellarPoster(show.venue) ? `<span class="show-name poster-wrap">${show.venue}<img class="poster-preview" src="${getCellarPoster(show.venue)}" alt="${show.venue}"></span>` : `<span class="show-name">${show.venue}</span>`) : ''}
           <span class="show-venue">${normalizedVenue}</span>
         </div>
@@ -951,6 +956,7 @@ function renderSortedByFaves(container) {
       </div>`;
   });
 
+  html += '</div>';
   container.innerHTML = html;
   renderBottomTabs();
 }
@@ -1354,7 +1360,7 @@ function renderAllVenues(container) {
           <div class="show-header">
             <div><span class="show-time">${evt.time || 'TBD'}</span></div>
             <span class="show-name">${evt.title}</span>
-            <span class="show-venue">${evt.venue || 'Big Show'}</span>
+            <span class="show-venue">${evt.venue || ''}</span>
           </div>
           <div class="big-show-info" style="padding:10px 16px;display:flex;align-items:center;gap:8px;">
             ${performersLine}
@@ -1426,7 +1432,7 @@ function renderBigShows(container) {
   // Gotham: commented out — SquadUp API blocked by Cloudflare, needs Puppeteer
   // gothamShows would be merged here when working
 
-  if (activeDate === 'all') html += '<h2 class="big-shows-header">Big Shows — Upcoming NYC Comedy</h2>';
+  if (activeDate === 'all') html += '<h2 class="big-shows-header">Other Shows — Upcoming NYC Comedy</h2>';
 
   Object.entries(byPerformer).forEach(([title, data]) => {
     const firstEvt = data.events[0];
@@ -1759,7 +1765,7 @@ function renderModal(filter = '') {
     html += `<div class="chip-list">${standSorted.map(chipHtml).join('')}</div>`;
   }
   if (otherSorted.length > 0) {
-    html += `<h3 class="modal-section-title" style="margin-top:16px;">Big Shows &amp; Others</h3>`;
+    html += `<h3 class="modal-section-title" style="margin-top:16px;">Other Shows</h3>`;
     html += `<div class="chip-list">${otherSorted.map(chipHtml).join('')}</div>`;
   }
   allList.innerHTML = html;

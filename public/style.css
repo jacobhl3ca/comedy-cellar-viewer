@@ -675,10 +675,14 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
   .comedian { font-size: 13px; padding: 5px 10px; }
   .day-tab { padding: 8px 12px; }
   .controls { gap: 8px; }
-  .settings-btn { margin-left: 0; width: 100%; text-align: center; }
+  .settings-btn { margin-left: auto; padding: 8px 12px; font-size: 12px; }
   .modal { max-height: 90vh; }
-  .controls-row-1, .controls-row-2, .controls-row-3 { max-width: 100%; }
+  .controls-main { gap: 8px; }
+  .controls-extra { gap: 8px; }
   .venue-source-tab { font-size: 12px; padding: 6px 10px; }
   .show-header { padding: 12px; }
   .show-name { font-size: 12px; }
+  .bookmark-toast { flex-direction: row; flex-wrap: wrap; padding: 10px 14px; gap: 8px; }
+  .bookmark-toast span { font-size: 12px; flex: 1; min-width: 120px; }
+  .more-filters-btn { font-size: 11px; }
 }
