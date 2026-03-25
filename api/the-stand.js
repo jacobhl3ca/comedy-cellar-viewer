@@ -85,11 +85,16 @@ function parseShows(html) {
     const priceMatch = block.match(/\$(\d+\.?\d*)/);
     const price = priceMatch ? priceMatch[1] : '';
 
+    // Extract show poster image (from /images/shows/ path, not comedian headshots)
+    const posterMatch = block.match(/<img[^>]+src="(https?:\/\/thestandnyc\.com\/images\/shows\/[^"]+)"/i);
+    const poster = posterMatch ? posterMatch[1] : '';
+
     shows.push({
       title, date, time, comedians, url,
       venue: 'The Stand NYC',
       room,
-      price
+      price,
+      poster
     });
   }
 

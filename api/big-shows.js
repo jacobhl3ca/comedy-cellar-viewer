@@ -20,6 +20,10 @@ module.exports = async (req, res) => {
         time: dt.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }),
         venue: evt.venue?.name || '',
         performers: (evt.performers || []).map(p => p.name).join(', '),
+        performerImages: (evt.performers || []).reduce((acc, p) => {
+          if (p.image) acc[p.name] = p.image;
+          return acc;
+        }, {}),
         price: evt.stats?.lowest_price || null,
         url: evt.url || '',
         id: evt.id

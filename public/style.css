@@ -15,7 +15,13 @@
   --new-face-border: #4a8ab5;
   --fav-bg: #2a1515;
   --fav-text: #ff8888;
+  --like-bg: #1a2520;
+  --like-border: #3a8a5a;
+  --like-text: #7ac47a;
   --chip-fav-bg: #2a1515;
+  --chip-like-bg: #1a2520;
+  --chip-like-border: #3a8a5a;
+  --chip-like-text: #7ac47a;
   --chip-skip-bg: #1a1a1a;
   --chip-skip-border: #444;
   --chip-skip-text: #555;
@@ -40,7 +46,13 @@
   --new-face-border: #7fb5d5;
   --fav-bg: #ffeaea;
   --fav-text: #cc2222;
+  --like-bg: #e8f5e8;
+  --like-border: #7ab87a;
+  --like-text: #2a7a2a;
   --chip-fav-bg: #ffeaea;
+  --chip-like-bg: #e8f5e8;
+  --chip-like-border: #7ab87a;
+  --chip-like-text: #2a7a2a;
   --chip-skip-bg: #f5f5f5;
   --chip-skip-border: #ccc;
   --chip-skip-text: #aaa;
@@ -55,7 +67,9 @@ body {
   background: var(--bg); color: var(--text);
   min-height: 100vh; padding: 20px; max-width: 800px; margin: 0 auto;
   transition: background 0.2s, color 0.2s;
+  overflow-x: hidden;
 }
+html { overflow-x: hidden; }
 
 /* Header */
 header { text-align: center; padding: 24px 0 16px; position: relative; }
@@ -85,7 +99,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 /* Day Tabs */
 .day-tabs {
   display: flex; gap: 6px; overflow-x: auto;
-  padding: 12px 0; -webkit-overflow-scrolling: touch;
+  padding: 12px 0 16px; -webkit-overflow-scrolling: touch;
 }
 
 .day-tab {
@@ -183,13 +197,15 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .show-header {
   display: flex; justify-content: space-between; align-items: center;
   padding: 14px 16px; background: var(--surface2); border-bottom: 1px solid var(--border);
+  position: relative;
 }
-.show-time { font-size: 20px; font-weight: 700; color: var(--accent); }
-.show-venue { font-size: 13px; color: var(--text-dim); text-align: right; }
+.show-time { font-size: 20px; font-weight: 700; color: var(--accent); flex-shrink: 0; }
+.show-venue { font-size: 13px; color: var(--text-dim); text-align: right; flex-shrink: 0; }
 .show-name {
   font-size: 13px; color: var(--text-dim); text-align: center;
-  flex: 1; padding: 0 8px;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  flex: 1; padding: 0 8px; min-width: 0;
+  overflow: hidden; text-overflow: ellipsis;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
 }
 
 .show-badge {
@@ -198,6 +214,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 }
 .badge-must-go { background: var(--gold); color: #000; }
 .badge-favs { background: var(--accent); color: #fff; }
+.badge-likes { background: var(--like-border); color: #fff; font-size: 10px; }
 
 .show-lineup { padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 8px; }
 
@@ -210,6 +227,9 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .comedian:hover { border-color: var(--card-hover); }
 .comedian.fav {
   background: var(--fav-bg); border-color: var(--accent); color: var(--fav-text); font-weight: 600;
+}
+.comedian.like {
+  background: var(--like-bg); border-color: var(--like-border); color: var(--like-text); font-weight: 500;
 }
 .comedian.skip { opacity: 0.3; font-size: 13px; text-decoration: line-through; }
 .comedian.skip.hidden-skip { display: none; }
@@ -261,8 +281,15 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .comedian-name-wrap { display: flex; flex-direction: column; gap: 2px; }
 .comedian-tagline-inline {
   font-size: 10px; color: var(--text-dim); font-weight: 400;
-  font-style: normal; line-height: 1.2; max-width: 200px;
+  font-style: normal; line-height: 1.3; max-width: 200px;
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.picture-mode .comedian-tagline-inline {
+  white-space: normal; max-width: 100%; text-align: center;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+}
+.picture-mode .comedian-long-bio {
+  white-space: normal; max-width: 100%; text-align: center; font-size: 10px;
 }
 
 /* Long bio inline (expand-all mode) */
@@ -299,6 +326,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .comedian-expanded .exp-btn:hover { border-color: var(--accent); }
 .comedian-expanded .exp-btn.is-fav { background: var(--accent); color: #fff; border-color: var(--accent); }
 .comedian-expanded .exp-btn.is-neutral { background: var(--surface2); border-color: var(--text-dim); color: var(--text-dim); }
+.comedian-expanded .exp-btn.is-like { background: var(--chip-like-bg); color: var(--chip-like-text); border-color: var(--chip-like-border); }
 .comedian-expanded .exp-btn.is-skip { background: var(--chip-skip-bg); color: var(--chip-skip-text); border-color: var(--chip-skip-border); }
 .comedian-expanded .exp-btn.is-alert { background: #1a2a3a; color: #7eb8e0; border-color: #4a8ab5; }
 [data-theme="light"] .comedian-expanded .exp-btn.is-alert { background: #eaf2f8; color: #2a6fa0; border-color: #7fb5d5; }
@@ -352,6 +380,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
   font-size: 12px; font-weight: 600;
 }
 .chip-demo.fav { background: var(--accent); color: #fff; }
+.chip-demo.like { background: var(--like-bg); color: var(--like-text); border: 1px solid var(--like-border); }
 .chip-demo.skip { background: #555; color: #999; text-decoration: line-through; }
 .chip-demo.neutral { background: var(--surface2); color: var(--text-dim); border: 1px solid var(--border); }
 
@@ -377,6 +406,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 }
 .chip:hover { border-color: var(--card-hover); }
 .chip.fav-state { background: var(--chip-fav-bg); border-color: var(--accent); color: var(--fav-text); font-weight: 600; }
+.chip.like-state { background: var(--chip-like-bg); border-color: var(--chip-like-border); color: var(--chip-like-text); font-weight: 500; }
 .chip.skip-state { background: var(--chip-skip-bg); border-color: var(--chip-skip-border); color: var(--chip-skip-text); text-decoration: line-through; }
 
 .modal-footer {
@@ -442,7 +472,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 }
 .toast-close:hover { color: var(--text); }
 
-/* Controls row 2: My Comedians + Sort + Time */
+/* Controls row 2: Sort + Time + Reset + Quick mode + My Comedians */
 .controls-row-2 {
   display: flex; align-items: center; gap: 10px; padding: 0 0 10px; flex-wrap: wrap;
 }
@@ -454,7 +484,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .sort-select:hover { border-color: var(--accent); color: var(--text); }
 .sort-select:focus { border-color: var(--accent); }
 
-/* Controls row 3: Latest start + Sort */
+/* Controls row 3: Latest start + Sort + Reset — right-aligned */
 .controls-row-3 {
   display: flex; align-items: center; gap: 10px; padding: 0 0 10px; flex-wrap: wrap;
   justify-content: flex-end;
@@ -479,7 +509,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
   position: relative; user-select: none;
 }
 .info-popup {
-  display: none; position: absolute; left: 50%; transform: translateX(-50%);
+  display: none; position: absolute; right: 0; left: auto;
   top: 28px; width: 260px; padding: 10px 14px; border-radius: 8px;
   background: var(--surface); border: 1px solid var(--border);
   color: var(--text-dim); font-size: 12px; line-height: 1.5;
@@ -492,6 +522,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 /* Venue filters */
 .venue-filters {
   display: flex; gap: 6px; padding: 4px 0 10px; flex-wrap: wrap;
+  max-width: 100%;
 }
 .venue-btn {
   padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 500;
@@ -532,6 +563,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 /* Venue source tabs */
 .venue-source-tabs {
   display: flex; gap: 6px; padding: 0 0 12px; border-bottom: 1px solid var(--border); margin-bottom: 12px;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
 }
 .venue-source-tab {
   padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500;
@@ -578,13 +610,40 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
   display: flex; justify-content: space-between; align-items: center;
   padding: 14px 16px; background: var(--surface2); border-bottom: 1px solid var(--border);
 }
-.stand-show-time { font-size: 18px; font-weight: 700; color: var(--accent); }
-.stand-show-title { font-size: 14px; color: var(--text); font-weight: 500; text-align: right; max-width: 60%; }
+.stand-show-time { font-size: 18px; font-weight: 700; color: var(--accent); flex-shrink: 0; }
+.stand-show-title { font-size: 14px; color: var(--text); font-weight: 500; text-align: right; flex-shrink: 0; }
 .stand-show-lineup { padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 8px; }
 .stand-show-footer {
   padding: 10px 16px; border-top: 1px solid var(--border);
   display: flex; justify-content: space-between; align-items: center;
 }
+
+/* Poster preview on hover */
+.poster-wrap { position: relative; cursor: pointer; }
+.poster-preview {
+  display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 280px; max-height: 380px; object-fit: contain; border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.7); z-index: 200;
+  border: 2px solid var(--border); background: var(--surface);
+  pointer-events: none;
+}
+.poster-wrap:hover .poster-preview { display: block; }
+@media (max-width: 480px) {
+  .poster-preview { width: 220px; max-height: 300px; }
+}
+
+/* Big Shows date boxes */
+.big-date-boxes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.big-date-box {
+  display: flex; flex-direction: column; align-items: center; gap: 1px;
+  padding: 6px 10px; border-radius: 6px; font-size: 11px;
+  background: var(--accent); color: #fff; text-decoration: none;
+  transition: opacity 0.15s; min-width: 70px; text-align: center;
+}
+.big-date-box:hover { opacity: 0.85; }
+.bdb-day { font-weight: 600; font-size: 11px; }
+.bdb-time { font-size: 10px; opacity: 0.85; }
+.bdb-price { font-size: 10px; opacity: 0.7; }
 
 /* Bottom nav */
 .bottom-tabs { padding: 16px 0 24px; }
@@ -599,4 +658,8 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
   .controls { gap: 8px; }
   .settings-btn { margin-left: 0; width: 100%; text-align: center; }
   .modal { max-height: 90vh; }
+  .controls-row-1, .controls-row-2, .controls-row-3 { max-width: 100%; }
+  .venue-source-tab { font-size: 12px; padding: 6px 10px; }
+  .show-header { padding: 12px; }
+  .show-name { font-size: 12px; }
 }
