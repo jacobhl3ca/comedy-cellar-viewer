@@ -78,7 +78,7 @@ function parseShows(html) {
     // Dedupe names (mobile + desktop HTML both have them)
     const comedians = [...new Set(nameMatches
       .map(m => m[1].trim())
-      .filter(n => n && n.length > 1 && !n.match(/^\$/))
+      .filter(n => n && n.length > 1 && !n.match(/^\$/) && !/^special\s*guests?$/i.test(n) && !/^more\s*tba$/i.test(n))
     )];
 
     // Extract price
