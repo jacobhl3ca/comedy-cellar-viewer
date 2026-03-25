@@ -18,7 +18,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <link rel="stylesheet" href="style.min.css?v=20260324r">
+  <link rel="stylesheet" href="style.min.css?v=20260324s">
   <script>
     (function() {
       const saved = localStorage.getItem('cellar-theme');
@@ -65,67 +65,60 @@
   <nav id="day-tabs" class="day-tabs"></nav>
   <div class="venue-filters" id="venue-filters"></div>
 
-  <div class="controls-main">
+  <div class="toolbar">
     <label class="quick-mode-toggle" id="quick-mode-label">
       <input type="checkbox" id="quick-mode">
       <span class="quick-mode-switch"></span>
-      <span class="quick-mode-text">Ratings mode</span>
+      <span class="quick-mode-text">Ratings</span>
     </label>
-    <span class="info-icon">&#9432;
-      <span class="info-popup">With Ratings mode ON, click comedians to cycle: Fave → Like → Skip → Neutral. With it OFF, click to expand their bio panel.</span>
-    </span>
-    <label class="toggle" id="only-faves-label" style="display:none;">
-      <input type="checkbox" id="only-faves">
-      <span>Faves</span>
-    </label>
-    <select id="sort-select" class="sort-select" style="display:none;">
-      <option value="none">Sort by...</option>
-      <option value="faves"># of faves</option>
-      <option value="newcomers"># of newcomers</option>
+    <select id="time-filter" class="time-select">
+      <option value="any">🕐 Any</option>
+      <option value="19:00">🕐 7 pm</option>
+      <option value="20:00">🕐 8 pm</option>
+      <option value="21:00">🕐 9 pm</option>
+      <option value="22:00">🕐 10 pm</option>
+      <option value="23:00">🕐 11 pm</option>
     </select>
-    <div class="time-filter">
-      <label class="toggle">
-        <span>Latest start</span>
-        <select id="time-filter" class="time-select">
-          <option value="any">Any</option>
-          <option value="19:00">7 pm</option>
-          <option value="20:00">8 pm</option>
-          <option value="21:00">9 pm</option>
-          <option value="22:00">10 pm</option>
-          <option value="23:00">11 pm</option>
-        </select>
-      </label>
-      <span class="info-icon" id="time-info">&#9432;
-        <span class="info-popup">Shows last about 1 hr 15 min on average (5-7 comics). Late shows can run longer and have surprise drop-ins.</span>
-      </span>
-    </div>
+    <button class="toolbar-btn" id="filters-toggle">Filters ▾</button>
     <button class="settings-btn" id="open-settings">My Comedians</button>
-    <button class="reset-filters-btn" id="reset-filters" style="display:none;">Reset</button>
   </div>
 
-  <div class="controls-extra" id="controls-extra" style="display:none;">
-    <label class="toggle">
-      <input type="checkbox" id="picture-mode">
-      <span>Big Pictures</span>
-    </label>
-    <label class="toggle">
-      <input type="checkbox" id="hide-skips">
-      <span>Hide skips</span>
-    </label>
-    <label class="toggle">
-      <input type="checkbox" id="expand-bios">
-      <span>Short bios</span>
-    </label>
-    <label class="toggle">
-      <input type="checkbox" id="expand-long-bios">
-      <span>Long bios</span>
-    </label>
-    <label class="toggle">
-      <input type="checkbox" id="show-newcomers">
-      <span>Flag newcomers</span>
-    </label>
+  <div class="filters-panel" id="filters-panel" style="display:none;">
+    <div class="filters-grid">
+      <label class="toggle">
+        <input type="checkbox" id="picture-mode">
+        <span>Big Pictures</span>
+      </label>
+      <label class="toggle" id="only-faves-label">
+        <input type="checkbox" id="only-faves">
+        <span>Faves only</span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="hide-skips">
+        <span>Hide skips</span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="expand-bios">
+        <span>Short bios</span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="expand-long-bios">
+        <span>Long bios</span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="show-newcomers">
+        <span>Flag newcomers</span>
+      </label>
+      <div class="filter-row-inline">
+        <select id="sort-select" class="sort-select">
+          <option value="none">Sort by...</option>
+          <option value="faves"># of faves</option>
+          <option value="newcomers"># of newcomers</option>
+        </select>
+        <button class="reset-filters-btn" id="reset-filters" style="display:none;">Reset all</button>
+      </div>
+    </div>
   </div>
-  <button class="more-filters-btn" id="more-filters-btn">More filters ▾</button>
 
   <main id="shows-container" class="shows-container">
     <div class="loading" id="loading">Loading lineups...</div>
@@ -173,7 +166,7 @@
     <p><a href="mailto:whos@cellartonight.com">whos@cellartonight.com</a></p>
   </footer>
 
-  <script src="app.min.js?v=20260324r"></script>
+  <script src="app.min.js?v=20260324s"></script>
   <!-- Vercel Web Analytics — auto-injected when enabled in dashboard -->
   <script defer src="/_vercel/insights/script.js"></script>
   <!-- Vercel Speed Insights -->

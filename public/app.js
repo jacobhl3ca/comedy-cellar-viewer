@@ -643,7 +643,6 @@ function renderSourceTabs() {
 }
 
 function renderShows() {
-  if (window.updateConditionalControls) window.updateConditionalControls();
   const container = document.getElementById('shows-container');
 
   // Route to correct renderer based on active source
@@ -2025,30 +2024,17 @@ async function init() {
     }
   });
 
-  // "More filters" toggle
-  const moreBtn = document.getElementById('more-filters-btn');
-  const extraPanel = document.getElementById('controls-extra');
-  if (moreBtn && extraPanel) {
-    moreBtn.addEventListener('click', () => {
-      const visible = extraPanel.style.display !== 'none';
-      extraPanel.style.display = visible ? 'none' : 'flex';
-      moreBtn.textContent = visible ? 'More filters ▾' : 'Less filters ▴';
-      moreBtn.classList.toggle('active', !visible);
+  // "Filters" dropdown toggle
+  const filtersBtn = document.getElementById('filters-toggle');
+  const filtersPanel = document.getElementById('filters-panel');
+  if (filtersBtn && filtersPanel) {
+    filtersBtn.addEventListener('click', () => {
+      const visible = filtersPanel.style.display !== 'none';
+      filtersPanel.style.display = visible ? 'none' : 'block';
+      filtersBtn.textContent = visible ? 'Filters ▾' : 'Filters ▴';
+      filtersBtn.classList.toggle('active', !visible);
     });
   }
-
-  // Show/hide "Only faves" and "Sort by" based on whether user has any ratings
-  function updateConditionalControls() {
-    const prefs = loadPrefs();
-    const hasRatings = prefs.faves.length > 0 || prefs.likes.length > 0;
-    const ofLabel = document.getElementById('only-faves-label');
-    const sortSel = document.getElementById('sort-select');
-    if (ofLabel) ofLabel.style.display = hasRatings ? '' : 'none';
-    if (sortSel) sortSel.style.display = hasRatings ? '' : 'none';
-  }
-  updateConditionalControls();
-  // Make it globally available so renderShows can call it
-  window.updateConditionalControls = updateConditionalControls;
 
   document.getElementById('share-link').addEventListener('click', () => {
     const prefs = loadPrefs();
