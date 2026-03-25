@@ -1653,12 +1653,13 @@ function handleComedianClick(el) {
     'comedy_cellar': (n) => cellarComedianNames.has(n),
     'the_stand': (n) => standComedianNames.has(n),
   };
-  // Exclude venues the comedian is already shown in (Cellar comedians don't need "Also at: Comedy Cellar")
+  // Exclude the venue the user is currently browsing — no "Also at: Comedy Cellar" on the Cellar tab
   const excludeVenues = new Set();
-  if (activeSource === 'cellar' || activeSource === 'all') {
+  if (activeSource === 'cellar') excludeVenues.add('comedy_cellar');
+  else if (activeSource === 'the-stand') excludeVenues.add('the_stand');
+  else if (activeSource === 'all') {
+    // In "All Venues" mode, exclude any venue the comedian actually appears in
     if (cellarComedianNames.has(name)) excludeVenues.add('comedy_cellar');
-  }
-  if (activeSource === 'the-stand' || activeSource === 'all') {
     if (standComedianNames.has(name)) excludeVenues.add('the_stand');
   }
   const venues = dbEntry?.venues
