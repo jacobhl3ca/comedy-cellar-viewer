@@ -18,7 +18,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <link rel="stylesheet" href="style.min.css?v=20260324s">
+  <link rel="stylesheet" href="style.min.css?v=20260324t">
   <script>
     (function() {
       const saved = localStorage.getItem('cellar-theme');
@@ -53,42 +53,45 @@
     </button>
   </header>
 
+  <hr class="section-divider">
   <div class="venue-source-tabs" id="venue-source-tabs">
     <button class="venue-source-tab active" data-source="all">All Venues</button>
     <button class="venue-source-tab" data-source="cellar">Comedy Cellar</button>
     <button class="venue-source-tab" data-source="the-stand">The Stand</button>
     <button class="venue-source-tab" data-source="big-shows">Other Shows</button>
-    <!-- <button class="venue-source-tab" data-source="gotham">Gotham</button> -->
-    <!-- <button class="venue-source-tab" data-source="nycc">NY Comedy Club</button> -->
   </div>
 
   <nav id="day-tabs" class="day-tabs"></nav>
   <div class="venue-filters" id="venue-filters"></div>
 
   <div class="toolbar">
-    <label class="quick-mode-toggle" id="quick-mode-label">
-      <input type="checkbox" id="quick-mode">
-      <span class="quick-mode-switch"></span>
-      <span class="quick-mode-text">Ratings</span>
+    <button class="settings-btn" id="open-settings">My Comedians</button>
+    <label class="toggle toolbar-toggle">
+      <input type="checkbox" id="picture-mode">
+      <span>Big Pictures</span>
     </label>
+    <div class="toolbar-spacer"></div>
     <select id="time-filter" class="time-select">
-      <option value="any">🕐 Any</option>
-      <option value="19:00">🕐 7 pm</option>
-      <option value="20:00">🕐 8 pm</option>
-      <option value="21:00">🕐 9 pm</option>
-      <option value="22:00">🕐 10 pm</option>
-      <option value="23:00">🕐 11 pm</option>
+      <option value="any">Latest start</option>
+      <option value="19:00">By 7 pm</option>
+      <option value="20:00">By 8 pm</option>
+      <option value="21:00">By 9 pm</option>
+      <option value="22:00">By 10 pm</option>
+      <option value="23:00">By 11 pm</option>
     </select>
     <button class="toolbar-btn" id="filters-toggle">Filters ▾</button>
-    <button class="settings-btn" id="open-settings">My Comedians</button>
   </div>
 
   <div class="filters-panel" id="filters-panel" style="display:none;">
     <div class="filters-grid">
-      <label class="toggle">
-        <input type="checkbox" id="picture-mode">
-        <span>Big Pictures</span>
+      <label class="quick-mode-toggle" id="quick-mode-label">
+        <input type="checkbox" id="quick-mode">
+        <span class="quick-mode-switch"></span>
+        <span class="quick-mode-text">Ratings mode</span>
       </label>
+      <span class="info-icon">&#9432;
+        <span class="info-popup">With Ratings mode ON, click comedians to cycle: Fave → Skip → Neutral. With it OFF, click to expand their bio.</span>
+      </span>
       <label class="toggle" id="only-faves-label">
         <input type="checkbox" id="only-faves">
         <span>Faves only</span>
@@ -109,14 +112,12 @@
         <input type="checkbox" id="show-newcomers">
         <span>Flag newcomers</span>
       </label>
-      <div class="filter-row-inline">
-        <select id="sort-select" class="sort-select">
-          <option value="none">Sort by...</option>
-          <option value="faves"># of faves</option>
-          <option value="newcomers"># of newcomers</option>
-        </select>
-        <button class="reset-filters-btn" id="reset-filters" style="display:none;">Reset all</button>
-      </div>
+      <select id="sort-select" class="sort-select">
+        <option value="none">Sort by...</option>
+        <option value="faves"># of faves</option>
+        <option value="newcomers"># of newcomers</option>
+      </select>
+      <button class="reset-filters-btn" id="reset-filters" style="display:none;">Reset all</button>
     </div>
   </div>
 
@@ -131,7 +132,7 @@
         <h2>My Comedians</h2>
         <button class="modal-close" id="modal-close">&times;</button>
       </div>
-      <p class="modal-desc">Tap a name to cycle: <span class="chip-demo fav">Fave</span> &rarr; <span class="chip-demo like">Like</span> &rarr; <span class="chip-demo skip">Skip</span> &rarr; <span class="chip-demo neutral">Neutral</span></p>
+      <p class="modal-desc">Tap a name to cycle: <span class="chip-demo fav">Fave</span> &rarr; <span class="chip-demo skip">Skip</span> &rarr; <span class="chip-demo neutral">Neutral</span></p>
       <div class="modal-search-wrap">
         <input type="text" id="comedian-search" placeholder="Search comedians..." class="modal-search">
       </div>
@@ -142,10 +143,6 @@
         <div class="modal-section">
           <h3>Your Favorites <span class="count" id="fav-count"></span></h3>
           <div id="fav-list" class="chip-list"></div>
-        </div>
-        <div class="modal-section">
-          <h3>Your Likes <span class="count" id="like-count"></span></h3>
-          <div id="like-list" class="chip-list"></div>
         </div>
         <div class="modal-section">
           <h3>Your Skips <span class="count" id="skip-count"></span></h3>
@@ -166,7 +163,7 @@
     <p><a href="mailto:whos@cellartonight.com">whos@cellartonight.com</a></p>
   </footer>
 
-  <script src="app.min.js?v=20260324s"></script>
+  <script src="app.min.js?v=20260324t"></script>
   <!-- Vercel Web Analytics — auto-injected when enabled in dashboard -->
   <script defer src="/_vercel/insights/script.js"></script>
   <!-- Vercel Speed Insights -->

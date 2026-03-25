@@ -149,10 +149,17 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
   to { opacity: 1; transform: translateX(0); }
 }
 
+/* Section divider */
+.section-divider {
+  border: none; border-top: 1px solid var(--border); margin: 0 0 12px;
+}
+
 /* Single toolbar */
 .toolbar {
   display: flex; align-items: center; gap: 8px; padding: 0 0 10px;
 }
+.toolbar-spacer { flex: 1; }
+.toolbar-toggle { flex-shrink: 0; }
 .toolbar-btn {
   padding: 6px 14px; border-radius: 6px; font-size: 13px; font-weight: 500;
   background: var(--surface2); border: 1px solid var(--border); color: var(--text-dim);
@@ -315,6 +322,8 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 }
 .picture-mode .comedian-long-bio {
   white-space: normal; max-width: 100%; text-align: center; font-size: 10px;
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* Long bio inline (expand-all mode) */

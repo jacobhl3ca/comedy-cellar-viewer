@@ -92,7 +92,7 @@ function cycleComedian(name) {
   const inSkips = prefs.skips.includes(name);
   const inLikes = prefs.likes.includes(name);
 
-  // Cycle: Neutral → Like → Fave → Skip → Neutral
+  // Cycle: Neutral → Fave → Skip → Neutral
   prefs.faves = prefs.faves.filter(n => n !== name);
   prefs.skips = prefs.skips.filter(n => n !== name);
   prefs.likes = prefs.likes.filter(n => n !== name);
@@ -102,11 +102,7 @@ function cycleComedian(name) {
     prefs.faves.push(name);
     if (window.va) window.va('event', { name: 'fave', data: { comedian: name } });
   } else if (inFavs) {
-    // Fave → Like
-    prefs.likes.push(name);
-    if (window.va) window.va('event', { name: 'like', data: { comedian: name } });
-  } else if (inLikes) {
-    // Like → Skip
+    // Fave → Skip
     prefs.skips.push(name);
     if (window.va) window.va('event', { name: 'skip', data: { comedian: name } });
   }
@@ -399,12 +395,11 @@ function scoreShow(show) {
   let newFaces = 0;
   let newcomers = 0;
   for (const name of show.comedians) {
-    if (isFav(name)) faves++;
-    else if (isLike(name)) likes++;
+    if (isFav(name) || isLike(name)) faves++;
     else if (!isSkip(name)) newFaces++;
     if (!isRegular(name)) newcomers++;
   }
-  return { faves, likes, newFaces, newcomers, score: faves * 2 + likes };
+  return { faves, likes: 0, newFaces, newcomers, score: faves };
 }
 
 // ---- Fetch ----
@@ -556,7 +551,7 @@ function renderTabs() {
         <span class="tab-date">${getDateLabel(d)}</span>
       `;
       tab.addEventListener('click', () => {
-        activeDate = dateStr;
+        activeDate = activeDate === dateStr ? 'all' : dateStr;
         renderTabs();
         renderShows();
       });
@@ -572,7 +567,7 @@ function renderTabs() {
       const tab = document.createElement('button');
       tab.className = 'day-tab' + (dateStr === activeDate ? ' active' : '');
       tab.innerHTML = `<span class="tab-day">${getDayName(d)}</span><span class="tab-date">${getDateLabel(d)}</span>`;
-      tab.addEventListener('click', () => { activeDate = dateStr; renderTabs(); renderShows(); });
+      tab.addEventListener('click', () => { activeDate = activeDate === dateStr ? 'all' : dateStr; renderTabs(); renderShows(); });
       nav.appendChild(tab);
     });
     return;
@@ -585,7 +580,7 @@ function renderTabs() {
       const tab = document.createElement('button');
       tab.className = 'day-tab' + (dateStr === activeDate ? ' active' : '');
       tab.innerHTML = `<span class="tab-day">${getDayName(d)}</span><span class="tab-date">${getDateLabel(d)}</span>`;
-      tab.addEventListener('click', () => { activeDate = dateStr; renderTabs(); renderShows(); });
+      tab.addEventListener('click', () => { activeDate = activeDate === dateStr ? 'all' : dateStr; renderTabs(); renderShows(); });
       nav.appendChild(tab);
     });
     return;
@@ -607,7 +602,7 @@ function renderTabs() {
     `;
 
     tab.addEventListener('click', () => {
-      activeDate = dateStr;
+      activeDate = activeDate === dateStr ? 'all' : dateStr;
       renderTabs();
       renderShows();
     });
@@ -774,9 +769,6 @@ function renderShowCard(show, hideSkips, onlyFavs) {
   } else if (stats.faves >= 2) {
     badge = `<span class="show-badge badge-faves">${stats.faves} FAVS</span>`;
   }
-  if (stats.likes > 0) {
-    badge += ` <span class="show-badge badge-likes">${stats.likes} LIKE${stats.likes > 1 ? 'S' : ''}</span>`;
-  }
 
   const cardClass = stats.faves >= 3 ? 'show-card must-go' : 'show-card';
 
@@ -802,8 +794,7 @@ function renderShowCard(show, hideSkips, onlyFavs) {
           : '<span></span>'}
         <span class="fav-count">
           ${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''}
-          ${stats.likes > 0 ? `👍 ${stats.likes}` : ''}
-        </span>
+                 </span>
       </div>
     </div>
   `;
@@ -827,8 +818,9 @@ function renderComedianChips(comedians, hideSkips) {
       cls += ' fav';
       prefix = '<span class="star">⭐</span>';
     } else if (liked) {
-      cls += ' like';
-      prefix = '<span class="star">👍</span>';
+      // Legacy likes treated as faves
+      cls += ' fav';
+      prefix = '<span class="star">⭐</span>';
     } else if (skipped) {
       cls += ' skip';
       if (hideSkips) cls += ' hidden-skip';
@@ -1351,9 +1343,14 @@ function renderAllVenues(container) {
         </div>`;
     } else {
       const evt = item.show;
-      // Only show performers line if it differs from the title (avoid duplicate)
-      const performersLine = evt.performers && evt.performers !== evt.title
-        ? `<div style="font-size:13px;color:var(--text-dim);margin-bottom:8px;">${evt.performers}</div>` : '';
+      // Performer photo from SeatGeek or local DB
+      let evtPhoto = '';
+      if (evt.performerImages) {
+        const firstImg = Object.values(evt.performerImages)[0];
+        if (firstImg) evtPhoto = firstImg;
+      }
+      if (!evtPhoto) evtPhoto = comedianPhotos[evt.title] || '';
+      const evtPhotoHtml = evtPhoto ? `<img class="comedian-photo" src="${evtPhoto}" alt="" style="width:48px;height:48px;border-radius:50%;object-fit:cover;margin-right:8px;">` : '';
       html += `
         <div class="big-show-card">
           <div class="show-header">
@@ -1362,7 +1359,7 @@ function renderAllVenues(container) {
             <span class="show-venue">${evt.venue || ''}</span>
           </div>
           <div class="big-show-info" style="padding:10px 16px;display:flex;align-items:center;gap:8px;">
-            ${performersLine}
+            ${evtPhotoHtml}
             ${evt.price ? `<span class="big-show-price">From $${evt.price}</span>` : ''}
             ${evt.url ? `<a href="${evt.url}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Get Tickets</a>` : ''}
           </div>
@@ -1637,9 +1634,6 @@ function handleComedianClick(el) {
         <button class="exp-btn ${isFavd ? 'is-fav' : ''}" onclick="setPref('${esc}','fav')">
           ${isFavd ? '⭐ Favorited' : '☆ Favorite'}
         </button>
-        <button class="exp-btn ${isLiked ? 'is-like' : ''}" onclick="setPref('${esc}','like')">
-          ${isLiked ? '👍 Liked' : '👍 Like'}
-        </button>
         <button class="exp-btn ${isNeutral ? 'is-neutral' : ''}" onclick="setPref('${esc}','neutral')">
           ${isNeutral ? '● Neutral' : '○ Neutral'}
         </button>
@@ -1700,17 +1694,6 @@ function renderModal(filter = '') {
     .map(n => `<span class="chip fav-state" onclick="modalCycle('${n.replace(/'/g, "\\'")}')">${n}</span>`)
     .join('') || '<span style="color:var(--text-dim);font-size:13px;">None yet — tap names below</span>';
   document.getElementById('fav-count').textContent = `(${prefs.faves.length})`;
-
-  // Likes section
-  const likeList = document.getElementById('like-list');
-  if (likeList) {
-    likeList.innerHTML = prefs.likes
-      .filter(n => n.toLowerCase().includes(filterLower))
-      .map(n => `<span class="chip like-state" onclick="modalCycle('${n.replace(/'/g, "\\'")}')">${n}</span>`)
-      .join('') || '<span style="color:var(--text-dim);font-size:13px;">None yet</span>';
-    const likeCount = document.getElementById('like-count');
-    if (likeCount) likeCount.textContent = `(${prefs.likes.length})`;
-  }
 
   // Skips section
   const skipList = document.getElementById('skip-list');
@@ -1931,7 +1914,9 @@ async function init() {
   document.querySelectorAll('.venue-source-tab').forEach(btn => {
     btn.addEventListener('click', () => {
       const prevDate = activeDate;
-      activeSource = btn.dataset.source;
+      // Unselect: clicking active source goes back to All Venues
+      const newSource = btn.dataset.source;
+      activeSource = (newSource === activeSource && newSource !== 'all') ? 'all' : newSource;
       activeVenue = 'all';
       activeStandRoom = 'all';
       // Preserve selected date across tabs if that date exists in new source
