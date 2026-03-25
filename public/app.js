@@ -451,6 +451,14 @@ async function fetchTheStand() {
     const resp = await fetch('/api/the-stand');
     const data = await resp.json();
     standShows = data.shows || [];
+    // Extract comedian photos from Stand data into global map
+    standShows.forEach(show => {
+      if (show.comedianPhotos) {
+        Object.entries(show.comedianPhotos).forEach(([name, url]) => {
+          if (!comedianPhotos[name] && url) comedianPhotos[name] = url;
+        });
+      }
+    });
     return standShows;
   } catch (e) {
     console.error('Failed to fetch The Stand:', e);
@@ -824,6 +832,7 @@ function renderComedianChips(comedians, hideSkips) {
   const expandBios = document.getElementById('expand-bios')?.checked;
   const expandLongBios = document.getElementById('expand-long-bios')?.checked;
   const showNewcomers = document.getElementById('show-newcomers')?.checked;
+  const noPhotoFilter = document.getElementById('no-photo-filter')?.checked;
 
   return comedians.map(name => {
     const favd = isFav(name);
@@ -851,6 +860,10 @@ function renderComedianChips(comedians, hideSkips) {
     if (newcomer && !favd && !skipped) cls += ' newcomer';
 
     const photoUrl = comedianPhotos[name];
+    const hasPhoto = !!photoUrl;
+    // No-photo filter: hide comedians that have photos, highlight those without
+    if (noPhotoFilter && hasPhoto) return '';
+    if (noPhotoFilter && !hasPhoto) cls += ' no-photo-highlight';
     const photoHtml = (showPhotos && photoUrl)
       ? `<img class="comedian-photo" src="${photoUrl}" alt="" loading="lazy">`
       : '';
@@ -1804,6 +1817,7 @@ function updateResetBtn() {
     document.getElementById('quick-mode')?.checked ||
     document.getElementById('picture-mode')?.checked ||
     document.getElementById('show-newcomers')?.checked ||
+    document.getElementById('no-photo-filter')?.checked ||
     !document.getElementById('show-photos')?.checked ||
     (document.getElementById('time-filter')?.value !== 'any') ||
     activeVenue !== 'all' ||
@@ -2000,6 +2014,9 @@ async function init() {
   document.getElementById('show-newcomers')?.addEventListener('change', () => {
     updateResetBtn(); renderShows();
   });
+  document.getElementById('no-photo-filter')?.addEventListener('change', () => {
+    updateResetBtn(); renderShows();
+  });
 
   // Reset filters
   document.getElementById('reset-filters')?.addEventListener('click', () => {
@@ -2011,6 +2028,7 @@ async function init() {
     document.getElementById('quick-mode').checked = false;
     const pm = document.getElementById('picture-mode'); if (pm) pm.checked = false;
     const sn = document.getElementById('show-newcomers'); if (sn) sn.checked = false;
+    const npf = document.getElementById('no-photo-filter'); if (npf) npf.checked = false;
     const sp = document.getElementById('show-photos'); if (sp) sp.checked = true;
     const tf = document.getElementById('time-filter');
     if (tf) tf.value = 'any';

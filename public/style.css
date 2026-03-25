@@ -72,7 +72,7 @@ body {
 html { overflow-x: hidden; }
 
 /* Header */
-header { text-align: center; padding: 24px 0 16px; position: relative; }
+header { text-align: center; padding: 24px 0 8px; position: relative; }
 .header-row {
   display: flex; align-items: center; justify-content: center; gap: 12px;
 }
@@ -99,7 +99,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 /* Day Tabs */
 .day-tabs {
   display: flex; gap: 6px; overflow-x: auto;
-  padding: 6px 0 8px; -webkit-overflow-scrolling: touch;
+  padding: 4px 0 6px; -webkit-overflow-scrolling: touch;
 }
 
 .day-tab {
@@ -149,15 +149,21 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
   to { opacity: 1; transform: translateX(0); }
 }
 
+/* No-photo highlight */
+.no-photo-highlight {
+  border: 2px solid var(--accent) !important;
+  background: rgba(230, 54, 54, 0.15) !important;
+}
+
 /* Section divider */
 .section-divider {
-  border: none; border-top: 1px solid var(--border); margin: 0 0 12px;
+  border: none; border-top: 1px solid var(--border); margin: 0 0 8px;
 }
 
 /* Single toolbar */
 .toolbar {
-  display: flex; align-items: center; gap: 8px; padding: 0 0 8px;
-  border-bottom: 1px solid var(--border); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px; padding: 2px 0 6px;
+  border-bottom: 1px solid var(--border); margin-bottom: 10px;
 }
 .toolbar-spacer { flex: 1; }
 .toolbar-toggle { flex-shrink: 0; }
@@ -556,7 +562,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 
 /* Venue filters */
 .venue-filters {
-  display: flex; gap: 6px; padding: 2px 0 6px; flex-wrap: wrap;
+  display: flex; gap: 6px; padding: 2px 0 4px; flex-wrap: wrap;
   max-width: 100%;
 }
 .venue-btn {
@@ -598,7 +604,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 
 /* Venue source tabs */
 .venue-source-tabs {
-  display: flex; gap: 6px; padding: 0 0 8px;
+  display: flex; gap: 6px; padding: 4px 0 6px;
   overflow-x: auto; -webkit-overflow-scrolling: touch;
 }
 .venue-source-tab {

@@ -79,6 +79,32 @@ function parseShows(html) {
       .filter(n => n && n.length > 1 && !n.match(/^\$/) && !/^special\s*guests?$/i.test(n) && !/^more\s*tba$/i.test(n))
     )];
 
+    // Extract comedian headshot photos from The Stand's comedian images
+    const comedianPhotos = {};
+    const photoMatches = [...block.matchAll(/<img[^>]+src="(https?:\/\/thestandnyc\.com\/images\/comedians\/[^"]+)"[^>]*>/gi)];
+    photoMatches.forEach(m => {
+      const imgUrl = m[1];
+      // Try to match photo to a comedian name by filename
+      const filenameMatch = imgUrl.match(/\/([^/]+)\.(jpg|jpeg|png|webp)$/i);
+      if (filenameMatch) {
+        const photoName = filenameMatch[1].replace(/_/g, ' ').replace(/-/g, ' ');
+        // Find matching comedian
+        for (const c of comedians) {
+          if (c.toLowerCase().replace(/[.\-']/g, ' ') === photoName.toLowerCase() ||
+              photoName.toLowerCase().includes(c.split(' ').pop().toLowerCase())) {
+            comedianPhotos[c] = imgUrl;
+            break;
+          }
+        }
+      }
+    });
+    // Also try direct pattern: https://thestandnyc.com/images/comedians/_square/Name.jpg
+    for (const c of comedians) {
+      if (!comedianPhotos[c]) {
+        comedianPhotos[c] = 'https://thestandnyc.com/images/comedians/_square/' + c.replace(/ /g, '_') + '.jpg';
+      }
+    }
+
     // Extract price
     const priceMatch = block.match(/\$(\d+\.?\d*)/);
     const price = priceMatch ? priceMatch[1] : '';
@@ -92,7 +118,8 @@ function parseShows(html) {
       venue: 'The Stand NYC',
       room,
       price,
-      poster
+      poster,
+      comedianPhotos
     });
   }
 
