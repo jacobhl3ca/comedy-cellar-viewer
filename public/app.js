@@ -643,6 +643,7 @@ function renderSourceTabs() {
 }
 
 function renderShows() {
+  if (window.updateConditionalControls) window.updateConditionalControls();
   const container = document.getElementById('shows-container');
 
   // Route to correct renderer based on active source
@@ -1345,16 +1346,19 @@ function renderAllVenues(container) {
         </div>`;
     } else {
       const evt = item.show;
+      // Only show performers line if it differs from the title (avoid duplicate)
+      const performersLine = evt.performers && evt.performers !== evt.title
+        ? `<div style="font-size:13px;color:var(--text-dim);margin-bottom:8px;">${evt.performers}</div>` : '';
       html += `
         <div class="big-show-card">
           <div class="show-header">
             <div><span class="show-time">${evt.time || 'TBD'}</span></div>
             <span class="show-name">${evt.title}</span>
-            <span class="show-venue">${evt.venue}</span>
+            <span class="show-venue">${evt.venue || 'Big Show'}</span>
           </div>
-          <div class="big-show-info" style="padding:10px 16px;">
-            ${evt.performers ? `<div style="font-size:13px;color:var(--text-dim);margin-bottom:8px;">${evt.performers}</div>` : ''}
-            ${evt.price ? `<span class="big-show-price" style="margin-right:12px;">From $${evt.price}</span>` : ''}
+          <div class="big-show-info" style="padding:10px 16px;display:flex;align-items:center;gap:8px;">
+            ${performersLine}
+            ${evt.price ? `<span class="big-show-price">From $${evt.price}</span>` : ''}
             ${evt.url ? `<a href="${evt.url}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Get Tickets</a>` : ''}
           </div>
         </div>`;
@@ -2014,6 +2018,31 @@ async function init() {
       renderTabs();
     }
   });
+
+  // "More filters" toggle
+  const moreBtn = document.getElementById('more-filters-btn');
+  const extraPanel = document.getElementById('controls-extra');
+  if (moreBtn && extraPanel) {
+    moreBtn.addEventListener('click', () => {
+      const visible = extraPanel.style.display !== 'none';
+      extraPanel.style.display = visible ? 'none' : 'flex';
+      moreBtn.textContent = visible ? 'More filters ▾' : 'Less filters ▴';
+      moreBtn.classList.toggle('active', !visible);
+    });
+  }
+
+  // Show/hide "Only faves" and "Sort by" based on whether user has any ratings
+  function updateConditionalControls() {
+    const prefs = loadPrefs();
+    const hasRatings = prefs.faves.length > 0 || prefs.likes.length > 0;
+    const ofLabel = document.getElementById('only-faves-label');
+    const sortSel = document.getElementById('sort-select');
+    if (ofLabel) ofLabel.style.display = hasRatings ? '' : 'none';
+    if (sortSel) sortSel.style.display = hasRatings ? '' : 'none';
+  }
+  updateConditionalControls();
+  // Make it globally available so renderShows can call it
+  window.updateConditionalControls = updateConditionalControls;
 
   document.getElementById('share-link').addEventListener('click', () => {
     const prefs = loadPrefs();

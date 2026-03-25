@@ -149,7 +149,26 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
   to { opacity: 1; transform: translateX(0); }
 }
 
-/* Controls row 1: Fave/Skip mode + checkboxes */
+/* Main controls row: Ratings mode, Only faves, Sort, Latest start, My Comedians */
+.controls-main {
+  display: flex; align-items: center; gap: 10px; padding: 0 0 10px;
+  flex-wrap: wrap;
+}
+/* Extra filters (hidden behind "More filters" toggle) */
+.controls-extra {
+  display: flex; align-items: center; gap: 14px; padding: 0 0 10px;
+  flex-wrap: wrap;
+}
+.controls-extra[style*="display: none"], .controls-extra[style*="display:none"] { display: none !important; }
+.more-filters-btn {
+  padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 500;
+  background: none; border: 1px solid var(--border); color: var(--text-dim);
+  cursor: pointer; transition: all 0.15s; margin-bottom: 10px;
+}
+.more-filters-btn:hover { border-color: var(--accent); color: var(--accent); }
+.more-filters-btn.active { color: var(--accent); border-color: var(--accent); }
+
+/* Legacy — keep for compat */
 .controls-row-1 {
   display: flex; align-items: center; gap: 14px; padding: 0 0 10px;
   flex-wrap: wrap;
