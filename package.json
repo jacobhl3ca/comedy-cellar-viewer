@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "HASH=$(git rev-parse --short HEAD) && sed -i \"s/CACHEBUST/$HASH/g\" public/index.html",
+    "build": "HASH=$(git rev-parse --short HEAD 2>/dev/null || date +%s) && sed -i \"s/CACHEBUST/$HASH/g\" public/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
