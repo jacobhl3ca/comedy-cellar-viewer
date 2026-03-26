@@ -162,7 +162,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 
 /* Single toolbar */
 .toolbar {
-  display: flex; align-items: center; gap: 8px; padding: 4px 0 8px;
+  display: flex; align-items: center; gap: 8px; padding: 2px 0 8px;
   border-bottom: 1px solid var(--border); margin-top: 0; margin-bottom: 8px;
 }
 .toolbar-spacer { flex: 1; }
@@ -460,6 +460,13 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 }
 .btn-done:hover { opacity: 0.85; }
 
+/* Modal onboarding hint */
+.modal-onboard-hint {
+  background: var(--accent); color: #fff; border-radius: 8px;
+  padding: 10px 16px; margin: 0 0 8px; font-size: 13px; text-align: center;
+}
+.modal-onboard-hint strong { color: #fff; }
+
 /* Onboarding */
 .onboard-banner {
   background: var(--surface2); border: 1px solid var(--accent);
@@ -550,7 +557,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 
 /* Venue filters */
 .venue-filters {
-  display: flex; gap: 6px; padding: 2px 0 4px; flex-wrap: wrap;
+  display: flex; gap: 6px; padding: 2px 0 2px; flex-wrap: wrap;
   max-width: 100%;
 }
 .venue-btn {
@@ -662,7 +669,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 }
 .poster-wrap:hover .poster-preview { display: block; }
 @media (max-width: 480px) {
-  .poster-preview { width: 220px; max-height: 300px; }
+  .poster-preview { width: 60vw; max-width: 200px; max-height: 50vh; }
 }
 
 /* Big Shows date boxes */

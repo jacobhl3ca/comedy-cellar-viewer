@@ -390,13 +390,16 @@ function normalizeVenue(venue) {
 // ---- Show scoring ----
 function scoreShow(show) {
   let faves = 0;
-  let likes = 0;
+  let skips = 0;
   let newFaces = 0;
   for (const name of show.comedians) {
     if (isFav(name) || isLike(name)) faves++;
-    else if (!isSkip(name)) newFaces++;
+    else if (isSkip(name)) skips++;
+    else newFaces++;
   }
-  return { faves, likes: 0, newFaces, score: faves };
+  // Weighted score: faves +2, skips -1, neutrals 0
+  const score = (faves * 2) - skips;
+  return { faves, likes: 0, skips, newFaces, score };
 }
 
 // ---- Fetch ----
@@ -765,6 +768,9 @@ function renderShowCard(show, hideSkips, onlyFavs) {
 
   if (onlyFavs && !hasFavOrLike) return '';
 
+  // Hide entire show if any comedian is a skip
+  if (hideSkips && stats.skips > 0) return '';
+
   const comediansHtml = renderComedianChips(show.comedians, hideSkips, 'cellar');
 
   let badge = '';
@@ -890,6 +896,8 @@ function renderSortedByFaves(container) {
       if (activeVenue !== 'all' && normalizeVenue(show.venue) !== activeVenue) return;
       const stats = scoreShow(show);
       if (onlyFavs && stats.faves === 0 && stats.likes === 0) return;
+      // Hide entire show if any comedian is a skip
+      if (hideSkips && stats.skips > 0) return;
       const timeFilter = document.getElementById('time-filter')?.value;
       if (timeFilter && timeFilter !== 'any') {
         const showTime24 = to24h(show.time);
@@ -899,8 +907,8 @@ function renderSortedByFaves(container) {
     });
   });
 
-  // Sort purely by fave count per individual show (day headers repeat as needed)
-  allShows.sort((a, b) => b.faves - a.faves || b.score - a.score);
+  // Sort by weighted score (faves*2 - skips), then by fave count
+  allShows.sort((a, b) => b.score - a.score || b.faves - a.faves);
 
   if (allShows.length === 0) {
     container.innerHTML = '<div class="no-shows">No shows match your filters.</div>';
@@ -1036,6 +1044,8 @@ function renderAllDaysSchedule(container) {
       }
       const stats = scoreShow(show);
       if (onlyFavs && stats.faves === 0 && stats.likes === 0) return;
+      // Hide entire show if any comedian is a skip
+      if (document.getElementById('hide-skips').checked && stats.skips > 0) return;
       const cardClass = stats.faves >= 3 ? 'show-card must-go' : 'show-card';
       let badge = '';
       if (stats.faves >= 3) badge = `<span class="show-badge badge-must-go">${stats.faves} FAVES</span>`;
@@ -1121,8 +1131,12 @@ function renderTheStandShows(container) {
 
 function renderStandShowCard(show) {
   try {
+  const hideSkipsStand = document.getElementById('hide-skips')?.checked;
+  // Hide entire show if any comedian is a skip
+  if (hideSkipsStand && show.comedians.length > 0 && show.comedians.some(name => isSkip(name))) return '';
+
   const chips = show.comedians.length > 0
-    ? renderComedianChips(show.comedians, document.getElementById('hide-skips')?.checked, 'stand')
+    ? renderComedianChips(show.comedians, hideSkipsStand, 'stand')
     : `<span style="color:var(--text-dim);font-size:13px;">Lineup TBD</span>`;
 
   // Determine if this is a special/named show vs regular
@@ -1272,11 +1286,15 @@ function renderAllVenues(container) {
     // Score each item by fave count
     allItems.forEach(item => {
       const comedians = item.show.comedians || [];
-      let faves = 0;
-      for (const name of comedians) { if (isFav(name) || isLike(name)) faves++; }
+      let faves = 0, skips = 0;
+      for (const name of comedians) {
+        if (isFav(name) || isLike(name)) faves++;
+        else if (isSkip(name)) skips++;
+      }
       item.faveCount = faves;
+      item.score = (faves * 2) - skips;
     });
-    allItems.sort((a, b) => b.faveCount - a.faveCount || a.dateStr.localeCompare(b.dateStr) || a.time24.localeCompare(b.time24));
+    allItems.sort((a, b) => b.score - a.score || b.faveCount - a.faveCount || a.dateStr.localeCompare(b.dateStr) || a.time24.localeCompare(b.time24));
   } else {
     allItems.sort((a, b) => a.dateStr.localeCompare(b.dateStr) || a.time24.localeCompare(b.time24));
   }
@@ -1763,7 +1781,16 @@ function renderModal(filter = '') {
 }
 
 function modalCycle(name) {
+  const prevPrefs = loadPrefs();
+  const hadAny = prevPrefs.faves.length > 0 || prevPrefs.skips.length > 0;
   cycleComedian(name);
+  const newPrefs = loadPrefs();
+  const hasAny = newPrefs.faves.length > 0 || newPrefs.skips.length > 0;
+  // Show onboarding hint after first selection
+  if (!hadAny && hasAny) {
+    const hint = document.getElementById('modal-onboard-hint');
+    if (hint) hint.style.display = 'block';
+  }
   const search = document.getElementById('comedian-search').value;
   renderModal(search);
 }
