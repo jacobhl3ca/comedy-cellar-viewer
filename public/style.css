@@ -67,9 +67,9 @@ body {
   background: var(--bg); color: var(--text);
   min-height: 100vh; padding: 20px; max-width: 800px; margin: 0 auto;
   transition: background 0.2s, color 0.2s;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
-html { overflow-x: hidden; }
+html { overflow-x: clip; }
 
 /* Header */
 header { text-align: center; padding: 24px 0 8px; position: relative; }
