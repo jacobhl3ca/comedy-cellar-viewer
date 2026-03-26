@@ -99,7 +99,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 /* Day Tabs */
 .day-tabs {
   display: flex; gap: 6px; overflow-x: auto;
-  padding: 4px 0 6px; -webkit-overflow-scrolling: touch;
+  padding: 4px 0 2px; -webkit-overflow-scrolling: touch;
 }
 
 .day-tab {

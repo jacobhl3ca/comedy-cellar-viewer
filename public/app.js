@@ -65,7 +65,6 @@ function showBookmarkToast() {
   `;
   document.body.appendChild(toast);
   setTimeout(() => toast.classList.add('visible'), 50);
-  setTimeout(() => { toast.classList.remove('visible'); setTimeout(() => toast.remove(), 300); }, 8000);
 }
 
 function copyPrefsUrl(btn) {
