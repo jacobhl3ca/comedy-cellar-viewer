@@ -20,7 +20,6 @@ function loadPrefs() {
 function savePrefs(prefs) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
   updateHashFromPrefs(prefs);
-  showBookmarkToast();
 }
 
 // Encode prefs into URL hash
@@ -1706,6 +1705,7 @@ function openModal() {
 
 function closeModal() {
   document.getElementById('modal-overlay').classList.add('hidden');
+  showBookmarkToast();
   renderTabs();
   renderShows();
 }
