@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx terser public/app.js -o public/app.min.js --compress --mangle && npx cleancss -o public/style.min.css public/style.css",
+    "build": "HASH=$(git rev-parse --short HEAD) && sed -i \"s/CACHEBUST/$HASH/g\" public/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,10 +19,6 @@
     "url": "https://github.com/jacobhl3ca/comedy-cellar-viewer/issues"
   },
   "homepage": "https://github.com/jacobhl3ca/comedy-cellar-viewer#readme",
-  "devDependencies": {
-    "clean-css-cli": "^5.6.3",
-    "terser": "^5.46.1"
-  },
   "dependencies": {
     "@vercel/kv": "^3.0.0"
   }
