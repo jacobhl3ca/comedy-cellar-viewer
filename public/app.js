@@ -749,6 +749,7 @@ function renderShows() {
 
 // ---- Shared show card renderer ----
 function renderShowCard(show, hideSkips, onlyFavs) {
+  try {
   // Venue filter (compare against normalized venue name)
   if (activeVenue !== 'all' && normalizeVenue(show.venue) !== activeVenue) return '';
 
@@ -802,6 +803,7 @@ function renderShowCard(show, hideSkips, onlyFavs) {
       </div>
     </div>
   `;
+  } catch (e) { console.error('renderShowCard error:', e, show); return ''; }
 }
 
 // ---- Shared comedian chip renderer ----
@@ -910,6 +912,7 @@ function renderSortedByFaves(container) {
   let html = '<div class="schedule-view">';
 
   allShows.forEach(show => {
+    try {
     const stats = show.stats;
     const dayLabel = show.dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
     if (show.dateStr !== lastDateStr) {
@@ -941,6 +944,7 @@ function renderSortedByFaves(container) {
           <span class="fav-count">${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''} ${stats.likes > 0 ? `👍 ${stats.likes}` : ''}</span>
         </div>
       </div>`;
+    } catch (e) { console.error('renderSortedByFaves card error:', e, show); }
   });
 
   html += '</div>';
@@ -994,7 +998,7 @@ function renderAllDaysSchedule(container) {
         return;
       }
       dayShows.forEach(show => {
-        html += renderStandShowCard(show);
+        try { html += renderStandShowCard(show); } catch (e) { console.error('renderAllDaysSchedule Stand card error:', e, show); }
       });
     });
     html += '</div>';
@@ -1024,6 +1028,7 @@ function renderAllDaysSchedule(container) {
     if (shouldSort) sorted = [...shows].sort((a, b) => scoreShow(b).score - scoreShow(a).score || scoreShow(b).faves - scoreShow(a).faves);
 
     sorted.forEach(show => {
+      try {
       if (activeVenue !== 'all' && normalizeVenue(show.venue) !== activeVenue) return;
       if (timeFilterCellar && timeFilterCellar !== 'any') {
         const t24 = to24h(show.time);
@@ -1051,6 +1056,7 @@ function renderAllDaysSchedule(container) {
             <span class="fav-count">${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''} ${stats.likes > 0 ? `👍 ${stats.likes}` : ''}</span>
           </div>
         </div>`;
+      } catch (e) { console.error('renderAllDaysSchedule Cellar card error:', e, show); }
     });
   });
 
@@ -1114,6 +1120,7 @@ function renderTheStandShows(container) {
 }
 
 function renderStandShowCard(show) {
+  try {
   const chips = show.comedians.length > 0
     ? renderComedianChips(show.comedians, document.getElementById('hide-skips')?.checked, 'stand')
     : `<span style="color:var(--text-dim);font-size:13px;">Lineup TBD</span>`;
@@ -1156,6 +1163,7 @@ function renderStandShowCard(show) {
       </div>
     </div>
   `;
+  } catch (e) { console.error('renderStandShowCard error:', e, show); return ''; }
 }
 
 // ---- Gotham Comedy Club Renderer ----
@@ -1174,6 +1182,7 @@ function renderGothamShows(container) {
   let html = '<div class="schedule-view">';
   let lastDate = '';
   filtered.forEach(show => {
+    try {
     if (show.date !== lastDate) {
       const d = new Date(show.date + 'T12:00:00');
       html += `<h2 class="schedule-day-header">${d.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}</h2>`;
@@ -1192,6 +1201,7 @@ function renderGothamShows(container) {
           <span class="fav-count"></span>
         </div>
       </div>`;
+    } catch (e) { console.error('renderGothamShows card error:', e, show); }
   });
   html += '</div>';
   container.innerHTML = html;
@@ -1279,6 +1289,7 @@ function renderAllVenues(container) {
   let lastDate = '';
 
   allItems.forEach(item => {
+    try {
     if (item.dateStr !== lastDate) {
       const d = new Date(item.dateStr + 'T12:00:00');
       const dayLabel = d.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
@@ -1328,6 +1339,7 @@ function renderAllVenues(container) {
           </div>
         </div>`;
     }
+    } catch (e) { console.error('renderAllVenues card error:', e, item); }
   });
 
   html += '</div>';
@@ -1394,6 +1406,7 @@ function renderBigShows(container) {
   if (activeDate === 'all') html += '<h2 class="big-shows-header">Other Shows — Upcoming NYC Comedy</h2>';
 
   Object.entries(byPerformer).forEach(([title, data]) => {
+    try {
     const firstEvt = data.events[0];
     // Performer photo
     let photoHtml = '';
@@ -1425,6 +1438,7 @@ function renderBigShows(container) {
           </div>
         </div>
       </div>`;
+    } catch (e) { console.error('renderBigShows card error:', e, title); }
   });
 
   html += '</div>';
