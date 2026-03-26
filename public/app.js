@@ -133,12 +133,12 @@ async function loadComedianDB() {
     const resp = await fetch('/data/comedians.json');
     comedianDB = await resp.json();
     comedianDB.forEach(c => {
-      // Prefer local photo, then external
+      // DB photos stay in comedianDB — accessed via getPhotoForVenue()
+      // Populate legacy map as fallback for non-venue contexts (e.g. My Comedians modal)
       const local = localPhotoPath(c.name);
-      const external = c.photo_stand || c.photo_nycc;
-      if (local) comedianPhotos[c.name] = local;
-      else if (external && !comedianPhotos[c.name]) comedianPhotos[c.name] = external;
-      // DB bios stay in comedianDB — accessed via getBioForVenue(), not dumped into comedianTaglines
+      if (local && !comedianPhotos[c.name]) comedianPhotos[c.name] = local;
+      else if (c.photo_nycc && !comedianPhotos[c.name]) comedianPhotos[c.name] = c.photo_nycc;
+      else if (c.photo_stand && !comedianPhotos[c.name]) comedianPhotos[c.name] = c.photo_stand;
     });
   } catch (e) {
     console.error('Failed to load comedian DB:', e);
@@ -259,8 +259,30 @@ function formatDateParam(d) { return d.toISOString().split('T')[0]; }
 function getDayName(d) { return d.toLocaleDateString('en-US', { weekday: 'short' }); }
 function getDateLabel(d) { return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); }
 
-// Global headshot map: name -> image URL
-const comedianPhotos = {};
+// Global headshot maps: per-venue + fallback
+const comedianPhotos = {};           // legacy fallback (any source)
+const comedianPhotosCellar = {};     // from Cellar API
+const comedianPhotosStand = {};      // from Stand scraper
+
+// Venue-aware photo lookup: local blob → venue-specific → NYCC DB → Cellar → Stand → any
+function getPhotoForVenue(name, venueSource) {
+  // 1. Local blob always wins
+  const local = localPhotoPath(name);
+  if (local) return local;
+  // 2. Venue-specific photo
+  if (venueSource === 'cellar' && comedianPhotosCellar[name]) return comedianPhotosCellar[name];
+  if (venueSource === 'stand' && comedianPhotosStand[name]) return comedianPhotosStand[name];
+  // 3. DB photos (NYCC first, then Stand)
+  const dbEntry = comedianDB.find(c => c.name === name);
+  if (venueSource === 'nycc' && dbEntry?.photo_nycc) return dbEntry.photo_nycc;
+  if (dbEntry?.photo_nycc) return dbEntry.photo_nycc;
+  // 4. Cross-venue fallbacks
+  if (comedianPhotosCellar[name]) return comedianPhotosCellar[name];
+  if (comedianPhotosStand[name]) return comedianPhotosStand[name];
+  if (dbEntry?.photo_stand) return dbEntry.photo_stand;
+  // 5. Legacy pool (Wikipedia, SeatGeek, etc.)
+  return comedianPhotos[name] || '';
+}
 
 function parseShows(html, dateStr) {
   // Split by show blocks — each show starts with <div><div class="set-header">
@@ -271,9 +293,9 @@ function parseShows(html, dateStr) {
   const photoMatches = [...html.matchAll(/<img src="([^"]+)"[^>]*>[\s\S]*?<span class="name">([^<]+)<\/span>/g)];
   photoMatches.forEach(m => {
     const name = m[2].trim();
-    const local = localPhotoPath(name);
-    if (local) { comedianPhotos[name] = local; return; }
     const imgUrl = m[1].startsWith('http') ? m[1] : 'https://www.comedycellar.com' + m[1];
+    if (!comedianPhotosCellar[name]) comedianPhotosCellar[name] = imgUrl;
+    // Also populate legacy map as fallback
     if (!comedianPhotos[name]) comedianPhotos[name] = imgUrl;
   });
   // Taglines: text after </span> inside the <p> that contains the name
@@ -400,11 +422,14 @@ async function fetchTheStand() {
     const resp = await fetch('/api/the-stand');
     const data = await resp.json();
     standShows = data.shows || [];
-    // Extract comedian photos from Stand data into global map
+    // Extract comedian photos from Stand data into venue-specific map
     standShows.forEach(show => {
       if (show.comedianPhotos) {
         Object.entries(show.comedianPhotos).forEach(([name, url]) => {
-          if (!comedianPhotos[name] && url) comedianPhotos[name] = url;
+          if (url) {
+            if (!comedianPhotosStand[name]) comedianPhotosStand[name] = url;
+            if (!comedianPhotos[name]) comedianPhotos[name] = url;
+          }
         });
       }
     });
@@ -800,7 +825,7 @@ function renderComedianChips(comedians, hideSkips, venueSource) {
       cls += ' new-face';
     }
 
-    const photoUrl = comedianPhotos[name];
+    const photoUrl = getPhotoForVenue(name, venueSource || 'cellar');
     const hasPhoto = !!photoUrl;
     // No-photo filter: hide comedians that have photos, highlight those without
     if (noPhotoFilter && hasPhoto) return '';
@@ -1508,7 +1533,7 @@ function handleComedianClick(el) {
   }
 
   const fullBio = getBioForVenue(name, panelVenueSource);
-  const photo = comedianPhotos[name] || '';
+  const photo = getPhotoForVenue(name, panelVenueSource);
   const prefs = loadPrefs();
   const isFavd = prefs.faves.includes(name);
   const isSkipd = prefs.skips.includes(name);
@@ -1518,7 +1543,7 @@ function handleComedianClick(el) {
   const alerted = isAlerted(name);
 
   const dbEntry = comedianDB.find(c => c.name === name);
-  const dbPhoto = dbEntry?.photo_stand || dbEntry?.photo_nycc || photo;
+  const dbPhoto = photo; // already venue-aware via getPhotoForVenue
   // Format venue names: exclude current source AND only show venues we actively have data for
   const venueNameMap = {
     'the_stand': 'The Stand',
