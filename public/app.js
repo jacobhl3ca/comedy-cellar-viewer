@@ -264,22 +264,22 @@ const comedianPhotos = {};           // legacy fallback (any source)
 const comedianPhotosCellar = {};     // from Cellar API
 const comedianPhotosStand = {};      // from Stand scraper
 
-// Venue-aware photo lookup: local blob → venue-specific → NYCC DB → Cellar → Stand → any
+// Venue-aware photo lookup: venue-specific → NYCC DB → cross-venue → local blob → legacy
 function getPhotoForVenue(name, venueSource) {
-  // 1. Local blob always wins
-  const local = localPhotoPath(name);
-  if (local) return local;
-  // 2. Venue-specific photo
+  const dbEntry = comedianDB.find(c => c.name === name);
+  // 1. Venue-specific photo
   if (venueSource === 'cellar' && comedianPhotosCellar[name]) return comedianPhotosCellar[name];
   if (venueSource === 'stand' && comedianPhotosStand[name]) return comedianPhotosStand[name];
-  // 3. DB photos (NYCC first, then Stand)
-  const dbEntry = comedianDB.find(c => c.name === name);
   if (venueSource === 'nycc' && dbEntry?.photo_nycc) return dbEntry.photo_nycc;
+  // 2. NYCC DB fallback
   if (dbEntry?.photo_nycc) return dbEntry.photo_nycc;
-  // 4. Cross-venue fallbacks
+  // 3. Cross-venue fallbacks
   if (comedianPhotosCellar[name]) return comedianPhotosCellar[name];
   if (comedianPhotosStand[name]) return comedianPhotosStand[name];
   if (dbEntry?.photo_stand) return dbEntry.photo_stand;
+  // 4. Local blob (saved file)
+  const local = localPhotoPath(name);
+  if (local) return local;
   // 5. Legacy pool (Wikipedia, SeatGeek, etc.)
   return comedianPhotos[name] || '';
 }
