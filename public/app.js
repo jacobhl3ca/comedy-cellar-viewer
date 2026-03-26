@@ -780,7 +780,7 @@ function renderShowCard(show, hideSkips, onlyFavs) {
           <span class="show-time">${show.time}</span>
           ${badge}
         </div>
-        ${!isPlainVenue ? (getCellarPoster(show.venue) ? `<span class="show-name poster-wrap">${show.venue}<img class="poster-preview" src="${getCellarPoster(show.venue)}" alt="${show.venue}"></span>` : `<span class="show-name">${show.venue}</span>`) : ''}
+        ${!isPlainVenue ? (getCellarPoster(show.venue) ? `<span class="show-name poster-wrap">Comedy Cellar: ${show.venue}<img class="poster-preview" src="${getCellarPoster(show.venue)}" alt="${show.venue}"></span>` : `<span class="show-name">Comedy Cellar: ${show.venue}</span>`) : '<span class="show-name">Comedy Cellar</span>'}
         <span class="show-venue">${normalizedVenue}</span>
       </div>
       <div class="show-lineup">${comediansHtml}</div>
@@ -924,7 +924,7 @@ function renderSortedByFaves(container) {
       <div class="${cardClass}">
         <div class="show-header">
           <div><span class="show-time">${show.time}</span>${badge}</div>
-          ${!isPlainVenue ? (getCellarPoster(show.venue) ? `<span class="show-name poster-wrap">${show.venue}<img class="poster-preview" src="${getCellarPoster(show.venue)}" alt="${show.venue}"></span>` : `<span class="show-name">${show.venue}</span>`) : ''}
+          ${!isPlainVenue ? (getCellarPoster(show.venue) ? `<span class="show-name poster-wrap">Comedy Cellar: ${show.venue}<img class="poster-preview" src="${getCellarPoster(show.venue)}" alt="${show.venue}"></span>` : `<span class="show-name">Comedy Cellar: ${show.venue}</span>`) : '<span class="show-name">Comedy Cellar</span>'}
           <span class="show-venue">${normalizedVenue}</span>
         </div>
         <div class="show-lineup">${chips}</div>
@@ -1097,9 +1097,17 @@ function renderStandShowCard(show) {
     ? renderComedianChips(show.comedians, document.getElementById('hide-skips')?.checked, 'stand')
     : `<span style="color:var(--text-dim);font-size:13px;">Lineup TBD</span>`;
 
-  // Simplify "The Stand Presents: X, Y, Z, & More!" to just "The Stand Presents"
-  let displayTitle = show.title;
-  if (displayTitle.startsWith('The Stand Presents:')) displayTitle = 'The Stand Presents';
+  // Determine if this is a special/named show vs regular
+  let showLabel = 'The Stand';
+  if (show.title) {
+    const t = show.title.trim();
+    const isPresents = /^The Stand Presents/i.test(t);
+    // Check if title is just a comedian's name from the lineup
+    const isComedianName = show.comedians.some(c => t.toLowerCase() === c.name.toLowerCase());
+    if (!isPresents && !isComedianName && t.toLowerCase() !== 'the stand') {
+      showLabel = 'The Stand: ' + t;
+    }
+  }
 
   const room = show.room ? show.room.replace('&nbsp;', ' ').replace(/^The Stand\s*[-–—]\s*/i, '') : '';
   // Shorten room names and capitalize properly
@@ -1110,8 +1118,8 @@ function renderStandShowCard(show) {
 
   // Poster hover
   const posterHtml = show.poster
-    ? `<span class="show-name poster-wrap">${displayTitle}<img class="poster-preview" src="${show.poster}" alt="${displayTitle}"></span>`
-    : `<span class="show-name">${displayTitle}</span>`;
+    ? `<span class="show-name poster-wrap">${showLabel}<img class="poster-preview" src="${show.poster}" alt="${showLabel}"></span>`
+    : `<span class="show-name">${showLabel}</span>`;
 
   return `
     <div class="show-card">
