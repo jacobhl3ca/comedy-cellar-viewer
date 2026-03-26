@@ -2078,6 +2078,18 @@ async function init() {
 
 init();
 
+// Back to top button
+(function() {
+  const btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+
 // Expose functions needed by inline onclick handlers (terser mangles names)
 window.openModal = openModal;
 window.closeModal = closeModal;
