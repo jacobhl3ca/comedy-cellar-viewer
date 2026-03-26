@@ -1103,7 +1103,7 @@ function renderStandShowCard(show) {
     const t = show.title.trim();
     const isPresents = /^The Stand Presents/i.test(t);
     // Check if title is just a comedian's name from the lineup
-    const isComedianName = show.comedians.some(c => t.toLowerCase() === c.name.toLowerCase());
+    const isComedianName = show.comedians.some(c => t.toLowerCase() === c.toLowerCase());
     if (!isPresents && !isComedianName && t.toLowerCase() !== 'the stand') {
       showLabel = 'The Stand: ' + t;
     }
