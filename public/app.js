@@ -352,6 +352,14 @@ function to24h(timeStr) {
   return `${h.toString().padStart(2, '0')}:${min}`;
 }
 
+// Normalize display time to "6:45 PM" format (uppercase AM/PM, no "show" suffix)
+function formatTime(timeStr) {
+  if (!timeStr) return 'TBD';
+  const m = timeStr.match(/(\d+:\d+)\s*(am|pm)/i);
+  if (!m) return timeStr;
+  return m[1] + ' ' + m[2].toUpperCase();
+}
+
 // ---- Venue normalization ----
 // Map all venue variants to the 3 main rooms
 // Map special show names to their known rooms (from comedycellar.com/#showtimes)
@@ -473,7 +481,7 @@ function renderNYCCShows(container) {
     html += `
       <div class="show-card">
         <div class="show-header">
-          <div><span class="show-time">${show.time || 'TBD'}</span></div>
+          <div><span class="show-time">${formatTime(show.time)}</span></div>
           <span class="show-name">${show.title}</span>
           <span class="show-venue">NY Comedy Club</span>
         </div>
@@ -777,7 +785,7 @@ function renderShowCard(show, hideSkips, onlyFavs) {
     <div class="${cardClass}">
       <div class="show-header">
         <div>
-          <span class="show-time">${show.time}</span>
+          <span class="show-time">${formatTime(show.time)}</span>
           ${badge}
         </div>
         ${!isPlainVenue ? (getCellarPoster(show.venue) ? `<span class="show-name poster-wrap">Comedy Cellar: ${show.venue}<img class="poster-preview" src="${getCellarPoster(show.venue)}" alt="${show.venue}"></span>` : `<span class="show-name">Comedy Cellar: ${show.venue}</span>`) : '<span class="show-name">Comedy Cellar</span>'}
@@ -923,7 +931,7 @@ function renderSortedByFaves(container) {
     html += `
       <div class="${cardClass}">
         <div class="show-header">
-          <div><span class="show-time">${show.time}</span>${badge}</div>
+          <div><span class="show-time">${formatTime(show.time)}</span>${badge}</div>
           ${!isPlainVenue ? (getCellarPoster(show.venue) ? `<span class="show-name poster-wrap">Comedy Cellar: ${show.venue}<img class="poster-preview" src="${getCellarPoster(show.venue)}" alt="${show.venue}"></span>` : `<span class="show-name">Comedy Cellar: ${show.venue}</span>`) : '<span class="show-name">Comedy Cellar</span>'}
           <span class="show-venue">${normalizedVenue}</span>
         </div>
@@ -962,6 +970,7 @@ function renderAllDaysSchedule(container) {
 
   // For The Stand, iterate over stand show dates
   if (activeSource === 'the-stand') {
+    const timeFilterStand = document.getElementById('time-filter')?.value;
     const standDates = [...new Set(standShows.map(s => s.date))].sort();
     standDates.forEach(dateStr => {
       const d = new Date(dateStr + 'T12:00:00');
@@ -972,6 +981,12 @@ function renderAllDaysSchedule(container) {
         dayShows = dayShows.filter(s => {
           const r = s.room ? s.room.replace('&nbsp;', ' ').replace(/^The Stand\s*[-–—]\s*/i, '').trim() : 'Main';
           return r === activeStandRoom;
+        });
+      }
+      if (timeFilterStand && timeFilterStand !== 'any') {
+        dayShows = dayShows.filter(s => {
+          const t24 = to24h(s.time);
+          return !t24 || t24 <= timeFilterStand;
         });
       }
       if (dayShows.length === 0) {
@@ -986,6 +1001,8 @@ function renderAllDaysSchedule(container) {
     container.innerHTML = html;
     return;
   }
+
+  const timeFilterCellar = document.getElementById('time-filter')?.value;
 
   dates.forEach(d => {
     const dateStr = formatDateParam(d);
@@ -1008,6 +1025,10 @@ function renderAllDaysSchedule(container) {
 
     sorted.forEach(show => {
       if (activeVenue !== 'all' && normalizeVenue(show.venue) !== activeVenue) return;
+      if (timeFilterCellar && timeFilterCellar !== 'any') {
+        const t24 = to24h(show.time);
+        if (t24 && t24 > timeFilterCellar) return;
+      }
       const stats = scoreShow(show);
       if (onlyFavs && stats.faves === 0 && stats.likes === 0) return;
       const cardClass = stats.faves >= 3 ? 'show-card must-go' : 'show-card';
@@ -1021,7 +1042,7 @@ function renderAllDaysSchedule(container) {
       html += `
         <div class="${cardClass} schedule-card">
           <div class="show-header">
-            <div><span class="show-time">${show.time}</span>${badge}</div>
+            <div><span class="show-time">${formatTime(show.time)}</span>${badge}</div>
             <span class="show-venue">${show.venue}</span>
           </div>
           <div class="show-lineup">${chips}</div>
@@ -1124,7 +1145,7 @@ function renderStandShowCard(show) {
   return `
     <div class="show-card">
       <div class="show-header">
-        <div><span class="show-time">${show.time || 'TBD'}</span></div>
+        <div><span class="show-time">${formatTime(show.time)}</span></div>
         ${posterHtml}
         <span class="show-venue">${venueText}</span>
       </div>
@@ -1161,7 +1182,7 @@ function renderGothamShows(container) {
     html += `
       <div class="show-card">
         <div class="show-header">
-          <div><span class="show-time">${show.time || 'TBD'}</span></div>
+          <div><span class="show-time">${formatTime(show.time)}</span></div>
           <span class="show-name">${show.title}</span>
           <span class="show-venue">Gotham${show.price ? ` · $${show.price}` : ''}</span>
         </div>
@@ -1229,6 +1250,12 @@ function renderAllVenues(container) {
     allItems = allItems.filter(item => item.dateStr === activeDate);
   }
 
+  // Time filter
+  const timeFilterAV = document.getElementById('time-filter')?.value;
+  if (timeFilterAV && timeFilterAV !== 'any') {
+    allItems = allItems.filter(item => !item.time24 || item.time24 <= timeFilterAV);
+  }
+
   // Sort — by faves if dropdown selected, otherwise by date+time
   const sortValAV = document.getElementById('sort-select')?.value || 'none';
   if (sortValAV === 'faves') {
@@ -1268,7 +1295,7 @@ function renderAllVenues(container) {
       html += `
         <div class="show-card">
           <div class="show-header">
-            <div><span class="show-time">${show.time || 'TBD'}</span></div>
+            <div><span class="show-time">${formatTime(show.time)}</span></div>
             <span class="show-name">${show.title}</span>
             <span class="show-venue">Gotham</span>
           </div>
@@ -1290,7 +1317,7 @@ function renderAllVenues(container) {
       html += `
         <div class="big-show-card">
           <div class="show-header">
-            <div><span class="show-time">${evt.time || 'TBD'}</span></div>
+            <div><span class="show-time">${formatTime(evt.time)}</span></div>
             <span class="show-name">${evt.title}</span>
             <span class="show-venue">${evt.venue || ''}</span>
           </div>
