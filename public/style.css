@@ -162,8 +162,8 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 
 /* Single toolbar */
 .toolbar {
-  display: flex; align-items: center; gap: 8px; padding: 6px 0 10px;
-  border-bottom: 1px solid var(--border); margin-top: 4px; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px; padding: 4px 0 8px;
+  border-bottom: 1px solid var(--border); margin-top: 0; margin-bottom: 8px;
 }
 .toolbar-spacer { flex: 1; }
 .toolbar-toggle { flex-shrink: 0; }
@@ -279,7 +279,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .comedian.new-face {
   color: var(--new-face); border-color: var(--new-face-border); background: var(--new-face-bg);
 }
-.comedian .star { margin-right: 2px; }
+.comedian .star { margin-left: 2px; }
 .comedian-photo {
   width: 28px; height: 28px; border-radius: 50%; object-fit: cover;
   margin-right: 4px; flex-shrink: 0;
@@ -290,6 +290,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 /* Picture mode: larger photos, grid layout */
 .picture-mode .show-lineup {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px;
+  position: relative;
 }
 .picture-mode .comedian {
   flex-direction: column; padding: 10px 8px; text-align: center;
@@ -301,25 +302,8 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .picture-mode .comedian-photo {
   width: 64px; height: 64px; border-radius: 50%; margin-right: 0;
 }
-.picture-mode .comedian .star { margin-right: 0; }
+.picture-mode .comedian .star { margin-left: 0; }
 
-/* Regulars badge */
-.regular-badge {
-  display: inline-block; font-size: 9px; font-weight: 600;
-  padding: 1px 5px; border-radius: 3px; margin-left: 4px;
-  background: var(--surface2); border: 1px solid var(--border);
-  color: var(--text-dim); vertical-align: middle;
-}
-.newcomer-badge {
-  display: inline-block; font-size: 9px; font-weight: 600;
-  padding: 1px 5px; border-radius: 3px; margin-left: 4px;
-  background: #1a3a1a; border: 1px solid #3a7a3a; color: #7ac47a;
-  vertical-align: middle;
-}
-[data-theme="light"] .newcomer-badge {
-  background: #e8f5e8; border-color: #7ab87a; color: #2a7a2a;
-}
-.comedian.newcomer { border-style: dashed; }
 .comedian.skip .comedian-photo { opacity: 0.3; }
 .comedian-name-wrap { display: flex; flex-direction: column; gap: 2px; }
 .comedian-tagline-inline {
@@ -333,8 +317,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 }
 .picture-mode .comedian-long-bio {
   white-space: normal; max-width: 100%; text-align: center; font-size: 10px;
-  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* Long bio inline (expand-all mode) */
@@ -350,7 +333,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .comedian-expanded {
   display: none; width: 100%; padding: 10px 14px;
   background: var(--surface2); border: 1px solid var(--border);
-  border-radius: 8px; margin-top: 8px; font-size: 13px;
+  border-radius: 8px; margin-top: 2px; font-size: 13px;
   color: var(--text-dim); line-height: 1.5;
 }
 .comedian-expanded.open { display: flex; gap: 12px; align-items: flex-start; }
@@ -601,7 +584,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .schedule-view { display: flex; flex-direction: column; gap: 12px; }
 .schedule-day-header {
   font-size: 18px; font-weight: 700; color: var(--accent);
-  padding: 16px 0 8px; border-bottom: 1px solid var(--border); margin-bottom: 12px;
+  padding: 24px 0 8px; border-bottom: 1px solid var(--border); margin-bottom: 12px;
 }
 .schedule-day-header:first-child { padding-top: 0; }
 .schedule-card { margin-bottom: 12px; }

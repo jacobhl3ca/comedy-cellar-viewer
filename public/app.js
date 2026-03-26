@@ -138,17 +138,23 @@ async function loadComedianDB() {
       const external = c.photo_stand || c.photo_nycc;
       if (local) comedianPhotos[c.name] = local;
       else if (external && !comedianPhotos[c.name]) comedianPhotos[c.name] = external;
-      if (c.bio && !comedianTaglines[c.name] && !isGenericBio(c.bio)) comedianTaglines[c.name] = c.bio;
+      // DB bios stay in comedianDB — accessed via getBioForVenue(), not dumped into comedianTaglines
     });
   } catch (e) {
     console.error('Failed to load comedian DB:', e);
   }
 }
 
-// Fetch Wikipedia bios for comedians missing bios (runs after init)
+// Fetch Wikipedia bios for comedians missing bios (runs after init, last resort only)
 async function enrichBiosFromWikipedia() {
-  // Collect names that have no bio
-  const needBio = [...allComediansSeen].filter(n => !comedianTaglines[n] && !comedianDB.find(c => c.name === n && c.bio));
+  // Collect names that have no bio from any venue source
+  const needBio = [...allComediansSeen].filter(n => {
+    if (comedianTaglines[n]) return false; // has Cellar tagline
+    const db = comedianDB.find(c => c.name === n);
+    if (db?.bio && !isGenericBio(db.bio)) return false; // has NYCC bio
+    if (db?.bio_stand && !isGenericBio(db.bio_stand)) return false; // has Stand bio
+    return true;
+  });
   if (needBio.length === 0) return;
 
   // Batch in groups of 20
@@ -159,8 +165,8 @@ async function enrichBiosFromWikipedia() {
       const data = await resp.json();
       if (data.results) {
         Object.entries(data.results).forEach(([name, info]) => {
-          // Don't overwrite existing bios
-          if (!comedianTaglines[name] && info.bio && !isGenericBio(info.bio)) comedianTaglines[name] = info.bio;
+          // Store in separate wiki map (last resort only)
+          if (!comedianWikiBios[name] && info.bio && !isGenericBio(info.bio)) comedianWikiBios[name] = info.bio;
           if (!comedianPhotos[name] && info.image) comedianPhotos[name] = info.image;
         });
       }
@@ -212,63 +218,8 @@ function getAlertEmail() {
   return loadAlerts().email || '';
 }
 
-// ---- NYC Comedy Regulars (Cellar + Stand + NYC scene) ----
-// Sources: Comedy Cellar about page, Wikipedia, Comedy Cellar API history,
-// The Stand booking data, Reddit/Substack analysis, NYC comedy scene knowledge
-const CELLAR_REGULARS = new Set([
-  // Comedy Cellar core regulars (weekly+ performers)
-  'James Mattern', 'Janelle James', 'Eric Neumann', 'Dan Naturman', 'Dov Davidoff',
-  'Erin Jackson', 'Winston Hodges', 'Todd Barry', 'Ryan Hamilton', 'Yamaneika Saunders',
-  'Lynne Koplitz', 'Dave Attell', 'Brendan Sagalow', 'Jon Laster', 'Greg Stone',
-  'Daniel Simonsen', 'Caitlin Peluffo', 'Rich Aronovitch', 'Lev Fer', 'T.J. Miller',
-  'Colin Quinn', 'Regina DeCicco', 'Liza Treyger', 'Nick Griffin', 'Cipha Sounds',
-  'Ethan Simmons-Patterson', 'Alex Kumin', 'Robert Kelly', 'Judah Friedlander',
-  'Jared Freid', 'Greer Barnes', 'Aaron Chen', 'Andrew Schulz', 'Anthony Devito',
-  'Leonard Ouzts', 'Michael Rowland', 'Eagle Witt', 'Drew Dunn', 'Seaton C. Smith',
-  'Sydnee Washington', 'Simeon Goodson', 'Ryan Reiss', 'Mike Yard', 'Shaun Murphy',
-  'Gregg Rogell', 'Hot Soup', 'Ardie Fuqua', 'LeClerc Andre', 'Alex English',
-  'Are You Garbage', 'H.Foley', 'Kevin Ryan', 'Jamie Wolf',
-  'Maddie Wiener', 'Emmy Blotnick', 'Sahib Singh', 'Gary Vider', 'Keith Robinson',
-  'Wil Sylvince', 'Chris Distefano', 'Jay Jurden', 'Sean Patton', 'Nathan Macintosh',
-  'Chris Redd', 'Neal Brennan', 'Raanan Hershberg', 'Andre De Freitas',
-  // Cellar regulars from about page / known NYC scene
-  'Jeff Ross', 'Jim Norton', 'Sam Morril', 'Joe DeRosa', 'Jessica Kirson',
-  'Rachel Feinstein', 'Phil Hanley', 'Joe Machi', 'Sean Donnelly', 'Rosebud Baker',
-  'Godfrey', 'Artie Lang', 'Ricky Velez', 'Gary Gulman', 'Des Bishop',
-  'Adrian Barron', 'Morgan Jay', 'Ted Alexandre', 'Estee Carrol', 'Ian Fischer',
-  'Ari Shaffir', 'Amy Schumer', 'Aziz Ansari', 'Sherrod Small', 'Harrison Greenbaum',
-  'Rory Albanese', 'Dan Soder', 'Mark Normand', 'Joe List', 'Nore Davis',
-  'Monroe Martin', 'Derek Gaines', 'Corinne Fisher', 'Maria DeCotis',
-  'Phoebe Robinson', 'Carmen Lynch', 'Marina Franklin', 'Adrienne Iapalucci',
-  'Modi', 'Bob Biggerstaff', 'Christian Finnegan', 'Ted Alexandro', 'Wali Collins',
-  'Tom Papa', 'Michael Che', 'Colin Jost', 'Dave Smith', 'Luis J. Gomez',
-  'Big Jay Oakerson', 'Jim Florentine', 'Bobby Kelly', 'Nikki Glaser',
-  'Rich Vos', 'Bonnie McFarlane', 'Kurt Metzger', 'Joe Derosa',
-  'Dave Hill', 'Jermaine Fowler', 'Nate Bargatze', 'Taylor Tomlinson',
-  'Chris Gethard', 'Matteo Lane', 'Sam Jay', 'Dulce Sloan',
-  'Roy Wood Jr.', 'Michelle Wolf', 'Nimesh Patel', 'Lara Beitz',
-  'Jake Flores', 'Emma Willmann', 'Mike Recine', 'Tim Dillon',
-  'Stavros Halkias', 'Shane Gillis', 'Matt McCusker',
-  'Mike Vecchione', 'Carmen Lynch', 'Derrick Stroup', 'Maddy Smith',
-  'Zainab Johnson', 'Matt Ruby', 'Ophira Eisenberg', 'Danny Polishchuk',
-  'Amos Gill', 'Nick Di Paolo', 'Bill Burr', 'Michelle Wolf', 'Michael Che',
-  'Jim Norton', 'Pete Lee', 'Rocky Dale Davis', 'Ryan Long', 'Kim Congdon',
-  'Tammy Pescatelli', 'Atsuko Okatsuka', 'Aaron Berg', 'Bobby Bert',
-  'Liz Fithian', 'Sean Donnelly', 'Josh Adam Meyers',
-  // The Stand regulars (2+ shows/week frequency)
-  'Dan St. Germain', 'Oscar Aydin', 'Sienna Hubert-Ross', 'Reggie Conquest',
-  'Kyle Dunnigan', 'TaTa Sherise', 'Brittany Brave', 'Marito Lopez',
-  'Olivia Carter', 'Natalie Cuomo', 'Mike Figs', 'Crystal Marie',
-  'Janeane Garofalo', 'Chris Riggins', 'Sureni Weerasekera', 'Ian Lara',
-  'Kerryn Feehan', 'Anna Roisman', 'Matthew Broussard', 'Tom McGuire',
-  'Paul Virzi', 'Derek Drescher', 'Carolina Montesquieu', 'Andre Kim',
-  'Aldo Campana', 'Josh Mandl', 'Jourdain Fisher', 'Mark Hayes',
-  'Harry Settel', 'Peter James Fowler', 'Usama Siddiquee', 'Petey DeAbreu',
-  'Neko White', 'Kenny DeForest', 'Zack Fox', 'Jordan Jensen',
-  'Chanel Ali', 'Yamaneeka Saunders', 'Chris Turner', 'Radu Isac',
-]);
-
-function isRegular(name) { return CELLAR_REGULARS.has(name); }
+// ---- NYC Comedy Regulars ----
+// REMOVED session 8 — newcomer/regular logic needs rethinking. Will re-add later.
 
 // ---- Cellar show posters (from comedycellar.com/#showtimes) ----
 const CELLAR_POSTERS = {
@@ -411,13 +362,11 @@ function scoreShow(show) {
   let faves = 0;
   let likes = 0;
   let newFaces = 0;
-  let newcomers = 0;
   for (const name of show.comedians) {
     if (isFav(name) || isLike(name)) faves++;
     else if (!isSkip(name)) newFaces++;
-    if (!isRegular(name)) newcomers++;
   }
-  return { faves, likes: 0, newFaces, newcomers, score: faves };
+  return { faves, likes: 0, newFaces, score: faves };
 }
 
 // ---- Fetch ----
@@ -708,11 +657,7 @@ function renderShows() {
     renderBottomTabs();
     return;
   }
-  if (sortVal === 'newcomers') {
-    renderSortedByNewcomers(container);
-    renderBottomTabs();
-    return;
-  }
+
 
   // "All" schedule view — show all days
   if (activeDate === 'all') {
@@ -786,7 +731,7 @@ function renderShowCard(show, hideSkips, onlyFavs) {
 
   if (onlyFavs && !hasFavOrLike) return '';
 
-  const comediansHtml = renderComedianChips(show.comedians, hideSkips);
+  const comediansHtml = renderComedianChips(show.comedians, hideSkips, 'cellar');
 
   let badge = '';
   const totalScore = stats.faves + stats.likes;
@@ -827,11 +772,11 @@ function renderShowCard(show, hideSkips, onlyFavs) {
 }
 
 // ---- Shared comedian chip renderer ----
-function renderComedianChips(comedians, hideSkips) {
+// venueSource: 'cellar', 'stand', 'gotham', 'nycc', 'big' — used for bio priority
+function renderComedianChips(comedians, hideSkips, venueSource) {
   const showPhotos = document.getElementById('show-photos')?.checked ?? true;
   const expandBios = document.getElementById('expand-bios')?.checked;
   const expandLongBios = document.getElementById('expand-long-bios')?.checked;
-  const showNewcomers = document.getElementById('show-newcomers')?.checked;
   const noPhotoFilter = document.getElementById('no-photo-filter')?.checked;
 
   return comedians.map(name => {
@@ -855,10 +800,6 @@ function renderComedianChips(comedians, hideSkips) {
       cls += ' new-face';
     }
 
-    // Newcomer (non-regular) flagging
-    const newcomer = showNewcomers && !isRegular(name);
-    if (newcomer && !favd && !skipped) cls += ' newcomer';
-
     const photoUrl = comedianPhotos[name];
     const hasPhoto = !!photoUrl;
     // No-photo filter: hide comedians that have photos, highlight those without
@@ -867,44 +808,36 @@ function renderComedianChips(comedians, hideSkips) {
     const photoHtml = (showPhotos && photoUrl)
       ? `<img class="comedian-photo" src="${photoUrl}" alt="" loading="lazy">`
       : '';
-    // Get tagline from API or DB
-    let tagline = comedianTaglines[name] || '';
-    if (!tagline) {
-      const dbEntry = comedianDB.find(c => c.name === name);
-      if (dbEntry?.bio) tagline = dbEntry.bio;
-    }
+    // Get venue-aware bio
+    const tagline = getBioForVenue(name, venueSource || 'cellar');
     const titleAttr = tagline ? ` title="${tagline.replace(/"/g, '&quot;')}"` : '';
-
-    // Newcomer/regular badge
-    let badgeHtml = '';
-    if (showNewcomers) {
-      if (!isRegular(name)) {
-        badgeHtml = '<span class="newcomer-badge">NEW</span>';
-      }
-    }
 
     // Long bios: show full bio panel inline for every comedian
     if (expandLongBios && !window.V2_MODE && !window.V3_MODE) {
-      const bioText = tagline || 'No bio available.';
+      if (!tagline) {
+        return `<div class="comedian-long-wrap" onclick="handleComedianClick(this)" data-name="${name.replace(/"/g, '&quot;')}">
+          <span class="${cls}" data-name="${name.replace(/"/g, '&quot;')}">${photoHtml}${name}${prefix}</span>
+        </div>`;
+      }
       return `<div class="comedian-long-wrap" onclick="handleComedianClick(this)" data-name="${name.replace(/"/g, '&quot;')}">
-        <span class="${cls}" data-name="${name.replace(/"/g, '&quot;')}">${photoHtml}${prefix}${name}${badgeHtml}</span>
-        <div class="comedian-long-bio">${bioText}</div>
+        <span class="${cls}" data-name="${name.replace(/"/g, '&quot;')}">${photoHtml}${name}${prefix}</span>
+        <div class="comedian-long-bio">${tagline}</div>
       </div>`;
     }
 
     // Short bios: show tagline below name
     if (expandBios && !window.V2_MODE && !window.V3_MODE) {
       const taglineHtml = tagline ? `<span class="comedian-tagline-inline">${tagline}</span>` : '';
-      return `<span class="${cls}" data-name="${name.replace(/"/g, '&quot;')}"${titleAttr} onclick="handleComedianClick(this)">${photoHtml}${prefix}<span class="comedian-name-wrap">${name}${badgeHtml}${taglineHtml}</span></span>`;
+      return `<span class="${cls}" data-name="${name.replace(/"/g, '&quot;')}"${titleAttr} onclick="handleComedianClick(this)">${photoHtml}<span class="comedian-name-wrap">${name}${prefix}${taglineHtml}</span></span>`;
     }
 
     // v2 card mode: show tagline text below name
     if (window.V2_MODE) {
       const taglineHtml = tagline ? `<span class="comedian-tagline">${tagline}</span>` : '';
-      return `<span class="${cls}" data-name="${name.replace(/"/g, '&quot;')}" onclick="handleComedianClick(this)">${photoHtml}${prefix}<span class="comedian-name">${name}</span>${taglineHtml}${badgeHtml}</span>`;
+      return `<span class="${cls}" data-name="${name.replace(/"/g, '&quot;')}" onclick="handleComedianClick(this)">${photoHtml}<span class="comedian-name">${name}</span>${prefix}${taglineHtml}</span>`;
     }
 
-    return `<span class="${cls}" data-name="${name.replace(/"/g, '&quot;')}"${titleAttr} onclick="handleComedianClick(this)">${photoHtml}${prefix}${name}${badgeHtml}</span>`;
+    return `<span class="${cls}" data-name="${name.replace(/"/g, '&quot;')}"${titleAttr} onclick="handleComedianClick(this)">${photoHtml}${name}${prefix}</span>`;
   }).join('');
 }
 
@@ -960,7 +893,7 @@ function renderSortedByFaves(container) {
     const normalizedVenue = normalizeVenue(show.venue);
     const venueStart = show.venue.toLowerCase();
     const isPlainVenue = venueStart.startsWith('macdougal') || venueStart.startsWith('fat black') || venueStart.startsWith('village');
-    const chips = renderComedianChips(show.comedians, hideSkips);
+    const chips = renderComedianChips(show.comedians, hideSkips, 'cellar');
 
     html += `
       <div class="${cardClass}">
@@ -982,83 +915,12 @@ function renderSortedByFaves(container) {
   renderBottomTabs();
 }
 
-function renderSortedByNewcomers(container) {
-  const hideSkips = document.getElementById('hide-skips').checked;
-  const onlyFavs = document.getElementById('only-faves')?.checked;
-
-  let allShows = [];
-  dates.forEach(d => {
-    const dateStr = formatDateParam(d);
-    const shows = allData[dateStr];
-    if (!shows) return;
-    shows.forEach(show => {
-      if (activeVenue !== 'all' && normalizeVenue(show.venue) !== activeVenue) return;
-      const stats = scoreShow(show);
-      if (onlyFavs && stats.faves === 0 && stats.likes === 0) return;
-      const timeFilter = document.getElementById('time-filter')?.value;
-      if (timeFilter && timeFilter !== 'any') {
-        const showTime24 = to24h(show.time);
-        if (showTime24 && showTime24 > timeFilter) return;
-      }
-      allShows.push({ ...show, dateStr, dateObj: d, newcomers: stats.newcomers, stats });
-    });
-  });
-
-  allShows.sort((a, b) => b.newcomers - a.newcomers);
-
-  if (allShows.length === 0) {
-    container.innerHTML = '<div class="no-shows">No shows match your filters.</div>';
-    renderBottomTabs();
-    return;
-  }
-
-  let lastDateStr = '';
-  let html = '';
-
-  allShows.forEach(show => {
-    const stats = show.stats;
-    const dateLabel = show.dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
-    if (show.dateStr !== lastDateStr) {
-      html += `<h2 class="schedule-day-header">${dateLabel}</h2>`;
-      lastDateStr = show.dateStr;
-    }
-
-    const cardClass = stats.faves >= 3 ? 'show-card must-go' : 'show-card';
-    let badge = '';
-    if (stats.newcomers > 0) badge = `<span class="show-badge" style="background:#3a7a3a;color:#fff;">${stats.newcomers} NEW</span>`;
-
-    const normalizedVenue = normalizeVenue(show.venue);
-    const venueStart = show.venue.toLowerCase();
-    const isPlainVenue = venueStart.startsWith('macdougal') || venueStart.startsWith('fat black') || venueStart.startsWith('village');
-    // Always show venue on right
-
-    const chips = renderComedianChips(show.comedians, hideSkips);
-
-    html += `
-      <div class="${cardClass} schedule-card">
-        <div class="show-header">
-          <div><span class="show-time">${show.time}</span>${badge}</div>
-          ${!isPlainVenue ? (getCellarPoster(show.venue) ? `<span class="show-name poster-wrap">${show.venue}<img class="poster-preview" src="${getCellarPoster(show.venue)}" alt="${show.venue}"></span>` : `<span class="show-name">${show.venue}</span>`) : ''}
-          <span class="show-venue">${normalizedVenue}</span>
-        </div>
-        <div class="show-lineup">${chips}</div>
-        <div class="show-footer">
-          ${show.reserveUrl ? `<a href="${show.reserveUrl}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Reserve</a>` : '<span></span>'}
-          <span class="fav-count">${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''} ${stats.likes > 0 ? `👍 ${stats.likes}` : ''}</span>
-        </div>
-      </div>`;
-  });
-
-  container.innerHTML = html;
-  renderBottomTabs();
-}
 
 function renderAllDaysSchedule(container) {
   const hideSkips = document.getElementById('hide-skips').checked;
   const onlyFavs = document.getElementById('only-faves')?.checked;
   const sortVal2 = document.getElementById('sort-select')?.value || 'none';
   const shouldSort = sortVal2 === 'faves';
-  const shouldSortNewcomers = sortVal2 === 'newcomers';
   // Show onboarding if no prefs
   const prefs2 = loadPrefs();
   const hasAnyPrefs2 = prefs2.faves.length > 0 || prefs2.skips.length > 0 || prefs2.likes.length > 0;
@@ -1118,7 +980,6 @@ function renderAllDaysSchedule(container) {
 
     let sorted = shows;
     if (shouldSort) sorted = [...shows].sort((a, b) => scoreShow(b).score - scoreShow(a).score || scoreShow(b).faves - scoreShow(a).faves);
-    else if (shouldSortNewcomers) sorted = [...shows].sort((a, b) => scoreShow(b).newcomers - scoreShow(a).newcomers);
 
     sorted.forEach(show => {
       if (activeVenue !== 'all' && normalizeVenue(show.venue) !== activeVenue) return;
@@ -1130,7 +991,7 @@ function renderAllDaysSchedule(container) {
       else if (stats.faves >= 2) badge = `<span class="show-badge badge-faves">${stats.faves} FAVES</span>`;
 
       const showPhotos = document.getElementById('show-photos')?.checked ?? true;
-      const chips = renderComedianChips(show.comedians, document.getElementById('hide-skips').checked);
+      const chips = renderComedianChips(show.comedians, document.getElementById('hide-skips').checked, 'cellar');
 
       html += `
         <div class="${cardClass} schedule-card">
@@ -1208,7 +1069,7 @@ function renderTheStandShows(container) {
 
 function renderStandShowCard(show) {
   const chips = show.comedians.length > 0
-    ? renderComedianChips(show.comedians, document.getElementById('hide-skips')?.checked)
+    ? renderComedianChips(show.comedians, document.getElementById('hide-skips')?.checked, 'stand')
     : `<span style="color:var(--text-dim);font-size:13px;">Lineup TBD</span>`;
 
   // Simplify "The Stand Presents: X, Y, Z, & More!" to just "The Stand Presents"
@@ -1634,7 +1495,19 @@ function handleComedianClick(el) {
   }
   container.querySelectorAll('.comedian-expanded').forEach(e => e.remove());
 
-  const tagline = comedianTaglines[name] || 'No bio available.';
+  // Determine venue source from show card context
+  const showCard = el.closest('.show-card');
+  let panelVenueSource = 'cellar'; // default
+  if (activeSource === 'the-stand') panelVenueSource = 'stand';
+  else if (activeSource === 'all' && showCard) {
+    const venueEl = showCard.querySelector('.show-venue');
+    const venueText = venueEl?.textContent?.toLowerCase() || '';
+    if (venueText.includes('stand')) panelVenueSource = 'stand';
+    else if (venueText.includes('gotham')) panelVenueSource = 'gotham';
+    else if (venueText.includes('comedy club')) panelVenueSource = 'nycc';
+  }
+
+  const fullBio = getBioForVenue(name, panelVenueSource);
   const photo = comedianPhotos[name] || '';
   const prefs = loadPrefs();
   const isFavd = prefs.faves.includes(name);
@@ -1642,12 +1515,9 @@ function handleComedianClick(el) {
   const isLiked = prefs.likes.includes(name);
   const isNeutral = !isFavd && !isSkipd && !isLiked;
   const esc = name.replace(/'/g, "\\'");
-  const regular = isRegular(name);
   const alerted = isAlerted(name);
 
-  // Try to find fuller bio from DB
   const dbEntry = comedianDB.find(c => c.name === name);
-  const fullBio = dbEntry?.bio || tagline;
   const dbPhoto = dbEntry?.photo_stand || dbEntry?.photo_nycc || photo;
   // Format venue names: exclude current source AND only show venues we actively have data for
   const venueNameMap = {
@@ -1685,8 +1555,8 @@ function handleComedianClick(el) {
   panel.innerHTML = `
     ${dbPhoto ? `<img src="${dbPhoto}" alt="${name}">` : ''}
     <div class="exp-info">
-      <div class="exp-name">${name}${regular ? ' <span class="regular-badge">REGULAR</span>' : ' <span class="newcomer-badge">NEW</span>'}</div>
-      <div class="exp-tagline">${fullBio}</div>
+      <div class="exp-name">${name}</div>
+      ${fullBio ? `<div class="exp-tagline">${fullBio}</div>` : ''}
       ${venues ? `<div style="font-size:11px;color:var(--text-dim);margin-top:4px;">Also at: ${venues}</div>` : ''}
       <div class="exp-actions">
         <button class="exp-btn ${isFavd ? 'is-fav' : ''}" onclick="setPref('${esc}','fav')">
@@ -1704,7 +1574,8 @@ function handleComedianClick(el) {
       </div>
     </div>
   `;
-  el.after(panel);
+  // Append at end of lineup (before reserve/footer), not after clicked card
+  container.appendChild(panel);
 }
 
 function toggleAlertBtn(name, btn) {
@@ -1834,8 +1705,7 @@ function updateResetBtn() {
     document.getElementById('expand-bios')?.checked ||
     document.getElementById('expand-long-bios')?.checked ||
     document.getElementById('quick-mode')?.checked ||
-    document.getElementById('picture-mode')?.checked ||
-    document.getElementById('show-newcomers')?.checked ||
+    !document.getElementById('picture-mode')?.checked ||
     document.getElementById('no-photo-filter')?.checked ||
     !document.getElementById('show-photos')?.checked ||
     (document.getElementById('time-filter')?.value !== 'any') ||
@@ -1884,7 +1754,32 @@ function initTheme() {
 }
 
 // ---- Tagline helpers ----
-const comedianTaglines = {};
+const comedianTaglines = {};       // Cellar API taglines (live)
+const comedianWikiBios = {};       // Wikipedia bios (last resort)
+
+// Venue-aware bio lookup: Cellar tagline → Stand DB bio → NYCC DB bio → Wikipedia → ''
+function getBioForVenue(name, venueSource) {
+  // 1. If Cellar show, prefer Cellar live tagline
+  if (venueSource === 'cellar') {
+    const cellarTag = comedianTaglines[name];
+    if (cellarTag && !isGenericBio(cellarTag)) return cellarTag;
+  }
+  // 2. If Stand show, prefer Stand bio from DB
+  if (venueSource === 'stand') {
+    const dbEntry = comedianDB.find(c => c.name === name);
+    if (dbEntry?.bio_stand && !isGenericBio(dbEntry.bio_stand)) return dbEntry.bio_stand;
+  }
+  // 3. NYCC bio from DB (works for any venue as fallback)
+  const dbEntry = comedianDB.find(c => c.name === name);
+  if (dbEntry?.bio && !isGenericBio(dbEntry.bio)) return dbEntry.bio;
+  // 4. Cellar tagline as fallback for non-Cellar shows too
+  const cellarTag = comedianTaglines[name];
+  if (cellarTag && !isGenericBio(cellarTag)) return cellarTag;
+  // 5. Wikipedia (last resort)
+  const wiki = comedianWikiBios[name];
+  if (wiki && !isGenericBio(wiki)) return wiki;
+  return '';
+}
 
 function isGenericBio(bio) {
   if (!bio) return true;
@@ -2007,12 +1902,6 @@ async function init() {
       renderTabs();
       renderShows();
       updateFooterInfo();
-      // Hide newcomers option for big-shows
-      const sortSel = document.getElementById('sort-select');
-      const newcomerOpt = sortSel?.querySelector('option[value="newcomers"]');
-      if (newcomerOpt) newcomerOpt.style.display = activeSource === 'big-shows' ? 'none' : '';
-      const snLabel = document.getElementById('show-newcomers')?.closest('label');
-      if (snLabel) snLabel.style.display = activeSource === 'big-shows' ? 'none' : '';
     });
   });
 
@@ -2042,9 +1931,6 @@ async function init() {
   document.getElementById('picture-mode')?.addEventListener('change', () => {
     updateResetBtn(); renderShows();
   });
-  document.getElementById('show-newcomers')?.addEventListener('change', () => {
-    updateResetBtn(); renderShows();
-  });
   document.getElementById('no-photo-filter')?.addEventListener('change', () => {
     updateResetBtn(); renderShows();
   });
@@ -2057,8 +1943,7 @@ async function init() {
     document.getElementById('expand-bios').checked = false;
     const elb = document.getElementById('expand-long-bios'); if (elb) elb.checked = false;
     document.getElementById('quick-mode').checked = false;
-    const pm = document.getElementById('picture-mode'); if (pm) pm.checked = false;
-    const sn = document.getElementById('show-newcomers'); if (sn) sn.checked = false;
+    const pm = document.getElementById('picture-mode'); if (pm) pm.checked = true;
     const npf = document.getElementById('no-photo-filter'); if (npf) npf.checked = false;
     const sp = document.getElementById('show-photos'); if (sp) sp.checked = true;
     const tf = document.getElementById('time-filter');
