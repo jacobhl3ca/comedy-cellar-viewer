@@ -585,7 +585,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .schedule-view { display: flex; flex-direction: column; gap: 12px; }
 .schedule-day-header {
   font-size: 18px; font-weight: 700; color: var(--accent);
-  height: 48px; display: flex; align-items: center; justify-content: center;
+  height: 48px; display: flex; align-items: center;
   border-bottom: 1px solid var(--border); margin-bottom: 12px; margin-top: 12px;
   position: sticky; top: 0; z-index: 10;
   background: var(--bg);
