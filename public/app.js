@@ -49,23 +49,24 @@ function readHashPrefs() {
   } catch { return null; }
 }
 
-// Save-URL toast — show once per session after first fav/skip is set
-function showBookmarkToast() {
-  if (bookmarkToastShown) return;
-  const prefs = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-  if ((prefs.faves?.length || 0) + (prefs.skips?.length || 0) + (prefs.likes?.length || 0) < 1) return;
-  bookmarkToastShown = true;
-
-  const toast = document.createElement('div');
-  toast.className = 'bookmark-toast';
-  toast.innerHTML = `
-    <span>Your picks are saved in the URL — copy it to keep them!</span>
-    <button class="toast-copy-btn" onclick="copyPrefsUrl(this)">Copy URL</button>
-    <button class="toast-close" onclick="this.parentElement.remove()">✕</button>
-  `;
-  document.body.appendChild(toast);
-  setTimeout(() => toast.classList.add('visible'), 50);
-}
+// Save-URL toast — commented out for now (revisit later)
+// function showBookmarkToast() {
+//   if (bookmarkToastShown) return;
+//   const prefs = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+//   if ((prefs.faves?.length || 0) + (prefs.skips?.length || 0) + (prefs.likes?.length || 0) < 1) return;
+//   bookmarkToastShown = true;
+//
+//   const toast = document.createElement('div');
+//   toast.className = 'bookmark-toast';
+//   toast.innerHTML = `
+//     <span>Your picks are saved in the URL — copy it to keep them!</span>
+//     <button class="toast-copy-btn" onclick="copyPrefsUrl(this)">Copy URL</button>
+//     <button class="toast-close" onclick="this.parentElement.remove()">✕</button>
+//   `;
+//   document.body.appendChild(toast);
+//   setTimeout(() => toast.classList.add('visible'), 50);
+// }
+function showBookmarkToast() { /* disabled */ }
 
 function copyPrefsUrl(btn) {
   const prefs = loadPrefs();
@@ -410,15 +411,7 @@ function fetchWithTimeout(url, options = {}, timeoutMs = 10000) {
 // ---- Fetch ----
 async function fetchDay(dateStr) {
   try {
-    const body = `action=cc_get_shows&json=${encodeURIComponent(JSON.stringify({
-      date: dateStr, venue: 'newyork', type: 'lineup'
-    }))}`;
-
-    const resp = await fetchWithTimeout(API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
-      body
-    }, 15000);
+    const resp = await fetchWithTimeout(`${API_URL}?date=${dateStr}`, {}, 15000);
 
     const data = await resp.json();
     const html = data?.show?.html || '';
@@ -737,16 +730,16 @@ function renderShows() {
 
   let html = '';
 
-  // Show onboarding banner if no prefs set
-  if (!hasAnyPrefs && !localStorage.getItem('onboard-dismissed')) {
-    html += `
-      <div class="onboard-banner" id="onboard-banner">
-        <p><strong>New here?</strong> Tap comedian names to mark favorites or skips. Or use "My Comedians" to set them all at once.</p>
-        <button class="onboard-btn" onclick="openModal()">Set Up</button>
-        <button class="onboard-dismiss" onclick="this.parentElement.remove(); localStorage.setItem('onboard-dismissed','1');">&times;</button>
-      </div>
-    `;
-  }
+  // Onboarding banner — commented out for now (revisit later)
+  // if (!hasAnyPrefs && !localStorage.getItem('onboard-dismissed')) {
+  //   html += `
+  //     <div class="onboard-banner" id="onboard-banner">
+  //       <p><strong>New here?</strong> Turn on "Ratings mode" to tap comedian names and mark favorites or skips. Or use "My Comedians" to set them all at once.</p>
+  //       <button class="onboard-btn" onclick="openModal()">Set Up</button>
+  //       <button class="onboard-dismiss" onclick="this.parentElement.remove(); localStorage.setItem('onboard-dismissed','1');">&times;</button>
+  //     </div>
+  //   `;
+  // }
 
   html += sorted.map(show => renderShowCard(show, hideSkips, onlyFavs)).join('');
 
@@ -976,15 +969,16 @@ function renderAllDaysSchedule(container) {
   const prefs2 = loadPrefs();
   const hasAnyPrefs2 = prefs2.faves.length > 0 || prefs2.skips.length > 0 || prefs2.likes.length > 0;
   let html = '';
-  if (!hasAnyPrefs2 && !localStorage.getItem('onboard-dismissed')) {
-    html += `
-      <div class="onboard-banner" id="onboard-banner">
-        <p><strong>New here?</strong> Tap comedian names to mark favorites or skips. Or use "My Comedians" to set them all at once.</p>
-        <button class="onboard-btn" onclick="openModal()">Set Up</button>
-        <button class="onboard-dismiss" onclick="this.parentElement.remove(); localStorage.setItem('onboard-dismissed','1');">&times;</button>
-      </div>
-    `;
-  }
+  // Onboarding banner — commented out for now (revisit later)
+  // if (!hasAnyPrefs2 && !localStorage.getItem('onboard-dismissed')) {
+  //   html += `
+  //     <div class="onboard-banner" id="onboard-banner">
+  //       <p><strong>New here?</strong> Turn on "Ratings mode" to tap comedian names and mark favorites or skips. Or use "My Comedians" to set them all at once.</p>
+  //       <button class="onboard-btn" onclick="openModal()">Set Up</button>
+  //       <button class="onboard-dismiss" onclick="this.parentElement.remove(); localStorage.setItem('onboard-dismissed','1');">&times;</button>
+  //     </div>
+  //   `;
+  // }
   html += '<div class="schedule-view">';
 
   // For The Stand, iterate over stand show dates
@@ -1316,9 +1310,10 @@ function renderAllVenues(container) {
   }
 
   let html = '';
-  if (!hasPrefsAV && !localStorage.getItem('onboard-dismissed')) {
-    html += `<div class="onboard-banner"><p><strong>New here?</strong> Tap comedian names to mark favorites or skips. Or use "My Comedians" to set them all at once.</p><button class="onboard-btn" onclick="openModal()">Set Up</button><button class="onboard-dismiss" onclick="this.parentElement.remove(); localStorage.setItem('onboard-dismissed','1');">&times;</button></div>`;
-  }
+  // Onboarding banner — commented out for now (revisit later)
+  // if (!hasPrefsAV && !localStorage.getItem('onboard-dismissed')) {
+  //   html += `<div class="onboard-banner"><p><strong>New here?</strong> Turn on "Ratings mode" to tap comedian names and mark favorites or skips. Or use "My Comedians" to set them all at once.</p><button class="onboard-btn" onclick="openModal()">Set Up</button><button class="onboard-dismiss" onclick="this.parentElement.remove(); localStorage.setItem('onboard-dismissed','1');">&times;</button></div>`;
+  // }
   html += '<div class="schedule-view">';
   let lastDate = '';
 
@@ -1828,8 +1823,6 @@ function updateResetBtn() {
     (document.getElementById('time-filter')?.value !== 'any') ||
     !!window._timeFilterMin;
   btn.style.display = anyActive ? 'inline-block' : 'none';
-  const resetRow = document.getElementById('toolbar-reset-row');
-  if (resetRow) resetRow.style.display = anyActive ? 'flex' : 'none';
 }
 
 // ---- Theme toggle ----
@@ -2119,6 +2112,8 @@ async function init() {
     const sp = document.getElementById('show-photos'); if (sp) sp.checked = true;
     const tf = document.getElementById('time-filter');
     if (tf) tf.value = 'any';
+    const tfv = document.getElementById('time-filter-visible');
+    if (tfv) tfv.value = 'any';
     const tsMin = document.getElementById('time-slider-min');
     const tsMax = document.getElementById('time-slider-max');
     if (tsMin) tsMin.value = 0;

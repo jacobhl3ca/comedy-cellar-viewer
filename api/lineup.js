@@ -2,18 +2,39 @@ const https = require('https');
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=120');
 
   if (req.method === 'OPTIONS') return res.status(200).end();
-  if (req.method !== 'POST') return res.status(405).json({ error: 'POST only' });
 
-  const body = await new Promise(resolve => {
-    let data = '';
-    req.on('data', c => data += c);
-    req.on('end', () => resolve(data));
-  });
+  // Accept GET with ?date=YYYY-MM-DD (cacheable) or legacy POST
+  let dateStr;
+  if (req.method === 'GET') {
+    dateStr = req.query.date;
+    if (!dateStr || !/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
+      return res.status(400).json({ error: 'Provide ?date=YYYY-MM-DD' });
+    }
+  } else if (req.method === 'POST') {
+    // Legacy POST support — still works but won't be edge-cached
+    const rawBody = await new Promise(resolve => {
+      let data = '';
+      req.on('data', c => data += c);
+      req.on('end', () => resolve(data));
+    });
+    try {
+      const params = new URLSearchParams(rawBody);
+      const json = JSON.parse(params.get('json') || '{}');
+      dateStr = json.date;
+    } catch (e) {
+      return res.status(400).json({ error: 'Invalid POST body' });
+    }
+  } else {
+    return res.status(405).json({ error: 'GET or POST only' });
+  }
+
+  const body = `action=cc_get_shows&json=${encodeURIComponent(JSON.stringify({
+    date: dateStr, venue: 'newyork', type: 'lineup'
+  }))}`;
 
   return new Promise((resolve) => {
     const options = {
