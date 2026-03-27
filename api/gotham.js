@@ -46,7 +46,7 @@ module.exports = async (req, res) => {
 
 function fetchJSON(url) {
   return new Promise((resolve, reject) => {
-    https.get(url, {
+    const request = https.get(url, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Accept': 'application/json, text/plain, */*',
@@ -61,6 +61,8 @@ function fetchJSON(url) {
         try { resolve(JSON.parse(data)); }
         catch (e) { reject(new Error('Invalid JSON from SquadUp')); }
       });
-    }).on('error', reject);
+    });
+    request.setTimeout(12000, () => { request.destroy(); reject(new Error('SquadUp timeout')); });
+    request.on('error', reject);
   });
 }

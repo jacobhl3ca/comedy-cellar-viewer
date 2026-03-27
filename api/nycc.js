@@ -17,13 +17,15 @@ module.exports = async (req, res) => {
 
 function fetchPage(url) {
   return new Promise((resolve, reject) => {
-    https.get(url, {
+    const request = https.get(url, {
       headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)' }
     }, (resp) => {
       let data = '';
       resp.on('data', c => data += c);
       resp.on('end', () => resolve(data));
-    }).on('error', reject);
+    });
+    request.setTimeout(12000, () => { request.destroy(); reject(new Error('NYCC timeout')); });
+    request.on('error', reject);
   });
 }
 

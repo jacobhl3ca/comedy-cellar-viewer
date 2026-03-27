@@ -124,11 +124,11 @@ async function loadComedianDB() {
   try {
     // Load photo manifest first
     try {
-      const mResp = await fetch('/data/photo-manifest.json');
+      const mResp = await fetchWithTimeout('/data/photo-manifest.json', {}, 10000);
       localPhotoMap = await mResp.json();
     } catch {}
 
-    const resp = await fetch('/data/comedians.json');
+    const resp = await fetchWithTimeout('/data/comedians.json', {}, 10000);
     comedianDB = await resp.json();
     comedianDB.forEach(c => {
       // DB photos stay in comedianDB — accessed via getPhotoForVenue()
@@ -400,6 +400,13 @@ function scoreShow(show) {
   return { faves, likes: 0, skips, newFaces, score };
 }
 
+// ---- Fetch with timeout ----
+function fetchWithTimeout(url, options = {}, timeoutMs = 10000) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  return fetch(url, { ...options, signal: controller.signal }).finally(() => clearTimeout(timer));
+}
+
 // ---- Fetch ----
 async function fetchDay(dateStr) {
   try {
@@ -407,11 +414,11 @@ async function fetchDay(dateStr) {
       date: dateStr, venue: 'newyork', type: 'lineup'
     }))}`;
 
-    const resp = await fetch(API_URL, {
+    const resp = await fetchWithTimeout(API_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
       body
-    });
+    }, 15000);
 
     const data = await resp.json();
     const html = data?.show?.html || '';
@@ -428,7 +435,7 @@ let standShows = [];
 
 async function fetchTheStand() {
   try {
-    const resp = await fetch('/api/the-stand');
+    const resp = await fetchWithTimeout('/api/the-stand', {}, 15000);
     const data = await resp.json();
     standShows = data.shows || [];
     // Extract comedian photos from Stand data into venue-specific map
@@ -456,7 +463,7 @@ let gothamShows = [];
 
 async function fetchNYCC() {
   try {
-    const resp = await fetch('/api/nycc');
+    const resp = await fetchWithTimeout('/api/nycc', {}, 15000);
     const data = await resp.json();
     nyccShows = data.shows || [];
     return nyccShows;
@@ -499,7 +506,7 @@ function renderNYCCShows(container) {
 
 async function fetchGotham() {
   try {
-    const resp = await fetch('/api/gotham');
+    const resp = await fetchWithTimeout('/api/gotham', {}, 15000);
     const data = await resp.json();
     gothamShows = data.shows || [];
     return gothamShows;
@@ -511,7 +518,7 @@ async function fetchGotham() {
 
 async function fetchBigShows() {
   try {
-    const resp = await fetch('/api/big-shows');
+    const resp = await fetchWithTimeout('/api/big-shows', {}, 15000);
     const data = await resp.json();
     bigShows = data.events || [];
     return bigShows;

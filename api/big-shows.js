@@ -39,7 +39,7 @@ module.exports = async (req, res) => {
 
 function fetchJSON(url) {
   return new Promise((resolve, reject) => {
-    https.get(url, {
+    const request = https.get(url, {
       headers: { 'User-Agent': 'CellarTonight/1.0' }
     }, (resp) => {
       let data = '';
@@ -48,6 +48,8 @@ function fetchJSON(url) {
         try { resolve(JSON.parse(data)); }
         catch (e) { reject(new Error('Invalid JSON from SeatGeek')); }
       });
-    }).on('error', reject);
+    });
+    request.setTimeout(12000, () => { request.destroy(); reject(new Error('SeatGeek timeout')); });
+    request.on('error', reject);
   });
 }

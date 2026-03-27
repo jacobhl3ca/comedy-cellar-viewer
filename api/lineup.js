@@ -32,9 +32,16 @@ module.exports = async (req, res) => {
       let data = '';
       proxyRes.on('data', c => data += c);
       proxyRes.on('end', () => {
-        res.status(200).json(JSON.parse(data));
+        try { res.status(200).json(JSON.parse(data)); }
+        catch (e) { res.status(502).json({ error: 'Invalid JSON from Comedy Cellar' }); }
         resolve();
       });
+    });
+
+    proxy.setTimeout(12000, () => {
+      proxy.destroy();
+      res.status(504).json({ error: 'Comedy Cellar API timeout' });
+      resolve();
     });
 
     proxy.on('error', e => {
