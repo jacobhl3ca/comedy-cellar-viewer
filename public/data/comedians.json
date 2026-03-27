@@ -4102,6 +4102,14 @@
     "bio": "Nacya Marreiro is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
+    "name": "Naomi Karavani",
+    "venues": [
+      "the_stand"
+    ],
+    "stand_profile": "https://thestandnyc.com/comedians/naomi-karavani",
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/naomi.png"
+  },
+  {
     "name": "Natalie Cuomo",
     "venues": [
       "the_stand"

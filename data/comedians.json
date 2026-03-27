@@ -4103,6 +4103,14 @@
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/nacya-marreiro.jpg"
   },
   {
+    "name": "Naomi Karavani",
+    "venues": [
+      "the_stand"
+    ],
+    "stand_profile": "https://thestandnyc.com/comedians/naomi-karavani",
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/naomi.png"
+  },
+  {
     "name": "Natalie Cuomo",
     "venues": [
       "the_stand"
@@ -4563,7 +4571,7 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/sureni-weerasekera",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/sureni-weerasekera.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/sureni.jpg"
   },
   {
     "name": "Sydnee Washington",

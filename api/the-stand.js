@@ -90,20 +90,17 @@ function parseShows(html) {
         const photoName = filenameMatch[1].replace(/_/g, ' ').replace(/-/g, ' ');
         // Find matching comedian
         for (const c of comedians) {
-          if (c.toLowerCase().replace(/[.\-']/g, ' ') === photoName.toLowerCase() ||
-              photoName.toLowerCase().includes(c.split(' ').pop().toLowerCase())) {
+          const cNorm = c.toLowerCase().replace(/[.\-']/g, ' ');
+          const pNorm = photoName.toLowerCase();
+          if (cNorm === pNorm ||
+              pNorm.includes(c.split(' ').pop().toLowerCase()) ||
+              c.split(' ')[0].toLowerCase() === pNorm) {
             comedianPhotos[c] = imgUrl;
             break;
           }
         }
       }
     });
-    // Also try direct pattern: https://thestandnyc.com/images/comedians/_square/Name.jpg
-    for (const c of comedians) {
-      if (!comedianPhotos[c]) {
-        comedianPhotos[c] = 'https://thestandnyc.com/images/comedians/_square/' + c.replace(/ /g, '_') + '.jpg';
-      }
-    }
 
     // Extract price
     const priceMatch = block.match(/\$(\d+\.?\d*)/);
