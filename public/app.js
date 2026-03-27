@@ -731,11 +731,12 @@ function renderShows() {
   let html = '';
 
   // Show onboarding banner if no prefs set
-  if (!hasAnyPrefs) {
+  if (!hasAnyPrefs && !localStorage.getItem('onboard-dismissed')) {
     html += `
       <div class="onboard-banner" id="onboard-banner">
         <p><strong>New here?</strong> Tap comedian names to mark favorites or skips. Or use "My Comedians" to set them all at once.</p>
         <button class="onboard-btn" onclick="openModal()">Set Up</button>
+        <button class="onboard-dismiss" onclick="this.parentElement.remove(); localStorage.setItem('onboard-dismissed','1');">&times;</button>
       </div>
     `;
   }
@@ -754,12 +755,12 @@ function renderShowCard(show, hideSkips, onlyFavs) {
   // Venue filter (compare against normalized venue name)
   if (activeVenue !== 'all' && normalizeVenue(show.venue) !== activeVenue) return '';
 
-  // Time filter
+  // Time filter (range)
   const timeFilter = document.getElementById('time-filter')?.value;
-  if (timeFilter && timeFilter !== 'any') {
-    const showTime24 = to24h(show.time);
-    if (showTime24 && showTime24 > timeFilter) return '';
-  }
+  const timeFilterMin = window._timeFilterMin;
+  const showTime24_tf = to24h(show.time);
+  if (timeFilter && timeFilter !== 'any' && showTime24_tf && showTime24_tf > timeFilter) return '';
+  if (timeFilterMin && showTime24_tf && showTime24_tf < timeFilterMin) return '';
 
   const stats = scoreShow(show);
   const hasFavOrLike = stats.faves > 0 || stats.likes > 0;
@@ -897,10 +898,10 @@ function renderSortedByFaves(container) {
       // Hide entire show if any comedian is a skip
       if (hideSkips && stats.skips > 0) return;
       const timeFilter = document.getElementById('time-filter')?.value;
-      if (timeFilter && timeFilter !== 'any') {
-        const showTime24 = to24h(show.time);
-        if (showTime24 && showTime24 > timeFilter) return;
-      }
+      const timeFilterMin2 = window._timeFilterMin;
+      const showTime24_sf = to24h(show.time);
+      if (timeFilter && timeFilter !== 'any' && showTime24_sf && showTime24_sf > timeFilter) return;
+      if (timeFilterMin2 && showTime24_sf && showTime24_sf < timeFilterMin2) return;
       allShows.push({ ...show, dateStr, dateObj: d, faves: stats.faves, score: stats.score, stats });
     });
   });
@@ -968,11 +969,12 @@ function renderAllDaysSchedule(container) {
   const prefs2 = loadPrefs();
   const hasAnyPrefs2 = prefs2.faves.length > 0 || prefs2.skips.length > 0 || prefs2.likes.length > 0;
   let html = '';
-  if (!hasAnyPrefs2) {
+  if (!hasAnyPrefs2 && !localStorage.getItem('onboard-dismissed')) {
     html += `
       <div class="onboard-banner" id="onboard-banner">
         <p><strong>New here?</strong> Tap comedian names to mark favorites or skips. Or use "My Comedians" to set them all at once.</p>
         <button class="onboard-btn" onclick="openModal()">Set Up</button>
+        <button class="onboard-dismiss" onclick="this.parentElement.remove(); localStorage.setItem('onboard-dismissed','1');">&times;</button>
       </div>
     `;
   }
@@ -998,6 +1000,10 @@ function renderAllDaysSchedule(container) {
           const t24 = to24h(s.time);
           return !t24 || t24 <= timeFilterStand;
         });
+      }
+      const tfMinStand = window._timeFilterMin;
+      if (tfMinStand) {
+        dayShows = dayShows.filter(s => { const t24 = to24h(s.time); return !t24 || t24 >= tfMinStand; });
       }
       if (dayShows.length === 0) {
         html += '<div class="no-shows" style="padding:16px 0;">No shows.</div>';
@@ -1040,6 +1046,7 @@ function renderAllDaysSchedule(container) {
         const t24 = to24h(show.time);
         if (t24 && t24 > timeFilterCellar) return;
       }
+      { const tfMinC = window._timeFilterMin; if (tfMinC) { const t24 = to24h(show.time); if (t24 && t24 < tfMinC) return; } }
       const stats = scoreShow(show);
       if (onlyFavs && stats.faves === 0 && stats.likes === 0) return;
       // Hide entire show if any comedian is a skip
@@ -1277,6 +1284,10 @@ function renderAllVenues(container) {
   if (timeFilterAV && timeFilterAV !== 'any') {
     allItems = allItems.filter(item => !item.time24 || item.time24 <= timeFilterAV);
   }
+  const tfMinAV = window._timeFilterMin;
+  if (tfMinAV) {
+    allItems = allItems.filter(item => !item.time24 || item.time24 >= tfMinAV);
+  }
 
   // Sort — by faves if dropdown selected, otherwise by date+time
   const sortValAV = document.getElementById('sort-select')?.value || 'none';
@@ -1298,8 +1309,8 @@ function renderAllVenues(container) {
   }
 
   let html = '';
-  if (!hasPrefsAV) {
-    html += `<div class="onboard-banner"><p><strong>New here?</strong> Tap comedian names to mark favorites or skips. Or use "My Comedians" to set them all at once.</p><button class="onboard-btn" onclick="openModal()">Set Up</button></div>`;
+  if (!hasPrefsAV && !localStorage.getItem('onboard-dismissed')) {
+    html += `<div class="onboard-banner"><p><strong>New here?</strong> Tap comedian names to mark favorites or skips. Or use "My Comedians" to set them all at once.</p><button class="onboard-btn" onclick="openModal()">Set Up</button><button class="onboard-dismiss" onclick="this.parentElement.remove(); localStorage.setItem('onboard-dismissed','1');">&times;</button></div>`;
   }
   html += '<div class="schedule-view">';
   let lastDate = '';
@@ -1333,12 +1344,12 @@ function renderAllVenues(container) {
         </div>`;
     } else {
       const evt = item.show;
-      // Performer photo — local/DB first, SeatGeek fallback
-      let evtPhoto = getPhotoForVenue(evt.title, 'cellar') || localPhotoPath(evt.title) || '';
-      if (!evtPhoto && evt.performerImages) {
+      // Performer photo — SeatGeek first, local/DB fallback
+      let evtPhoto = '';
+      if (evt.performerImages) {
         evtPhoto = Object.values(evt.performerImages)[0] || '';
       }
-      if (!evtPhoto) evtPhoto = comedianPhotos[evt.title] || '';
+      if (!evtPhoto) evtPhoto = getPhotoForVenue(evt.title, 'cellar') || localPhotoPath(evt.title) || comedianPhotos[evt.title] || '';
       const evtPhotoHtml = evtPhoto ? `<img class="comedian-photo" src="${evtPhoto}" alt="" style="width:48px;height:48px;border-radius:50%;object-fit:cover;margin-right:8px;">` : '';
       html += `
         <div class="big-show-card">
@@ -1423,13 +1434,13 @@ function renderBigShows(container) {
   Object.entries(byPerformer).forEach(([title, data]) => {
     try {
     const firstEvt = data.events[0];
-    // Performer photo — local/DB first, SeatGeek fallback (SeatGeek often has placeholders)
-    let photoUrl = getPhotoForVenue(title, 'cellar') || localPhotoPath(title) || '';
-    if (!photoUrl && data.performerImages) {
+    // Performer photo — SeatGeek first (usually good), local/DB fallback
+    let photoUrl = '';
+    if (data.performerImages) {
       photoUrl = Object.values(data.performerImages)[0] || '';
     }
-    if (!photoUrl) photoUrl = comedianPhotos[title] || '';
-    const photoHtml = photoUrl ? `<img src="${photoUrl}" alt="${title}" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;">` : '';
+    if (!photoUrl) photoUrl = getPhotoForVenue(title, 'cellar') || localPhotoPath(title) || comedianPhotos[title] || '';
+    const photoHtml = photoUrl ? `<img src="${photoUrl}" alt="${title}" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;" onerror="this.style.display='none'">` : '';
 
     // Date boxes for each show
     const dateBoxes = data.events.map(evt => {
@@ -1798,21 +1809,20 @@ function modalCycle(name) {
 function updateResetBtn() {
   const btn = document.getElementById('reset-filters');
   if (!btn) return;
+  const sortVal = document.getElementById('sort-select')?.value;
+  const prefs = loadPrefs();
+  const hasRatedComedians = prefs.faves.length > 0 || prefs.skips.length > 0 || prefs.likes.length > 0;
   const anyActive =
-    document.getElementById('hide-skips')?.checked ||
-    document.getElementById('only-faves')?.checked ||
-    (document.getElementById('sort-select')?.value !== 'none') ||
-    document.getElementById('expand-bios')?.checked ||
-    document.getElementById('expand-long-bios')?.checked ||
     document.getElementById('quick-mode')?.checked ||
     !document.getElementById('picture-mode')?.checked ||
-    document.getElementById('no-photo-filter')?.checked ||
-    !document.getElementById('show-photos')?.checked ||
+    (sortVal !== 'none' && hasRatedComedians) ||
+    document.getElementById('expand-bios')?.checked ||
+    document.getElementById('expand-long-bios')?.checked ||
     (document.getElementById('time-filter')?.value !== 'any') ||
-    activeVenue !== 'all' ||
-    activeStandRoom !== 'all' ||
-    activeBigVenue !== 'all';
+    !!window._timeFilterMin;
   btn.style.display = anyActive ? 'inline-block' : 'none';
+  const resetRow = document.getElementById('toolbar-reset-row');
+  if (resetRow) resetRow.style.display = anyActive ? 'flex' : 'none';
 }
 
 // ---- Theme toggle ----
@@ -1926,15 +1936,16 @@ async function init() {
   dates = getDateRange();
   activeDate = 'all';
 
-  // Fetch all sources in parallel
-  const [cellarResults] = await Promise.all([
-    Promise.all(dates.map(d => fetchDay(formatDateParam(d)))),
-    fetchTheStand(),
-    fetchBigShows(),
-    fetchNYCC(),
-    loadComedianDB(),
-    fetchGotham()
-  ]);
+  // Fetch comedian DB + Cellar shows first (primary data), start others in background
+  const cellarPromise = Promise.all(dates.map(d => fetchDay(formatDateParam(d))));
+  const dbPromise = loadComedianDB();
+  const standPromise = fetchTheStand();
+  const bigShowsPromise = fetchBigShows();
+  const nyccPromise = fetchNYCC();
+  const gothamPromise = fetchGotham();
+
+  // Wait only for Cellar + DB before first render
+  const [cellarResults] = await Promise.all([cellarPromise, dbPromise]);
 
   dates.forEach((d, i) => {
     const dateStr = formatDateParam(d);
@@ -1946,24 +1957,6 @@ async function init() {
     }
   });
 
-  // Add Stand comedians to the seen list too
-  standShows.forEach(show => {
-    show.comedians.forEach(name => allComediansSeen.add(name));
-  });
-
-  // Add Gotham shows to seen list
-  gothamShows.forEach(show => {
-    if (show.title) allComediansSeen.add(show.title.trim());
-  });
-
-  // Add Big Shows performers to seen list
-  bigShows.forEach(evt => {
-    if (evt.performers) {
-      evt.performers.split(/,\s*/).forEach(n => { if (n.trim()) allComediansSeen.add(n.trim()); });
-    }
-    if (evt.title) allComediansSeen.add(evt.title.trim());
-  });
-
   document.getElementById('loading').style.display = 'none';
   // Default to big picture mode
   const pmEl = document.getElementById('picture-mode');
@@ -1973,6 +1966,32 @@ async function init() {
   renderTabs();
   renderShows();
   updateFooterInfo();
+  document.getElementById('schedule-filter-area')?.classList.add('ready');
+
+  // Load remaining venues in background, re-render as each arrives
+  Promise.all([standPromise, bigShowsPromise, nyccPromise, gothamPromise]).then(() => {
+    // Add Stand comedians to the seen list
+    standShows.forEach(show => {
+      show.comedians.forEach(name => allComediansSeen.add(name));
+    });
+
+    // Add Gotham shows to seen list
+    gothamShows.forEach(show => {
+      if (show.title) allComediansSeen.add(show.title.trim());
+    });
+
+    // Add Big Shows performers to seen list
+    bigShows.forEach(evt => {
+      if (evt.performers) {
+        evt.performers.split(/,\s*/).forEach(n => { if (n.trim()) allComediansSeen.add(n.trim()); });
+      }
+      if (evt.title) allComediansSeen.add(evt.title.trim());
+    });
+
+    renderSourceTabs();
+    renderShows();
+    updateFooterInfo();
+  });
 
   // Enrich bios from Wikipedia in background (don't block render)
   enrichBiosFromWikipedia().then(() => {
@@ -2021,6 +2040,18 @@ async function init() {
     if (e.target.checked) { const sb = document.getElementById('expand-bios'); if (sb) sb.checked = false; }
     updateResetBtn(); renderShows();
   });
+  document.getElementById('bio-mode')?.addEventListener('change', (e) => {
+    const sb = document.getElementById('expand-bios');
+    const lb = document.getElementById('expand-long-bios');
+    if (sb) sb.checked = e.target.value === 'short';
+    if (lb) lb.checked = e.target.value === 'long';
+    // Show short label after selection
+    const sel = e.target;
+    sel.options[0].text = 'Bios';
+    sel.options[1].text = sel.value === 'short' ? 'Short' : 'Short bios';
+    sel.options[2].text = sel.value === 'long' ? 'Long' : 'Long bios';
+    updateResetBtn(); renderShows();
+  });
   document.getElementById('quick-mode')?.addEventListener('change', (e) => {
     updateResetBtn();
     const hint = document.getElementById('quick-mode-hint');
@@ -2035,6 +2066,45 @@ async function init() {
     updateResetBtn(); renderShows();
   });
 
+  // Time range slider drives hidden time-filter select + earliest start
+  const timeSteps = ['any', '19:00', '20:00', '21:00', '22:00', '23:00'];
+  const timeLabels = ['Any', '7 PM', '8 PM', '9 PM', '10 PM', '11 PM'];
+  const sliderMin = document.getElementById('time-slider-min');
+  const sliderMax = document.getElementById('time-slider-max');
+  const rangeValue = document.getElementById('time-range-value');
+  const rangeFill = document.getElementById('time-range-fill');
+  function updateTimeRange() {
+    if (!sliderMin || !sliderMax) return;
+    let lo = parseInt(sliderMin.value);
+    let hi = parseInt(sliderMax.value);
+    if (lo > hi) { sliderMin.value = hi; sliderMax.value = lo; lo = parseInt(sliderMin.value); hi = parseInt(sliderMax.value); }
+    // Update fill bar position
+    if (rangeFill) {
+      const pctL = (lo / 5) * 100;
+      const pctR = (hi / 5) * 100;
+      rangeFill.style.left = pctL + '%';
+      rangeFill.style.width = (pctR - pctL) + '%';
+    }
+    // Update label
+    if (rangeValue) {
+      if (lo === 0 && hi === 5) rangeValue.textContent = 'Any';
+      else if (lo === 0) rangeValue.textContent = 'Before ' + timeLabels[hi];
+      else if (hi === 5) rangeValue.textContent = 'After ' + timeLabels[lo];
+      else if (lo === hi) rangeValue.textContent = timeLabels[lo];
+      else rangeValue.textContent = timeLabels[lo] + ' – ' + timeLabels[hi];
+    }
+    // Drive the hidden time-filter (latest/max)
+    const tf = document.getElementById('time-filter');
+    if (tf) { tf.value = timeSteps[hi]; }
+    // Set global earliest start
+    window._timeFilterMin = lo === 0 ? null : timeSteps[lo];
+    updateResetBtn(); renderShows();
+  }
+  if (sliderMin) sliderMin.addEventListener('input', updateTimeRange);
+  if (sliderMax) sliderMax.addEventListener('input', updateTimeRange);
+  // Initialize fill bar
+  if (rangeFill) { rangeFill.style.left = '0%'; rangeFill.style.width = '100%'; }
+
   // Reset filters
   document.getElementById('reset-filters')?.addEventListener('click', () => {
     document.getElementById('hide-skips').checked = false;
@@ -2042,12 +2112,23 @@ async function init() {
     const ss = document.getElementById('sort-select'); if (ss) ss.value = 'none';
     document.getElementById('expand-bios').checked = false;
     const elb = document.getElementById('expand-long-bios'); if (elb) elb.checked = false;
+    const bm = document.getElementById('bio-mode');
+    if (bm) { bm.value = 'none'; bm.options[1].text = 'Short bios'; bm.options[2].text = 'Long bios'; }
     document.getElementById('quick-mode').checked = false;
     const pm = document.getElementById('picture-mode'); if (pm) pm.checked = true;
     const npf = document.getElementById('no-photo-filter'); if (npf) npf.checked = false;
     const sp = document.getElementById('show-photos'); if (sp) sp.checked = true;
     const tf = document.getElementById('time-filter');
     if (tf) tf.value = 'any';
+    const tsMin = document.getElementById('time-slider-min');
+    const tsMax = document.getElementById('time-slider-max');
+    if (tsMin) tsMin.value = 0;
+    if (tsMax) tsMax.value = 5;
+    window._timeFilterMin = null;
+    const rv = document.getElementById('time-range-value');
+    if (rv) rv.textContent = 'Any';
+    const rf = document.getElementById('time-range-fill');
+    if (rf) { rf.style.left = '0%'; rf.style.width = '100%'; }
     activeVenue = 'all';
     activeStandRoom = 'all';
     activeBigVenue = 'all';

@@ -15,9 +15,6 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://tonightnyc.com/og-image.png">
   <meta name="description" content="NYC comedy lineups from Comedy Cellar, The Stand, and more. Per-show breakdowns, favorites, skips, and direct booking.">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
   <link rel="stylesheet" href="style.css?v=CACHEBUST">
   <script>
     (function() {
@@ -55,71 +52,77 @@
 
   <hr class="section-divider">
 
-  <div class="venue-source-tabs" id="venue-source-tabs">
-    <button class="venue-source-tab active" data-source="all">All Venues</button>
-    <button class="venue-source-tab" data-source="cellar">Comedy Cellar</button>
-    <button class="venue-source-tab" data-source="the-stand">The Stand</button>
-    <button class="venue-source-tab" data-source="big-shows">Other Shows</button>
-  </div>
+  <div class="schedule-filter-area" id="schedule-filter-area">
+    <div class="venue-source-tabs" id="venue-source-tabs">
+      <button class="venue-source-tab active" data-source="all">All Venues</button>
+      <button class="venue-source-tab" data-source="cellar">Comedy Cellar</button>
+      <button class="venue-source-tab" data-source="the-stand">The Stand</button>
+      <button class="venue-source-tab" data-source="big-shows">Other Shows</button>
+    </div>
 
-  <nav id="day-tabs" class="day-tabs"></nav>
-  <div class="venue-filters" id="venue-filters"></div>
+    <nav id="day-tabs" class="day-tabs"></nav>
+    <div class="venue-filters" id="venue-filters"></div>
 
-  <div class="toolbar">
-    <button class="settings-btn" id="open-settings">My Comedians</button>
-    <label class="toggle toolbar-toggle">
-      <input type="checkbox" id="picture-mode">
-      <span>Big Pictures</span>
-    </label>
-    <div class="toolbar-spacer"></div>
-    <select id="time-filter" class="time-select">
-      <option value="any">Latest start</option>
-      <option value="19:00">By 7pm</option>
-      <option value="20:00">By 8pm</option>
-      <option value="21:00">By 9pm</option>
-      <option value="22:00">By 10pm</option>
-      <option value="23:00">By 11pm</option>
-    </select>
-    <button class="toolbar-btn" id="filters-toggle">Filters ▾</button>
-  </div>
-
-  <div class="filters-panel" id="filters-panel" style="display:none;">
-    <div class="filters-grid">
-      <label class="quick-mode-toggle" id="quick-mode-label">
-        <input type="checkbox" id="quick-mode">
-        <span class="quick-mode-switch"></span>
-        <span class="quick-mode-text">Ratings mode</span>
-        <span class="info-icon" onclick="event.preventDefault();">&#9432;
-          <span class="info-popup">With Ratings mode ON, click comedians to cycle: Fave → Skip → Neutral. With it OFF, click to expand their bio.</span>
-        </span>
-      </label>
-      <label class="toggle" id="only-faves-label">
-        <input type="checkbox" id="only-faves">
-        <span>Faves only</span>
-      </label>
-      <label class="toggle">
-        <input type="checkbox" id="hide-skips">
-        <span>Hide skips</span>
-      </label>
-      <label class="toggle">
-        <input type="checkbox" id="expand-bios">
-        <span>Short bios</span>
-      </label>
-      <label class="toggle">
-        <input type="checkbox" id="expand-long-bios">
-        <span>Long bios</span>
-      </label>
-      <label class="toggle">
-        <input type="checkbox" id="no-photo-filter">
-        <span>No photo</span>
-      </label>
-      <select id="sort-select" class="sort-select">
-        <option value="none">Sort by...</option>
-        <option value="faves">Best for you</option>
-      </select>
-      <button class="reset-filters-btn" id="reset-filters" style="display:none;">Reset all</button>
+    <div class="toolbar">
+      <div class="toolbar-main">
+        <button class="settings-btn" id="open-settings">My Comedians</button>
+        <label class="quick-mode-toggle" id="quick-mode-label">
+          <input type="checkbox" id="quick-mode">
+          <span class="quick-mode-switch"></span>
+          <span class="quick-mode-text">Ratings mode</span>
+          <span class="info-icon" onclick="event.preventDefault();">&#9432;
+            <span class="info-popup">With Ratings mode ON, click comedians to cycle: Fave → Skip → Neutral. With it OFF, click to expand their bio.</span>
+          </span>
+        </label>
+        <div class="toolbar-spacer"></div>
+        <label class="toggle toolbar-toggle">
+          <input type="checkbox" id="picture-mode">
+          <span>Big Pictures</span>
+        </label>
+        <select id="sort-select" class="sort-select">
+          <option value="none">Sort by...</option>
+          <option value="faves">Top rated</option>
+        </select>
+        <button class="toolbar-btn" id="filters-toggle">Filters ▾</button>
+      </div>
+      <div class="filters-panel" id="filters-panel" style="display:none;">
+        <div class="filters-grid">
+          <select id="bio-mode" class="bio-select">
+            <option value="none">Bios</option>
+            <option value="short">Short bios</option>
+            <option value="long">Long bios</option>
+          </select>
+          <div class="time-range-wrap">
+            <label class="time-range-label">Start times</label>
+            <div class="time-range-track" id="time-range-track">
+              <div class="time-range-fill" id="time-range-fill"></div>
+              <input type="range" id="time-slider-min" class="time-range-input" min="0" max="5" value="0">
+              <input type="range" id="time-slider-max" class="time-range-input" min="0" max="5" value="5">
+            </div>
+            <span class="time-range-value" id="time-range-value">Any</span>
+          </div>
+        </div>
+      </div>
+      <div class="toolbar-reset-row" id="toolbar-reset-row" style="display:none;">
+        <button class="reset-filters-btn" id="reset-filters">Reset all</button>
+      </div>
     </div>
   </div>
+
+  <!-- Hidden elements kept for JS compatibility -->
+  <input type="checkbox" id="only-faves" style="display:none;">
+  <input type="checkbox" id="hide-skips" style="display:none;">
+  <input type="checkbox" id="no-photo-filter" style="display:none;">
+  <input type="checkbox" id="expand-bios" style="display:none;">
+  <input type="checkbox" id="expand-long-bios" style="display:none;">
+  <select id="time-filter" style="display:none;">
+    <option value="any">Any</option>
+    <option value="19:00">By 7pm</option>
+    <option value="20:00">By 8pm</option>
+    <option value="21:00">By 9pm</option>
+    <option value="22:00">By 10pm</option>
+    <option value="23:00">By 11pm</option>
+  </select>
 
   <main id="shows-container" class="shows-container">
     <div class="loading" id="loading">Loading lineups...</div>
@@ -168,7 +171,7 @@
     <p><a href="mailto:hello@tonightnyc.com">hello@tonightnyc.com</a></p>
   </footer>
 
-  <script src="app.js?v=CACHEBUST"></script>
+  <script defer src="app.js?v=CACHEBUST"></script>
   <!-- Vercel Web Analytics — auto-injected when enabled in dashboard -->
   <script defer src="/_vercel/insights/script.js"></script>
   <!-- Vercel Speed Insights -->

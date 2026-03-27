@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang= "en">
+  <head>
+    <meta charset="utf-8">
+    
+    <link rel="preconnect" href="https://a.pub.network/" crossorigin />
+    <link rel="preconnect" href="https://d.pub.network/" crossorigin />
+    
+    
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Page Not Found | Famous Birthdays</title>
+        <meta name="description" content="Who else was born on your birthday? Find out quickly and easily at FamousBirthdays.com. You can also discover the popularity rank of famous people.">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg?3" type="image/svg+xml">
+    <link rel="icon" href="/favicon-32.png?3" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="https://www.famousbirthdays.com/apple-touch-icon.png">
+
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.famousbirthdays.com/#organization","name":"Famous Birthdays","url":"https://www.famousbirthdays.com/","logo":{"@type":"ImageObject","url":"https://www.famousbirthdays.com/apple-touch-icon.png","width":180,"height":180},"sameAs":["https://www.instagram.com/famousbirthdays","https://www.tiktok.com/@famousbirthdays","https://twitter.com/famousbirthdays","https://www.youtube.com/@famousbirthdays"]},{"@type":"WebSite","@id":"https://www.famousbirthdays.com/#website","url":"https://www.famousbirthdays.com/","name":"Famous Birthdays","inLanguage":"en","publisher":{"@id":"https://www.famousbirthdays.com/#organization"}}]}
+</script>
+
+    <link rel="manifest" href="/manifest.json">
+
+        <link rel="stylesheet" href="/static/css/combined.min.css?v1774613656">
+
+  
+
+            <meta name="robots" content="noindex,nofollow">
+        
+    
+          <script data-cfasync="false" type="text/javascript">
+    var freestar = freestar || {};
+    freestar.queue = freestar.queue || [];
+    freestar.config = freestar.config || {};
+    freestar.config.enabled_slots = [];
+    freestar.initCallback = function () { (freestar.config.enabled_slots.length === 0) ? freestar.initCallbackCalled = false : freestar.newAdSlots(freestar.config.enabled_slots) }
+</script>
+<script>
+var useSSL="https:"==document.location.protocol</script>
+    
+     
+    
+
+
+    
+  </head>
+  <body>
+    <div class="site-header">
+  <a href="/" class="site-header__home" aria-label="To Famous Birthdays homepage">
+    <span class="site-header__logo">
+      <svg class="icon icon--logo-fb">
+        <use xlink:href="/static/fonts/famous-icons.svg#icon-logo-fb"></use>
+      </svg>
+    </span>
+    <span class="site-header__logo-mobile">
+      <svg class="icon icon--logo-fb-mobile">
+        <use xlink:href="/static/fonts/famous-icons.svg#icon-logo-fb-mobile"></use>
+      </svg>
+    </span>
+  </a>
+  <form id="fb_search" class="search  " role="form" name="fb_search" action="/search" method="post">
+	<fieldset>
+	    <input autocomplete="off" id="main-search" type="search" name="q" placeholder=" Search " class="type-24-26 search-bar"  aria-label="Enter Celebrity or Date" maxlength="80"  data-dark_theme="0" >
+	    <div class="search-button">
+	      <svg class="icon icon--search">
+	        <use xlink:href="/static/fonts/famous-icons.svg#icon-search"></use>
+	      </svg>
+	    </div>  
+	    <button type="submit" class="search-submit" aria-label="Search"></button>
+	    <ul  id="autocomplete-suggestions"  class="autocomplete-suggestions search-suggestions " ></ul>
+	    
+	</fieldset>
+</form>
+
+
+
+  <div class="site-navigation">
+    <a href="/most-popular-people.html" title="popular">
+      <span class="site-navigation__icon">
+        <svg class="icon icon--popular">
+          <use xlink:href="/static/fonts/famous-icons.svg#icon-popular"></use>
+        </svg>
+      </span>
+      <span>popular</span>
+    </a>
+    <a href="/trending" title="trending">
+      <span class="site-navigation__icon">
+        <svg class="icon icon--trending">
+          <use xlink:href="/static/fonts/famous-icons.svg#icon-trending"></use>
+        </svg>
+      </span>
+      <span>trending</span>
+    </a>
+
+        <a href="/video" title="video">
+      <span class="site-navigation__icon">
+        <svg class="icon icon--qa">
+          <use xlink:href="/static/fonts/famous-icons.svg#icon-qa"></use>
+        </svg>
+      </span>
+      <span>video</span>
+    </a>
+        <a href="/trivia" title="trivia">
+      <span class="site-navigation__icon">
+        <svg class="icon icon--trivia">
+          <use xlink:href="/static/fonts/famous-icons.svg#icon-trivia"></use>
+        </svg>
+      </span>
+      <span>trivia</span>
+    </a>
+    <a id="random-person" href="#" title="random" class="random-person">
+      <span class="site-navigation__icon">
+        <svg class="icon icon--random">
+          <use xlink:href="/static/fonts/famous-icons.svg#icon-random"></use>
+        </svg>
+      </span>
+      <span>random</span>
+    </a>
+  </div>
+</div>
+    <main class=" layout--is-narrow ">
+       
+
+<div class="section-row modifierSize section-row--size-xs">
+	<div class="static-module">
+	  		  		<h1 class="type-36">Page Not Found</h1>
+	  		  	
+  		 <div>
+  <p class="not-found-content">The page you’re looking for doesn’t exist. Try searching or explore what’s trending below.</p>
+   <form id="fb_search" class="search  search--theme-dark  " role="form" name="fb_search" action="/search" method="post">
+	<fieldset>
+	    <input autocomplete="off" id="main-search" type="search" name="q" placeholder="Search" class="type-24-26 search-bar"  aria-label="Enter Celebrity or Date" maxlength="80"  data-dark_theme="1" >
+	    <div class="search-button">
+	      <svg class="icon icon--search">
+	        <use xlink:href="/static/fonts/famous-icons.svg#icon-search"></use>
+	      </svg>
+	    </div>  
+	    <button type="submit" class="search-submit" aria-label="Search"></button>
+	    <ul  id="autocomplete-suggestions-dark"  class="autocomplete-suggestions search-suggestions  search-suggestions--theme-dark " ></ul>
+	    
+	</fieldset>
+</form>
+
+
+
+ </div>
+
+  		
+  				
+
+		<div class="column">
+        <div class="profile-ranking-module static-ranking-module">
+
+          <h2 class="type-30-32 desktop-p-1"><a href="/trending/" title="Trending">Trending Celebrities</a></h2>
+          <div class="static-ranking-module__inner">
+            <div class="column">
+                                              <a class="ranking-item" href="https://www.famousbirthdays.com/people/tilly-mills.html">
+                  <span class="ranking-item__profile type-24-26">
+                    <div class="ranking-item__picture">
+                        <img src="https://www.famousbirthdays.com/thumbnails/mills-tilly-tiny.jpg" srcset="https://www.famousbirthdays.com/thumbnails/mills-tilly-tiny.jpg 56w, https://www.famousbirthdays.com/thumbnails/mills-tilly-retina.jpg 112w" sizes="56px" width="56" height="56" alt="Tilly Mills" loading="lazy" decoding="async">
+                      </div>
+                    <span class="ranking-item__label">
+                      <span class="line">Tilly Mills</span>
+                    </span>
+                  </span>
+                  <span class="ranking-item__rank type-36">
+                    
+                    <svg class="icon icon--arrow-up">
+                        <use xlink:href="/static/fonts/famous-icons.svg#icon-arrow-up"></use>
+                    </svg> 
+                                          412
+                    
+                  </span>
+                </a>
+                                                              <a class="ranking-item" href="https://www.famousbirthdays.com/people/taylor-lautner.html">
+                  <span class="ranking-item__profile type-24-26">
+                    <div class="ranking-item__picture">
+                        <img src="https://www.famousbirthdays.com/thumbnails/lautner-taylor-tiny.jpg" srcset="https://www.famousbirthdays.com/thumbnails/lautner-taylor-tiny.jpg 56w, https://www.famousbirthdays.com/thumbnails/lautner-taylor-retina.jpg 112w" sizes="56px" width="56" height="56" alt="Taylor Lautner" loading="lazy" decoding="async">
+                      </div>
+                    <span class="ranking-item__label">
+                      <span class="line">Taylor Lautner</span>
+                    </span>
+                  </span>
+                  <span class="ranking-item__rank type-36">
+                    
+                    <svg class="icon icon--arrow-up">
+                        <use xlink:href="/static/fonts/famous-icons.svg#icon-arrow-up"></use>
+                    </svg> 
+                                          287
+                    
+                  </span>
+                </a>
+                                                              <a class="ranking-item" href="https://www.famousbirthdays.com/people/diesel-la-torraca.html">
+                  <span class="ranking-item__profile type-24-26">
+                    <div class="ranking-item__picture">
+                        <img src="https://www.famousbirthdays.com/thumbnails/la-torraca-diesel-tiny.jpg" srcset="https://www.famousbirthdays.com/thumbnails/la-torraca-diesel-tiny.jpg 56w, https://www.famousbirthdays.com/thumbnails/la-torraca-diesel-retina.jpg 112w" sizes="56px" width="56" height="56" alt="Diesel La Torraca" loading="lazy" decoding="async">
+                      </div>
+                    <span class="ranking-item__label">
+                      <span class="line">Diesel La Torraca</span>
+                    </span>
+                  </span>
+                  <span class="ranking-item__rank type-36">
+                    
+                    <svg class="icon icon--arrow-up">
+                        <use xlink:href="/static/fonts/famous-icons.svg#icon-arrow-up"></use>
+                    </svg> 
+                                          171
+                    
+                  </span>
+                </a>
+                                                                                                                                                                                    
+            </div>
+
+            <div class="column">
+                                                                                                                                        <a class="ranking-item" href="https://www.famousbirthdays.com/people/jessi-ngatikaura.html">
+                  <span class="ranking-item__profile type-24-26">
+                    <div class="ranking-item__picture">
+                        <img src="https://www.famousbirthdays.com/thumbnails/ngatikaura-jessi-tiny.jpg" srcset="https://www.famousbirthdays.com/thumbnails/ngatikaura-jessi-tiny.jpg 56w, https://www.famousbirthdays.com/thumbnails/ngatikaura-jessi-retina.jpg 112w" sizes="56px" width="56" height="56" alt="Jessi Draper" loading="lazy" decoding="async">
+                      </div>
+                    <span class="ranking-item__label">
+                      <span class="line">Jessi Draper</span>
+                    </span>
+                  </span>
+                                    <span class="ranking-item__rank type-36">
+                    
+                    <svg class="icon icon--arrow-up">
+                        <use xlink:href="/static/fonts/famous-icons.svg#icon-arrow-up"></use>
+                    </svg> 
+
+                                          164
+                    
+                  </span>
+                                  </a>
+                                                              <a class="ranking-item" href="https://www.famousbirthdays.com/people/bandbabyliah.html">
+                  <span class="ranking-item__profile type-24-26">
+                    <div class="ranking-item__picture">
+                        <img src="https://www.famousbirthdays.com/thumbnails/bandbabyliah-tiny.jpg" srcset="https://www.famousbirthdays.com/thumbnails/bandbabyliah-tiny.jpg 56w, https://www.famousbirthdays.com/thumbnails/bandbabyliah-retina.jpg 112w" sizes="56px" width="56" height="56" alt="Bandbabyliah" loading="lazy" decoding="async">
+                      </div>
+                    <span class="ranking-item__label">
+                      <span class="line">Bandbabyliah</span>
+                    </span>
+                  </span>
+                                    <span class="ranking-item__rank type-36">
+                    
+                    <svg class="icon icon--arrow-up">
+                        <use xlink:href="/static/fonts/famous-icons.svg#icon-arrow-up"></use>
+                    </svg> 
+
+                                          138
+                    
+                  </span>
+                                  </a>
+                                                              <a class="ranking-item" href="https://www.famousbirthdays.com/people/chelsea-lascher.html">
+                  <span class="ranking-item__profile type-24-26">
+                    <div class="ranking-item__picture">
+                        <img src="https://www.famousbirthdays.com/thumbnails/lascher-chelsea-tiny.jpg" srcset="https://www.famousbirthdays.com/thumbnails/lascher-chelsea-tiny.jpg 56w, https://www.famousbirthdays.com/thumbnails/lascher-chelsea-retina.jpg 112w" sizes="56px" width="56" height="56" alt="Chelsea Lascher" loading="lazy" decoding="async">
+                      </div>
+                    <span class="ranking-item__label">
+                      <span class="line">Chelsea Lascher</span>
+                    </span>
+                  </span>
+                                    <span class="ranking-item__rank type-36">
+                    
+                    <svg class="icon icon--arrow-up">
+                        <use xlink:href="/static/fonts/famous-icons.svg#icon-arrow-up"></use>
+                    </svg> 
+
+                                          106
+                    
+                  </span>
+                                  </a>
+                                                                                          
+            </div>
+
+            <div class="column">
+                                                                                                                                                                                                                                  <a class="ranking-item" href="https://www.famousbirthdays.com/people/vinicius-junior.html">
+                  <span class="ranking-item__profile type-24-26">
+                    <div class="ranking-item__picture">
+                        <img src="https://www.famousbirthdays.com/thumbnails/j--nior-vin--cius-tiny.jpg" srcset="https://www.famousbirthdays.com/thumbnails/j--nior-vin--cius-tiny.jpg 56w, https://www.famousbirthdays.com/thumbnails/j--nior-vin--cius-retina.jpg 112w" sizes="56px" width="56" height="56" alt="Vinícius Júnior" loading="lazy" decoding="async">
+                      </div>
+                    <span class="ranking-item__label">Vinícius Júnior</span>
+                  </span>
+                  <span class="ranking-item__rank type-36">
+                    
+                    <svg class="icon icon--arrow-up">
+                        <use xlink:href="/static/fonts/famous-icons.svg#icon-arrow-up"></use>
+                    </svg> 
+                                          101
+                    
+                  </span>
+                </a>
+                                                              <a class="ranking-item" href="https://www.famousbirthdays.com/people/lannan-eacott.html">
+                  <span class="ranking-item__profile type-24-26">
+                    <div class="ranking-item__picture">
+                        <img src="https://www.famousbirthdays.com/thumbnails/lazarbeam-tiny.jpg" srcset="https://www.famousbirthdays.com/thumbnails/lazarbeam-tiny.jpg 56w, https://www.famousbirthdays.com/thumbnails/lazarbeam-retina.jpg 112w" sizes="56px" width="56" height="56" alt="LazarBeam" loading="lazy" decoding="async">
+                      </div>
+                    <span class="ranking-item__label">LazarBeam</span>
+                  </span>
+                  <span class="ranking-item__rank type-36">
+                    
+                    <svg class="icon icon--arrow-up">
+                        <use xlink:href="/static/fonts/famous-icons.svg#icon-arrow-up"></use>
+                    </svg> 
+                                          97
+                    
+                  </span>
+                </a>
+                                            
+              <a class="rounded-button rounded-button--bar" href="/trending/">
+                <span class="type-28">More</span>
+              
+              </a>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+			</div>
+</div>
+
+	
+              <div class="banners bottom-leaderboard-wrapper">
+        <div align="center" data-freestar-ad="__300x250 __970x90" id="famousbirthdays_incontent_3">
+  <script data-cfasync="false" type="text/javascript">
+    freestar.config.enabled_slots.push({ placementName: "famousbirthdays_incontent_3", slotId: "famousbirthdays_incontent_3" });
+  </script>
+</div>
+
+
+
+      </div>
+          </main>
+    <div class="site-footer">
+      <div class="site-footer__row">
+        <a class="site-footer__row__left site-footer__logo" href="/" aria-label="Home">
+          <svg class="icon icon--logo-fb">
+            <use xlink:href="/static/fonts/famous-icons.svg#icon-logo-fb"></use>
+          </svg>
+        </a>
+        <div class="site-footer__row__right site-footer__icons">
+          <ul class="site-footer__social">
+                        <li>
+              <a href="https://instagram.com/famousbirthdays" target="_blank" rel="noopener" aria-label="Famous Birthdays on Instagram">
+                <svg class="icon icon--instagram">
+                  <use xlink:href="/static/fonts/famous-icons.svg#icon-instagram"></use>
+                </svg>
+              </a>
+            </li>
+             
+
+                        <li>
+              <a href="https://www.tiktok.com/@famousbirthdays" target="_blank" rel="noopener" aria-label="Famous Birthdays on TikTok">
+                <svg class="icon icon--tiktok">
+                  <use xlink:href="/static/fonts/famous-icons.svg#icon-tiktok"></use>
+                </svg>
+              </a>
+            </li>
+             
+
+                        <li>
+              <a href="https://twitter.com/famousbirthdays" target="_blank" rel="noopener" aria-label="Famous Birthdays on Twitter">
+                <svg class="icon icon--twitter">
+                  <use xlink:href="/static/fonts/famous-icons.svg#icon-twitter"></use>
+                </svg>
+              </a>
+            </li>
+            
+                        <li>
+              <a href="https://www.youtube.com/@famousbirthdays" target="_blank" rel="noopener" aria-label="Famous Birthdays on YouTube">
+                <svg class="icon icon--youtube">
+                  <use xlink:href="/static/fonts/famous-icons.svg#icon-youtube"></use>
+                </svg>
+              </a>
+            </li>
+             
+          </ul>
+          <ul class="site-footer__apps">
+                                    <li>
+              <a href="https://itunes.apple.com/us/app/famous-birthdays-celebrity/id646707938" target="_blank" rel="noopener" aria-label="Famous Birthdays in the App store">
+                <svg class="icon icon--app-store">
+                                      <use xlink:href="/static/fonts/famous-icons.svg#icon-app-store"></use>
+                                  </svg>
+              </a>
+              
+            </li>
+             
+                                    <li>
+              <a href="https://play.google.com/store/apps/details?id=com.famousbirthdays" target="_blank" rel="noopener" aria-label="Famous Birthdays in the Play store">
+                <svg class="icon icon--play-store">
+                  <use xlink:href="/static/fonts/famous-icons.svg#icon-play-store"></use>
+                </svg>
+              </a>
+              </li>
+               
+            
+          </ul>
+          <ul class="site-footer__languages">
+            
+            
+                        <li>
+              <a href="https://es.famousbirthdays.com" target="_blank" rel="noopener" title="Spanish" aria-label="Spanish">
+                <svg class="icon icon--flag-spain">
+                  <use xlink:href="/static/fonts/famous-icons.svg#icon-flag-spain"></use>
+                </svg>
+              </a>
+            </li>
+            
+                        <li>
+              <a href="https://pt.famousbirthdays.com" target="_blank" rel="noopener" title="Portuguese" aria-label="Portuguese">
+                <svg class="icon icon--flag-portugal">
+                  <use xlink:href="/static/fonts/famous-icons.svg#icon-flag-portugal"></use>
+                </svg>
+              </a>
+            </li>
+                              
+                        <li>
+              <a href="https://fr.famousbirthdays.com" target="_blank" rel="noopener" title="French" aria-label="French">
+                <svg class="icon icon--flag-france">
+                  <use xlink:href="/static/fonts/famous-icons.svg#icon-flag-france"></use>
+                </svg>
+              </a>
+            </li>
+            
+                        <li>
+              <a href="https://it.famousbirthdays.com" target="_blank" rel="noopener" title="Italian" aria-label="Italian">
+                <svg class="icon icon--flag-italy">
+                  <use xlink:href="/static/fonts/famous-icons.svg#icon-flag-italy"></use>
+                </svg>
+              </a>
+            </li>
+            
+                        <li>
+              <a href="https://de.famousbirthdays.com" target="_blank" rel="noopener" title="German" aria-label="German">
+                <svg class="icon icon--flag-germany">
+                  <use xlink:href="/static/fonts/famous-icons.svg#icon-flag-germany"></use>
+                </svg>
+              </a>
+            </li>
+                        
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__row site-footer__bottom">
+        <div class="site-footer__row__left">
+          <ul class="site-footer__navigation">
+            <li><a href="/about/" class="type-14-16">About</a></li>
+            <li><a href="/contact/" class="type-14-16">Contact</a></li>
+            <li><a href="/privacy/" class="type-14-16">Privacy</a></li>
+            <li><a href="/terms/" class="type-14-16">Terms</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__row__right site-footer__copyright">
+          <p class="type-12">
+            © FamousBirthdays.com - use subject to the practices disclosed in our privacy policy                  <button id="pmLink">Privacy Manager</button>
+                
+                      </p>
+          
+        </div>
+      </div>
+    </div>
+
+    
+    <form name="random" id="random-form" method="post" action="/random"></form>
+    <script src="/static/js/main.min.js?v1774613656" defer></script>
+
+      
+
+    
+
+    
+ 
+    <script src="https://a.pub.network/famousbirthdays-com/pubfig.min.js" data-cfasync="false" async></script>
+
+    
+    <script data-cfasync="false">
+    (function(){function runProbe(){var b=document.createElement('div');b.className='ad ads banner-ad ad-container';b.style.cssText='position:absolute;left:-9999px;top:-9999px;height:1px;width:1px;';document.documentElement.appendChild(b);requestAnimationFrame(function(){var blocked=getComputedStyle(b).display==='none';b.remove();if(blocked)window.__fsNeedsRecovery=true;if(window.__onProbeComplete)window.__onProbeComplete();});}if('requestIdleCallback' in window){requestIdleCallback(runProbe,{timeout:2000});}else{setTimeout(runProbe,2000);}})();
+    </script>
+
+    
+    <script data-cfasync="false">
+    (function(){function loadRecovery(){if(!window.__fsNeedsRecovery)return;if(window.__fsRecoveryStarted)return;window.__fsRecoveryStarted=true;cleanup();var s=document.createElement('script');s.src='/static/js/freestar-recovery.min.js';s.defer=true;document.head.appendChild(s);}function cleanup(){['scroll','click','keydown'].forEach(function(e){window.removeEventListener(e,onInteract,{capture:true,passive:true});});if(idleId)window.cancelIdleCallback&&window.cancelIdleCallback(idleId);clearTimeout(fallbackId);}var idleId,fallbackId;function onInteract(){loadRecovery();}window.__onProbeComplete=function(){if(!window.__fsNeedsRecovery)return;['scroll','click','keydown'].forEach(function(e){window.addEventListener(e,onInteract,{capture:true,passive:true,once:true});});if('requestIdleCallback' in window){idleId=requestIdleCallback(loadRecovery,{timeout:2000});}else{setTimeout(loadRecovery,2000);}fallbackId=setTimeout(loadRecovery,7000);};})();
+    </script>
+
+  </body>
+</html>
