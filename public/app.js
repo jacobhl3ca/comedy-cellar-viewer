@@ -618,6 +618,184 @@ function renderTabs() {
     });
     nav.appendChild(tab);
   });
+
+  // "More days" tab — loads days 8-14 on demand
+  if (!moreDaysLoaded) {
+    const moreTab = document.createElement('button');
+    moreTab.className = 'day-tab more-days-tab';
+    moreTab.innerHTML = `<span class="tab-day">More</span><span class="tab-date">days →</span>`;
+    moreTab.addEventListener('click', async () => {
+      moreTab.innerHTML = `<span class="tab-day">Loading</span><span class="tab-date">...</span>`;
+      await loadMoreDays();
+    });
+    nav.appendChild(moreTab);
+  }
+}
+
+let moreDaysLoaded = false;
+async function loadMoreDays() {
+  const now = new Date();
+  const extraDates = [];
+  for (let i = 7; i < 14; i++) {
+    const d = new Date(now);
+    d.setDate(now.getDate() + i);
+    extraDates.push(d);
+  }
+  try {
+    const resp = await fetchWithTimeout(`${API_BATCH_URL}?days=14&skip=7`, {}, 15000);
+    const batchData = await resp.json();
+    extraDates.forEach(d => {
+      const dateStr = formatDateParam(d);
+      const dayData = batchData?.results?.[dateStr];
+      const html = dayData?.show?.html || '';
+      if (html) {
+        allData[dateStr] = parseShows(html, dateStr);
+        allData[dateStr].forEach(show => {
+          show.comedians.forEach(name => allComediansSeen.add(name));
+        });
+      } else {
+        allData[dateStr] = null;
+      }
+    });
+    dates.push(...extraDates);
+    moreDaysLoaded = true;
+    renderTabs();
+    renderShows();
+  } catch (e) {
+    console.error('Failed to load more days:', e);
+  }
+}
+
+// ---- Calendar Picker ----
+let calendarOpen = false;
+let calendarSelectedDates = new Set();
+
+function initCalendar() {
+  const btn = document.getElementById('calendar-btn');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    calendarOpen = !calendarOpen;
+    btn.classList.toggle('active', calendarOpen);
+    renderCalendar();
+  });
+}
+
+function renderCalendar() {
+  const picker = document.getElementById('calendar-picker');
+  if (!picker) return;
+  if (!calendarOpen) { picker.style.display = 'none'; return; }
+  picker.style.display = 'block';
+
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const maxDate = new Date(today);
+  maxDate.setDate(today.getDate() + 13); // 14 days total
+
+  // Find the Monday of the week containing today
+  const startOfWeek = new Date(today);
+  const dow = startOfWeek.getDay();
+  startOfWeek.setDate(startOfWeek.getDate() - ((dow + 6) % 7)); // Monday
+
+  // End on Sunday of the week containing maxDate
+  const endOfWeek = new Date(maxDate);
+  const edow = endOfWeek.getDay();
+  if (edow !== 0) endOfWeek.setDate(endOfWeek.getDate() + (7 - edow));
+
+  let html = '<div class="calendar-grid">';
+  ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(d => {
+    html += `<div class="cal-header">${d}</div>`;
+  });
+
+  const cursor = new Date(startOfWeek);
+  while (cursor <= endOfWeek) {
+    const dateStr = cursor.toISOString().split('T')[0];
+    const isToday = cursor.getTime() === today.getTime();
+    const inRange = cursor >= today && cursor <= maxDate;
+    const isSelected = calendarSelectedDates.has(dateStr);
+    const classes = ['cal-day'];
+    if (isToday) classes.push('today');
+    if (isSelected) classes.push('selected');
+    if (!inRange) classes.push('disabled');
+    html += `<div class="${classes.join(' ')}" data-date="${dateStr}">${cursor.getDate()}</div>`;
+    cursor.setDate(cursor.getDate() + 1);
+  }
+  html += '</div>';
+  html += '<div class="calendar-actions">';
+  html += '<button onclick="calendarClear()">Clear</button>';
+  html += '<button class="primary" onclick="calendarApply()">Show selected</button>';
+  html += '</div>';
+
+  picker.innerHTML = html;
+
+  // Click handlers for day cells
+  picker.querySelectorAll('.cal-day:not(.disabled)').forEach(cell => {
+    cell.addEventListener('click', () => {
+      const d = cell.dataset.date;
+      if (calendarSelectedDates.has(d)) calendarSelectedDates.delete(d);
+      else calendarSelectedDates.add(d);
+      cell.classList.toggle('selected');
+    });
+  });
+}
+
+function calendarClear() {
+  calendarSelectedDates.clear();
+  // Reset to default view
+  activeDate = 'all';
+  renderCalendar();
+  renderTabs();
+  renderShows();
+}
+
+async function calendarApply() {
+  if (calendarSelectedDates.size === 0) return calendarClear();
+
+  // Ensure all selected dates have data loaded
+  const needed = [...calendarSelectedDates].filter(d => !(d in allData));
+  if (needed.length > 0) {
+    // Fetch missing days via batch
+    try {
+      const resp = await fetchWithTimeout(
+        `${API_BATCH_URL}?days=14`, {}, 15000
+      );
+      const batchData = await resp.json();
+      for (const dateStr of needed) {
+        const dayData = batchData?.results?.[dateStr];
+        const html = dayData?.show?.html || '';
+        if (html) {
+          allData[dateStr] = parseShows(html, dateStr);
+          allData[dateStr].forEach(show => {
+            show.comedians.forEach(name => allComediansSeen.add(name));
+          });
+        } else {
+          allData[dateStr] = null;
+        }
+        // Add to dates array if not present
+        const d = new Date(dateStr + 'T12:00:00');
+        if (!dates.find(dd => formatDateParam(dd) === dateStr)) {
+          dates.push(d);
+          dates.sort((a, b) => a - b);
+        }
+      }
+      moreDaysLoaded = true;
+    } catch (e) {
+      console.error('Failed to fetch calendar dates:', e);
+    }
+  }
+
+  // If exactly 1 date selected, go to that day tab
+  if (calendarSelectedDates.size === 1) {
+    activeDate = [...calendarSelectedDates][0];
+  } else {
+    // Multi-select: set to 'all' and filter in render
+    activeDate = 'calendar';
+  }
+
+  calendarOpen = false;
+  document.getElementById('calendar-btn')?.classList.remove('active');
+  renderCalendar();
+  renderTabs();
+  renderShows();
 }
 
 // ---- Venue Source Tab Rendering ----
@@ -694,8 +872,8 @@ function renderShows() {
   }
 
 
-  // "All" schedule view — show all days
-  if (activeDate === 'all') {
+  // "All" or "calendar" schedule view — show all/selected days
+  if (activeDate === 'all' || activeDate === 'calendar') {
     renderAllDaysSchedule(container);
     renderBottomTabs();
     return;
@@ -1024,6 +1202,8 @@ function renderAllDaysSchedule(container) {
 
   dates.forEach(d => {
     const dateStr = formatDateParam(d);
+    // Calendar multi-select: skip days not in selection
+    if (activeDate === 'calendar' && !calendarSelectedDates.has(dateStr)) return;
     const shows = allData[dateStr];
     const dayLabel = d.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
 
@@ -1198,7 +1378,9 @@ function renderGothamShows(container) {
     return;
   }
 
-  let filtered = activeDate === 'all' ? gothamShows : gothamShows.filter(s => s.date === activeDate);
+  let filtered = activeDate === 'all' || activeDate === 'calendar'
+    ? (activeDate === 'calendar' ? gothamShows.filter(s => calendarSelectedDates.has(s.date)) : gothamShows)
+    : gothamShows.filter(s => s.date === activeDate);
 
   let html = '<div class="schedule-view">';
   let lastDate = '';
@@ -1250,6 +1432,7 @@ function renderAllVenues(container) {
   // Cellar shows
   dates.forEach(d => {
     const dateStr = formatDateParam(d);
+    if (activeDate === 'calendar' && !calendarSelectedDates.has(dateStr)) return;
     const shows = allData[dateStr];
     if (!shows) return;
     shows.forEach(show => {
@@ -1277,7 +1460,9 @@ function renderAllVenues(container) {
   });
 
   // Filter by selected date if not "all"
-  if (activeDate && activeDate !== 'all') {
+  if (activeDate === 'calendar') {
+    allItems = allItems.filter(item => calendarSelectedDates.has(item.dateStr));
+  } else if (activeDate && activeDate !== 'all') {
     allItems = allItems.filter(item => item.dateStr === activeDate);
   }
 
@@ -1406,7 +1591,9 @@ function renderBigShows(container) {
   }
 
   // Filter by selected date and venue
-  let filtered = activeDate === 'all' ? bigShows : bigShows.filter(e => e.date === activeDate);
+  let filtered = activeDate === 'all' || activeDate === 'calendar'
+    ? (activeDate === 'calendar' ? bigShows.filter(e => calendarSelectedDates.has(e.date)) : bigShows)
+    : bigShows.filter(e => e.date === activeDate);
   if (activeBigVenue !== 'all') {
     filtered = filtered.filter(e => e.venue === activeBigVenue);
   }
@@ -1986,6 +2173,7 @@ async function init() {
   const pmEl = document.getElementById('picture-mode');
   if (pmEl && !pmEl.checked) pmEl.checked = true;
   initTheme();
+  initCalendar();
   renderSourceTabs();
   renderTabs();
   renderShows();

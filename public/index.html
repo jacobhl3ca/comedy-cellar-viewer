@@ -60,7 +60,18 @@
       <button class="venue-source-tab" data-source="big-shows">Other Shows</button>
     </div>
 
-    <nav id="day-tabs" class="day-tabs"></nav>
+    <div class="day-tabs-row">
+      <nav id="day-tabs" class="day-tabs"></nav>
+      <button class="calendar-btn" id="calendar-btn" title="Pick dates">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="calendar-picker" id="calendar-picker" style="display:none;"></div>
     <div class="venue-filters" id="venue-filters"></div>
 
     <div class="toolbar">
@@ -79,11 +90,13 @@
           <input type="checkbox" id="picture-mode">
           <span>Big Pictures</span>
         </label>
-        <select id="sort-select" class="sort-select">
-          <option value="none">Sort by...</option>
-          <option value="faves">Top rated</option>
-        </select>
-        <button class="toolbar-btn" id="filters-toggle">Filters ▾</button>
+        <div class="toolbar-right-group">
+          <select id="sort-select" class="sort-select">
+            <option value="none">Sort by...</option>
+            <option value="faves">Top rated</option>
+          </select>
+          <button class="toolbar-btn" id="filters-toggle">Filters ▾</button>
+        </div>
       </div>
       <div class="filters-panel" id="filters-panel" style="display:none;">
         <div class="filters-grid">
@@ -92,6 +105,8 @@
             <option value="short">Short bios</option>
             <option value="long">Long bios</option>
           </select>
+          <!-- Old range slider (commented out) -->
+          <!--
           <div class="time-range-wrap">
             <label class="time-range-label">Start times</label>
             <div class="time-range-track" id="time-range-track">
@@ -101,10 +116,20 @@
             </div>
             <span class="time-range-value" id="time-range-value">Any</span>
           </div>
+          -->
+          <div class="time-filter">
+            <label class="time-range-label">Start by</label>
+            <select id="time-filter-visible" class="time-select" onchange="document.getElementById('time-filter').value=this.value; window._timeFilterMin=null; updateResetBtn(); renderShows();">
+              <option value="any">Any</option>
+              <option value="19:00">7 PM</option>
+              <option value="20:00">8 PM</option>
+              <option value="21:00">9 PM</option>
+              <option value="22:00">10 PM</option>
+              <option value="23:00">11 PM</option>
+            </select>
+          </div>
         </div>
-      </div>
-      <div class="toolbar-reset-row" id="toolbar-reset-row" style="display:none;">
-        <button class="reset-filters-btn" id="reset-filters">Reset all</button>
+        <button class="reset-filters-btn" id="reset-filters" style="display:none;">Reset all</button>
       </div>
     </div>
   </div>

@@ -14,11 +14,12 @@ module.exports = async (req, res) => {
   if (req.method !== 'GET') return res.status(405).json({ error: 'GET only' });
 
   const days = Math.min(Math.max(parseInt(req.query.days) || 7, 1), 14);
+  const skip = Math.min(Math.max(parseInt(req.query.skip) || 0, 0), 13);
 
   // Generate date strings
   const dates = [];
   const now = new Date();
-  for (let i = 0; i < days; i++) {
+  for (let i = skip; i < days; i++) {
     const d = new Date(now);
     d.setDate(now.getDate() + i);
     dates.push(d.toISOString().split('T')[0]);
