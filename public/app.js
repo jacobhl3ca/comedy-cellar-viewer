@@ -1943,16 +1943,15 @@ async function init() {
   dates = getDateRange();
   activeDate = 'all';
 
-  // Fetch comedian DB + Cellar shows first (primary data), start others in background
-  const cellarPromise = Promise.all(dates.map(d => fetchDay(formatDateParam(d))));
-  const dbPromise = loadComedianDB();
-  const standPromise = fetchTheStand();
-  const bigShowsPromise = fetchBigShows();
-  const nyccPromise = fetchNYCC();
-  const gothamPromise = fetchGotham();
-
-  // Wait only for Cellar + DB before first render
-  const [cellarResults] = await Promise.all([cellarPromise, dbPromise]);
+  // Fetch all sources in parallel (all have timeouts so page won't hang forever)
+  const [cellarResults] = await Promise.all([
+    Promise.all(dates.map(d => fetchDay(formatDateParam(d)))),
+    fetchTheStand(),
+    fetchBigShows(),
+    fetchNYCC(),
+    loadComedianDB(),
+    fetchGotham()
+  ]);
 
   dates.forEach((d, i) => {
     const dateStr = formatDateParam(d);
@@ -1962,6 +1961,24 @@ async function init() {
         show.comedians.forEach(name => allComediansSeen.add(name));
       });
     }
+  });
+
+  // Add Stand comedians to the seen list too
+  standShows.forEach(show => {
+    show.comedians.forEach(name => allComediansSeen.add(name));
+  });
+
+  // Add Gotham shows to seen list
+  gothamShows.forEach(show => {
+    if (show.title) allComediansSeen.add(show.title.trim());
+  });
+
+  // Add Big Shows performers to seen list
+  bigShows.forEach(evt => {
+    if (evt.performers) {
+      evt.performers.split(/,\s*/).forEach(n => { if (n.trim()) allComediansSeen.add(n.trim()); });
+    }
+    if (evt.title) allComediansSeen.add(evt.title.trim());
   });
 
   document.getElementById('loading').style.display = 'none';
@@ -1974,31 +1991,6 @@ async function init() {
   renderShows();
   updateFooterInfo();
   document.getElementById('schedule-filter-area')?.classList.add('ready');
-
-  // Load remaining venues in background, re-render as each arrives
-  Promise.all([standPromise, bigShowsPromise, nyccPromise, gothamPromise]).then(() => {
-    // Add Stand comedians to the seen list
-    standShows.forEach(show => {
-      show.comedians.forEach(name => allComediansSeen.add(name));
-    });
-
-    // Add Gotham shows to seen list
-    gothamShows.forEach(show => {
-      if (show.title) allComediansSeen.add(show.title.trim());
-    });
-
-    // Add Big Shows performers to seen list
-    bigShows.forEach(evt => {
-      if (evt.performers) {
-        evt.performers.split(/,\s*/).forEach(n => { if (n.trim()) allComediansSeen.add(n.trim()); });
-      }
-      if (evt.title) allComediansSeen.add(evt.title.trim());
-    });
-
-    renderSourceTabs();
-    renderShows();
-    updateFooterInfo();
-  });
 
   // Enrich bios from Wikipedia in background (don't block render)
   enrichBiosFromWikipedia().then(() => {
