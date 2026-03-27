@@ -242,11 +242,12 @@ function getCellarPoster(venueName) {
 
 // ---- API ----
 const API_URL = '/api/lineup';
+const API_BATCH_URL = '/api/lineup-batch';
 
 function getDateRange() {
   const dates = [];
   const now = new Date();
-  for (let i = 0; i < 14; i++) {
+  for (let i = 0; i < 7; i++) {
     const d = new Date(now);
     d.setDate(now.getDate() + i);
     dates.push(d);
@@ -1937,8 +1938,10 @@ async function init() {
   activeDate = 'all';
 
   // Fetch all sources in parallel (all have timeouts so page won't hang forever)
-  const [cellarResults] = await Promise.all([
-    Promise.all(dates.map(d => fetchDay(formatDateParam(d)))),
+  // Batch lineup: 1 request for all days instead of 14 separate calls
+  const [batchData] = await Promise.all([
+    fetchWithTimeout(`${API_BATCH_URL}?days=${dates.length}`, {}, 15000)
+      .then(r => r.json()).catch(() => null),
     fetchTheStand(),
     fetchBigShows(),
     fetchNYCC(),
@@ -1946,13 +1949,17 @@ async function init() {
     fetchGotham()
   ]);
 
-  dates.forEach((d, i) => {
+  dates.forEach(d => {
     const dateStr = formatDateParam(d);
-    allData[dateStr] = cellarResults[i];
-    if (cellarResults[i]) {
-      cellarResults[i].forEach(show => {
+    const dayData = batchData?.results?.[dateStr];
+    const html = dayData?.show?.html || '';
+    if (html) {
+      allData[dateStr] = parseShows(html, dateStr);
+      allData[dateStr].forEach(show => {
         show.comedians.forEach(name => allComediansSeen.add(name));
       });
+    } else {
+      allData[dateStr] = null;
     }
   });
 
