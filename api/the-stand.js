@@ -87,7 +87,7 @@ function parseShows(html) {
       // Try to match photo to a comedian name by filename
       const filenameMatch = imgUrl.match(/\/([^/]+)\.(jpg|jpeg|png|webp)$/i);
       if (filenameMatch) {
-        const photoName = filenameMatch[1].replace(/_/g, ' ').replace(/-/g, ' ');
+        const photoName = filenameMatch[1].replace(/_/g, ' ').replace(/-/g, ' ').replace(/\s*\d+$/, '');
         // Find matching comedian
         for (const c of comedians) {
           const cNorm = c.toLowerCase().replace(/[.\-']/g, ' ');
