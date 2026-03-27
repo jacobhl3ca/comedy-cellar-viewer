@@ -1333,12 +1333,12 @@ function renderAllVenues(container) {
         </div>`;
     } else {
       const evt = item.show;
-      // Performer photo — SeatGeek → local photo → comedian DB
-      let evtPhoto = '';
-      if (evt.performerImages) {
+      // Performer photo — local/DB first, SeatGeek fallback
+      let evtPhoto = getPhotoForVenue(evt.title, 'cellar') || localPhotoPath(evt.title) || '';
+      if (!evtPhoto && evt.performerImages) {
         evtPhoto = Object.values(evt.performerImages)[0] || '';
       }
-      if (!evtPhoto) evtPhoto = getPhotoForVenue(evt.title, 'cellar') || localPhotoPath(evt.title) || comedianPhotos[evt.title] || '';
+      if (!evtPhoto) evtPhoto = comedianPhotos[evt.title] || '';
       const evtPhotoHtml = evtPhoto ? `<img class="comedian-photo" src="${evtPhoto}" alt="" style="width:48px;height:48px;border-radius:50%;object-fit:cover;margin-right:8px;">` : '';
       html += `
         <div class="big-show-card">
@@ -1423,12 +1423,12 @@ function renderBigShows(container) {
   Object.entries(byPerformer).forEach(([title, data]) => {
     try {
     const firstEvt = data.events[0];
-    // Performer photo — SeatGeek image → local photo → comedian DB
-    let photoUrl = '';
-    if (data.performerImages) {
+    // Performer photo — local/DB first, SeatGeek fallback (SeatGeek often has placeholders)
+    let photoUrl = getPhotoForVenue(title, 'cellar') || localPhotoPath(title) || '';
+    if (!photoUrl && data.performerImages) {
       photoUrl = Object.values(data.performerImages)[0] || '';
     }
-    if (!photoUrl) photoUrl = getPhotoForVenue(title, 'cellar') || localPhotoPath(title) || comedianPhotos[title] || '';
+    if (!photoUrl) photoUrl = comedianPhotos[title] || '';
     const photoHtml = photoUrl ? `<img src="${photoUrl}" alt="${title}" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;">` : '';
 
     // Date boxes for each show
