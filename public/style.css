@@ -98,7 +98,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 
 /* Day Tabs */
 .day-tabs-row {
-  display: flex; align-items: flex-start; gap: 6px;
+  display: flex; align-items: stretch; gap: 6px;
 }
 .day-tabs {
   display: flex; gap: 6px; overflow-x: auto; flex: 1;
@@ -108,7 +108,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
   flex-shrink: 0; padding: 10px 12px; border-radius: 8px;
   background: var(--surface); border: 1px solid var(--border);
   color: var(--text-dim); cursor: pointer; transition: all 0.15s;
-  margin-top: 4px;
+  align-self: stretch; display: flex; align-items: center;
 }
 .calendar-btn:hover { border-color: var(--accent); color: var(--text); }
 .calendar-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
