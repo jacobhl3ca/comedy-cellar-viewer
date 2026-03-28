@@ -2378,11 +2378,11 @@ async function init() {
 
   // "Filters" dropdown toggle
   const filtersBtn = document.getElementById('filters-toggle');
-  const filtersPanel = document.getElementById('filters-panel');
-  if (filtersBtn && filtersPanel) {
+  const filtersInline = document.getElementById('filters-inline');
+  if (filtersBtn && filtersInline) {
     filtersBtn.addEventListener('click', () => {
-      const visible = filtersPanel.style.display !== 'none';
-      filtersPanel.style.display = visible ? 'none' : 'flex';
+      const visible = filtersInline.style.display !== 'none';
+      filtersInline.style.display = visible ? 'none' : 'flex';
       filtersBtn.textContent = visible ? 'Filters ▾' : 'Filters ▴';
       filtersBtn.classList.toggle('active', !visible);
     });

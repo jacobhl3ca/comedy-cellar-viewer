@@ -99,27 +99,12 @@
         </div>
       </div>
       <div class="reset-row" id="reset-row">
-        <button class="reset-filters-btn" id="reset-filters" style="visibility:hidden;">Reset all</button>
-      </div>
-      <div class="filters-panel" id="filters-panel" style="display:none;">
-        <div class="filters-grid">
+        <div class="filters-inline" id="filters-inline" style="display:none;">
           <select id="bio-mode" class="bio-select">
             <option value="none">Bios</option>
             <option value="short">Short bios</option>
             <option value="long">Long bios</option>
           </select>
-          <!-- Old range slider (commented out) -->
-          <!--
-          <div class="time-range-wrap">
-            <label class="time-range-label">Start times</label>
-            <div class="time-range-track" id="time-range-track">
-              <div class="time-range-fill" id="time-range-fill"></div>
-              <input type="range" id="time-slider-min" class="time-range-input" min="0" max="5" value="0">
-              <input type="range" id="time-slider-max" class="time-range-input" min="0" max="5" value="5">
-            </div>
-            <span class="time-range-value" id="time-range-value">Any</span>
-          </div>
-          -->
           <div class="time-filter">
             <label class="time-range-label">Start by</label>
             <select id="time-filter-visible" class="time-select" onchange="document.getElementById('time-filter').value=this.value; window._timeFilterMin=null; updateResetBtn(); renderShows();">
@@ -132,6 +117,7 @@
             </select>
           </div>
         </div>
+        <button class="reset-filters-btn" id="reset-filters" style="visibility:hidden;">Reset all</button>
       </div>
     </div>
   </div>

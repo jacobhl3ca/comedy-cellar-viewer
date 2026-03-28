@@ -228,14 +228,9 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .toolbar-btn:hover { border-color: var(--accent); color: var(--text); }
 .toolbar-btn.active { border-color: var(--accent); color: var(--accent); }
 
-/* Filters dropdown panel — inline within toolbar, above border-bottom */
-.filters-panel {
-  padding: 2px 0 0;
-  display: flex; align-items: center; gap: 12px;
-}
-.filters-grid {
-  display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center;
-  flex: 1;
+/* Filters inline — sits left of Reset All in same row */
+.filters-inline {
+  display: flex; align-items: center; gap: 8px 18px; flex-wrap: wrap;
 }
 .filter-row-inline {
   display: flex; gap: 8px; align-items: center;
@@ -711,7 +706,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 /* Reset filters */
 .filter-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .reset-row {
-  display: flex; justify-content: flex-end; padding-top: 2px;
+  display: flex; align-items: center; justify-content: flex-end; margin-top: 4px;
 }
 .reset-filters-btn {
   padding: 5px 12px; border-radius: 6px; font-size: 12px;
