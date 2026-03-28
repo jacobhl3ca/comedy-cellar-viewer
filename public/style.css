@@ -710,11 +710,14 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 
 /* Reset filters */
 .filter-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.reset-row {
+  display: flex; justify-content: flex-end; padding: 0 0 4px;
+}
 .reset-filters-btn {
   padding: 5px 12px; border-radius: 6px; font-size: 12px;
   background: none; border: 1px solid var(--border); color: var(--text-dim);
   cursor: pointer; transition: all 0.15s; white-space: nowrap;
-  margin-left: auto; flex-shrink: 0;
+  margin-left: auto;
 }
 .reset-filters-btn:hover { border-color: var(--accent); color: var(--accent); }
 
