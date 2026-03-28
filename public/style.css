@@ -207,7 +207,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 
 /* Single toolbar */
 .toolbar {
-  padding: 8px 0 8px;
+  padding: 2px 0 8px;
   border-bottom: 1px solid var(--border); margin-top: 0; margin-bottom: 12px;
 }
 .toolbar-main {
@@ -708,7 +708,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 /* Reset filters */
 .filter-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .reset-row {
-  display: none; align-items: center; justify-content: flex-end; margin-top: 8px;
+  display: none; align-items: center; justify-content: flex-end; margin-top: 4px;
 }
 .reset-row.visible {
   display: flex;
@@ -746,7 +746,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 
 /* Venue source tabs */
 .venue-source-tabs {
-  display: flex; gap: 6px; padding: 8px 0 4px;
+  display: flex; gap: 6px; padding: 4px 0 4px;
   overflow-x: auto; -webkit-overflow-scrolling: touch;
 }
 .venue-source-tab {
