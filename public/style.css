@@ -90,6 +90,8 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
   padding: 0; color: var(--text-dim);
 }
 .theme-toggle:hover { border-color: var(--accent); color: var(--accent); transform: scale(1.08); }
+.theme-toggle:focus { outline: none; }
+.theme-toggle:active { border-color: var(--accent); }
 .theme-icon-svg { display: block; transition: opacity 0.2s, transform 0.3s; }
 [data-theme="dark"] #theme-icon-sun { display: block; }
 [data-theme="dark"] #theme-icon-moon { display: none; }
