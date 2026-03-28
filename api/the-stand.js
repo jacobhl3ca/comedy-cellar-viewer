@@ -7,12 +7,13 @@ module.exports = async (req, res) => {
   if (req.method === 'OPTIONS') return res.status(200).end();
 
   try {
-    // Fetch multiple pages to get all shows
-    const pages = await Promise.all([
-      fetchPage('https://thestandnyc.com/shows'),
-      fetchPage('https://thestandnyc.com/shows?page=2'),
-      fetchPage('https://thestandnyc.com/shows?page=3'),
-    ]);
+    // Fetch all pages — pagination uses /shows/P{offset} (20 per page)
+    const offsets = [0, 20, 40, 60, 80, 100, 120, 140, 160];
+    const urls = offsets.map(o => o === 0
+      ? 'https://thestandnyc.com/shows'
+      : `https://thestandnyc.com/shows/P${o}`
+    );
+    const pages = await Promise.all(urls.map(u => fetchPage(u).catch(() => '')));
     const allHtml = pages.join('\n');
     const shows = parseShows(allHtml);
     res.status(200).json({ shows, count: shows.length, source: 'thestandnyc.com' });
