@@ -2035,7 +2035,7 @@ function updateResetBtn() {
     document.getElementById('expand-long-bios')?.checked ||
     (document.getElementById('time-filter')?.value !== 'any') ||
     !!window._timeFilterMin;
-  btn.style.display = anyActive ? 'inline-block' : 'none';
+  btn.style.visibility = anyActive ? 'visible' : 'hidden';
 }
 
 // ---- Theme toggle ----

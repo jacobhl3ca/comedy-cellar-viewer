@@ -711,7 +711,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 /* Reset filters */
 .filter-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .reset-row {
-  display: flex; justify-content: flex-end;
+  display: flex; justify-content: flex-end; padding-top: 2px;
 }
 .reset-filters-btn {
   padding: 5px 12px; border-radius: 6px; font-size: 12px;
