@@ -360,6 +360,19 @@ function formatTime(timeStr) {
   return m[1] + ' ' + m[2].toUpperCase();
 }
 
+// ---- Past show filter ----
+// Returns true if a show's start time is 2+ hours ago (should be hidden)
+function isShowPast(dateStr, timeStr) {
+  if (!dateStr || !timeStr) return false;
+  const t24 = to24h(timeStr);
+  if (!t24) return false;
+  const [h, m] = t24.split(':').map(Number);
+  const showDate = new Date(dateStr + 'T00:00:00');
+  showDate.setHours(h, m, 0, 0);
+  const cutoff = new Date(Date.now() - 2 * 60 * 60 * 1000); // 2 hours ago
+  return showDate < cutoff;
+}
+
 // ---- Venue normalization ----
 // Map all venue variants to the 3 main rooms
 // Map special show names to their known rooms (from comedycellar.com/#showtimes)
@@ -477,9 +490,10 @@ function renderNYCCShows(container) {
     return;
   }
 
+  const filteredNYCC = nyccShows.filter(s => !isShowPast(s.date, s.time));
   let html = '<div class="schedule-view">';
   html += '<h2 class="schedule-day-header">NY Comedy Club</h2>';
-  nyccShows.forEach(show => {
+  filteredNYCC.forEach(show => {
     html += `
       <div class="show-card">
         <div class="show-header">
@@ -929,8 +943,12 @@ function renderShows() {
 }
 
 // ---- Shared show card renderer ----
-function renderShowCard(show, hideSkips, onlyFavs) {
+function renderShowCard(show, hideSkips, onlyFavs, dateStr) {
   try {
+  // Hide past shows (2+ hours ago)
+  const showDateStr = dateStr || activeDate;
+  if (showDateStr && showDateStr !== 'all' && showDateStr !== 'calendar' && isShowPast(showDateStr, show.time)) return '';
+
   // Venue filter (compare against normalized venue name)
   if (activeVenue !== 'all' && normalizeVenue(show.venue) !== activeVenue) return '';
 
@@ -1071,6 +1089,7 @@ function renderSortedByFaves(container) {
     const shows = allData[dateStr];
     if (!shows) return;
     shows.forEach(show => {
+      if (isShowPast(dateStr, show.time)) return;
       if (activeVenue !== 'all' && normalizeVenue(show.venue) !== activeVenue) return;
       const stats = scoreShow(show);
       if (onlyFavs && stats.faves === 0 && stats.likes === 0) return;
@@ -1168,7 +1187,7 @@ function renderAllDaysSchedule(container) {
       const d = new Date(dateStr + 'T12:00:00');
       const dayLabel = d.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
       html += `<h2 class="schedule-day-header">${dayLabel}</h2>`;
-      let dayShows = standShows.filter(s => s.date === dateStr);
+      let dayShows = standShows.filter(s => s.date === dateStr && !isShowPast(dateStr, s.time));
       if (activeStandRoom !== 'all') {
         dayShows = dayShows.filter(s => {
           const r = s.room ? s.room.replace('&nbsp;', ' ').replace(/^The Stand\s*[-–—]\s*/i, '').trim() : 'Main';
@@ -1223,6 +1242,7 @@ function renderAllDaysSchedule(container) {
 
     sorted.forEach(show => {
       try {
+      if (isShowPast(dateStr, show.time)) return;
       if (activeVenue !== 'all' && normalizeVenue(show.venue) !== activeVenue) return;
       if (timeFilterCellar && timeFilterCellar !== 'any') {
         const t24 = to24h(show.time);
@@ -1381,6 +1401,7 @@ function renderGothamShows(container) {
   let filtered = activeDate === 'all' || activeDate === 'calendar'
     ? (activeDate === 'calendar' ? gothamShows.filter(s => calendarSelectedDates.has(s.date)) : gothamShows)
     : gothamShows.filter(s => s.date === activeDate);
+  filtered = filtered.filter(s => !isShowPast(s.date, s.time));
 
   let html = '<div class="schedule-view">';
   let lastDate = '';
@@ -1476,6 +1497,9 @@ function renderAllVenues(container) {
     allItems = allItems.filter(item => !item.time24 || item.time24 >= tfMinAV);
   }
 
+  // Hide past shows (2+ hours ago)
+  allItems = allItems.filter(item => !isShowPast(item.dateStr, item.show.time));
+
   // Sort — by faves if dropdown selected, otherwise by date+time
   const sortValAV = document.getElementById('sort-select')?.value || 'none';
   if (sortValAV === 'faves') {
@@ -1513,7 +1537,7 @@ function renderAllVenues(container) {
     }
 
     if (item.type === 'cellar') {
-      html += renderShowCard(item.show, hideSkips, false);
+      html += renderShowCard(item.show, hideSkips, false, item.dateStr);
     } else if (item.type === 'stand') {
       html += renderStandShowCard(item.show);
     } else if (item.type === 'gotham') {
@@ -1597,6 +1621,7 @@ function renderBigShows(container) {
   if (activeBigVenue !== 'all') {
     filtered = filtered.filter(e => e.venue === activeBigVenue);
   }
+  filtered = filtered.filter(e => !isShowPast(e.date, e.time));
 
   // Store SeatGeek performer images in global map
   filtered.forEach(evt => {
