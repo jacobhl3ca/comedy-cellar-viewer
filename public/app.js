@@ -2119,12 +2119,18 @@ function getBioForVenue(name, venueSource) {
 function isGenericBio(bio) {
   if (!bio) return true;
   const lower = bio.toLowerCase();
-  // Reject bios that are just "[Name] is a stand-up comedian" + generic filler
-  if (/^[a-z\s.'-]+ is a (stand-up )?comedian/.test(lower) &&
-      (/performs regularly on the/.test(lower) || /regular (at|on) the (nyc|new york|comedy) (comedy )?scene/.test(lower) ||
-       /known for (his|her|their) (unique|sharp|fresh|energetic)/.test(lower))) return true;
-  // Reject very short generic descriptions
-  if (bio.length < 40 && /is a (stand-up )?comedian/.test(lower)) return true;
+  const startsGeneric = /^[a-z\s.'-]+ is a (stand-up )?comedian/.test(lower);
+  if (startsGeneric) {
+    // If it has real credits, keep it despite generic opener
+    if (/appeared on|starred in|featured on|netflix|hbo|comedy central|conan|tonight show|letterman|fallon|colbert|snl|saturday night live|published|author|podcast|youtube|special|award|emmy|grammy/.test(lower)) return false;
+    // Block all generic filler patterns
+    if (/performs (regularly )?on the/.test(lower) || /performing (in|on)/.test(lower) ||
+        /performs at clubs/.test(lower) || /regular at/.test(lower) ||
+        /known for (his|her|their) (unique|sharp|fresh|energetic)/.test(lower) ||
+        /across the city/.test(lower) || /comedy scene/.test(lower)) return true;
+    // Short generic bios with no substance
+    if (bio.length < 120) return true;
+  }
   return false;
 }
 
@@ -2388,7 +2394,7 @@ async function init() {
   if (filtersBtn && filtersPanel) {
     filtersBtn.addEventListener('click', () => {
       const visible = filtersPanel.style.display !== 'none';
-      filtersPanel.style.display = visible ? 'none' : 'block';
+      filtersPanel.style.display = visible ? 'none' : 'flex';
       filtersBtn.textContent = visible ? 'Filters ▾' : 'Filters ▴';
       filtersBtn.classList.toggle('active', !visible);
       moveResetBtn(!visible);
