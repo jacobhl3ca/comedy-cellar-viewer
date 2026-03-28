@@ -2023,7 +2023,8 @@ function modalCycle(name) {
 // ---- Reset filters visibility ----
 function updateResetBtn() {
   const btn = document.getElementById('reset-filters');
-  if (!btn) return;
+  const row = document.getElementById('reset-row');
+  if (!btn || !row) return;
   const sortVal = document.getElementById('sort-select')?.value;
   const prefs = loadPrefs();
   const hasRatedComedians = prefs.faves.length > 0 || prefs.skips.length > 0 || prefs.likes.length > 0;
@@ -2036,6 +2037,9 @@ function updateResetBtn() {
     (document.getElementById('time-filter')?.value !== 'any') ||
     !!window._timeFilterMin;
   btn.style.visibility = anyActive ? 'visible' : 'hidden';
+  // Show row if reset button is visible OR filters panel is open
+  const filtersOpen = document.getElementById('filters-inline')?.style.display !== 'none';
+  row.classList.toggle('visible', anyActive || filtersOpen);
 }
 
 // ---- Theme toggle ----
@@ -2385,6 +2389,7 @@ async function init() {
       filtersInline.style.display = visible ? 'none' : 'flex';
       filtersBtn.textContent = visible ? 'Filters ▾' : 'Filters ▴';
       filtersBtn.classList.toggle('active', !visible);
+      updateResetBtn();
     });
   }
 
