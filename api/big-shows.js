@@ -28,7 +28,8 @@ module.exports = async (req, res) => {
         }, {}),
         price: evt.stats?.lowest_price || null,
         url: evt.url || '',
-        id: evt.id
+        id: evt.id,
+        source: 'seatgeek'
       };
     });
 

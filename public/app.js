@@ -1647,24 +1647,23 @@ function renderAllVenues(container) {
         </div>`;
     } else {
       const evt = item.show;
-      // Performer photo — SeatGeek first, local/DB fallback
       let evtPhoto = '';
       if (evt.performerImages) {
         evtPhoto = Object.values(evt.performerImages)[0] || '';
       }
       if (!evtPhoto) evtPhoto = getPhotoForVenue(evt.title, 'cellar') || localPhotoPath(evt.title) || comedianPhotos[evt.title] || '';
-      const evtPhotoHtml = evtPhoto ? `<img class="comedian-photo" src="${evtPhoto}" alt="" style="width:48px;height:48px;border-radius:50%;object-fit:cover;margin-right:8px;">` : '';
+      const evtPhotoHtml = evtPhoto ? `<img class="comedian-photo" src="${evtPhoto}" alt="">` : '';
+      const srcLabel = evt.source === 'ticketmaster' ? 'Ticketmaster' : evt.source === 'seatgeek' ? 'SeatGeek' : 'Tickets';
       html += `
-        <div class="big-show-card">
+        <div class="show-card">
           <div class="show-header">
-            <div><span class="show-time">${formatTime(evt.time)}</span></div>
+            <div>${evtPhotoHtml}</div>
             <span class="show-name">${evt.title}</span>
             <span class="show-venue">${evt.venue || ''}</span>
           </div>
-          <div class="big-show-info" style="padding:10px 16px;display:flex;align-items:center;gap:8px;">
-            ${evtPhotoHtml}
-            ${evt.price ? `<span class="big-show-price">From $${evt.price}</span>` : ''}
-            ${evt.url ? `<a href="${evt.url}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Get Tickets</a>` : ''}
+          <div class="show-footer">
+            ${evt.url ? `<a href="${evt.url}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">${srcLabel}</a>` : '<span></span>'}
+            <span class="fav-count">${evt.price ? `From $${evt.price}` : ''}</span>
           </div>
         </div>`;
     }
@@ -1731,22 +1730,26 @@ function renderBigShows(container) {
     byPerformer[key].events.push(evt);
   });
 
-  let html = '<div class="big-shows-section">';
-  // Gotham: commented out — SquadUp API blocked by Cloudflare, needs Puppeteer
-  // gothamShows would be merged here when working
+  // Sort groups by earliest show date
+  const sortedGroups = Object.entries(byPerformer).sort((a, b) => {
+    const aMin = a[1].events.reduce((m, e) => e.date < m ? e.date : m, '9999');
+    const bMin = b[1].events.reduce((m, e) => e.date < m ? e.date : m, '9999');
+    return aMin.localeCompare(bMin);
+  });
 
-  if (activeDate === 'all') html += '<h2 class="big-shows-header">Other Shows — Upcoming NYC Comedy</h2>';
+  let html = '<div class="schedule-view">';
 
-  Object.entries(byPerformer).forEach(([title, data]) => {
+  if (activeDate === 'all') html += '<h2 class="schedule-day-header">Other Shows — Upcoming NYC Comedy</h2>';
+
+  sortedGroups.forEach(([title, data]) => {
     try {
     const firstEvt = data.events[0];
-    // Performer photo — SeatGeek first, then local blob / DB / Cellar cache
+    // Performer photo
     let photoUrl = '';
     if (data.performerImages) {
       photoUrl = Object.values(data.performerImages)[0] || '';
     }
     if (!photoUrl) {
-      // Try title first, then each individual performer name
       photoUrl = getPhotoForVenue(title, 'cellar') || localPhotoPath(title) || comedianPhotos[title] || '';
       if (!photoUrl && data.performers) {
         for (const p of data.performers.split(', ')) {
@@ -1755,37 +1758,51 @@ function renderBigShows(container) {
         }
       }
     }
-    // Check lookup cache for previously resolved photos
     const lookupName = data.performers ? data.performers.split(', ')[0] : title;
     if (!photoUrl && photoLookupCache[lookupName]) photoUrl = photoLookupCache[lookupName];
     if (!photoUrl && photoLookupCache[title]) photoUrl = photoLookupCache[title];
     const needsLookup = !photoUrl;
     const photoId = needsLookup ? `photo-lookup-${title.replace(/[^a-zA-Z0-9]/g, '_')}` : '';
     const photoHtml = photoUrl
-      ? `<img src="${photoUrl}" alt="${title}" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;" onerror="this.style.display='none'">`
-      : `<img id="${photoId}" alt="${title}" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;display:none;" onerror="this.style.display='none'" data-lookup-name="${lookupName.replace(/"/g, '&quot;')}" data-lookup-title="${title.replace(/"/g, '&quot;')}">`;
+      ? `<img class="comedian-photo" src="${photoUrl}" alt="${title}" onerror="this.style.display='none'">`
+      : `<img class="comedian-photo" id="${photoId}" alt="${title}" style="display:none;" onerror="this.style.display='none'" data-lookup-name="${lookupName.replace(/"/g, '&quot;')}" data-lookup-title="${title.replace(/"/g, '&quot;')}">`;
 
     // Date boxes for each show
-    const dateBoxes = data.events.map(evt => {
+    const dateBoxes = data.events.sort((a, b) => a.date.localeCompare(b.date) || (a.time || '').localeCompare(b.time || '')).map(evt => {
       const d = new Date(evt.date + 'T12:00:00');
       const shortDate = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
       const shortDay = d.toLocaleDateString('en-US', { weekday: 'short' });
       const timeStr = evt.time || '';
       const priceStr = evt.price ? `$${evt.price}` : '';
-      return evt.url
-        ? `<a href="${evt.url}" target="_blank" class="big-date-box" onclick="trackReserve(this)"><span class="bdb-day">${shortDay} ${shortDate}</span><span class="bdb-time">${timeStr}</span>${priceStr ? `<span class="bdb-price">${priceStr}</span>` : ''}</a>`
-        : `<span class="big-date-box"><span class="bdb-day">${shortDay} ${shortDate}</span><span class="bdb-time">${timeStr}</span></span>`;
+      return `<span class="big-date-box"><span class="bdb-day">${shortDay} ${shortDate}</span>${timeStr ? `<span class="bdb-time">${timeStr}</span>` : ''}${priceStr ? `<span class="bdb-price">${priceStr}</span>` : ''}</span>`;
     }).join('');
 
+    // Ticket links — collect unique URLs per source
+    const sgUrl = data.events.find(e => e.source === 'seatgeek' && e.url)?.url;
+    const tmUrl = data.events.find(e => e.source === 'ticketmaster' && e.url)?.url;
+    const anyUrl = data.events.find(e => e.url)?.url;
+    let ticketLinks = '';
+    if (sgUrl && tmUrl) {
+      ticketLinks = `<a href="${sgUrl}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">SeatGeek</a> <a href="${tmUrl}" target="_blank" class="reserve-btn reserve-btn-alt" onclick="trackReserve(this)">Ticketmaster</a>`;
+    } else if (sgUrl) {
+      ticketLinks = `<a href="${sgUrl}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">SeatGeek</a>`;
+    } else if (tmUrl) {
+      ticketLinks = `<a href="${tmUrl}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Ticketmaster</a>`;
+    } else if (anyUrl) {
+      ticketLinks = `<a href="${anyUrl}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Tickets</a>`;
+    }
+
     html += `
-      <div class="big-show-card">
-        <div class="big-show-info" style="display:flex;gap:12px;align-items:flex-start;">
-          ${photoHtml}
-          <div style="flex:1;min-width:0;">
-            <div class="big-show-title">${title}</div>
-            <div class="big-show-meta"><span class="big-show-venue">${data.venue}</span></div>
-            <div class="big-date-boxes">${dateBoxes}</div>
-          </div>
+      <div class="show-card">
+        <div class="show-header">
+          <div>${photoHtml}</div>
+          <span class="show-name">${title}</span>
+          <span class="show-venue">${data.venue}</span>
+        </div>
+        <div class="big-date-boxes" style="padding:8px 16px;">${dateBoxes}</div>
+        <div class="show-footer">
+          <div class="ticket-links">${ticketLinks}</div>
+          <span class="fav-count">${firstEvt.price ? `From $${firstEvt.price}` : ''}</span>
         </div>
       </div>`;
     } catch (e) { console.error('renderBigShows card error:', e, title); }
