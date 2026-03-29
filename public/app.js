@@ -323,23 +323,22 @@ function autoResolvePhoto(name, imgEl) {
     });
 }
 
-// Venue-aware photo lookup: venue-specific → NYCC DB → cross-venue → local blob → legacy
+// Venue-aware photo lookup: local first (prebaked), then external fallbacks
 function getPhotoForVenue(name, venueSource) {
+  // 1. Local prebaked photo (fastest — served from CDN, no external fetch)
+  const local = localPhotoPath(name);
+  if (local) return local;
+  // 2. Venue-specific external photo (runtime scraped)
   const dbEntry = comedianDB.find(c => c.name === name);
-  // 1. Venue-specific photo
   if (venueSource === 'cellar' && comedianPhotosCellar[name]) return comedianPhotosCellar[name];
   if (venueSource === 'stand' && comedianPhotosStand[name]) return comedianPhotosStand[name];
   if (venueSource === 'nycc' && dbEntry?.photo_nycc) return dbEntry.photo_nycc;
-  // 2. NYCC DB fallback
+  // 3. Cross-venue external fallbacks
   if (dbEntry?.photo_nycc) return dbEntry.photo_nycc;
-  // 3. Cross-venue fallbacks
   if (comedianPhotosCellar[name]) return comedianPhotosCellar[name];
   if (comedianPhotosStand[name]) return comedianPhotosStand[name];
   if (dbEntry?.photo_stand) return dbEntry.photo_stand;
-  // 4. Local blob (saved file)
-  const local = localPhotoPath(name);
-  if (local) return local;
-  // 5. Legacy pool (Wikipedia, SeatGeek, etc.)
+  // 4. Legacy pool (Wikipedia, SeatGeek, etc.)
   return comedianPhotos[name] || '';
 }
 
