@@ -10,7 +10,8 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/judah-friedlander",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Judah_Friedlander.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Judah_Friedlander.jpg",
+    "tagline_cellar": "FROM NBC'S EMMY WINNER \"30 ROCK\", THE MOVIES \"SHOWTIME\", FROM \"MEET THE PARENTS\"."
   },
   {
     "name": "Ashton Womack",
@@ -58,7 +59,8 @@
       "nycc",
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/michael-kosta"
+    "stand_profile": "https://thestandnyc.com/comedians/michael-kosta",
+    "tagline_cellar": "Correspondent on the Daily Show, from the Tonight Show, Conan, Late Night with Seth Meyers"
   },
   {
     "name": "Mark Normand",
@@ -70,7 +72,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/mark-normand",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Mark_Normand.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Mark_Normand.jpg",
+    "tagline_cellar": "FROM \"THE LATE SHOW WITH STEPHEN COLBERT\", HOUR SPECIAL ON COMEDY CENTRAL,  FOUR APPEARANCES ON THE CONAN O'BRIEN SHOW, @MIDNIGHT, TRU-TV, LAST COMIC STANDING,"
   },
   {
     "name": "Olivia Stadler",
@@ -141,7 +144,8 @@
     "bio": "Alabama native Derrick Stroup is not your average slow talking Southerner. With the cadence of an angry auctioneer, he engages his audiences with his detailed stories, over the top energy and southern charm. Since leaving home for Denver in 2015 to chase his dreams of stand-up comedy, Derrick has become a regular opener for the likes of John Crist and Josh Blue. He also won one of the biggest come...",
     "venues": [
       "nycc"
-    ]
+    ],
+    "tagline_cellar": "WINNER OF THE NEW FACES COMPETITION AT COMEDY WORKS, THE TONIGHT SHOW WITH JIMMY FALLON"
   },
   {
     "name": "Chaunte Wayans",
@@ -193,7 +197,8 @@
       "the_stand",
       "comedy_cellar"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/amos-gill"
+    "stand_profile": "https://thestandnyc.com/comedians/amos-gill",
+    "tagline_cellar": "FROM THE JEFF JEFFERIRS SHOW, DON'T TELL"
   },
   {
     "name": "Elle Orlando",
@@ -205,7 +210,8 @@
       "the_stand",
       "comedy_cellar"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/elle-orlando"
+    "stand_profile": "https://thestandnyc.com/comedians/elle-orlando",
+    "tagline_cellar": "DONT TELL COMEDY, CREATOR TO WATCH 2024"
   },
   {
     "name": "James Mwaura",
@@ -271,7 +277,8 @@
     "venues": [
       "nycc",
       "comedy_cellar"
-    ]
+    ],
+    "tagline_cellar": "\"NY COMEDY FESTIVAL COMICS TO WATCH\""
   },
   {
     "name": "Jay Jurden",
@@ -283,7 +290,8 @@
       "the_stand",
       "comedy_cellar"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/jay-jurden"
+    "stand_profile": "https://thestandnyc.com/comedians/jay-jurden",
+    "tagline_cellar": "The Tonight Show, Variety's 10 Comics To Watch, The Problem With Jon Stewart, Comedy Central, HBO"
   },
   {
     "name": "Aaron Putnam",
@@ -415,7 +423,8 @@
     "venues": [
       "nycc",
       "comedy_cellar"
-    ]
+    ],
+    "tagline_cellar": "11 APPEARANCES  ON  \"THE LATE SHOW WITH DAVID LETTERMAN\", \"LATE SHOW WITH STEPHEN COLBERT\", COMEDY CENTRAL PRESENTS \"THE HALF HOUR  COMEDY SPECIAL\""
   },
   {
     "name": "Mike Yard",
@@ -425,7 +434,8 @@
     "venues": [
       "nycc",
       "comedy_cellar"
-    ]
+    ],
+    "tagline_cellar": "FROM \"NIGHTLY SHOW WITH LARRY WILMORE\", BAD BOYS OF COMEDY, DEF COMEDY JAM, AND SHOWTIME AT THE APOLLO."
   },
   {
     "name": "Neko White",
@@ -476,7 +486,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/derek-gaines",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/derek-gaines.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/derek-gaines.jpg",
+    "tagline_cellar": "\"WRITERS GUILD AWARD WINNER\", MTV'S \"BROKE ASS GAME SHOW\", AOL ORIGINALS \"CONNECTED\""
   },
   {
     "name": "Leonard Ouzts",
@@ -488,7 +499,8 @@
       "the_stand",
       "comedy_cellar"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/leonard-ouzts"
+    "stand_profile": "https://thestandnyc.com/comedians/leonard-ouzts",
+    "tagline_cellar": "FROM COMEDY CENTRAL, CONAN, NETFLIX'S MASTER OF NONE,"
   },
   {
     "name": "Gary Vider",
@@ -500,7 +512,8 @@
       "the_stand",
       "comedy_cellar"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/gary-vider"
+    "stand_profile": "https://thestandnyc.com/comedians/gary-vider",
+    "tagline_cellar": "FROM CONAN, FINALIST ON AMERICA GOT TALENT"
   },
   {
     "name": "Jamie Lee",
@@ -581,7 +594,8 @@
     "venues": [
       "nycc",
       "comedy_cellar"
-    ]
+    ],
+    "tagline_cellar": "From \"BOLO\" and \"SUBSTANCE\" YouTube specials"
   },
   {
     "name": "Jenny Zigrino",
@@ -602,7 +616,8 @@
     "venues": [
       "nycc",
       "comedy_cellar"
-    ]
+    ],
+    "tagline_cellar": "KEVIN HART'S\"COMEDY IN COLOR, MADISON SQUARE GARDEN NETWORK'S \"PEOPLE TALKIN SPORTS\""
   },
   {
     "name": "Sam Evans",
@@ -648,7 +663,8 @@
     "venues": [
       "nycc",
       "comedy_cellar"
-    ]
+    ],
+    "tagline_cellar": "The Tonight Show, Don't Tell Comedy, Nateland Presents, Variety's '10 Comics To Watch', Comedy Specials 'Money Never Wakes' (Best YouTube Special 2023 - New York Times) and 'Down With Tech' (Top 5 Special To Check Out - Vulture), Canadian"
   },
   {
     "name": "Myka Fox",
@@ -669,7 +685,8 @@
     "venues": [
       "nycc",
       "comedy_cellar"
-    ]
+    ],
+    "tagline_cellar": "FROM THE TONIGHT SHOW STARRINGJIMMY FALLON, NETFLIX, COMEDY CENTRAL, IFC"
   },
   {
     "name": "Alex Pavone",
@@ -723,7 +740,8 @@
     "bio": "Regarded as one of the hottest rising stars in the city, Phil Duckett is taking NYC by storm. A native of South Carolina, his country grammar and southern charm bring a fresh perspective on life in the big city. It’s been quite the journey - from coaching on the court and chillin at the country club to sleeping on the subway, it’s like he’s lived 9 lives. Commanding the stage with a smile that’ll ...",
     "venues": [
       "nycc"
-    ]
+    ],
+    "tagline_cellar": "SIRIUSXM, A&E, BRAVO"
   },
   {
     "name": "Sienna Hubert-Ross",
@@ -809,7 +827,8 @@
     "venues": [
       "nycc",
       "comedy_cellar"
-    ]
+    ],
+    "tagline_cellar": "SIRIUS XM, HELIUM COMEDY RECORDS"
   },
   {
     "name": "Colin Cab Washington",
@@ -851,7 +870,8 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/caitlin-peluffo",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Caitlin_Peluffo.JPG"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Caitlin_Peluffo.JPG",
+    "tagline_cellar": "THE LATE LATE SHOW, THE LATE SHOW WITH STEPHEN COLBERT, NBC'S NEW YORK'S FUNNIES"
   },
   {
     "name": "Cansu",
@@ -1052,7 +1072,8 @@
       "nycc",
       "comedy_cellar"
     ],
-    "bio": "Peter Revello is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "bio": "Peter Revello is a stand-up comedian performing in New York City. He performs at clubs across the city.",
+    "tagline_cellar": "FROM THE TONIGHT SHOW, COMEDY CENTRAL"
   },
   {
     "name": "Olga Namer",
@@ -1072,7 +1093,8 @@
       "nycc",
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/dan-lamorte"
+    "stand_profile": "https://thestandnyc.com/comedians/dan-lamorte",
+    "tagline_cellar": "FOX'S RED EYE, COMEDY CENTRAL'S COMICS TO WATCH, SIRIUS XM ROW DOG CHANNEL"
   },
   {
     "name": "Piers Moreton",
@@ -1123,7 +1145,8 @@
     "venues": [
       "nycc",
       "comedy_cellar"
-    ]
+    ],
+    "tagline_cellar": "HULU (FLEISHMAN IS IN TROUBLE), NETFLIX (INVENTING ANNA), HBO/MAX"
   },
   {
     "name": "Gus Constantellis",
@@ -1173,7 +1196,8 @@
       "the_stand",
       "comedy_cellar"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/chris-distefano"
+    "stand_profile": "https://thestandnyc.com/comedians/chris-distefano",
+    "tagline_cellar": "FROM THE DAVID LETTERMAN SHOW, COMEDY CENTRAL, THE ULTIMATE BEASTMASTER"
   },
   {
     "name": "Todd Barry",
@@ -1183,7 +1207,8 @@
     "venues": [
       "nycc",
       "comedy_cellar"
-    ]
+    ],
+    "tagline_cellar": "NETFLIX SPECIAL \"SPICY HONEY\", \"THE WRESTLER\", \"FLIGHT OF THE CONCHORDS\", \"THE LETTERMAN SHOW\", \"THE CONAN O'BRIEN SHOW\", AND COMEDY CENTRAL PRESENTS."
   },
   {
     "name": "Des Bishop",
@@ -1217,7 +1242,8 @@
       "the_stand",
       "comedy_cellar"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/dave-attell"
+    "stand_profile": "https://thestandnyc.com/comedians/dave-attell",
+    "tagline_cellar": "FROM THE MOVIE \"TRAINWRECK\", STAR OF \"DAVES OLD PORN\" ON SHOWTIME, COMEDY CENTRAL'S \"INSOMNIAC WITH DAVE ATTELL\", THE DAVID LETTERMAN,T HE TONIGHT SHOW, IFC'S \"Z ROCK\", \"TOUGH CROWD\"."
   },
   {
     "name": "Keith Robinson",
@@ -1345,7 +1371,8 @@
       "the_stand",
       "comedy_cellar"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/andrew-schulz"
+    "stand_profile": "https://thestandnyc.com/comedians/andrew-schulz",
+    "tagline_cellar": "‘INFAMOUS’ SPECIAL, FLAGRANT PODCAST, NETFLIX’S ’SCHULZ SAVES AMERICA,’ NETFLIX’S 'YOU PEOPLE,’ MTV’S ‘GUY CODE'"
   },
   {
     "name": "Justin Hires",
@@ -1366,7 +1393,8 @@
       "the_stand",
       "comedy_cellar"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/chris-redd"
+    "stand_profile": "https://thestandnyc.com/comedians/chris-redd",
+    "tagline_cellar": "SNL, COMEDY CENTRAL"
   },
   {
     "name": "Kurt Metzger",
@@ -1432,7 +1460,8 @@
     "venues": [
       "nycc",
       "comedy_cellar"
-    ]
+    ],
+    "tagline_cellar": "FROM THE \"LOUIE CK SHOW\" ON FOX, HBO'S \"BAD BOYS OF COMEDY\", AND COMEDY CENTRAL'S \"TOUGH CROWD\"."
   },
   {
     "name": "Jeff Arcuri",
@@ -1633,7 +1662,8 @@
       "nycc",
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/carmen-lynch"
+    "stand_profile": "https://thestandnyc.com/comedians/carmen-lynch",
+    "tagline_cellar": "FROM THE DAVID LETTERMAN SHOW, COMEDY CENTRAL"
   },
   {
     "name": "Joe Machi",
@@ -1671,7 +1701,8 @@
     "bio": "Comedian and actor Drew Lynch captured the hearts of America with his Golden Buzzer performance on Season 10 of America’s Got Talent (NBC), where he finished in second place. Since then, Drew has amassed millions of followers on social media while touring the world nonstop to sold out audiences. In February 2023, Drew released his second special ‘And These Are Jokes’ which is catching steam all ov...",
     "venues": [
       "nycc"
-    ]
+    ],
+    "tagline_cellar": "NBC'S \"AMERICA GOT TALENT\"- FINALIST"
   },
   {
     "name": "Jon Rudnitsky",
@@ -1682,7 +1713,8 @@
       "nycc",
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/jon-rudnitsky"
+    "stand_profile": "https://thestandnyc.com/comedians/jon-rudnitsky",
+    "tagline_cellar": "FROM THE MOVIE \"OUR LITTLE SECRET\" ON NETFLIX WITH LINDSEY LOHAN, SNL , YOUNG LARRY ON THE LAST SEASON OF CURB YOUR ENTHUSIASM, CONAN, \"HOME AGAIN\" OPPOSITE REESE WITHERSPOON, CATCH 22 ON HULU, BIG LEAP ON FOX."
   },
   {
     "name": "Rory Albanese",
@@ -1782,7 +1814,8 @@
     "venues": [
       "nycc",
       "comedy_cellar"
-    ]
+    ],
+    "tagline_cellar": "FROM THE TONIGHT SHOW STARRING JIMMY FALLON, WRITER ON THE LATE SHOW WITH STEPHEN COLBERT SHOW, STAND UP ON THE LATE SHOW WITH STEPHEN COLBERT, COMEDY CENTRAL HALF HOUR SPECIAL, HEAD WRITER OF COMEDY CENTRAL'S \"THE PRESIDENT SHOW\", COMEDY CENTRAL \"COMICS TO WATCH\""
   },
   {
     "name": "Daniel Simonsen",
@@ -1792,7 +1825,8 @@
     "venues": [
       "nycc",
       "comedy_cellar"
-    ]
+    ],
+    "tagline_cellar": "WINNER NEW YORKS'S FUNNIEST FOR 2022 AT THE NEW YORK COMEDY FESTIVAL, FROM SETH MYERS SHOW, BBC \"RUSSELL HOWARD'S GOOD NEWS\", BEST NEWCOMER EDINBURGH FRINGE FESTIVAL"
   },
   {
     "name": "Cory Kahaney",
@@ -2021,7 +2055,8 @@
     "venues": [
       "nycc",
       "comedy_cellar"
-    ]
+    ],
+    "tagline_cellar": "ARE YOU GARBAGE? PODCAST"
   },
   {
     "name": "Bonnie McFarlane",
@@ -2072,7 +2107,8 @@
       "the_stand",
       "comedy_cellar"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/marina-franklin"
+    "stand_profile": "https://thestandnyc.com/comedians/marina-franklin",
+    "tagline_cellar": "FROM CONAN O'BRIEN SHOW, THE MOVIE \"TRAINWRECK\", \"LOUIE\", \"THE NIGHTLY SHOW\", \"THE JIM GAFFIGAN SHOW\""
   },
   {
     "name": "Emma Willmann",
@@ -2084,7 +2120,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/emma-willmann",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Emma.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Emma.jpg",
+    "tagline_cellar": "From The Late Show with Stephen Colbert, MTV, Vh1, host of The Check Spot on SiriusXM"
   },
   {
     "name": "Ari Shaffir",
@@ -2107,7 +2144,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/pete-lee",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Pete_Lee_sq.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Pete_Lee_sq.jpg",
+    "tagline_cellar": "COMEDY CENTRAL HALF HOUR, FROM THE DAVID LETTERMAN SHOW, NBC'S LAST COMIC STANDING, VH1'S BEST WEEK EVER"
   },
   {
     "name": "Rick Glassman",
@@ -2317,7 +2355,8 @@
       "the_stand",
       "comedy_cellar"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/maddie-wiener"
+    "stand_profile": "https://thestandnyc.com/comedians/maddie-wiener",
+    "tagline_cellar": "WRITER ON SNL, COMEDY CENTRAL, HBO, JUST FOR LAUGHS"
   },
   {
     "name": "Peter Grosz",
@@ -2459,7 +2498,8 @@
     "bio": "Erin Jackson is one of the fastest-rising comedians in New York City. She's a fixture in the city’s top comedy clubs and made her Netflix debut on Season 2 of \"Tiffany Haddish Presents: They Ready.\" Erin is a television writer, currently working on the hit Netflix show \"The Upshaws,\" and has appeared on Hulu's \"Like and Beth,\" \"Late Night with Seth Meyers,\" \"Conan,\" The Ellen DeGeneres Show,\" \"Thi...",
     "venues": [
       "nycc"
-    ]
+    ],
+    "tagline_cellar": "FROM THE CONAN O\"BRIEN SHOW, LAST COMIC STANDING"
   },
   {
     "name": "Mike Vecchione",
@@ -2503,7 +2543,8 @@
       "the_stand",
       "comedy_cellar"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/simeon-goodson"
+    "stand_profile": "https://thestandnyc.com/comedians/simeon-goodson",
+    "tagline_cellar": "BET COMIC VIEW, COMEDY CENTRAL ARABIA COMEDY AL WAGIF"
   },
   {
     "name": "Hasan Minhaj",
@@ -2859,7 +2900,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/brian-scott-mcfadden",
-    "bio": "Brian Scott McFadden is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "bio": "Brian Scott McFadden is a stand-up comedian performing in New York City. He performs at clubs across the city.",
+    "tagline_cellar": "FROM THE DAVID LETTERMAN SHOW AND COMEDY CENTRAL."
   },
   {
     "name": "Brian Simpson",
@@ -2975,7 +3017,8 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/cipha-sounds",
-    "bio": "Cipha Sounds (Luis Diaz) is a stand-up comedian, DJ, and radio personality. He was a host on Hot 97 and transitioned to stand-up comedy. He's a regular at the Comedy Cellar and produces comedy shows across NYC."
+    "bio": "Cipha Sounds (Luis Diaz) is a stand-up comedian, DJ, and radio personality. He was a host on Hot 97 and transitioned to stand-up comedy. He's a regular at the Comedy Cellar and produces comedy shows across NYC.",
+    "tagline_cellar": "ROCNATION, HOT 97 MORNING SHOW, CHAPPELLE SHOW, VH-1, MTV"
   },
   {
     "name": "Colum Tyrrell",
@@ -2984,7 +3027,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/colum-tyrrell",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Colum_Tyrrell_1.jpg",
-    "bio": "Colum Tyrrell is a stand-up comedian from Ireland based in New York City. He performs at clubs across the city."
+    "bio": "Colum Tyrrell is a stand-up comedian from Ireland based in New York City. He performs at clubs across the city.",
+    "tagline_cellar": "From: Sirius XM,  The Tonight Show"
   },
   {
     "name": "Comedian CP",
@@ -3049,7 +3093,8 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/dan-naturman",
-    "bio": "Dan Naturman is a stand-up comedian and regular at the Comedy Cellar. He's appeared on The Late Show, Conan, and was on Last Comic Standing. Known for his neurotic, self-deprecating comedy about dating and everyday life."
+    "bio": "Dan Naturman is a stand-up comedian and regular at the Comedy Cellar. He's appeared on The Late Show, Conan, and was on Last Comic Standing. Known for his neurotic, self-deprecating comedy about dating and everyday life.",
+    "tagline_cellar": "FROM HBO'S \"CRASHING\",  FROM THE TONIGHT SHOW, \"LAST COMIC STANDING\", JIMMY KIMMEL LIVE, THE LETTERMAN SHOW."
   },
   {
     "name": "Dan Soder",
@@ -3057,7 +3102,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/dan-soder",
-    "bio": "Dan Soder is a stand-up comedian, actor, and podcaster. He played Mafee on Showtime's Billions and co-hosts The Bonfire on SiriusXM with Big Jay Oakerson. His Comedy Central special Son of Gary and Netflix appearances showcase his versatile comedy."
+    "bio": "Dan Soder is a stand-up comedian, actor, and podcaster. He played Mafee on Showtime's Billions and co-hosts The Bonfire on SiriusXM with Big Jay Oakerson. His Comedy Central special Son of Gary and Netflix appearances showcase his versatile comedy.",
+    "tagline_cellar": "From: Netflix, Showtime's \"Billions\" and The Bonfire on Sirius/XM"
   },
   {
     "name": "Dan St. Germain",
@@ -3066,7 +3112,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/dan-st-germain",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Dan_St_Germain.jpeg",
-    "bio": "Dan St. Germain is a stand-up comedian and writer. He's written for The Chris Gethard Show, Inside Amy Schumer, and Difficult People. He's a regular at NYC comedy clubs and has appeared on multiple late night shows."
+    "bio": "Dan St. Germain is a stand-up comedian and writer. He's written for The Chris Gethard Show, Inside Amy Schumer, and Difficult People. He's a regular at NYC comedy clubs and has appeared on multiple late night shows.",
+    "tagline_cellar": "From Conan, Fallon, and writer for Michelle Wolf's White House Correspondent's Dinner."
   },
   {
     "name": "Danny Polishchuk",
@@ -3198,7 +3245,8 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/eva-evans",
-    "bio": "Eva Evans is a stand-up comedian performing in New York City. She performs at clubs across the city."
+    "bio": "Eva Evans is a stand-up comedian performing in New York City. She performs at clubs across the city.",
+    "tagline_cellar": "NETFLIX, VH1, DON'T TELL COMEDY"
   },
   {
     "name": "Evan Williams",
@@ -3287,7 +3335,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/graham-kay",
-    "bio": "Graham Kay is a stand-up comedian from Canada. He performs at clubs in NYC and across the country."
+    "bio": "Graham Kay is a stand-up comedian from Canada. He performs at clubs in NYC and across the country.",
+    "tagline_cellar": "The Tonight Show with Jimmy Fallon, The Late Show with Stephen Colbert, NBC's Bring The Funny, Super Troopers 2 (Movie)"
   },
   {
     "name": "Hans Kim",
@@ -3329,7 +3378,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/ian-lara",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/ian-lara.jpg",
-    "bio": "Ian Lara is a stand-up comedian based in New York City. He's appeared on The Tonight Show and performs regularly at clubs across the city including the Comedy Cellar. Known for his sharp observations and polished delivery."
+    "bio": "Ian Lara is a stand-up comedian based in New York City. He's appeared on The Tonight Show and performs regularly at clubs across the city including the Comedy Cellar. Known for his sharp observations and polished delivery.",
+    "tagline_cellar": "HBO SPECIAL ROMANTIC COMEDY, Comedy Central Half-hour, The Tonight show"
   },
   {
     "name": "Ilana Glazer",
@@ -3410,7 +3460,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/jared-waters",
-    "bio": "Jared Waters is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "bio": "Jared Waters is a stand-up comedian performing in New York City. He performs at clubs across the city.",
+    "tagline_cellar": "DONT TELL COMEDY, THE TAMRON HALL SHOW, SERIOUS XM"
   },
   {
     "name": "Jason Ellis",
@@ -3771,7 +3822,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/lev-fer",
-    "bio": "Lev Fer is a stand-up comedian and regular at the Comedy Cellar in New York City. Originally from Russia, he's known for his unique perspective and deadpan delivery."
+    "bio": "Lev Fer is a stand-up comedian and regular at the Comedy Cellar in New York City. Originally from Russia, he's known for his unique perspective and deadpan delivery.",
+    "tagline_cellar": "FROM RAY DONOVAN ON SHOWTIME, PODCAST \"THE LEV FER SHOW\"' SIRIUS XM"
   },
   {
     "name": "Lewis Black",
@@ -3828,7 +3880,8 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/lynne-koplitz",
-    "bio": "Lynne Koplitz is a stand-up comedian based in New York City. She has a Netflix special Hormonal Beast and has appeared on multiple late night shows. She's been a Comedy Cellar regular for years and is known for her honest comedy about being childfree."
+    "bio": "Lynne Koplitz is a stand-up comedian based in New York City. She has a Netflix special Hormonal Beast and has appeared on multiple late night shows. She's been a Comedy Cellar regular for years and is known for her honest comedy about being childfree.",
+    "tagline_cellar": "HOUR SPECIAL ON NETFLIX, FROM JOAN & MELISSA RIVERS' REALITY SHOW: \"JOAN KNOWS BEST?\", THE IFC CHANNEL \"Z ROCK\", HOST OF WB'S \"LIFE & STYLE\", AND HOST \"CHANGE OF HEART\"."
   },
   {
     "name": "Maddi Mays",
@@ -4067,7 +4120,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/molly-kearney",
-    "bio": "Molly Kearney is a stand-up comedian and actor. They were a cast member on Saturday Night Live during the 2022-2023 season, the first nonbinary cast member in the show's history. They perform stand-up at clubs in NYC."
+    "bio": "Molly Kearney is a stand-up comedian and actor. They were a cast member on Saturday Night Live during the 2022-2023 season, the first nonbinary cast member in the show's history. They perform stand-up at clubs in NYC.",
+    "tagline_cellar": "STAR OF \"DMV\" ON CBS, SATURDAY NIGHT LIVE CAST MEMBER, AMAZON PRIME'S LEAGUE OF THEIR OWN, DISNEY'S THE MIGHTY DUCKS"
   },
   {
     "name": "Monroe Martin",
@@ -4134,7 +4188,8 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/neal-brennan",
-    "bio": "Neal Brennan is a stand-up comedian, writer, and director. He co-created Chappelle's Show with Dave Chappelle and has written for multiple TV shows. His Netflix specials Blocks and Neal Brennan: Crazy Good showcase his unique mix of comedy and emotional honesty."
+    "bio": "Neal Brennan is a stand-up comedian, writer, and director. He co-created Chappelle's Show with Dave Chappelle and has written for multiple TV shows. His Netflix specials Blocks and Neal Brennan: Crazy Good showcase his unique mix of comedy and emotional honesty.",
+    "tagline_cellar": "Netflix specials: 3 Mics, Crazy Good"
   },
   {
     "name": "Neel Nanda",
@@ -4275,7 +4330,8 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/petey-deabreu",
-    "bio": "Petey DeAbreu is a stand-up comedian performing on the New York City comedy scene. He's a regular at clubs across the city."
+    "bio": "Petey DeAbreu is a stand-up comedian performing on the New York City comedy scene. He's a regular at clubs across the city.",
+    "tagline_cellar": "HBO:THAT DAMN MICHAEL CHE SHOW, NPR: WAIT WAIT...DON'T TELL ME"
   },
   {
     "name": "Preacher Lawson",
@@ -4299,7 +4355,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/rachel-feinstein",
-    "bio": "Rachel Feinstein is a stand-up comedian and actress. She's appeared on Inside Amy Schumer, Last Comic Standing, and has performed multiple times on late night shows. She's a regular at the Comedy Cellar and known for her physical comedy and character work."
+    "bio": "Rachel Feinstein is a stand-up comedian and actress. She's appeared on Inside Amy Schumer, Last Comic Standing, and has performed multiple times on late night shows. She's a regular at the Comedy Cellar and known for her physical comedy and character work.",
+    "tagline_cellar": "SPECIAL ON NETFLIX, FROM THE TONIGHT SHOW,  FROM THE MOVIE \"TRAINWRECK\", GUEST CO-HOST \"THE VIEW\", COMEDY CENTRAL HALF HOUR SPECIAL"
   },
   {
     "name": "Ramy Youssef",
@@ -4339,7 +4396,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/richie-redding",
-    "bio": "Richie Redding is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "bio": "Richie Redding is a stand-up comedian performing in New York City. He performs at clubs across the city.",
+    "tagline_cellar": "KEVIN HARTS LOL NETWORK, AMAZON PRIME VIDEO"
   },
   {
     "name": "Rita Brent",
@@ -4356,7 +4414,8 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/robert-kelly",
-    "bio": "Robert Kelly is a stand-up comedian, actor, and podcaster. He hosts the You Know What Dude podcast and the Robert Kelly's Ykwd podcast. He's appeared in Trainwreck, Benders, and multiple comedy specials. A beloved fixture at the Comedy Cellar for decades."
+    "bio": "Robert Kelly is a stand-up comedian, actor, and podcaster. He hosts the You Know What Dude podcast and the Robert Kelly's Ykwd podcast. He's appeared in Trainwreck, Benders, and multiple comedy specials. A beloved fixture at the Comedy Cellar for decades.",
+    "tagline_cellar": "FROM \"THE TONIGHT SHOW\", THE MOVIE \"TRAINWRECK\", FROM FX \"LOUIE\", AND COMEDY CENTRAL"
   },
   {
     "name": "Rocky Dale Davis",
@@ -4423,7 +4482,8 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/sahib-singh",
-    "bio": "Sahib Singh is a stand-up comedian based in New York City. He's a regular at the Comedy Cellar and performs across the NYC comedy circuit."
+    "bio": "Sahib Singh is a stand-up comedian based in New York City. He's a regular at the Comedy Cellar and performs across the NYC comedy circuit.",
+    "tagline_cellar": "COMEDY CENTRAL, ADULT SWIM, JFL NEW FACES"
   },
   {
     "name": "Salma Hindy",
@@ -4482,7 +4542,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/sean-donnelly",
-    "bio": "Sean Donnelly is a stand-up comedian and podcaster. He co-hosts My Dumb Friends with Dan Soder and is a regular at NYC comedy clubs. He's appeared on AXS TV's Gotham Comedy Live and multiple late night shows."
+    "bio": "Sean Donnelly is a stand-up comedian and podcaster. He co-hosts My Dumb Friends with Dan Soder and is a regular at NYC comedy clubs. He's appeared on AXS TV's Gotham Comedy Live and multiple late night shows.",
+    "tagline_cellar": "FROM THE TONIGHT SHOW, FROM THE LATE SHOW WITH STEPHEN COLBERT,  THE DAVID LETTERMAN SHOW, CONAN O'BRIEN, COMEDY CENTRAL HALF HOUR SPECIAL"
   },
   {
     "name": "Sean Millea",
@@ -4516,7 +4577,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/shane-torres",
-    "bio": "Shane Torres is a stand-up comedian. He went viral for his bit defending Guy Fieri. He performs at clubs across the country."
+    "bio": "Shane Torres is a stand-up comedian. He went viral for his bit defending Guy Fieri. He performs at clubs across the country.",
+    "tagline_cellar": "FROM CONAN O'BRIEN SHOW, COMEDY CENTRAL"
   },
   {
     "name": "Shannon Fiedler",
@@ -4589,7 +4651,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/sydnee-washington",
-    "bio": "Sydnee Washington is a stand-up comedian, actress, and writer. She co-hosts the Hobby Hunter podcast and is a regular at NYC comedy clubs including the Comedy Cellar. She's appeared on Comedy Central and at major festivals."
+    "bio": "Sydnee Washington is a stand-up comedian, actress, and writer. She co-hosts the Hobby Hunter podcast and is a regular at NYC comedy clubs including the Comedy Cellar. She's appeared on Comedy Central and at major festivals.",
+    "tagline_cellar": "LATE NIGHT WITH SETH MYERS"
   },
   {
     "name": "T.J. Miller",
@@ -4775,14 +4838,16 @@
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Adam Gilbert is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "bio": "Adam Gilbert is a stand-up comedian performing in New York City. He performs at clubs across the city.",
+    "tagline_cellar": "JUST FOR LAUGHS, DONT TELL COMEDY"
   },
   {
     "name": "Alex Kumin",
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Alex Kumin is a stand-up comedian and regular at the Comedy Cellar in New York City. She performs regularly at clubs across the city."
+    "bio": "Alex Kumin is a stand-up comedian and regular at the Comedy Cellar in New York City. She performs regularly at clubs across the city.",
+    "tagline_cellar": "Comedy Central, Timeout NY Comic to Watch, NBC"
   },
   {
     "name": "Andrew Fiori",
@@ -4817,14 +4882,16 @@
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Brendan Sagalow is a stand-up comedian and regular at the Comedy Cellar in New York City. He performs regularly across the NYC comedy scene."
+    "bio": "Brendan Sagalow is a stand-up comedian and regular at the Comedy Cellar in New York City. He performs regularly across the NYC comedy scene.",
+    "tagline_cellar": "JFL new faces 2022"
   },
   {
     "name": "Colin Quinn",
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Colin Quinn is a legendary stand-up comedian, actor, and writer. He was the Weekend Update anchor on SNL and starred in Tough Crowd with Colin Quinn on Comedy Central. He's written and performed multiple one-man Broadway shows including Long Story Short and New York Story. A Comedy Cellar institution."
+    "bio": "Colin Quinn is a legendary stand-up comedian, actor, and writer. He was the Weekend Update anchor on SNL and starred in Tough Crowd with Colin Quinn on Comedy Central. He's written and performed multiple one-man Broadway shows including Long Story Short and New York Story. A Comedy Cellar institution.",
+    "tagline_cellar": "FROM THE MOVIE \"TRAINWRECK\", STAR OF ONE MAN SHOWS:\"RED STATE BLUE STATE\", \"UNCONSTITUTIONAL\", \"LONG STORY SHORT\" ON BROADWAY AND HBO, STAR OF COMEDY CENTRAL'S \"TOUGH CROWD\", SATURDAY NIGHT LIVE, NBC'S \"THE COLIN QUINN SHOW'."
   },
   {
     "name": "Dan Davies",
@@ -4838,35 +4905,40 @@
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Ethan Simmons-Patterson is a stand-up comedian and regular at the Comedy Cellar in New York City. He performs across the NYC comedy circuit."
+    "bio": "Ethan Simmons-Patterson is a stand-up comedian and regular at the Comedy Cellar in New York City. He performs across the NYC comedy circuit.",
+    "tagline_cellar": "BLUE WHALE COMEDY FESTIVAL, THE KNITTING FACTORY,"
   },
   {
     "name": "Greer Barnes",
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Greer Barnes is a stand-up comedian and regular at the Comedy Cellar. He's appeared on multiple late night shows and Comedy Central. A veteran of the NYC comedy scene known for his energetic performances."
+    "bio": "Greer Barnes is a stand-up comedian and regular at the Comedy Cellar. He's appeared on multiple late night shows and Comedy Central. A veteran of the NYC comedy scene known for his energetic performances.",
+    "tagline_cellar": "FROM HBO'S \"CRASHING\",  THE \"DAVE CHAPPELLE SHOW\", \"TOUGH CROWD\", \"FOR LOVE OF THE GAME\", AND \"THE DAVID LETTERMAN SHOW\"."
   },
   {
     "name": "Gregg Rogell",
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Gregg Rogell is a stand-up comedian and longtime Comedy Cellar regular. He's appeared on multiple late night shows and Comedy Central specials. A veteran of the NYC comedy scene."
+    "bio": "Gregg Rogell is a stand-up comedian and longtime Comedy Cellar regular. He's appeared on multiple late night shows and Comedy Central specials. A veteran of the NYC comedy scene.",
+    "tagline_cellar": "FROM THE \"LOUIE\" CK SHOW, \"THE ARISTOCRATS\", \"THE CONAN O'BRIEN SHOW\", COMEDY CENTRAL'S \"TOUGH CROWD\" AND \"THE TONIGHT SHOW\"."
   },
   {
     "name": "H.Foley",
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "H. Foley is a stand-up comedian and co-host of the Are You Garbage podcast with Kevin Ryan. He's a regular at the Comedy Cellar and performs at clubs across NYC."
+    "bio": "H. Foley is a stand-up comedian and co-host of the Are You Garbage podcast with Kevin Ryan. He's a regular at the Comedy Cellar and performs at clubs across NYC.",
+    "tagline_cellar": "ARE YOU GARBAGE? PODCAST"
   },
   {
     "name": "Hot Soup",
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Hot Soup is a weekly stand-up comedy show at the Comedy Cellar's Fat Black Pussycat room on Tuesday nights. Produced by Mark Normand and featuring top NYC comedians."
+    "bio": "Hot Soup is a weekly stand-up comedy show at the Comedy Cellar's Fat Black Pussycat room on Tuesday nights. Produced by Mark Normand and featuring top NYC comedians.",
+    "tagline_cellar": "Hot Soup, the long-running Tuesday night comedy show, has a new home at the FBPC. This show is curated by Mark Normand, Gary Vider and Matt Ruby."
   },
   {
     "name": "Janelle James",
@@ -4887,7 +4959,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Jon Laster is a stand-up comedian and regular at the Comedy Cellar in New York City. He performs regularly across the NYC comedy scene."
+    "bio": "Jon Laster is a stand-up comedian and regular at the Comedy Cellar in New York City. He performs regularly across the NYC comedy scene.",
+    "tagline_cellar": "WINNER OF STAND UP NBC,"
   },
   {
     "name": "Josh Ocean Thomas",
@@ -4901,7 +4974,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Kc Shornima is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "bio": "Kc Shornima is a stand-up comedian performing in New York City. He performs at clubs across the city.",
+    "tagline_cellar": "WEEKEND UPDATE WRITER AT SATURDAY NIGHT LIVE, JUST FOR LAUGHS NEW FACES"
   },
   {
     "name": "Keith Alberstadt",
@@ -4915,14 +4989,16 @@
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "LeClerc Andre is a stand-up comedian and regular at the Comedy Cellar in New York City. He performs across the NYC comedy circuit."
+    "bio": "LeClerc Andre is a stand-up comedian and regular at the Comedy Cellar in New York City. He performs across the NYC comedy circuit.",
+    "tagline_cellar": "THE TONIGHT SHOW,"
   },
   {
     "name": "Liza Treyger",
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Liza Treyger is a stand-up comedian and writer. She's appeared on Conan, @midnight, and has a Comedy Central half-hour special. She's a regular at the Comedy Cellar and known for her uninhibited comedy about relationships and nightlife."
+    "bio": "Liza Treyger is a stand-up comedian and writer. She's appeared on Conan, @midnight, and has a Comedy Central half-hour special. She's a regular at the Comedy Cellar and known for her uninhibited comedy about relationships and nightlife.",
+    "tagline_cellar": "FROM NETFLIX: THE DEGENERATES, LATE NIGHT WITH SETH MEYERS, THE CHELSEA LATELY SHOW, COMEDY CENTRAL"
   },
   {
     "name": "Michael Rowland",
@@ -4936,21 +5012,24 @@
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Regina DeCicco is a stand-up comedian and regular at the Comedy Cellar. She's appeared on Comedy Central and performs at clubs across New York City."
+    "bio": "Regina DeCicco is a stand-up comedian and regular at the Comedy Cellar. She's appeared on Comedy Central and performs at clubs across New York City.",
+    "tagline_cellar": "WARM UP COMIC FOR \"THE VIEW\", SIRIUS XM, AXS-TV, \"SHERRI\""
   },
   {
     "name": "Rich Aronovitch",
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Rich Aronovitch is a stand-up comedian and regular at the Comedy Cellar in New York City. He performs regularly on the NYC comedy circuit."
+    "bio": "Rich Aronovitch is a stand-up comedian and regular at the Comedy Cellar in New York City. He performs regularly on the NYC comedy circuit.",
+    "tagline_cellar": "ACCESS DAILY NBC, BEAT BOBBY FLAY FOOD NETWORK"
   },
   {
     "name": "Ryan Hamilton",
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Ryan Hamilton is a stand-up comedian known for his clean, observational humor. His Netflix special Happy Face was a hit. He's appeared on The Tonight Show and Late Night and performs at clubs including the Comedy Cellar."
+    "bio": "Ryan Hamilton is a stand-up comedian known for his clean, observational humor. His Netflix special Happy Face was a hit. He's appeared on The Tonight Show and Late Night and performs at clubs including the Comedy Cellar.",
+    "tagline_cellar": "FROM THE TONIGHT SHOW, HOUR SPECIAL ON NETFLIX, FROM THE  \"LATE SHOW WITH STEPHEN COLBERT\",  \"CONAN O'BRIEN SHOW\", \"LAST COMIC STANDING\","
   },
   {
     "name": "Sergio Chicon",
@@ -4964,21 +5043,24 @@
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Shafi Hossain is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "bio": "Shafi Hossain is a stand-up comedian performing in New York City. He performs at clubs across the city.",
+    "tagline_cellar": "HOUR SPECIAL \"NOT FROM HERE\", ROAD COMICS ON PEACOCK,"
   },
   {
     "name": "Tommy Brennan",
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Tommy Brennan is a stand-up comedian performing in New York City. He co-hosts the Roommates in Law podcast with Tim Smith and performs at clubs across the city."
+    "bio": "Tommy Brennan is a stand-up comedian performing in New York City. He co-hosts the Roommates in Law podcast with Tim Smith and performs at clubs across the city.",
+    "tagline_cellar": "NEWEST CAST MEMBER SATURDAY NIGHT LIVE,  JUST FOR LAUGHS NEW FACES"
   },
   {
     "name": "Wil Sylvince",
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Wil Sylvince is a stand-up comedian based in New York City. He's a regular at the Comedy Cellar and has appeared on Comedy Central and multiple late night shows. Of Haitian descent, he's known for his high-energy, animated performances."
+    "bio": "Wil Sylvince is a stand-up comedian based in New York City. He's a regular at the Comedy Cellar and has appeared on Comedy Central and multiple late night shows. Of Haitian descent, he's known for his high-energy, animated performances.",
+    "tagline_cellar": "SHOWTIME, HBO, SHORT CUTS FILM FESTIVAL"
   },
   {
     "name": "Lil Sasquatch",
@@ -5457,6 +5539,282 @@
   {
     "name": "Emma Rogers",
     "bio": "Emma Rogers is a stand-up comedian performing in New York City. She performs at clubs across the city.",
+    "venues": []
+  },
+  {
+    "name": "Roast Battle League",
+    "venues": [],
+    "bio": "The Roast Battle League comes to The Comedy Cellar for the first time. Comics from all over the globe will go head-to-head with four battles lined up, nothing is off-limits, and no ego is safe. Come see the first sport that’s also a comedy show live in the Mecca of ball busting and trash talking. Let’s Roast!",
+    "tagline_cellar": "The Roast Battle League comes to The Comedy Cellar for the first time. Comics from all over the globe will go head-to-head with four battles lined up, nothing is off-limits, and no ego is safe. Come see the first sport that’s also a comedy show live in the Mecca of ball busting and trash talking. Let’s Roast!"
+  },
+  {
+    "name": "Brian Moses",
+    "venues": [],
+    "bio": "CREATOR AND HOST OF \"ROAST BATTLE\"",
+    "tagline_cellar": "CREATOR AND HOST OF \"ROAST BATTLE\""
+  },
+  {
+    "name": "Mike Feeney",
+    "venues": [],
+    "bio": "FROM THE TONIGHT SHOW, COMEDY SPECIAL \"A NIGHT AT THE COMEDY CELLAR\", DEBUT ALBUM \"RAGE AGAINST THE ROUTINE\" PREMIERED AT #1 ON ITUNES COMEDY CHARTS AND #6 ON BILLBOARD CHARTS..",
+    "tagline_cellar": "FROM THE TONIGHT SHOW, COMEDY SPECIAL \"A NIGHT AT THE COMEDY CELLAR\", DEBUT ALBUM \"RAGE AGAINST THE ROUTINE\" PREMIERED AT #1 ON ITUNES COMEDY CHARTS AND #6 ON BILLBOARD CHARTS.."
+  },
+  {
+    "name": "Seaton C. Smith",
+    "venues": [],
+    "bio": "MENTIONED IN NEW YORK TIMES BEST OF 2023, FROM \"MULANEY\" ON FOX, FROM THE OPIE AND ANTHONY VIRUS TOUR AND THE NEW FACES SHOW AT JUST FOR LOUGHS COMEDY FESTIVAL IN MONTREAL",
+    "tagline_cellar": "MENTIONED IN NEW YORK TIMES BEST OF 2023, FROM \"MULANEY\" ON FOX, FROM THE OPIE AND ANTHONY VIRUS TOUR AND THE NEW FACES SHOW AT JUST FOR LOUGHS COMEDY FESTIVAL IN MONTREAL"
+  },
+  {
+    "name": "Max Fine",
+    "venues": [],
+    "bio": "SIRIUS XM, CRACKED, IN THE MINIVAN PODCAST, NETFLIX IS A JOKE RADIO",
+    "tagline_cellar": "SIRIUS XM, CRACKED, IN THE MINIVAN PODCAST, NETFLIX IS A JOKE RADIO"
+  },
+  {
+    "name": "Harrison Greenbaum",
+    "venues": [],
+    "bio": "\"MAD APPLE\" AS CIRQUE DE SOLEIL FIRST COMEDIAN, FROM THE CONAN O'BRIEN SHOW, FROM NBC'S AMERICA'S GOT TALENT & LAST COMIC STANDING, COMEDY CENTRAL'S COMICS TO WATCH, WINNER OF THE ANDY KAUFMAN AWARD",
+    "tagline_cellar": "\"MAD APPLE\" AS CIRQUE DE SOLEIL FIRST COMEDIAN, FROM THE CONAN O'BRIEN SHOW, FROM NBC'S AMERICA'S GOT TALENT & LAST COMIC STANDING, COMEDY CENTRAL'S COMICS TO WATCH, WINNER OF THE ANDY KAUFMAN AWARD"
+  },
+  {
+    "name": "Kevin Dombrowski",
+    "venues": [],
+    "bio": "SIRIUS/XM, SNY",
+    "tagline_cellar": "SIRIUS/XM, SNY"
+  },
+  {
+    "name": "Alvin Kuai",
+    "venues": [],
+    "bio": "NEW YOSTRK COMEDY FESTIVAL, SF SKETCHFEST, SOUTH CHINA MORNING POST",
+    "tagline_cellar": "NEW YOSTRK COMEDY FESTIVAL, SF SKETCHFEST, SOUTH CHINA MORNING POST"
+  },
+  {
+    "name": "Jaye McBride",
+    "venues": [],
+    "bio": "NETFLIX \"TALES OF THE CITY, NEW YORK COMEDY FEST, HEADLINER, BIG PINE COMEDY FESTIVAL",
+    "tagline_cellar": "NETFLIX \"TALES OF THE CITY, NEW YORK COMEDY FEST, HEADLINER, BIG PINE COMEDY FESTIVAL"
+  },
+  {
+    "name": "Daniela Mora",
+    "venues": [],
+    "bio": "TUBI, AMAZON PRIME, ADULT SWIM",
+    "tagline_cellar": "TUBI, AMAZON PRIME, ADULT SWIM"
+  },
+  {
+    "name": "Anthony Moore",
+    "venues": [],
+    "bio": "FROM \"TIRES\" ON NETFLIX, FROM HART OF THE CITY, COMEDY CENTRAL",
+    "tagline_cellar": "FROM \"TIRES\" ON NETFLIX, FROM HART OF THE CITY, COMEDY CENTRAL"
+  },
+  {
+    "name": "Mia Jackson",
+    "venues": [],
+    "bio": "Last Comic Standing, Epix, Comedy Central",
+    "tagline_cellar": "Last Comic Standing, Epix, Comedy Central"
+  },
+  {
+    "name": "Winston Hodges",
+    "venues": [],
+    "bio": "NETFLIX, DON'T TELL COMEDY",
+    "tagline_cellar": "NETFLIX, DON'T TELL COMEDY"
+  },
+  {
+    "name": "Matt Koff",
+    "venues": [],
+    "bio": "EMMY-WINNING WRITER FOR THE DAILY SHOW, COMEDY CENTRAL'S \"ADAM DEVINE'S HOUSE PARTY\", THE ONION, WINNER NEW YORK'S FUNNIEST STANDUP 2023",
+    "tagline_cellar": "EMMY-WINNING WRITER FOR THE DAILY SHOW, COMEDY CENTRAL'S \"ADAM DEVINE'S HOUSE PARTY\", THE ONION, WINNER NEW YORK'S FUNNIEST STANDUP 2023"
+  },
+  {
+    "name": "Dvontre Coleman",
+    "venues": []
+  },
+  {
+    "name": "Cassie Wilson",
+    "venues": []
+  },
+  {
+    "name": "Zac Amico",
+    "venues": []
+  },
+  {
+    "name": "Nick Rochefort",
+    "venues": [],
+    "bio_wiki": "Million Dollar Extreme (MDE) is an American sketch comedy troupe, founded by comedians Sam Hyde, Nick Rochefort, and Charls Carroll in 2009."
+  },
+  {
+    "name": "Allie Mae",
+    "venues": []
+  },
+  {
+    "name": "Meka Mo",
+    "venues": []
+  },
+  {
+    "name": "Sarah Thomas",
+    "venues": [],
+    "bio_wiki": "Sarah Thomas may refer to:Sarah Thomas (centenarian) (1788–1897), Welsh centenarian\nSarah Thomas (writer) (1934–2023), Indian writer\nSarah Thomas (actress), British actress\nSarah Thomas (teacher), head of Bryanston School\nSarah Thomas (librarian), American librarian, Bodley's Librarian, University o"
+  },
+  {
+    "name": "Mackenzie Jaquish",
+    "venues": []
+  },
+  {
+    "name": "Na&#8217;im Ali",
+    "venues": []
+  },
+  {
+    "name": "Derek Humphrey",
+    "venues": []
+  },
+  {
+    "name": "Tara Cannistraci",
+    "venues": []
+  },
+  {
+    "name": "Ariel Evans",
+    "venues": []
+  },
+  {
+    "name": "Danny Palmer",
+    "venues": []
+  },
+  {
+    "name": "Alex Portillo",
+    "venues": []
+  },
+  {
+    "name": "Zack McGovern",
+    "venues": []
+  },
+  {
+    "name": "Daryn Passarello",
+    "venues": []
+  },
+  {
+    "name": "Dylan O’Keeffe",
+    "venues": []
+  },
+  {
+    "name": "Kyle Lewis",
+    "venues": []
+  },
+  {
+    "name": "Blake Freeman",
+    "venues": []
+  },
+  {
+    "name": "Hannah Roeschlein",
+    "venues": []
+  },
+  {
+    "name": "Hormoz Rashidi",
+    "venues": []
+  },
+  {
+    "name": "Harshil Shukla",
+    "venues": []
+  },
+  {
+    "name": "Rene Fuentes",
+    "venues": []
+  },
+  {
+    "name": "Hoodo Hersi",
+    "venues": []
+  },
+  {
+    "name": "Torey Cole",
+    "venues": []
+  },
+  {
+    "name": "Riley Edwards",
+    "venues": []
+  },
+  {
+    "name": "Andrea Allan",
+    "venues": [],
+    "bio_wiki": "Andrea Allan is a Scottish-born actress who appeared in many British films of the 1960s and 1970s. She also appeared in magazine spreads for both Playboy and Penthouse."
+  },
+  {
+    "name": "Blair Dawson",
+    "venues": []
+  },
+  {
+    "name": "Sabeen Sadiq",
+    "venues": []
+  },
+  {
+    "name": "Jason King",
+    "venues": []
+  },
+  {
+    "name": "Caroline Baniewicz",
+    "venues": []
+  },
+  {
+    "name": "Mario Bosco",
+    "venues": []
+  },
+  {
+    "name": "Jay Lawrence",
+    "venues": [],
+    "bio_wiki": "Jay Lawrence may refer to:Jay Lawrence (actor) (1924–1987), American stand-up comedian and actor\nJay Lawrence (politician), member of the Arizona House of Representatives\n"
+  },
+  {
+    "name": "Bradley Marco",
+    "venues": []
+  },
+  {
+    "name": "Joshua Lampley",
+    "venues": []
+  },
+  {
+    "name": "Irina Chelidze",
+    "venues": []
+  },
+  {
+    "name": "Tamara Shevon",
+    "venues": []
+  },
+  {
+    "name": "Christy Love",
+    "venues": []
+  },
+  {
+    "name": "Ashley King",
+    "venues": []
+  },
+  {
+    "name": "Jonathan Williams",
+    "venues": []
+  },
+  {
+    "name": "Liz Glazer",
+    "venues": []
+  },
+  {
+    "name": "Amanda Gordon",
+    "venues": []
+  },
+  {
+    "name": "Moonie",
+    "venues": []
+  },
+  {
+    "name": "Thalia Herrera",
+    "venues": []
+  },
+  {
+    "name": "Stephon Bishop",
+    "venues": []
+  },
+  {
+    "name": "Ashlynn Salzano",
+    "venues": []
+  },
+  {
+    "name": "Michael Turner",
     "venues": []
   }
 ]
