@@ -21,8 +21,9 @@ module.exports = async (req, res) => {
         venue: evt.venue?.name || '',
         performers: (evt.performers || []).map(p => p.name).join(', '),
         performerImages: (evt.performers || []).reduce((acc, p) => {
-          // Skip SeatGeek generic placeholder images
-          if (p.image && !p.image.includes('/generic-comedy')) acc[p.name] = p.image;
+          // Skip SeatGeek generic/placeholder images (cartoon comedian, parking sign, etc.)
+          const attr = (p.image_attribution || '').toLowerCase();
+          if (p.image && !p.image.includes('/generic-comedy') && !attr.startsWith('seatgeek')) acc[p.name] = p.image;
           return acc;
         }, {}),
         price: evt.stats?.lowest_price || null,
