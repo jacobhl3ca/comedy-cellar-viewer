@@ -116,7 +116,7 @@ let comedianDB = [];
 let localPhotoMap = {}; // filename -> extension
 
 function localPhotoPath(name) {
-  const filename = name.replace(/[^a-zA-Z0-9_-]/g, '_').toLowerCase();
+  const filename = name.replace(/[^a-zA-Z0-9_-]/g, '_').replace(/_+/g, '_').replace(/^_|_$/g, '').toLowerCase();
   const ext = localPhotoMap[filename];
   return ext ? `/photos/${filename}${ext}` : '';
 }
