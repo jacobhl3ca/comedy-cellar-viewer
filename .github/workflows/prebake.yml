@@ -1,0 +1,38 @@
+name: Nightly Prebake
+
+on:
+  schedule:
+    - cron: '0 8 * * *'  # 3am ET (8am UTC)
+  workflow_dispatch: {}   # manual trigger from GitHub UI
+
+jobs:
+  prebake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run prebake script
+        run: node scripts/prebake.js
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "Jacob HL"
+          git config user.email "jacobhl3ca@gmail.com"
+          git add public/photos/ public/data/photo-manifest.json public/data/comedians.json
+          git commit -m "Prebake: nightly photo + bio update [$(date -u +%Y-%m-%d)]"
+          git push

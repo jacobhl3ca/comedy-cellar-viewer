@@ -15,7 +15,7 @@ const https = require('https');
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+
 
 const ROOT = path.resolve(__dirname, '..');
 const PHOTOS_DIR = path.join(ROOT, 'public', 'photos');
@@ -276,33 +276,21 @@ async function findPhoto(name) {
   return null;
 }
 
-// ---- Step 4: Download image and convert to WebP ----
+// ---- Step 4: Download image ----
 async function downloadPhoto(url, filename) {
   try {
     const buffer = await fetch(url);
     if (buffer.length < 500) return null; // too small, probably error page
 
-    const tempPath = path.join(PHOTOS_DIR, `${filename}_temp`);
-    const outPath = path.join(PHOTOS_DIR, `${filename}.webp`);
-
     // If already exists as any format, skip
     const manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, 'utf8'));
     if (manifest[filename]) return manifest[filename];
 
-    fs.writeFileSync(tempPath, buffer);
-
-    // Try to convert to WebP using sips (built into macOS)
-    try {
-      execSync(`sips -s format webp "${tempPath}" --out "${outPath}" 2>/dev/null`, { timeout: 10000 });
-      fs.unlinkSync(tempPath);
-      return '.webp';
-    } catch {
-      // sips WebP support varies — fall back to saving as original format
-      const ext = guessExtension(url, buffer);
-      const finalPath = path.join(PHOTOS_DIR, `${filename}${ext}`);
-      fs.renameSync(tempPath, finalPath);
-      return ext;
-    }
+    // Save in original format (no conversion dependency needed)
+    const ext = guessExtension(url, buffer);
+    const finalPath = path.join(PHOTOS_DIR, `${filename}${ext}`);
+    fs.writeFileSync(finalPath, buffer);
+    return ext;
   } catch (e) {
     log(`  Download failed for ${filename}: ${e.message}`);
     return null;
@@ -481,21 +469,7 @@ async function main() {
   log(`Manifest: ${Object.keys(sortedManifest).length} entries`);
   log(`Comedian DB: ${comedianDB.length} entries`);
 
-  // Git commit + push if there are changes
-  try {
-    const status = execSync('git status --porcelain', { cwd: ROOT }).toString().trim();
-    if (status) {
-      execSync('git add public/photos/ public/data/photo-manifest.json public/data/comedians.json', { cwd: ROOT });
-      const msg = `Prebake: +${downloadCount} photos, +${bioCount} bios [${new Date().toISOString().split('T')[0]}]`;
-      execSync(`git commit -m "${msg}"`, { cwd: ROOT });
-      execSync('git push', { cwd: ROOT });
-      log(`Git: committed and pushed — "${msg}"`);
-    } else {
-      log('Git: no changes to commit');
-    }
-  } catch (e) {
-    log(`Git error: ${e.message}`);
-  }
+  // Git commit/push handled by GitHub Actions workflow (not this script)
 
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
   log(`=== PREBAKE DONE in ${elapsed}s ===\n`);
