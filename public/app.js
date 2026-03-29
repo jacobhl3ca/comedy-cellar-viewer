@@ -465,6 +465,16 @@ function normalizeVenue(venue) {
   return '';
 }
 
+// ---- Big Shows venue name cleanup ----
+function cleanVenueName(venue) {
+  if (!venue) return '';
+  // Strip " - New York" / " - NYC" suffixes
+  let v = venue.replace(/\s*-\s*New York$/i, '').replace(/\s*-\s*NYC$/i, '').trim();
+  // Normalize known variants
+  if (/^the\s+town\s+hall$/i.test(v)) v = 'Town Hall';
+  return v;
+}
+
 // ---- Show scoring ----
 function scoreShow(show) {
   let faves = 0;
@@ -1652,18 +1662,18 @@ function renderAllVenues(container) {
         evtPhoto = Object.values(evt.performerImages)[0] || '';
       }
       if (!evtPhoto) evtPhoto = getPhotoForVenue(evt.title, 'cellar') || localPhotoPath(evt.title) || comedianPhotos[evt.title] || '';
-      const evtPhotoHtml = evtPhoto ? `<img class="comedian-photo" src="${evtPhoto}" alt="">` : '';
-      const srcLabel = evt.source === 'ticketmaster' ? 'Ticketmaster' : evt.source === 'seatgeek' ? 'SeatGeek' : 'Tickets';
+      const evtPhotoHtml = evtPhoto ? `<img class="comedian-photo" src="${evtPhoto}" alt="" style="width:48px;height:48px;border-radius:50%;object-fit:cover;margin-right:8px;">` : '';
       html += `
-        <div class="show-card">
+        <div class="big-show-card">
           <div class="show-header">
-            <div>${evtPhotoHtml}</div>
+            <div><span class="show-time">${formatTime(evt.time)}</span></div>
             <span class="show-name">${evt.title}</span>
-            <span class="show-venue">${evt.venue || ''}</span>
+            <span class="show-venue">${cleanVenueName(evt.venue) || ''}</span>
           </div>
-          <div class="show-footer">
-            ${evt.url ? `<a href="${evt.url}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">${srcLabel}</a>` : '<span></span>'}
-            <span class="fav-count">${evt.price ? `From $${evt.price}` : ''}</span>
+          <div class="big-show-info" style="padding:10px 16px;display:flex;align-items:center;gap:8px;">
+            ${evtPhotoHtml}
+            ${evt.price ? `<span class="big-show-price">From $${evt.price}</span>` : ''}
+            ${evt.url ? `<a href="${evt.url}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Get Tickets</a>` : ''}
           </div>
         </div>`;
     }
@@ -1680,7 +1690,7 @@ function renderBigShowVenueFilters() {
   const container = document.getElementById('venue-filters');
   if (!container) return;
   if (activeSource !== 'big-shows') return;
-  const venues = [...new Set([...bigShows.map(e => e.venue), ...gothamShows.map(() => 'Gotham Comedy Club')].filter(Boolean))].sort();
+  const venues = [...new Set([...bigShows.map(e => cleanVenueName(e.venue)), ...gothamShows.map(() => 'Gotham Comedy Club')].filter(Boolean))].sort();
   const allVenues = ['all', ...venues];
   container.innerHTML = allVenues.map(v => {
     const label = v === 'all' ? 'All Venues' : v;
@@ -1709,7 +1719,7 @@ function renderBigShows(container) {
     ? (activeDate === 'calendar' ? bigShows.filter(e => calendarSelectedDates.has(e.date)) : bigShows)
     : bigShows.filter(e => e.date === activeDate);
   if (activeBigVenue !== 'all') {
-    filtered = filtered.filter(e => e.venue === activeBigVenue);
+    filtered = filtered.filter(e => cleanVenueName(e.venue) === activeBigVenue);
   }
   filtered = filtered.filter(e => !isShowPast(e.date, e.time));
 
@@ -1721,6 +1731,9 @@ function renderBigShows(container) {
       });
     }
   });
+
+  // Clean venue names before grouping
+  filtered.forEach(evt => { evt.venue = cleanVenueName(evt.venue); });
 
   // Group by performer/title for compact view
   const byPerformer = {};
@@ -1737,9 +1750,9 @@ function renderBigShows(container) {
     return aMin.localeCompare(bMin);
   });
 
-  let html = '<div class="schedule-view">';
+  let html = '<div class="big-shows-section">';
 
-  if (activeDate === 'all') html += '<h2 class="schedule-day-header">Other Shows — Upcoming NYC Comedy</h2>';
+  if (activeDate === 'all') html += '<h2 class="big-shows-header">Other Shows — Upcoming NYC Comedy</h2>';
 
   sortedGroups.forEach(([title, data]) => {
     try {
@@ -1764,45 +1777,30 @@ function renderBigShows(container) {
     const needsLookup = !photoUrl;
     const photoId = needsLookup ? `photo-lookup-${title.replace(/[^a-zA-Z0-9]/g, '_')}` : '';
     const photoHtml = photoUrl
-      ? `<img class="comedian-photo" src="${photoUrl}" alt="${title}" onerror="this.style.display='none'">`
-      : `<img class="comedian-photo" id="${photoId}" alt="${title}" style="display:none;" onerror="this.style.display='none'" data-lookup-name="${lookupName.replace(/"/g, '&quot;')}" data-lookup-title="${title.replace(/"/g, '&quot;')}">`;
+      ? `<img src="${photoUrl}" alt="${title}" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;" onerror="this.style.display='none'">`
+      : `<img id="${photoId}" alt="${title}" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;display:none;" onerror="this.style.display='none'" data-lookup-name="${lookupName.replace(/"/g, '&quot;')}" data-lookup-title="${title.replace(/"/g, '&quot;')}">`;
 
-    // Date boxes for each show
+    // Date boxes — sorted by date, each links to its source URL
     const dateBoxes = data.events.sort((a, b) => a.date.localeCompare(b.date) || (a.time || '').localeCompare(b.time || '')).map(evt => {
       const d = new Date(evt.date + 'T12:00:00');
       const shortDate = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
       const shortDay = d.toLocaleDateString('en-US', { weekday: 'short' });
       const timeStr = evt.time || '';
       const priceStr = evt.price ? `$${evt.price}` : '';
-      return `<span class="big-date-box"><span class="bdb-day">${shortDay} ${shortDate}</span>${timeStr ? `<span class="bdb-time">${timeStr}</span>` : ''}${priceStr ? `<span class="bdb-price">${priceStr}</span>` : ''}</span>`;
+      return evt.url
+        ? `<a href="${evt.url}" target="_blank" class="big-date-box" onclick="trackReserve(this)"><span class="bdb-day">${shortDay} ${shortDate}</span><span class="bdb-time">${timeStr}</span>${priceStr ? `<span class="bdb-price">${priceStr}</span>` : ''}</a>`
+        : `<span class="big-date-box"><span class="bdb-day">${shortDay} ${shortDate}</span><span class="bdb-time">${timeStr}</span></span>`;
     }).join('');
 
-    // Ticket links — collect unique URLs per source
-    const sgUrl = data.events.find(e => e.source === 'seatgeek' && e.url)?.url;
-    const tmUrl = data.events.find(e => e.source === 'ticketmaster' && e.url)?.url;
-    const anyUrl = data.events.find(e => e.url)?.url;
-    let ticketLinks = '';
-    if (sgUrl && tmUrl) {
-      ticketLinks = `<a href="${sgUrl}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">SeatGeek</a> <a href="${tmUrl}" target="_blank" class="reserve-btn reserve-btn-alt" onclick="trackReserve(this)">Ticketmaster</a>`;
-    } else if (sgUrl) {
-      ticketLinks = `<a href="${sgUrl}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">SeatGeek</a>`;
-    } else if (tmUrl) {
-      ticketLinks = `<a href="${tmUrl}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Ticketmaster</a>`;
-    } else if (anyUrl) {
-      ticketLinks = `<a href="${anyUrl}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Tickets</a>`;
-    }
-
     html += `
-      <div class="show-card">
-        <div class="show-header">
-          <div>${photoHtml}</div>
-          <span class="show-name">${title}</span>
-          <span class="show-venue">${data.venue}</span>
-        </div>
-        <div class="big-date-boxes" style="padding:8px 16px;">${dateBoxes}</div>
-        <div class="show-footer">
-          <div class="ticket-links">${ticketLinks}</div>
-          <span class="fav-count">${firstEvt.price ? `From $${firstEvt.price}` : ''}</span>
+      <div class="big-show-card">
+        <div class="big-show-info" style="display:flex;gap:12px;align-items:flex-start;">
+          ${photoHtml}
+          <div style="flex:1;min-width:0;">
+            <div class="big-show-title">${title}</div>
+            <div class="big-show-meta"><span class="big-show-venue">${cleanVenueName(data.venue)}</span></div>
+            <div class="big-date-boxes">${dateBoxes}</div>
+          </div>
         </div>
       </div>`;
     } catch (e) { console.error('renderBigShows card error:', e, title); }
