@@ -240,9 +240,14 @@ function getCellarPoster(venueName) {
   return '';
 }
 
-// ---- API ----
+// ---- API (static prebaked data first, live API fallback) ----
 const API_URL = '/api/lineup';
 const API_BATCH_URL = '/api/lineup-batch';
+const STATIC_CELLAR = '/data/cellar-cache.json';
+const STATIC_STAND = '/data/stand-cache.json';
+const STATIC_GOTHAM = '/data/gotham-cache.json';
+const STATIC_NYCC = '/data/nycc-cache.json';
+const STATIC_BIG_SHOWS = '/data/big-shows-cache.json';
 
 function getDateRange() {
   const dates = [];
@@ -502,7 +507,9 @@ let standShows = [];
 
 async function fetchTheStand() {
   try {
-    const resp = await fetchWithTimeout('/api/the-stand', {}, 15000);
+    // Try prebaked static data first (CDN, no function invocation)
+    const resp = await fetchWithTimeout(STATIC_STAND, {}, 5000)
+      .catch(() => fetchWithTimeout('/api/the-stand', {}, 15000));
     const data = await resp.json();
     standShows = data.shows || [];
     // Extract comedian photos from Stand data into venue-specific map
@@ -530,7 +537,8 @@ let gothamShows = [];
 
 async function fetchNYCC() {
   try {
-    const resp = await fetchWithTimeout('/api/nycc', {}, 15000);
+    const resp = await fetchWithTimeout(STATIC_NYCC, {}, 5000)
+      .catch(() => fetchWithTimeout('/api/nycc', {}, 15000));
     const data = await resp.json();
     nyccShows = data.shows || [];
     return nyccShows;
@@ -574,7 +582,8 @@ function renderNYCCShows(container) {
 
 async function fetchGotham() {
   try {
-    const resp = await fetchWithTimeout('/api/gotham', {}, 15000);
+    const resp = await fetchWithTimeout(STATIC_GOTHAM, {}, 5000)
+      .catch(() => fetchWithTimeout('/api/gotham', {}, 15000));
     const data = await resp.json();
     gothamShows = data.shows || [];
     return gothamShows;
@@ -586,7 +595,8 @@ async function fetchGotham() {
 
 async function fetchBigShows() {
   try {
-    const resp = await fetchWithTimeout('/api/big-shows', {}, 15000);
+    const resp = await fetchWithTimeout(STATIC_BIG_SHOWS, {}, 5000)
+      .catch(() => fetchWithTimeout('/api/big-shows', {}, 15000));
     const data = await resp.json();
     bigShows = data.events || [];
     return bigShows;
@@ -2244,11 +2254,11 @@ async function init() {
   dates = getDateRange();
   activeDate = 'all';
 
-  // Fetch all sources in parallel (all have timeouts so page won't hang forever)
-  // Batch lineup: 1 request for all days instead of 14 separate calls
+  // Fetch all sources in parallel — prebaked static JSON first, live API fallback
   const [batchData] = await Promise.all([
-    fetchWithTimeout(`${API_BATCH_URL}?days=${dates.length}`, {}, 15000)
-      .then(r => r.json()).catch(() => null),
+    fetchWithTimeout(STATIC_CELLAR, {}, 5000).then(r => r.json())
+      .catch(() => fetchWithTimeout(`${API_BATCH_URL}?days=${dates.length}`, {}, 15000).then(r => r.json()))
+      .catch(() => null),
     fetchTheStand(),
     fetchBigShows(),
     fetchNYCC(),

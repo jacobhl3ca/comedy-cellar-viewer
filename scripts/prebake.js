@@ -1,14 +1,17 @@
 #!/usr/bin/env node
 /**
- * Nightly prebake script — runs on Mac Mini at 3am via cron
+ * Nightly prebake script — runs via GitHub Actions at 3am ET
  *
- * 1. Pulls Comedy Cellar lineups for next 7 days
- * 2. Pulls The Stand shows
+ * 1. Pulls Comedy Cellar lineups for next 7 days → saves raw HTML as static JSON
+ * 2. Pulls The Stand, Gotham, NYCC, Big Shows → saves as static JSON
  * 3. Extracts all comedian names + external photo URLs
- * 4. Downloads missing photos as local WebP files
+ * 4. Downloads missing photos as local files
  * 5. Fetches missing bios from Wikipedia
  * 6. Updates comedians.json + photo-manifest.json
- * 7. Git commit + push → triggers Vercel deploy
+ * 7. GitHub Actions handles git commit + push → triggers Vercel deploy
+ *
+ * Result: entire site loads from static JSON files on Vercel CDN.
+ * Zero serverless function invocations at runtime.
  */
 
 const https = require('https');
@@ -116,9 +119,11 @@ function nameToFilename(name) {
 }
 
 // ---- Step 1: Scrape Comedy Cellar (next 7 days) ----
+// Returns { comedians: Map, batchResults: object } — batchResults saved as static JSON
 async function scrapeCellar() {
   log('Scraping Comedy Cellar lineups...');
   const comedians = new Map(); // name -> { photoUrl, tagline }
+  const batchResults = {}; // dateStr -> raw API response (saved as static JSON)
 
   const dates = [];
   for (let i = 0; i < 7; i++) {
@@ -133,6 +138,7 @@ async function scrapeCellar() {
         date: dateStr, venue: 'newyork', type: 'lineup'
       }))}`;
       const data = await postJSON('www.comedycellar.com', '/lineup/api/', body);
+      batchResults[dateStr] = data; // Save raw response
       const html = data?.show?.html || '';
 
       // Extract photos
@@ -161,17 +167,21 @@ async function scrapeCellar() {
       log(`  ${dateStr}: parsed OK`);
     } catch (e) {
       log(`  ${dateStr}: ERROR - ${e.message}`);
+      batchResults[dateStr] = { error: e.message };
     }
   }
 
   log(`Comedy Cellar: found ${comedians.size} comedians`);
-  return comedians;
+  return { comedians, batchResults, dates };
 }
 
 // ---- Step 2: Scrape The Stand ----
+// Returns { comedians: Map, shows: array } — shows saved as static JSON
 async function scrapeStand() {
   log('Scraping The Stand...');
   const comedians = new Map(); // name -> { photoUrl }
+  const allShows = [];
+  const seen = new Set();
 
   const offsets = [0, 20, 40, 60, 80, 100, 120, 140, 160];
   for (const offset of offsets) {
@@ -185,6 +195,30 @@ async function scrapeStand() {
       for (let i = 1; i < blocks.length; i++) {
         const block = blocks[i];
 
+        // Extract URL and title (same logic as api/the-stand.js)
+        const urlMatch = block.match(/showtitle d-none d-sm-block"><a href="https:\/\/thestandnyc\.com\/?\/?([^"]*)">(.*?)<\/a>/);
+        if (!urlMatch) continue;
+        const showPath = urlMatch[1];
+        const title = urlMatch[2].trim();
+        if (seen.has(showPath)) continue;
+        seen.add(showPath);
+
+        const showUrl = 'https://thestandnyc.com/' + showPath;
+        const dateMatch = showPath.match(/(\d{4}-\d{2}-\d{2})-(\d{2})(\d{2})/);
+        let date = '', time = '';
+        if (dateMatch) {
+          date = dateMatch[1];
+          let hour = parseInt(dateMatch[2]);
+          const minute = dateMatch[3];
+          const ampm = hour < 12 ? 'AM' : 'PM';
+          if (hour > 12) hour -= 12;
+          if (hour === 0) hour = 12;
+          time = `${hour}:${minute} ${ampm}`;
+        }
+
+        const roomMatch = block.match(/list-show-room">(.*?)<\/span>/);
+        const room = roomMatch ? roomMatch[1].trim() : '';
+
         // Extract comedian names
         const nameMatches = [...block.matchAll(/<small>(.*?)<\/small>/g)];
         const names = [...new Set(nameMatches
@@ -193,6 +227,7 @@ async function scrapeStand() {
         )];
 
         // Extract comedian photos
+        const comedianPhotos = {};
         const photoMatches = [...block.matchAll(/<img[^>]+src="(https?:\/\/thestandnyc\.com\/images\/comedians\/[^"]+)"[^>]*>/gi)];
         for (const pm of photoMatches) {
           const imgUrl = pm[1];
@@ -202,7 +237,8 @@ async function scrapeStand() {
             for (const c of names) {
               const cNorm = c.toLowerCase().replace(/[.\-']/g, ' ');
               const pNorm = photoName.toLowerCase();
-              if (cNorm === pNorm || pNorm.includes(c.split(' ').pop().toLowerCase())) {
+              if (cNorm === pNorm || pNorm.includes(c.split(' ').pop().toLowerCase()) || c.split(' ')[0].toLowerCase() === pNorm) {
+                comedianPhotos[c] = imgUrl;
                 if (!comedians.has(c)) comedians.set(c, {});
                 comedians.get(c).photoUrl = imgUrl;
                 comedians.get(c).source = 'stand';
@@ -211,6 +247,14 @@ async function scrapeStand() {
             }
           }
         }
+
+        // Extract price + poster
+        const priceMatch = block.match(/\$(\d+\.?\d*)/);
+        const price = priceMatch ? priceMatch[1] : '';
+        const posterMatch = block.match(/<img[^>]+src="(https?:\/\/thestandnyc\.com\/images\/shows\/[^"]+)"/i);
+        const poster = posterMatch ? posterMatch[1] : '';
+
+        allShows.push({ title, date, time, comedians: names, url: showUrl, venue: 'The Stand NYC', room, price, poster, comedianPhotos });
 
         // Register names even without photos
         for (const n of names) {
@@ -222,8 +266,8 @@ async function scrapeStand() {
     }
   }
 
-  log(`The Stand: found ${comedians.size} comedians`);
-  return comedians;
+  log(`The Stand: found ${comedians.size} comedians, ${allShows.length} shows`);
+  return { comedians, shows: allShows };
 }
 
 // ---- Step 3: Try photo sources for a comedian ----
@@ -274,6 +318,111 @@ async function findPhoto(name) {
   } catch {}
 
   return null;
+}
+
+// ---- Step 2b: Scrape Gotham Comedy Club ----
+async function scrapeGotham() {
+  log('Scraping Gotham Comedy Club...');
+  try {
+    const data = await fetchJSON('https://api-cache.squadup.com/api/v3/events?page_size=600&user_ids=9987142&include=price_tiers');
+    const events = (data.data || [])
+      .filter(evt => evt.attributes && new Date(evt.attributes.start_date) >= new Date())
+      .map(evt => {
+        const attr = evt.attributes;
+        const dt = new Date(attr.start_date);
+        const date = dt.toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+        const time = dt.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'America/New_York' });
+        const title = (attr.name || '').replace(/&amp;/g, '&').replace(/<[^>]+>/g, '');
+        const tiers = evt.relationships?.price_tiers?.data || [];
+        const prices = tiers.map(t => {
+          const included = data.included?.find(i => i.id === t.id && i.type === 'price_tiers');
+          return included?.attributes?.price || null;
+        }).filter(Boolean);
+        const minPrice = prices.length > 0 ? Math.min(...prices) : null;
+        return {
+          title, date, time, venue: 'Gotham Comedy Club', price: minPrice,
+          url: `https://gothamcomedyclub.com/events?e=${evt.id}`,
+          description: (attr.description || '').replace(/<[^>]+>/g, '').substring(0, 200),
+          image: attr.image_thumbnail || attr.image || ''
+        };
+      })
+      .sort((a, b) => a.date.localeCompare(b.date) || a.time.localeCompare(b.time));
+    log(`Gotham: ${events.length} shows`);
+    return events;
+  } catch (e) {
+    log(`Gotham: ERROR - ${e.message}`);
+    return [];
+  }
+}
+
+// ---- Step 2c: Scrape NYCC ----
+async function scrapeNYCC() {
+  log('Scraping NY Comedy Club...');
+  try {
+    const html = await fetchText('https://newyorkcomedyclub.com/shows');
+    const shows = [];
+    const seen = new Set();
+    // Try show cards
+    const cardPattern = /href="(\/shows\/[^"]+)"[^>]*>[\s\S]*?<h\d[^>]*>([\s\S]*?)<\/h\d>[\s\S]*?(?:<time[^>]*>([\s\S]*?)<\/time>)?/g;
+    let match;
+    while ((match = cardPattern.exec(html)) !== null) {
+      const p = match[1];
+      if (seen.has(p)) continue;
+      seen.add(p);
+      const title = match[2].replace(/<[^>]+>/g, '').trim();
+      const dateStr = match[3] ? match[3].replace(/<[^>]+>/g, '').trim() : '';
+      if (title) shows.push({ title, date: dateStr, time: '', comedians: [], url: 'https://newyorkcomedyclub.com' + p, venue: 'NY Comedy Club', room: '' });
+    }
+    // Fallback: extract show links
+    if (shows.length === 0) {
+      const linkPattern = /href="(\/shows\/([^"]+))"[^>]*>/g;
+      while ((match = linkPattern.exec(html)) !== null) {
+        const p = match[1]; const slug = match[2];
+        if (seen.has(p)) continue;
+        seen.add(p);
+        const title = slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+        shows.push({ title, date: '', time: '', comedians: [], url: 'https://newyorkcomedyclub.com' + p, venue: 'NY Comedy Club', room: '' });
+      }
+    }
+    log(`NYCC: ${shows.length} shows`);
+    return shows;
+  } catch (e) {
+    log(`NYCC: ERROR - ${e.message}`);
+    return [];
+  }
+}
+
+// ---- Step 2d: Scrape Big Shows (SeatGeek) ----
+const SEATGEEK_CLIENT_ID = 'MTA3MDA0Nzh8MTc3NDMxMTgyMy45ODI2NDY3';
+
+async function scrapeBigShows() {
+  log('Scraping Big Shows (SeatGeek)...');
+  try {
+    const data = await fetchJSON(`https://api.seatgeek.com/2/events?client_id=${SEATGEEK_CLIENT_ID}&venue.city=New+York&taxonomies.name=comedy&per_page=50&sort=datetime_local.asc`);
+    const events = (data.events || []).map(evt => {
+      const dt = new Date(evt.datetime_local);
+      return {
+        title: evt.short_title || evt.title,
+        date: evt.datetime_local?.split('T')[0] || '',
+        time: dt.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }),
+        venue: evt.venue?.name || '',
+        performers: (evt.performers || []).map(p => p.name).join(', '),
+        performerImages: (evt.performers || []).reduce((acc, p) => {
+          const attr = (p.image_attribution || '').toLowerCase();
+          if (p.image && !p.image.includes('/generic-comedy') && !attr.startsWith('seatgeek')) acc[p.name] = p.image;
+          return acc;
+        }, {}),
+        price: evt.stats?.lowest_price || null,
+        url: evt.url || '',
+        id: evt.id
+      };
+    });
+    log(`Big Shows: ${events.length} events`);
+    return events;
+  } catch (e) {
+    log(`Big Shows: ERROR - ${e.message}`);
+    return [];
+  }
 }
 
 // ---- Step 4: Download image ----
@@ -354,11 +503,55 @@ async function main() {
   try { comedianDB = JSON.parse(fs.readFileSync(COMEDIANS_PATH, 'utf8')); } catch {}
   const dbByName = new Map(comedianDB.map(c => [c.name, c]));
 
-  // Scrape all sources
-  const [cellarComedians, standComedians] = await Promise.all([
+  // Scrape all sources in parallel
+  const [cellarResult, standResult, gothamShows, nyccShows, bigShowEvents] = await Promise.all([
     scrapeCellar(),
     scrapeStand(),
+    scrapeGotham(),
+    scrapeNYCC(),
+    scrapeBigShows(),
   ]);
+
+  const { comedians: cellarComedians, batchResults, dates: cellarDates } = cellarResult;
+  const { comedians: standComedians, shows: standShows } = standResult;
+
+  // Save all show data as static JSON files (served from CDN, zero function invocations)
+  const CACHE_DIR = path.join(ROOT, 'public', 'data');
+
+  // Cellar batch — same format as /api/lineup-batch response
+  fs.writeFileSync(path.join(CACHE_DIR, 'cellar-cache.json'), JSON.stringify({
+    results: batchResults, dates: cellarDates, count: cellarDates.length,
+    prebaked: new Date().toISOString()
+  }) + '\n');
+  log(`Saved cellar-cache.json (${cellarDates.length} days)`);
+
+  // Stand shows — same format as /api/the-stand response
+  fs.writeFileSync(path.join(CACHE_DIR, 'stand-cache.json'), JSON.stringify({
+    shows: standShows, count: standShows.length, source: 'thestandnyc.com',
+    prebaked: new Date().toISOString()
+  }) + '\n');
+  log(`Saved stand-cache.json (${standShows.length} shows)`);
+
+  // Gotham — same format as /api/gotham response
+  fs.writeFileSync(path.join(CACHE_DIR, 'gotham-cache.json'), JSON.stringify({
+    shows: gothamShows, count: gothamShows.length, source: 'gothamcomedyclub.com',
+    prebaked: new Date().toISOString()
+  }) + '\n');
+  log(`Saved gotham-cache.json (${gothamShows.length} shows)`);
+
+  // NYCC — same format as /api/nycc response
+  fs.writeFileSync(path.join(CACHE_DIR, 'nycc-cache.json'), JSON.stringify({
+    shows: nyccShows, count: nyccShows.length, source: 'newyorkcomedyclub.com',
+    prebaked: new Date().toISOString()
+  }) + '\n');
+  log(`Saved nycc-cache.json (${nyccShows.length} shows)`);
+
+  // Big Shows — same format as /api/big-shows response
+  fs.writeFileSync(path.join(CACHE_DIR, 'big-shows-cache.json'), JSON.stringify({
+    events: bigShowEvents, count: bigShowEvents.length, source: 'seatgeek.com',
+    prebaked: new Date().toISOString()
+  }) + '\n');
+  log(`Saved big-shows-cache.json (${bigShowEvents.length} events)`);
 
   // Merge all comedian names + photo URLs
   const allComedians = new Map(); // name -> { photoUrl, tagline, source }
