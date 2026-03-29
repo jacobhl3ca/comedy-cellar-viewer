@@ -281,6 +281,48 @@ function savePhotoCache() {
 }
 loadPhotoCache();
 
+// Auto-resolve missing photos via server-side scrape (NYCC/Stand)
+const PHOTO_LOOKUP_CACHE_KEY = 'cellar-tonight-photo-lookup';
+let photoLookupCache = {};
+try { photoLookupCache = JSON.parse(localStorage.getItem(PHOTO_LOOKUP_CACHE_KEY)) || {}; } catch {}
+const photoLookupInFlight = {};
+
+function autoResolvePhoto(name, imgEl) {
+  // Already have a cached result (even if empty — means we tried and found nothing)
+  if (name in photoLookupCache) {
+    if (photoLookupCache[name] && imgEl) {
+      imgEl.src = photoLookupCache[name];
+      imgEl.style.display = '';
+    }
+    return;
+  }
+  // Already in flight
+  if (photoLookupInFlight[name]) {
+    photoLookupInFlight[name].push(imgEl);
+    return;
+  }
+  photoLookupInFlight[name] = [imgEl];
+  fetchWithTimeout(`/api/photo-lookup?name=${encodeURIComponent(name)}`, {}, 12000)
+    .then(r => r.json())
+    .then(data => {
+      photoLookupCache[name] = data.url || '';
+      try { localStorage.setItem(PHOTO_LOOKUP_CACHE_KEY, JSON.stringify(photoLookupCache)); } catch {}
+      if (data.url) {
+        // Also save to global maps so future renders don't need lookup
+        if (!comedianPhotos[name]) comedianPhotos[name] = data.url;
+        // Patch all waiting img elements
+        (photoLookupInFlight[name] || []).forEach(el => {
+          if (el) { el.src = data.url; el.style.display = ''; }
+        });
+      }
+      delete photoLookupInFlight[name];
+    })
+    .catch(() => {
+      photoLookupCache[name] = '';
+      delete photoLookupInFlight[name];
+    });
+}
+
 // Venue-aware photo lookup: venue-specific → NYCC DB → cross-venue → local blob → legacy
 function getPhotoForVenue(name, venueSource) {
   const dbEntry = comedianDB.find(c => c.name === name);
@@ -1682,7 +1724,15 @@ function renderBigShows(container) {
         }
       }
     }
-    const photoHtml = photoUrl ? `<img src="${photoUrl}" alt="${title}" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;" onerror="this.style.display='none'">` : '';
+    // Check lookup cache for previously resolved photos
+    const lookupName = data.performers ? data.performers.split(', ')[0] : title;
+    if (!photoUrl && photoLookupCache[lookupName]) photoUrl = photoLookupCache[lookupName];
+    if (!photoUrl && photoLookupCache[title]) photoUrl = photoLookupCache[title];
+    const needsLookup = !photoUrl;
+    const photoId = needsLookup ? `photo-lookup-${title.replace(/[^a-zA-Z0-9]/g, '_')}` : '';
+    const photoHtml = photoUrl
+      ? `<img src="${photoUrl}" alt="${title}" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;" onerror="this.style.display='none'">`
+      : `<img id="${photoId}" alt="${title}" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;display:none;" onerror="this.style.display='none'" data-lookup-name="${lookupName.replace(/"/g, '&quot;')}" data-lookup-title="${title.replace(/"/g, '&quot;')}">`;
 
     // Date boxes for each show
     const dateBoxes = data.events.map(evt => {
@@ -1713,6 +1763,14 @@ function renderBigShows(container) {
   html += '</div>';
   container.innerHTML = html;
   renderBottomTabs();
+
+  // Auto-resolve missing photos via server-side scrape
+  container.querySelectorAll('img[data-lookup-name]').forEach(img => {
+    const name = img.dataset.lookupName;
+    const title = img.dataset.lookupTitle;
+    autoResolvePhoto(name, img);
+    if (name !== title) autoResolvePhoto(title, img);
+  });
 }
 
 function renderVenueFilters(shows) {
