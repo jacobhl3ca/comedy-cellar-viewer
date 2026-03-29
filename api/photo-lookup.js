@@ -12,11 +12,12 @@ module.exports = async (req, res) => {
 
   const slug = name.toLowerCase().replace(/['']/g, '').replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '');
 
-  // Try sources in order: The Stand → NYCC → Comedy Cellar uploads
+  // Try sources in order: The Stand → NYCC → Comedy Cellar → Instagram
   const sources = [
     { name: 'stand', fn: () => tryStand(slug) },
     { name: 'nycc', fn: () => tryNYCC(slug) },
     { name: 'cellar', fn: () => tryCellar(slug) },
+    { name: 'instagram', fn: () => tryInstagram(name) },
   ];
 
   for (const source of sources) {
@@ -79,5 +80,35 @@ async function tryCellar(slug) {
   // We can't guess the date folder, but we can try the comedian page
   // Actually the Cellar doesn't have individual comedian pages accessible by slug
   // Instead, check if their name appears in a recent lineup
+  return '';
+}
+
+// Instagram — last resort, scrape og:image from profile page
+// Tries common username patterns: firstlast, first.last, firstnamelastname
+async function tryInstagram(fullName) {
+  const parts = fullName.toLowerCase().replace(/[^a-z\s]/g, '').trim().split(/\s+/);
+  if (parts.length < 2) return '';
+  const first = parts[0];
+  const last = parts[parts.length - 1];
+  // Common Instagram handle patterns for comedians
+  const usernames = [
+    `${first}${last}`,           // rileyedwards
+    `${first}.${last}`,          // riley.edwards
+    `${first}_${last}`,          // riley_edwards
+    `${first}${last}comedy`,     // rileyedwardscomedy
+    `${first}comedy`,            // rileycomedy
+  ];
+  for (const username of usernames) {
+    try {
+      const html = await fetchHTML(`https://www.instagram.com/${username}/`);
+      // Verify it's a real profile (not login/error page)
+      if (!html.includes('og:image')) continue;
+      const match = html.match(/<meta\s+property="og:image"\s+content="([^"]+)"/i)
+                 || html.match(/<meta\s+content="([^"]+)"\s+property="og:image"/i);
+      if (match && match[1] && match[1].includes('cdninstagram.com')) {
+        return match[1].replace(/&amp;/g, '&');
+      }
+    } catch {}
+  }
   return '';
 }
