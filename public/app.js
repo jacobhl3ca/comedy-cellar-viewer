@@ -330,14 +330,14 @@ function autoResolvePhoto(name, imgEl) {
 
 // Venue-aware photo lookup: local first (prebaked), then external fallbacks
 function getPhotoForVenue(name, venueSource) {
-  // 1. Local prebaked photo (fastest — served from CDN, no external fetch)
-  const local = localPhotoPath(name);
-  if (local) return local;
-  // 2. Venue-specific external photo (runtime scraped)
   const dbEntry = comedianDB.find(c => c.name === name);
+  // 1. Venue-specific photo from that venue's own site (matches what the venue shows)
   if (venueSource === 'cellar' && comedianPhotosCellar[name]) return comedianPhotosCellar[name];
   if (venueSource === 'stand' && comedianPhotosStand[name]) return comedianPhotosStand[name];
   if (venueSource === 'nycc' && dbEntry?.photo_nycc) return dbEntry.photo_nycc;
+  // 2. Local prebaked photo (CDN, no external fetch)
+  const local = localPhotoPath(name);
+  if (local) return local;
   // 3. Cross-venue external fallbacks
   if (dbEntry?.photo_nycc) return dbEntry.photo_nycc;
   if (comedianPhotosCellar[name]) return comedianPhotosCellar[name];
