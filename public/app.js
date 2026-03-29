@@ -392,6 +392,7 @@ function parseShows(html, dateStr) {
 const NAME_FIXES = {
   'Will Sylvince': 'Wil Sylvince',
   'Wil Sylvince': 'Wil Sylvince',
+  'Luis Gomez': 'Luis J Gomez',
 };
 function normalizeName(name) {
   // Sanitize HTML entities to prevent XSS from API data
