@@ -595,8 +595,29 @@ async function fetchGotham() {
 
 async function fetchBigShows() {
   try {
+    // Try static cache first (prebaked SeatGeek + Ticketmaster merged)
     const resp = await fetchWithTimeout(STATIC_BIG_SHOWS, {}, 5000)
-      .catch(() => fetchWithTimeout('/api/big-shows', {}, 15000));
+      .catch(async () => {
+        // Live fallback: fetch both APIs and merge
+        const [sgResp, tmResp] = await Promise.all([
+          fetchWithTimeout('/api/big-shows', {}, 15000).catch(() => null),
+          fetchWithTimeout('/api/ticketmaster', {}, 15000).catch(() => null),
+        ]);
+        const sgData = sgResp ? await sgResp.json() : { events: [] };
+        const tmData = tmResp ? await tmResp.json() : { events: [] };
+        // Dedupe: skip TM events that match SeatGeek by normalized title+date
+        const sgKeys = new Set();
+        sgData.events.forEach(e => {
+          sgKeys.add(e.title.toLowerCase().replace(/[^a-z0-9]/g, '') + '|' + e.date);
+          if (e.performers) e.performers.split(', ').forEach(p => sgKeys.add(p.toLowerCase().replace(/[^a-z0-9]/g, '') + '|' + e.date));
+        });
+        const uniqueTM = tmData.events.filter(e => {
+          const k = e.title.toLowerCase().replace(/[^a-z0-9]/g, '') + '|' + e.date;
+          const pKeys = e.performers ? e.performers.split(', ').map(p => p.toLowerCase().replace(/[^a-z0-9]/g, '') + '|' + e.date) : [];
+          return !sgKeys.has(k) && !pKeys.some(pk => sgKeys.has(pk));
+        });
+        return new Response(JSON.stringify({ events: [...sgData.events, ...uniqueTM] }));
+      });
     const data = await resp.json();
     bigShows = data.events || [];
     return bigShows;

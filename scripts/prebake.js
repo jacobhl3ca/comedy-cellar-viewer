@@ -425,6 +425,80 @@ async function scrapeBigShows() {
   }
 }
 
+// ---- Step 2e: Scrape Ticketmaster ----
+const TM_API_KEY = 'ngUmt60hJ6lHzJxzy9ximMn0HtAts4Cj';
+
+async function scrapeTicketmaster() {
+  log('Scraping Ticketmaster...');
+  try {
+    const data = await fetchJSON(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${TM_API_KEY}&classificationName=comedy&subGenreId=KZazBEonSMnZfZ7vF17&city=New+York&stateCode=NY&size=50&sort=date,asc`);
+    const events = (data._embedded?.events || []).map(evt => {
+      const startDate = evt.dates?.start?.localDate || '';
+      const startTime = evt.dates?.start?.localTime || '';
+      const dt = startTime ? new Date(`${startDate}T${startTime}`) : null;
+      const venue = evt._embedded?.venues?.[0];
+
+      const performerImages = {};
+      (evt._embedded?.attractions || []).forEach(a => {
+        const imgs = a.images || [];
+        const best = imgs.filter(i => i.ratio === '16_9').sort((x, y) => (y.width || 0) - (x.width || 0))[0]
+          || imgs.sort((x, y) => (y.width || 0) - (x.width || 0))[0];
+        if (best?.url) performerImages[a.name] = best.url;
+      });
+
+      return {
+        title: evt.name || '',
+        date: startDate,
+        time: dt ? dt.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) : '',
+        venue: venue?.name || '',
+        performers: (evt._embedded?.attractions || []).map(a => a.name).join(', '),
+        performerImages,
+        price: evt.priceRanges?.[0]?.min || null,
+        url: evt.url || '',
+        id: evt.id,
+        source: 'ticketmaster'
+      };
+    });
+    log(`Ticketmaster: ${events.length} events`);
+    return events;
+  } catch (e) {
+    log(`Ticketmaster: ERROR - ${e.message}`);
+    return [];
+  }
+}
+
+// ---- Dedupe SeatGeek + Ticketmaster events ----
+function mergeEvents(seatgeekEvents, ticketmasterEvents) {
+  // Build lookup from SeatGeek: normalize title+date for matching
+  const sgKeys = new Set();
+  seatgeekEvents.forEach(evt => {
+    sgKeys.add(`${evt.title.toLowerCase().replace(/[^a-z0-9]/g, '')}|${evt.date}`);
+    // Also match on performer name for cases where titles differ
+    if (evt.performers) {
+      evt.performers.split(', ').forEach(p => {
+        sgKeys.add(`${p.toLowerCase().replace(/[^a-z0-9]/g, '')}|${evt.date}`);
+      });
+    }
+  });
+
+  // Add TM events that aren't already in SeatGeek
+  let added = 0;
+  const merged = [...seatgeekEvents];
+  ticketmasterEvents.forEach(evt => {
+    const titleKey = `${evt.title.toLowerCase().replace(/[^a-z0-9]/g, '')}|${evt.date}`;
+    const performerKeys = evt.performers
+      ? evt.performers.split(', ').map(p => `${p.toLowerCase().replace(/[^a-z0-9]/g, '')}|${evt.date}`)
+      : [];
+    const isDupe = sgKeys.has(titleKey) || performerKeys.some(k => sgKeys.has(k));
+    if (!isDupe) {
+      merged.push(evt);
+      added++;
+    }
+  });
+  log(`Merge: ${seatgeekEvents.length} SeatGeek + ${ticketmasterEvents.length} Ticketmaster → ${added} unique TM events added → ${merged.length} total`);
+  return merged;
+}
+
 // ---- Step 4: Download image ----
 async function downloadPhoto(url, filename) {
   try {
@@ -504,13 +578,17 @@ async function main() {
   const dbByName = new Map(comedianDB.map(c => [c.name, c]));
 
   // Scrape all sources in parallel
-  const [cellarResult, standResult, gothamShows, nyccShows, bigShowEvents] = await Promise.all([
+  const [cellarResult, standResult, gothamShows, nyccShows, seatgeekEvents, ticketmasterEvents] = await Promise.all([
     scrapeCellar(),
     scrapeStand(),
     scrapeGotham(),
     scrapeNYCC(),
     scrapeBigShows(),
+    scrapeTicketmaster(),
   ]);
+
+  // Merge SeatGeek + Ticketmaster, deduplicating by title+date
+  const bigShowEvents = mergeEvents(seatgeekEvents, ticketmasterEvents);
 
   const { comedians: cellarComedians, batchResults, dates: cellarDates } = cellarResult;
   const { comedians: standComedians, shows: standShows } = standResult;
@@ -548,7 +626,7 @@ async function main() {
 
   // Big Shows — same format as /api/big-shows response
   fs.writeFileSync(path.join(CACHE_DIR, 'big-shows-cache.json'), JSON.stringify({
-    events: bigShowEvents, count: bigShowEvents.length, source: 'seatgeek.com',
+    events: bigShowEvents, count: bigShowEvents.length, source: 'seatgeek.com+ticketmaster.com',
     prebaked: new Date().toISOString()
   }) + '\n');
   log(`Saved big-shows-cache.json (${bigShowEvents.length} events)`);
