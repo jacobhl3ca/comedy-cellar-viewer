@@ -1667,12 +1667,21 @@ function renderBigShows(container) {
   Object.entries(byPerformer).forEach(([title, data]) => {
     try {
     const firstEvt = data.events[0];
-    // Performer photo — SeatGeek first (usually good), local/DB fallback
+    // Performer photo — SeatGeek first, then local blob / DB / Cellar cache
     let photoUrl = '';
     if (data.performerImages) {
       photoUrl = Object.values(data.performerImages)[0] || '';
     }
-    if (!photoUrl) photoUrl = getPhotoForVenue(title, 'cellar') || localPhotoPath(title) || comedianPhotos[title] || '';
+    if (!photoUrl) {
+      // Try title first, then each individual performer name
+      photoUrl = getPhotoForVenue(title, 'cellar') || localPhotoPath(title) || comedianPhotos[title] || '';
+      if (!photoUrl && data.performers) {
+        for (const p of data.performers.split(', ')) {
+          photoUrl = getPhotoForVenue(p, 'cellar') || localPhotoPath(p) || comedianPhotos[p] || '';
+          if (photoUrl) break;
+        }
+      }
+    }
     const photoHtml = photoUrl ? `<img src="${photoUrl}" alt="${title}" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;" onerror="this.style.display='none'">` : '';
 
     // Date boxes for each show
