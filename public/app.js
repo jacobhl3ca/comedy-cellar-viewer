@@ -264,6 +264,23 @@ const comedianPhotos = {};           // legacy fallback (any source)
 const comedianPhotosCellar = {};     // from Cellar API
 const comedianPhotosStand = {};      // from Stand scraper
 
+// Persistent photo cache — survives across page loads so comedians
+// who appeared in past lineups keep their photos even when not scheduled
+const PHOTO_CACHE_KEY = 'cellar-tonight-photo-cache';
+function loadPhotoCache() {
+  try {
+    const cached = JSON.parse(localStorage.getItem(PHOTO_CACHE_KEY)) || {};
+    Object.entries(cached).forEach(([name, url]) => {
+      if (!comedianPhotosCellar[name]) comedianPhotosCellar[name] = url;
+      if (!comedianPhotos[name]) comedianPhotos[name] = url;
+    });
+  } catch {}
+}
+function savePhotoCache() {
+  try { localStorage.setItem(PHOTO_CACHE_KEY, JSON.stringify(comedianPhotosCellar)); } catch {}
+}
+loadPhotoCache();
+
 // Venue-aware photo lookup: venue-specific → NYCC DB → cross-venue → local blob → legacy
 function getPhotoForVenue(name, venueSource) {
   const dbEntry = comedianDB.find(c => c.name === name);
@@ -291,17 +308,18 @@ function parseShows(html, dateStr) {
 
   // Extract name-to-photo and name-to-tagline mappings
   const photoMatches = [...html.matchAll(/<img src="([^"]+)"[^>]*>[\s\S]*?<span class="name">([^<]+)<\/span>/g)];
+  let newPhotos = false;
   photoMatches.forEach(m => {
-    const name = m[2].trim();
+    const name = normalizeName(m[2].trim());
     const imgUrl = m[1].startsWith('http') ? m[1] : 'https://www.comedycellar.com' + m[1];
-    if (!comedianPhotosCellar[name]) comedianPhotosCellar[name] = imgUrl;
-    // Also populate legacy map as fallback
+    if (!comedianPhotosCellar[name]) { comedianPhotosCellar[name] = imgUrl; newPhotos = true; }
     if (!comedianPhotos[name]) comedianPhotos[name] = imgUrl;
   });
+  if (newPhotos) savePhotoCache();
   // Taglines: text after </span> inside the <p> that contains the name
   const tagMatches = [...html.matchAll(/<span class="name">([^<]+)<\/span>\s*(.*?)<\/p>/g)];
   tagMatches.forEach(m => {
-    const name = m[1].trim();
+    const name = normalizeName(m[1].trim());
     let tagline = m[2].trim().replace(/^,\s*/, '').replace(/<[^>]+>/g, '').trim();
     if (tagline && !comedianTaglines[name] && !isGenericBio(tagline)) {
       comedianTaglines[name] = toProperCase(tagline);
