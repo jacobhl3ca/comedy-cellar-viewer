@@ -2,19 +2,25 @@
 const STORAGE_KEY = 'cellar-tonight-prefs';
 let bookmarkToastShown = false;
 
+// Synchronous version — reads from localStorage only (used by isFav/isSkip/isLike/cycleComedian)
 function loadPrefs() {
   try {
-    // URL hash takes priority (shared link)
-    const hashPrefs = readHashPrefs();
+    const stored = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    return { faves: stored.faves || [], skips: stored.skips || [], likes: stored.likes || [] };
+  } catch { return { faves: [], skips: [], likes: [] }; }
+}
+
+// Async version — checks URL hash first (for shared links), called once at startup
+async function loadPrefsFromHash() {
+  try {
+    const hashPrefs = await readHashPrefs();
     if (hashPrefs) {
-      // Import from URL into localStorage, then clear hash
       localStorage.setItem(STORAGE_KEY, JSON.stringify(hashPrefs));
       history.replaceState(null, '', window.location.pathname);
       return hashPrefs;
     }
-    const stored = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-    return { faves: stored.faves || [], skips: stored.skips || [], likes: stored.likes || [] };
-  } catch { return { faves: [], skips: [], likes: [] }; }
+    return loadPrefs();
+  } catch { return loadPrefs(); }
 }
 
 function savePrefs(prefs) {
@@ -22,25 +28,54 @@ function savePrefs(prefs) {
   updateHashFromPrefs(prefs);
 }
 
-// Encode prefs into URL hash
-function updateHashFromPrefs(prefs) {
+// Compressed prefs: deflate + base64url of "fave1|fave2\nskip1|skip2\nlike1|like2"
+async function compressPrefs(prefs) {
+  const raw = [
+    (prefs.faves || []).join('|'),
+    (prefs.skips || []).join('|'),
+    (prefs.likes || []).join('|')
+  ].join('\n');
+  const stream = new Blob([raw]).stream().pipeThrough(new CompressionStream('deflate-raw'));
+  const compressed = new Uint8Array(await new Response(stream).arrayBuffer());
+  let b64 = btoa(String.fromCharCode(...compressed));
+  return b64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+async function decompressPrefs(compressed) {
+  let b64 = compressed.replace(/-/g, '+').replace(/_/g, '/');
+  while (b64.length % 4) b64 += '=';
+  const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+  const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('deflate-raw'));
+  const decoded = await new Response(stream).text();
+  const [faveLine, skipLine, likeLine] = decoded.split('\n');
+  return {
+    faves: faveLine ? faveLine.split('|') : [],
+    skips: skipLine ? skipLine.split('|') : [],
+    likes: likeLine ? likeLine.split('|') : []
+  };
+}
+
+// Encode prefs into URL hash (compressed)
+async function updateHashFromPrefs(prefs) {
   if (prefs.faves.length === 0 && prefs.skips.length === 0 && prefs.likes.length === 0) {
     history.replaceState(null, '', window.location.pathname);
     return;
   }
-  const params = new URLSearchParams();
-  if (prefs.faves.length) params.set('f', prefs.faves.join('|'));
-  if (prefs.skips.length) params.set('s', prefs.skips.join('|'));
-  if (prefs.likes.length) params.set('l', prefs.likes.join('|'));
-  history.replaceState(null, '', '#' + params.toString());
+  const compressed = await compressPrefs(prefs);
+  history.replaceState(null, '', '#p=' + compressed);
 }
 
-// Read prefs from URL hash
-function readHashPrefs() {
+// Read prefs from URL hash — supports both compressed (#p=...) and legacy (#f=...&s=...)
+async function readHashPrefs() {
   const hash = window.location.hash.slice(1);
   if (!hash) return null;
   try {
     const params = new URLSearchParams(hash);
+    // New compressed format
+    if (params.get('p')) {
+      return await decompressPrefs(params.get('p'));
+    }
+    // Legacy format (backward compat)
     const faves = params.get('f') ? params.get('f').split('|') : [];
     const skips = params.get('s') ? params.get('s').split('|') : [];
     const likes = params.get('l') ? params.get('l').split('|') : [];
@@ -68,13 +103,10 @@ function readHashPrefs() {
 // }
 function showBookmarkToast() { /* disabled */ }
 
-function copyPrefsUrl(btn) {
+async function copyPrefsUrl(btn) {
   const prefs = loadPrefs();
-  const params = new URLSearchParams();
-  if (prefs.faves.length) params.set('f', prefs.faves.join('|'));
-  if (prefs.skips.length) params.set('s', prefs.skips.join('|'));
-  if (prefs.likes.length) params.set('l', prefs.likes.join('|'));
-  const url = window.location.origin + window.location.pathname + '#' + params.toString();
+  const compressed = await compressPrefs(prefs);
+  const url = window.location.origin + window.location.pathname + '#p=' + compressed;
   navigator.clipboard.writeText(url).then(() => {
     btn.textContent = 'Copied!';
     setTimeout(() => { btn.textContent = 'Copy URL'; }, 2000);
@@ -2287,6 +2319,9 @@ document.addEventListener('click', (e) => {
 
 // ---- Init ----
 async function init() {
+  // Import prefs from URL hash (shared link) before anything renders
+  await loadPrefsFromHash();
+
   dates = getDateRange();
   activeDate = 'all';
 
@@ -2524,13 +2559,10 @@ async function init() {
     });
   }
 
-  document.getElementById('share-link').addEventListener('click', () => {
+  document.getElementById('share-link').addEventListener('click', async () => {
     const prefs = loadPrefs();
-    const params = new URLSearchParams();
-    if (prefs.faves.length) params.set('f', prefs.faves.join('|'));
-    if (prefs.skips.length) params.set('s', prefs.skips.join('|'));
-    if (prefs.likes.length) params.set('l', prefs.likes.join('|'));
-    const url = window.location.origin + window.location.pathname + '#' + params.toString();
+    const compressed = await compressPrefs(prefs);
+    const url = window.location.origin + window.location.pathname + '#p=' + compressed;
     navigator.clipboard.writeText(url).then(() => {
       const btn = document.getElementById('share-link');
       btn.textContent = 'Copied!';
