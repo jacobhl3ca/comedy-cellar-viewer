@@ -317,12 +317,23 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .show-card.sold-out { opacity: 0.6; }
 .reserve-btn.sold-out-btn { background: #666; color: #ccc; pointer-events: none; }
 /* Sold-out cards in picture mode: revert to small chip layout */
+.picture-mode .show-card.sold-out .show-lineup {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
 .picture-mode .show-card.sold-out .comedian {
   flex-direction: row; padding: 6px 12px; text-align: left;
-  border-radius: 6px; gap: 4px; font-size: 14px;
+  border-radius: 6px; gap: 4px; font-size: 14px; white-space: nowrap;
 }
 .picture-mode .show-card.sold-out .comedian-photo {
   width: 28px; height: 28px; margin-right: 4px;
+}
+.picture-mode .show-card.sold-out .comedian .star { margin-left: 0; }
+.picture-mode .show-card.sold-out .comedian-tagline-inline {
+  white-space: nowrap; max-width: 200px; text-align: left;
+  display: inline; -webkit-line-clamp: unset; -webkit-box-orient: unset;
+}
+.picture-mode .show-card.sold-out .comedian-name-wrap {
+  flex-direction: row; gap: 4px; align-items: center;
 }
 
 .show-lineup { padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 8px; overflow: hidden; }
