@@ -90,6 +90,10 @@
           <input type="checkbox" id="picture-mode">
           <span>Big Pictures</span>
         </label>
+        <label class="toggle toolbar-toggle">
+          <input type="checkbox" id="hide-sold-out" onchange="updateResetBtn(); renderShows();">
+          <span>Hide Sold Out</span>
+        </label>
         <div class="toolbar-right-group">
           <select id="sort-select" class="sort-select">
             <option value="none">Sort by...</option>
@@ -116,7 +120,6 @@
               <option value="23:00">11 PM</option>
             </select>
           </div>
-          <label class="filter-checkbox"><input type="checkbox" id="hide-sold-out" onchange="updateResetBtn(); renderShows();"> Hide sold out</label>
         </div>
         <button class="reset-filters-btn" id="reset-filters" style="visibility:hidden;">Reset all</button>
       </div>
