@@ -316,6 +316,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .badge-sold-out { background: #dc3545; color: #fff; }
 .show-card.sold-out { opacity: 0.6; }
 .reserve-btn.sold-out-btn { background: #666; color: #ccc; pointer-events: none; }
+.standby-note { font-size: 11px; color: var(--text-dim); font-style: italic; }
 /* Sold-out cards in picture mode: revert to small chip layout */
 .picture-mode .show-card.sold-out .show-lineup {
   display: flex; flex-wrap: wrap; gap: 8px;

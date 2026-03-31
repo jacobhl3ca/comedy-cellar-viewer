@@ -1215,6 +1215,7 @@ function renderShowCard(show, hideSkips, onlyFavs, dateStr) {
         ${show.reserveUrl
           ? `<a href="${show.reserveUrl}" target="_blank" class="reserve-btn${soldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${soldOut ? 'Sold Out' : 'Reserve'}</a>`
           : '<span></span>'}
+        ${soldOut ? '<span class="standby-note">Standby list opens 1 hr before</span>' : ''}
         <span class="fav-count">
           ${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''}
                  </span>
@@ -1365,6 +1366,7 @@ function renderSortedByFaves(container) {
         <div class="show-lineup">${chips}</div>
         <div class="show-footer">
           ${show.reserveUrl ? `<a href="${show.reserveUrl}" target="_blank" class="reserve-btn${soldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${soldOut ? 'Sold Out' : 'Reserve'}</a>` : '<span></span>'}
+          ${soldOut ? '<span class="standby-note">Standby list opens 1 hr before</span>' : ''}
           <span class="fav-count">${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''} ${stats.likes > 0 ? `👍 ${stats.likes}` : ''}</span>
         </div>
       </div>`;
@@ -1491,6 +1493,7 @@ function renderAllDaysSchedule(container) {
           <div class="show-lineup">${chips}</div>
           <div class="show-footer">
             ${show.reserveUrl ? `<a href="${show.reserveUrl}" target="_blank" class="reserve-btn${soldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${soldOut ? 'Sold Out' : 'Reserve'}</a>` : '<span></span>'}
+            ${soldOut ? '<span class="standby-note">Standby list opens 1 hr before</span>' : ''}
             <span class="fav-count">${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''} ${stats.likes > 0 ? `👍 ${stats.likes}` : ''}</span>
           </div>
         </div>`;
