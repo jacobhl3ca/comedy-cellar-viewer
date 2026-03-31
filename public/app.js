@@ -1166,10 +1166,7 @@ function toggleHideSoldOut() {
   if (!cb) return;
   // Poof animation on all sold-out cards
   const cards = document.querySelectorAll('.show-card.sold-out, .big-show-card.sold-out');
-  cards.forEach(c => {
-    c.classList.add('poof');
-    spawnPoofParticles(c);
-  });
+  cards.forEach(c => c.classList.add('poof'));
   // Highlight the toolbar toggle
   const toolbarLabel = cb.closest('label');
   if (toolbarLabel) toolbarLabel.classList.add('toggle-highlight');
@@ -1179,22 +1176,6 @@ function toggleHideSoldOut() {
     renderShows();
     if (toolbarLabel) setTimeout(() => toolbarLabel.classList.remove('toggle-highlight'), 1200);
   }, 500);
-}
-
-function spawnPoofParticles(el) {
-  const rect = el.getBoundingClientRect();
-  const cx = rect.left + rect.width / 2;
-  const cy = rect.top + rect.height / 2;
-  for (let i = 0; i < 8; i++) {
-    const p = document.createElement('div');
-    p.className = 'poof-particle';
-    const angle = (Math.PI * 2 * i) / 8 + (Math.random() - 0.5) * 0.5;
-    const dist = 40 + Math.random() * 60;
-    const size = 6 + Math.random() * 10;
-    p.style.cssText = `left:${cx}px;top:${cy}px;width:${size}px;height:${size}px;--dx:${Math.cos(angle) * dist}px;--dy:${Math.sin(angle) * dist - 30}px;`;
-    document.body.appendChild(p);
-    setTimeout(() => p.remove(), 600);
-  }
 }
 
 // ---- Shared show card renderer ----
