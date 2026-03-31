@@ -1175,7 +1175,7 @@ function toggleHideSoldOut() {
     updateResetBtn();
     renderShows();
     if (toolbarLabel) setTimeout(() => toolbarLabel.classList.remove('toggle-highlight'), 1200);
-  }, 400);
+  }, 500);
 }
 
 // ---- Shared show card renderer ----
