@@ -59,6 +59,33 @@ function fetchJSON(url) {
   return fetch(url).then(buf => JSON.parse(buf.toString()));
 }
 
+function fetchPost(url, body, headers = {}) {
+  return new Promise((resolve, reject) => {
+    const parsed = new URL(url);
+    const data = typeof body === 'string' ? body : JSON.stringify(body);
+    const req = https.request({
+      hostname: parsed.hostname,
+      path: parsed.pathname + parsed.search,
+      method: 'POST',
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)',
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(data),
+        ...headers
+      },
+      timeout: 12000
+    }, resp => {
+      const chunks = [];
+      resp.on('data', c => chunks.push(c));
+      resp.on('end', () => resolve(Buffer.concat(chunks)));
+    });
+    req.on('error', reject);
+    req.on('timeout', () => { req.destroy(); reject(new Error(`Timeout: ${url}`)); });
+    req.write(data);
+    req.end();
+  });
+}
+
 function fetchText(url) {
   return fetch(url).then(buf => buf.toString());
 }
@@ -566,6 +593,60 @@ function isGenericBio(bio) {
   return false;
 }
 
+// ---- Scrape Comedy Cellar availability (sold out detection) ----
+async function scrapeAvailability() {
+  try {
+    // Step 1: Get auth token from reservation page
+    const page = await fetch('https://www.comedycellar.com/reservations-newyork/');
+    const html = page.toString();
+    const configMatch = html.match(/ccgrfConfig\s*=\s*(\{.*?\});/s);
+    if (!configMatch) { log('Availability: could not extract cca token'); return {}; }
+    const config = JSON.parse(configMatch[1]);
+    const { cca, created } = config;
+
+    // Step 2: Fetch availability for next 7 days
+    const dates = [];
+    const now = new Date();
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(now);
+      d.setDate(now.getDate() + i);
+      dates.push(d.toISOString().split('T')[0]);
+    }
+
+    const results = {};
+    await Promise.all(dates.map(async dateStr => {
+      try {
+        const resp = await fetchPost(
+          'https://www.comedycellar.com/reservations/api/getShows',
+          { date: dateStr },
+          { 'X-Code-Localize': cca, 'X-Page-Creation': String(created) }
+        );
+        const data = JSON.parse(resp.toString());
+        const shows = data?.data?.showInfo?.shows || [];
+        results[dateStr] = shows.map(s => ({
+          time: s.time,
+          description: s.description,
+          soldout: s.soldout || (s.max - s.totalGuests < 1),
+          seatsLeft: Math.max(0, s.max - s.totalGuests),
+          cover: s.cover,
+          timestamp: s.timestamp
+        }));
+      } catch (e) {
+        log(`Availability: failed for ${dateStr}: ${e.message}`);
+        results[dateStr] = [];
+      }
+    }));
+
+    const totalSoldOut = Object.values(results).flat().filter(s => s.soldout).length;
+    const totalShows = Object.values(results).flat().length;
+    log(`Availability: ${totalShows} shows across ${dates.length} days, ${totalSoldOut} sold out`);
+    return results;
+  } catch (e) {
+    log(`Availability scrape failed: ${e.message}`);
+    return {};
+  }
+}
+
 // ---- Main ----
 async function main() {
   const startTime = Date.now();
@@ -579,13 +660,14 @@ async function main() {
   const dbByName = new Map(comedianDB.map(c => [c.name, c]));
 
   // Scrape all sources in parallel
-  const [cellarResult, standResult, gothamShows, nyccShows, seatgeekEvents, ticketmasterEvents] = await Promise.all([
+  const [cellarResult, standResult, gothamShows, nyccShows, seatgeekEvents, ticketmasterEvents, availability] = await Promise.all([
     scrapeCellar(),
     scrapeStand(),
     scrapeGotham(),
     scrapeNYCC(),
     scrapeBigShows(),
     scrapeTicketmaster(),
+    scrapeAvailability(),
   ]);
 
   // Merge SeatGeek + Ticketmaster, deduplicating by title+date
@@ -631,6 +713,13 @@ async function main() {
     prebaked: new Date().toISOString()
   }) + '\n');
   log(`Saved big-shows-cache.json (${bigShowEvents.length} events)`);
+
+  // Availability — sold out status per show per day
+  fs.writeFileSync(path.join(CACHE_DIR, 'availability-cache.json'), JSON.stringify({
+    availability, prebaked: new Date().toISOString()
+  }) + '\n');
+  const totalSoldOut = Object.values(availability).flat().filter(s => s.soldout).length;
+  log(`Saved availability-cache.json (${totalSoldOut} sold out)`);
 
   // Merge all comedian names + photo URLs
   const allComedians = new Map(); // name -> { photoUrl, tagline, source }

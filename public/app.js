@@ -280,6 +280,10 @@ const STATIC_STAND = '/data/stand-cache.json';
 const STATIC_GOTHAM = '/data/gotham-cache.json';
 const STATIC_NYCC = '/data/nycc-cache.json';
 const STATIC_BIG_SHOWS = '/data/big-shows-cache.json';
+const STATIC_AVAILABILITY = '/data/availability-cache.json';
+
+// Availability data — keyed by date, each entry has shows with soldout/seatsLeft
+let availabilityData = {};
 
 function getDateRange() {
   const dates = [];
@@ -669,6 +673,57 @@ async function fetchBigShows() {
   }
 }
 
+// ---- Availability (sold out detection) ----
+async function fetchAvailability() {
+  try {
+    const resp = await fetchWithTimeout(STATIC_AVAILABILITY, {}, 5000)
+      .catch(() => fetchWithTimeout('/api/availability?days=7', {}, 15000));
+    const data = await resp.json();
+    availabilityData = data.availability || data.results || {};
+  } catch (e) {
+    console.error('Failed to fetch availability:', e);
+  }
+}
+
+// Check if a Cellar show is sold out by matching date + time
+function isShowSoldOut(dateStr, showTime) {
+  const dayAvail = availabilityData[dateStr];
+  if (!dayAvail || !Array.isArray(dayAvail)) return false;
+  // Match by show time — parse "6:45 pm" to "18:45:00"
+  const normalized = normalizeTimeTo24(showTime);
+  const match = dayAvail.find(s => s.time === normalized);
+  return match ? match.soldout : false;
+}
+
+function getSeatsLeft(dateStr, showTime) {
+  const dayAvail = availabilityData[dateStr];
+  if (!dayAvail || !Array.isArray(dayAvail)) return null;
+  const normalized = normalizeTimeTo24(showTime);
+  const match = dayAvail.find(s => s.time === normalized);
+  return match ? match.seatsLeft : null;
+}
+
+function getCoverPrice(dateStr, showTime) {
+  const dayAvail = availabilityData[dateStr];
+  if (!dayAvail || !Array.isArray(dayAvail)) return null;
+  const normalized = normalizeTimeTo24(showTime);
+  const match = dayAvail.find(s => s.time === normalized);
+  return match ? match.cover : null;
+}
+
+// Convert "6:45 pm" / "6:45 PM" to "18:45:00"
+function normalizeTimeTo24(timeStr) {
+  if (!timeStr) return '';
+  const clean = timeStr.toLowerCase().replace(/\s*show\s*/i, '').trim();
+  const m = clean.match(/(\d{1,2}):(\d{2})\s*(am|pm)/);
+  if (!m) return '';
+  let h = parseInt(m[1]);
+  const min = m[2];
+  if (m[3] === 'pm' && h !== 12) h += 12;
+  if (m[3] === 'am' && h === 12) h = 0;
+  return `${String(h).padStart(2, '0')}:${min}:00`;
+}
+
 // ---- State ----
 let allData = {};
 let activeDate = null;
@@ -747,7 +802,12 @@ function renderTabs() {
     const dateStr = formatDateParam(d);
     const tab = document.createElement('button');
     const shows = allData[dateStr];
-    const noLineup = !shows || shows.length === 0;
+    const hasCellar = shows && shows.length > 0;
+    const hasStand = standShows.some(s => s.date === dateStr);
+    const hasNYCC = nyccShows.some(s => s.date === dateStr);
+    const hasGotham = gothamShows.some(s => s.date === dateStr);
+    const hasBig = bigShows.some(e => e.date === dateStr);
+    const noLineup = !hasCellar && !hasStand && !hasNYCC && !hasGotham && !hasBig;
     tab.className = 'day-tab' + (dateStr === activeDate ? ' active' : '') + (noLineup ? ' no-lineup' : '');
     const maxScore = shows ? Math.max(0, ...shows.map(s => { const sc = scoreShow(s); return sc.faves + sc.likes; })) : 0;
     const maxFavs = shows ? Math.max(0, ...shows.map(s => scoreShow(s).faves)) : 0;
@@ -1067,7 +1127,7 @@ function renderShows() {
   //   `;
   // }
 
-  html += sorted.map(show => renderShowCard(show, hideSkips, onlyFavs)).join('');
+  html += sorted.map(show => renderShowCard(show, hideSkips, onlyFavs, activeDate)).join('');
 
   container.innerHTML = html;
 
@@ -1110,7 +1170,9 @@ function renderShowCard(show, hideSkips, onlyFavs, dateStr) {
     badge = `<span class="show-badge badge-faves">${stats.faves} FAVES</span>`;
   }
 
-  const cardClass = stats.faves >= 3 ? 'show-card must-go' : 'show-card';
+  const soldOut = dateStr ? isShowSoldOut(dateStr, show.time) : false;
+  const cover = dateStr ? getCoverPrice(dateStr, show.time) : null;
+  const cardClass = (stats.faves >= 3 ? 'show-card must-go' : 'show-card') + (soldOut ? ' sold-out' : '');
 
   // Detect named/special shows vs plain venue variants
   const normalizedVenue = normalizeVenue(show.venue);
@@ -1122,15 +1184,16 @@ function renderShowCard(show, hideSkips, onlyFavs, dateStr) {
       <div class="show-header">
         <div>
           <span class="show-time">${formatTime(show.time)}</span>
+          ${soldOut ? '<span class="show-badge badge-sold-out">SOLD OUT</span>' : ''}
           ${badge}
         </div>
         ${!isPlainVenue ? (getCellarPoster(show.venue) ? `<span class="show-name poster-wrap">Comedy Cellar: ${show.venue}<img class="poster-preview" src="${getCellarPoster(show.venue)}" alt="${show.venue}"></span>` : `<span class="show-name">Comedy Cellar: ${show.venue}</span>`) : '<span class="show-name">Comedy Cellar</span>'}
-        <span class="show-venue">${normalizedVenue}</span>
+        <span class="show-venue">${normalizedVenue}${cover ? ` · $${cover} cover` : ''}</span>
       </div>
       <div class="show-lineup">${comediansHtml}</div>
       <div class="show-footer">
         ${show.reserveUrl
-          ? `<a href="${show.reserveUrl}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Reserve</a>`
+          ? `<a href="${show.reserveUrl}" target="_blank" class="reserve-btn${soldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${soldOut ? 'Sold Out' : 'Reserve'}</a>`
           : '<span></span>'}
         <span class="fav-count">
           ${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''}
@@ -1258,10 +1321,13 @@ function renderSortedByFaves(container) {
       lastDateStr = show.dateStr;
     }
 
-    const cardClass = stats.faves >= 3 ? 'show-card must-go' : 'show-card';
+    const soldOut = isShowSoldOut(show.dateStr, show.time);
+    const cover = getCoverPrice(show.dateStr, show.time);
+    const cardClass = (stats.faves >= 3 ? 'show-card must-go' : 'show-card') + (soldOut ? ' sold-out' : '');
     let badge = '';
-    if (stats.faves >= 3) badge = `<span class="show-badge badge-must-go">${stats.faves} FAVES</span>`;
-    else if (stats.faves >= 2) badge = `<span class="show-badge badge-faves">${stats.faves} FAVES</span>`;
+    if (soldOut) badge = '<span class="show-badge badge-sold-out">SOLD OUT</span>';
+    if (stats.faves >= 3) badge += `<span class="show-badge badge-must-go">${stats.faves} FAVES</span>`;
+    else if (stats.faves >= 2) badge += `<span class="show-badge badge-faves">${stats.faves} FAVES</span>`;
     if (stats.likes > 0) badge += ` <span class="show-badge badge-likes">${stats.likes} LIKE${stats.likes > 1 ? 'S' : ''}</span>`;
 
     const normalizedVenue = normalizeVenue(show.venue);
@@ -1274,11 +1340,11 @@ function renderSortedByFaves(container) {
         <div class="show-header">
           <div><span class="show-time">${formatTime(show.time)}</span>${badge}</div>
           ${!isPlainVenue ? (getCellarPoster(show.venue) ? `<span class="show-name poster-wrap">Comedy Cellar: ${show.venue}<img class="poster-preview" src="${getCellarPoster(show.venue)}" alt="${show.venue}"></span>` : `<span class="show-name">Comedy Cellar: ${show.venue}</span>`) : '<span class="show-name">Comedy Cellar</span>'}
-          <span class="show-venue">${normalizedVenue}</span>
+          <span class="show-venue">${normalizedVenue}${cover ? ` · $${cover} cover` : ''}</span>
         </div>
         <div class="show-lineup">${chips}</div>
         <div class="show-footer">
-          ${show.reserveUrl ? `<a href="${show.reserveUrl}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Reserve</a>` : '<span></span>'}
+          ${show.reserveUrl ? `<a href="${show.reserveUrl}" target="_blank" class="reserve-btn${soldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${soldOut ? 'Sold Out' : 'Reserve'}</a>` : '<span></span>'}
           <span class="fav-count">${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''} ${stats.likes > 0 ? `👍 ${stats.likes}` : ''}</span>
         </div>
       </div>`;
@@ -1386,7 +1452,9 @@ function renderAllDaysSchedule(container) {
       if (onlyFavs && stats.faves === 0 && stats.likes === 0) return;
       // Hide entire show if any comedian is a skip
       if (document.getElementById('hide-skips').checked && stats.skips > 0) return;
-      const cardClass = stats.faves >= 3 ? 'show-card must-go' : 'show-card';
+      const soldOut = isShowSoldOut(dateStr, show.time);
+      const cover = getCoverPrice(dateStr, show.time);
+      const cardClass = (stats.faves >= 3 ? 'show-card must-go' : 'show-card') + (soldOut ? ' sold-out' : '');
       let badge = '';
       if (stats.faves >= 3) badge = `<span class="show-badge badge-must-go">${stats.faves} FAVES</span>`;
       else if (stats.faves >= 2) badge = `<span class="show-badge badge-faves">${stats.faves} FAVES</span>`;
@@ -1397,12 +1465,12 @@ function renderAllDaysSchedule(container) {
       html += `
         <div class="${cardClass} schedule-card">
           <div class="show-header">
-            <div><span class="show-time">${formatTime(show.time)}</span>${badge}</div>
-            <span class="show-venue">${show.venue}</span>
+            <div><span class="show-time">${formatTime(show.time)}</span>${soldOut ? '<span class="show-badge badge-sold-out">SOLD OUT</span>' : ''}${badge}</div>
+            <span class="show-venue">${show.venue}${cover ? ` · $${cover} cover` : ''}</span>
           </div>
           <div class="show-lineup">${chips}</div>
           <div class="show-footer">
-            ${show.reserveUrl ? `<a href="${show.reserveUrl}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Reserve</a>` : '<span></span>'}
+            ${show.reserveUrl ? `<a href="${show.reserveUrl}" target="_blank" class="reserve-btn${soldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${soldOut ? 'Sold Out' : 'Reserve'}</a>` : '<span></span>'}
             <span class="fav-count">${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''} ${stats.likes > 0 ? `👍 ${stats.likes}` : ''}</span>
           </div>
         </div>`;
@@ -1931,7 +1999,12 @@ function renderBottomTabs() {
   dates.forEach(d => {
     const dateStr = formatDateParam(d);
     const shows = allData[dateStr];
-    const noLineup = !shows || shows.length === 0;
+    const hasCellar = shows && shows.length > 0;
+    const hasStand = standShows.some(s => s.date === dateStr);
+    const hasNYCC = nyccShows.some(s => s.date === dateStr);
+    const hasGotham = gothamShows.some(s => s.date === dateStr);
+    const hasBig = bigShows.some(e => e.date === dateStr);
+    const noLineup = !hasCellar && !hasStand && !hasNYCC && !hasGotham && !hasBig;
     const tab = document.createElement('button');
     tab.className = 'day-tab' + (dateStr === activeDate ? ' active' : '') + (noLineup ? ' no-lineup' : '');
     tab.innerHTML = `
@@ -2334,7 +2407,8 @@ async function init() {
     fetchBigShows(),
     fetchNYCC(),
     loadComedianDB(),
-    fetchGotham()
+    fetchGotham(),
+    fetchAvailability()
   ]);
 
   dates.forEach(d => {
