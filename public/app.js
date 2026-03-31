@@ -25,7 +25,6 @@ async function loadPrefsFromHash() {
 
 function savePrefs(prefs) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
-  updateHashFromPrefs(prefs);
 }
 
 // Compressed prefs: deflate + base64url of "fave1|fave2\nskip1|skip2\nlike1|like2"
