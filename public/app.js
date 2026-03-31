@@ -2698,6 +2698,27 @@ async function init() {
 
 init();
 
+// Global poster preview — renders outside card stacking contexts so opacity doesn't trap it
+(function() {
+  let overlay = null;
+  document.addEventListener('mouseover', e => {
+    const wrap = e.target.closest('.poster-wrap');
+    if (!wrap) return;
+    const img = wrap.querySelector('.poster-preview');
+    if (!img) return;
+    if (overlay) overlay.remove();
+    overlay = document.createElement('img');
+    overlay.id = 'global-poster-preview';
+    overlay.src = img.src;
+    overlay.alt = img.alt;
+    document.body.appendChild(overlay);
+  });
+  document.addEventListener('mouseout', e => {
+    const wrap = e.target.closest('.poster-wrap');
+    if (wrap && overlay) { overlay.remove(); overlay = null; }
+  });
+})();
+
 // Back to top button
 (function() {
   const btn = document.getElementById('back-to-top');
