@@ -676,12 +676,12 @@ async function fetchBigShows() {
 // ---- Availability (sold out detection) ----
 async function fetchAvailability() {
   try {
-    const resp = await fetchWithTimeout(STATIC_AVAILABILITY, {}, 5000)
-      .catch(() => fetchWithTimeout('/api/availability?days=7', {}, 15000));
+    const resp = await fetchWithTimeout(STATIC_AVAILABILITY, {}, 5000);
     const data = await resp.json();
-    availabilityData = data.availability || data.results || {};
+    availabilityData = data.availability || {};
   } catch (e) {
-    console.error('Failed to fetch availability:', e);
+    // Static cache not available — sold out badges just won't show
+    console.log('Availability data not available (prebake pending)');
   }
 }
 
