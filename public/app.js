@@ -1755,6 +1755,14 @@ function renderAllVenues(container) {
   // Hide past shows (2+ hours ago)
   allItems = allItems.filter(item => !isShowPast(item.dateStr, item.show.time));
 
+  // Hide sold-out shows if toggle is checked
+  if (document.getElementById('hide-sold-out')?.checked) {
+    allItems = allItems.filter(item => {
+      if (item.type === 'cellar') return !isShowSoldOut(item.dateStr, item.show.time);
+      return !item.show.soldout;
+    });
+  }
+
   // Sort — by faves if dropdown selected, otherwise by date+time
   const sortValAV = document.getElementById('sort-select')?.value || 'none';
   if (sortValAV === 'faves') {
