@@ -315,7 +315,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .badge-likes { background: var(--like-border); color: #fff; font-size: 10px; }
 .badge-sold-out { background: #dc3545; color: #fff; }
 .show-card.sold-out { opacity: 0.6; }
-.show-card.sold-out .comedian-photo { display: none; }
+.picture-mode .show-card.sold-out .comedian-photo { display: none; }
 .reserve-btn.sold-out-btn { background: #666; color: #ccc; pointer-events: none; }
 
 .show-lineup { padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 8px; overflow: hidden; }

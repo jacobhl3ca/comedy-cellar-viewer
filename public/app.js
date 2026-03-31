@@ -2103,7 +2103,7 @@ function handleComedianClick(el) {
   const standComedianNames = new Set();
   standShows.forEach(show => show.comedians.forEach(n => standComedianNames.add(n)));
   const cellarComedianNames = new Set();
-  Object.values(allData).forEach(dayShows => dayShows.forEach(show => show.comedians.forEach(n => cellarComedianNames.add(n))));
+  Object.values(allData).forEach(dayShows => { if (dayShows) dayShows.forEach(show => show.comedians.forEach(n => cellarComedianNames.add(n))); });
   const liveVenueCheck = {
     'comedy_cellar': (n) => cellarComedianNames.has(n),
     'the_stand': (n) => standComedianNames.has(n),
