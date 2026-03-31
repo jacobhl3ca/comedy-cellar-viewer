@@ -1337,7 +1337,9 @@ function renderSortedByFaves(container) {
       const showTime24_sf = to24h(show.time);
       if (timeFilter && timeFilter !== 'any' && showTime24_sf && showTime24_sf > timeFilter) return;
       if (timeFilterMin2 && showTime24_sf && showTime24_sf < timeFilterMin2) return;
-      allShows.push({ ...show, dateStr, dateObj: d, faves: stats.faves, score: stats.score, stats });
+      const soldOut = isShowSoldOut(dateStr, show.time);
+      if (soldOut && document.getElementById('hide-sold-out')?.checked) return;
+      allShows.push({ ...show, dateStr, dateObj: d, faves: stats.faves, score: stats.score, stats, soldOut });
     });
   });
 
@@ -1362,8 +1364,7 @@ function renderSortedByFaves(container) {
       lastDateStr = show.dateStr;
     }
 
-    const soldOut = isShowSoldOut(show.dateStr, show.time);
-    if (soldOut && document.getElementById('hide-sold-out')?.checked) return;
+    const soldOut = show.soldOut;
     const cardClass = (stats.faves >= 3 ? 'show-card must-go' : 'show-card') + (soldOut ? ' sold-out' : '');
     let badge = '';
     if (soldOut) badge = '<span class="show-badge badge-sold-out">SOLD OUT</span>';
