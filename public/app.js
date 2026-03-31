@@ -1155,6 +1155,16 @@ function renderShows() {
   renderBottomTabs();
 }
 
+function hideSoldOutLink(soldOut) {
+  if (!soldOut) return '';
+  return '<div class="hide-sold-out-link" onclick="toggleHideSoldOut()">Hide sold out shows</div>';
+}
+
+function toggleHideSoldOut() {
+  const cb = document.getElementById('hide-sold-out');
+  if (cb) { cb.checked = true; updateResetBtn(); renderShows(); }
+}
+
 // ---- Shared show card renderer ----
 function renderShowCard(show, hideSkips, onlyFavs, dateStr) {
   try {
@@ -1219,6 +1229,7 @@ function renderShowCard(show, hideSkips, onlyFavs, dateStr) {
           ${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''}
                  </span>
       </div>
+      ${hideSoldOutLink(soldOut)}
     </div>
   `;
   } catch (e) { console.error('renderShowCard error:', e, show); return ''; }
@@ -1367,6 +1378,7 @@ function renderSortedByFaves(container) {
           ${show.reserveUrl ? `<span class="reserve-group"><a href="${show.reserveUrl}" target="_blank" class="reserve-btn${soldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${soldOut ? 'Sold Out' : 'Reserve'}</a>${soldOut ? '<span class="standby-note">Standby list opens 1 hr before</span>' : ''}</span>` : '<span></span>'}
           <span class="fav-count">${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''} ${stats.likes > 0 ? `👍 ${stats.likes}` : ''}</span>
         </div>
+        ${hideSoldOutLink(soldOut)}
       </div>`;
     } catch (e) { console.error('renderSortedByFaves card error:', e, show); }
   });
@@ -1493,6 +1505,7 @@ function renderAllDaysSchedule(container) {
             ${show.reserveUrl ? `<span class="reserve-group"><a href="${show.reserveUrl}" target="_blank" class="reserve-btn${soldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${soldOut ? 'Sold Out' : 'Reserve'}</a>${soldOut ? '<span class="standby-note">Standby list opens 1 hr before</span>' : ''}</span>` : '<span></span>'}
             <span class="fav-count">${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''} ${stats.likes > 0 ? `👍 ${stats.likes}` : ''}</span>
           </div>
+          ${hideSoldOutLink(soldOut)}
         </div>`;
       } catch (e) { console.error('renderAllDaysSchedule Cellar card error:', e, show); }
     });
@@ -1608,6 +1621,7 @@ function renderStandShowCard(show) {
         ${show.url ? `<span class="reserve-group"><a href="${show.url}" target="_blank" class="reserve-btn${soldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${soldOut ? 'Sold Out' : 'Tickets'}</a></span>` : '<span></span>'}
         <span class="fav-count"></span>
       </div>
+      ${hideSoldOutLink(soldOut)}
     </div>
   `;
   } catch (e) { console.error('renderStandShowCard error:', e, show); return ''; }
@@ -1802,6 +1816,7 @@ function renderAllVenues(container) {
             ${evt.price ? `<span class="big-show-price">From $${evt.price}</span>` : ''}
             ${evt.url ? `<a href="${evt.url}" target="_blank" class="reserve-btn${evtSoldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${evtSoldOut ? 'Sold Out' : 'Get Tickets'}</a>` : ''}
           </div>
+          ${hideSoldOutLink(evtSoldOut)}
         </div>`;
     }
     } catch (e) { console.error('renderAllVenues card error:', e, item); }
@@ -1936,6 +1951,7 @@ function renderBigShows(container) {
             <div class="big-date-boxes">${dateBoxes}</div>
           </div>
         </div>
+        ${hideSoldOutLink(sortedEvents.some(evt => evt.soldout))}
       </div>`;
     } catch (e) { console.error('renderBigShows card error:', e, title); }
   });
