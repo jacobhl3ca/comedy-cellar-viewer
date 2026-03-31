@@ -281,7 +281,10 @@ async function scrapeStand() {
         const posterMatch = block.match(/<img[^>]+src="(https?:\/\/thestandnyc\.com\/images\/shows\/[^"]+)"/i);
         const poster = posterMatch ? posterMatch[1] : '';
 
-        allShows.push({ title, date, time, comedians: names, url: showUrl, venue: 'The Stand NYC', room, price, poster, comedianPhotos });
+        // Detect sold-out: Stand replaces "Buy Tickets" link with <span class="btn btn-outline-danger">Sold Out</span>
+        const soldout = /btn-outline-danger[^>]*>Sold Out/i.test(block);
+
+        allShows.push({ title, date, time, comedians: names, url: showUrl, venue: 'The Stand NYC', room, price, poster, comedianPhotos, soldout });
 
         // Register names even without photos
         for (const n of names) {
@@ -442,7 +445,9 @@ async function scrapeBigShows() {
         price: evt.stats?.lowest_price || null,
         url: evt.url || '',
         id: evt.id,
-        source: 'seatgeek'
+        source: 'seatgeek',
+        // SeatGeek free API doesn't expose listing counts, but check stats if available
+        soldout: evt.stats?.listing_count === 0 || false
       };
     });
     log(`Big Shows: ${events.length} events`);
@@ -474,6 +479,10 @@ async function scrapeTicketmaster() {
         if (best?.url) performerImages[a.name] = best.url;
       });
 
+      // Ticketmaster status: "onsale", "offsale", "cancelled", "rescheduled", "postponed"
+      const statusCode = evt.dates?.status?.code || '';
+      const soldout = statusCode === 'offsale' || statusCode === 'cancelled';
+
       return {
         title: evt.name || '',
         date: startDate,
@@ -484,7 +493,8 @@ async function scrapeTicketmaster() {
         price: evt.priceRanges?.[0]?.min || null,
         url: evt.url || '',
         id: evt.id,
-        source: 'ticketmaster'
+        source: 'ticketmaster',
+        soldout
       };
     });
     log(`Ticketmaster: ${events.length} events`);

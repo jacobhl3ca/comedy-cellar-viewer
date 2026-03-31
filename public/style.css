@@ -856,6 +856,8 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .bdb-day { font-weight: 600; font-size: 11px; }
 .bdb-time { font-size: 10px; opacity: 0.85; }
 .bdb-price { font-size: 10px; opacity: 0.7; }
+.big-date-box.sold-out { background: #666; opacity: 0.6; }
+.bdb-sold-out { font-size: 9px; font-weight: 700; color: #ff6b6b; text-transform: uppercase; }
 
 /* Bottom nav */
 .bottom-tabs { padding: 16px 0 24px; }

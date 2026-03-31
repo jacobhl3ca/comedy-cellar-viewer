@@ -1559,6 +1559,9 @@ function renderTheStandShows(container) {
 
 function renderStandShowCard(show) {
   try {
+  const soldOut = !!show.soldout;
+  if (soldOut && document.getElementById('hide-sold-out')?.checked) return '';
+
   const hideSkipsStand = document.getElementById('hide-skips')?.checked;
   // Hide entire show if any comedian is a skip
   if (hideSkipsStand && show.comedians.length > 0 && show.comedians.some(name => isSkip(name))) return '';
@@ -1591,16 +1594,18 @@ function renderStandShowCard(show) {
     ? `<span class="show-name poster-wrap">${showLabel}<img class="poster-preview" src="${show.poster}" alt="${showLabel}"></span>`
     : `<span class="show-name">${showLabel}</span>`;
 
+  const cardClass = 'show-card' + (soldOut ? ' sold-out' : '');
+
   return `
-    <div class="show-card">
+    <div class="${cardClass}">
       <div class="show-header">
-        <div><span class="show-time">${formatTime(show.time)}</span></div>
+        <div><span class="show-time">${formatTime(show.time)}</span>${soldOut ? '<span class="show-badge badge-sold-out">SOLD OUT</span>' : ''}</div>
         ${posterHtml}
         <span class="show-venue">${venueText}</span>
       </div>
       <div class="show-lineup">${chips}</div>
       <div class="show-footer">
-        ${show.url ? `<a href="${show.url}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Tickets</a>` : '<span></span>'}
+        ${show.url ? `<span class="reserve-group"><a href="${show.url}" target="_blank" class="reserve-btn${soldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${soldOut ? 'Sold Out' : 'Tickets'}</a></span>` : '<span></span>'}
         <span class="fav-count"></span>
       </div>
     </div>
@@ -1777,6 +1782,8 @@ function renderAllVenues(container) {
         </div>`;
     } else {
       const evt = item.show;
+      const evtSoldOut = !!evt.soldout;
+      if (evtSoldOut && document.getElementById('hide-sold-out')?.checked) return;
       let evtPhoto = '';
       if (evt.performerImages) {
         evtPhoto = Object.values(evt.performerImages)[0] || '';
@@ -1784,16 +1791,16 @@ function renderAllVenues(container) {
       if (!evtPhoto) evtPhoto = getPhotoForVenue(evt.title, 'cellar') || localPhotoPath(evt.title) || comedianPhotos[evt.title] || '';
       const evtPhotoHtml = evtPhoto ? `<img class="comedian-photo" src="${evtPhoto}" alt="" style="width:48px;height:48px;border-radius:50%;object-fit:cover;margin-right:8px;">` : '';
       html += `
-        <div class="big-show-card">
+        <div class="big-show-card${evtSoldOut ? ' sold-out' : ''}">
           <div class="show-header">
-            <div><span class="show-time">${formatTime(evt.time)}</span></div>
+            <div><span class="show-time">${formatTime(evt.time)}</span>${evtSoldOut ? '<span class="show-badge badge-sold-out">SOLD OUT</span>' : ''}</div>
             <span class="show-name">${evt.title}</span>
             <span class="show-venue">${cleanVenueName(evt.venue) || ''}</span>
           </div>
           <div class="big-show-info" style="padding:10px 16px;display:flex;align-items:center;gap:8px;">
             ${evtPhotoHtml}
             ${evt.price ? `<span class="big-show-price">From $${evt.price}</span>` : ''}
-            ${evt.url ? `<a href="${evt.url}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Get Tickets</a>` : ''}
+            ${evt.url ? `<a href="${evt.url}" target="_blank" class="reserve-btn${evtSoldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${evtSoldOut ? 'Sold Out' : 'Get Tickets'}</a>` : ''}
           </div>
         </div>`;
     }
@@ -1901,15 +1908,22 @@ function renderBigShows(container) {
       : `<img id="${photoId}" alt="${title}" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;display:none;" onerror="this.style.display='none'" data-lookup-name="${lookupName.replace(/"/g, '&quot;')}" data-lookup-title="${title.replace(/"/g, '&quot;')}">`;
 
     // Date boxes — sorted by date, each links to its source URL
-    const dateBoxes = data.events.sort((a, b) => a.date.localeCompare(b.date) || (a.time || '').localeCompare(b.time || '')).map(evt => {
+    const hideSoldOut = document.getElementById('hide-sold-out')?.checked;
+    const sortedEvents = data.events.sort((a, b) => a.date.localeCompare(b.date) || (a.time || '').localeCompare(b.time || ''));
+    const allSoldOut = sortedEvents.length > 0 && sortedEvents.every(evt => evt.soldout);
+    if (allSoldOut && hideSoldOut) return;
+    const dateBoxes = sortedEvents.map(evt => {
       const d = new Date(evt.date + 'T12:00:00');
       const shortDate = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
       const shortDay = d.toLocaleDateString('en-US', { weekday: 'short' });
       const timeStr = evt.time || '';
       const priceStr = evt.price ? `$${evt.price}` : '';
+      const evtSoldOut = !!evt.soldout;
+      const soldOutLabel = evtSoldOut ? '<span class="bdb-sold-out">SOLD OUT</span>' : '';
+      const boxClass = 'big-date-box' + (evtSoldOut ? ' sold-out' : '');
       return evt.url
-        ? `<a href="${evt.url}" target="_blank" class="big-date-box" onclick="trackReserve(this)"><span class="bdb-day">${shortDay} ${shortDate}</span><span class="bdb-time">${timeStr}</span>${priceStr ? `<span class="bdb-price">${priceStr}</span>` : ''}</a>`
-        : `<span class="big-date-box"><span class="bdb-day">${shortDay} ${shortDate}</span><span class="bdb-time">${timeStr}</span></span>`;
+        ? `<a href="${evt.url}" target="_blank" class="${boxClass}" onclick="trackReserve(this)"><span class="bdb-day">${shortDay} ${shortDate}</span><span class="bdb-time">${timeStr}</span>${evtSoldOut ? soldOutLabel : (priceStr ? `<span class="bdb-price">${priceStr}</span>` : '')}</a>`
+        : `<span class="${boxClass}"><span class="bdb-day">${shortDay} ${shortDate}</span><span class="bdb-time">${timeStr}</span>${soldOutLabel}</span>`;
     }).join('');
 
     html += `

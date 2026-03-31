@@ -27,6 +27,10 @@ module.exports = async (req, res) => {
         if (best?.url) performerImages[a.name] = best.url;
       });
 
+      // Ticketmaster status: "onsale", "offsale", "cancelled", "rescheduled", "postponed"
+      const statusCode = evt.dates?.status?.code || '';
+      const soldout = statusCode === 'offsale' || statusCode === 'cancelled';
+
       return {
         title: evt.name || '',
         date: startDate,
@@ -37,7 +41,8 @@ module.exports = async (req, res) => {
         price: evt.priceRanges?.[0]?.min || null,
         url: evt.url || '',
         id: evt.id,
-        source: 'ticketmaster'
+        source: 'ticketmaster',
+        soldout
       };
     });
 

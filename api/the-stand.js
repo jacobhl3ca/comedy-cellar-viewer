@@ -113,13 +113,17 @@ function parseShows(html) {
     const posterMatch = block.match(/<img[^>]+src="(https?:\/\/thestandnyc\.com\/images\/shows\/[^"]+)"/i);
     const poster = posterMatch ? posterMatch[1] : '';
 
+    // Detect sold-out: Stand replaces "Buy Tickets" with <span class="btn btn-outline-danger">Sold Out</span>
+    const soldout = /btn-outline-danger[^>]*>Sold Out/i.test(block);
+
     shows.push({
       title, date, time, comedians, url,
       venue: 'The Stand NYC',
       room,
       price,
       poster,
-      comedianPhotos
+      comedianPhotos,
+      soldout
     });
   }
 
