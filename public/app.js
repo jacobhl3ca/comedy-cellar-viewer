@@ -1427,7 +1427,6 @@ function renderAllDaysSchedule(container) {
     standDates.forEach(dateStr => {
       const d = new Date(dateStr + 'T12:00:00');
       const dayLabel = d.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
-      html += `<h2 class="schedule-day-header">${dayLabel}</h2>`;
       let dayShows = standShows.filter(s => s.date === dateStr && !isShowPast(dateStr, s.time));
       if (activeStandRoom !== 'all') {
         dayShows = dayShows.filter(s => {
@@ -1445,10 +1444,13 @@ function renderAllDaysSchedule(container) {
       if (tfMinStand) {
         dayShows = dayShows.filter(s => { const t24 = to24h(s.time); return !t24 || t24 >= tfMinStand; });
       }
-      if (dayShows.length === 0) {
-        html += '<div class="no-shows" style="padding:16px 0;">No shows.</div>';
-        return;
+      // Filter sold-out shows if hidden
+      const hideSoldOutStand = document.getElementById('hide-sold-out')?.checked;
+      if (hideSoldOutStand) {
+        dayShows = dayShows.filter(s => !isShowSoldOut(s.date, s.time));
       }
+      if (dayShows.length === 0) return;
+      html += `<h2 class="schedule-day-header">${dayLabel}</h2>`;
       dayShows.forEach(show => {
         try { html += renderStandShowCard(show); } catch (e) { console.error('renderAllDaysSchedule Stand card error:', e, show); }
       });
@@ -1467,9 +1469,8 @@ function renderAllDaysSchedule(container) {
     const shows = allData[dateStr];
     const dayLabel = d.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
 
-    html += `<h2 class="schedule-day-header">${dayLabel}</h2>`;
-
     if (!shows || shows.length === 0) {
+      html += `<h2 class="schedule-day-header">${dayLabel}</h2>`;
       const dow = d.getDay();
       let hint = '';
       if (dow >= 1 && dow <= 4) hint = 'Weekday lineups usually drop the day before.';
@@ -1481,6 +1482,7 @@ function renderAllDaysSchedule(container) {
     let sorted = shows;
     if (shouldSort) sorted = [...shows].sort((a, b) => scoreShow(b).score - scoreShow(a).score || scoreShow(b).faves - scoreShow(a).faves);
 
+    let dayHtml = '';
     sorted.forEach(show => {
       try {
       if (isShowPast(dateStr, show.time)) return;
@@ -1504,7 +1506,7 @@ function renderAllDaysSchedule(container) {
       const showPhotos = document.getElementById('show-photos')?.checked ?? true;
       const chips = renderComedianChips(show.comedians, document.getElementById('hide-skips').checked, 'cellar');
 
-      html += `
+      dayHtml += `
         <div class="${cardClass} schedule-card">
           <div class="show-header">
             <div><span class="show-time">${formatTime(show.time)}</span>${soldOut ? '<span class="show-badge badge-sold-out">SOLD OUT</span>' : ''}${badge}</div>
@@ -1518,6 +1520,11 @@ function renderAllDaysSchedule(container) {
         </div>`;
       } catch (e) { console.error('renderAllDaysSchedule Cellar card error:', e, show); }
     });
+    // Only render day header if there are visible shows
+    if (dayHtml) {
+      html += `<h2 class="schedule-day-header">${dayLabel}</h2>`;
+      html += dayHtml;
+    }
   });
 
   html += '</div>';
