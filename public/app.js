@@ -55,14 +55,27 @@ async function decompressPrefs(compressed) {
   };
 }
 
-// Encode prefs into URL hash (compressed)
+// Encode prefs into URL hash (compressed, with fallback to legacy format)
 async function updateHashFromPrefs(prefs) {
-  if (prefs.faves.length === 0 && prefs.skips.length === 0 && prefs.likes.length === 0) {
-    history.replaceState(null, '', window.location.pathname);
-    return;
+  try {
+    if (prefs.faves.length === 0 && prefs.skips.length === 0 && prefs.likes.length === 0) {
+      history.replaceState(null, '', window.location.pathname);
+      return;
+    }
+    if (typeof CompressionStream !== 'undefined') {
+      const compressed = await compressPrefs(prefs);
+      history.replaceState(null, '', '#p=' + compressed);
+    } else {
+      // Fallback: legacy uncompressed format (Safari < 16.4)
+      const params = new URLSearchParams();
+      if (prefs.faves.length) params.set('f', prefs.faves.join('|'));
+      if (prefs.skips.length) params.set('s', prefs.skips.join('|'));
+      if (prefs.likes.length) params.set('l', prefs.likes.join('|'));
+      history.replaceState(null, '', '#' + params.toString());
+    }
+  } catch (e) {
+    console.error('updateHashFromPrefs error:', e);
   }
-  const compressed = await compressPrefs(prefs);
-  history.replaceState(null, '', '#p=' + compressed);
 }
 
 // Read prefs from URL hash — supports both compressed (#p=...) and legacy (#f=...&s=...)
@@ -72,8 +85,13 @@ async function readHashPrefs() {
   try {
     const params = new URLSearchParams(hash);
     // New compressed format
-    if (params.get('p')) {
-      return await decompressPrefs(params.get('p'));
+    if (params.get('p') && typeof DecompressionStream !== 'undefined') {
+      try {
+        return await decompressPrefs(params.get('p'));
+      } catch (e) {
+        console.error('Decompress failed:', e);
+        return null;
+      }
     }
     // Legacy format (backward compat)
     const faves = params.get('f') ? params.get('f').split('|') : [];
@@ -803,11 +821,14 @@ function renderTabs() {
     const tab = document.createElement('button');
     const shows = allData[dateStr];
     const hasCellar = shows && shows.length > 0;
-    const hasStand = standShows.some(s => s.date === dateStr);
-    const hasNYCC = nyccShows.some(s => s.date === dateStr);
-    const hasGotham = gothamShows.some(s => s.date === dateStr);
-    const hasBig = bigShows.some(e => e.date === dateStr);
-    const noLineup = !hasCellar && !hasStand && !hasNYCC && !hasGotham && !hasBig;
+    let noLineup;
+    if (activeSource === 'all') {
+      // All Venues: check all sources
+      noLineup = !hasCellar && !standShows.some(s => s.date === dateStr) && !nyccShows.some(s => s.date === dateStr) && !gothamShows.some(s => s.date === dateStr) && !bigShows.some(e => e.date === dateStr);
+    } else {
+      // Cellar tab (default): only check Cellar data
+      noLineup = !hasCellar;
+    }
     tab.className = 'day-tab' + (dateStr === activeDate ? ' active' : '') + (noLineup ? ' no-lineup' : '');
     const maxScore = shows ? Math.max(0, ...shows.map(s => { const sc = scoreShow(s); return sc.faves + sc.likes; })) : 0;
     const maxFavs = shows ? Math.max(0, ...shows.map(s => scoreShow(s).faves)) : 0;
@@ -1171,7 +1192,7 @@ function renderShowCard(show, hideSkips, onlyFavs, dateStr) {
   }
 
   const soldOut = dateStr ? isShowSoldOut(dateStr, show.time) : false;
-  const cover = dateStr ? getCoverPrice(dateStr, show.time) : null;
+  if (soldOut && document.getElementById('hide-sold-out')?.checked) return '';
   const cardClass = (stats.faves >= 3 ? 'show-card must-go' : 'show-card') + (soldOut ? ' sold-out' : '');
 
   // Detect named/special shows vs plain venue variants
@@ -1188,7 +1209,7 @@ function renderShowCard(show, hideSkips, onlyFavs, dateStr) {
           ${badge}
         </div>
         ${!isPlainVenue ? (getCellarPoster(show.venue) ? `<span class="show-name poster-wrap">Comedy Cellar: ${show.venue}<img class="poster-preview" src="${getCellarPoster(show.venue)}" alt="${show.venue}"></span>` : `<span class="show-name">Comedy Cellar: ${show.venue}</span>`) : '<span class="show-name">Comedy Cellar</span>'}
-        <span class="show-venue">${normalizedVenue}${cover ? ` · $${cover} cover` : ''}</span>
+        <span class="show-venue">${normalizedVenue}</span>
       </div>
       <div class="show-lineup">${comediansHtml}</div>
       <div class="show-footer">
@@ -1322,7 +1343,7 @@ function renderSortedByFaves(container) {
     }
 
     const soldOut = isShowSoldOut(show.dateStr, show.time);
-    const cover = getCoverPrice(show.dateStr, show.time);
+    if (soldOut && document.getElementById('hide-sold-out')?.checked) return;
     const cardClass = (stats.faves >= 3 ? 'show-card must-go' : 'show-card') + (soldOut ? ' sold-out' : '');
     let badge = '';
     if (soldOut) badge = '<span class="show-badge badge-sold-out">SOLD OUT</span>';
@@ -1340,7 +1361,7 @@ function renderSortedByFaves(container) {
         <div class="show-header">
           <div><span class="show-time">${formatTime(show.time)}</span>${badge}</div>
           ${!isPlainVenue ? (getCellarPoster(show.venue) ? `<span class="show-name poster-wrap">Comedy Cellar: ${show.venue}<img class="poster-preview" src="${getCellarPoster(show.venue)}" alt="${show.venue}"></span>` : `<span class="show-name">Comedy Cellar: ${show.venue}</span>`) : '<span class="show-name">Comedy Cellar</span>'}
-          <span class="show-venue">${normalizedVenue}${cover ? ` · $${cover} cover` : ''}</span>
+          <span class="show-venue">${normalizedVenue}</span>
         </div>
         <div class="show-lineup">${chips}</div>
         <div class="show-footer">
@@ -1453,7 +1474,7 @@ function renderAllDaysSchedule(container) {
       // Hide entire show if any comedian is a skip
       if (document.getElementById('hide-skips').checked && stats.skips > 0) return;
       const soldOut = isShowSoldOut(dateStr, show.time);
-      const cover = getCoverPrice(dateStr, show.time);
+      if (soldOut && document.getElementById('hide-sold-out')?.checked) return;
       const cardClass = (stats.faves >= 3 ? 'show-card must-go' : 'show-card') + (soldOut ? ' sold-out' : '');
       let badge = '';
       if (stats.faves >= 3) badge = `<span class="show-badge badge-must-go">${stats.faves} FAVES</span>`;
@@ -1466,7 +1487,7 @@ function renderAllDaysSchedule(container) {
         <div class="${cardClass} schedule-card">
           <div class="show-header">
             <div><span class="show-time">${formatTime(show.time)}</span>${soldOut ? '<span class="show-badge badge-sold-out">SOLD OUT</span>' : ''}${badge}</div>
-            <span class="show-venue">${show.venue}${cover ? ` · $${cover} cover` : ''}</span>
+            <span class="show-venue">${show.venue}</span>
           </div>
           <div class="show-lineup">${chips}</div>
           <div class="show-footer">
@@ -2000,11 +2021,12 @@ function renderBottomTabs() {
     const dateStr = formatDateParam(d);
     const shows = allData[dateStr];
     const hasCellar = shows && shows.length > 0;
-    const hasStand = standShows.some(s => s.date === dateStr);
-    const hasNYCC = nyccShows.some(s => s.date === dateStr);
-    const hasGotham = gothamShows.some(s => s.date === dateStr);
-    const hasBig = bigShows.some(e => e.date === dateStr);
-    const noLineup = !hasCellar && !hasStand && !hasNYCC && !hasGotham && !hasBig;
+    let noLineup;
+    if (activeSource === 'all') {
+      noLineup = !hasCellar && !standShows.some(s => s.date === dateStr) && !nyccShows.some(s => s.date === dateStr) && !gothamShows.some(s => s.date === dateStr) && !bigShows.some(e => e.date === dateStr);
+    } else {
+      noLineup = !hasCellar;
+    }
     const tab = document.createElement('button');
     tab.className = 'day-tab' + (dateStr === activeDate ? ' active' : '') + (noLineup ? ' no-lineup' : '');
     tab.innerHTML = `
@@ -2271,7 +2293,8 @@ function updateResetBtn() {
     document.getElementById('expand-bios')?.checked ||
     document.getElementById('expand-long-bios')?.checked ||
     (document.getElementById('time-filter')?.value !== 'any') ||
-    !!window._timeFilterMin;
+    !!window._timeFilterMin ||
+    document.getElementById('hide-sold-out')?.checked;
   btn.style.visibility = anyActive ? 'visible' : 'hidden';
   // Show row if reset button is visible OR filters panel is open
   const filtersOpen = document.getElementById('filters-inline')?.style.display !== 'none';
@@ -2579,6 +2602,7 @@ async function init() {
     document.getElementById('quick-mode').checked = false;
     const pm = document.getElementById('picture-mode'); if (pm) pm.checked = true;
     const npf = document.getElementById('no-photo-filter'); if (npf) npf.checked = false;
+    const hso = document.getElementById('hide-sold-out'); if (hso) hso.checked = false;
     const sp = document.getElementById('show-photos'); if (sp) sp.checked = true;
     const tf = document.getElementById('time-filter');
     if (tf) tf.value = 'any';
@@ -2635,8 +2659,22 @@ async function init() {
 
   document.getElementById('share-link').addEventListener('click', async () => {
     const prefs = loadPrefs();
-    const compressed = await compressPrefs(prefs);
-    const url = window.location.origin + window.location.pathname + '#p=' + compressed;
+    let url;
+    try {
+      if (typeof CompressionStream !== 'undefined') {
+        const compressed = await compressPrefs(prefs);
+        url = window.location.origin + window.location.pathname + '#p=' + compressed;
+      } else {
+        throw new Error('no CompressionStream');
+      }
+    } catch {
+      // Fallback to legacy format
+      const params = new URLSearchParams();
+      if (prefs.faves.length) params.set('f', prefs.faves.join('|'));
+      if (prefs.skips.length) params.set('s', prefs.skips.join('|'));
+      if (prefs.likes.length) params.set('l', prefs.likes.join('|'));
+      url = window.location.origin + window.location.pathname + '#' + params.toString();
+    }
     navigator.clipboard.writeText(url).then(() => {
       const btn = document.getElementById('share-link');
       btn.textContent = 'Copied!';

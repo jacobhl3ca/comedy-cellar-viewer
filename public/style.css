@@ -237,6 +237,10 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .filter-row-inline {
   display: flex; gap: 8px; align-items: center;
 }
+.filter-checkbox {
+  display: flex; align-items: center; gap: 4px; font-size: 13px;
+  color: var(--text-dim); cursor: pointer; white-space: nowrap;
+}
 
 /* Legacy compat */
 .controls-row-1 {
