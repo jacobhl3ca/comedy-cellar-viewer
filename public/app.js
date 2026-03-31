@@ -1163,7 +1163,19 @@ function hideSoldOutToggle(soldOut) {
 
 function toggleHideSoldOut() {
   const cb = document.getElementById('hide-sold-out');
-  if (cb) { cb.checked = true; updateResetBtn(); renderShows(); }
+  if (!cb) return;
+  // Poof animation on all sold-out cards
+  const cards = document.querySelectorAll('.show-card.sold-out, .big-show-card.sold-out');
+  cards.forEach(c => c.classList.add('poof'));
+  // Highlight the toolbar toggle
+  const toolbarLabel = cb.closest('label');
+  if (toolbarLabel) toolbarLabel.classList.add('toggle-highlight');
+  setTimeout(() => {
+    cb.checked = true;
+    updateResetBtn();
+    renderShows();
+    if (toolbarLabel) setTimeout(() => toolbarLabel.classList.remove('toggle-highlight'), 1200);
+  }, 400);
 }
 
 // ---- Shared show card renderer ----
