@@ -125,7 +125,7 @@ const NAME_FIXES = {
 };
 
 function normalizeName(name) {
-  const clean = name.replace(/<[^>]+>/g, '').trim();
+  const clean = decodeHtmlEntities(name.replace(/<[^>]+>/g, '')).trim();
   return NAME_FIXES[clean] || clean;
 }
 
@@ -137,9 +137,17 @@ function nameToSlug(name) {
     .replace(/^-+/, '');
 }
 
+function decodeHtmlEntities(str) {
+  return str
+    .replace(/&#8217;/g, '\u2019').replace(/&#8216;/g, '\u2018')
+    .replace(/&#39;/g, "'").replace(/&quot;/g, '"')
+    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&#\d+;/g, '');  // strip any remaining numeric entities
+}
+
 function nameToFilename(name) {
-  return name.toLowerCase()
-    .replace(/['']/g, '')
+  return decodeHtmlEntities(name).toLowerCase()
+    .replace(/['''\u2018\u2019]/g, '')
     .replace(/[^a-z0-9]+/g, '_')
     .replace(/_+/g, '_')
     .replace(/^_|_$/g, '');
@@ -249,7 +257,7 @@ async function scrapeStand() {
         // Extract comedian names
         const nameMatches = [...block.matchAll(/<small>(.*?)<\/small>/g)];
         const names = [...new Set(nameMatches
-          .map(m => m[1].trim())
+          .map(m => decodeHtmlEntities(m[1].trim()))
           .filter(n => n && n.length > 1 && !n.match(/^\$/) && !/^special\s*guests?$/i.test(n) && !/^more\s*tba$/i.test(n))
         )];
 

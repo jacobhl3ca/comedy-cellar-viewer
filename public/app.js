@@ -1,6 +1,6 @@
 // ---- Preferences (localStorage + URL hash sync) ----
 const STORAGE_KEY = 'cellar-tonight-prefs';
-let bookmarkToastShown = false;
+// bookmarkToastShown removed — only used in commented-out showBookmarkToast()
 
 // Synchronous version — reads from localStorage only (used by isFav/isSkip/isLike/cycleComedian)
 function loadPrefs() {
@@ -164,8 +164,17 @@ let comedianDB = [];
 
 let localPhotoMap = {}; // filename -> extension
 
+function decodeHtmlEntities(str) {
+  return str
+    .replace(/&#8217;/g, '\u2019').replace(/&#8216;/g, '\u2018')
+    .replace(/&#39;/g, "'").replace(/&quot;/g, '"')
+    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&#\d+;/g, '');
+}
+
 function localPhotoPath(name) {
-  const filename = name.replace(/[^a-zA-Z0-9_-]/g, '_').replace(/_+/g, '_').replace(/^_|_$/g, '').toLowerCase();
+  const decoded = decodeHtmlEntities(name);
+  const filename = decoded.replace(/['''\u2018\u2019]/g, '').replace(/[^a-zA-Z0-9_-]/g, '_').replace(/_+/g, '_').replace(/^_|_$/g, '').toLowerCase();
   const ext = localPhotoMap[filename];
   return ext ? `/photos/${filename}${ext}` : '';
 }
@@ -709,7 +718,7 @@ async function fetchAvailability() {
     availabilityData = data.availability || {};
   } catch (e) {
     // Static cache not available — sold out badges just won't show
-    console.log('Availability data not available (prebake pending)');
+    // Availability cache not loaded — sold out badges won't show
   }
 }
 
@@ -2586,7 +2595,6 @@ function trackReserve(el) {
   localStorage.setItem('cellar-reserve-clicks', count.toString());
   // Log for Vercel Analytics custom event (if available)
   if (window.va) window.va('event', { name: 'reserve_click', data: { url: el?.href || '', count } });
-  console.log(`Reserve click #${count}:`, el?.href);
 }
 
 // ---- Close info popups on click outside ----
@@ -2648,6 +2656,18 @@ async function init() {
     }
     if (evt.title) allComediansSeen.add(evt.title.trim());
   });
+
+  // Show warning if any data source failed
+  const failedSources = [];
+  if (!batchData) failedSources.push('Comedy Cellar');
+  if (!standShows.length) failedSources.push('The Stand');
+  if (!bigShows.length) failedSources.push('Big Shows');
+  if (failedSources.length) {
+    const warn = document.createElement('div');
+    warn.className = 'data-warning';
+    warn.innerHTML = `⚠ Could not load: ${failedSources.join(', ')}. <button onclick="this.parentElement.remove()">✕</button>`;
+    document.getElementById('shows-container').prepend(warn);
+  }
 
   document.getElementById('loading').style.display = 'none';
   // Default to big picture mode

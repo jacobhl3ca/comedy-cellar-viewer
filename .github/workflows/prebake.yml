@@ -2,7 +2,8 @@ name: Nightly Prebake
 
 on:
   schedule:
-    - cron: '0 7 * * *'  # 3am ET year-round (7am UTC; 3am EDT / 2am EST)
+    - cron: '0 7 * * *'   # 3am ET year-round (7am UTC; 3am EDT / 2am EST)
+    - cron: '0 22 * * *'  # 6pm ET year-round (22 UTC; 6pm EDT / 5pm EST)
   workflow_dispatch: {}   # manual trigger from GitHub UI
 
 permissions:
@@ -17,7 +18,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: Run prebake script
         run: node scripts/prebake.js
@@ -38,4 +39,9 @@ jobs:
           git config user.email "jacobhl3ca@gmail.com"
           git add public/photos/ public/data/
           git commit -m "Prebake: nightly photo + bio update [$(date -u +%Y-%m-%d)]"
-          git push
+          # Retry push up to 3 times (transient 403s from GitHub token)
+          for i in 1 2 3; do
+            git push && break
+            echo "Push attempt $i failed, retrying in 10s..."
+            sleep 10
+          done
