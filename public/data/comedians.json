@@ -454,7 +454,8 @@
     "venues": [
       "nycc",
       "comedy_cellar"
-    ]
+    ],
+    "tagline_cellar": "FROM THE LATE SHOW WITH STEPHEN COLBERT,  \"THE DAVID LETTERMAN SHOW\", \"THE APPRENTICE\" ON NBC, \"LAST COMIC STANDING\", AND COMEDY CENTRAL'S \"PREMIUM BLEND\"."
   },
   {
     "name": "Damien Lemon",
@@ -1588,7 +1589,8 @@
       "nycc",
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/judy-gold"
+    "stand_profile": "https://thestandnyc.com/comedians/judy-gold",
+    "tagline_cellar": "Comedy specials on HBO, Netflix, Comedy Central & LOGO. Star of Netflix’s Stand Out. Upcoming series Hulu’s “Not Suitable for Work”. Author “Yes I Can Say That: When They Come for the Comedians We Are All In Trouble”."
   },
   {
     "name": "Yamaneika Saunders",
@@ -2599,7 +2601,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/adrienne-iapalucci",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Adrienne_Iapalucci_1.jpg",
-    "bio": "Adrienne Iapalucci is a stand-up comedian based in New York City. She's appeared on The Late Show and is a regular at the Comedy Cellar. Her Netflix special is dark and unflinching. Known for her deadpan delivery and dark humor."
+    "bio": "Adrienne Iapalucci is a stand-up comedian based in New York City. She's appeared on The Late Show and is a regular at the Comedy Cellar. Her Netflix special is dark and unflinching. Known for her deadpan delivery and dark humor.",
+    "tagline_cellar": "FROM THE LATE SHOW WITH DAVID LETTERMAN, FROM THE ARTIE LANGE SHOW, LAST COMIC STANDING"
   },
   {
     "name": "Ahmed Ahmed",
@@ -2681,7 +2684,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/aminah-imani",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/aminah.jpg",
-    "bio": "Aminah Imani is a stand-up comedian performing in New York City. She performs at clubs across the city."
+    "bio": "Aminah Imani is a stand-up comedian performing in New York City. She performs at clubs across the city.",
+    "tagline_cellar": "JUST FOR LAUGHS NEW FACES, FROM \"INSIDE AMY SHUMER\", FLATBUSH MISDEMEANORS, UP EARLY TONIGHT, COMEDY CENTRAL"
   },
   {
     "name": "Amy Miller",
@@ -3624,7 +3628,8 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/jordan-jensen",
-    "bio": "Jordan Jensen is a stand-up comedian performing on the New York City comedy scene. She performs regularly at clubs across the city."
+    "bio": "Jordan Jensen is a stand-up comedian performing on the New York City comedy scene. She performs regularly at clubs across the city.",
+    "tagline_cellar": "\"TAKE ME WITH YOU\" on Netflix, Late Late Show, WINNER NEW YORK'S FUNNIEST STAND UP 2021, JUST FOR LAUGHS NEW FACE 2019"
   },
   {
     "name": "Josh Adam Meyers",
@@ -3923,7 +3928,8 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/marie-faustin",
-    "bio": "Marie Faustin is a stand-up comedian based in New York City. She's appeared on Comedy Central and performs at clubs across the city."
+    "bio": "Marie Faustin is a stand-up comedian based in New York City. She's appeared on Comedy Central and performs at clubs across the city.",
+    "tagline_cellar": "COMEDY CENTRAL, HBO, VICE, BROAD CITY, THAT DAMN MICHAEL CHE"
   },
   {
     "name": "Marito Lopez",
@@ -4777,7 +4783,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/tony-woods",
-    "bio": "Tony Woods is a veteran stand-up comedian known as a 'comedian's comedian.' He's been performing for decades and is respected by top comedians for his unique, meandering comedy style."
+    "bio": "Tony Woods is a veteran stand-up comedian known as a 'comedian's comedian.' He's been performing for decades and is respected by top comedians for his unique, meandering comedy style.",
+    "tagline_cellar": "FROM \"THE LETTERMAN SHOW\"."
   },
   {
     "name": "Tristan Bowling",
@@ -4899,7 +4906,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Dan Davies is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "bio": "Dan Davies is a stand-up comedian performing in New York City. He performs at clubs across the city.",
+    "tagline_cellar": "COMICS TO WATCH, CBS"
   },
   {
     "name": "Ethan Simmons-Patterson",
@@ -5824,6 +5832,84 @@
   },
   {
     "name": "Caitlin Austin",
+    "venues": []
+  },
+  {
+    "name": "Philipp Kostelecky",
+    "venues": [],
+    "bio": "BBC, COMEDY CENTRAL, COMIC RELIEF, METRO NEWSPAPER FUNNY NEW FACES",
+    "tagline_cellar": "BBC, COMEDY CENTRAL, COMIC RELIEF, METRO NEWSPAPER FUNNY NEW FACES"
+  },
+  {
+    "name": "Janet McNamara",
+    "venues": [],
+    "bio": "DON'T TELL COMEDY, AMERICAN IDOL",
+    "tagline_cellar": "DON'T TELL COMEDY, AMERICAN IDOL"
+  },
+  {
+    "name": "Dov Davidoff",
+    "venues": [],
+    "bio": "FROM NBC'S \"SHADES OF BLUE\", HBO'S  \"CRASHING\",  FROM NBC'S \"RAINES\", \"JOHNNY\" FROM THE MOVIE \"INVINCIBLE\", THE TONIGHT SHOW, COMEDY CENTRAL'S \"TOUGH CROWD\". FROM THE MOVIES \"MAX & GRACE\" AND \"ASH TUESDAY\".",
+    "tagline_cellar": "FROM NBC'S \"SHADES OF BLUE\", HBO'S  \"CRASHING\",  FROM NBC'S \"RAINES\", \"JOHNNY\" FROM THE MOVIE \"INVINCIBLE\", THE TONIGHT SHOW, COMEDY CENTRAL'S \"TOUGH CROWD\". FROM THE MOVIES \"MAX & GRACE\" AND \"ASH TUESDAY\"."
+  },
+  {
+    "name": "Cookie Hull",
+    "venues": [],
+    "bio": "FROM KATT WILLIAMS INTERNET DATING, GEORGE WALLACE COMING TO THESTAGE, PLUTO TV.",
+    "tagline_cellar": "FROM KATT WILLIAMS INTERNET DATING, GEORGE WALLACE COMING TO THESTAGE, PLUTO TV."
+  },
+  {
+    "name": "Mike Finoia",
+    "venues": [],
+    "bio": "TRUTV'S IMPRACTICAL JOKERS, COMEDY CENTRAL",
+    "tagline_cellar": "TRUTV'S IMPRACTICAL JOKERS, COMEDY CENTRAL"
+  },
+  {
+    "name": "Chris Clarke",
+    "venues": [],
+    "bio": "Winner of the 2022 Laugh After Dark Comedy Festival comedy club segment (vegas). Has a special on YouTube (Funny Media group) Titled, it's meee. Writer and featured in Rob Schneiders latest film Daddy Daughter Trip.",
+    "tagline_cellar": "Winner of the 2022 Laugh After Dark Comedy Festival comedy club segment (vegas). Has a special on YouTube (Funny Media group) Titled, it's meee. Writer and featured in Rob Schneiders latest film Daddy Daughter Trip."
+  },
+  {
+    "name": "Daniel Geneen",
+    "venues": [],
+    "bio": "RUNNER UP, NEW YORK FUNNIEST 2024, 3X EMMY-NOMINATED FOR\"DAN DOES\". CREATOROF WEBBY-WINNING SHOW \"MISE EN PLACE\"",
+    "tagline_cellar": "RUNNER UP, NEW YORK FUNNIEST 2024, 3X EMMY-NOMINATED FOR\"DAN DOES\". CREATOROF WEBBY-WINNING SHOW \"MISE EN PLACE\""
+  },
+  {
+    "name": "Maddy Kelly",
+    "venues": [],
+    "bio": "SXSW, NETLFIX IA A JOKE",
+    "tagline_cellar": "SXSW, NETLFIX IA A JOKE"
+  },
+  {
+    "name": "Brian Scolaro",
+    "venues": [],
+    "bio": "Abbott Elementary, Godfather of Harlem, Shameless, Conan, Mad Men, Dexter, Grey's Anatomy, Night Court, Screamboat, A Million Little Things, Comedy Central, Wizards of Waverly Place, Bones, Castle, Alto Knights, The Middle, Stacked, The Late Late Show,  Amazon/Apple TV Special",
+    "tagline_cellar": "Abbott Elementary, Godfather of Harlem, Shameless, Conan, Mad Men, Dexter, Grey's Anatomy, Night Court, Screamboat, A Million Little Things, Comedy Central, Wizards of Waverly Place, Bones, Castle, Alto Knights, The Middle, Stacked, The Late Late Show,  Amazon/Apple TV Special"
+  },
+  {
+    "name": "Adam Freesman",
+    "venues": []
+  },
+  {
+    "name": "Shiv Shanks",
+    "venues": []
+  },
+  {
+    "name": "Lana Siebel",
+    "venues": []
+  },
+  {
+    "name": "Amy Cheong",
+    "venues": []
+  },
+  {
+    "name": "Lauren Davis",
+    "venues": []
+  },
+  {
+    "name": "Cody Marino",
     "venues": []
   }
 ]
