@@ -393,13 +393,16 @@ function autoResolvePhoto(name, imgEl) {
 // Venue-aware photo lookup: local prebaked first (verified), then external fallbacks
 function getPhotoForVenue(name, venueSource) {
   const dbEntry = comedianDB.find(c => c.name === name);
-  // 1. Local prebaked photo (CDN, verified correct, always wins)
   const local = localPhotoPath(name);
-  if (local) return local;
-  // 2. Venue-specific photo from that venue's own site
+  // 1. Venue-specific photo from that venue's own site (most accurate for that context)
+  if (venueSource === 'stand') {
+    if (comedianPhotosStand[name]) return comedianPhotosStand[name];
+    if (dbEntry?.photo_stand) return dbEntry.photo_stand;
+  }
   if (venueSource === 'cellar' && comedianPhotosCellar[name]) return comedianPhotosCellar[name];
-  if (venueSource === 'stand' && comedianPhotosStand[name]) return comedianPhotosStand[name];
   if (venueSource === 'nycc' && dbEntry?.photo_nycc) return dbEntry.photo_nycc;
+  // 2. Local prebaked photo (CDN, verified correct)
+  if (local) return local;
   // 3. Cross-venue external fallbacks
   if (dbEntry?.photo_nycc) return dbEntry.photo_nycc;
   if (comedianPhotosCellar[name]) return comedianPhotosCellar[name];
@@ -459,6 +462,7 @@ const NAME_FIXES = {
   'Will Sylvince': 'Wil Sylvince',
   'Wil Sylvince': 'Wil Sylvince',
   'Luis Gomez': 'Luis J Gomez',
+  'Peter Fowler': 'Peter James Fowler',
 };
 function normalizeName(name) {
   // Sanitize HTML entities to prevent XSS from API data
@@ -2535,25 +2539,27 @@ function initTheme() {
 const comedianTaglines = {};       // Cellar API taglines (live)
 const comedianWikiBios = {};       // Wikipedia bios (last resort)
 
-// Venue-aware bio lookup: Cellar tagline → Stand DB bio → NYCC DB bio → Wikipedia → ''
+// Venue-aware bio lookup: venue-specific first, then cross-venue fallbacks
 function getBioForVenue(name, venueSource) {
-  // 1. If Cellar show, prefer Cellar live tagline
+  const dbEntry = comedianDB.find(c => c.name === name);
+  // 1. Venue-specific bio (most relevant for this context)
   if (venueSource === 'cellar') {
     const cellarTag = comedianTaglines[name];
     if (cellarTag && !isGenericBio(cellarTag)) return cellarTag;
+    if (dbEntry?.tagline_cellar && !isGenericBio(dbEntry.tagline_cellar)) return dbEntry.tagline_cellar;
   }
-  // 2. If Stand show, prefer Stand bio from DB
   if (venueSource === 'stand') {
-    const dbEntry = comedianDB.find(c => c.name === name);
     if (dbEntry?.bio_stand && !isGenericBio(dbEntry.bio_stand)) return dbEntry.bio_stand;
   }
-  // 3. NYCC bio from DB (works for any venue as fallback)
-  const dbEntry = comedianDB.find(c => c.name === name);
+  // 2. NYCC bio from DB
   if (dbEntry?.bio && !isGenericBio(dbEntry.bio)) return dbEntry.bio;
-  // 4. Cellar tagline as fallback for non-Cellar shows too
+  // 3. Cross-venue fallbacks (Stand bio for Cellar show, Cellar tagline for Stand show, etc.)
+  if (dbEntry?.bio_stand && !isGenericBio(dbEntry.bio_stand)) return dbEntry.bio_stand;
   const cellarTag = comedianTaglines[name];
   if (cellarTag && !isGenericBio(cellarTag)) return cellarTag;
-  // 5. Wikipedia (last resort)
+  if (dbEntry?.tagline_cellar && !isGenericBio(dbEntry.tagline_cellar)) return dbEntry.tagline_cellar;
+  // 4. Wikipedia from DB or runtime (last resort)
+  if (dbEntry?.bio_wiki && !isGenericBio(dbEntry.bio_wiki)) return dbEntry.bio_wiki;
   const wiki = comedianWikiBios[name];
   if (wiki && !isGenericBio(wiki)) return wiki;
   return '';
