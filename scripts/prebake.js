@@ -507,33 +507,57 @@ async function scrapeTicketmaster() {
 
 // ---- Dedupe SeatGeek + Ticketmaster events ----
 function mergeEvents(seatgeekEvents, ticketmasterEvents) {
-  // Build lookup from SeatGeek: normalize title+date for matching
-  const sgKeys = new Set();
-  seatgeekEvents.forEach(evt => {
-    sgKeys.add(`${evt.title.toLowerCase().replace(/[^a-z0-9]/g, '')}|${evt.date}`);
-    // Also match on performer name for cases where titles differ
+  // Build lookup from SeatGeek: normalize title+date → index in merged array
+  const sgKeyToIndex = new Map();
+  const merged = seatgeekEvents.map(evt => {
+    // Initialize ticketLinks with the SeatGeek source
+    return { ...evt, ticketLinks: [{ source: 'seatgeek', url: evt.url }] };
+  });
+
+  merged.forEach((evt, idx) => {
+    const titleKey = `${evt.title.toLowerCase().replace(/[^a-z0-9]/g, '')}|${evt.date}`;
+    sgKeyToIndex.set(titleKey, idx);
     if (evt.performers) {
       evt.performers.split(', ').forEach(p => {
-        sgKeys.add(`${p.toLowerCase().replace(/[^a-z0-9]/g, '')}|${evt.date}`);
+        sgKeyToIndex.set(`${p.toLowerCase().replace(/[^a-z0-9]/g, '')}|${evt.date}`, idx);
       });
     }
   });
 
-  // Add TM events that aren't already in SeatGeek
-  let added = 0;
-  const merged = [...seatgeekEvents];
+  // Add TM events: if duplicate, attach TM URL to existing event; if unique, add as new
+  let added = 0, linked = 0;
   ticketmasterEvents.forEach(evt => {
     const titleKey = `${evt.title.toLowerCase().replace(/[^a-z0-9]/g, '')}|${evt.date}`;
     const performerKeys = evt.performers
       ? evt.performers.split(', ').map(p => `${p.toLowerCase().replace(/[^a-z0-9]/g, '')}|${evt.date}`)
       : [];
-    const isDupe = sgKeys.has(titleKey) || performerKeys.some(k => sgKeys.has(k));
-    if (!isDupe) {
-      merged.push(evt);
+
+    // Find matching SeatGeek event
+    let matchIdx = sgKeyToIndex.get(titleKey);
+    if (matchIdx === undefined) {
+      for (const k of performerKeys) {
+        matchIdx = sgKeyToIndex.get(k);
+        if (matchIdx !== undefined) break;
+      }
+    }
+
+    if (matchIdx !== undefined) {
+      // Duplicate — attach Ticketmaster URL if not already linked
+      const alreadyHasTM = merged[matchIdx].ticketLinks.some(l => l.source === 'ticketmaster');
+      if (!alreadyHasTM) {
+        merged[matchIdx].ticketLinks.push({ source: 'ticketmaster', url: evt.url });
+        linked++;
+      }
+      // Also grab TM price/soldout if SG doesn't have it
+      if (!merged[matchIdx].price && evt.price) merged[matchIdx].price = evt.price;
+      if (evt.soldout && !merged[matchIdx].soldout) merged[matchIdx].soldout = evt.soldout;
+    } else {
+      // Unique TM event — add with ticketLinks
+      merged.push({ ...evt, ticketLinks: [{ source: 'ticketmaster', url: evt.url }] });
       added++;
     }
   });
-  log(`Merge: ${seatgeekEvents.length} SeatGeek + ${ticketmasterEvents.length} Ticketmaster → ${added} unique TM events added → ${merged.length} total`);
+  log(`Merge: ${seatgeekEvents.length} SeatGeek + ${ticketmasterEvents.length} Ticketmaster → ${linked} linked (multi-source), ${added} unique TM added → ${merged.length} total`);
   return merged;
 }
 

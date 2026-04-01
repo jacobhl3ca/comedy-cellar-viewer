@@ -525,6 +525,7 @@ function cleanVenueName(venue) {
   let v = venue.replace(/\s*-\s*New York$/i, '').replace(/\s*-\s*NYC$/i, '').trim();
   // Normalize known variants
   if (/^the\s+town\s+hall$/i.test(v)) v = 'Town Hall';
+  if (/apollo.*jonelle|jonelle.*procope/i.test(v)) v = 'Apollo Theater';
   return v;
 }
 
@@ -668,18 +669,28 @@ async function fetchBigShows() {
         ]);
         const sgData = sgResp ? await sgResp.json() : { events: [] };
         const tmData = tmResp ? await tmResp.json() : { events: [] };
-        // Dedupe: skip TM events that match SeatGeek by normalized title+date
-        const sgKeys = new Set();
-        sgData.events.forEach(e => {
-          sgKeys.add(e.title.toLowerCase().replace(/[^a-z0-9]/g, '') + '|' + e.date);
-          if (e.performers) e.performers.split(', ').forEach(p => sgKeys.add(p.toLowerCase().replace(/[^a-z0-9]/g, '') + '|' + e.date));
+        // Merge: attach TM URLs to matching SG events, add unique TM events
+        const sgKeyToIdx = new Map();
+        const merged = sgData.events.map(e => ({ ...e, ticketLinks: [{ source: 'seatgeek', url: e.url }] }));
+        merged.forEach((e, i) => {
+          sgKeyToIdx.set(e.title.toLowerCase().replace(/[^a-z0-9]/g, '') + '|' + e.date, i);
+          if (e.performers) e.performers.split(', ').forEach(p => sgKeyToIdx.set(p.toLowerCase().replace(/[^a-z0-9]/g, '') + '|' + e.date, i));
         });
-        const uniqueTM = tmData.events.filter(e => {
+        tmData.events.forEach(e => {
           const k = e.title.toLowerCase().replace(/[^a-z0-9]/g, '') + '|' + e.date;
           const pKeys = e.performers ? e.performers.split(', ').map(p => p.toLowerCase().replace(/[^a-z0-9]/g, '') + '|' + e.date) : [];
-          return !sgKeys.has(k) && !pKeys.some(pk => sgKeys.has(pk));
+          let idx = sgKeyToIdx.get(k);
+          if (idx === undefined) for (const pk of pKeys) { idx = sgKeyToIdx.get(pk); if (idx !== undefined) break; }
+          if (idx !== undefined) {
+            if (!merged[idx].ticketLinks.some(l => l.source === 'ticketmaster')) {
+              merged[idx].ticketLinks.push({ source: 'ticketmaster', url: e.url });
+            }
+            if (!merged[idx].price && e.price) merged[idx].price = e.price;
+          } else {
+            merged.push({ ...e, ticketLinks: [{ source: 'ticketmaster', url: e.url }] });
+          }
         });
-        return new Response(JSON.stringify({ events: [...sgData.events, ...uniqueTM] }));
+        return new Response(JSON.stringify({ events: merged }));
       });
     const data = await resp.json();
     bigShows = data.events || [];
@@ -1055,6 +1066,17 @@ function renderSourceTabs() {
 function renderShows() {
   const container = document.getElementById('shows-container');
 
+  // Comedian filter banner
+  const existingBanner = document.getElementById('comedian-filter-banner');
+  if (existingBanner) existingBanner.remove();
+  if (activeComedianFilter) {
+    const banner = document.createElement('div');
+    banner.id = 'comedian-filter-banner';
+    banner.className = 'comedian-filter-banner';
+    banner.innerHTML = `Showing shows with <strong>${activeComedianFilter}</strong> <button onclick="filterByComedian('${activeComedianFilter.replace(/'/g, "\\'")}')">✕ Clear</button>`;
+    container.parentElement.insertBefore(banner, container);
+  }
+
   // Route to correct renderer based on active source
   if (activeSource === 'the-stand') {
     renderTheStandShows(container);
@@ -1155,6 +1177,16 @@ function renderShows() {
   renderBottomTabs();
 }
 
+function showTitlePopup(el) {
+  if (el.scrollWidth <= el.clientWidth) return; // not truncated, no popup needed
+  const popup = document.createElement('div');
+  popup.className = 'big-show-title-popup';
+  popup.textContent = el.title || el.textContent;
+  document.body.appendChild(popup);
+  const dismiss = () => { popup.remove(); document.removeEventListener('click', dismiss); };
+  requestAnimationFrame(() => document.addEventListener('click', dismiss));
+}
+
 function hideSoldOutToggle(soldOut) {
   if (!soldOut) return '';
   const checked = document.getElementById('hide-sold-out')?.checked ? ' checked' : '';
@@ -1181,6 +1213,9 @@ function toggleHideSoldOut() {
 // ---- Shared show card renderer ----
 function renderShowCard(show, hideSkips, onlyFavs, dateStr) {
   try {
+  // Comedian filter
+  if (activeComedianFilter && !show.comedians.some(c => c.toLowerCase() === activeComedianFilter.toLowerCase())) return '';
+
   // Hide past shows (2+ hours ago)
   const showDateStr = dateStr || activeDate;
   if (showDateStr && showDateStr !== 'all' && showDateStr !== 'calendar' && isShowPast(showDateStr, show.time)) return '';
@@ -1227,7 +1262,6 @@ function renderShowCard(show, hideSkips, onlyFavs, dateStr) {
       <div class="show-header">
         <div>
           <span class="show-time">${formatTime(show.time)}</span>
-          ${soldOut ? '<span class="show-badge badge-sold-out">SOLD OUT</span>' : ''}
           ${badge}
         </div>
         ${!isPlainVenue ? (getCellarPoster(show.venue) ? `<span class="show-name poster-wrap">Comedy Cellar: ${show.venue}<img class="poster-preview" src="${getCellarPoster(show.venue)}" alt="${show.venue}"></span>` : `<span class="show-name">Comedy Cellar: ${show.venue}</span>`) : '<span class="show-name">Comedy Cellar</span>'}
@@ -1343,8 +1377,8 @@ function renderSortedByFaves(container) {
     });
   });
 
-  // Sort by weighted score (faves*2 - skips), then by fave count
-  allShows.sort((a, b) => b.score - a.score || b.faves - a.faves);
+  // Sort by weighted score (faves*2 - skips), then by fave count, then chronologically
+  allShows.sort((a, b) => b.score - a.score || b.faves - a.faves || a.dateStr.localeCompare(b.dateStr) || (a.time || '').localeCompare(b.time || ''));
 
   if (allShows.length === 0) {
     container.innerHTML = '<div class="no-shows">No shows match your filters.</div>';
@@ -1367,7 +1401,6 @@ function renderSortedByFaves(container) {
     const soldOut = show.soldOut;
     const cardClass = (stats.faves >= 3 ? 'show-card must-go' : 'show-card') + (soldOut ? ' sold-out' : '');
     let badge = '';
-    if (soldOut) badge = '<span class="show-badge badge-sold-out">SOLD OUT</span>';
     if (stats.faves >= 3) badge += `<span class="show-badge badge-must-go">${stats.faves} FAVES</span>`;
     else if (stats.faves >= 2) badge += `<span class="show-badge badge-faves">${stats.faves} FAVES</span>`;
     if (stats.likes > 0) badge += ` <span class="show-badge badge-likes">${stats.likes} LIKE${stats.likes > 1 ? 'S' : ''}</span>`;
@@ -1509,7 +1542,7 @@ function renderAllDaysSchedule(container) {
       dayHtml += `
         <div class="${cardClass} schedule-card">
           <div class="show-header">
-            <div><span class="show-time">${formatTime(show.time)}</span>${soldOut ? '<span class="show-badge badge-sold-out">SOLD OUT</span>' : ''}${badge}</div>
+            <div><span class="show-time">${formatTime(show.time)}</span>${badge}</div>
             <span class="show-venue">${show.venue}</span>
           </div>
           <div class="show-lineup">${chips}</div>
@@ -1588,6 +1621,9 @@ function renderTheStandShows(container) {
 
 function renderStandShowCard(show) {
   try {
+  // Comedian filter
+  if (activeComedianFilter && !show.comedians.some(c => c.toLowerCase() === activeComedianFilter.toLowerCase())) return '';
+
   const soldOut = !!show.soldout;
   if (soldOut && document.getElementById('hide-sold-out')?.checked) return '';
 
@@ -1603,7 +1639,7 @@ function renderStandShowCard(show) {
   let showLabel = 'The Stand';
   if (show.title) {
     const t = show.title.trim();
-    const isPresents = /^The Stand Presents/i.test(t);
+    const isPresents = /^The Stand Presents?/i.test(t);
     // Check if title is just a comedian's name from the lineup
     const isComedianName = show.comedians.some(c => t.toLowerCase() === c.toLowerCase());
     if (!isPresents && !isComedianName && t.toLowerCase() !== 'the stand') {
@@ -1628,7 +1664,7 @@ function renderStandShowCard(show) {
   return `
     <div class="${cardClass}">
       <div class="show-header">
-        <div><span class="show-time">${formatTime(show.time)}</span>${soldOut ? '<span class="show-badge badge-sold-out">SOLD OUT</span>' : ''}</div>
+        <div><span class="show-time">${formatTime(show.time)}</span></div>
         ${posterHtml}
         <span class="show-venue">${venueText}</span>
       </div>
@@ -1752,6 +1788,18 @@ function renderAllVenues(container) {
     allItems = allItems.filter(item => !item.time24 || item.time24 >= tfMinAV);
   }
 
+  // Comedian filter
+  if (activeComedianFilter) {
+    const filterLower = activeComedianFilter.toLowerCase();
+    allItems = allItems.filter(item => {
+      const comedians = item.show.comedians || [];
+      if (comedians.some(c => c.toLowerCase() === filterLower)) return true;
+      // Big Shows: check performers field
+      if (item.show.performers && item.show.performers.toLowerCase().includes(filterLower)) return true;
+      return false;
+    });
+  }
+
   // Hide past shows (2+ hours ago)
   allItems = allItems.filter(item => !isShowPast(item.dateStr, item.show.time));
 
@@ -1830,14 +1878,22 @@ function renderAllVenues(container) {
       html += `
         <div class="big-show-card${evtSoldOut ? ' sold-out' : ''}">
           <div class="show-header">
-            <div><span class="show-time">${formatTime(evt.time)}</span>${evtSoldOut ? '<span class="show-badge badge-sold-out">SOLD OUT</span>' : ''}</div>
+            <div><span class="show-time">${formatTime(evt.time)}</span></div>
             <span class="show-name">${evt.title}</span>
             <span class="show-venue">${cleanVenueName(evt.venue) || ''}</span>
           </div>
           <div class="big-show-info" style="padding:10px 16px;display:flex;align-items:center;gap:8px;">
             ${evtPhotoHtml}
             ${evt.price ? `<span class="big-show-price">From $${evt.price}</span>` : ''}
-            ${evt.url ? `<a href="${evt.url}" target="_blank" class="reserve-btn${evtSoldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${evtSoldOut ? 'Sold Out' : 'Get Tickets'}</a>` : ''}
+            ${(() => {
+              const links = evt.ticketLinks || (evt.url ? [{ source: evt.source || 'tickets', url: evt.url }] : []);
+              if (links.length > 1) {
+                const labels = { seatgeek: 'SeatGeek', ticketmaster: 'Ticketmaster' };
+                return links.map(l => `<a href="${l.url}" target="_blank" class="reserve-btn${evtSoldOut ? ' sold-out-btn' : ''}" style="font-size:11px;" onclick="trackReserve(this)" title="${labels[l.source] || 'Tickets'}">${evtSoldOut ? 'Sold Out' : labels[l.source] || 'Tickets'}</a>`).join(' ');
+              }
+              const singleUrl = links[0]?.url || evt.url;
+              return singleUrl ? `<a href="${singleUrl}" target="_blank" class="reserve-btn${evtSoldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${evtSoldOut ? 'Sold Out' : 'Get Tickets'}</a>` : '';
+            })()}
             ${evtSoldOut ? hideSoldOutToggle(evtSoldOut) : ''}
           </div>
         </div>`;
@@ -1855,7 +1911,10 @@ function renderBigShowVenueFilters() {
   const container = document.getElementById('venue-filters');
   if (!container) return;
   if (activeSource !== 'big-shows') return;
-  const venues = [...new Set([...bigShows.map(e => cleanVenueName(e.venue)), ...gothamShows.map(() => 'Gotham Comedy Club')].filter(Boolean))].sort();
+  const venueSet = [...bigShows.map(e => cleanVenueName(e.venue)), ...gothamShows.map(() => 'Gotham Comedy Club')].filter(Boolean);
+  const venueCounts = {};
+  venueSet.forEach(v => { venueCounts[v] = (venueCounts[v] || 0) + 1; });
+  const venues = [...new Set(venueSet)].sort((a, b) => venueCounts[b] - venueCounts[a] || a.localeCompare(b));
   const allVenues = ['all', ...venues];
   container.innerHTML = allVenues.map(v => {
     const label = v === 'all' ? 'All Venues' : v;
@@ -1900,11 +1959,36 @@ function renderBigShows(container) {
   // Clean venue names before grouping
   filtered.forEach(evt => { evt.venue = cleanVenueName(evt.venue); });
 
-  // Group by performer/title for compact view
+  // Group by primary performer name — handles tour name variations, rescheduled suffixes, age tags
   const byPerformer = {};
   filtered.forEach(evt => {
-    const key = evt.title || 'Unknown';
-    if (!byPerformer[key]) byPerformer[key] = { events: [], venue: evt.venue, performers: evt.performers, performerImages: evt.performerImages };
+    // Use first performer name as grouping key (strips tour names, "- Full Name" suffixes, etc.)
+    const firstPerformer = (evt.performers || '').split(',')[0].trim().split(' - ')[0].trim();
+    const cleanTitle = (evt.title || 'Unknown').replace(/\s*\(Rescheduled.*?\)/i, '').replace(/\s*\(Postponed.*?\)/i, '').replace(/\s*\(\d+\+\)/i, '').trim();
+    const key = (firstPerformer || cleanTitle).toLowerCase();
+    // Pick best display title: prefer descriptive show names over redundant "Name - Name" patterns
+    const titleScore = (t) => {
+      const lower = t.toLowerCase();
+      // Penalize "Name - Name" redundancy (e.g. "Modi - Modi Rosenfeld")
+      if (/ - /.test(t) && lower.includes(firstPerformer.toLowerCase())) return 0;
+      // Prefer titles with tour/show names (colon = "Name: Tour Name")
+      if (/: /.test(t)) return 3;
+      // Prefer titles with "with" (e.g. "Garden of Laughs with Ronny Chieng")
+      if (/\bwith\b/i.test(t)) return 2;
+      return 1;
+    };
+    if (!byPerformer[key]) {
+      byPerformer[key] = { events: [], venue: evt.venue, performers: evt.performers, performerImages: evt.performerImages, displayTitle: cleanTitle };
+    } else if (titleScore(cleanTitle) > titleScore(byPerformer[key].displayTitle)) {
+      byPerformer[key].displayTitle = cleanTitle;
+    }
+    // Merge performerImages from all sources
+    if (evt.performerImages) {
+      Object.entries(evt.performerImages).forEach(([n, url]) => {
+        if (!byPerformer[key].performerImages) byPerformer[key].performerImages = {};
+        if (!byPerformer[key].performerImages[n]) byPerformer[key].performerImages[n] = url;
+      });
+    }
     byPerformer[key].events.push(evt);
   });
 
@@ -1917,10 +2001,9 @@ function renderBigShows(container) {
 
   let html = '<div class="big-shows-section">';
 
-  if (activeDate === 'all') html += '<h2 class="big-shows-header">Other Shows — Upcoming NYC Comedy</h2>';
-
-  sortedGroups.forEach(([title, data]) => {
+  sortedGroups.forEach(([groupKey, data]) => {
     try {
+    const title = data.displayTitle;
     const firstEvt = data.events[0];
     // Performer photo
     let photoUrl = '';
@@ -1942,37 +2025,64 @@ function renderBigShows(container) {
     const needsLookup = !photoUrl;
     const photoId = needsLookup ? `photo-lookup-${title.replace(/[^a-zA-Z0-9]/g, '_')}` : '';
     const photoHtml = photoUrl
-      ? `<img src="${photoUrl}" alt="${title}" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;" onerror="this.style.display='none'">`
-      : `<img id="${photoId}" alt="${title}" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;display:none;" onerror="this.style.display='none'" data-lookup-name="${lookupName.replace(/"/g, '&quot;')}" data-lookup-title="${title.replace(/"/g, '&quot;')}">`;
+      ? `<img src="${photoUrl}" alt="${title}" class="big-show-photo" onerror="this.style.display='none'">`
+      : `<img id="${photoId}" alt="${title}" class="big-show-photo" style="display:none;" onerror="this.style.display='none'" data-lookup-name="${lookupName.replace(/"/g, '&quot;')}" data-lookup-title="${title.replace(/"/g, '&quot;')}">`;
 
-    // Date boxes — sorted by date, each links to its source URL
+    // Date boxes — sorted by date, deduplicated by date+time (merges SG/TM duplicates)
     const hideSoldOut = document.getElementById('hide-sold-out')?.checked;
-    const sortedEvents = data.events.sort((a, b) => a.date.localeCompare(b.date) || (a.time || '').localeCompare(b.time || ''));
+    const seen = new Set();
+    const sortedEvents = data.events
+      .sort((a, b) => a.date.localeCompare(b.date) || (a.time || '').localeCompare(b.time || ''))
+      .filter(evt => {
+        const key = evt.date + '|' + (evt.time || '');
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
     const allSoldOut = sortedEvents.length > 0 && sortedEvents.every(evt => evt.soldout);
     if (allSoldOut && hideSoldOut) return;
-    const dateBoxes = sortedEvents.map(evt => {
+    // Filter out individual sold-out events when Hide Sold Out is checked
+    const visibleEvents = hideSoldOut ? sortedEvents.filter(evt => !evt.soldout) : sortedEvents;
+    if (visibleEvents.length === 0) return;
+    const dateBoxes = visibleEvents.map(evt => {
       const d = new Date(evt.date + 'T12:00:00');
       const shortDate = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
       const shortDay = d.toLocaleDateString('en-US', { weekday: 'short' });
       const timeStr = evt.time || '';
       const priceStr = evt.price ? `$${evt.price}` : '';
       const evtSoldOut = !!evt.soldout;
-      const soldOutLabel = evtSoldOut ? '<span class="bdb-sold-out">SOLD OUT</span>' : '';
-      const boxClass = 'big-date-box' + (evtSoldOut ? ' sold-out' : '');
-      return evt.url
-        ? `<a href="${evt.url}" target="_blank" class="${boxClass}" onclick="trackReserve(this)"><span class="bdb-day">${shortDay} ${shortDate}</span><span class="bdb-time">${timeStr}</span>${evtSoldOut ? soldOutLabel : (priceStr ? `<span class="bdb-price">${priceStr}</span>` : '')}</a>`
-        : `<span class="${boxClass}"><span class="bdb-day">${shortDay} ${shortDate}</span><span class="bdb-time">${timeStr}</span>${soldOutLabel}</span>`;
+      const links = evt.ticketLinks || (evt.url ? [{ source: evt.source || 'tickets', url: evt.url }] : []);
+
+      // Sold out: grey button with white text, no links
+      if (evtSoldOut) {
+        return `<div class="bdb-wrap"><span class="big-date-box sold-out"><span class="bdb-day">${shortDay} ${shortDate}</span><span class="bdb-time">${timeStr}</span><span class="bdb-sold-out">SOLD OUT</span></span></div>`;
+      }
+
+      const dateContent = `<span class="bdb-day">${shortDay} ${shortDate}</span><span class="bdb-time">${timeStr}</span>${priceStr ? `<span class="bdb-price">${priceStr}</span>` : ''}`;
+
+      // TODO: Multi-source SG/TM badges — revisit later
+      // if (links.length > 1) {
+      //   const sourceButtons = links.map(l =>
+      //     `<a href="${l.url}" target="_blank" class="bdb-source-link" title="${l.source === 'seatgeek' ? 'SeatGeek' : 'Ticketmaster'}" onclick="trackReserve(this)">${l.source === 'seatgeek' ? 'SG' : 'TM'}</a>`
+      //   ).join('');
+      //   return `<div class="bdb-wrap"><a href="${links[0].url}" target="_blank" class="big-date-box" onclick="trackReserve(this)">${dateContent}</a><span class="bdb-sources">${sourceButtons}</span></div>`;
+      // }
+
+      // Single link per date box (uses first available source)
+      const singleUrl = links[0]?.url || evt.url;
+      return singleUrl
+        ? `<div class="bdb-wrap"><a href="${singleUrl}" target="_blank" class="big-date-box" onclick="trackReserve(this)">${dateContent}</a></div>`
+        : `<div class="bdb-wrap"><span class="big-date-box">${dateContent}</span></div>`;
     }).join('');
 
     html += `
-      <div class="big-show-card">
-        <div class="big-show-info" style="display:flex;gap:12px;align-items:flex-start;">
+      <div class="big-show-card${allSoldOut ? ' sold-out' : ''}">
+        <div class="big-show-info">
           ${photoHtml}
-          <div style="flex:1;min-width:0;">
-            <div class="big-show-title">${title}</div>
-            <div class="big-show-meta"><span class="big-show-venue">${cleanVenueName(data.venue)}</span></div>
+          <div class="big-show-details">
+            <div class="big-show-title" onclick="showTitlePopup(this)" title="${title.replace(/"/g, '&quot;')}">${title}</div>
+            <div class="big-show-venue">${cleanVenueName(data.venue)}</div>
             <div class="big-date-boxes">${dateBoxes}</div>
-            ${sortedEvents.some(evt => evt.soldout) ? hideSoldOutToggle(true) : ''}
           </div>
         </div>
       </div>`;
@@ -2197,6 +2307,9 @@ function handleComedianClick(el) {
         <button class="exp-btn ${alerted ? 'is-alert' : ''}" onclick="toggleAlertBtn('${esc}', this)">
           ${alerted ? '🔔 Alerted' : '🔕 Alert me'}
         </button>
+        <button class="exp-btn" onclick="filterByComedian('${esc}')">
+          🔍 Filter shows
+        </button>
       </div>
     </div>
   `;
@@ -2215,6 +2328,23 @@ function toggleAlertBtn(name, btn) {
   const alerted = isAlerted(name);
   btn.className = 'exp-btn' + (alerted ? ' is-alert' : '');
   btn.textContent = alerted ? '🔔 Alerted' : '🔕 Alert me';
+}
+
+// Global filter state for comedian filtering
+let activeComedianFilter = null;
+
+function filterByComedian(name) {
+  if (activeComedianFilter === name) {
+    // Toggle off — clear filter
+    activeComedianFilter = null;
+  } else {
+    activeComedianFilter = name;
+  }
+  // Collapse expanded panel
+  document.querySelectorAll('.expanded-panel').forEach(p => p.remove());
+  renderShows();
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function setPref(name, type) {
@@ -2309,7 +2439,7 @@ function renderModal(filter = '') {
     html += `<div class="chip-list">${standSorted.map(chipHtml).join('')}</div>`;
   }
   if (otherSorted.length > 0) {
-    html += `<h3 class="modal-section-title" style="margin-top:16px;">Other Shows</h3>`;
+    html += `<h3 class="modal-section-title" style="margin-top:16px;">Big Shows</h3>`;
     html += `<div class="chip-list">${otherSorted.map(chipHtml).join('')}</div>`;
   }
   allList.innerHTML = html;
@@ -2346,7 +2476,8 @@ function updateResetBtn() {
     document.getElementById('expand-long-bios')?.checked ||
     (document.getElementById('time-filter')?.value !== 'any') ||
     !!window._timeFilterMin ||
-    document.getElementById('hide-sold-out')?.checked;
+    !document.getElementById('hide-sold-out')?.checked ||
+    !!activeComedianFilter;
   btn.style.visibility = anyActive ? 'visible' : 'hidden';
   // Show row if reset button is visible OR filters panel is open
   const filtersOpen = document.getElementById('filters-inline')?.style.display !== 'none';
@@ -2654,7 +2785,7 @@ async function init() {
     document.getElementById('quick-mode').checked = false;
     const pm = document.getElementById('picture-mode'); if (pm) pm.checked = true;
     const npf = document.getElementById('no-photo-filter'); if (npf) npf.checked = false;
-    const hso = document.getElementById('hide-sold-out'); if (hso) hso.checked = false;
+    const hso = document.getElementById('hide-sold-out'); if (hso) hso.checked = true;
     const sp = document.getElementById('show-photos'); if (sp) sp.checked = true;
     const tf = document.getElementById('time-filter');
     if (tf) tf.value = 'any';
@@ -2672,6 +2803,7 @@ async function init() {
     activeVenue = 'all';
     activeStandRoom = 'all';
     activeBigVenue = 'all';
+    activeComedianFilter = null;
     updateResetBtn();
     renderShows();
   });
@@ -2781,4 +2913,5 @@ window.setPref = setPref;
 window.setStandRoom = setStandRoom;
 window.setBigVenue = setBigVenue;
 window.toggleAlertBtn = toggleAlertBtn;
+window.filterByComedian = filterByComedian;
 window.trackReserve = trackReserve;
