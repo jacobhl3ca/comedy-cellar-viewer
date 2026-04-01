@@ -17,7 +17,7 @@
     "name": "Ashton Womack",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/ashton-womack",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Ashton-790e080f-thumb-image.jpg?1639655042",
-    "bio": "Ashton Womack is a standup comic from Houston, Tx, who currently lives in New York City as the newest staff writer for The Daily Show w/ Trevor Noah. In 2019 he was honored as a Just For Laughs New Face of Comedy and has been rising star on the national comedy scene ever since. He\u2019s been featured in VICE, Comedy Central, VH1, written for the 2021 Grammys and can currently be seen in Paramount's \u201cC...",
+    "bio": "Ashton Womack is a standup comic from Houston, Tx, who currently lives in New York City as the newest staff writer for The Daily Show w/ Trevor Noah. In 2019 he was honored as a Just For Laughs New Face of Comedy and has been rising star on the national comedy scene ever since. He’s been featured in VICE, Comedy Central, VH1, written for the 2021 Grammys and can currently be seen in Paramount's “C...",
     "venues": [
       "nycc"
     ]
@@ -26,7 +26,7 @@
     "name": "Kate Sisk",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/kate-sisk",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Screen-Shot-2023-02-01-at-1-56-12-PM-e9d30f48-main-image-521d1567-thumb-image.png?1696440086",
-    "bio": "Kate Sisk is a professional stand up comedian, amateur drag king, and retired soccer player from Sudbury, Massachusetts. Now based in New York City, Kate has released stand up sets with Comedy Central, Cracked, and most recently, Don\u2019t Tell Comedy. Kate has also improvised at the Upright Citizens Brigade Theater, written for The Onion, and co-hosted the popular podcast We\u2019re Having Gay Sex. In add...",
+    "bio": "Kate Sisk is a professional stand up comedian, amateur drag king, and retired soccer player from Sudbury, Massachusetts. Now based in New York City, Kate has released stand up sets with Comedy Central, Cracked, and most recently, Don’t Tell Comedy. Kate has also improvised at the Upright Citizens Brigade Theater, written for The Onion, and co-hosted the popular podcast We’re Having Gay Sex. In add...",
     "venues": [
       "nycc"
     ]
@@ -35,7 +35,7 @@
     "name": "Chase DuRousseau",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/chase-durousseau",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/image0-12-8f8f0876-thumb-image.jpg?1770226228",
-    "bio": "If you\u2019re struggling with self-love and resilience Chase DuRousseau is here to show you that he is too, but doing it with sprezzatura so if he\u2019s having fun with it\u2026 so will you. Originally from Houston, Texas, this video store clerk turned award winning comedian (Houston\u2019s Funniest Person) called Los Angeles home for many years before settling into New York City. He\u2019s performed for the military in...",
+    "bio": "If you’re struggling with self-love and resilience Chase DuRousseau is here to show you that he is too, but doing it with sprezzatura so if he’s having fun with it… so will you. Originally from Houston, Texas, this video store clerk turned award winning comedian (Houston’s Funniest Person) called Los Angeles home for many years before settling into New York City. He’s performed for the military in...",
     "venues": [
       "nycc"
     ]
@@ -54,7 +54,7 @@
     "name": "Michael Kosta",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/michael-kosta",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/kosta-swing-small-png-36340ddd-kosta-swing-small-png.jpg?1693234204",
-    "bio": "Michael is a Senior Correspondent on \"The Daily Show\". Previously, he hosted and was the co-executive producer on \"The Comment Section\" for the E! Network. He is well known from his numerous late night appearances on \"The Tonight Show\", \"Conan\", \"Seth Meyers\", and \"@midnight\". Michael co-hosted Fox Sports \"1\u2019s Crowd Goes Wild\" opposite Regis Philbin, and was a regular Correspondent for \"The Soup I...",
+    "bio": "Michael is a Senior Correspondent on \"The Daily Show\". Previously, he hosted and was the co-executive producer on \"The Comment Section\" for the E! Network. He is well known from his numerous late night appearances on \"The Tonight Show\", \"Conan\", \"Seth Meyers\", and \"@midnight\". Michael co-hosted Fox Sports \"1’s Crowd Goes Wild\" opposite Regis Philbin, and was a regular Correspondent for \"The Soup I...",
     "venues": [
       "nycc",
       "the_stand"
@@ -66,14 +66,15 @@
     "name": "Mark Normand",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/mark-normand",
     "photo_nycc": "https://newyorkcomedyclub.com/img/events/MarkNormand-copy-ed630bf6-thumb-image.jpg?1606775477",
-    "bio": "Mark Normand is one of the most in-demand comedians working today. His self-produced Youtube special, \"Out to Lunch\" has over 11 million views! He also co-hosts two very popular podcasts, \"Tuesdays with Stories\" with Joe List and \"We Might Be Drunk\" with Sam Morril. Mark has also done a Comedy Central HALF HOUR special, has appeared on TBS\u2019s CONAN 4 times, Late Show with Stephen Colbert, Showtime\u2019...",
+    "bio": "Mark Normand is one of the most in-demand comedians working today. His self-produced Youtube special, \"Out to Lunch\" has over 11 million views! He also co-hosts two very popular podcasts, \"Tuesdays with Stories\" with Joe List and \"We Might Be Drunk\" with Sam Morril. Mark has also done a Comedy Central HALF HOUR special, has appeared on TBS’s CONAN 4 times, Late Show with Stephen Colbert, Showtime’...",
     "venues": [
       "nycc",
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/mark-normand",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Mark_Normand.jpg",
-    "tagline_cellar": "FROM \"THE LATE SHOW WITH STEPHEN COLBERT\", HOUR SPECIAL ON COMEDY CENTRAL,  FOUR APPEARANCES ON THE CONAN O'BRIEN SHOW, @MIDNIGHT, TRU-TV, LAST COMIC STANDING,"
+    "tagline_cellar": "FROM \"THE LATE SHOW WITH STEPHEN COLBERT\", HOUR SPECIAL ON COMEDY CENTRAL,  FOUR APPEARANCES ON THE CONAN O'BRIEN SHOW, @MIDNIGHT, TRU-TV, LAST COMIC STANDING,",
+    "bio_stand": "Comedy Central, Conan, Netflix, The Joe Rogan Experience"
   },
   {
     "name": "Olivia Stadler",
@@ -123,7 +124,7 @@
     "name": "Tim Smith",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/tim-smith",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/451465828-1389344145079628-4139111214651379998-n-44bb0f96-thumb-image.jpg?1722472255",
-    "bio": "Tim Smith is a comedian based in NYC. A known goofball hailing from Louisiana/Chicago. Tim headlines clubs across the country and was recently featured at the New York Comedy Festival. He has opened for legends such as Roy Wood Jr, Kyle Kinane, Jim Norton and Ms. Pat. He\u2019s the cohost of the Roommates in Law podcast with his good pal Tommy Brennan and he\u2019s been with the same woman for over 12 years...",
+    "bio": "Tim Smith is a comedian based in NYC. A known goofball hailing from Louisiana/Chicago. Tim headlines clubs across the country and was recently featured at the New York Comedy Festival. He has opened for legends such as Roy Wood Jr, Kyle Kinane, Jim Norton and Ms. Pat. He’s the cohost of the Roommates in Law podcast with his good pal Tommy Brennan and he’s been with the same woman for over 12 years...",
     "venues": [
       "nycc"
     ]
@@ -151,7 +152,7 @@
     "name": "Chaunte Wayans",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/chaunte-wayans",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/chaunte-wayans-caa70b1d-thumb-image.jpg?1566841827",
-    "bio": "Chaunte Wayans is a comedian, writer, and actress who proudly represents the new generation of Wayans\u2019 legacy-making its mark in Hollywood. She was last seen in the film 50 Shades of Black, with other film and television credits including Hollywood Misconceptions, Dance Flick, TLC's Trading Spaces, Bounce TV's Off The Chain and Nicktoon's animated series, The Boo Crew. As a comedian, she has toure...",
+    "bio": "Chaunte Wayans is a comedian, writer, and actress who proudly represents the new generation of Wayans’ legacy-making its mark in Hollywood. She was last seen in the film 50 Shades of Black, with other film and television credits including Hollywood Misconceptions, Dance Flick, TLC's Trading Spaces, Bounce TV's Off The Chain and Nicktoon's animated series, The Boo Crew. As a comedian, she has toure...",
     "venues": [
       "nycc",
       "the_stand"
@@ -180,7 +181,7 @@
     "name": "Michael Longfellow",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/michael-longfellow",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/longfellow-9d3709b2-thumb-image.jpg?1685737142",
-    "bio": "Michael Longfellow is a comedian and stepson from Phoenix who completed three seasons as a cast member on SATURDAY NIGHT LIVE. Prior to SNL, Michael was just one of eight comedians chosen for the inaugural \u201cNetflix Introducing\u2026\u201d next stars of comedy showcase at the Netflix is a Joke Festival. He was also selected as one of TBS's \u201cComics To Watch\u201d at the New York Comedy Festival, and went on to mak...",
+    "bio": "Michael Longfellow is a comedian and stepson from Phoenix who completed three seasons as a cast member on SATURDAY NIGHT LIVE. Prior to SNL, Michael was just one of eight comedians chosen for the inaugural “Netflix Introducing…” next stars of comedy showcase at the Netflix is a Joke Festival. He was also selected as one of TBS's “Comics To Watch” at the New York Comedy Festival, and went on to mak...",
     "venues": [
       "nycc",
       "the_stand"
@@ -191,7 +192,7 @@
     "name": "Amos Gill",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/amos-gill",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/amos-gill-2-aa10098f-thumb-image.png?1747062582",
-    "bio": "Amos Gill is one of Australia\u2019s hottest comedians, now making waves internationally as a touring headliner across the USA, UK, and Australia. Known for his sharp humor and quick wit, Amos first gained attention as a beloved Adelaide radio host on Amos, Cat & Angus. After leaving radio in 2018, he quickly became a comic to watch, earning accolades such as runner-up in triple j\u2019s RAW Comedy competit...",
+    "bio": "Amos Gill is one of Australia’s hottest comedians, now making waves internationally as a touring headliner across the USA, UK, and Australia. Known for his sharp humor and quick wit, Amos first gained attention as a beloved Adelaide radio host on Amos, Cat & Angus. After leaving radio in 2018, he quickly became a comic to watch, earning accolades such as runner-up in triple j’s RAW Comedy competit...",
     "venues": [
       "nycc",
       "the_stand",
@@ -225,13 +226,14 @@
     "name": "Big Jay Oakerson",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/big-jay-oakerson",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/BigJ-64c6071b-thumb-image.jpg?1675887114",
-    "bio": "Big Jay Oakerson is one of the most beloved and easily recognizable comedians in New York City. His easy charm and dirty delivery endear him to audiences every night. Jay\u2019s comedy career spans two decades and a journey from \u201ccomic\u2019s comic\u201d to mainstream fame. Beginning as a standout in the Philadelphia comedy scene, Jay quickly became a favorite among other comedians after his move to New York Cit...",
+    "bio": "Big Jay Oakerson is one of the most beloved and easily recognizable comedians in New York City. His easy charm and dirty delivery endear him to audiences every night. Jay’s comedy career spans two decades and a journey from “comic’s comic” to mainstream fame. Beginning as a standout in the Philadelphia comedy scene, Jay quickly became a favorite among other comedians after his move to New York Cit...",
     "venues": [
       "nycc",
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/big-jay-oakerson",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/74-og.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/74-og.jpg",
+    "bio_stand": "Netflix “The Degenerates”, Hour Special “Live From Webster Hall”, “What’s Your F@#king Deal”, The Bonfire on Sirius XM"
   },
   {
     "name": "Raj Suresh",
@@ -264,7 +266,7 @@
     "name": "Mike Cannon",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/mike-cannon",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/mike-cannon-5-17-25-headshot-color-jpg-427512c9-mike-cannon-5-17-25-headshot-color-jpg.jpg?1749049648",
-    "bio": "Mike Cannon is a New York City-based comedian, podcaster, writer, and actor. He has headlined at some of the world\u2019s most iconic venues \u2013 including a sold-out performance at Gramercy Theatre in his hometown of NYC \u2013 and worked as a contributing producer, writer and panelist for ViceTV's Super Maximum Retro Show hosted by Chris Distefano in 2023. Mike released his latest, much anticipated special, ...",
+    "bio": "Mike Cannon is a New York City-based comedian, podcaster, writer, and actor. He has headlined at some of the world’s most iconic venues – including a sold-out performance at Gramercy Theatre in his hometown of NYC – and worked as a contributing producer, writer and panelist for ViceTV's Super Maximum Retro Show hosted by Chris Distefano in 2023. Mike released his latest, much anticipated special, ...",
     "venues": [
       "nycc"
     ]
@@ -291,7 +293,8 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/jay-jurden",
-    "tagline_cellar": "The Tonight Show, Variety's 10 Comics To Watch, The Problem With Jon Stewart, Comedy Central, HBO"
+    "tagline_cellar": "The Tonight Show, Variety's 10 Comics To Watch, The Problem With Jon Stewart, Comedy Central, HBO",
+    "bio_stand": "Tonight Show with Jimmy Fallon"
   },
   {
     "name": "Aaron Putnam",
@@ -337,7 +340,7 @@
     "name": "Bo Bigelow",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/bo-bigelow",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/328F1CE4-E8D8-4888-AF37-2EA8690F93FF-ae990dce-thumb-image.png?1771946987",
-    "bio": "Bo Bigelow is a 25 year old comedian from the garden state, New Jersey, who blends stories about his childhood with his absurd goofy nature and delivery. He began his comedy career in Los Angeles, CA before returning back to the east coast after opening for Shang Forbes and exploring New York City comedy clubs. He has opened for Brian Posehn, Shang Forbes, Jeff Garlin, and Chris D\u2019Elia, and has pe...",
+    "bio": "Bo Bigelow is a 25 year old comedian from the garden state, New Jersey, who blends stories about his childhood with his absurd goofy nature and delivery. He began his comedy career in Los Angeles, CA before returning back to the east coast after opening for Shang Forbes and exploring New York City comedy clubs. He has opened for Brian Posehn, Shang Forbes, Jeff Garlin, and Chris D’Elia, and has pe...",
     "venues": [
       "nycc"
     ]
@@ -346,7 +349,7 @@
     "name": "Rachel Williams",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/rachel-williams",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/image0-76cf07de-thumb-image.jpg?1715105247",
-    "bio": "Rachel Williams is a stand up comedian from Long Island, NY who started her comedy career right out of college. Now you can catch her performing stand up almost every night all over the city. She\u2019s been on SiriusXM, a part of the 2022 New York Comedy Festival and a featured performer at the 2023 Rogue Island Comedy Festival. See all her most recent work @wachelrilliams on all social media platform...",
+    "bio": "Rachel Williams is a stand up comedian from Long Island, NY who started her comedy career right out of college. Now you can catch her performing stand up almost every night all over the city. She’s been on SiriusXM, a part of the 2022 New York Comedy Festival and a featured performer at the 2023 Rogue Island Comedy Festival. See all her most recent work @wachelrilliams on all social media platform...",
     "venues": [
       "nycc",
       "the_stand"
@@ -379,7 +382,7 @@
     "name": "Jessica Kirson",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/jessica-kirson",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/JessicaKirson-copy-0b3e0cdb-thumb-image.jpg?1681397286",
-    "bio": "Jessica Kirson is a powerhouse on stage. She\u2019s a hilariously relatable performer of sheer silliness, vulnerability, and ridiculous characters. Her countless comedic character videos have racked up over 50 million views on social media. Her audience is multigenerational, creating an excuse for large groups of friends and families to spend a night out together. In an era where only 10% of all tourin...",
+    "bio": "Jessica Kirson is a powerhouse on stage. She’s a hilariously relatable performer of sheer silliness, vulnerability, and ridiculous characters. Her countless comedic character videos have racked up over 50 million views on social media. Her audience is multigenerational, creating an excuse for large groups of friends and families to spend a night out together. In an era where only 10% of all tourin...",
     "venues": [
       "nycc",
       "the_stand"
@@ -399,7 +402,7 @@
     "name": "Samantha Santos",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/samantha-santos",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Samantha-Santos-d40d0b5c-main-image-134611f7-thumb-image.jpg?1703007443",
-    "bio": "Samantha Santos is a NYC based stand up comedian and podcaster. She has her \u201cSoft Launch\u201d Podcast Every Wednesday.",
+    "bio": "Samantha Santos is a NYC based stand up comedian and podcaster. She has her “Soft Launch” Podcast Every Wednesday.",
     "venues": [
       "nycc"
     ]
@@ -408,7 +411,7 @@
     "name": "Maddy Smith",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/maddy-smith",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Maddy-Smith-Headshot-New-5a4e0e73-thumb-image.jpg?1758053609",
-    "bio": "Maddy Smith is a cast member on MTV\u2019s Wild N Out, a nationally touring comedian, and a social media icon. Originally from Buffalo, Maddy is known for her quick wit and cutting roasts, and her seemingly lack of fear of whatever comes out of her mouth. After 5 seasons on Wild N Out, most would agree that what Maddy says is often \u201cout of pocket\u201d but you\u2019ll have to see for yourself in one of her multi...",
+    "bio": "Maddy Smith is a cast member on MTV’s Wild N Out, a nationally touring comedian, and a social media icon. Originally from Buffalo, Maddy is known for her quick wit and cutting roasts, and her seemingly lack of fear of whatever comes out of her mouth. After 5 seasons on Wild N Out, most would agree that what Maddy says is often “out of pocket” but you’ll have to see for yourself in one of her multi...",
     "venues": [
       "nycc",
       "the_stand"
@@ -441,7 +444,7 @@
     "name": "Neko White",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/neko-white",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/neko-white-a3c709b3-thumb-image.jpg?1479710185",
-    "bio": "Funny, smart, fresh, and magnetic, Neko White is a star. A comedian born and raised in Harlem, Neko has brought his unique perspective and sharp comedy from New York to international audiences. Beginning his career at just fourteen years old, the then high school freshman was sitting in class when a teacher asked, \u201cDoes anyone have a talent?\u201d Something in Neko\u2019s mind said, \u201cGo tell jokes!\u201c He went...",
+    "bio": "Funny, smart, fresh, and magnetic, Neko White is a star. A comedian born and raised in Harlem, Neko has brought his unique perspective and sharp comedy from New York to international audiences. Beginning his career at just fourteen years old, the then high school freshman was sitting in class when a teacher asked, “Does anyone have a talent?” Something in Neko’s mind said, “Go tell jokes!“ He went...",
     "venues": [
       "nycc"
     ]
@@ -450,11 +453,12 @@
     "name": "Jon Fisch",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/jon-fisch",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/jonfisch-copy-c9370ae9-thumb-image.jpg?1619721478",
-    "bio": "Jon has appeared on the Late Show with Stephen Colbert and the Late Show with David Letterman, has been featured in Maxim Magazine, and was the host of the widely popular podcast, \u201cIn the Tank\u201d. A prolific monologist with universal appeal, Jon focuses on the idiosyncrasies of city living. Shortly after moving to NYC from his native Boston, he was chosen as one of Comedy Central\u2019s Fresh Faces of Co...",
+    "bio": "Jon has appeared on the Late Show with Stephen Colbert and the Late Show with David Letterman, has been featured in Maxim Magazine, and was the host of the widely popular podcast, “In the Tank”. A prolific monologist with universal appeal, Jon focuses on the idiosyncrasies of city living. Shortly after moving to NYC from his native Boston, he was chosen as one of Comedy Central’s Fresh Faces of Co...",
     "venues": [
       "nycc",
       "comedy_cellar"
-    ]
+    ],
+    "tagline_cellar": "FROM THE LATE SHOW WITH STEPHEN COLBERT,  \"THE DAVID LETTERMAN SHOW\", \"THE APPRENTICE\" ON NBC, \"LAST COMIC STANDING\", AND COMEDY CENTRAL'S \"PREMIUM BLEND\"."
   },
   {
     "name": "Damien Lemon",
@@ -471,7 +475,7 @@
     "name": "Blair Socci",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/blair-socci",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/blair-socci-a2ee09be-thumb-image.jpg?1479710200",
-    "bio": "BLAIR SOCCI is an NYC-based comedian from Southern California. She recently starred in the MTV series, LADYLIKE, this past summer. Blair can also be seen on a new comedy series for FUSE TV called UPROARIOUS. This year she also served as creative consultant for Guy Code vs. Girl Code on MTV and also appeared on the show. When she isn\u2019t watching Vanderpump Rules, you can find Blair performing nightl...",
+    "bio": "BLAIR SOCCI is an NYC-based comedian from Southern California. She recently starred in the MTV series, LADYLIKE, this past summer. Blair can also be seen on a new comedy series for FUSE TV called UPROARIOUS. This year she also served as creative consultant for Guy Code vs. Girl Code on MTV and also appeared on the show. When she isn’t watching Vanderpump Rules, you can find Blair performing nightl...",
     "venues": [
       "nycc"
     ]
@@ -487,26 +491,28 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/derek-gaines",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/derek-gaines.jpg",
-    "tagline_cellar": "\"WRITERS GUILD AWARD WINNER\", MTV'S \"BROKE ASS GAME SHOW\", AOL ORIGINALS \"CONNECTED\""
+    "tagline_cellar": "\"WRITERS GUILD AWARD WINNER\", MTV'S \"BROKE ASS GAME SHOW\", AOL ORIGINALS \"CONNECTED\"",
+    "bio_stand": "The Last O.G., Netflix"
   },
   {
     "name": "Leonard Ouzts",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/leonard-ouzts",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Leonard-Ouzts-Headshot-41980e1b-thumb-image.jpg?1709933803",
-    "bio": "Leonard Ouzts is one of the most popular and most televised young comedians on the circuit today. Originally hailing from Chesapeke, VA, his work has been featured on every platform from HBO to MTV to Comedy Central. In addition to stand-up, Leonard has established himself as a strong and uniquely savvy actor, with appearances in Netflix\u2019s Emmy Award-winning series \u201cMaster of None\u201d and NBC\u2019S \u201cAbbe...",
+    "bio": "Leonard Ouzts is one of the most popular and most televised young comedians on the circuit today. Originally hailing from Chesapeke, VA, his work has been featured on every platform from HBO to MTV to Comedy Central. In addition to stand-up, Leonard has established himself as a strong and uniquely savvy actor, with appearances in Netflix’s Emmy Award-winning series “Master of None” and NBC’S “Abbe...",
     "venues": [
       "nycc",
       "the_stand",
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/leonard-ouzts",
-    "tagline_cellar": "FROM COMEDY CENTRAL, CONAN, NETFLIX'S MASTER OF NONE,"
+    "tagline_cellar": "FROM COMEDY CENTRAL, CONAN, NETFLIX'S MASTER OF NONE,",
+    "bio_stand": "Tonight Show with Jimmy Fallon"
   },
   {
     "name": "Gary Vider",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/gary-vider",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/ezgif-5-f9e5c9a5da-jpg-21790cc3-ezgif-5-f9e5c9a5da-jpg.jpg?1689778342",
-    "bio": "His subtle style of humor took him all the way to the finals on season 10 of America\u2019s Got Talent. His dry delivery has also earned him TV appearances on CONAN and The Late Show with Stephen Colbert. \u200bHis jokes have been published in the New York Times and Time Out NY Magazine. He was named a \"Comic to Watch\" by Esquire and was the winner of the 2014 Carolines on Broadway March Madness competition...",
+    "bio": "His subtle style of humor took him all the way to the finals on season 10 of America’s Got Talent. His dry delivery has also earned him TV appearances on CONAN and The Late Show with Stephen Colbert. ​His jokes have been published in the New York Times and Time Out NY Magazine. He was named a \"Comic to Watch\" by Esquire and was the winner of the 2014 Carolines on Broadway March Madness competition...",
     "venues": [
       "nycc",
       "the_stand",
@@ -522,13 +528,14 @@
     "venues": [
       "nycc"
     ],
-    "bio": "Jamie Lee is a stand-up comedian, actress, and writer. She appeared on MTV's Girl Code and starred in the HBO series Crashing. She's a published author and performs at clubs across the country."
+    "bio": "Jamie Lee is a stand-up comedian, actress, and writer. She appeared on MTV's Girl Code and starred in the HBO series Crashing. She's a published author and performs at clubs across the country.",
+    "tagline_cellar": "HBO'S \"CRASHING\" AND \"GIRLCODE\""
   },
   {
     "name": "Christian Finnegan",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/christian-finnegan",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/ChristianFinnegan-ViaArtist-990e1035-thumb-image.jpg?1680112539",
-    "bio": "Christian Finnegan is perhaps best known as one of the original panelists on VH1\u2019s \u201cBest Week Ever\u201d and as Chad, the only white roommate in \u201cChappelle\u2019s Show\u2019s\u201d infamous \u201cMad Real World\u201d sketch. He played Martin on the popular syndicated sitcom \u201cAre We There Yet?\u201d and politics junkies will recognize Christian from his many appearances on \u201cCountdown with Keith Olbermann\u201d. Most recently, Christian w...",
+    "bio": "Christian Finnegan is perhaps best known as one of the original panelists on VH1’s “Best Week Ever” and as Chad, the only white roommate in “Chappelle’s Show’s” infamous “Mad Real World” sketch. He played Martin on the popular syndicated sitcom “Are We There Yet?” and politics junkies will recognize Christian from his many appearances on “Countdown with Keith Olbermann”. Most recently, Christian w...",
     "venues": [
       "nycc",
       "the_stand"
@@ -581,7 +588,7 @@
     "name": "Marcus Monroe",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/marcus-monroe",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/MarcusMonroeHeadshot-2a630dbd-thumb-image.jpg?1602527888",
-    "bio": "Marcus Monroe is a New York City based comedian. His show is a high energy blend of in your face comedic banter riddled with awkwardness. He is the recipient of the prestigious Andy Kaufman Award and has recently appeared on The Late Show, MTV, and ITV (London). The New York Times has selected Marcus\u2019s show as a NYT critics\u2019 pick 4 time and calls Marcus, \u201cone of the most entertaining performers to...",
+    "bio": "Marcus Monroe is a New York City based comedian. His show is a high energy blend of in your face comedic banter riddled with awkwardness. He is the recipient of the prestigious Andy Kaufman Award and has recently appeared on The Late Show, MTV, and ITV (London). The New York Times has selected Marcus’s show as a NYT critics’ pick 4 time and calls Marcus, “one of the most entertaining performers to...",
     "venues": [
       "nycc"
     ]
@@ -612,7 +619,7 @@
     "name": "James Mattern",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/james-mattern",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/James-Mattern-2023-Headshot-2-7fa70ef7-thumb-image.jpg?1750794838",
-    "bio": "James Mattern is a nationally headlining comic and media personality, who has quickly become one of the most beloved emcees in New York. James has released two albums, \"No Segues\" in 2019 and \"The Check Spot\" in 2021, the latter of which debuted at #1 on iTunes Comedy Charts and was voted Interrobang\u2019s \u201cAlbum of the Year\u201d in 2021. The development of \"The Check Spot\" album was recorded from its con...",
+    "bio": "James Mattern is a nationally headlining comic and media personality, who has quickly become one of the most beloved emcees in New York. James has released two albums, \"No Segues\" in 2019 and \"The Check Spot\" in 2021, the latter of which debuted at #1 on iTunes Comedy Charts and was voted Interrobang’s “Album of the Year” in 2021. The development of \"The Check Spot\" album was recorded from its con...",
     "venues": [
       "nycc",
       "comedy_cellar"
@@ -623,7 +630,7 @@
     "name": "Sam Evans",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/sam-evans",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/sam-evans-9705092e-thumb-image.jpg?1543892006",
-    "bio": "One of NY\u2019s brightest and funniest young comedians, Sam Evans is a comic originally from Cincinnati Ohio. After winning the 2012 Funniest Person in Cincinnati competition, Sam relocated to New York City in order to pursue comedy further. He was rewarded in 2014 when he was selected as on of the New Faces at Just For laughs Comedy Festival in Montreal. He has been featured on Sirius XM and the Audi...",
+    "bio": "One of NY’s brightest and funniest young comedians, Sam Evans is a comic originally from Cincinnati Ohio. After winning the 2012 Funniest Person in Cincinnati competition, Sam relocated to New York City in order to pursue comedy further. He was rewarded in 2014 when he was selected as on of the New Faces at Just For laughs Comedy Festival in Montreal. He has been featured on Sirius XM and the Audi...",
     "venues": [
       "nycc"
     ]
@@ -632,7 +639,7 @@
     "name": "Calise Hawkins",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/calise-hawkins",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/calise-hawkins-d3db0b45-thumb-image.jpg?1548366721",
-    "bio": "Calise Hawkins is a comedian and writer. Most recently, she wrote for \u201cHood Adjacent\u201d and \u201c@midnight\u201d on Comedy Central. Calise has appeared as a stand up on numerous television shows including \u201cLate Night with Jimmy Fallon,\u201d \u201cTotally Biased with W. Kamau Bell,\u201d \u201cShortcoms,\u201d \u201cStand Up in Stilettos\u201d and \u201cParental Discretion.\u201d She is also one of the stars of Oxygen's series \"Funny Girls\". As a write...",
+    "bio": "Calise Hawkins is a comedian and writer. Most recently, she wrote for “Hood Adjacent” and “@midnight” on Comedy Central. Calise has appeared as a stand up on numerous television shows including “Late Night with Jimmy Fallon,” “Totally Biased with W. Kamau Bell,” “Shortcoms,” “Stand Up in Stilettos” and “Parental Discretion.” She is also one of the stars of Oxygen's series \"Funny Girls\". As a write...",
     "venues": [
       "nycc"
     ]
@@ -641,7 +648,7 @@
     "name": "Meghan Hanley",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/meaghan-hanley",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/meghan-hanley-jpg-fad60c4b-meghan-hanley-jpg.jpg?1631459499",
-    "bio": "MEGHAN HANLEY is a National Touring stand-up comic, writer and baseball blogger. She has appeared on AXSTV\u2019s \u201cGotham Comedy Live,\u201d DreamsTv, as well as Fox\u2019s \u201cLaughs,\u201d and \u201cRed Eye.\u201d Hanley, know for her quick wit and upbeat persona, has been featured in several festivals, including Boston, Austin\u2019s Out of Bounds, Atlanta\u2019sLaughing Skull andThe Women in Comedy Festival. This past March she complet...",
+    "bio": "MEGHAN HANLEY is a National Touring stand-up comic, writer and baseball blogger. She has appeared on AXSTV’s “Gotham Comedy Live,” DreamsTv, as well as Fox’s “Laughs,” and “Red Eye.” Hanley, know for her quick wit and upbeat persona, has been featured in several festivals, including Boston, Austin’s Out of Bounds, Atlanta’sLaughing Skull andThe Women in Comedy Festival. This past March she complet...",
     "venues": [
       "nycc"
     ]
@@ -650,7 +657,7 @@
     "name": "Greg Stone",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/greg-stone",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/GregStone-9934094c-thumb-image.jpg?1678825686",
-    "bio": "Greg Stone is a NYC based comedian who has been on AXS TV's Gotham Comedy Live, America's Got Talent and is a regular on Sirius XM and NPR\u2019s Snap Judgement",
+    "bio": "Greg Stone is a NYC based comedian who has been on AXS TV's Gotham Comedy Live, America's Got Talent and is a regular on Sirius XM and NPR’s Snap Judgement",
     "venues": [
       "nycc"
     ]
@@ -659,7 +666,7 @@
     "name": "Nathan Macintosh",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/nathan-macintosh",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/NathanMac-9722091d-thumb-image.jpg?1678735671",
-    "bio": "Energetic, loud, never understated and always funny, Nathan Macintosh is quickly becoming one of the names to know in comedy. Most recently appearing on The Tonight Show Starring Jimmy Fallon on NBC, he\u2019s also performed on The Late Show With Stephen Colbert on CBS, Conan on TBS, his own half hour special shown on The Comedy Network/CTV, and Just For Laughs All Access and Talk Of The Fest. His debu...",
+    "bio": "Energetic, loud, never understated and always funny, Nathan Macintosh is quickly becoming one of the names to know in comedy. Most recently appearing on The Tonight Show Starring Jimmy Fallon on NBC, he’s also performed on The Late Show With Stephen Colbert on CBS, Conan on TBS, his own half hour special shown on The Comedy Network/CTV, and Just For Laughs All Access and Talk Of The Fest. His debu...",
     "venues": [
       "nycc",
       "comedy_cellar"
@@ -719,7 +726,7 @@
     "name": "Corey O&#039;Brien",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/corey-o-brien",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/IMG-2748-1-8df507f2-thumb-image.jpg?1769109793",
-    "bio": "Corey O\u2019Brien\u2019s Red Tour fearlessly brings sharp, unapologetic comedy to red states, challenging divides while creating a space where everyone\u2014left, right, and in between\u2014can laugh together. Bold, provocative, and uniting, Corey proves humor can bridge even the widest gap. \"The Red Tour\" is a fearless, boundary-shattering comedy experience that takes a hardcore liberal, gay Democrat into the heart...",
+    "bio": "Corey O’Brien’s Red Tour fearlessly brings sharp, unapologetic comedy to red states, challenging divides while creating a space where everyone—left, right, and in between—can laugh together. Bold, provocative, and uniting, Corey proves humor can bridge even the widest gap. \"The Red Tour\" is a fearless, boundary-shattering comedy experience that takes a hardcore liberal, gay Democrat into the heart...",
     "venues": [
       "nycc"
     ]
@@ -728,7 +735,7 @@
     "name": "Tracey Carnazzo",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/tracey-carnazzo",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/tracy-62210770-thumb-image.jpg?1665765502",
-    "bio": "Tracey Carnazzo is a comedian and podcast host from New York City. Her OCD and love for reality TV has shaped who she is today. Tracey hosts the podcasts Teen Mom Trash Talk, 90 Day Fianc\u00e9 Trash Talk and Catfish Trash Talk, which sit on podcast top charts. Tracey has performed at New York Comedy Festival, New South Comedy Festival, Free Standup Festival, Skankfest, Asheville Comedy Festival, Cola ...",
+    "bio": "Tracey Carnazzo is a comedian and podcast host from New York City. Her OCD and love for reality TV has shaped who she is today. Tracey hosts the podcasts Teen Mom Trash Talk, 90 Day Fiancé Trash Talk and Catfish Trash Talk, which sit on podcast top charts. Tracey has performed at New York Comedy Festival, New South Comedy Festival, Free Standup Festival, Skankfest, Asheville Comedy Festival, Cola ...",
     "venues": [
       "nycc"
     ]
@@ -737,7 +744,7 @@
     "name": "Phil Duckett",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/phil-duckett",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/phil-duckett-headshot-jpg-74620f56-phil-duckett-headshot-jpg.jpg?1712090108",
-    "bio": "Regarded as one of the hottest rising stars in the city, Phil Duckett is taking NYC by storm. A native of South Carolina, his country grammar and southern charm bring a fresh perspective on life in the big city. It\u2019s been quite the journey - from coaching on the court and chillin at the country club to sleeping on the subway, it\u2019s like he\u2019s lived 9 lives. Commanding the stage with a smile that\u2019ll ...",
+    "bio": "Regarded as one of the hottest rising stars in the city, Phil Duckett is taking NYC by storm. A native of South Carolina, his country grammar and southern charm bring a fresh perspective on life in the big city. It’s been quite the journey - from coaching on the court and chillin at the country club to sleeping on the subway, it’s like he’s lived 9 lives. Commanding the stage with a smile that’ll ...",
     "venues": [
       "nycc"
     ],
@@ -759,7 +766,7 @@
     "name": "Andre D Thompson",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/andre-d-thompson",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/andre-thompson-c85e0b22-thumb-image.jpg?1572020185",
-    "bio": "Andre D Thompson was born and raised in New York City where he began stand up at 18. He\u2019s performed at comedy clubs all over the city such The Comic Strip Live, New York Comedy Club and Carolines on Broadway. He is currently in the 2019 New York Comedy Club Competition. He\u2019s worked at the Music Choice Network in a development capacity incubating content focused on hip-hop and pop culture. As a Hos...",
+    "bio": "Andre D Thompson was born and raised in New York City where he began stand up at 18. He’s performed at comedy clubs all over the city such The Comic Strip Live, New York Comedy Club and Carolines on Broadway. He is currently in the 2019 New York Comedy Club Competition. He’s worked at the Music Choice Network in a development capacity incubating content focused on hip-hop and pop culture. As a Hos...",
     "venues": [
       "nycc"
     ]
@@ -777,7 +784,7 @@
     "name": "Vinny &quot;The Dancing Ump&quot; Chapman",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/vinny-the-dancing-ump-chapman",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/image-1-1-90a30869-thumb-image.png?1764086599",
-    "bio": "UMPIRE UNMASKED throws out the same old boring comedy shows and brings the heat with a lineup of standup heavy hitters who aren\u2019t afraid to swing for the fences. This high-energy showcase brings together some of the funniest performers in the game for a night of big hits, hot takes, and comedic chaos that will keep the crowd roaring long after the final pitch.",
+    "bio": "UMPIRE UNMASKED throws out the same old boring comedy shows and brings the heat with a lineup of standup heavy hitters who aren’t afraid to swing for the fences. This high-energy showcase brings together some of the funniest performers in the game for a night of big hits, hot takes, and comedic chaos that will keep the crowd roaring long after the final pitch.",
     "venues": [
       "nycc"
     ]
@@ -786,7 +793,7 @@
     "name": "Izzy Uncut",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/izzy-uncut",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Izzy-Uncut-99110965-thumb-image.jpg?1748442583",
-    "bio": "Izzy Uncut is a drag queen, comedian, and silly lil girl. Drawn to comedy due to being raised an only child, she\u2019s high on life + 50 vodka Red Bulls a week. Izzy\u2019s objective is simple\u2026 arrive, garner as much attention as possible, change gender, and leave.",
+    "bio": "Izzy Uncut is a drag queen, comedian, and silly lil girl. Drawn to comedy due to being raised an only child, she’s high on life + 50 vodka Red Bulls a week. Izzy’s objective is simple… arrive, garner as much attention as possible, change gender, and leave.",
     "venues": [
       "nycc"
     ]
@@ -804,17 +811,18 @@
     "name": "Eagle Witt",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/eagle-witt",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/eagle-witt-headshot-jpeg-62a40ef1-eagle-witt-headshot-jpeg.jpg?1710439217",
-    "bio": "A stand-up, writer, and actor, Eagle is a born and raised New Yorker. At 28 years old, he performs at all the major clubs in the city, including as a regular at the Comedy Cellar. Eagle has been featured on Comedy Central\u2019s \"This Week at the Comedy Cellar\" as well as Amazon\u2019s scripted series \"Millenniums.\" He has notably performed twice on \"Comedy Central Stand-Up,\" with his most recent set having...",
+    "bio": "A stand-up, writer, and actor, Eagle is a born and raised New Yorker. At 28 years old, he performs at all the major clubs in the city, including as a regular at the Comedy Cellar. Eagle has been featured on Comedy Central’s \"This Week at the Comedy Cellar\" as well as Amazon’s scripted series \"Millenniums.\" He has notably performed twice on \"Comedy Central Stand-Up,\" with his most recent set having...",
     "venues": [
       "nycc",
       "comedy_cellar"
-    ]
+    ],
+    "tagline_cellar": "COMEDY CENTRAL, HBO, LAST COMIX STANDING (MOHEGAN SUN) WINNER 2022"
   },
   {
     "name": "Zar the Star",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/zar-the-star",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/IMG-9145-7ced0778-thumb-image.jpg?1770222628",
-    "bio": "Zar the Star is an Afghan/Tajik Muslim stand-up comedian known for her viral prank calls and unfiltered online comedy. Her raw, honest, and edgy humor has racked up over 100 million views and 800K+ followers across social media, making her one of the internet\u2019s most fearless new comedic voices. Let me know if there\u2019s anything else you guys need from my end. I have attached my headshot below and my...",
+    "bio": "Zar the Star is an Afghan/Tajik Muslim stand-up comedian known for her viral prank calls and unfiltered online comedy. Her raw, honest, and edgy humor has racked up over 100 million views and 800K+ followers across social media, making her one of the internet’s most fearless new comedic voices. Let me know if there’s anything else you guys need from my end. I have attached my headshot below and my...",
     "venues": [
       "nycc"
     ]
@@ -834,7 +842,7 @@
     "name": "Colin Cab Washington",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/colin-cab-washington",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/unnamed-13-a030092e-thumb-image.jpg?1764625828",
-    "bio": "Colin \u201cCab\u201d Washington is a Philly-born actor, writer, comedian and producer known for blending sharp observational humor with personal storytelling. His credits include \"Insecure\" (HBO), BuzzFeed, Cracked, \"Timeout New York,\" and producing for \"First Things First\" on Fox Sports. Cab was featured as an emerging artist at SF Sketchfest '24 and the New York Comedy Festival '24, drawing laughs from t...",
+    "bio": "Colin “Cab” Washington is a Philly-born actor, writer, comedian and producer known for blending sharp observational humor with personal storytelling. His credits include \"Insecure\" (HBO), BuzzFeed, Cracked, \"Timeout New York,\" and producing for \"First Things First\" on Fox Sports. Cab was featured as an emerging artist at SF Sketchfest '24 and the New York Comedy Festival '24, drawing laughs from t...",
     "venues": [
       "nycc"
     ]
@@ -843,7 +851,7 @@
     "name": "Jamell Sirleaf",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/jamell-sirleaf",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/IMG-0415-1-8afd07d3-thumb-image.jpg?1730322254",
-    "bio": "Jamell Sirleaf is a Liberian-American comedian, based out of New York City. He also most recently featured at Essence Festival of Culture in July 2024 and was the winner of the 2024 Jersey City comedy festival. He also headlined shows at the Vermont Comedy Festival in December 2022 & 2023, and the Vail Comedy Festival in May 2023. In October 2023, he was a part of Laugh After Dark\u2019s comedy festiva...",
+    "bio": "Jamell Sirleaf is a Liberian-American comedian, based out of New York City. He also most recently featured at Essence Festival of Culture in July 2024 and was the winner of the 2024 Jersey City comedy festival. He also headlined shows at the Vermont Comedy Festival in December 2022 & 2023, and the Vail Comedy Festival in May 2023. In October 2023, he was a part of Laugh After Dark’s comedy festiva...",
     "venues": [
       "nycc"
     ]
@@ -863,7 +871,7 @@
     "name": "Caitlin Peluffo",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/caitlin-peluffo",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Caitlin-845e0893-thumb-image.jpg?1675983489",
-    "bio": "Originally hailing from San Francisco, CA, Caitlin Peluffo is a comedian based in NYC. After a brief six year stint in art school studying performative video art (no, really\u2026that\u2019s a thing) Caitlin expanded her talents to the stage. She\u2019s opened for comedians, Maria Bamford, Fortune Feimster, Matteo Lane, and Brian Regan. She\u2019s been featured everywhere from the world famous Comedy Cellar in the Bi...",
+    "bio": "Originally hailing from San Francisco, CA, Caitlin Peluffo is a comedian based in NYC. After a brief six year stint in art school studying performative video art (no, really…that’s a thing) Caitlin expanded her talents to the stage. She’s opened for comedians, Maria Bamford, Fortune Feimster, Matteo Lane, and Brian Regan. She’s been featured everywhere from the world famous Comedy Cellar in the Bi...",
     "venues": [
       "nycc",
       "the_stand",
@@ -871,7 +879,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/caitlin-peluffo",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Caitlin_Peluffo.JPG",
-    "tagline_cellar": "THE LATE LATE SHOW, THE LATE SHOW WITH STEPHEN COLBERT, NBC'S NEW YORK'S FUNNIES"
+    "tagline_cellar": "THE LATE LATE SHOW, THE LATE SHOW WITH STEPHEN COLBERT, NBC'S NEW YORK'S FUNNIES",
+    "bio_stand": "The Late Show with Stephen Colbert"
   },
   {
     "name": "Cansu",
@@ -886,7 +895,7 @@
     "name": "Lizzy Cassidy",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/lizzy-cassidy",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/lizzie-7b78084e-thumb-image.jpg?1632755046",
-    "bio": "Lizzy Cassidy is a stand up comedian based in New York City, who performs all over the country. She has been featured on Sirius XM and is a reoccurring guest on popular podcasts like Keith and The Girl and The Hot Mess Comedy Hour. She\u2019s also performed at comedy festivals like Skankfest and New York Comedy Festival.",
+    "bio": "Lizzy Cassidy is a stand up comedian based in New York City, who performs all over the country. She has been featured on Sirius XM and is a reoccurring guest on popular podcasts like Keith and The Girl and The Hot Mess Comedy Hour. She’s also performed at comedy festivals like Skankfest and New York Comedy Festival.",
     "venues": [
       "nycc"
     ]
@@ -922,7 +931,7 @@
     "name": "Kerryn Feehan",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/kerryn-feehan",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/feehan-79ee0819-thumb-image.jpg?1746735098",
-    "bio": "Kerryn Feehan is an nyc based comic. She\u2019s been featured on season 1 and 2 of Tires on Netflix, Comedy Central, TruTv, TLC, Sirius Xm, Barstool Sports, Slamdance film festival and countless podcasts she did as favors. She performs nightly in NYC, you can probably see her at The Stand. She has a wildly popular podcast called OnlyFeehans and a cartoon on YouTube called Kerryn Sucks.",
+    "bio": "Kerryn Feehan is an nyc based comic. She’s been featured on season 1 and 2 of Tires on Netflix, Comedy Central, TruTv, TLC, Sirius Xm, Barstool Sports, Slamdance film festival and countless podcasts she did as favors. She performs nightly in NYC, you can probably see her at The Stand. She has a wildly popular podcast called OnlyFeehans and a cartoon on YouTube called Kerryn Sucks.",
     "venues": [
       "nycc",
       "the_stand"
@@ -934,7 +943,7 @@
     "name": "Brandon Barrera",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/brandon-barrera",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Screen-Shot-2022-09-07-at-3-50-51-PM-d8850f19-thumb-image.png?1662580256",
-    "bio": "Brandon Barrera is a New York comedian originally from Ft. Lauderdale, Florida. By telling unique and funny stories about himself, Brandon's goal is to leave an audience feeling as if they\u2019ve known him their entire lives.",
+    "bio": "Brandon Barrera is a New York comedian originally from Ft. Lauderdale, Florida. By telling unique and funny stories about himself, Brandon's goal is to leave an audience feeling as if they’ve known him their entire lives.",
     "venues": [
       "nycc"
     ]
@@ -943,7 +952,7 @@
     "name": "Raanan Hershberg",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/raanan-hershberg",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/raanan-hershberg-headshot-jpg-bf7e10fb-raanan-hershberg-headshot-jpg.jpg?1699914451",
-    "bio": "Raanan has performed his high-energy, joke-packed comedy on The Tonight Show with Jimmy Fallon, The Late, Late Show with James Corden, After Midnight on CBS, and Comedy Central. His second to last special \u2018Jokes from the Underground\u2019 was included in the New York Times \u2018Best Comedy of 2022\u2019, where critic Jason Zinoman called it the funniest YouTube Special of the year, and said \u2018his punchy and deli...",
+    "bio": "Raanan has performed his high-energy, joke-packed comedy on The Tonight Show with Jimmy Fallon, The Late, Late Show with James Corden, After Midnight on CBS, and Comedy Central. His second to last special ‘Jokes from the Underground’ was included in the New York Times ‘Best Comedy of 2022’, where critic Jason Zinoman called it the funniest YouTube Special of the year, and said ‘his punchy and deli...",
     "venues": [
       "nycc"
     ]
@@ -993,7 +1002,7 @@
     "name": "Kevin Bridges",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/kevin-bridges",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Kevin-Bridges-c3b40aa0-thumb-image.jpg?1758826453",
-    "bio": "After more than two decades of packed arenas, five critically-acclaimed tours, and over 1.5 million tickets sold worldwide, Kevin Bridges\u2014one of the UK's most celebrated comedians\u2014is coming to North America for his Live tour this fall. With five stand-up specials, including the cinematic release of his latest show The Overdue Catch-Up, and two bestselling books, Kevin Bridges is a comedic force wh...",
+    "bio": "After more than two decades of packed arenas, five critically-acclaimed tours, and over 1.5 million tickets sold worldwide, Kevin Bridges—one of the UK's most celebrated comedians—is coming to North America for his Live tour this fall. With five stand-up specials, including the cinematic release of his latest show The Overdue Catch-Up, and two bestselling books, Kevin Bridges is a comedic force wh...",
     "venues": [
       "nycc"
     ]
@@ -1030,7 +1039,7 @@
     "name": "Dan Carney",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/dan-carney",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/DanCarney-96380929-thumb-image.jpg?1577228194",
-    "bio": "Dan is one of the funniest young comics in the NYC comedy scene. He\u2019s a regular at top NYC showcase clubs such as Caroline\u2019s on Broadway and Stand Up NY, and runs one of the hottest stand-up shows in the city called \u201cSuper Giant\u201d at Stand Up NY. He\u2019s performed in the Asheville Comedy Festival, the Hoboken Comedy Festival, the Comedy Mob Festival, and regularly tours colleges on the East Coast. He ...",
+    "bio": "Dan is one of the funniest young comics in the NYC comedy scene. He’s a regular at top NYC showcase clubs such as Caroline’s on Broadway and Stand Up NY, and runs one of the hottest stand-up shows in the city called “Super Giant” at Stand Up NY. He’s performed in the Asheville Comedy Festival, the Hoboken Comedy Festival, the Comedy Mob Festival, and regularly tours colleges on the East Coast. He ...",
     "venues": [
       "nycc",
       "the_stand"
@@ -1059,7 +1068,7 @@
     "name": "Alex Quow",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/alex-quow",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Alex-Quow-Headshot-1-1a150cc4-thumb-image.jpg?1770150681",
-    "bio": "Alex Quow is a New York City\u2013based stand-up comedian with over 100,000 followers across social platforms, whose work has been featured on HBO, Amazon Prime, and in the New York Comedy Festival. A veteran of nearly a decade on stage, Alex has performed at clubs and theaters nationwide.",
+    "bio": "Alex Quow is a New York City–based stand-up comedian with over 100,000 followers across social platforms, whose work has been featured on HBO, Amazon Prime, and in the New York Comedy Festival. A veteran of nearly a decade on stage, Alex has performed at clubs and theaters nationwide.",
     "venues": [
       "nycc"
     ]
@@ -1079,7 +1088,7 @@
     "name": "Olga Namer",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/olga-namer",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/olga-namer-a3070995-thumb-image.jpg?1550357899",
-    "bio": "Olga Namer is a New York based stand-up comedian and actress who recently won the 2018 Ladies of Laughter competition. She has done a live taping for the Gotham Comedy VR show. She also hosts a show on BeTerrific TV called \u201c3pm Wake Up Call\"",
+    "bio": "Olga Namer is a New York based stand-up comedian and actress who recently won the 2018 Ladies of Laughter competition. She has done a live taping for the Gotham Comedy VR show. She also hosts a show on BeTerrific TV called “3pm Wake Up Call\"",
     "venues": [
       "nycc"
     ]
@@ -1088,7 +1097,7 @@
     "name": "Dan LaMorte",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/dan-lamorte",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/4uqqDLxV-400x400-d9a60a6f-thumb-image.jpg?1695046798",
-    "bio": "Dan LaMorte is a unique stand-up comedian. His career started young, at 19 years old, after he suffered a career-ending injury as a college baseball player. As his star rose in comedy, so did his weight. He appeared on Fox\u2019s Red Eye, AXS TV\u2019s Gotham Comedy Live, Getting Doug with High, and almost every drive-thru in the Tri-state area. He released two albums, Not Enough Pieces & Infect Me Once; bo...",
+    "bio": "Dan LaMorte is a unique stand-up comedian. His career started young, at 19 years old, after he suffered a career-ending injury as a college baseball player. As his star rose in comedy, so did his weight. He appeared on Fox’s Red Eye, AXS TV’s Gotham Comedy Live, Getting Doug with High, and almost every drive-thru in the Tri-state area. He released two albums, Not Enough Pieces & Infect Me Once; bo...",
     "venues": [
       "nycc",
       "the_stand"
@@ -1109,19 +1118,20 @@
     "name": "Usama Siddiquee",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/usama-siddiquee",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Usama-Approved-Photo-217e0d4d-thumb-image.jpg?1742486161",
-    "bio": "Usama Siddiquee is a Bengali-American stand-up comedian, writer and actor based in New York. His debut 1/2 special was released on YouTube March 21, 2025 produced by Don\u2019t Tell Comedy. Last year, Usama had his late-night debut on The Late Show with Stephen Colbert. On the acting front, he is most known for his roles on Netflix\u2019s Inventing Anna and Survival of The Thickest, HBO\u2019s And Just Like That...",
+    "bio": "Usama Siddiquee is a Bengali-American stand-up comedian, writer and actor based in New York. His debut 1/2 special was released on YouTube March 21, 2025 produced by Don’t Tell Comedy. Last year, Usama had his late-night debut on The Late Show with Stephen Colbert. On the acting front, he is most known for his roles on Netflix’s Inventing Anna and Survival of The Thickest, HBO’s And Just Like That...",
     "venues": [
       "nycc",
       "the_stand",
       "comedy_cellar"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/usama-siddiquee"
+    "stand_profile": "https://thestandnyc.com/comedians/usama-siddiquee",
+    "tagline_cellar": "FROM KEVIN HART'S NETFLIX COMEDY COMPETITION, BET'S 50 CENTRAL, NBC, BUZZFEED"
   },
   {
     "name": "John Campanelli",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/john-campanelli",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/John-Campanelli-Headshot-4-24-24-d7f51036-thumb-image.jpg?1708640239",
-    "bio": "John is a New York based comedian who can be found regularly in both NYC and Los Angeles. His debut comedy album \u201cNervous\u201d (2013), was highly regarded and LAFT Magazine reviewed John as, \u201cA comedian for the people.\u201d John released his second comedy album, \u201cNew Phone, Who Is This?\u201d (2015) which was also well received, ranking #1 for New Comedy Releases during its opening weekend. Both albums are cur...",
+    "bio": "John is a New York based comedian who can be found regularly in both NYC and Los Angeles. His debut comedy album “Nervous” (2013), was highly regarded and LAFT Magazine reviewed John as, “A comedian for the people.” John released his second comedy album, “New Phone, Who Is This?” (2015) which was also well received, ranking #1 for New Comedy Releases during its opening weekend. Both albums are cur...",
     "venues": [
       "nycc"
     ]
@@ -1141,7 +1151,7 @@
     "name": "Ashley Austin Morris",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/ashley-austin-morris",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/headshot-plaid-d4e70b3c-thumb-image.jpg?1773943168",
-    "bio": "Ashley Austin Morris is an actor, comedian, and writer. Recent (but not all) credits include portraying 'Tammy' on \"Elsbeth,\" 'Roxanne Hertz' opposite Jesse Eisenberg and Claire Danes in FX\u2019s \"Fleishman Is In Trouble,\" 'Nicole\u2019 in the hit Shonda Rhimes series \"Inventing Anna,\" 'Melanie' in \"Life & Beth\" with Amy Schumer, and \"FBI: Most Wanted.\" Other credits include \"The Other Two\" (HBO), \"THE BIT...",
+    "bio": "Ashley Austin Morris is an actor, comedian, and writer. Recent (but not all) credits include portraying 'Tammy' on \"Elsbeth,\" 'Roxanne Hertz' opposite Jesse Eisenberg and Claire Danes in FX’s \"Fleishman Is In Trouble,\" 'Nicole’ in the hit Shonda Rhimes series \"Inventing Anna,\" 'Melanie' in \"Life & Beth\" with Amy Schumer, and \"FBI: Most Wanted.\" Other credits include \"The Other Two\" (HBO), \"THE BIT...",
     "venues": [
       "nycc",
       "comedy_cellar"
@@ -1179,7 +1189,7 @@
     "name": "Andrew Dice Clay",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/andrew-dice-clay",
     "photo_nycc": "https://newyorkcomedyclub.com/img/events/AndrewDiceClay-d1240b19-thumb-image.jpg?1611689276",
-    "bio": "ANDREW DICE CLAY is proud to be one of America's most controversial and outrageous comics. And it\u2019s that persona that has made him a Rock and Roll, Comedy Legend. When he released his debut album, Dice, the parental advisory label simply read \u201cWarning: This album is offensive.\u201d Despite media backlash, Dice\u2019s rise to fame was nothing less than meteoric, creating \u201cDicemania\u201d. He became the first com...",
+    "bio": "ANDREW DICE CLAY is proud to be one of America's most controversial and outrageous comics. And it’s that persona that has made him a Rock and Roll, Comedy Legend. When he released his debut album, Dice, the parental advisory label simply read “Warning: This album is offensive.” Despite media backlash, Dice’s rise to fame was nothing less than meteoric, creating “Dicemania”. He became the first com...",
     "venues": [
       "nycc",
       "the_stand"
@@ -1190,7 +1200,7 @@
     "name": "Chris Distefano",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/chris-distefano",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/dsc03782-1-jpg-bc0509b2-dsc03782-1-jpg.jpg?1730227556",
-    "bio": "Chris Distefano is one of today's biggest and most beloved names in comedy. Chris quickly rose to success after being named the funniest person on MTV for his show-stopping performances on the \"Guy Code/Girl Code\" series. From there, he went on to star in IFC\u2019s \"Benders\", co-host the Netflix gameshow \"Ultimate Beastmaster\", and even have his own CBS sitcom. Outside of TV, Chris has become one of t...",
+    "bio": "Chris Distefano is one of today's biggest and most beloved names in comedy. Chris quickly rose to success after being named the funniest person on MTV for his show-stopping performances on the \"Guy Code/Girl Code\" series. From there, he went on to star in IFC’s \"Benders\", co-host the Netflix gameshow \"Ultimate Beastmaster\", and even have his own CBS sitcom. Outside of TV, Chris has become one of t...",
     "venues": [
       "nycc",
       "the_stand",
@@ -1203,7 +1213,7 @@
     "name": "Todd Barry",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/todd-barry",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/todd-barry-a39109a6-thumb-image.jpg?1487231992",
-    "bio": "Todd Barry has done EVERYTHING! Late Show with David Letterman, Late Night with Conan O\u2019Brien, Comedy Central Presents, Last Call with Carson Daly, Jimmy Kimmel Live, Dr. Katz, Professional Therapist, Aqua Teen Hunger Force, Edinburgh Fringe Festival, Melbourne International Comedy Festival, Vancouver International Comedy Festival, Just for Laughs Festival \u2013 Montreal and much, much more!",
+    "bio": "Todd Barry has done EVERYTHING! Late Show with David Letterman, Late Night with Conan O’Brien, Comedy Central Presents, Last Call with Carson Daly, Jimmy Kimmel Live, Dr. Katz, Professional Therapist, Aqua Teen Hunger Force, Edinburgh Fringe Festival, Melbourne International Comedy Festival, Vancouver International Comedy Festival, Just for Laughs Festival – Montreal and much, much more!",
     "venues": [
       "nycc",
       "comedy_cellar"
@@ -1225,7 +1235,7 @@
     "name": "Pete Davidson",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/pete-davidson",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Pete-Davidson-05-014-c-lyrdme-copy-2-14f01192-thumb-image.jpg?1749849290",
-    "bio": "Pete Davidson is an actor, writer and stand-up comedian. He most recently wrapped production on the film \u201cThe Pick Up\u201d for Amazon, in which he stars alongside Eddie Murphy. He is the creator, executive producer, writer and star of Peacock\u2019s critically acclaimed comedy \u201cBupkis.\u201d Davidson was a cast member on NBC\u2019s \u201cSaturday Night Live\u201d from 2014-2022, where his singular Weekend Update features and ...",
+    "bio": "Pete Davidson is an actor, writer and stand-up comedian. He most recently wrapped production on the film “The Pick Up” for Amazon, in which he stars alongside Eddie Murphy. He is the creator, executive producer, writer and star of Peacock’s critically acclaimed comedy “Bupkis.” Davidson was a cast member on NBC’s “Saturday Night Live” from 2014-2022, where his singular Weekend Update features and ...",
     "venues": [
       "nycc",
       "the_stand"
@@ -1236,7 +1246,7 @@
     "name": "Dave Attell",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/dave-attell",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Dave-Attell-Headshot-19f20d04-thumb-image.jpg?1602005461",
-    "bio": "David Attell is a stand-up comedian, actor, and writer, best known as the host of Comedy Central's INSOMNIAC WITH DAVE ATTELL, which gave him a cult following. Dave Attell can next be seen on Netflix\u2019s, BUMPING MICS with Jeff Ross, set to be released in 2019. Dave starred alongside Amy Schumer in her hit films, TRAINWRECK and I FEEL PRETTY. Dave can also been seen on HBO\u2019s critically acclaimed ser...",
+    "bio": "David Attell is a stand-up comedian, actor, and writer, best known as the host of Comedy Central's INSOMNIAC WITH DAVE ATTELL, which gave him a cult following. Dave Attell can next be seen on Netflix’s, BUMPING MICS with Jeff Ross, set to be released in 2019. Dave starred alongside Amy Schumer in her hit films, TRAINWRECK and I FEEL PRETTY. Dave can also been seen on HBO’s critically acclaimed ser...",
     "venues": [
       "nycc",
       "the_stand",
@@ -1249,7 +1259,7 @@
     "name": "Keith Robinson",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/keith-robinson",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/keith-robinson-d6690b60-thumb-image.jpg?1493326798",
-    "bio": "Keith Robinson is the quintessential comedian\u2019s comedian, admired by his fellow artists \u2013 his great art of inherently subverting his audience, shaking them out of their cozy assumptions to fresh perspectives sustains his comedic prominence. His commanding stage presence has gained him appearances on MTV, VH1, HBO\u2019s Def Comedy Jam, TBS\u2019s family comedy series Are We There Yet, The Chelsea Lately Sho...",
+    "bio": "Keith Robinson is the quintessential comedian’s comedian, admired by his fellow artists – his great art of inherently subverting his audience, shaking them out of their cozy assumptions to fresh perspectives sustains his comedic prominence. His commanding stage presence has gained him appearances on MTV, VH1, HBO’s Def Comedy Jam, TBS’s family comedy series Are We There Yet, The Chelsea Lately Sho...",
     "venues": [
       "nycc",
       "the_stand",
@@ -1273,18 +1283,19 @@
     "name": "Michael Che",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/michael-che",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/michael-che-ade809e2-thumb-image.jpg?1561490802",
-    "bio": "Having been named one of Rolling Stone\u2019s \u201c50 Funniest People,\u201d Buzzfeed's \"50 Hottest Men in Comedy,\" and Variety\u2019s \u201cTop 10 Comics To Watch,\u201d Che is quickly leaving his mark on the media landscape. A native of lower Manhattan, Che\u2019s comedy uses humor to identify humanity in the most controversial actions. He applies street culture to world issues with a delivery that The New York Times describes a...",
+    "bio": "Having been named one of Rolling Stone’s “50 Funniest People,” Buzzfeed's \"50 Hottest Men in Comedy,\" and Variety’s “Top 10 Comics To Watch,” Che is quickly leaving his mark on the media landscape. A native of lower Manhattan, Che’s comedy uses humor to identify humanity in the most controversial actions. He applies street culture to world issues with a delivery that The New York Times describes a...",
     "venues": [
       "nycc",
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/michael-che"
+    "stand_profile": "https://thestandnyc.com/comedians/michael-che",
+    "tagline_cellar": "THE HEAD CO-WRITER \"SATURDAY NIGHT LIVE\" , \"THE DAVID LETTERMAN SHOW\", \" THE DAILY SHOW\""
   },
   {
     "name": "Joanne McNally",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/joanne-mcnally",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/image-700007b3-thumb-image.jpg?1675219029",
-    "bio": "Described by the Sunday Times as a \u2018truly gifted stand-up\u2019, Joanne has been taking Ireland and the UK\u2019s comedy scene by storm, enjoying sell-out Edinburgh runs with her stand-up shows Wine Tamer and The Prosecco Express. Both shows have toured in Ireland, and she has sold out over 50 nights at Vicar Street in Dublin, four nights at the London Palladium, and three nights at London\u2019s Eventim Apollo....",
+    "bio": "Described by the Sunday Times as a ‘truly gifted stand-up’, Joanne has been taking Ireland and the UK’s comedy scene by storm, enjoying sell-out Edinburgh runs with her stand-up shows Wine Tamer and The Prosecco Express. Both shows have toured in Ireland, and she has sold out over 50 nights at Vicar Street in Dublin, four nights at the London Palladium, and three nights at London’s Eventim Apollo....",
     "venues": [
       "nycc",
       "the_stand"
@@ -1295,7 +1306,7 @@
     "name": "Howie Mandel",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/howie-mandel",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Untitled-design-44-06330c32-thumb-image.png?1746463886",
-    "bio": "Howie Mandel has remained a constant force in show business for more than 30 years. He can currently be seen on NBC\u2019s flagship series America\u2019s Got Talent where he has served as a judge for eleven seasons. He recently finished production on his new documentary Howie Mandel: But Enough About Me. Other recent projects include judging NBC\u2019s America\u2019s Got Talent: The Champions, CNBC\u2019s Deal or No Deal ...",
+    "bio": "Howie Mandel has remained a constant force in show business for more than 30 years. He can currently be seen on NBC’s flagship series America’s Got Talent where he has served as a judge for eleven seasons. He recently finished production on his new documentary Howie Mandel: But Enough About Me. Other recent projects include judging NBC’s America’s Got Talent: The Champions, CNBC’s Deal or No Deal ...",
     "venues": [
       "nycc"
     ]
@@ -1315,7 +1326,7 @@
     "name": "Michael Ian Black",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/michael-ian-black",
     "photo_nycc": "https://newyorkcomedyclub.com/img/events/Michael-Ian-Black-Photo-461b0de4-thumb-image.jpg?1599239045",
-    "bio": "Michael Ian Black is a multi-media talent who\u2019s starred in numerous films and TV series, written and/or directed two films, is a prolific author and commentator, and regularly tours the country performing his ribald brand of jokes and observations. He most recently starred in TVLand's \u201cThe Gaffigan Show\u201d and Comedy Central\u2019s \u201cAnother Period.\u201d He\u2019s reprising one of his iconic film roles in the upco...",
+    "bio": "Michael Ian Black is a multi-media talent who’s starred in numerous films and TV series, written and/or directed two films, is a prolific author and commentator, and regularly tours the country performing his ribald brand of jokes and observations. He most recently starred in TVLand's “The Gaffigan Show” and Comedy Central’s “Another Period.” He’s reprising one of his iconic film roles in the upco...",
     "venues": [
       "nycc"
     ]
@@ -1335,7 +1346,7 @@
     "name": "Sherri Shepherd",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/sherri-shepherd",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/IMG-0018-7c700773-thumb-image.jpg?1710721909",
-    "bio": "Whether on stage or screen, Daytime Emmy Award-winner Sherri Shepherd\u2019s magnetic personality and hilarious sense of humor never fails to delight audiences. In August 2009, Sherri was a part of groundbreaking history when the hosts of The View won the Daytime Emmy for Outstanding Talk Show Host. That same year, Sherri and the co-hosts were chosen as part of the \u201c100 Most Influential People in the W...",
+    "bio": "Whether on stage or screen, Daytime Emmy Award-winner Sherri Shepherd’s magnetic personality and hilarious sense of humor never fails to delight audiences. In August 2009, Sherri was a part of groundbreaking history when the hosts of The View won the Daytime Emmy for Outstanding Talk Show Host. That same year, Sherri and the co-hosts were chosen as part of the “100 Most Influential People in the W...",
     "venues": [
       "nycc"
     ]
@@ -1355,7 +1366,7 @@
     "name": "Ronny Chieng",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/ronny-chieng",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Ronny-Chieng-Photographer-Lucas-Goldman-2023523113112-b3861727-thumb-image.png?1684856258",
-    "bio": "Ronny Chieng is a stand up comedian, actor and Correspondent on \"The Daily Show\". He starred in \"Crazy Rich Asians\", Marvel's \"Shang-Chi and the Legend of the Ten Rings\", Disney's \"Doogie Kamealoha, M.D.\", NBC's \"Young Rock\" and \"M3GAN\". He has two stand up comedy specials on Netflix. He will next be seen in the Disney Plus series \"American Born Chinese\" and Hulu\u2019s upcoming series \"Interior Chinat...",
+    "bio": "Ronny Chieng is a stand up comedian, actor and Correspondent on \"The Daily Show\". He starred in \"Crazy Rich Asians\", Marvel's \"Shang-Chi and the Legend of the Ten Rings\", Disney's \"Doogie Kamealoha, M.D.\", NBC's \"Young Rock\" and \"M3GAN\". He has two stand up comedy specials on Netflix. He will next be seen in the Disney Plus series \"American Born Chinese\" and Hulu’s upcoming series \"Interior Chinat...",
     "venues": [
       "nycc",
       "the_stand"
@@ -1366,14 +1377,14 @@
     "name": "Andrew Schulz",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/andrew-schulz",
     "photo_nycc": "https://newyorkcomedyclub.com/img/events/andrew-schulz-krystyna-hutchinson-mark-normand-chris-distefano-new-york-comedy-club-f6e7261a-thumb-image.jpg?1564415143",
-    "bio": "As 2018 and 2019\u2019s most viewed comedian in the world, Andrew Schulz has taken stand up comedy by storm. A native New Yorker, Schulz is known for his hilariously unapologetic takes and wild off-the-cuff interactions with the crowd. His stand up clips posted on YouTube received over 4 million views per week. Schulz\u2019s latest comedy special THE CROWD WORK SPECIAL has been viewed over 2 million times. ...",
+    "bio": "As 2018 and 2019’s most viewed comedian in the world, Andrew Schulz has taken stand up comedy by storm. A native New Yorker, Schulz is known for his hilariously unapologetic takes and wild off-the-cuff interactions with the crowd. His stand up clips posted on YouTube received over 4 million views per week. Schulz’s latest comedy special THE CROWD WORK SPECIAL has been viewed over 2 million times. ...",
     "venues": [
       "nycc",
       "the_stand",
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/andrew-schulz",
-    "tagline_cellar": "\u2018INFAMOUS\u2019 SPECIAL, FLAGRANT PODCAST, NETFLIX\u2019S \u2019SCHULZ SAVES AMERICA,\u2019 NETFLIX\u2019S 'YOU PEOPLE,\u2019 MTV\u2019S \u2018GUY CODE'"
+    "tagline_cellar": "‘INFAMOUS’ SPECIAL, FLAGRANT PODCAST, NETFLIX’S ’SCHULZ SAVES AMERICA,’ NETFLIX’S 'YOU PEOPLE,’ MTV’S ‘GUY CODE'"
   },
   {
     "name": "Justin Hires",
@@ -1388,7 +1399,7 @@
     "name": "Chris Redd",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/chris-redd",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/chris-redd-headshot-jpeg-62620ecb-chris-redd-headshot-jpeg.jpg?1763395313",
-    "bio": "Hailing from Chicago, Chris Redd is a multifaceted talent whose work spans stand-up comedy, film, television and music. Redd\u2019s first one-hour special, \u201cWhy Am I Like This?\u201d was released in October 2022 and is streaming now on MAX. The material was mined from his personal journey of self-discovery, pulling from his experiences starting therapy amid the height of the pandemic and taking a look at hi...",
+    "bio": "Hailing from Chicago, Chris Redd is a multifaceted talent whose work spans stand-up comedy, film, television and music. Redd’s first one-hour special, “Why Am I Like This?” was released in October 2022 and is streaming now on MAX. The material was mined from his personal journey of self-discovery, pulling from his experiences starting therapy amid the height of the pandemic and taking a look at hi...",
     "venues": [
       "nycc",
       "the_stand",
@@ -1423,7 +1434,7 @@
     "name": "Akaash Singh",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/akaash-singh",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Akaash-Singh-Headshot-1-2-51b70ddd-thumb-image.png?1704320722",
-    "bio": "Akaash Singh is a nationally touring stand-up comedian, podcaster, and actor. His career took off with many television shows including MTV\u2019s \u201cGuy Code\u201d and \u201cWild\u2019n Out,\u201d Netflix\u2019s \u201cBrown Nation,\u201d and HBO\u2019s \u201cThe Leftovers.\u201d After finding success in TV, he pivoted his focus toward growing the now hugely successful podcast \u201cFlagrant,\u201d co-created with fellow comedian and good friend, Andrew Schulz, al...",
+    "bio": "Akaash Singh is a nationally touring stand-up comedian, podcaster, and actor. His career took off with many television shows including MTV’s “Guy Code” and “Wild’n Out,” Netflix’s “Brown Nation,” and HBO’s “The Leftovers.” After finding success in TV, he pivoted his focus toward growing the now hugely successful podcast “Flagrant,” co-created with fellow comedian and good friend, Andrew Schulz, al...",
     "venues": [
       "nycc",
       "the_stand"
@@ -1435,7 +1446,7 @@
     "name": "Nimesh Patel",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/nimesh-patel",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Nimesh-Headshot-1-f3a10bc8-thumb-image.jpg?1761229453",
-    "bio": "Nimesh Patel is a comedian and Emmy-nominated writer who has risen the ranks to some of comedy\u2019s biggest stages due to his unassailable joke writing, prolific output, and pioneering use of technology. In the past 2 years Nimesh has self-released three stand-up specials and has charted a path from sold out comedy clubs to major theaters. Nimesh most recently appeared on The Tonight Show with Jimmy ...",
+    "bio": "Nimesh Patel is a comedian and Emmy-nominated writer who has risen the ranks to some of comedy’s biggest stages due to his unassailable joke writing, prolific output, and pioneering use of technology. In the past 2 years Nimesh has self-released three stand-up specials and has charted a path from sold out comedy clubs to major theaters. Nimesh most recently appeared on The Tonight Show with Jimmy ...",
     "venues": [
       "nycc",
       "the_stand"
@@ -1446,7 +1457,7 @@
     "name": "Roy Wood Jr",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/roy-wood-jr",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/roy-wood-jr-aebf09fc-thumb-image.jpg?1492703586",
-    "bio": "Currently a correspondent on The Daily Show w/ Trevor Noah, Roy has been described by the Hollywood Reporter as \u201cA Standout\u201d, and Entertainment Weekly called his brand of thought provoking comedy as \u201ccharismatic crankiness\u201d. Prior to The Daily Show, Roy spent three years on the TBS sitcom, Sullivan and Son, and still appears as a regular guest. He\u2019s currently a featured comedian on Conan, ESPN\u2019s \u2018...",
+    "bio": "Currently a correspondent on The Daily Show w/ Trevor Noah, Roy has been described by the Hollywood Reporter as “A Standout”, and Entertainment Weekly called his brand of thought provoking comedy as “charismatic crankiness”. Prior to The Daily Show, Roy spent three years on the TBS sitcom, Sullivan and Son, and still appears as a regular guest. He’s currently a featured comedian on Conan, ESPN’s ‘...",
     "venues": [
       "nycc",
       "the_stand"
@@ -1457,7 +1468,7 @@
     "name": "Ardie Fuqua",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/ardie-fuqua",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/ardie-fuqua-ae630a07-thumb-image.jpg?1486935025",
-    "bio": "Ardie Fuqua is a comedian and actor from New York. He has made appearances on BET\u2019s Comic View and BET News. A veteran of the NYC stand up scene, he can be seen regularly at the city\u2019s finest clubs, including Comedy Cellar, Caroline\u2019s on Broadway, and Stand Up NY. Fuqua has given hilarious commentary as himself on VH1\u2019s shows and Comedy Central\u2019s Tough Crowd with Colin Quinn. He has also worked as...",
+    "bio": "Ardie Fuqua is a comedian and actor from New York. He has made appearances on BET’s Comic View and BET News. A veteran of the NYC stand up scene, he can be seen regularly at the city’s finest clubs, including Comedy Cellar, Caroline’s on Broadway, and Stand Up NY. Fuqua has given hilarious commentary as himself on VH1’s shows and Comedy Central’s Tough Crowd with Colin Quinn. He has also worked as...",
     "venues": [
       "nycc",
       "comedy_cellar"
@@ -1468,7 +1479,7 @@
     "name": "Jeff Arcuri",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/jeff-arcuri",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Jeff-Arcuri-1000x667-1-25eb0c32-thumb-image.jpg?1769715692",
-    "bio": "The Chicago Tribune hails JEFF ARCURI as \"a joke machine,\" but he\u2019s much more than that\u2014he\u2019s a person! Jeff has showcased his talent on The Late Show with Stephen Colbert, Comedy Central\u2019s Roast Battle, Laughs! on Fox, SiriusXM, and numerous comedy festivals nationwide. His subreddit, r/JeffArcuri, ranks in the top 1% of all subreddits, boasting over 235,000 active members. This makes him one of t...",
+    "bio": "The Chicago Tribune hails JEFF ARCURI as \"a joke machine,\" but he’s much more than that—he’s a person! Jeff has showcased his talent on The Late Show with Stephen Colbert, Comedy Central’s Roast Battle, Laughs! on Fox, SiriusXM, and numerous comedy festivals nationwide. His subreddit, r/JeffArcuri, ranks in the top 1% of all subreddits, boasting over 235,000 active members. This makes him one of t...",
     "venues": [
       "nycc"
     ]
@@ -1477,7 +1488,7 @@
     "name": "Joey Diaz",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/joey-diaz",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/joey-diaz-9828094a-thumb-image.jpg?1556224279",
-    "bio": "Born in Havana, Cuba and raised in North Bergen, NJ, Joey \u2018Coco\u2019 Diaz has quickly become one of the most sought after actors and comedians in the entertainment industry today. His love of storytelling is reflected in each role he takes: whether it is on film or on stage, his passion for entertaining and delighting audiences shines through every performance. This winter, Diaz can next be seen starr...",
+    "bio": "Born in Havana, Cuba and raised in North Bergen, NJ, Joey ‘Coco’ Diaz has quickly become one of the most sought after actors and comedians in the entertainment industry today. His love of storytelling is reflected in each role he takes: whether it is on film or on stage, his passion for entertaining and delighting audiences shines through every performance. This winter, Diaz can next be seen starr...",
     "venues": [
       "nycc"
     ]
@@ -1486,7 +1497,7 @@
     "name": "Marion Grodin",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/marion-grodin",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/marion-7a88082d-thumb-image.jpg?1604338466",
-    "bio": "Marion Grodin has been one of the hottest comics in the country. She is a favorite at New York City\u2019s top clubs, including Standup NY and Gotham Comedy Club, where she regularly headlines. As one of the country\u2019s top emcees, Marion\u2019s incredible ability to improvise has allowed her to master the art of talking with the audience. Always willing to be as self-revealing as she is probing of the audien...",
+    "bio": "Marion Grodin has been one of the hottest comics in the country. She is a favorite at New York City’s top clubs, including Standup NY and Gotham Comedy Club, where she regularly headlines. As one of the country’s top emcees, Marion’s incredible ability to improvise has allowed her to master the art of talking with the audience. Always willing to be as self-revealing as she is probing of the audien...",
     "venues": [
       "nycc"
     ]
@@ -1495,7 +1506,7 @@
     "name": "Beau McDowell",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/beau-mcdowell",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Beau-McDowell-11-10-23-Headshot-ab6e0f74-thumb-image.jpg?1700083188",
-    "bio": "Beau McDowell is a stand-up comedian and former co-host of the \"Losers with a Dream\" podcast alongside comedy legend Lisa Lampanelli. Beau performs regularly on the East Coast, and is known for his big personality, big stature, and even bigger sense of humor about his former struggles with substance abuse, family codependency, and his search for self-acceptance. Beau\u2019s ability to approach serious,...",
+    "bio": "Beau McDowell is a stand-up comedian and former co-host of the \"Losers with a Dream\" podcast alongside comedy legend Lisa Lampanelli. Beau performs regularly on the East Coast, and is known for his big personality, big stature, and even bigger sense of humor about his former struggles with substance abuse, family codependency, and his search for self-acceptance. Beau’s ability to approach serious,...",
     "venues": [
       "nycc"
     ]
@@ -1504,7 +1515,7 @@
     "name": "Rafi Bastos",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/rafi-bastos",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/unnamed-12-9dd9090d-thumb-image.jpg?1651226502",
-    "bio": "Rafi Bastos - UNFAMILIAR TERRITORY TOUR Rafi Bastos is a 6\u20197\u201d tall Jewish-Brazilian comedian with an accent like Dracula and a rapidly growing social media presence of stand up clips in English, mostly filmed from the prestigious Comedy Cellar in New York. In his home-country of Brazil, Rafi is a trailblazer of comedy, media and is one of the first comedians to pioneer the art of stand up comedy a...",
+    "bio": "Rafi Bastos - UNFAMILIAR TERRITORY TOUR Rafi Bastos is a 6’7” tall Jewish-Brazilian comedian with an accent like Dracula and a rapidly growing social media presence of stand up clips in English, mostly filmed from the prestigious Comedy Cellar in New York. In his home-country of Brazil, Rafi is a trailblazer of comedy, media and is one of the first comedians to pioneer the art of stand up comedy a...",
     "venues": [
       "nycc"
     ]
@@ -1513,7 +1524,7 @@
     "name": "Romesh Ranganathan",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/romesh-ranganathan",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/image-70b407b2-thumb-image.jpg?1673882925",
-    "bio": "Famous for his deadpan and often self-deprecating comedy, multi award-winning comedian Romesh Ranganathan has solidified himself as a household name through his stand-up, television and radio presenting, acting and podcasting. He\u2019s best known for fronting such series\u2019 as BBC Two\u2019s The Misadventures of Romesh Ranganathan, topical show The Ranganation, and travelling the globe with his mate and fell...",
+    "bio": "Famous for his deadpan and often self-deprecating comedy, multi award-winning comedian Romesh Ranganathan has solidified himself as a household name through his stand-up, television and radio presenting, acting and podcasting. He’s best known for fronting such series’ as BBC Two’s The Misadventures of Romesh Ranganathan, topical show The Ranganation, and travelling the globe with his mate and fell...",
     "venues": [
       "nycc"
     ]
@@ -1522,7 +1533,7 @@
     "name": "Ralph Barbosa",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/ralph-barbosa",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/ralph-717707cc-thumb-image.jpg?1680549675",
-    "bio": "Ralph Barbosa is a Latino stand-up comedian. He\u2019s a winner of the HBO & NYLFF Latino Stand-Up Comedy Competition, crowned the 2019 Funniest Comic in Texas, and made his HBO debut in the HA Festival Comedy Special (streaming now). He\u2019ll next be seen in the Entre Nos\u2019 comedy specials directed by Aida Rodriguez.",
+    "bio": "Ralph Barbosa is a Latino stand-up comedian. He’s a winner of the HBO & NYLFF Latino Stand-Up Comedy Competition, crowned the 2019 Funniest Comic in Texas, and made his HBO debut in the HA Festival Comedy Special (streaming now). He’ll next be seen in the Entre Nos’ comedy specials directed by Aida Rodriguez.",
     "venues": [
       "nycc",
       "the_stand"
@@ -1533,7 +1544,7 @@
     "name": "Isiah Kelly",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/isiah-kelly",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Untitled-design-22-06220c44-thumb-image.png?1723647689",
-    "bio": "His credits include: BET, Comedy Central, Showtime at the Apollo, Who\u2019s Got Jokes (hosted by Bill Bellamy), and The Tom Joyner Show, Shaq Comedy All Star Jam, Chocolate Sundaes (hosted by Tommy Davidson) on Showtime.",
+    "bio": "His credits include: BET, Comedy Central, Showtime at the Apollo, Who’s Got Jokes (hosted by Bill Bellamy), and The Tom Joyner Show, Shaq Comedy All Star Jam, Chocolate Sundaes (hosted by Tommy Davidson) on Showtime.",
     "venues": [
       "nycc"
     ]
@@ -1553,7 +1564,7 @@
     "name": "Zavior Phillips",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/zavior-phillips",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/image001-7f82080a-thumb-image.jpg?1733257529",
-    "bio": "ZAVIOR PHILLIPS is a Nashville-raised, L.A-based writer & comedian who began his career writing jokes for your fav celebrities at the People\u2019s Choice Awards and Kids\u2019 Choice Awards. He\u2019s since written for Netflix comedy series Inside Job and is back writing, directing, and acting in Season 2 of Josh Richards\u2019 Read the Room. Zavior was selected as a Featured Comedian for the 2024 Netflix is a Joke ...",
+    "bio": "ZAVIOR PHILLIPS is a Nashville-raised, L.A-based writer & comedian who began his career writing jokes for your fav celebrities at the People’s Choice Awards and Kids’ Choice Awards. He’s since written for Netflix comedy series Inside Job and is back writing, directing, and acting in Season 2 of Josh Richards’ Read the Room. Zavior was selected as a Featured Comedian for the 2024 Netflix is a Joke ...",
     "venues": [
       "nycc"
     ]
@@ -1571,24 +1582,26 @@
     "name": "Aaron Berg",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/aaron-berg",
     "photo_nycc": "https://newyorkcomedyclub.com/img/events/AaronBergCA-a9ec09a1-thumb-image.jpg?1572031880",
-    "bio": "Aaron Berg made his Comedy Central debut on THIS IS NOT HAPPENING in 2016 and has made two appearances on AXS TV\u2019s LIVE AT GOTHAM as well as an appearance on BIG JAY OAKERSON\u2019S \u201cWYFD?!?\u201d on Seeso. He will also be appearing in Comedy Central\u2019s Roast Battle Season 2 in 2017. Aaron is half of the weekly show \u201cIN HOT WATER\u201d which can only be viewed on COMPOUNDMEDIA.COM . He is also an author and has t...",
+    "bio": "Aaron Berg made his Comedy Central debut on THIS IS NOT HAPPENING in 2016 and has made two appearances on AXS TV’s LIVE AT GOTHAM as well as an appearance on BIG JAY OAKERSON’S “WYFD?!?” on Seeso. He will also be appearing in Comedy Central’s Roast Battle Season 2 in 2017. Aaron is half of the weekly show “IN HOT WATER” which can only be viewed on COMPOUNDMEDIA.COM . He is also an author and has t...",
     "venues": [
       "nycc",
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/aaron-berg",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Aaron_Berg.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Aaron_Berg.jpg",
+    "bio_stand": "Amazon Prime, Street Famous NYC, Comedy Central"
   },
   {
     "name": "Judy Gold",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/judy-gold",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/judy-gold-19-jpg-d96e0b18-judy-gold-19-jpg.jpg?1772118297",
-    "bio": "Judy Gold is a comedy powerhouse. She has had stand-up specials on HBO, Comedy Central and LOGO, and was one of the stars of Netflix\u2019s Stand Out: An LGBTQ+ Celebration. She is the author of Yes I Can Say That: When They Come For The Comedians, We Are All In Trouble, a critically acclaimed book about free speech and cancel-culture which debuted as the number one comedy release on Amazon and was fea...",
+    "bio": "Judy Gold is a comedy powerhouse. She has had stand-up specials on HBO, Comedy Central and LOGO, and was one of the stars of Netflix’s Stand Out: An LGBTQ+ Celebration. She is the author of Yes I Can Say That: When They Come For The Comedians, We Are All In Trouble, a critically acclaimed book about free speech and cancel-culture which debuted as the number one comedy release on Amazon and was fea...",
     "venues": [
       "nycc",
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/judy-gold"
+    "stand_profile": "https://thestandnyc.com/comedians/judy-gold",
+    "tagline_cellar": "Comedy specials on HBO, Netflix, Comedy Central & LOGO. Star of Netflix’s Stand Out. Upcoming series Hulu’s “Not Suitable for Work”. Author “Yes I Can Say That: When They Come for the Comedians We Are All In Trouble”."
   },
   {
     "name": "Yamaneika Saunders",
@@ -1606,7 +1619,7 @@
     "name": "Matt Richards",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/matt-richards",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/MattRichardsHS-d22a0b1a-thumb-image.jpg?1674228283",
-    "bio": "Matt Richards is an actor, host, comedian, and writer that has performed on several thousands of shows all across the country and currently hosts the popular game show app HQ Trivia. You can see Matt on Flatbush Misdemeanors for Showtime, both seasons of That Damn Michael Che for HBOMax, CBS\u2019 2 Broke Girls, Nickelodeon\u2019s School of Rock, as well as KC Undercover and Bizaardvark for Disney. Matt was...",
+    "bio": "Matt Richards is an actor, host, comedian, and writer that has performed on several thousands of shows all across the country and currently hosts the popular game show app HQ Trivia. You can see Matt on Flatbush Misdemeanors for Showtime, both seasons of That Damn Michael Che for HBOMax, CBS’ 2 Broke Girls, Nickelodeon’s School of Rock, as well as KC Undercover and Bizaardvark for Disney. Matt was...",
     "venues": [
       "nycc",
       "the_stand"
@@ -1626,7 +1639,7 @@
     "name": "Chuck Nice",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/chuck-nice",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/chuck-nice-a1db0983-thumb-image.jpg?1494532460",
-    "bio": "Chuck Nice is a Philadelphia native and a 18 year veteran of stand up comedy with a rich history in television and radio. For eight years he provided comic relief to the Radio Chick show, bringing the funny to New York\u2019s radio air waves. From that time until present, Chuck has been equally busy making a name for himself on the small screen. He is the host of Buy Like A Mega Millionaire on HGTV, Th...",
+    "bio": "Chuck Nice is a Philadelphia native and a 18 year veteran of stand up comedy with a rich history in television and radio. For eight years he provided comic relief to the Radio Chick show, bringing the funny to New York’s radio air waves. From that time until present, Chuck has been equally busy making a name for himself on the small screen. He is the host of Buy Like A Mega Millionaire on HGTV, Th...",
     "venues": [
       "nycc"
     ]
@@ -1635,7 +1648,7 @@
     "name": "Sam Morril",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/sam-morril",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/SamMorril-Headshot-2024-49150d9e-thumb-image.jpg?1763673972",
-    "bio": "Sam Morril is a stand-up comedian based in New York City. In 2024, he released his fifth comedy special, YOU\u2019VE CHANGED, on Amazon Prime, and performed the hour at Madison Square Garden. His previous specials include SAME TIME TOMORROW (Netflix), POSITIVE INFLUENCE (Comedy Central, produced by Amy Schumer), and two self-released YouTube specials: I GOT THIS and UP ON THE ROOF, which have together ...",
+    "bio": "Sam Morril is a stand-up comedian based in New York City. In 2024, he released his fifth comedy special, YOU’VE CHANGED, on Amazon Prime, and performed the hour at Madison Square Garden. His previous specials include SAME TIME TOMORROW (Netflix), POSITIVE INFLUENCE (Comedy Central, produced by Amy Schumer), and two self-released YouTube specials: I GOT THIS and UP ON THE ROOF, which have together ...",
     "venues": [
       "nycc",
       "the_stand"
@@ -1646,13 +1659,14 @@
     "name": "Joe List",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/joe-list",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Untitled-design-60-056b0c3a-thumb-image.png?1761858118",
-    "bio": "Joe List began his comedy career in Boston, Massachusetts in 2000 just weeks after graduating from high school. Since that time he has been featured on The Late Show with David Letterman as well as multiple appearances on Conan. He\u2019s featured in Season 2 of The Netflix Series \u201cThe Stand Ups\u201d. In 2015 List was a finalist on NBC's Last Comic Standing and had his own Half Hour comedy special on Comed...",
+    "bio": "Joe List began his comedy career in Boston, Massachusetts in 2000 just weeks after graduating from high school. Since that time he has been featured on The Late Show with David Letterman as well as multiple appearances on Conan. He’s featured in Season 2 of The Netflix Series “The Stand Ups”. In 2015 List was a finalist on NBC's Last Comic Standing and had his own Half Hour comedy special on Comed...",
     "venues": [
       "nycc",
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/joe-list",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/00-og.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/00-og.jpg",
+    "bio_stand": "Comedy Central, Conan, Netflix, Tonight Show with Jimmy Fallon, The Joe Rogan Experience, The Late Late Show with James Corden"
   },
   {
     "name": "Carmen Lynch",
@@ -1670,7 +1684,7 @@
     "name": "Joe Machi",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/joe-machi",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Joe-Machi-9-30-23-Headshot-578d0db7-thumb-image.jpg?1694711064",
-    "bio": "Since taking 4th place on \"Last Comic Standing\"\u2019s 8th season, Joe Machi has been busy touring the United States as a headlining stand-up comedian. He has performed on \"The Tonight Show Starring Jimmy Fallon\", and has become a regular on \"Red Eye with Greg Gutfeld\" on Fox News. Joe also won the 2013 New York Comedy Festival\u2019s Funniest Comedian Competition, and the 2010 NY Underground Comedy Festiva...",
+    "bio": "Since taking 4th place on \"Last Comic Standing\"’s 8th season, Joe Machi has been busy touring the United States as a headlining stand-up comedian. He has performed on \"The Tonight Show Starring Jimmy Fallon\", and has become a regular on \"Red Eye with Greg Gutfeld\" on Fox News. Joe also won the 2013 New York Comedy Festival’s Funniest Comedian Competition, and the 2010 NY Underground Comedy Festiva...",
     "venues": [
       "nycc"
     ]
@@ -1679,7 +1693,7 @@
     "name": "Ted Alexandro",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/ted-alexandro",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Ted-Alexandro-B46A4049-a1-542c0d3e-thumb-image.jpg?1680792529",
-    "bio": "Ted Alexandro has been a fixture on the NYC comedy scene for decades. Time Out NY named Ted \u201cA lynchpin of the NY comedy scene\u201d and \u201cone of the funniest comedians working today.\u201d The NY Times called Ted \u201cCrafty, thoughtful and extremely funny!\u201d Ted has appeared on Kimmel, Conan, Letterman and Comedy Central. He has five comedy specials and currently tours with Jim Gaffigan.",
+    "bio": "Ted Alexandro has been a fixture on the NYC comedy scene for decades. Time Out NY named Ted “A lynchpin of the NY comedy scene” and “one of the funniest comedians working today.” The NY Times called Ted “Crafty, thoughtful and extremely funny!” Ted has appeared on Kimmel, Conan, Letterman and Comedy Central. He has five comedy specials and currently tours with Jim Gaffigan.",
     "venues": [
       "nycc",
       "the_stand"
@@ -1690,7 +1704,7 @@
     "name": "Leah Bonnema",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/leah-bonnema",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/leah-bonnema-b9a30a63-thumb-image.jpg?1569603751",
-    "bio": "Leah Bonnema is a Stand-Up Comic based in New York City. Huffington Post named her one of their Favorite Female Comedians, and College Candy listed Leah as one the Ten Funniest Female Comics. She has been featured on AXS TV\u2019s Gotham Comedy Live, VH1\u2019s 100 Greatest Series, IFC\u2019s Comedy Drop, Above Average, Elite Daily, Arise Entertainment 360, ComedyTimeTV, Internet Action Force, Patrice O\u2019Neal\u2019s T...",
+    "bio": "Leah Bonnema is a Stand-Up Comic based in New York City. Huffington Post named her one of their Favorite Female Comedians, and College Candy listed Leah as one the Ten Funniest Female Comics. She has been featured on AXS TV’s Gotham Comedy Live, VH1’s 100 Greatest Series, IFC’s Comedy Drop, Above Average, Elite Daily, Arise Entertainment 360, ComedyTimeTV, Internet Action Force, Patrice O’Neal’s T...",
     "venues": [
       "nycc"
     ]
@@ -1699,11 +1713,12 @@
     "name": "Drew Lynch",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/drew-lynch",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/drew-lynch-hi-res-jpg-25310d59-drew-lynch-hi-res-jpg.jpg?1739554848",
-    "bio": "Comedian and actor Drew Lynch captured the hearts of America with his Golden Buzzer performance on Season 10 of America\u2019s Got Talent (NBC), where he finished in second place. Since then, Drew has amassed millions of followers on social media while touring the world nonstop to sold out audiences. In February 2023, Drew released his second special \u2018And These Are Jokes\u2019 which is catching steam all ov...",
+    "bio": "Comedian and actor Drew Lynch captured the hearts of America with his Golden Buzzer performance on Season 10 of America’s Got Talent (NBC), where he finished in second place. Since then, Drew has amassed millions of followers on social media while touring the world nonstop to sold out audiences. In February 2023, Drew released his second special ‘And These Are Jokes’ which is catching steam all ov...",
     "venues": [
       "nycc"
     ],
-    "tagline_cellar": "NBC'S \"AMERICA GOT TALENT\"- FINALIST"
+    "tagline_cellar": "NBC'S \"AMERICA GOT TALENT\"- FINALIST",
+    "bio_stand": "America's Got Talent, Conan"
   },
   {
     "name": "Jon Rudnitsky",
@@ -1715,13 +1730,14 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/jon-rudnitsky",
-    "tagline_cellar": "FROM THE MOVIE \"OUR LITTLE SECRET\" ON NETFLIX WITH LINDSEY LOHAN, SNL , YOUNG LARRY ON THE LAST SEASON OF CURB YOUR ENTHUSIASM, CONAN, \"HOME AGAIN\" OPPOSITE REESE WITHERSPOON, CATCH 22 ON HULU, BIG LEAP ON FOX."
+    "tagline_cellar": "FROM THE MOVIE \"OUR LITTLE SECRET\" ON NETFLIX WITH LINDSEY LOHAN, SNL , YOUNG LARRY ON THE LAST SEASON OF CURB YOUR ENTHUSIASM, CONAN, \"HOME AGAIN\" OPPOSITE REESE WITHERSPOON, CATCH 22 ON HULU, BIG LEAP ON FOX.",
+    "bio_stand": "Curb Your Enthusiasm, Saturday Night Live"
   },
   {
     "name": "Rory Albanese",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/rory-albanese",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/rory-albanese-c9ab0ae9-thumb-image.jpg?1494966944",
-    "bio": "Rory Albanese is the Executive Producer and Writer of Comedy Central\u2019s next great late night franchise, \u201cThe Nightly Show with Larry Wilmore.\u201d Previously, Albanese was Executive Producer and Writer of \u201cThe Daily Show with Jon Stewart\u201d from 2009-2013 where he held various posts for over a decade and won nine Primetime Emmy\u00ae Awards. Outside of his television career, Albanese is an accomplished stand...",
+    "bio": "Rory Albanese is the Executive Producer and Writer of Comedy Central’s next great late night franchise, “The Nightly Show with Larry Wilmore.” Previously, Albanese was Executive Producer and Writer of “The Daily Show with Jon Stewart” from 2009-2013 where he held various posts for over a decade and won nine Primetime Emmy® Awards. Outside of his television career, Albanese is an accomplished stand...",
     "venues": [
       "nycc"
     ]
@@ -1730,7 +1746,7 @@
     "name": "Stavros Halkias",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/stavros-halkias",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/stavros-halkias-e4c60bc7-thumb-image.jpg?1488427900",
-    "bio": "Stavros Halkias recently moved to New York City, hoping to get on television and buy his mother a nice house. After dabbling with comedy in college, he started performing regularly in his hometown of Baltimore, where he was named New Comedian of the Year in 2012. Since then he\u2019s toured clubs, colleges, and independent shows across the U.S., been featured on XM Satellite radio, and become a regular...",
+    "bio": "Stavros Halkias recently moved to New York City, hoping to get on television and buy his mother a nice house. After dabbling with comedy in college, he started performing regularly in his hometown of Baltimore, where he was named New Comedian of the Year in 2012. Since then he’s toured clubs, colleges, and independent shows across the U.S., been featured on XM Satellite radio, and become a regular...",
     "venues": [
       "nycc",
       "the_stand"
@@ -1741,7 +1757,7 @@
     "name": "Shane Gillis",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/shane-gillis",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/shane-gillis-af920a39-thumb-image.jpg?1544119185",
-    "bio": "Shane Gillis was the winner of 2016\u2019s Philly\u2019s Funniest. Shane is a regular on Comedy Central radio\u2019s The Bonfire. He\u2019s also one half of A Fair One as well as Matt and Shane\u2019s Secret Podcast, which only real dogs listen to. He recently moved to New York and has hung out with Rich Vos like three or four times.",
+    "bio": "Shane Gillis was the winner of 2016’s Philly’s Funniest. Shane is a regular on Comedy Central radio’s The Bonfire. He’s also one half of A Fair One as well as Matt and Shane’s Secret Podcast, which only real dogs listen to. He recently moved to New York and has hung out with Rich Vos like three or four times.",
     "venues": [
       "nycc",
       "the_stand"
@@ -1752,7 +1768,7 @@
     "name": "Jack Whitehall",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/jack-whitehall",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/jack-whitehall-d1c90b2b-thumb-image.jpg?1563048041",
-    "bio": "Jack Whitehall is an award-winning actor, comedian, presenter and writer. Widely celebrated for his hit show Travels With My Father (Netflix, 2017-19), his starring role in the BBC\u2019s adaptation of Decline & Fall (2017) and Bad Education (BBC 2012-14), Jack has most recently been seen in Disney\u2019s The Nutcracker And The Four Realms (2018), and in Bounty Hunters (Sky 2017-19). He is currently in Good...",
+    "bio": "Jack Whitehall is an award-winning actor, comedian, presenter and writer. Widely celebrated for his hit show Travels With My Father (Netflix, 2017-19), his starring role in the BBC’s adaptation of Decline & Fall (2017) and Bad Education (BBC 2012-14), Jack has most recently been seen in Disney’s The Nutcracker And The Four Realms (2018), and in Bounty Hunters (Sky 2017-19). He is currently in Good...",
     "venues": [
       "nycc"
     ]
@@ -1761,7 +1777,7 @@
     "name": "Phoebe Robinson",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/phoebe-robinson",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/phoebe-robinson-e05f0baa-thumb-image.jpg?1570220535",
-    "bio": "PHOEBE ROBINSON is a stand-up comedian, writer, and actress. She is best known as the co-creator and co-star of the hit WNYC Studios podcast 2 Dope Queens, which was turned into four one-hour, critically-acclaimed HBO specials. She is a New York Times best-selling author of the book You Can\u2019t Touch My Hair and Other Things I Still Have to Explain. Following these successes, Phoebe has gone on to b...",
+    "bio": "PHOEBE ROBINSON is a stand-up comedian, writer, and actress. She is best known as the co-creator and co-star of the hit WNYC Studios podcast 2 Dope Queens, which was turned into four one-hour, critically-acclaimed HBO specials. She is a New York Times best-selling author of the book You Can’t Touch My Hair and Other Things I Still Have to Explain. Following these successes, Phoebe has gone on to b...",
     "venues": [
       "nycc",
       "the_stand"
@@ -1773,7 +1789,7 @@
     "name": "Hannah Berner",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/hannah-berner",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Hannah-79590815-thumb-image.png?1726774659",
-    "bio": "Hannah Berner is a stand-up comedian known for her relatable humor and charismatic crowd work. She rose to prominence with her debut comedy special \u201cWe Ride at Dawn\u201d that premiered at #2 on Netflix. She hosts two hit podcasts, Giggly Squad alongside Paige DeSorbo and Berner Phone with Des Bishop, which have garnered over 100 million combined downloads. Her video series, Han on the Street, has earn...",
+    "bio": "Hannah Berner is a stand-up comedian known for her relatable humor and charismatic crowd work. She rose to prominence with her debut comedy special “We Ride at Dawn” that premiered at #2 on Netflix. She hosts two hit podcasts, Giggly Squad alongside Paige DeSorbo and Berner Phone with Des Bishop, which have garnered over 100 million combined downloads. Her video series, Han on the Street, has earn...",
     "venues": [
       "nycc",
       "the_stand"
@@ -1793,7 +1809,7 @@
     "name": "Elon Gold",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/elon-gold",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/elon-gold-97f9092e-thumb-image.jpg?1628621960",
-    "bio": "Elon Gold is a comedian, actor, and writer known for his stand-up specials\u2014including a Netflix hour special\u2014and recurring roles on shows like Curb Your Enthusiasm. He\u2019s made multiple late-night appearances, starred in series like In-Laws and Stacked, and was a writer/performer on The Dana Carvey Show. He\u2019s currently touring and preparing a new comedy special.",
+    "bio": "Elon Gold is a comedian, actor, and writer known for his stand-up specials—including a Netflix hour special—and recurring roles on shows like Curb Your Enthusiasm. He’s made multiple late-night appearances, starred in series like In-Laws and Stacked, and was a writer/performer on The Dana Carvey Show. He’s currently touring and preparing a new comedy special.",
     "venues": [
       "nycc"
     ]
@@ -1811,7 +1827,7 @@
     "name": "Emmy Blotnick",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/emmy-blotnick",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/emmyblotnick-bebb0ac0-thumb-image.jpg?1628622711",
-    "bio": "Emmy Blotnick is a stand-up comedian and writer based out of New York. She has appeared on The Late Show with Stephen Colbert, CONAN, The Tonight Show Starring Jimmy Fallon, and in her own half hour special on Comedy Central. She was a staff writer on The Late Show with Stephen Colbert, head writer on Comedy Central\u2019s The President Show, and co-executive producer on HBO\u2019s Pause with Sam Jay. Emmy ...",
+    "bio": "Emmy Blotnick is a stand-up comedian and writer based out of New York. She has appeared on The Late Show with Stephen Colbert, CONAN, The Tonight Show Starring Jimmy Fallon, and in her own half hour special on Comedy Central. She was a staff writer on The Late Show with Stephen Colbert, head writer on Comedy Central’s The President Show, and co-executive producer on HBO’s Pause with Sam Jay. Emmy ...",
     "venues": [
       "nycc",
       "comedy_cellar"
@@ -1833,7 +1849,7 @@
     "name": "Cory Kahaney",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/cory-kahaney",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Untitled-design-e1b10ba1-thumb-image.jpg?1628666274",
-    "bio": "Cory Kahaney has been busy. She recently appeared The Late Show with Stephen Colbert, was a hit on the 2016 season of America\u2019s Got Talent and was featured in Catskills on Broadway. Cory has been seen on The Late Show with David Letterman and performed a record 7 times on The Late, Late Show with Craig Ferguson. Cory is also a regular on The View, Fox & Friends and The Moms. Ms. Kahaney is no stra...",
+    "bio": "Cory Kahaney has been busy. She recently appeared The Late Show with Stephen Colbert, was a hit on the 2016 season of America’s Got Talent and was featured in Catskills on Broadway. Cory has been seen on The Late Show with David Letterman and performed a record 7 times on The Late, Late Show with Craig Ferguson. Cory is also a regular on The View, Fox & Friends and The Moms. Ms. Kahaney is no stra...",
     "venues": [
       "nycc"
     ]
@@ -1860,7 +1876,7 @@
     "name": "Chloe Hillard",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/chloe-hillard",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/7652010-1-8262077f-thumb-image.jpg?1628749973",
-    "bio": "Chlo\u00e9 Hilliard is a comedian, TV writer, and award-winning author. Her humor stems from being the awkward \u201cbig girl\u201d who had plenty of time to observe others. It\u2019s an experience she writes vividly about in her debut book F*ck Your Diet, a collection of essays addressing weight, diet culture, feminism, politics, and more. F*ck Your Diet was named Best Comedy Book of 2020 by the African American Lit...",
+    "bio": "Chloé Hilliard is a comedian, TV writer, and award-winning author. Her humor stems from being the awkward “big girl” who had plenty of time to observe others. It’s an experience she writes vividly about in her debut book F*ck Your Diet, a collection of essays addressing weight, diet culture, feminism, politics, and more. F*ck Your Diet was named Best Comedy Book of 2020 by the African American Lit...",
     "venues": [
       "nycc"
     ]
@@ -1904,7 +1920,7 @@
     "name": "Steve Rannazzisi",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/steve-rannazzisi",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Screen-Shot-2023-01-10-at-10-51-51-AM-f6240f60-thumb-image.png?1673365916",
-    "bio": "For over 13 years, from the stage to the silver screen, Steve Rannazzisi has made audiences laugh. Currently, Rannazzisi stars and writes alongside Katie Aselton, Mark Duplass, Nick Kroll, Jonathan Lajoie, and Paul Scheer on the critically acclaimed FX Network comedy series, The League, which is produced by Jeff and Jackie Schaffer. Steve plays \u201cKevin McArthur,\u201d the fantasy football league commiss...",
+    "bio": "For over 13 years, from the stage to the silver screen, Steve Rannazzisi has made audiences laugh. Currently, Rannazzisi stars and writes alongside Katie Aselton, Mark Duplass, Nick Kroll, Jonathan Lajoie, and Paul Scheer on the critically acclaimed FX Network comedy series, The League, which is produced by Jeff and Jackie Schaffer. Steve plays “Kevin McArthur,” the fantasy football league commiss...",
     "venues": [
       "nycc",
       "the_stand"
@@ -1924,7 +1940,7 @@
     "name": "Robin Fox",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/robin-fox",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Robin-Fox-8c2c08c7-thumb-image.jpg?1758205548",
-    "bio": "Robin Fox has been seen on Nick Jr\u2019s \u201cMom Night Out\u201d Standup Series, hosted the Lincoln Center Lucie Awards, and was the winner of the 2010 Gilda\u2019s Club Laugh Off. Robin is a powerhouse, and her act puts a unique spin on her 27 year marriage, kids, her aging parents, suburban life and so much more. Robin Fox quickly rose through the comedy ranks and can be seen performing at some of the top Comedy...",
+    "bio": "Robin Fox has been seen on Nick Jr’s “Mom Night Out” Standup Series, hosted the Lincoln Center Lucie Awards, and was the winner of the 2010 Gilda’s Club Laugh Off. Robin is a powerhouse, and her act puts a unique spin on her 27 year marriage, kids, her aging parents, suburban life and so much more. Robin Fox quickly rose through the comedy ranks and can be seen performing at some of the top Comedy...",
     "venues": [
       "nycc"
     ]
@@ -1951,7 +1967,7 @@
     "name": "Matty Litwack",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/matty-litwack",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Matty-Litwack-c3a20aa5-thumb-image.png?1711018179",
-    "bio": "Matty Litwack is a stand up comedian and humor writer. His work has been published in the Washington Post and Scientific American, and he has appeared as a stand up on the Just For Laughs digital series \u201cStraight Up, Stand Up\u201d. He has also performed at Tig Notaro\u2019s Bentzen Ball, the San Francisco Sketchfest, the Kennedy Center, and was a two-time finalist of the Boston Comedy Festival. Matty is al...",
+    "bio": "Matty Litwack is a stand up comedian and humor writer. His work has been published in the Washington Post and Scientific American, and he has appeared as a stand up on the Just For Laughs digital series “Straight Up, Stand Up”. He has also performed at Tig Notaro’s Bentzen Ball, the San Francisco Sketchfest, the Kennedy Center, and was a two-time finalist of the Boston Comedy Festival. Matty is al...",
     "venues": [
       "nycc"
     ]
@@ -1969,7 +1985,7 @@
     "name": "Elena Torres",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/elena-torres",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/IMG-1490-7c77077c-thumb-image.jpg?1630334723",
-    "bio": "Elena is a Spanish American telenovela actress turned stand up comedian. No, that is not a joke. After several hit telenovelas in Mexico under her belt, she fell in love with a nice Jewish East Coast guy and realized her heart wasn\u2019t in on-camera face slapping anymore. So she took the next logical artistic step from doing melodrama in Spanish; she started performing stand up comedy in English. She...",
+    "bio": "Elena is a Spanish American telenovela actress turned stand up comedian. No, that is not a joke. After several hit telenovelas in Mexico under her belt, she fell in love with a nice Jewish East Coast guy and realized her heart wasn’t in on-camera face slapping anymore. So she took the next logical artistic step from doing melodrama in Spanish; she started performing stand up comedy in English. She...",
     "venues": [
       "nycc"
     ]
@@ -1978,7 +1994,7 @@
     "name": "Khalid A. Rahmaan",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/khalid-a-rahmaan",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/2D73CCD7-EA3E-487B-B7B2-041F3C04DE95-abd00da9-thumb-image.jpg?1631854116",
-    "bio": "Khalid Rahmaan is a terrible driver, a delusional Knicks fan and a Brooklyn-based stand-up comic. He made his late night debut on CONAN in 2017 and Thrillist named him one of the 50 Best Undiscovered Comedians in America. When he\u2019s not on stage, you can usually find Khalid writing funny things for other folks to say. He\u2019s written for HQ Trivia, the NAACP Image Awards, Impractical Jokers and the li...",
+    "bio": "Khalid Rahmaan is a terrible driver, a delusional Knicks fan and a Brooklyn-based stand-up comic. He made his late night debut on CONAN in 2017 and Thrillist named him one of the 50 Best Undiscovered Comedians in America. When he’s not on stage, you can usually find Khalid writing funny things for other folks to say. He’s written for HQ Trivia, the NAACP Image Awards, Impractical Jokers and the li...",
     "venues": [
       "nycc"
     ]
@@ -1987,7 +2003,7 @@
     "name": "Shatara Curry",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/shatara-curry",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Shatara-Curry-0-01-012-social-95d60f05-thumb-image.jpg?1632147855",
-    "bio": "Jersey native Shatara Curry has officially unwrapped her gift of laughter, which comes as no surprise to many. Now, she is doing what every middle child from a big family does best, she is \u201csharing\u201d. It was love it first mic, when gracing the stage for the first time at New York\u2019s Boston Comedy Club. She jokes that it was after receiving her bachelors degree, she ran to the closest stage to put he...",
+    "bio": "Jersey native Shatara Curry has officially unwrapped her gift of laughter, which comes as no surprise to many. Now, she is doing what every middle child from a big family does best, she is “sharing”. It was love it first mic, when gracing the stage for the first time at New York’s Boston Comedy Club. She jokes that it was after receiving her bachelors degree, she ran to the closest stage to put he...",
     "venues": [
       "nycc"
     ]
@@ -2005,7 +2021,7 @@
     "name": "Danny Braff",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/danny-braff",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Screenshot-111-ccee0a7b-thumb-image.jpg?1633094962",
-    "bio": "\"Danny Braff is a NJ based comedian who\u2019s dark observational style has entertained audiences at clubs and bars across the country including The Comedy Store, The Stress Factory Comedy Club, New York Comedy Club, The Comedy Connection, etc. Danny has made 2 appearances on the popular comedy podcast Kill Tony and is one of very few people to have received a standing ovation on the show. He has opene...",
+    "bio": "\"Danny Braff is a NJ based comedian who’s dark observational style has entertained audiences at clubs and bars across the country including The Comedy Store, The Stress Factory Comedy Club, New York Comedy Club, The Comedy Connection, etc. Danny has made 2 appearances on the popular comedy podcast Kill Tony and is one of very few people to have received a standing ovation on the show. He has opene...",
     "venues": [
       "nycc"
     ]
@@ -2023,7 +2039,7 @@
     "name": "Kyle Kinane",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/kyle-kinane",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Kyle-Kinane-aaae09bc-thumb-image.jpg?1634064838",
-    "bio": "Kyle Kinane is an internationally touring comedian who has appeared on \u201cDrunk History\", \"@Midnight,\" \"The Tonight Show with Jimmy Fallon,\" \"Conan,\" \"Workaholics,\" \"This Is Not Happening,\" \"Not Safe with Nikki Glaser\" and \"Comedy Bang! Bang!\" He is featured in Season 2 of Netflix\u2019s \u201cThe Standups\u201d released in February 2018. He invented science. He has ESP. He is a recurring character on Netflix's \"L...",
+    "bio": "Kyle Kinane is an internationally touring comedian who has appeared on “Drunk History\", \"@Midnight,\" \"The Tonight Show with Jimmy Fallon,\" \"Conan,\" \"Workaholics,\" \"This Is Not Happening,\" \"Not Safe with Nikki Glaser\" and \"Comedy Bang! Bang!\" He is featured in Season 2 of Netflix’s “The Standups” released in February 2018. He invented science. He has ESP. He is a recurring character on Netflix's \"L...",
     "venues": [
       "nycc"
     ]
@@ -2032,7 +2048,7 @@
     "name": "Kam Patterson",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/kam-patterson",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Kam-Patterson-c5530ac8-thumb-image.jpg?1769547678",
-    "bio": "Kam Patterson is a comedian from Orlando who is quickly gaining recognition for his sharp, high-energy sets and effortless crowd work. His comedy career started at just 10 years old when performing his debut set at his grandmother\u2019s 50th birthday. Kam\u2019s natural charisma and unique, upbeat humor most recently landed him a regular slot on the extremely popular KILL TONY show. He\u2019s a rising star in t...",
+    "bio": "Kam Patterson is a comedian from Orlando who is quickly gaining recognition for his sharp, high-energy sets and effortless crowd work. His comedy career started at just 10 years old when performing his debut set at his grandmother’s 50th birthday. Kam’s natural charisma and unique, upbeat humor most recently landed him a regular slot on the extremely popular KILL TONY show. He’s a rising star in t...",
     "venues": [
       "nycc",
       "the_stand"
@@ -2043,7 +2059,7 @@
     "name": "Vinny Guadagnino",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/vinny-guadagnino",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/S1170019-2-2-9a060815-thumb-image.jpg?1762463292",
-    "bio": "Vinny Guadagnino is one of the most recognized lifestyle personalities and digital influencers. Vinny first rose to fame in 2009 on the MTV series \u201cJersey Shore,\u201d which, over its six-season run, became the highest-rated series in the history of the network and a cultural phenomenon. During his time away from the shore, Vinny starred in series including \u201cVinny & Ma Eat America\u201d on Food Network and ...",
+    "bio": "Vinny Guadagnino is one of the most recognized lifestyle personalities and digital influencers. Vinny first rose to fame in 2009 on the MTV series “Jersey Shore,” which, over its six-season run, became the highest-rated series in the history of the network and a cultural phenomenon. During his time away from the shore, Vinny starred in series including “Vinny & Ma Eat America” on Food Network and ...",
     "venues": [
       "nycc"
     ]
@@ -2052,7 +2068,7 @@
     "name": "Kevin Ryan",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/kevin-ryan",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Kevin-Ryan-Head-Shot-2-31ea0d2b-thumb-image.jpg?1722352001",
-    "bio": "Kevin, originally from Philadelphia \u2013 now in New York City, is a stand up comic who is on stage every night telling jokes. He is quickly becoming an audience favorite with his easy going yet straight forward point of view. His jokes topics include everything from daily interactions with strangers to how his self esteem is so low that he is no longer in his own dreams. In 2015 Kevin made his televi...",
+    "bio": "Kevin, originally from Philadelphia – now in New York City, is a stand up comic who is on stage every night telling jokes. He is quickly becoming an audience favorite with his easy going yet straight forward point of view. His jokes topics include everything from daily interactions with strangers to how his self esteem is so low that he is no longer in his own dreams. In 2015 Kevin made his televi...",
     "venues": [
       "nycc",
       "comedy_cellar"
@@ -2063,19 +2079,20 @@
     "name": "Bonnie McFarlane",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/bonnie-mcfarlane",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/bonnie-mcfarlane-jpeg-39310de5-bonnie-mcfarlane-jpeg.jpg?1685998695",
-    "bio": "A national headlining comedian, Bonnie McFarlane's radio and television credits include radio and television gigs; she has an HBO special, two Comedy Central specials, and multiple late-night TV appearances on her resume. She also directed the award-winning documentary \u201cWomen Aren\u2019t Funny\u201d and co-hosts a national radio show on Sirius XM with her husband, U.S. standup comedian, writer, and actor Ri...",
+    "bio": "A national headlining comedian, Bonnie McFarlane's radio and television credits include radio and television gigs; she has an HBO special, two Comedy Central specials, and multiple late-night TV appearances on her resume. She also directed the award-winning documentary “Women Aren’t Funny” and co-hosts a national radio show on Sirius XM with her husband, U.S. standup comedian, writer, and actor Ri...",
     "venues": [
       "nycc",
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/bonnie-mcfarlane",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Bonnie_McFarlane.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Bonnie_McFarlane.jpg",
+    "bio_stand": "Comedy Central, HBO, Tonight Show with Jimmy Fallon"
   },
   {
     "name": "Rell Battle",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/rell-battle",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/image001-883c0849-thumb-image.jpg?1694088237",
-    "bio": "Rell Battle is a writer and stand-up comedian who is currently a series regular role opposite Craig Robinson in the Peacock / 3 Arts comedy KILLING IT. Rell has been featured in Conan\u2019s TEAM COCO House nationwide tour and Will Smith\u2019s THIS JOKA on Roku. He was also a series regular on the CBS / 3 Arts multi-camera comedy series SUPERIOR DONUTS for two seasons and previously guested on NBC's GOOD G...",
+    "bio": "Rell Battle is a writer and stand-up comedian who is currently a series regular role opposite Craig Robinson in the Peacock / 3 Arts comedy KILLING IT. Rell has been featured in Conan’s TEAM COCO House nationwide tour and Will Smith’s THIS JOKA on Roku. He was also a series regular on the CBS / 3 Arts multi-camera comedy series SUPERIOR DONUTS for two seasons and previously guested on NBC's GOOD G...",
     "venues": [
       "nycc"
     ]
@@ -2084,7 +2101,7 @@
     "name": "Dave Hill",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/dave-hill",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/dave-hill-95c10927-thumb-image.jpg?1540398022",
-    "bio": "Dave Hill is a comedian, writer, musician, actor, radio host, and man-about-town originally from Cleveland, Ohio but now living in New York City in a totally sweet apartment with a party deck and everything. Hot chicks come over to hang out and eat cheese plates and stuff with him all the time and it\u2019s awesome. Anyway, on the show business front, Dave has appeared on Netflix\u2019s The Unbreakable Kimm...",
+    "bio": "Dave Hill is a comedian, writer, musician, actor, radio host, and man-about-town originally from Cleveland, Ohio but now living in New York City in a totally sweet apartment with a party deck and everything. Hot chicks come over to hang out and eat cheese plates and stuff with him all the time and it’s awesome. Anyway, on the show business front, Dave has appeared on Netflix’s The Unbreakable Kimm...",
     "venues": [
       "nycc"
     ]
@@ -2102,7 +2119,7 @@
     "name": "Marina Franklin",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/marina-franklin",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/marina0828-9e9e090e-thumb-image.jpg?1677788436",
-    "bio": "Marina Franklin is a veteran comedian, actor, writer, and host whose long tenure as a stand-up standout at premier comedy venues and festivals around the world \u2013 alongside her memorable TV and film appearances, and critically acclaimed podcast \u2013 have made her a fan favorite and in-demand creative force. The Chicago native\u2019s onscreen credits include: Hulu's \"Life And Beth\", HBO's \"Last Week Tonight...",
+    "bio": "Marina Franklin is a veteran comedian, actor, writer, and host whose long tenure as a stand-up standout at premier comedy venues and festivals around the world – alongside her memorable TV and film appearances, and critically acclaimed podcast – have made her a fan favorite and in-demand creative force. The Chicago native’s onscreen credits include: Hulu's \"Life And Beth\", HBO's \"Last Week Tonight...",
     "venues": [
       "nycc",
       "the_stand",
@@ -2115,14 +2132,15 @@
     "name": "Emma Willmann",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/emma-willman",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Emma-Willmann-2-d7750aea-thumb-image.jpg?1682006837",
-    "bio": "Emma Willmann is one of New York City\u2019s top comedians, and perhaps one of the only dyslexic-gender-wiggly-comics-with-ADHD from Blue Hill, Maine. In the third grade, Mrs. Weller would bribe Emma with the chance to tell a story at the end of every class if Emma promised to stop talking to the other classmates. Now, Emma gets to tell stories nightly at The Comedy Cellar, on Netflix\u2019s: The Comedy Lin...",
+    "bio": "Emma Willmann is one of New York City’s top comedians, and perhaps one of the only dyslexic-gender-wiggly-comics-with-ADHD from Blue Hill, Maine. In the third grade, Mrs. Weller would bribe Emma with the chance to tell a story at the end of every class if Emma promised to stop talking to the other classmates. Now, Emma gets to tell stories nightly at The Comedy Cellar, on Netflix’s: The Comedy Lin...",
     "venues": [
       "nycc",
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/emma-willmann",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Emma.jpg",
-    "tagline_cellar": "From The Late Show with Stephen Colbert, MTV, Vh1, host of The Check Spot on SiriusXM"
+    "tagline_cellar": "From The Late Show with Stephen Colbert, MTV, Vh1, host of The Check Spot on SiriusXM",
+    "bio_stand": "Comedy Central, Netflix, Late Show with Stephen Colbert"
   },
   {
     "name": "Ari Shaffir",
@@ -2152,7 +2170,7 @@
     "name": "Rick Glassman",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/rick-glassman",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/CF752220-1126-4A68-BA7F-D4BB81811665-a29d0d6d-thumb-image.jpg?1692200865",
-    "bio": "Rick Glassman stars as Jack on the Amazon Original series As We See It, as well as Edward on the ABC sitcom Not Dead Yet. A Los Angeles-based stand-up comedian, writer, and actor, Glassman\u2019s notable credits include a leading role in Bill Lawrence\u2019s NBC ensemble sitcom, Undateable, as well as playing Harold Ramis in David Wain\u2019s National Lampoon biopic, A Futile and Stupid Gesture. He also wrote, d...",
+    "bio": "Rick Glassman stars as Jack on the Amazon Original series As We See It, as well as Edward on the ABC sitcom Not Dead Yet. A Los Angeles-based stand-up comedian, writer, and actor, Glassman’s notable credits include a leading role in Bill Lawrence’s NBC ensemble sitcom, Undateable, as well as playing Harold Ramis in David Wain’s National Lampoon biopic, A Futile and Stupid Gesture. He also wrote, d...",
     "venues": [
       "nycc",
       "the_stand"
@@ -2168,7 +2186,8 @@
       "nycc",
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/dean-edwards"
+    "stand_profile": "https://thestandnyc.com/comedians/dean-edwards",
+    "tagline_cellar": "FROM THE TONIGHT SHOW, FROM SNL, THE MOVIES \"SPIDER-MAN\", \"GOYBAND\", \"NEW WAVE\""
   },
   {
     "name": "Pat Brown",
@@ -2183,7 +2202,7 @@
     "name": "Jared Freid",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/jared-freid",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Jared-Freid-Stamford-7-11-12-25-Headshot-5c0d1282-thumb-image.jpg?1745426671",
-    "bio": "Jared Freid is a stand-up comedian and podcaster based out of New York City. His most recent stand up special, \u201c37 & Single,\u201d premiered on Netflix last year to rave reviews and rose to the \"Top 10 Most Watched TV\" in the US and Canada on Netflix. In addition, \"The New York Times\" touted, \u201cIn the crowded field of dating jokes, Jared Freid\u2026 distinguishes himself...\u201d With a strong focus on dating and...",
+    "bio": "Jared Freid is a stand-up comedian and podcaster based out of New York City. His most recent stand up special, “37 & Single,” premiered on Netflix last year to rave reviews and rose to the \"Top 10 Most Watched TV\" in the US and Canada on Netflix. In addition, \"The New York Times\" touted, “In the crowded field of dating jokes, Jared Freid… distinguishes himself...” With a strong focus on dating and...",
     "venues": [
       "nycc",
       "the_stand",
@@ -2196,7 +2215,7 @@
     "name": "Aparna Nancherla",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/aparna-nancherla",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/aparna-nancherla-ec570be8-thumb-image.jpg?1572551224",
-    "bio": "Aparna Nancherla is a comedian and general silly billy. Her sense of humor is dry, existential, and absurd, with notes of uncalled-for whimsy. Think a wine you didn\u2019t order. You can watch Aparna as Grace the belabored HR rep on the Comedy Central show, Corporate or hear her as the voice of Hollyhock on Bojack Horseman. She also has a half-hour special on the second season of The Standups on Netfli...",
+    "bio": "Aparna Nancherla is a comedian and general silly billy. Her sense of humor is dry, existential, and absurd, with notes of uncalled-for whimsy. Think a wine you didn’t order. You can watch Aparna as Grace the belabored HR rep on the Comedy Central show, Corporate or hear her as the voice of Hollyhock on Bojack Horseman. She also has a half-hour special on the second season of The Standups on Netfli...",
     "venues": [
       "nycc"
     ]
@@ -2205,13 +2224,14 @@
     "name": "Reggie Conquest",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/reggie-conquest",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/image-6ef80796-thumb-image.jpg?1724079301",
-    "bio": "Reggie Conquest is a stand-up comic, actor, and writer based in New York City. In 2019, Conquest was named a \"New Face\" at Montreal's Just for Laughs Comedy Festival and cast as \u2018TSA Bae\u2019 in season 4 of HBO's hit series Insecure opposite Issa Rae. His stand-up has been featured on TruTVs Laff Mobb\u2019s Laff Tracks and Comedy Central Featuring. In 2021, Conquest filmed a role in Paramount Pictures\u2019 SC...",
+    "bio": "Reggie Conquest is a stand-up comic, actor, and writer based in New York City. In 2019, Conquest was named a \"New Face\" at Montreal's Just for Laughs Comedy Festival and cast as ‘TSA Bae’ in season 4 of HBO's hit series Insecure opposite Issa Rae. His stand-up has been featured on TruTVs Laff Mobb’s Laff Tracks and Comedy Central Featuring. In 2021, Conquest filmed a role in Paramount Pictures’ SC...",
     "venues": [
       "nycc",
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/reggie-conquest",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Reggie_Conquest.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Reggie_Conquest.jpg",
+    "tagline_cellar": "FROM FOX'S \"ANIMAL CONTROL\". HBO'S INSECURE, HBOMAX THAT DAMN MICHAEL CHE, PAUSE WITH SAM JAY, COMEDY CENTRAL"
   },
   {
     "name": "Godfrey",
@@ -2228,7 +2248,7 @@
     "name": "Mark Ellis",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/mark-ellis",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/mark-ellis-7-jpg-e72b0b7b-mark-ellis-7-jpg.jpg?1709059734",
-    "bio": "Mark Ellis is a comedian, actor and host you\u2019ve probably seen on tv, heard on the radio or at least clicked on the internet. A headlining stand-up that has played to sold-out shows all over the world and on television, Mark also has a monstrous online following as the co-host of the \"Movie Trivia Schmoedown\", his cinematic combat trivia show that has over 300K subscribers and over 350 million view...",
+    "bio": "Mark Ellis is a comedian, actor and host you’ve probably seen on tv, heard on the radio or at least clicked on the internet. A headlining stand-up that has played to sold-out shows all over the world and on television, Mark also has a monstrous online following as the co-host of the \"Movie Trivia Schmoedown\", his cinematic combat trivia show that has over 300K subscribers and over 350 million view...",
     "venues": [
       "nycc"
     ]
@@ -2237,7 +2257,7 @@
     "name": "Carly Aquilino",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/carly-aquilino",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/carly-aquilino-d5050b51-thumb-image.jpg?1479710346",
-    "bio": "MTV's \"Girl Code\" Carly Aquilino is a stand-up comedian described by audience members as \u201cfunny\u201d and by her father as \u201ca huge mistake\u201d. As a New York native, Carly first stepped on stage at Gotham Comedy Club and has since been quickly rising in the comedy scene, performing at the most popular clubs in New York. Carly's hobbies are telling jokes and checking Facebook to make sure the people that m...",
+    "bio": "MTV's \"Girl Code\" Carly Aquilino is a stand-up comedian described by audience members as “funny” and by her father as “a huge mistake”. As a New York native, Carly first stepped on stage at Gotham Comedy Club and has since been quickly rising in the comedy scene, performing at the most popular clubs in New York. Carly's hobbies are telling jokes and checking Facebook to make sure the people that m...",
     "venues": [
       "nycc"
     ]
@@ -2255,7 +2275,7 @@
     "name": "Jeff Ross",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/jeff-ross",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/jeff-ross-967e0937-thumb-image.jpg?1490204514",
-    "bio": "Jeff Ross is a respected comedian, writer, and producer also known as \u201cThe Roastmaster General\u201d. Most recently Jeff produced and starred in the \u201cComedy Central Roast of Rob Lowe\u201d. Jeff\u2019s other roast victims include Justin Bieber, James Franco, Charlie Sheen, James Carville and Donald Trump (twice). Jeff\u2019s most recent comedy specials are the critically acclaimed and highly rated \u201cJeff Ross Roasts C...",
+    "bio": "Jeff Ross is a respected comedian, writer, and producer also known as “The Roastmaster General”. Most recently Jeff produced and starred in the “Comedy Central Roast of Rob Lowe”. Jeff’s other roast victims include Justin Bieber, James Franco, Charlie Sheen, James Carville and Donald Trump (twice). Jeff’s most recent comedy specials are the critically acclaimed and highly rated “Jeff Ross Roasts C...",
     "venues": [
       "nycc"
     ]
@@ -2264,7 +2284,7 @@
     "name": "Greg Fitzsimmons",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/greg-fitzsimmon",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/greg-fitzsimmon-e2870bd0-thumb-image.jpg?1495229123",
-    "bio": "Greg is a stand-up comedian and television writer/producer. A regular guest on The Howard Stern Show, Chelsea Lately, The Adam Carolla Show, and The Joe Rogan Experience. His 2011 book, Dear Mrs. Fitzsimmons received critical praise from NPR and Vanity Fair. Since 2006, Greg has hosted a radio show on Howard Stern\u2019s Sirius/XM channel and his own twice-weekly podcast, Fitzdog Radio. A regular on Le...",
+    "bio": "Greg is a stand-up comedian and television writer/producer. A regular guest on The Howard Stern Show, Chelsea Lately, The Adam Carolla Show, and The Joe Rogan Experience. His 2011 book, Dear Mrs. Fitzsimmons received critical praise from NPR and Vanity Fair. Since 2006, Greg has hosted a radio show on Howard Stern’s Sirius/XM channel and his own twice-weekly podcast, Fitzdog Radio. A regular on Le...",
     "venues": [
       "nycc",
       "the_stand"
@@ -2286,7 +2306,7 @@
     "name": "Tone Bell",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/tone-bell",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/tone-bell-headshot-jpg-434b0e1f-tone-bell-headshot-jpg.jpg?1692715826",
-    "bio": "Tone Bell is an actor, writer, and comedian known most recently for starring as John Levy alongside Oscar nominee and Golden Globe-winner Andra Day in Lee Daniels' award-winning film \"The U.S. vs. Billie Holiday\". Tone also starred as comedic legend Richard Pryor in BET\u2019s \"American Soul\" and opposite Nina Dobrev in the CBS series \"Fam\". He has also been seen co-starring with Kathy Bates in Netflix...",
+    "bio": "Tone Bell is an actor, writer, and comedian known most recently for starring as John Levy alongside Oscar nominee and Golden Globe-winner Andra Day in Lee Daniels' award-winning film \"The U.S. vs. Billie Holiday\". Tone also starred as comedic legend Richard Pryor in BET’s \"American Soul\" and opposite Nina Dobrev in the CBS series \"Fam\". He has also been seen co-starring with Kathy Bates in Netflix...",
     "venues": [
       "nycc",
       "the_stand"
@@ -2309,7 +2329,7 @@
     "name": "Adam Ray",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/adam-ray",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/adamray-1930-bw-jpg-03ac0be9-adamray-1930-bw-jpg.jpg?1647115360",
-    "bio": "Adam Ray was most recently seen on HBO\u2019s CURB YOUR ENTHUSIASM & the NETFLIX film GAME OVER MAN from the creators of WORKAHOLICS. He recently wrapped production on the upcoming season of ARRESTED DEVELOPMENT for Netflix, as well as season 2 of AMERICAN VANDAL, also for NETFLIX. Currently, Adam is shooting & starring in the indie comedy THE BELLMEN also starring Thomas Lennon, hitting NETFLIX this s...",
+    "bio": "Adam Ray was most recently seen on HBO’s CURB YOUR ENTHUSIASM & the NETFLIX film GAME OVER MAN from the creators of WORKAHOLICS. He recently wrapped production on the upcoming season of ARRESTED DEVELOPMENT for Netflix, as well as season 2 of AMERICAN VANDAL, also for NETFLIX. Currently, Adam is shooting & starring in the indie comedy THE BELLMEN also starring Thomas Lennon, hitting NETFLIX this s...",
     "venues": [
       "nycc",
       "the_stand"
@@ -2321,16 +2341,16 @@
     "name": "Jackie Fabulous",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/jackie-fabulous",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/JF-You-Can-Leave-Still-2d6c0d32-thumb-image.png?1770473599",
-    "bio": "Jackie Fabulous is a stand-up comedian, actress and writer who's been featured four times on \"The Tonight Show Starring Jimmy Fallon,\" and has appeared on \"America's Got Talent All-Stars,\" Showtime\u2019s \"Flatbush Misdemeanors,\" \"The Arsenio Hall Show,\" HBO\u2019s \"Pause,\" The Damn Michael Che,\" and much more. Jackie was named one of Variety\u2019s \"Top 10 to Watch\" in 2024. In addition to her television appear...",
+    "bio": "Jackie Fabulous is a stand-up comedian, actress and writer who's been featured four times on \"The Tonight Show Starring Jimmy Fallon,\" and has appeared on \"America's Got Talent All-Stars,\" Showtime’s \"Flatbush Misdemeanors,\" \"The Arsenio Hall Show,\" HBO’s \"Pause,\" The Damn Michael Che,\" and much more. Jackie was named one of Variety’s \"Top 10 to Watch\" in 2024. In addition to her television appear...",
     "venues": [
       "nycc"
     ]
   },
   {
-    "name": "Eric D\u2019Alessandro",
+    "name": "Eric D’Alessandro",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/eric-dalessandro",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/eric-d-alessandro-headshot-2026-2-jpg-4342127d-eric-d-alessandro-headshot-2026-2-jpg.jpg?1772049578",
-    "bio": "Eric D\u2019Alessandro, a charismatic New Yorker with an unfiltered sense of humor, a camera, and a knack for storytelling, has etched his name into the hearts of comedy lovers across the nation. His unique comedic style, infused with his Italian-American heritage, spins raw, relatable narratives that resonate with the everyday American. From his early beginnings on YouTube, Eric has steadily crafted a...",
+    "bio": "Eric D’Alessandro, a charismatic New Yorker with an unfiltered sense of humor, a camera, and a knack for storytelling, has etched his name into the hearts of comedy lovers across the nation. His unique comedic style, infused with his Italian-American heritage, spins raw, relatable narratives that resonate with the everyday American. From his early beginnings on YouTube, Eric has steadily crafted a...",
     "venues": [
       "nycc"
     ]
@@ -2339,7 +2359,7 @@
     "name": "Rachel Wolfson",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/rachel-wolfson",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Rachel-Wolfson-d0f60b1a-thumb-image.jpg?1644870883",
-    "bio": "Rachel Wolfson is a Los Angeles-based standup comedian. Born in Las Vegas, Nevada, Rachel began her comedy career in LA in 2016 and since then has toured the country with her brand of high humor. Wolfson\u2019s comedic style is a hybrid of crowd work and the dry humor of her day-to-day life. You can see her in February 2022 in the fourth installment of the Jackass franchise \u201cJackass Forever\u201d as a new c...",
+    "bio": "Rachel Wolfson is a Los Angeles-based standup comedian. Born in Las Vegas, Nevada, Rachel began her comedy career in LA in 2016 and since then has toured the country with her brand of high humor. Wolfson’s comedic style is a hybrid of crowd work and the dry humor of her day-to-day life. You can see her in February 2022 in the fourth installment of the Jackass franchise “Jackass Forever” as a new c...",
     "venues": [
       "nycc",
       "the_stand"
@@ -2350,7 +2370,7 @@
     "name": "Maddie Wiener",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/maddie-wiener",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Maddie-Wiener-12-21-23-Headshot-b4170fad-thumb-image.jpg?1697648727",
-    "bio": "Maddie Wiener is a stand-up comedian with a style described as \u201cirreverent humor\u2026 with a streak of brazenness,\u201d and \u201cabrasive and likeable at the same time\". Maddie was selected as a \u201cNew Face\u201d at the 2021 Just for Laughs Festival, and filmed a stand-up set for Comedy Central. She has appeared on \"You Up\" with Nikki Glaser on SiriusXM, was a 2018 semi-finalist for \"StandUp NBC\". On the road, she h...",
+    "bio": "Maddie Wiener is a stand-up comedian with a style described as “irreverent humor… with a streak of brazenness,” and “abrasive and likeable at the same time\". Maddie was selected as a “New Face” at the 2021 Just for Laughs Festival, and filmed a stand-up set for Comedy Central. She has appeared on \"You Up\" with Nikki Glaser on SiriusXM, was a 2018 semi-finalist for \"StandUp NBC\". On the road, she h...",
     "venues": [
       "nycc",
       "the_stand",
@@ -2363,7 +2383,7 @@
     "name": "Peter Grosz",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/peter-grosz",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/peter-710207d6-thumb-image.jpg?1661437346",
-    "bio": "Peter Grosz started his comedic career in Chicago at iO Chicago, the Annoyance Theater and The Second City. He\u2019s written for Stephen Colbert, Seth Meyers and Amy Sedaris. You\u2019ve seen him in Veep, The Marvelous Mrs. Maisel, The Menu, The President Show, Search Party, Key and Peele, Inside Amy Schumer and more. He\u2019s been a panelist on NPR\u2019s Wait Wait Don\u2019t Tell Me for 12 years and yes, he was the gu...",
+    "bio": "Peter Grosz started his comedic career in Chicago at iO Chicago, the Annoyance Theater and The Second City. He’s written for Stephen Colbert, Seth Meyers and Amy Sedaris. You’ve seen him in Veep, The Marvelous Mrs. Maisel, The Menu, The President Show, Search Party, Key and Peele, Inside Amy Schumer and more. He’s been a panelist on NPR’s Wait Wait Don’t Tell Me for 12 years and yes, he was the gu...",
     "venues": [
       "nycc"
     ]
@@ -2372,7 +2392,7 @@
     "name": "Shane Todd",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/shane-todd",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/download-png-bd3c0a78-download-png.jpg?1665678184",
-    "bio": "Shane Todd is one of Northern Ireland\u2019s most established and beloved stand-up comedians. He has just announced another run of sold-out shows in Belfast\u2019s SSE Arena. Shane has supported Bill Burr on tour, performed regularly throughout the UK and Ireland and toured the US with solo shows. He stars in. Previously With Shane Todd for BBC NI, hosts on BBC Radio Ulster, and his weekly podcast Tea With ...",
+    "bio": "Shane Todd is one of Northern Ireland’s most established and beloved stand-up comedians. He has just announced another run of sold-out shows in Belfast’s SSE Arena. Shane has supported Bill Burr on tour, performed regularly throughout the UK and Ireland and toured the US with solo shows. He stars in. Previously With Shane Todd for BBC NI, hosts on BBC Radio Ulster, and his weekly podcast Tea With ...",
     "venues": [
       "nycc",
       "the_stand"
@@ -2383,7 +2403,7 @@
     "name": "John Bishop",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/john-bishop",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Screenshot-2023-07-14-at-12-30-51-PM-eed20f67-thumb-image.png?1689352272",
-    "bio": "John Bishop is one the UK\u2019s biggest names in comedy. Within three years of his first ever gig, John was playing sold-out arena audiences across the country, and released the fastest selling stand-up DVD in UK history. He has achieved huge success with a number of his own comedy, entertainment and documentary shows including \u2018John Bishop\u2019s Australia\u2019 (BBC1), \u2018John Bishop\u2019s Britain\u2019 (BBC1), \u2018John Bi...",
+    "bio": "John Bishop is one the UK’s biggest names in comedy. Within three years of his first ever gig, John was playing sold-out arena audiences across the country, and released the fastest selling stand-up DVD in UK history. He has achieved huge success with a number of his own comedy, entertainment and documentary shows including ‘John Bishop’s Australia’ (BBC1), ‘John Bishop’s Britain’ (BBC1), ‘John Bi...",
     "venues": [
       "nycc"
     ]
@@ -2392,7 +2412,7 @@
     "name": "Tina Friml",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/tina-friml",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/IMG-0194-7d91078b-thumb-image.jpg?1713705927",
-    "bio": "Tina Friml\u2019s sharp jokes and fearless honesty about the social assumptions that come with living with cerebral palsy has earned a dedicated social media following with over 234K followers on Instagram and over 180K on Tiktok. She made her late night debut on The Tonight Show with Jimmy Fallon. She can also be seen on the Comedy Central series Featuring and The Drew Barrymore Show.",
+    "bio": "Tina Friml’s sharp jokes and fearless honesty about the social assumptions that come with living with cerebral palsy has earned a dedicated social media following with over 234K followers on Instagram and over 180K on Tiktok. She made her late night debut on The Tonight Show with Jimmy Fallon. She can also be seen on the Comedy Central series Featuring and The Drew Barrymore Show.",
     "venues": [
       "nycc"
     ]
@@ -2401,7 +2421,7 @@
     "name": "Paul Chowdry",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/paul-chowdry",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/IMG-6306-7d9c0789-thumb-image.jpg?1730736844",
-    "bio": "Paul Chowdhry is an acclaimed stand-up comedian, actor, and writer, celebrated for his wit and versatility. Renowned as the most successful British Indian stand-up comedian in history, Paul\u2019s career is marked by numerous accolades and groundbreaking achievements. In a remarkable feat, Paul completed his highly acclaimed Family-Friendly Comedian nationwide UK tour from 2021 to 2023, which saw three...",
+    "bio": "Paul Chowdhry is an acclaimed stand-up comedian, actor, and writer, celebrated for his wit and versatility. Renowned as the most successful British Indian stand-up comedian in history, Paul’s career is marked by numerous accolades and groundbreaking achievements. In a remarkable feat, Paul completed his highly acclaimed Family-Friendly Comedian nationwide UK tour from 2021 to 2023, which saw three...",
     "venues": [
       "nycc"
     ]
@@ -2410,7 +2430,7 @@
     "name": "Ray Ellin",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/ray-ellin",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/good-fiverr-0r1a4866-high-res-jpg-e2b710df-good-fiverr-0r1a4866-high-res-jpg.jpg?1702410031",
-    "bio": "Besides being a self-proclaimed expert on Barry Manilow and Little House on the Prairie, Ray Ellin is a host, comedian, producer, and writer. He is the host of the upcoming tv show Trivia Truck, and the upcoming podcast Wild Night Nights on the Prairie. Ray was an executive producer of Comedy Central\u2019s This Week at the Comedy Cellar, which wrapped its third season right before the NYC lockdown. He...",
+    "bio": "Besides being a self-proclaimed expert on Barry Manilow and Little House on the Prairie, Ray Ellin is a host, comedian, producer, and writer. He is the host of the upcoming tv show Trivia Truck, and the upcoming podcast Wild Night Nights on the Prairie. Ray was an executive producer of Comedy Central’s This Week at the Comedy Cellar, which wrapped its third season right before the NYC lockdown. He...",
     "venues": [
       "nycc"
     ]
@@ -2460,7 +2480,7 @@
     "name": "Jo Firestone",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/jo-firestone",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/jo-firestone-bc580a97-thumb-image.jpg?1543596892",
-    "bio": "Jo Firestone is a Brooklyn-based comedian who can be seen on The Tonight Show Starring Jimmy Fallon, Joe Pera Talks With You, High Maintenance, Shrill, The Chris Gethard Show, and more. She can be heard on Maximum Fun\u2019s Dr. Gameshow, a podcast she co-hosts with Manolo Moreno. Her album, \"The Hits\" is available on Comedy Central Records, and if you like puns, check out Punderdome: A Card Game for P...",
+    "bio": "Jo Firestone is a Brooklyn-based comedian who can be seen on The Tonight Show Starring Jimmy Fallon, Joe Pera Talks With You, High Maintenance, Shrill, The Chris Gethard Show, and more. She can be heard on Maximum Fun’s Dr. Gameshow, a podcast she co-hosts with Manolo Moreno. Her album, \"The Hits\" is available on Comedy Central Records, and if you like puns, check out Punderdome: A Card Game for P...",
     "venues": [
       "nycc"
     ]
@@ -2496,7 +2516,7 @@
     "name": "Erin Jackson",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/erin-jackson",
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/erin-jackson-comedian-headshot-2023a-jpg-8f681416-erin-jackson-comedian-headshot-2023a-jpg.jpg?1750715386",
-    "bio": "Erin Jackson is one of the fastest-rising comedians in New York City. She's a fixture in the city\u2019s top comedy clubs and made her Netflix debut on Season 2 of \"Tiffany Haddish Presents: They Ready.\" Erin is a television writer, currently working on the hit Netflix show \"The Upshaws,\" and has appeared on Hulu's \"Like and Beth,\" \"Late Night with Seth Meyers,\" \"Conan,\" The Ellen DeGeneres Show,\" \"Thi...",
+    "bio": "Erin Jackson is one of the fastest-rising comedians in New York City. She's a fixture in the city’s top comedy clubs and made her Netflix debut on Season 2 of \"Tiffany Haddish Presents: They Ready.\" Erin is a television writer, currently working on the hit Netflix show \"The Upshaws,\" and has appeared on Hulu's \"Like and Beth,\" \"Late Night with Seth Meyers,\" \"Conan,\" The Ellen DeGeneres Show,\" \"Thi...",
     "venues": [
       "nycc"
     ],
@@ -2511,13 +2531,14 @@
       "nycc",
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/mike-vecchione"
+    "stand_profile": "https://thestandnyc.com/comedians/mike-vecchione",
+    "bio_stand": "Last Comic Standing, Comedy Central, , Tonight Show with Jimmy Fallon"
   },
   {
     "name": "Erin Foley",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/erin-foley",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/erin-foley-a2a2099d-thumb-image.jpg?1540492904",
-    "bio": "Erin Foley is an amazing comedic actress, comedian, and writer. Foley is the host of Mixologist And A Movie on Lifetime and is a cast member on season one of How to Be A Grown-Up on Tru Tv. As a seasoned comedian, she has her own Comedy Central Presents, as well as having been on Conan O\u2019Brien, @ Midnight, The Late Late Show with Craig Ferguson, Chelsea Lately, Arsenio Hall and Last Call With Cars...",
+    "bio": "Erin Foley is an amazing comedic actress, comedian, and writer. Foley is the host of Mixologist And A Movie on Lifetime and is a cast member on season one of How to Be A Grown-Up on Tru Tv. As a seasoned comedian, she has her own Comedy Central Presents, as well as having been on Conan O’Brien, @ Midnight, The Late Late Show with Craig Ferguson, Chelsea Lately, Arsenio Hall and Last Call With Cars...",
     "venues": [
       "nycc"
     ]
@@ -2526,7 +2547,7 @@
     "name": "Nore Davis",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/nore-davis",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Untitled-design-2-f8410bf0-thumb-image.jpg?1740780932",
-    "bio": "Nore Davis is a New York City based stand-up comedian who delivers an energetic performance filled with witty quips and sharp punch lines. Davis\u2019s style hones the perfect balance between observational and anecdotal humor as he takes ordinary situations and transforms them into personal, relatable, cackle-inducing stories. Davis creates energetic, layered scenes complete with bold dialogues and wil...",
+    "bio": "Nore Davis is a New York City based stand-up comedian who delivers an energetic performance filled with witty quips and sharp punch lines. Davis’s style hones the perfect balance between observational and anecdotal humor as he takes ordinary situations and transforms them into personal, relatable, cackle-inducing stories. Davis creates energetic, layered scenes complete with bold dialogues and wil...",
     "venues": [
       "nycc",
       "the_stand"
@@ -2599,7 +2620,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/adrienne-iapalucci",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Adrienne_Iapalucci_1.jpg",
-    "bio": "Adrienne Iapalucci is a stand-up comedian based in New York City. She's appeared on The Late Show and is a regular at the Comedy Cellar. Her Netflix special is dark and unflinching. Known for her deadpan delivery and dark humor."
+    "bio": "Adrienne Iapalucci is a stand-up comedian based in New York City. She's appeared on The Late Show and is a regular at the Comedy Cellar. Her Netflix special is dark and unflinching. Known for her deadpan delivery and dark humor.",
+    "tagline_cellar": "FROM THE LATE SHOW WITH DAVID LETTERMAN, FROM THE ARTIE LANGE SHOW, LAST COMIC STANDING"
   },
   {
     "name": "Ahmed Ahmed",
@@ -2681,7 +2703,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/aminah-imani",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/aminah.jpg",
-    "bio": "Aminah Imani is a stand-up comedian performing in New York City. She performs at clubs across the city."
+    "bio": "Aminah Imani is a stand-up comedian performing in New York City. She performs at clubs across the city.",
+    "tagline_cellar": "JUST FOR LAUGHS NEW FACES, FROM \"INSIDE AMY SHUMER\", FLATBUSH MISDEMEANORS, UP EARLY TONIGHT, COMEDY CENTRAL"
   },
   {
     "name": "Amy Miller",
@@ -3104,7 +3127,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/dan-soder",
     "bio": "Dan Soder is a stand-up comedian, actor, and podcaster. He played Mafee on Showtime's Billions and co-hosts The Bonfire on SiriusXM with Big Jay Oakerson. His Comedy Central special Son of Gary and Netflix appearances showcase his versatile comedy.",
-    "tagline_cellar": "From: Netflix, Showtime's \"Billions\" and The Bonfire on Sirius/XM"
+    "tagline_cellar": "From: Netflix, Showtime's \"Billions\" and The Bonfire on Sirius/XM",
+    "bio_stand": "Comedy Central, HBO, Conan, Netflix"
   },
   {
     "name": "Dan St. Germain",
@@ -3221,7 +3245,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/emil-wakim",
-    "bio": "Emil Wakim is a stand-up comedian based in New York City. He's appeared on The Tonight Show and performs at clubs across NYC. Known for his high-energy, animated comedy style."
+    "bio": "Emil Wakim is a stand-up comedian based in New York City. He's appeared on The Tonight Show and performs at clubs across NYC. Known for his high-energy, animated comedy style.",
+    "bio_stand": "Saturday Night Live"
   },
   {
     "name": "Erica Rhodes",
@@ -3380,7 +3405,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/ian-lara",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/ian-lara.jpg",
     "bio": "Ian Lara is a stand-up comedian based in New York City. He's appeared on The Tonight Show and performs regularly at clubs across the city including the Comedy Cellar. Known for his sharp observations and polished delivery.",
-    "tagline_cellar": "HBO SPECIAL ROMANTIC COMEDY, Comedy Central Half-hour, The Tonight show"
+    "tagline_cellar": "HBO SPECIAL ROMANTIC COMEDY, Comedy Central Half-hour, The Tonight show",
+    "bio_stand": "Comedy Central, HBO, Tonight Show with Jimmy Fallon"
   },
   {
     "name": "Ilana Glazer",
@@ -3453,7 +3479,8 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/jamie-wolf",
-    "bio": "Jamie Wolf is a stand-up comedian and regular at the Comedy Cellar in New York City. He performs regularly on the NYC comedy scene."
+    "bio": "Jamie Wolf is a stand-up comedian and regular at the Comedy Cellar in New York City. He performs regularly on the NYC comedy scene.",
+    "tagline_cellar": "TIMEOUT 2025 COMIC TO WATCH,  WINNER NY'S FUNNIEST 2024, AMAZON PRIME, SF SKETCHFEST 2023, NY COMEDY FESTIVAL COMICS TO WATCH, PHILLY'S PHUNNIEST 2019"
   },
   {
     "name": "Jared Waters",
@@ -3551,7 +3578,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/jim-florentine",
-    "bio": "Jim Florentine is a stand-up comedian, actor, and podcast host. He's known for Crank Yankers and his podcast Comedy Metal Midgets. He's appeared on multiple late night shows and is a veteran of the NYC comedy scene."
+    "bio": "Jim Florentine is a stand-up comedian, actor, and podcast host. He's known for Crank Yankers and his podcast Comedy Metal Midgets. He's appeared on multiple late night shows and is a veteran of the NYC comedy scene.",
+    "bio_stand": "MTV, VH1, Comedy Central, , HBO, , Jimmy Kimmel Live"
   },
   {
     "name": "Jim Norton",
@@ -3624,7 +3652,8 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/jordan-jensen",
-    "bio": "Jordan Jensen is a stand-up comedian performing on the New York City comedy scene. She performs regularly at clubs across the city."
+    "bio": "Jordan Jensen is a stand-up comedian performing on the New York City comedy scene. She performs regularly at clubs across the city.",
+    "tagline_cellar": "\"TAKE ME WITH YOU\" on Netflix, Late Late Show, WINNER NEW YORK'S FUNNIEST STAND UP 2021, JUST FOR LAUGHS NEW FACE 2019"
   },
   {
     "name": "Josh Adam Meyers",
@@ -3633,7 +3662,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/josh-adam-meyers",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Josh_Adam_Meyers.jpg",
-    "bio": "Josh Adam Meyers is a stand-up comedian and creator of The Goddamn Comedy Jam, a live show combining stand-up and live music performances. He performs at clubs across the country."
+    "bio": "Josh Adam Meyers is a stand-up comedian and creator of The Goddamn Comedy Jam, a live show combining stand-up and live music performances. He performs at clubs across the country.",
+    "bio_stand": "Comedy Central, Comedy Central"
   },
   {
     "name": "Josh Johnson",
@@ -3667,7 +3697,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/jourdain-fisher",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/37-og.jpg",
-    "bio": "Jourdain Fisher is a stand-up comedian based in New York City. He performs regularly at The Stand and other NYC clubs."
+    "bio": "Jourdain Fisher is a stand-up comedian based in New York City. He performs regularly at The Stand and other NYC clubs.",
+    "tagline_cellar": "2 TONIGHT SHOWS, JFL, BET, NBC"
   },
   {
     "name": "Julio Diaz",
@@ -3749,7 +3780,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/kim-congdon",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Kim_Congdon.jpg",
-    "bio": "Kim Congdon is a stand-up comedian and podcast host. She's appeared on Kill Tony, LOS, and multiple podcasts. She co-hosts the Broad Topix podcast and performs at clubs across the country."
+    "bio": "Kim Congdon is a stand-up comedian and podcast host. She's appeared on Kill Tony, LOS, and multiple podcasts. She co-hosts the Broad Topix podcast and performs at clubs across the country.",
+    "bio_stand": "Roast Battle"
   },
   {
     "name": "Kitty Reynolds",
@@ -3775,7 +3807,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/kyle-dunnigan",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/dunnigankyle.jpg",
-    "bio": "Kyle Dunnigan is a stand-up comedian, actor, and writer. He's known for his viral celebrity deepfake impressions on Instagram. He's written for Reno 911!, Inside Amy Schumer, and Comedy Central. His parodies of Caitlyn Jenner and other celebrities have millions of views."
+    "bio": "Kyle Dunnigan is a stand-up comedian, actor, and writer. He's known for his viral celebrity deepfake impressions on Instagram. He's written for Reno 911!, Inside Amy Schumer, and Comedy Central. His parodies of Caitlyn Jenner and other celebrities have millions of views.",
+    "bio_stand": "Comedy Central"
   },
   {
     "name": "Kylie Vincent",
@@ -3848,7 +3881,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/lucas-zelnick",
-    "bio": "Lucas Zelnick is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "bio": "Lucas Zelnick is a stand-up comedian performing in New York City. He performs at clubs across the city.",
+    "tagline_cellar": "COMEDY CENTRAL, NETFLIX IS A JOKE, AMAZON PRIME MOONTOWER COMEDY FESTIVAL"
   },
   {
     "name": "Luis J. Gomez",
@@ -3856,7 +3890,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/luis-j-gomez",
-    "bio": "Luis J. Gomez is a stand-up comedian, podcaster, and comedy club owner. He co-hosts Legion of Skanks and owns Skankfest, one of the biggest indie comedy festivals. He co-owns the Gas Digital podcast network and is a fixture of the NYC alternative comedy scene."
+    "bio": "Luis J. Gomez is a stand-up comedian, podcaster, and comedy club owner. He co-hosts Legion of Skanks and owns Skankfest, one of the biggest indie comedy festivals. He co-owns the Gas Digital podcast network and is a fixture of the NYC alternative comedy scene.",
+    "bio_stand": "Hour Special “Luis J Gomez Presents Luis J Gomez“, Podcast Legion of Skanks"
   },
   {
     "name": "Luis Lopez",
@@ -3923,7 +3958,8 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/marie-faustin",
-    "bio": "Marie Faustin is a stand-up comedian based in New York City. She's appeared on Comedy Central and performs at clubs across the city."
+    "bio": "Marie Faustin is a stand-up comedian based in New York City. She's appeared on Comedy Central and performs at clubs across the city.",
+    "tagline_cellar": "COMEDY CENTRAL, HBO, VICE, BROAD CITY, THAT DAMN MICHAEL CHE"
   },
   {
     "name": "Marito Lopez",
@@ -4113,7 +4149,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/mike-recine",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Mike_Recine.jpg",
-    "bio": "Mike Recine is a stand-up comedian and podcaster based in New York City. He co-hosts the Sit Down Comedy podcast and performs at clubs across the city."
+    "bio": "Mike Recine is a stand-up comedian and podcaster based in New York City. He co-hosts the Sit Down Comedy podcast and performs at clubs across the city.",
+    "bio_stand": "Comedy Central, HBO, Conan"
   },
   {
     "name": "Molly Kearney",
@@ -4163,7 +4200,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/naomi-karavani",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/naomi.png"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/naomi.png",
+    "bio_stand": "Redacted Tonight"
   },
   {
     "name": "Natalie Cuomo",
@@ -4272,7 +4310,8 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/ophira-eisenberg",
-    "bio": "Ophira Eisenberg is a stand-up comedian, author, and host. She hosted NPR's Ask Me Another for years. She performs at clubs across NYC and has appeared on multiple late night shows."
+    "bio": "Ophira Eisenberg is a stand-up comedian, author, and host. She hosted NPR's Ask Me Another for years. She performs at clubs across NYC and has appeared on multiple late night shows.",
+    "tagline_cellar": "host of NPR’s Ask Me Another, Comedy Central, The Late Late Show, Kevin Hart’s LOL Network, HBO GIRLS"
   },
   {
     "name": "Orion Levine",
@@ -4381,7 +4420,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/rayna-greenberg",
-    "bio": "Rayna Greenberg is a stand-up comedian and podcaster. She co-hosts the Girls Gotta Eat podcast and performs at clubs across the country."
+    "bio": "Rayna Greenberg is a stand-up comedian and podcaster. She co-hosts the Girls Gotta Eat podcast and performs at clubs across the country.",
+    "bio_stand": "Girls Gotta Eat Podcast"
   },
   {
     "name": "Remy Kassimir",
@@ -4777,7 +4817,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/tony-woods",
-    "bio": "Tony Woods is a veteran stand-up comedian known as a 'comedian's comedian.' He's been performing for decades and is respected by top comedians for his unique, meandering comedy style."
+    "bio": "Tony Woods is a veteran stand-up comedian known as a 'comedian's comedian.' He's been performing for decades and is respected by top comedians for his unique, meandering comedy style.",
+    "tagline_cellar": "FROM \"THE LETTERMAN SHOW\"."
   },
   {
     "name": "Tristan Bowling",
@@ -4855,7 +4896,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Andrew Fiori is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "bio": "Andrew Fiori is a stand-up comedian performing in New York City. He performs at clubs across the city.",
+    "tagline_cellar": "FROM COMEDY CENTRAL, HOST OF THE RAW REPORT ON SIRIUSXM"
   },
   {
     "name": "Andy Haynes",
@@ -4899,7 +4941,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Dan Davies is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "bio": "Dan Davies is a stand-up comedian performing in New York City. He performs at clubs across the city.",
+    "tagline_cellar": "COMICS TO WATCH, CBS"
   },
   {
     "name": "Ethan Simmons-Patterson",
@@ -4968,7 +5011,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Josh Ocean Thomas is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "bio": "Josh Ocean Thomas is a stand-up comedian performing in New York City. He performs at clubs across the city.",
+    "tagline_cellar": "2025 COMICS TO WATCH, DON'T TELL COMEDY"
   },
   {
     "name": "Kc Shornima",
@@ -5536,8 +5580,8 @@
   {
     "name": "Roast Battle League",
     "venues": [],
-    "bio": "The Roast Battle League comes to The Comedy Cellar for the first time. Comics from all over the globe will go head-to-head with four battles lined up, nothing is off-limits, and no ego is safe. Come see the first sport that\u2019s also a comedy show live in the Mecca of ball busting and trash talking. Let\u2019s Roast!",
-    "tagline_cellar": "The Roast Battle League comes to The Comedy Cellar for the first time. Comics from all over the globe will go head-to-head with four battles lined up, nothing is off-limits, and no ego is safe. Come see the first sport that\u2019s also a comedy show live in the Mecca of ball busting and trash talking. Let\u2019s Roast!"
+    "bio": "The Roast Battle League comes to The Comedy Cellar for the first time. Comics from all over the globe will go head-to-head with four battles lined up, nothing is off-limits, and no ego is safe. Come see the first sport that’s also a comedy show live in the Mecca of ball busting and trash talking. Let’s Roast!",
+    "tagline_cellar": "The Roast Battle League comes to The Comedy Cellar for the first time. Comics from all over the globe will go head-to-head with four battles lined up, nothing is off-limits, and no ego is safe. Come see the first sport that’s also a comedy show live in the Mecca of ball busting and trash talking. Let’s Roast!"
   },
   {
     "name": "Brian Moses",
@@ -5636,7 +5680,8 @@
   },
   {
     "name": "Allie Mae",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Skankfest, New York Comedy Festival"
   },
   {
     "name": "Meka Mo",
@@ -5645,14 +5690,14 @@
   {
     "name": "Sarah Thomas",
     "venues": [],
-    "bio_wiki": "Sarah Thomas may refer to:Sarah Thomas (centenarian) (1788\u20131897), Welsh centenarian\nSarah Thomas (writer) (1934\u20132023), Indian writer\nSarah Thomas (actress), British actress\nSarah Thomas (teacher), head of Bryanston School\nSarah Thomas (librarian), American librarian, Bodley's Librarian, University o"
+    "bio_wiki": "Sarah Thomas may refer to:Sarah Thomas (centenarian) (1788–1897), Welsh centenarian\nSarah Thomas (writer) (1934–2023), Indian writer\nSarah Thomas (actress), British actress\nSarah Thomas (teacher), head of Bryanston School\nSarah Thomas (librarian), American librarian, Bodley's Librarian, University o"
   },
   {
     "name": "Mackenzie Jaquish",
     "venues": []
   },
   {
-    "name": "Na\u2019im Ali",
+    "name": "Na’im Ali",
     "venues": []
   },
   {
@@ -5684,7 +5729,7 @@
     "venues": []
   },
   {
-    "name": "Dylan O\u2019Keeffe",
+    "name": "Dylan O’Keeffe",
     "venues": []
   },
   {
@@ -5751,7 +5796,7 @@
   {
     "name": "Jay Lawrence",
     "venues": [],
-    "bio_wiki": "Jay Lawrence may refer to:Jay Lawrence (actor) (1924\u20131987), American stand-up comedian and actor\nJay Lawrence (politician), member of the Arizona House of Representatives\n"
+    "bio_wiki": "Jay Lawrence may refer to:Jay Lawrence (actor) (1924–1987), American stand-up comedian and actor\nJay Lawrence (politician), member of the Arizona House of Representatives\n"
   },
   {
     "name": "Bradley Marco",
@@ -5840,5 +5885,87 @@
   {
     "name": "Cody Marino",
     "venues": []
+  },
+  {
+    "name": "Philipp Kostelecky",
+    "venues": [],
+    "bio": "BBC, COMEDY CENTRAL, COMIC RELIEF, METRO NEWSPAPER FUNNY NEW FACES",
+    "tagline_cellar": "BBC, COMEDY CENTRAL, COMIC RELIEF, METRO NEWSPAPER FUNNY NEW FACES"
+  },
+  {
+    "name": "Janet McNamara",
+    "venues": [],
+    "bio": "DON'T TELL COMEDY, AMERICAN IDOL",
+    "tagline_cellar": "DON'T TELL COMEDY, AMERICAN IDOL"
+  },
+  {
+    "name": "Dov Davidoff",
+    "venues": [],
+    "bio": "FROM NBC'S \"SHADES OF BLUE\", HBO'S  \"CRASHING\",  FROM NBC'S \"RAINES\", \"JOHNNY\" FROM THE MOVIE \"INVINCIBLE\", THE TONIGHT SHOW, COMEDY CENTRAL'S \"TOUGH CROWD\". FROM THE MOVIES \"MAX & GRACE\" AND \"ASH TUESDAY\".",
+    "tagline_cellar": "FROM NBC'S \"SHADES OF BLUE\", HBO'S  \"CRASHING\",  FROM NBC'S \"RAINES\", \"JOHNNY\" FROM THE MOVIE \"INVINCIBLE\", THE TONIGHT SHOW, COMEDY CENTRAL'S \"TOUGH CROWD\". FROM THE MOVIES \"MAX & GRACE\" AND \"ASH TUESDAY\"."
+  },
+  {
+    "name": "Cookie Hull",
+    "venues": [],
+    "bio": "FROM KATT WILLIAMS INTERNET DATING, GEORGE WALLACE COMING TO THESTAGE, PLUTO TV.",
+    "tagline_cellar": "FROM KATT WILLIAMS INTERNET DATING, GEORGE WALLACE COMING TO THESTAGE, PLUTO TV."
+  },
+  {
+    "name": "Mike Finoia",
+    "venues": [],
+    "bio": "TRUTV'S IMPRACTICAL JOKERS, COMEDY CENTRAL",
+    "tagline_cellar": "TRUTV'S IMPRACTICAL JOKERS, COMEDY CENTRAL"
+  },
+  {
+    "name": "Chris Clarke",
+    "venues": [],
+    "bio": "Winner of the 2022 Laugh After Dark Comedy Festival comedy club segment (vegas). Has a special on YouTube (Funny Media group) Titled, it's meee. Writer and featured in Rob Schneiders latest film Daddy Daughter Trip.",
+    "tagline_cellar": "Winner of the 2022 Laugh After Dark Comedy Festival comedy club segment (vegas). Has a special on YouTube (Funny Media group) Titled, it's meee. Writer and featured in Rob Schneiders latest film Daddy Daughter Trip."
+  },
+  {
+    "name": "Daniel Geneen",
+    "venues": [],
+    "bio": "RUNNER UP, NEW YORK FUNNIEST 2024, 3X EMMY-NOMINATED FOR\"DAN DOES\". CREATOROF WEBBY-WINNING SHOW \"MISE EN PLACE\"",
+    "tagline_cellar": "RUNNER UP, NEW YORK FUNNIEST 2024, 3X EMMY-NOMINATED FOR\"DAN DOES\". CREATOROF WEBBY-WINNING SHOW \"MISE EN PLACE\""
+  },
+  {
+    "name": "Maddy Kelly",
+    "venues": [],
+    "bio": "SXSW, NETLFIX IA A JOKE",
+    "tagline_cellar": "SXSW, NETLFIX IA A JOKE"
+  },
+  {
+    "name": "Brian Scolaro",
+    "venues": [],
+    "bio": "Abbott Elementary, Godfather of Harlem, Shameless, Conan, Mad Men, Dexter, Grey's Anatomy, Night Court, Screamboat, A Million Little Things, Comedy Central, Wizards of Waverly Place, Bones, Castle, Alto Knights, The Middle, Stacked, The Late Late Show,  Amazon/Apple TV Special",
+    "tagline_cellar": "Abbott Elementary, Godfather of Harlem, Shameless, Conan, Mad Men, Dexter, Grey's Anatomy, Night Court, Screamboat, A Million Little Things, Comedy Central, Wizards of Waverly Place, Bones, Castle, Alto Knights, The Middle, Stacked, The Late Late Show,  Amazon/Apple TV Special"
+  },
+  {
+    "name": "Ryan Reiss",
+    "venues": [],
+    "bio": "LATE NIGHT WITH SETH MEYERS, WARM UP COMEDIAN AND CONTRIBUTING MONOLOGUE/SEGMENT WRITER, FX COMEDY CORRESPONDENT, MTV'S JIMMY FALLON & DREW BARRYMORE'S SPRING BREAK FACE OFF,",
+    "tagline_cellar": "LATE NIGHT WITH SETH MEYERS, WARM UP COMEDIAN AND CONTRIBUTING MONOLOGUE/SEGMENT WRITER, FX COMEDY CORRESPONDENT, MTV'S JIMMY FALLON & DREW BARRYMORE'S SPRING BREAK FACE OFF,"
+  },
+  {
+    "name": "Zahid Dewji",
+    "venues": [],
+    "bio": "WRITER ON NBC'S THE TONIGHT SHOW STARRING JIMMY FALLON, HEAD WRITTER ON OFTV'S ROAST OF BERT KREISCHER AND THE ROAST OF WHITNEY CUMMINGS, SPECIAL \"WHERE IS GOD?\", FEATURED ON \"ODDBALL\" COMEDY FEST, \"LAUGHING SKULLS\" AND \"MOONTOWER\"",
+    "tagline_cellar": "WRITER ON NBC'S THE TONIGHT SHOW STARRING JIMMY FALLON, HEAD WRITTER ON OFTV'S ROAST OF BERT KREISCHER AND THE ROAST OF WHITNEY CUMMINGS, SPECIAL \"WHERE IS GOD?\", FEATURED ON \"ODDBALL\" COMEDY FEST, \"LAUGHING SKULLS\" AND \"MOONTOWER\""
+  },
+  {
+    "name": "Geoff Chaser",
+    "venues": []
+  },
+  {
+    "name": "Casey Balsham",
+    "venues": [],
+    "bio": "APPLE TV, COMEDY UO",
+    "tagline_cellar": "APPLE TV, COMEDY UO"
+  },
+  {
+    "name": "Phil Hanley",
+    "venues": [],
+    "bio": "COMEDY CENTRAL SPECIAL, THE LATE SHOW WITH SETH MEYERS, THE PETE HOLMES SHOW ON TBS, JOHN OLIVER'S NEW YORK STAND UP SHOW",
+    "tagline_cellar": "COMEDY CENTRAL SPECIAL, THE LATE SHOW WITH SETH MEYERS, THE PETE HOLMES SHOW ON TBS, JOHN OLIVER'S NEW YORK STAND UP SHOW"
   }
 ]
