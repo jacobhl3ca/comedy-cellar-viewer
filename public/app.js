@@ -2537,23 +2537,23 @@ const comedianWikiBios = {};       // Wikipedia bios (last resort)
 
 // Venue-aware bio lookup: Cellar tagline → Stand DB bio → NYCC DB bio → Wikipedia → ''
 function getBioForVenue(name, venueSource) {
-  const dbEntry = comedianDB.find(c => c.name === name);
-  // 1. Venue-specific bio first
+  // 1. If Cellar show, prefer Cellar live tagline
   if (venueSource === 'cellar') {
     const cellarTag = comedianTaglines[name];
     if (cellarTag && !isGenericBio(cellarTag)) return cellarTag;
   }
+  // 2. If Stand show, prefer Stand bio from DB
   if (venueSource === 'stand') {
+    const dbEntry = comedianDB.find(c => c.name === name);
     if (dbEntry?.bio_stand && !isGenericBio(dbEntry.bio_stand)) return dbEntry.bio_stand;
   }
-  // 2. Cross-venue fallbacks (best available)
+  // 3. NYCC bio from DB (works for any venue as fallback)
+  const dbEntry = comedianDB.find(c => c.name === name);
   if (dbEntry?.bio && !isGenericBio(dbEntry.bio)) return dbEntry.bio;
+  // 4. Cellar tagline as fallback for non-Cellar shows too
   const cellarTag = comedianTaglines[name];
   if (cellarTag && !isGenericBio(cellarTag)) return cellarTag;
-  if (dbEntry?.bio_stand && !isGenericBio(dbEntry.bio_stand)) return dbEntry.bio_stand;
-  if (dbEntry?.tagline_cellar && !isGenericBio(dbEntry.tagline_cellar)) return dbEntry.tagline_cellar;
-  // 3. Wikipedia from DB (prebaked) or runtime
-  if (dbEntry?.bio_wiki && !isGenericBio(dbEntry.bio_wiki)) return dbEntry.bio_wiki;
+  // 5. Wikipedia (last resort)
   const wiki = comedianWikiBios[name];
   if (wiki && !isGenericBio(wiki)) return wiki;
   return '';

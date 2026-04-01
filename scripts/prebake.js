@@ -603,28 +603,7 @@ function guessExtension(url, buffer) {
   return '.jpg'; // default
 }
 
-// ---- Step 5a: Fetch Stand comedian bio from profile page ----
-async function fetchStandBio(name) {
-  try {
-    const slug = nameToSlug(decodeHtmlEntities(name));
-    const html = await fetchText(`https://thestandnyc.com/comedians/${slug}`);
-    // Bio text sits between the last show listing and the "All Comedians" link
-    const acIdx = html.indexOf('All Comedians</a>');
-    if (acIdx === -1) return null;
-    const chunk = html.substring(Math.max(0, acIdx - 4000), acIdx);
-    const lastShowEnd = Math.max(chunk.lastIndexOf('More Info</a>'), chunk.lastIndexOf('btn-ticket'));
-    if (lastShowEnd === -1) return null;
-    const afterShows = chunk.substring(lastShowEnd);
-    const bio = afterShows.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()
-      .replace(/^More Info\s*/, '').replace(/^(Upstairs|Main Room)\s*/i, '').trim();
-    if (!bio || bio.length < 20) return null;
-    return bio.length > 400 ? bio.substring(0, 397) + '...' : bio;
-  } catch {
-    return null;
-  }
-}
-
-// ---- Step 5b: Fetch Wikipedia bio ----
+// ---- Step 5: Fetch Wikipedia bio ----
 async function fetchWikiBio(name) {
   try {
     const encoded = encodeURIComponent(name.replace(/\s+/g, '_'));
@@ -797,11 +776,7 @@ async function main() {
     }
   }
 
-  // Track which comedians appear in Stand data (for bio scraping)
-  const standComedianNames = new Set(standComedians.keys());
-  standShows.forEach(s => (s.comedians || []).forEach(n => standComedianNames.add(n)));
-
-  log(`Total unique comedians across all sources: ${allComedians.size} (${standComedianNames.size} from Stand)`);
+  log(`Total unique comedians across all sources: ${allComedians.size}`);
 
   // Find comedians missing local photos
   let downloadCount = 0;
@@ -850,7 +825,6 @@ async function main() {
 
   // Update bios for comedians missing them in the DB
   let bioCount = 0;
-  let standBioCount = 0;
   for (const [name, data] of allComedians) {
     const existing = dbByName.get(name);
 
@@ -864,21 +838,9 @@ async function main() {
       dbByName.set(name, newEntry);
     }
 
+    // Try Wikipedia for comedians with no bio at all
     const entry = dbByName.get(name);
-
-    // Try Stand profile page for Stand comedians without a Stand bio
-    if (!entry.bio_stand && standComedianNames.has(name)) {
-      const standBio = await fetchStandBio(name);
-      if (standBio && !isGenericBio(standBio)) {
-        entry.bio_stand = standBio;
-        standBioCount++;
-      }
-      // Small delay to be respectful to The Stand's server
-      await new Promise(r => setTimeout(r, 200));
-    }
-
-    // Try Wikipedia for comedians with no bio from any source
-    const hasBio = entry.bio || entry.bio_stand || entry.tagline_cellar;
+    const hasBio = entry.bio || entry.bio_stand;
     if (!hasBio) {
       const wikiBio = await fetchWikiBio(name);
       if (wikiBio && !isGenericBio(wikiBio)) {
@@ -895,7 +857,7 @@ async function main() {
     }
   }
 
-  log(`Bios — Stand: ${standBioCount}, Wikipedia: ${bioCount}`);
+  log(`Bios — fetched from Wikipedia: ${bioCount}`);
 
   // Sort manifest alphabetically for clean diffs
   const sortedManifest = {};
