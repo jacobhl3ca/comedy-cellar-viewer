@@ -1075,7 +1075,7 @@ function renderSourceTabs() {
 function renderShows() {
   const container = document.getElementById('shows-container');
 
-  // Comedian filter banner
+  // Comedian filter banner — sticky, centered, inside container
   const existingBanner = document.getElementById('comedian-filter-banner');
   if (existingBanner) existingBanner.remove();
   if (activeComedianFilter) {
@@ -1083,7 +1083,10 @@ function renderShows() {
     banner.id = 'comedian-filter-banner';
     banner.className = 'comedian-filter-banner';
     banner.innerHTML = `Showing shows with <strong>${activeComedianFilter}</strong> <button onclick="filterByComedian('${activeComedianFilter.replace(/'/g, "\\'")}')">✕ Clear</button>`;
-    container.parentElement.insertBefore(banner, container);
+    container.prepend(banner);
+    document.body.classList.add('has-comedian-filter');
+  } else {
+    document.body.classList.remove('has-comedian-filter');
   }
 
   // Route to correct renderer based on active source
@@ -1315,6 +1318,11 @@ function renderComedianChips(comedians, hideSkips, venueSource) {
       if (hideSkips) cls += ' hidden-skip';
     } else {
       cls += ' new-face';
+    }
+
+    // Highlight the filtered comedian's tile with red outline
+    if (activeComedianFilter && name.toLowerCase() === activeComedianFilter.toLowerCase()) {
+      cls += ' filtered-comedian';
     }
 
     const photoUrl = getPhotoForVenue(name, venueSource || 'cellar');
