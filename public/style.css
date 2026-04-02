@@ -947,15 +947,13 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
   body { padding: 16px; }
   .toolbar-btn, .sort-btn, .venue-source-tab, .day-tab { min-height: 44px; min-width: 44px; }
   .comedian { min-height: 44px; }
-  .reserve-btn { min-height: 44px; padding: 10px 20px; }
   .big-shows-section { grid-template-columns: 1fr 1fr; gap: 10px; }
 }
 
 /* Touch target minimums for all mobile (<768px) */
 @media (max-width: 768px) {
   .toolbar-btn, .sort-btn, .venue-source-tab, .day-tab,
-  .settings-btn, .more-filters-btn, .exp-btn { min-height: 44px; }
-  .reserve-btn { min-height: 44px; }
+  .settings-btn, .more-filters-btn { min-height: 44px; }
 }
 
 /* Back to top button */
