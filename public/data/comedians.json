@@ -1613,7 +1613,8 @@
       "the_stand",
       "comedy_cellar"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/yamaneika-saunders"
+    "stand_profile": "https://thestandnyc.com/comedians/yamaneika-saunders",
+    "tagline_cellar": "\"WRITERS GUILD AWARD WINNER\", \"The Tonight Show\", Comedy Central Presents, Showtime's \"Nasty Show\", \"Grown and sexy\" on VH1, \"The Degenerates\" on Netflix, LaffMobb/Laff Tracks on TrueTV, Roast Battle on Comedy Central, Host of \"Off Topic with Yamaneika\" on Kevin Hart's LOL Radio on Sirius XM"
   },
   {
     "name": "Matt Richards",
@@ -2151,7 +2152,8 @@
       "nycc",
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/ari-shaffir"
+    "stand_profile": "https://thestandnyc.com/comedians/ari-shaffir",
+    "bio_stand": "Two Netflix Specials, Creator \"Ari Shaffir's Renamed Storytelling Show\", Podcast \"Skeptic Tank\""
   },
   {
     "name": "Pete Lee",
@@ -2532,7 +2534,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/mike-vecchione",
-    "bio_stand": "Last Comic Standing, Comedy Central, , Tonight Show with Jimmy Fallon"
+    "bio_stand": "Last Comic Standing, Comedy Central, , Tonight Show with Jimmy Fallon",
+    "tagline_cellar": "FROM THE TONIGHT SHOW, \"LAST COMIC STANDING\", AND M RADIO, \"HOWARD STERN ON DEMAND\"."
   },
   {
     "name": "Erin Foley",
@@ -3394,7 +3397,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/ian-fidance",
-    "bio": "Ian Fidance is a stand-up comedian based in New York City. He's a regular on the NYC comedy circuit and known for his unique, eccentric comedy style."
+    "bio": "Ian Fidance is a stand-up comedian based in New York City. He's a regular on the NYC comedy circuit and known for his unique, eccentric comedy style.",
+    "tagline_cellar": "BEIN IAN PODCAST, NPR’S THIS AMERICAN LIFE, NETFLIX, SOPRANOS PRIMA VOLTA"
   },
   {
     "name": "Ian Lara",
@@ -3587,7 +3591,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/jim-norton",
-    "bio": "Jim Norton is a stand-up comedian, radio host, author, and actor. He co-hosts Jim Norton & Sam Roberts on SiriusXM. He's released numerous HBO and Netflix specials and is a Comedy Cellar regular known for his brutally honest, no-holds-barred comedy about taboo subjects."
+    "bio": "Jim Norton is a stand-up comedian, radio host, author, and actor. He co-hosts Jim Norton & Sam Roberts on SiriusXM. He's released numerous HBO and Netflix specials and is a Comedy Cellar regular known for his brutally honest, no-holds-barred comedy about taboo subjects.",
+    "tagline_cellar": "FROM THE \"LATE SHOW WITH DAVID LETTERMAN\", HBO'S \"LUCKY LOUIE\", THE \"OPIE & ANTHONY\" RADIO SHOW, AND COMEDY CENTRAL'S \"TOUGH CROWD\"."
   },
   {
     "name": "Joe Bartnick",
@@ -4721,7 +4726,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/tammy-pescatelli",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Tammy-Pescatelli-1050x840.jpg",
-    "bio": "Tammy Pescatelli is a stand-up comedian, actress, and author. She's appeared on multiple late night shows, was a finalist on Last Comic Standing, and tours as a headliner. Known for her material about being a working mom."
+    "bio": "Tammy Pescatelli is a stand-up comedian, actress, and author. She's appeared on multiple late night shows, was a finalist on Last Comic Standing, and tours as a headliner. Known for her material about being a working mom.",
+    "bio_stand": "Last Comic Standing, Comedy Central"
   },
   {
     "name": "Taylor Tomlinson",
@@ -4911,7 +4917,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Anthony Devito is a stand-up comedian based in New York City. He's appeared on The Late Show, The Tonight Show, and is a regular at the Comedy Cellar. Known for his sharp, well-crafted jokes."
+    "bio": "Anthony Devito is a stand-up comedian based in New York City. He's appeared on The Late Show, The Tonight Show, and is a regular at the Comedy Cellar. Known for his sharp, well-crafted jokes.",
+    "tagline_cellar": "CBS LATE SHOW W/STEPHEN COLBERT, COMEDY CENTRAL ADAM DEVINE'S HOUSE PARTY, THIS AMERICAN LIFE"
   },
   {
     "name": "Are You Garbage",
@@ -5050,7 +5057,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Michael Rowland is a stand-up comedian and regular at the Comedy Cellar in New York City. He performs regularly on the NYC comedy circuit."
+    "bio": "Michael Rowland is a stand-up comedian and regular at the Comedy Cellar in New York City. He performs regularly on the NYC comedy circuit.",
+    "tagline_cellar": "FROM FOX'S \"ANIMAL CONTROL\", THE TONIGHT SHOW, COMEDY CENTRAL"
   },
   {
     "name": "Regina DeCicco",
@@ -5967,5 +5975,26 @@
     "venues": [],
     "bio": "COMEDY CENTRAL SPECIAL, THE LATE SHOW WITH SETH MEYERS, THE PETE HOLMES SHOW ON TBS, JOHN OLIVER'S NEW YORK STAND UP SHOW",
     "tagline_cellar": "COMEDY CENTRAL SPECIAL, THE LATE SHOW WITH SETH MEYERS, THE PETE HOLMES SHOW ON TBS, JOHN OLIVER'S NEW YORK STAND UP SHOW"
+  },
+  {
+    "name": "Uncle Lazer",
+    "venues": []
+  },
+  {
+    "name": "Ryan Foster",
+    "venues": []
+  },
+  {
+    "name": "Cameron Leedy",
+    "venues": []
+  },
+  {
+    "name": "Benny Feldman",
+    "venues": [],
+    "bio_stand": "Comedy Central"
+  },
+  {
+    "name": "Anthony DeVito",
+    "venues": []
   }
 ]
