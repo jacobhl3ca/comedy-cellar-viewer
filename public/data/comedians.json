@@ -4366,7 +4366,7 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/peter-james-fowler",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/pjf2025_%281%29_1.jpg"
+    "bio": "Peter James Fowler is a stand-up comedian based in New York City. He performs regularly at The Stand and other NYC clubs."
   },
   {
     "name": "Petey DeAbreu",
@@ -5132,6 +5132,15 @@
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Maria_DeCotis.jpg",
     "stand_profile": "https://thestandnyc.com/comedians/maria-decotis",
     "bio": "Maria DeCotis is a stand-up comedian and regular at the Comedy Cellar in New York City. She's appeared on AXS TV's Gotham Comedy Live and performs at clubs across the city."
+  },
+  {
+    "name": "Peter Fowler",
+    "venues": [
+      "the_stand"
+    ],
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/pjf2025_%281%29_1.jpg",
+    "stand_profile": "https://thestandnyc.com/comedians/peter-fowler",
+    "bio": "Peter Fowler is a stand-up comedian based in New York City. He performs regularly at The Stand and other NYC clubs."
   },
   {
     "name": "Tom Mcguire",

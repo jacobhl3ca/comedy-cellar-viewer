@@ -122,7 +122,6 @@ function postJSON(hostname, path, body) {
 const NAME_FIXES = {
   'Will Sylvince': 'Wil Sylvince',
   'Luis Gomez': 'Luis J Gomez',
-  'Peter Fowler': 'Peter James Fowler',
 };
 
 function normalizeName(name) {
@@ -857,28 +856,6 @@ async function main() {
       }
     }
   }
-
-  // Scrape Stand bios from profile pages (after DB is fully populated)
-  let standBioCount = 0;
-  for (const [name] of standComedians) {
-    const entry = dbByName.get(name);
-    if (!entry) continue;
-    if (entry.bio_stand && !isGenericBio(entry.bio_stand)) continue;
-    const slug = nameToSlug(name);
-    try {
-      const html = await fetchText(`https://thestandnyc.com/comedians/${slug}`);
-      const match = html.match(/You know from:\s*<\/strong><\/em><\/span>\s*<small>(.*?)<\/small>/i)
-                 || html.match(/You know from:\s*(.*?)<\/(?:small|h5)/i);
-      if (match) {
-        const bio = match[1].replace(/<[^>]+>/g, '').trim();
-        if (bio && bio.length > 3 && !isGenericBio(bio)) {
-          entry.bio_stand = bio;
-          standBioCount++;
-        }
-      }
-    } catch {}
-  }
-  log(`Stand bios scraped: ${standBioCount}`);
 
   log(`Bios — fetched from Wikipedia: ${bioCount}`);
 
