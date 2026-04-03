@@ -1574,11 +1574,11 @@ function renderAllDaysSchedule(container) {
 
 // ---- Stand room helpers ----
 function cleanStandRoom(room) {
-  if (!room) return 'Main';
+  if (!room) return 'Main room';
   let r = room.replace('&nbsp;', ' ').replace(/^The Stand\s*[-–—]\s*/i, '').trim();
   // Discard street addresses (e.g. "407 W 15th St") — these are venue addresses, not rooms
-  if (/^\d+\s/.test(r)) return 'Main';
-  return r || 'Main';
+  if (/^\d+\s/.test(r)) return 'Main room';
+  return r || 'Main room';
 }
 
 // ---- Stand room filter ----
