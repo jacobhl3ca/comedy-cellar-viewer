@@ -268,13 +268,25 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .sort-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
 
 .settings-btn {
-  /* was: padding: 8px 16px; border-radius: 8px; */
   padding: 6px 14px; border-radius: 6px;
-  background: var(--surface2); border: 1px solid var(--border);
-  color: var(--text); font-size: 13px; font-weight: 600;
-  cursor: pointer; transition: all 0.15s;
+  background: linear-gradient(135deg, var(--accent), #ff4f4f);
+  border: none;
+  color: #fff; font-size: 13px; font-weight: 600; letter-spacing: 0.3px;
+  cursor: pointer; transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(230, 54, 54, 0.25);
+  animation: subtle-jingle 3s ease-in-out 2s 2;
 }
-.settings-btn:hover { border-color: var(--accent); color: var(--accent); }
+.settings-btn:hover { background: linear-gradient(135deg, #ff4f4f, var(--accent)); box-shadow: 0 3px 12px rgba(230, 54, 54, 0.4); transform: scale(1.05); }
+.settings-btn:active { transform: scale(0.97); }
+
+@keyframes subtle-jingle {
+  0%, 100% { transform: rotate(0deg); }
+  10% { transform: rotate(12deg); }
+  20% { transform: rotate(-10deg); }
+  30% { transform: rotate(6deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(0deg); }
+}
 
 /* Show Cards */
 .shows-container { display: flex; flex-direction: column; gap: 16px; padding-bottom: 40px; }
