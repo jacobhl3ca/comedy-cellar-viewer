@@ -25,6 +25,15 @@ async function loadPrefsFromHash() {
 
 function savePrefs(prefs) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
+  updateShareBtn();
+}
+
+function updateShareBtn() {
+  const btn = document.getElementById('header-share');
+  if (!btn) return;
+  const p = loadPrefs();
+  const has = p.faves.length > 0 || p.skips.length > 0 || p.likes.length > 0;
+  btn.classList.toggle('visible', has);
 }
 
 // Compressed prefs: deflate + base64url of "fave1|fave2\nskip1|skip2\nlike1|like2"
@@ -2752,6 +2761,7 @@ async function init() {
   initCalendar();
   initSettingsJingle();
   updateSettingsBtnState();
+  updateShareBtn();
   renderSourceTabs();
   renderTabs();
   renderShows();
@@ -2971,9 +2981,14 @@ async function init() {
     const url = await buildShareUrl();
     navigator.clipboard.writeText(url).then(() => {
       const btn = document.getElementById('header-share');
-      btn.classList.add('copied');
-      btn.title = 'Copied!';
-      setTimeout(() => { btn.classList.remove('copied'); btn.title = 'Copy share link'; }, 2000);
+      btn.querySelector('.share-icon-svg').style.display = 'none';
+      btn.querySelector('.share-check').style.display = '';
+      btn.title = 'Link copied!';
+      setTimeout(() => {
+        btn.querySelector('.share-icon-svg').style.display = '';
+        btn.querySelector('.share-check').style.display = 'none';
+        btn.title = 'Copy share link';
+      }, 2000);
     });
   });
 }
