@@ -945,15 +945,8 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 /* Tablet breakpoint (481-768px) */
 @media (min-width: 481px) and (max-width: 768px) {
   body { padding: 16px; }
-  .toolbar-btn, .sort-btn, .venue-source-tab, .day-tab { min-height: 44px; min-width: 44px; }
   .comedian { min-height: 44px; }
   .big-shows-section { grid-template-columns: 1fr 1fr; gap: 10px; }
-}
-
-/* Touch target minimums for all mobile (<768px) */
-@media (max-width: 768px) {
-  .toolbar-btn, .sort-btn, .venue-source-tab, .day-tab,
-  .settings-btn, .more-filters-btn { min-height: 44px; }
 }
 
 /* Back to top button */

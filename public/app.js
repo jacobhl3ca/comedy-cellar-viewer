@@ -1896,12 +1896,10 @@ function renderAllVenues(container) {
             ${evt.price ? `<span class="big-show-price">From $${evt.price}</span>` : ''}
             ${(() => {
               const links = evt.ticketLinks || (evt.url ? [{ source: evt.source || 'tickets', url: evt.url }] : []);
-              if (links.length > 1) {
-                const labels = { seatgeek: 'SeatGeek', ticketmaster: 'Ticketmaster' };
-                return links.map(l => `<a href="${l.url}" target="_blank" class="reserve-btn${evtSoldOut ? ' sold-out-btn' : ''}" style="font-size:11px;" onclick="trackReserve(this)" title="${labels[l.source] || 'Tickets'}">${evtSoldOut ? 'Sold Out' : labels[l.source] || 'Tickets'}</a>`).join(' ');
-              }
-              const singleUrl = links[0]?.url || evt.url;
-              return singleUrl ? `<a href="${singleUrl}" target="_blank" class="reserve-btn${evtSoldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${evtSoldOut ? 'Sold Out' : 'Get Tickets'}</a>` : '';
+              // Prefer SeatGeek, fallback to first available
+              const preferred = links.find(l => l.source === 'seatgeek') || links[0];
+              const ticketUrl = preferred?.url || evt.url;
+              return ticketUrl ? `<a href="${ticketUrl}" target="_blank" class="reserve-btn${evtSoldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${evtSoldOut ? 'Sold Out' : 'Tickets'}</a>` : '';
             })()}
             ${evtSoldOut ? hideSoldOutToggle(evtSoldOut) : ''}
           </div>
@@ -2535,33 +2533,39 @@ function initTheme() {
 const comedianTaglines = {};       // Cellar API taglines (live)
 const comedianWikiBios = {};       // Wikipedia bios (last resort)
 
-// Venue-aware bio lookup: Cellar tagline → Stand DB bio → NYCC DB bio → Wikipedia → ''
+// Venue-aware bio lookup: venue-specific → NYCC DB → Cellar tagline → DB fallbacks → Wikipedia → ''
 function getBioForVenue(name, venueSource) {
+  const dbEntry = comedianDB.find(c => c.name === name);
   // 1. If Cellar show, prefer Cellar live tagline
   if (venueSource === 'cellar') {
     const cellarTag = comedianTaglines[name];
     if (cellarTag && !isGenericBio(cellarTag)) return cellarTag;
+    // Fallback to prebaked Cellar tagline from DB
+    if (dbEntry?.tagline_cellar && !isGenericBio(dbEntry.tagline_cellar)) return dbEntry.tagline_cellar;
   }
   // 2. If Stand show, prefer Stand bio from DB
   if (venueSource === 'stand') {
-    const dbEntry = comedianDB.find(c => c.name === name);
     if (dbEntry?.bio_stand && !isGenericBio(dbEntry.bio_stand)) return dbEntry.bio_stand;
   }
   // 3. NYCC bio from DB (works for any venue as fallback)
-  const dbEntry = comedianDB.find(c => c.name === name);
   if (dbEntry?.bio && !isGenericBio(dbEntry.bio)) return dbEntry.bio;
   // 4. Cellar tagline as fallback for non-Cellar shows too
   const cellarTag = comedianTaglines[name];
   if (cellarTag && !isGenericBio(cellarTag)) return cellarTag;
-  // 5. Wikipedia (last resort)
+  // 5. Prebaked Cellar tagline from DB
+  if (dbEntry?.tagline_cellar && !isGenericBio(dbEntry.tagline_cellar)) return dbEntry.tagline_cellar;
+  // 6. Wikipedia — live map first, then prebaked DB
   const wiki = comedianWikiBios[name];
   if (wiki && !isGenericBio(wiki)) return wiki;
+  if (dbEntry?.bio_wiki && !isGenericBio(dbEntry.bio_wiki)) return dbEntry.bio_wiki;
   return '';
 }
 
 function isGenericBio(bio) {
   if (!bio) return true;
   const lower = bio.toLowerCase();
+  // Filler patterns (no real content) — block regardless of opener
+  if (/performs regularly|regular at the|clubs across the city|comedy circuit|nyc comedy scene|performing on the/.test(lower) && bio.length < 200) return true;
   const startsGeneric = /^[a-z\s.'-]+ is a (stand-up )?comedian/.test(lower);
   if (startsGeneric) {
     // If it has real credits, keep it despite generic opener

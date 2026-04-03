@@ -603,7 +603,27 @@ function guessExtension(url, buffer) {
   return '.jpg'; // default
 }
 
-// ---- Step 5: Fetch Wikipedia bio ----
+// ---- Step 5a: Fetch Stand bio from profile page ----
+async function fetchStandBio(name) {
+  try {
+    const slug = nameToSlug(name);
+    const html = await fetchText(`https://thestandnyc.com/comedians/${slug}`);
+    // Bio is bare text (5+ tabs indent) after show listings, possibly multi-paragraph
+    const match = html.match(/\n\n\t{4,}([A-Z](?:[^\n]|\n(?!\s*<\/div>))+)/s);
+    if (!match) return null;
+    let bio = match[1].trim()
+      .replace(/[\t]+/g, ' ')
+      .replace(/\n\s*\n/g, ' ')
+      .replace(/\n/g, ' ')
+      .replace(/\s{2,}/g, ' ');
+    if (bio.length < 30) return null;
+    return bio;
+  } catch {
+    return null;
+  }
+}
+
+// ---- Step 5b: Fetch Wikipedia bio ----
 async function fetchWikiBio(name) {
   try {
     const encoded = encodeURIComponent(name.replace(/\s+/g, '_'));
@@ -628,6 +648,9 @@ function isGenericBio(bio) {
   // Pure template bios
   if (/^[\w\s.'-]+ is a (stand-up )?comedian/.test(lower) && bio.length < 80) return true;
   if (/^[\w\s.'-]+ is a regular at/.test(lower)) return true;
+  // Filler patterns (no real content)
+  if (/performs regularly|regular at|clubs across the city|comedy circuit|nyc comedy scene|performing on the/.test(lower) && bio.length < 200) return true;
+  if (/hosts? the .+ podcast/.test(lower) && !/netflix|hbo|comedy central|snl|tonight show|late night|conan|fallon|kimmel|colbert|daily show|album|special|award|festival/i.test(lower) && bio.length < 150) return true;
   // Has real credits? Keep it
   if (/netflix|hbo|comedy central|snl|saturday night|tonight show|late night|conan|fallon|kimmel|colbert|letterman|daily show|imdb/i.test(bio)) return false;
   // Short + generic pattern
@@ -825,6 +848,7 @@ async function main() {
 
   // Update bios for comedians missing them in the DB
   let bioCount = 0;
+  let standBioCount = 0;
   for (const [name, data] of allComedians) {
     const existing = dbByName.get(name);
 
@@ -838,8 +862,24 @@ async function main() {
       dbByName.set(name, newEntry);
     }
 
-    // Try Wikipedia for comedians with no bio at all
     const entry = dbByName.get(name);
+
+    // Clean up filler bios that passed old filters
+    if (entry.bio && isGenericBio(entry.bio)) {
+      delete entry.bio;
+    }
+
+    // Scrape Stand bio for Stand comedians missing bio_stand
+    const isStandComedian = data.source === 'stand' || (entry.venues && entry.venues.includes('the_stand'));
+    if (isStandComedian && !entry.bio_stand) {
+      const standBio = await fetchStandBio(name);
+      if (standBio && !isGenericBio(standBio)) {
+        entry.bio_stand = standBio;
+        standBioCount++;
+      }
+    }
+
+    // Try Wikipedia for comedians with no bio at all
     const hasBio = entry.bio || entry.bio_stand;
     if (!hasBio) {
       const wikiBio = await fetchWikiBio(name);
@@ -857,7 +897,7 @@ async function main() {
     }
   }
 
-  log(`Bios — fetched from Wikipedia: ${bioCount}`);
+  log(`Bios — Stand profiles: ${standBioCount}, Wikipedia: ${bioCount}`);
 
   // Sort manifest alphabetically for clean diffs
   const sortedManifest = {};
