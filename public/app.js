@@ -2007,7 +2007,28 @@ function renderBigShows(container) {
     // Use first performer name as grouping key (strips tour names, "- Full Name" suffixes, etc.)
     const firstPerformer = (evt.performers || '').split(',')[0].trim().split(' - ')[0].trim();
     const cleanTitle = (evt.title || 'Unknown').replace(/\s*\(Rescheduled.*?\)/i, '').replace(/\s*\(Postponed.*?\)/i, '').replace(/\s*\(\d+\+\)/i, '').trim();
-    const key = (firstPerformer || cleanTitle).toLowerCase();
+    let key = (firstPerformer || cleanTitle).toLowerCase();
+    // Fuzzy merge: if no performer and title-based key doesn't match an existing group,
+    // check if an existing group's performer words match the start of this title
+    // Handles spelling variations like SG "Ruslan Bely" vs TM "RUSLAN BELIY STAND UP SHOW"
+    if (!firstPerformer && !byPerformer[key]) {
+      const titleWords = key.replace(/[^a-z\s]/g, '').trim().split(/\s+/);
+      for (const [existingKey, existingData] of Object.entries(byPerformer)) {
+        const perfWords = (existingData.performers || existingKey).toLowerCase().replace(/[^a-z\s]/g, '').trim().split(/\s+/).filter(w => w.length >= 3);
+        if (perfWords.length < 2) continue;
+        const titleStart = titleWords.slice(0, perfWords.length + 2);
+        const allMatch = perfWords.every(w => titleStart.some(tw => {
+          if (tw === w) return true;
+          const min = Math.min(tw.length, w.length);
+          let shared = 0; for (let i = 0; i < min; i++) { if (tw[i] === w[i]) shared++; }
+          return shared >= 3 && shared >= min - 1;
+        }));
+        if (allMatch) {
+          key = existingKey;
+          break;
+        }
+      }
+    }
     // Pick best display title: prefer descriptive show names over redundant "Name - Name" patterns
     const titleScore = (t) => {
       const lower = t.toLowerCase();

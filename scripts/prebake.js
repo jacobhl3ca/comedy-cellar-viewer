@@ -532,6 +532,31 @@ function mergeEvents(seatgeekEvents, ticketmasterEvents) {
         if (matchIdx !== undefined) break;
       }
     }
+    // Fuzzy match: check if SG performer's name words appear at the start of TM title
+    // Handles spelling variations like SG "Ruslan Bely" vs TM "RUSLAN BELIY STAND UP SHOW"
+    if (matchIdx === undefined) {
+      const tmWords = evt.title.toLowerCase().replace(/[^a-z\s]/g, '').trim().split(/\s+/);
+      const tmDate = evt.date;
+      for (const [sgKey, sgIdx] of sgKeyToIndex) {
+        const [sgName, sgDate] = sgKey.split('|');
+        if (sgDate !== tmDate) continue;
+        const sgEvt = merged[sgIdx];
+        const sgPerformerWords = (sgEvt.performers || sgEvt.title).toLowerCase().replace(/[^a-z\s]/g, '').trim().split(/\s+/).filter(w => w.length >= 3);
+        if (sgPerformerWords.length < 2) continue;
+        const tmStart = tmWords.slice(0, sgPerformerWords.length + 2);
+        // Fuzzy word compare: shared first N chars, tolerant of 1-char spelling differences
+        const allMatch = sgPerformerWords.every(w => tmStart.some(tw => {
+          if (tw === w) return true;
+          const min = Math.min(tw.length, w.length);
+          let shared = 0; for (let i = 0; i < min; i++) { if (tw[i] === w[i]) shared++; }
+          return shared >= 3 && shared >= min - 1;
+        }));
+        if (allMatch) {
+          matchIdx = sgIdx;
+          break;
+        }
+      }
+    }
 
     if (matchIdx !== undefined) {
       // Duplicate — attach Ticketmaster URL if not already linked

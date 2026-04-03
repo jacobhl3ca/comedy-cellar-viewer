@@ -975,7 +975,8 @@
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/shaunak-godkhindi",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio_stand": "Shaunak Godkhindi is an Atlanta comedian who performs all around the country at clubs and indie venues. He has also been a performer at SXSW, Laughing Skull Fest, Red Clay Comedy Festival, and New South Comedy Fest. Shaunak has opened up for Kyle Kinane, Rory Scovel, Joe Zimmerman, Nore Davis, Sean Patton, Aakash Singh, and many more. His comedy style is energetic, optimistic, and fun. He once made a lady laugh so hard she peed a little and she emailed him after the show saying that her night was ruined.​"
   },
   {
     "name": "Olivia Carter",
@@ -2679,7 +2680,6 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/adrienne-iapalucci",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Adrienne_Iapalucci_1.jpg",
-    "bio": "Adrienne Iapalucci is a stand-up comedian based in New York City. She's appeared on The Late Show and is a regular at the Comedy Cellar. Her Netflix special is dark and unflinching. Known for her deadpan delivery and dark humor.",
     "tagline_cellar": "FROM THE LATE SHOW WITH DAVID LETTERMAN, FROM THE ARTIE LANGE SHOW, LAST COMIC STANDING",
     "bio_stand": "Born and bred in the Bronx, Adrienne Iapalucci's skewed look on life is reflected in her unique brand of intelligent comedy. Her dark sense of humor is enhanced by her political incorrectness and counteracted by her love of dogs. Comedy fans might recognize Adrienne from her performances as a semifinalist on season 7 of NBC's Last Comic Standing and her recent appearance on the Late Show with David Letterman. In 2009, Adrienne won the first ever People's Choice award at the New York Comedy Festival. She was also a semifinalist in the festival's New York Funniest Stand-Up Contest and a runner-up in the New York Underground Comdy Festival's Best of the Boroughs contest. Adrienne has been featured in the Daily News, New York Times, Reader's Digest, and TimeOut NY magazine. In 2010 Adrienne made her international debut as part of Montreal's Just For Laughs Festival, where she took part in \"New Faces.\""
   },
@@ -4185,8 +4185,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/matthew-broussard",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/matthew-broussard.jpg",
-    "bio": "Matthew Broussard is a stand-up comedian known for his clever wordplay and math-based humor. He's appeared on The Tonight Show, Conan, and Comedy Central. A regular at NYC comedy clubs.",
-    "bio_stand": "Born in New Jersey, raised in Atlanta, and, in 2012, winner of Houston's Funniest Person, Matthew Broussard is not exactly sure where he's from. Matthew earned a degree in Applied Mathematics and a job as a financial analyst before moving to West Hollywood to pursue stand-up comedy full time. His brand of playful, witty humor covers topics from physics & grammar to the hardships of looking like an 80s movie villain. Aside from his popular webcomic, mondaypunday.com, he can be seen on The League, The Mindy Project, Conan, Roast Battle, and has his own Half Hour Special on Comedy Central. But his Cajun father and Jewish mother still really want him to take the GMAT."
+    "bio_stand": "Born in New Jersey, raised in Atlanta, and, in 2012, winner of Houston's Funniest Person, Matthew Broussard is not exactly sure where he's from. Matthew earned a degree in Applied Mathematics and a job as a financial analyst before moving to West Hollywood to pursue stand-up comedy full time. His brand of playful, witty humor covers topics from physics & grammar to the hardships of looking like an 80s movie villain. Aside from his popular webcomic, mondaypunday.com, he can be seen on The League, The Mindy Project, Conan, Roast Battle, and has his own Half Hour Special on Comedy Central. But his Cajun father and Jewish mother still really want him to take the GMAT.",
+    "tagline_cellar": "FROM CONAN, COMEDY CENTRAL HALF HOUR, FINALIST ON JEFF ROSS' \"ROAST BATTLE\""
   },
   {
     "name": "Max Manticof",
@@ -4567,7 +4567,6 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/rayna-greenberg",
-    "bio": "Rayna Greenberg is a stand-up comedian and podcaster. She co-hosts the Girls Gotta Eat podcast and performs at clubs across the country.",
     "bio_stand": "Girls Gotta Eat Podcast"
   },
   {
@@ -5038,7 +5037,8 @@
     "name": "Aaron Chen",
     "venues": [
       "comedy_cellar"
-    ]
+    ],
+    "bio_stand": "Born and raised in Sydney, Australia, Aaron has quickly climbed the ranks of the international comedy scene. Aaron made his mark on Australian comedy with his debut solo show in 2017 and since then has toured nationally in front of sold-out crowds and rave reviews, earning him the sought-after awards for Best Newcomer (2017) and Director’s Choice (2019), and nomination for Best Show (2021) at the Melbourne International Comedy Festival. Since his critically acclaimed performance at the 2019 Edinburgh Fringe Festival, Aaron supported comedian Ronny Chieng on his Live Australian Tour, and had feature roles in Ronny Chieng International Student (ABC), Orange is the New Brown (Seven Network), and FISK (Netflix). As a comedian, he also appears on Australia’s #1 panel show, Have You Been Paying Attention (Network 10). Aaron’s acclaimed 2021 Adult Swim special A Life in Questions was for nominated for Best Short Form Comedy special at the Australian Academy of Cinema and Television Arts Awards, and lead to development deals with Adult Swim/Warner Media. His stand-up special, If It Weren’t Filmed, Nobody Would Believe was released on YouTube in September 2022 and has accumulated almost 1 million views."
   },
   {
     "name": "Adam Gilbert",
@@ -5102,7 +5102,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "tagline_cellar": "COMICS TO WATCH, CBS"
+    "tagline_cellar": "COMICS TO WATCH, CBS",
+    "bio_wiki": "Daniel or Dan Davies may refer to:Daniel Davies (1872–1951), member of the South Australian House of Assembly\nDaniel Davies (bishop) (1863–1928), Anglican bishop of Bangor, 1925–1928\nDaniel Davies (1825–1911), Canadian merchant and political figure\nDaniel Davies (musician), British-American musician"
   },
   {
     "name": "Ethan Simmons-Patterson",
@@ -5124,7 +5125,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "tagline_cellar": "FROM THE \"LOUIE\" CK SHOW, \"THE ARISTOCRATS\", \"THE CONAN O'BRIEN SHOW\", COMEDY CENTRAL'S \"TOUGH CROWD\" AND \"THE TONIGHT SHOW\"."
+    "tagline_cellar": "FROM THE \"LOUIE\" CK SHOW, \"THE ARISTOCRATS\", \"THE CONAN O'BRIEN SHOW\", COMEDY CENTRAL'S \"TOUGH CROWD\" AND \"THE TONIGHT SHOW\".",
+    "bio_wiki": "Gregg Rogell is an American professional comedian. Born on Long Island, Rogell resides in New York City and is a regular performer at the Comedy Cellar and the Comic Strip Live. He has appeared on The Tonight Show, Late Night with Conan O'Brien, Louie, Half Baked, and The Nanny. He has had his own h"
   },
   {
     "name": "H.Foley",
@@ -5873,11 +5875,13 @@
   },
   {
     "name": "Danny Palmer",
-    "venues": []
+    "venues": [],
+    "bio_stand": "A 15 year NYC comedy veteran, Danny looks like the typical corn fed boy from the Midwest. Yet his style and material have a distinct and unique edge. Audiences feel at ease with him quickly thanks to his engaging style and self deprecating approach. He's appeared on Fox's Laughs, been nominated for best comic at the LA Comedy Festival, performed in the NY Comedy Festival and reached the finals of both the Cleveland and Laughing Devil Comedy Festivals. He also regularly opens for Giulio Gallarotti at comedy clubs around the country. He's performed in over 15 festivals across the country (including SF's Sketchfest and Boston). You can also check out his podcast The Danny Palmer Show (popular in Germany for some reason) and his \"Good Vibes\" videos on Instagram (@dannypalmernyc). Danny resides in Manhattan's East Village."
   },
   {
     "name": "Alex Portillo",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Alex Portillo is a NYC-based comedian, sometimes actor, and soon to be your favorite “Texican”. Known for his sharp wit and irreverent, yet good-natured style of humor, Alex also has a pair of white glasses that he just won’t let go of. He’s one of the pound-for-pound top hosts in the city and just as likely to make friends with you right after he makes fun of you."
   },
   {
     "name": "Zack McGovern",
@@ -5885,7 +5889,8 @@
   },
   {
     "name": "Daryn Passarello",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Daryn Passarello is an accomplished Multi-Award Winning producer/content creator and comedian with 20+ years of experience in the entertainment. As an accomplished award winning producer, writer, actor & New York native, Daryn started her career right out of high school at the age of 18 playing \"Nitro G\" on Stan Lee/Sy-Fy Channel's \"Who Wants to be a Superhero.\" Afterwards, Lee personally asked Daryn to come work for POW! Entertainment, as executive producer and writer on several projects and series, including overseeing/developing content for Stan Lee's Premium YouTube Channel, \"Stan Lee's World of Heroes.\" Daryn has been on-camera talent and producer for many shows, including TheRealStanLee.com, \"Mask & Cape,\" \"Save Stan Lee's Twitter\" & \"UnCONventional,\" as well as on-camera talent for other outlets. Currently, Daryn, formed Starheart Daydreamers, a creative collective; and is Creator of \"Ground Control\", an original series / IP, Host / Co-Producer of Coffee & Mayhem, a podcast on TuneIn, Co-Founder of Angels of Mayhem, a multi-award winning creative studio with a mission to serve as an incubator for original content. Within a month of launching Angels of Mayhem, Passarello & Co-Founder R. William Quinn won the Audience Award for the New York City 48hr Film Project."
   },
   {
     "name": "Dylan O’Keeffe",
@@ -5893,7 +5898,8 @@
   },
   {
     "name": "Kyle Lewis",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Kyle Lewis is a Comedian and Entertainer, born and raised from the non-gentrified parts of Brooklyn, New York. He has been featured at New York Comedy Club and Dangerfield's, and has made several appearances at Caroline's, Broadway Comedy Club, and various places in New York City. When he is not performing or pointing at brightly colored signs, Kyle is the host of his own comedy show, Character Select, in NYC, where he features some of the best up and coming comedians, performing with no microphone. Can't make it to a show? That's okay! Kyle has an internet presence that you'd be proud to keep in your browser history! Kyle has made appearances on popular web series, shows and podcasts, including SiriusXM’s Busted Open Radio, Barstool Sports’ Chap & Kate, and is even the host of his own pop culture podcast, Anything But Generic.. Does Kyle make his own content? You bet he does! Kyle is also the Co-Owner and creator of KLYK Productions, which is the home of The Fun Factor, the YouTube gaming series featuring entertainers and comedians playing video games and talking about life. And Three Man Booth, a website devoted to the more comedic side of pro wrestling and entertainment. Kyle also a strong social media presence. Some of Kyle's posts have garnered mainstream attention from Bleacher Report, Forbes and various pro wrestlers and celebrities. He has also been blocked, but that's because Hulk Hogan can't take a joke. Despite the name KyleLewisWasTaken, Kyle is not being held for ransom. The domain is by one of the many other Kyle Lewis' in the world, but this is not about them. THIS Kyle Lewis is available for bookings, hosting, and Kyle Lewis Impersonation Contests."
   },
   {
     "name": "Blake Freeman",
@@ -5901,7 +5907,8 @@
   },
   {
     "name": "Hannah Roeschlein",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Hannah Roeschlein is an Indianapolis native, now Chicago-based comedian. She frequents stages such as Almost Famous, Helium, The White Rabbit, and Laugh Factory."
   },
   {
     "name": "Hormoz Rashidi",
@@ -5934,7 +5941,8 @@
   },
   {
     "name": "Blair Dawson",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Blair Dawson is a standup comedian, writer, actress and person of interest. She regrettably hosts a podcast with her 82-year-old father, It’s Genetic, which Vulture calls exceptional and noteworthy. Currently, Blair is based in New York City where she co-hosts Drunk Family Dinner at Union Hall, but can be found all over the country touring and performing as a featured act in comedy festivals such as SF SketchFest, Gilda’s LaughFest, and Oak City Fest among others you couldn’t possibly have heard of (I’ll go anywhere.) Blair appeared on the National Lampoon produced variety show Sofa Kingdom, Comedy Central’s animated originals, and Sarah Cooper’s Audible book Let’s Catch Up Soon. Most importantly, Blair was once cold contacted to audition as a vape shop clerk for the Emmy nominated Hulu series, Ramy. She didn’t get it, but feels honored to be included."
   },
   {
     "name": "Sabeen Sadiq",
@@ -5946,7 +5954,8 @@
   },
   {
     "name": "Caroline Baniewicz",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Caroline Baniewicz is an actor, comedian and content creator based in New York. She works full-time at Barstool Sports, where she created the sketch series “Please End This.” She is a content maniac, often posting new sketches, characters, and original songs multiple times a week. She was a New Face Creator at the Just For Laughs comedy festival in Montreal last year. She’s a member of the band Pup Punk, who performed at the Ocean’s Calling Music Festival in Maryland. You can listen to Caroline’s hit songs “Dick Pics” and “Love in The Recession” on Spotify. Caroline’s originally from Dallas, Texas and grew up Homeschooled. She’s still reliving the glory days of winning the Christian Character Award on her Homeschooled basketball team."
   },
   {
     "name": "Mario Bosco",
@@ -5963,7 +5972,8 @@
   },
   {
     "name": "Joshua Lampley",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Joshua Lampley is originally from Fairview, Tennessee. He was going to try and write this whole bio in third person, but nobody wants to read that. I moved to New York to pursue comedy after performing stand-up and improv for years in Knoxville, Nashville, and other cities in Tennessee that you’ve never heard of. Over the years, I worked a number of jobs: I was a sports writer and host of a sports radio show, wrote freelance articles about gambling odds, edited local newscasts, worked as a production assistant for a murder documentary series, associate produced that murder documentary series, and then was promoted to casting director for that very same murder documentary series. Throughout my not-so-storied career, one thing remained constant: my desire to make people laugh at my own expense. Upon moving to New York City, I worked as a receptionist at an ad agency. After leading the agency soccer team to an impressive 1-5 season (our one win was by forfeit), my agency-wide match recap emails caught the eye of those above me, and I was able to transition into a Copywriter role. Now, I’m here. Ready to write something for you… or captain your soccer team."
   },
   {
     "name": "Irina Chelidze",
@@ -5983,11 +5993,13 @@
   },
   {
     "name": "Jonathan Williams",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Jonathan Williams is a stand-up comedian, former middle-school teacher, and (although he hates this and all other terms for it) content creator. He performs across the country, often as part of the Bored Teachers Comedy Tour. His videos about the absurdities, joys, and horrors of teaching have millions of views. He has worked with Nate Bargatze, Matt Rife, Craig Ferguson, and many other national and international headliners."
   },
   {
     "name": "Liz Glazer",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Liz Glazer is an award-winning standup comedian, actor, and writer. Liz won first place in the Boston Comedy Festival and Ladies of Laughter Competition, has been featured in a full article in the Wall Street Journal (as well as Above the Law, Lex Magazine, the Pennsylvania Gazette, and other publications), and has opened for Myq Kaplan and Maria Bamford. Liz was also a part of the Seattle International Comedy Competition and will be a part of the upcoming HBO Women in Comedy Festival. As an actor, Liz has appeared on ABC's FOR LIFE and CBS's BULL, and is on the faculty at Lesly Kahn & Co., the Los Angeles acting studio. Liz is also writing a television pilot about her life, a draft of which was a semi-finalist in the Stage 32 writing competition. Liz began her career as most standup comedians do: as a tenured law professor. Liz attended the University of Pennsylvania, receiving her B.A. magna cum laude and M.A. in Philosophy (Liz submatriculated into the graduate division so she earned both degrees in 4 years). Liz then attended the University of Chicago Law School where she was a member of the Law Review. After working as a transactional real estate lawyer at Fried, Frank, Harris, Shriver & Jacobson LLP, the New York Law firm, Liz went on to teach law and get tenure from Hofstra University's Maurice A. Deane School of Law, and also visited at other law schools such as Northwestern University Law School and Loyola University Chicago School of Law. While she was a law professor, Liz published law review articles in the Northwestern University Law Review, the Georgetown Law Journal, the Harvard Journal of Law & Gender, the Columbia Law Review Sidebar, the University of Pennsylvania Law Review PENNumbra, among other journals. AND THEN, Liz gave it all up to do comedy, where her material draws from her own life as a lesbian, a rabbi's wife, and a former lawyer. These days Liz performs regularly at comedy clubs and festivals. Liz also does private events for law schools, law firms, synagogues, and major corporations. While Liz loves performing live in person, she's equally comfortable yelling into her laptop on Zoom as she did nightly during the pandemic."
   },
   {
     "name": "Amanda Gordon",
@@ -6011,7 +6023,8 @@
   },
   {
     "name": "Michael Turner",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Stand up comedian, entertainer, show producer, generally funny person. Michael Turner lives in Los Angeles has been doing comedy since 2012. He started in Arizona where he co-produced and starred in This Week Sucks Tonight which is now featured monthly at The Comedy Store and has been regularly in festivals around the country including High Plains Comedy Festival and All Things Comedy Festival. He has been seen on Channel 12 NBC Sports in Phoenix and produces The Brothers Turner Podcast"
   },
   {
     "name": "Ray Devito",
@@ -6031,7 +6044,8 @@
   },
   {
     "name": "Lana Siebel",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Lana Siebel is a New York City based comedian who has been headlining shows across the United States. Recently, she headlined at The Comic Strip (NYC), The Tropicana in Atlantic City (NJ), Governor's Comedy Club (NY). Also, recently she featured at Bananas Comedy Club (New Jersey), Atlantic City Comedy Club (Atlantic City, New Jersey), The Howlin' Wolf (New Orleans, Louisiana), Fairfield Comedy Club (Fairfield, Connecticut), Carolina's Comedy Club (NYC), Punch Line Comedy Club (Philadelphia, Pennsylvania). You can catch her regularly in New York City at Broadway Comedy Club, The Tiny Cupboard, The Comedy Shop, Greenwich Village Comedy Club and Eastville Comedy Club. Lana has also acted in many independent films such as the Businessman currently streaming on Amazon Prime. She was very recently featured on the site Comics that Kill along with Kevin Hart, Sebastian Maniscalco, Jim Gaffigan and other great comedians. In a former life she was ranked 7th in the United States in International Latin Ballroom Dancing."
   },
   {
     "name": "Amy Cheong",
@@ -6133,7 +6147,8 @@
   },
   {
     "name": "Ryan Foster",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Ryan Foster is a comedian from Philadelphia and host of the Foster Care podcast. You can find Foster Care on Ryan's YouTube page and wherever podcasts are found."
   },
   {
     "name": "Cameron Leedy",
@@ -6146,6 +6161,210 @@
   },
   {
     "name": "Anthony DeVito",
+    "venues": [],
+    "bio_stand": "Originally from New Jersey, Anthony DeVito is a NYC based comedian. He's appeared on CBS The Late Show with Stephen Colbert, Comedy Central Stand Up Presents: Anthony DeVito, Comedy Central's Adam Devine's House Party, was one of the “New Faces” at the 2012 Montreal Just for Laughs Festival, has been on \"This American Life,\" AXS TV’s Gotham Comedy Live, and was the 2015 winner of Caroline's March Madness. Also, his debut album \"Dream Occupation\" is available from Comedy Central Records. In addition to stand-up, he's a writer on Netflix's The Break with Michelle Wolf, wrote for the 2018 White House Correspondents Dinner, and was a writer/regular panelist on MSG's People Talking Sports and Other Stuff. He's also has appeared on TV Land's The Jim Gaffigan Show, and is a favorite on Sirius XM's Bennington."
+  },
+  {
+    "name": "Chris Turner",
+    "venues": [],
+    "bio": "RUNNER UP ON AGT, \"MAD APPLE\" AT CIRQUE DE SOLEIL, THE LATE SHOW WITH STEPHEN COLBERT, BBC RADIO, EDINBURGH FESTIVAL",
+    "tagline_cellar": "RUNNER UP ON AGT, \"MAD APPLE\" AT CIRQUE DE SOLEIL, THE LATE SHOW WITH STEPHEN COLBERT, BBC RADIO, EDINBURGH FESTIVAL"
+  },
+  {
+    "name": "Peng Dang",
+    "venues": [],
+    "bio": "VOLTURE, USA TODAY",
+    "tagline_cellar": "VOLTURE, USA TODAY"
+  },
+  {
+    "name": "Darlene Bereznicki",
     "venues": []
+  },
+  {
+    "name": "Tacarra Williams",
+    "venues": [],
+    "bio_wiki": "Tacarra Williams is an American comedian, actress, and television personality. She was the runner-up on the stand-up reality competition series Bring the Funny in 2019 and, as of 2024, hosts the CW television series Totally Funny Kids."
+  },
+  {
+    "name": "Apollo Comedy Club",
+    "venues": []
+  },
+  {
+    "name": "Steph Tolev",
+    "venues": [],
+    "bio_wiki": "Stephanie Tolev is a Canadian comedian and actress."
+  },
+  {
+    "name": "Mo Gilligan",
+    "venues": [],
+    "bio_wiki": "Mosiah Bikila Gilligan is a British stand-up comedian, television presenter and content creator. He is known for his observational comedy. After several years of uploading comedy clips to social media, he found a wider audience in 2017. He hosted The Lateish Show with Mo Gilligan (2019) on Channel 4"
+  },
+  {
+    "name": "Garden of Laughs",
+    "venues": []
+  },
+  {
+    "name": "Nick Offerman",
+    "venues": [],
+    "bio_wiki": "Nicholas David Offerman is an American actor, comedian, carpenter, and writer. He became widely known for his role as Ron Swanson in the NBC sitcom Parks and Recreation (2009–2015), for which he received the Television Critics Association Award for Individual Achievement in Comedy and was twice nomi"
+  },
+  {
+    "name": "Michael McIntyre",
+    "venues": [],
+    "bio_wiki": "Michael Hazen James McIntyre is a British comedian, writer, and television presenter. In 2012, he was the highest-grossing stand-up comedian in the world. He presents the variety and stand-up comedy show Michael McIntyre's Big Show and the game show The Wheel."
+  },
+  {
+    "name": "Robby Hoffman",
+    "venues": [],
+    "bio_wiki": "Rivkah Sarah \"Robby\" Hoffman is an American actress. Born in Brooklyn, New York, she began her career as a writer and is known for her work on The Chris Gethard Show, Baroness Von Sketch Show, Workin' Moms, and Odd Squad, the latter of which won an Emmy Award for Outstanding Writing for a Children's"
+  },
+  {
+    "name": "Kristin Key",
+    "venues": [],
+    "bio_wiki": "Kristin Key is an American comedian who has appeared at The Improv, and on the series Last Comic Standing and Bring the Funny. She favors a self-deprecating, physical, and improvisational style of comedy, draws on lesbian themes, and incorporates guitar playing and song."
+  },
+  {
+    "name": "Zakir Khan",
+    "venues": [],
+    "bio_wiki": "Zakir Khan may refer to:Zakir Khan (comedian), Indian comedian\nZakir Khan (cricketer), Pakistani cricketer\nZakir Husain Khan (1897–1969), President of India 1967–1969"
+  },
+  {
+    "name": "John Oliver",
+    "venues": [],
+    "bio_wiki": "John William Oliver is a British and American comedian, political commentator and television personality. He hosts Last Week Tonight with John Oliver on HBO and started his career as a stand-up comedian in the United Kingdom and came to wider attention for his work in the United States as the senior"
+  },
+  {
+    "name": "Modi",
+    "venues": []
+  },
+  {
+    "name": "Ben Bankas",
+    "venues": []
+  },
+  {
+    "name": "Alyssa Edwards",
+    "venues": []
+  },
+  {
+    "name": "Desi Banks",
+    "venues": [],
+    "bio_wiki": "Desi Terrell Banks Jr. is an American comedian and actor. He played two seasons of college football for Morehead State as a wide receiver."
+  },
+  {
+    "name": "Ray Lau",
+    "venues": []
+  },
+  {
+    "name": "Zoltan Kaszas",
+    "venues": [],
+    "bio_wiki": " Zoltan Kaszas is a Hungarian-American comedian and actor."
+  },
+  {
+    "name": "Vittorio Angelone",
+    "venues": [],
+    "bio_wiki": "Vittorio Angelone is an Irish comedian, actor and writer. He is known for exploring cultural identity through his work."
+  },
+  {
+    "name": "Mario Adrion",
+    "venues": [],
+    "bio_wiki": "Mario Leon Adrion is a German-American comedian, YouTuber, and former fashion model, who has appeared in Vogue magazine, and on ABC, Pro7 as well as Jimmy Kimmel Live! He is best known for his comedy clips on YouTube and his catwalk with Katy Perry on American Idol."
+  },
+  {
+    "name": "Sooshi Mango",
+    "venues": [],
+    "bio_wiki": "Sooshi Mango is an Australian comedy troupe founded in 2015. The group consists of two brothers, Joe and Carlo Salanitri, and their best friend, Andrew Manfre. Sooshi Mango is best known for their comedy skits, acts, videos, series and live shows, paying homage to their experiences growing up in an "
+  },
+  {
+    "name": "UpDating",
+    "venues": []
+  },
+  {
+    "name": "Michelle Buteau",
+    "venues": [],
+    "bio_wiki": "Michelle Buteau is an American stand-up comedian, actress, television host, producer, and podcast host."
+  },
+  {
+    "name": "Ruslan Bely",
+    "venues": []
+  },
+  {
+    "name": "Ladies & Tangents",
+    "venues": []
+  },
+  {
+    "name": "Pour Minds",
+    "venues": []
+  },
+  {
+    "name": "Chelcie Lynn",
+    "venues": [],
+    "bio_wiki": "Chelcie Lynn Melton is an American internet personality, actress and stand-up comedian who began her internet career on the video sharing platform Vine as her character, Trailer Trash Tammy. She posted her first original Vine in 2013 and moved to YouTube to continue sharing content after the platfor"
+  },
+  {
+    "name": "Austin Nasso",
+    "venues": []
+  },
+  {
+    "name": "Naomi Watanabe",
+    "venues": [],
+    "bio_wiki": "Naomi Watanabe  is a Japanese comedian, actress, and fashion designer. She rose to fame in 2008 for her imitation of Beyoncé, after which she was given the title \"the Japanese Beyoncé\"."
+  },
+  {
+    "name": "Jarlath Regan",
+    "venues": [],
+    "bio_wiki": "Jarlath Regan is an Irish stand-up comedian, television performer, and host of the An Irishman Abroad podcast."
+  },
+  {
+    "name": "Not Another D+D Podcast",
+    "venues": []
+  },
+  {
+    "name": "Laci Mosley",
+    "venues": [],
+    "bio_wiki": "Laci Risë Mosley is an American actress, comedian and podcaster. She performs improv comedy at UCB Los Angeles and co-starred in the Pop comedy series Florida Girls. Mosley is best known for her podcast Scam Goddess, which focuses on historical and contemporary scams and cons. She was a cast member "
+  },
+  {
+    "name": "Rob Anderson",
+    "venues": [],
+    "bio_wiki": "Robert Anderson is an American internet personality and comedian. Based in New York City, he became known on TikTok for his Gay Science series, which satirizes LGBT stereotypes. He also creates viral videos that recap and deconstruct the plots of 1990s movies and TV shows such as Beethoven, The Prin"
+  },
+  {
+    "name": "Peet Montzingo",
+    "venues": [],
+    "bio_wiki": "Peter \"Peet\" Montzingo is an American internet personality, musician and writer."
+  },
+  {
+    "name": "Rob Cesternino",
+    "venues": [],
+    "bio_wiki": "Robert Kristopher Cesternino is an American reality television contestant and podcast host, known for his appearances on Survivor: The Amazon (2003) and Survivor: All-Stars (2004)."
+  },
+  {
+    "name": "Ceara O'Sullivan",
+    "venues": []
+  },
+  {
+    "name": "Carl Tart",
+    "venues": [],
+    "bio_wiki": "Carl Tart is an American actor, improviser, writer, and comedian. Tart is known for being a featured player on the 2016 Fox sketch show Party Over Here, a writer on the 2016 Mad TV revival, and a regular guest on the podcast Comedy Bang! Bang! He starred on the NBC sitcom Grand Crew. He was hired as"
+  },
+  {
+    "name": "Chloe Troast",
+    "venues": [],
+    "bio_wiki": "Chloe Eileen Troast is an American comedian and actress. Troast was featured on the NBC sketch comedy series Saturday Night Live for its 49th season."
+  },
+  {
+    "name": "Asha Ward",
+    "venues": [],
+    "bio_wiki": "Asha Ward is an American comedian and writer. In 2022, she became the youngest-ever writer on the staff of Saturday Night Live."
+  },
+  {
+    "name": "Jimmy Fowlie",
+    "venues": [],
+    "bio_wiki": "Jimmy Fowlie is an American actor, writer and comedian who publishes YouTube content. Formerly of The Groundlings, he produced Go-Go Boy Interrupted, an LGBT-themed comedy web series based on his live sketch comedy show of the same name. He is also known for writing and performing as Emma Stone in t"
+  },
+  {
+    "name": "Ben Marshall",
+    "venues": [],
+    "bio_wiki": "Ben, Benny or Benjamin Marshall may refer to:Benjamin Marshall (painter) (1768–1835), English sporting and animal painter\nBenjamin H. Marshall (1874–1944), American architect with Chicago firm Marshall and Fox\nBenny Marshall (1919–1969), American sportswriter in Alabama\nBen Marshall, Irish loose for"
   }
 ]
