@@ -2940,28 +2940,40 @@ async function init() {
     });
   }
 
-  document.getElementById('share-link').addEventListener('click', async () => {
+  async function buildShareUrl() {
     const prefs = loadPrefs();
-    let url;
     try {
       if (typeof CompressionStream !== 'undefined') {
         const compressed = await compressPrefs(prefs);
-        url = window.location.origin + window.location.pathname + '#p=' + compressed;
+        return window.location.origin + window.location.pathname + '#p=' + compressed;
       } else {
         throw new Error('no CompressionStream');
       }
     } catch {
-      // Fallback to legacy format
       const params = new URLSearchParams();
       if (prefs.faves.length) params.set('f', prefs.faves.join('|'));
       if (prefs.skips.length) params.set('s', prefs.skips.join('|'));
       if (prefs.likes.length) params.set('l', prefs.likes.join('|'));
-      url = window.location.origin + window.location.pathname + '#' + params.toString();
+      return window.location.origin + window.location.pathname + '#' + params.toString();
     }
+  }
+
+  document.getElementById('share-link').addEventListener('click', async () => {
+    const url = await buildShareUrl();
     navigator.clipboard.writeText(url).then(() => {
       const btn = document.getElementById('share-link');
       btn.textContent = 'Copied!';
       setTimeout(() => { btn.textContent = 'Copy Share Link'; }, 2000);
+    });
+  });
+
+  document.getElementById('header-share').addEventListener('click', async () => {
+    const url = await buildShareUrl();
+    navigator.clipboard.writeText(url).then(() => {
+      const btn = document.getElementById('header-share');
+      btn.classList.add('copied');
+      btn.title = 'Copied!';
+      setTimeout(() => { btn.classList.remove('copied'); btn.title = 'Copy share link'; }, 2000);
     });
   });
 }
