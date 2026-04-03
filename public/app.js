@@ -158,6 +158,7 @@ function cycleComedian(name) {
 
   savePrefs(prefs);
   updateSettingsBtnState();
+  if (typeof updateResetBtn === 'function') updateResetBtn();
 }
 
 function updateSettingsBtnState() {
@@ -166,6 +167,7 @@ function updateSettingsBtnState() {
   const prefs = loadPrefs();
   const has = prefs.faves.length > 0 || prefs.skips.length > 0 || prefs.likes.length > 0;
   btn.classList.toggle('has-comedians', has);
+  if (has) btn.classList.remove('jingle-intro');
 }
 
 // ---- Comedian Database (loaded from /data/comedians.json) ----
@@ -2549,7 +2551,8 @@ function updateResetBtn() {
     (document.getElementById('time-filter')?.value !== 'any') ||
     !!window._timeFilterMin ||
     !document.getElementById('hide-sold-out')?.checked ||
-    !!activeComedianFilter;
+    !!activeComedianFilter ||
+    hasRatedComedians;
   btn.style.visibility = anyActive ? 'visible' : 'hidden';
   // Show row if reset button is visible OR filters panel is open
   const filtersOpen = document.getElementById('filters-inline')?.style.display !== 'none';
@@ -2906,6 +2909,9 @@ async function init() {
     activeStandRoom = 'all';
     activeBigVenue = 'all';
     activeComedianFilter = null;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ faves: [], skips: [], likes: [] }));
+    history.replaceState(null, '', window.location.pathname);
+    updateSettingsBtnState();
     updateResetBtn();
     renderShows();
   });
@@ -2927,6 +2933,8 @@ async function init() {
       document.getElementById('comedian-search').value = '';
       renderModal();
       renderTabs();
+      updateSettingsBtnState();
+      updateResetBtn();
     }
   });
 
