@@ -2544,8 +2544,7 @@ function updateResetBtn() {
     (document.getElementById('time-filter')?.value !== 'any') ||
     !!window._timeFilterMin ||
     !document.getElementById('hide-sold-out')?.checked ||
-    !!activeComedianFilter ||
-    hasRatedComedians;
+    !!activeComedianFilter;
   btn.style.visibility = anyActive ? 'visible' : 'hidden';
   // Show row if reset button is visible OR filters panel is open
   const filtersOpen = document.getElementById('filters-inline')?.style.display !== 'none';
@@ -2902,9 +2901,6 @@ async function init() {
     activeStandRoom = 'all';
     activeBigVenue = 'all';
     activeComedianFilter = null;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ faves: [], skips: [], likes: [] }));
-    history.replaceState(null, '', window.location.pathname);
-    updateSettingsBtnState();
     updateResetBtn();
     renderShows();
   });
