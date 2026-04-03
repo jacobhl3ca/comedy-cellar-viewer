@@ -157,6 +157,15 @@ function cycleComedian(name) {
   // Skip → Neutral (already removed)
 
   savePrefs(prefs);
+  updateSettingsBtnState();
+}
+
+function updateSettingsBtnState() {
+  const btn = document.getElementById('open-settings');
+  if (!btn) return;
+  const prefs = loadPrefs();
+  const has = prefs.faves.length > 0 || prefs.skips.length > 0 || prefs.likes.length > 0;
+  btn.classList.toggle('has-comedians', has);
 }
 
 // ---- Comedian Database (loaded from /data/comedians.json) ----
@@ -2747,6 +2756,7 @@ async function init() {
   initTheme();
   initCalendar();
   initSettingsJingle();
+  updateSettingsBtnState();
   renderSourceTabs();
   renderTabs();
   renderShows();
