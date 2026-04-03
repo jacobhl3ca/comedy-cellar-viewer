@@ -352,6 +352,33 @@ loadPhotoCache();
 const PHOTO_LOOKUP_CACHE_KEY = 'cellar-tonight-photo-lookup';
 let photoLookupCache = {};
 try { photoLookupCache = JSON.parse(localStorage.getItem(PHOTO_LOOKUP_CACHE_KEY)) || {}; } catch {}
+
+// Detect bad photo URLs — Instagram icons, placeholder images, etc.
+function isBadPhotoUrl(url) {
+  if (!url) return false;
+  // Instagram icon/logo served as og:image (not a real profile photo)
+  if (/instagram\.com\/static\/images/i.test(url)) return true;
+  if (/cdninstagram\.com.*\/instagram/i.test(url)) return true;
+  // Instagram CDN profile pics that are actually the default/logo (very common false positive)
+  // Real IG profile pics have /v/ or /t51/ paths; logos have /rsrc or /static
+  if (/instagram\.com/i.test(url) && !/\/v\/|\/t51\.|\/p\//.test(url)) return true;
+  // SeatGeek placeholders
+  if (/seatgeek\.com/i.test(url) && /placeholder|generic/i.test(url)) return true;
+  return false;
+}
+
+// Purge bad URLs from localStorage cache on load
+let purged = false;
+for (const [name, url] of Object.entries(photoLookupCache)) {
+  if (isBadPhotoUrl(url)) {
+    delete photoLookupCache[name];
+    purged = true;
+  }
+}
+if (purged) {
+  try { localStorage.setItem(PHOTO_LOOKUP_CACHE_KEY, JSON.stringify(photoLookupCache)); } catch {}
+}
+
 const photoLookupInFlight = {};
 
 function autoResolvePhoto(name, imgEl) {
@@ -372,14 +399,15 @@ function autoResolvePhoto(name, imgEl) {
   fetchWithTimeout(`/api/photo-lookup?name=${encodeURIComponent(name)}`, {}, 12000)
     .then(r => r.json())
     .then(data => {
-      photoLookupCache[name] = data.url || '';
+      const url = (data.url && !isBadPhotoUrl(data.url)) ? data.url : '';
+      photoLookupCache[name] = url;
       try { localStorage.setItem(PHOTO_LOOKUP_CACHE_KEY, JSON.stringify(photoLookupCache)); } catch {}
-      if (data.url) {
+      if (url) {
         // Also save to global maps so future renders don't need lookup
-        if (!comedianPhotos[name]) comedianPhotos[name] = data.url;
+        if (!comedianPhotos[name]) comedianPhotos[name] = url;
         // Patch all waiting img elements
         (photoLookupInFlight[name] || []).forEach(el => {
-          if (el) { el.src = data.url; el.style.display = ''; }
+          if (el) { el.src = url; el.style.display = ''; }
         });
       }
       delete photoLookupInFlight[name];
@@ -405,8 +433,9 @@ function getPhotoForVenue(name, venueSource) {
   if (comedianPhotosCellar[name]) return comedianPhotosCellar[name];
   if (comedianPhotosStand[name]) return comedianPhotosStand[name];
   if (dbEntry?.photo_stand) return dbEntry.photo_stand;
-  // 4. Legacy pool (Wikipedia, SeatGeek, etc.)
-  return comedianPhotos[name] || '';
+  // 4. Legacy pool (Wikipedia, SeatGeek, etc.) — reject bad URLs
+  const legacy = comedianPhotos[name] || '';
+  return isBadPhotoUrl(legacy) ? '' : legacy;
 }
 
 function parseShows(html, dateStr) {
@@ -2031,8 +2060,8 @@ function renderBigShows(container) {
       }
     }
     const lookupName = data.performers ? data.performers.split(', ')[0] : title;
-    if (!photoUrl && photoLookupCache[lookupName]) photoUrl = photoLookupCache[lookupName];
-    if (!photoUrl && photoLookupCache[title]) photoUrl = photoLookupCache[title];
+    if (!photoUrl && photoLookupCache[lookupName] && !isBadPhotoUrl(photoLookupCache[lookupName])) photoUrl = photoLookupCache[lookupName];
+    if (!photoUrl && photoLookupCache[title] && !isBadPhotoUrl(photoLookupCache[title])) photoUrl = photoLookupCache[title];
     const needsLookup = !photoUrl;
     const photoId = needsLookup ? `photo-lookup-${title.replace(/[^a-zA-Z0-9]/g, '_')}` : '';
     const photoHtml = photoUrl

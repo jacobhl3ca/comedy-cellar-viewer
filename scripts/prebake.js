@@ -331,29 +331,9 @@ async function findPhoto(name) {
     }
   } catch {}
 
-  // Source 3: Instagram og:image
-  try {
-    const parts = name.toLowerCase().replace(/[^a-z\s]/g, '').trim().split(/\s+/);
-    if (parts.length >= 2) {
-      const first = parts[0];
-      const last = parts[parts.length - 1];
-      const usernames = [
-        `${first}${last}`, `${first}.${last}`, `${first}_${last}`,
-        `${first}${last}comedy`, `${first}comedy`,
-      ];
-      for (const username of usernames) {
-        try {
-          const html = await fetchText(`https://www.instagram.com/${username}/`);
-          if (!html.includes('og:image')) continue;
-          const match = html.match(/<meta\s+property="og:image"\s+content="([^"]+)"/i)
-                     || html.match(/<meta\s+content="([^"]+)"\s+property="og:image"/i);
-          if (match && match[1] && match[1].includes('cdninstagram.com')) {
-            return { url: match[1].replace(/&amp;/g, '&'), source: 'instagram' };
-          }
-        } catch {}
-      }
-    }
-  } catch {}
+  // Source 3: Instagram og:image — REMOVED
+  // Instagram no longer serves real profile photos via og:image. It returns the
+  // Instagram app icon/logo which gets saved as comedian photos. Disabled permanently.
 
   return null;
 }
@@ -574,6 +554,17 @@ async function downloadPhoto(url, filename) {
   try {
     const buffer = await fetch(url);
     if (buffer.length < 500) return null; // too small, probably error page
+
+    // Reject known bad images: Instagram icons are large PNGs (typically 4168x4168, ~778KB)
+    // Check PNG dimensions from header bytes (width at offset 16-19, height at 20-23)
+    if (buffer[0] === 0x89 && buffer[1] === 0x50) { // PNG
+      const w = buffer.readUInt32BE(16);
+      const h = buffer.readUInt32BE(20);
+      if (w === h && w > 2000 && buffer.length > 500000) {
+        log(`  Rejected ${filename}: suspicious icon (${w}x${h}, ${buffer.length} bytes)`);
+        return null;
+      }
+    }
 
     // If already exists as any format, skip
     const manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, 'utf8'));
