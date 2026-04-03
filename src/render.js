@@ -1,13 +1,3 @@
-  allTab.className = 'day-tab' + (activeDate === 'all' ? ' active' : '');
-  allTab.innerHTML = `<span class="tab-day">Full</span><span class="tab-date">Schedule</span>`;
-  allTab.addEventListener('click', () => {
-    activeDate = 'all';
-    renderTabs();
-    renderShows();
-  });
-  nav.appendChild(allTab);
-
-  if (activeSource === 'the-stand') {
     // The Stand has its own date grouping
     const standDates = [...new Set(standShows.map(s => s.date))].sort();
     standDates.forEach(dateStr => {
@@ -1553,11 +1543,18 @@ function handleComedianClick(el) {
   const panel = document.createElement('div');
   panel.className = 'comedian-expanded open';
   panel.dataset.for = name;
+  if (fullBio) panel.dataset.fullBio = fullBio;
   panel.innerHTML = `
     ${dbPhoto ? `<img src="${dbPhoto}" alt="${name}">` : ''}
     <div class="exp-info">
       <div class="exp-name">${name}</div>
-      ${fullBio ? `<div class="exp-tagline">${fullBio}</div>` : ''}
+      ${fullBio ? (() => {
+        const longMode = document.getElementById('expand-long-bios')?.checked;
+        const MAX = 300;
+        if (longMode || fullBio.length <= MAX) return `<div class="exp-tagline">${fullBio}</div>`;
+        const truncated = fullBio.substring(0, MAX).replace(/\s+\S*$/, '') + '...';
+        return `<div class="exp-tagline exp-bio-truncated">${truncated} <a href="#" class="bio-more-link" onclick="event.preventDefault();expandBioInPanel(this);" style="color:var(--accent);font-weight:500;">more</a></div>`;
+      })() : ''}
       ${venues ? `<div style="font-size:11px;color:var(--text-dim);margin-top:4px;">Also at: ${venues}</div>` : ''}
       <div class="exp-actions">
         <button class="exp-btn ${isFavd ? 'is-fav' : ''}" onclick="setPref('${esc}','fav')">
@@ -1580,6 +1577,16 @@ function handleComedianClick(el) {
   `;
   // Append at end of lineup (before reserve/footer), not after clicked card
   container.appendChild(panel);
+}
+
+function expandBioInPanel(link) {
+  const panel = link.closest('.comedian-expanded');
+  if (!panel) return;
+  const tagline = panel.querySelector('.exp-tagline');
+  if (tagline && panel.dataset.fullBio) {
+    tagline.textContent = panel.dataset.fullBio;
+    tagline.classList.remove('exp-bio-truncated');
+  }
 }
 
 function toggleAlertBtn(name, btn) {
@@ -1648,3 +1655,6 @@ function renderModal(filter = '') {
 
   // Favs section
   const favList = document.getElementById('fav-list');
+  favList.innerHTML = prefs.faves
+    .filter(n => n.toLowerCase().includes(filterLower))
+    .map(n => `<span class="chip fav-state" onclick="modalCycle('${n.replace(/'/g, "\\'")}')">${n}</span>`)

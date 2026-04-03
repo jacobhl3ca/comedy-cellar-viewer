@@ -544,3 +544,13 @@ function renderTabs() {
 
   // "Full Schedule" tab first (far left)
   const allTab = document.createElement('button');
+  allTab.className = 'day-tab' + (activeDate === 'all' ? ' active' : '');
+  allTab.innerHTML = `<span class="tab-day">Full</span><span class="tab-date">Schedule</span>`;
+  allTab.addEventListener('click', () => {
+    activeDate = 'all';
+    renderTabs();
+    renderShows();
+  });
+  nav.appendChild(allTab);
+
+  if (activeSource === 'the-stand') {

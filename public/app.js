@@ -2403,11 +2403,18 @@ function handleComedianClick(el) {
   const panel = document.createElement('div');
   panel.className = 'comedian-expanded open';
   panel.dataset.for = name;
+  if (fullBio) panel.dataset.fullBio = fullBio;
   panel.innerHTML = `
     ${dbPhoto ? `<img src="${dbPhoto}" alt="${name}">` : ''}
     <div class="exp-info">
       <div class="exp-name">${name}</div>
-      ${fullBio ? `<div class="exp-tagline">${fullBio}</div>` : ''}
+      ${fullBio ? (() => {
+        const longMode = document.getElementById('expand-long-bios')?.checked;
+        const MAX = 300;
+        if (longMode || fullBio.length <= MAX) return `<div class="exp-tagline">${fullBio}</div>`;
+        const truncated = fullBio.substring(0, MAX).replace(/\s+\S*$/, '') + '...';
+        return `<div class="exp-tagline exp-bio-truncated">${truncated} <a href="#" class="bio-more-link" onclick="event.preventDefault();expandBioInPanel(this);" style="color:var(--accent);font-weight:500;">more</a></div>`;
+      })() : ''}
       ${venues ? `<div style="font-size:11px;color:var(--text-dim);margin-top:4px;">Also at: ${venues}</div>` : ''}
       <div class="exp-actions">
         <button class="exp-btn ${isFavd ? 'is-fav' : ''}" onclick="setPref('${esc}','fav')">
@@ -2430,6 +2437,16 @@ function handleComedianClick(el) {
   `;
   // Append at end of lineup (before reserve/footer), not after clicked card
   container.appendChild(panel);
+}
+
+function expandBioInPanel(link) {
+  const panel = link.closest('.comedian-expanded');
+  if (!panel) return;
+  const tagline = panel.querySelector('.exp-tagline');
+  if (tagline && panel.dataset.fullBio) {
+    tagline.textContent = panel.dataset.fullBio;
+    tagline.classList.remove('exp-bio-truncated');
+  }
 }
 
 function toggleAlertBtn(name, btn) {
@@ -2739,8 +2756,7 @@ async function init() {
   await loadPrefsFromHash();
 
   dates = getDateRange();
-  // Default to today's date — "what's on tonight"
-  activeDate = formatDateParam(dates[0]);
+  activeDate = 'all';
 
   // Fetch all sources in parallel — prebaked static JSON first, live API fallback
   const [batchData] = await Promise.all([
@@ -3097,3 +3113,4 @@ window.toggleAlertBtn = toggleAlertBtn;
 window.filterByComedian = filterByComedian;
 window.trackReserve = trackReserve;
 window.removeAlert = removeAlert;
+window.expandBioInPanel = expandBioInPanel;

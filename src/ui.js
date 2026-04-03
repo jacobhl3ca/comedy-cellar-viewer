@@ -1,6 +1,3 @@
-  favList.innerHTML = prefs.faves
-    .filter(n => n.toLowerCase().includes(filterLower))
-    .map(n => `<span class="chip fav-state" onclick="modalCycle('${n.replace(/'/g, "\\'")}')">${n}</span>`)
     .join('') || '<span style="color:var(--text-dim);font-size:13px;">None yet — tap names below</span>';
   document.getElementById('fav-count').textContent = `(${prefs.faves.length})`;
 
@@ -239,8 +236,7 @@ async function init() {
   await loadPrefsFromHash();
 
   dates = getDateRange();
-  // Default to today's date — "what's on tonight"
-  activeDate = formatDateParam(dates[0]);
+  activeDate = 'all';
 
   // Fetch all sources in parallel — prebaked static JSON first, live API fallback
   const [batchData] = await Promise.all([
@@ -258,3 +254,7 @@ async function init() {
   dates.forEach(d => {
     const dateStr = formatDateParam(d);
     const dayData = batchData?.results?.[dateStr];
+    const html = dayData?.show?.html || '';
+    if (html) {
+      allData[dateStr] = parseShows(html, dateStr);
+      allData[dateStr].forEach(show => {

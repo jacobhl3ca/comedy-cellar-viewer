@@ -1,7 +1,3 @@
-    const html = dayData?.show?.html || '';
-    if (html) {
-      allData[dateStr] = parseShows(html, dateStr);
-      allData[dateStr].forEach(show => {
         show.comedians.forEach(name => allComediansSeen.add(name));
       });
     } else {
@@ -337,3 +333,4 @@ window.toggleAlertBtn = toggleAlertBtn;
 window.filterByComedian = filterByComedian;
 window.trackReserve = trackReserve;
 window.removeAlert = removeAlert;
+window.expandBioInPanel = expandBioInPanel;
