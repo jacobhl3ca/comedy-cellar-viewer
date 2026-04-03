@@ -572,6 +572,9 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .chip.fav-state { background: var(--chip-fav-bg); border-color: var(--accent); color: var(--fav-text); font-weight: 600; }
 .chip.like-state { background: var(--chip-like-bg); border-color: var(--chip-like-border); color: var(--chip-like-text); font-weight: 500; }
 .chip.skip-state { background: var(--chip-skip-bg); border-color: var(--chip-skip-border); color: var(--chip-skip-text); text-decoration: line-through; }
+.chip.alert-state { background: rgba(255, 193, 7, 0.15); border-color: #ffc107; color: #ffc107; cursor: pointer; }
+.chip.alert-state:hover { background: rgba(255, 193, 7, 0.3); }
+.alert-email-row { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
 
 .modal-footer {
   display: flex; justify-content: space-between; padding: 12px 20px;
@@ -1008,11 +1011,14 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
   color: #fff;
   padding: 8px 16px;
   border-radius: 8px;
-  margin: 8px 0;
+  margin: 0 0 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
 }
 .comedian-filter-banner button {
   background: rgba(255,255,255,0.2);
@@ -1025,4 +1031,9 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 }
 .comedian-filter-banner button:hover {
   background: rgba(255,255,255,0.35);
+}
+.comedian.filter-highlight {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-radius: 6px;
 }

@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tonight NYC — NYC Comedy Lineups</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#e63636">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="icon-192.png">
   <meta property="og:title" content="Tonight NYC — NYC Comedy Lineups">
   <meta property="og:description" content="Every NYC comedy show, filtered your way. Mark favorites, skip regulars, book the right set.">
   <meta property="og:url" content="https://tonightnyc.com">
@@ -15,7 +20,23 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://tonightnyc.com/og-image.png">
   <meta name="description" content="NYC comedy lineups from Comedy Cellar, The Stand, and more. Per-show breakdowns, favorites, skips, and direct booking.">
-  <link rel="stylesheet" href="style.css?v=CACHEBUST">
+  <link rel="canonical" href="https://tonightnyc.com">
+  <meta name="twitter:title" content="Tonight NYC — NYC Comedy Lineups">
+  <meta name="twitter:description" content="Every NYC comedy show, filtered your way. Mark favorites, skip regulars, book the right set.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Tonight NYC",
+    "url": "https://tonightnyc.com",
+    "description": "NYC comedy lineups from Comedy Cellar, The Stand, and more. Per-show breakdowns, favorites, skips, and direct booking.",
+    "applicationCategory": "EntertainmentApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "author": { "@type": "Person", "name": "Jacob HL" }
+  }
+  </script>
+  <link rel="stylesheet" href="style.min.css?v=CACHEBUST">
   <script>
     (function() {
       const saved = localStorage.getItem('cellar-theme');
@@ -175,6 +196,15 @@
           <h3>Your Skips <span class="count" id="skip-count"></span></h3>
           <div id="skip-list" class="chip-list"></div>
         </div>
+        <div class="modal-section">
+          <h3>Alerts <span class="count" id="alert-count"></span></h3>
+          <div id="alert-email-row" class="alert-email-row">
+            <input type="email" id="alert-email" placeholder="your@email.com" class="modal-search" style="max-width:240px;">
+            <button class="btn-done" id="save-alert-email" style="padding:6px 12px;font-size:13px;">Save</button>
+          </div>
+          <div id="alert-list" class="chip-list"></div>
+          <p style="font-size:11px;color:var(--text-dim);margin-top:6px;">Get emailed when your watched comedians are in an upcoming lineup. Turn on notifications from any comedian's expanded bio panel.</p>
+        </div>
       </div>
       <div class="modal-footer">
         <button class="btn-reset" id="reset-prefs">Reset All</button>
@@ -192,10 +222,11 @@
     <p><a href="mailto:hello@tonightnyc.com">hello@tonightnyc.com</a></p>
   </footer>
 
-  <script defer src="app.js?v=CACHEBUST"></script>
+  <script defer src="app.min.js?v=CACHEBUST"></script>
   <!-- Vercel Web Analytics — auto-injected when enabled in dashboard -->
   <script defer src="/_vercel/insights/script.js"></script>
   <!-- Vercel Speed Insights -->
   <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');</script>
 </body>
 </html>

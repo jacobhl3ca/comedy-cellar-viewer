@@ -21,6 +21,9 @@ jobs:
           node-version: '24'
 
       - name: Run prebake script
+        env:
+          SEATGEEK_CLIENT_ID: ${{ secrets.SEATGEEK_CLIENT_ID }}
+          TM_API_KEY: ${{ secrets.TM_API_KEY }}
         run: node scripts/prebake.js
 
       - name: Check for changes

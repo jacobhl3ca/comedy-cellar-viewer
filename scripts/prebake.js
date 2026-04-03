@@ -122,6 +122,7 @@ function postJSON(hostname, path, body) {
 const NAME_FIXES = {
   'Will Sylvince': 'Wil Sylvince',
   'Luis Gomez': 'Luis J Gomez',
+  'Peter Fowler': 'Peter James Fowler',
 };
 
 function normalizeName(name) {
@@ -257,7 +258,7 @@ async function scrapeStand() {
         // Extract comedian names
         const nameMatches = [...block.matchAll(/<small>(.*?)<\/small>/g)];
         const names = [...new Set(nameMatches
-          .map(m => decodeHtmlEntities(m[1].trim()))
+          .map(m => normalizeName(decodeHtmlEntities(m[1].trim())))
           .filter(n => n && n.length > 1 && !n.match(/^\$/) && !/^special\s*guests?$/i.test(n) && !/^more\s*tba$/i.test(n))
         )];
 
@@ -374,6 +375,8 @@ async function scrapeGotham() {
 }
 
 // ---- Step 2c: Scrape NYCC ----
+// NOTE: NYCC site is JS-rendered — this scraper gets minimal data.
+// Would need Puppeteer/Playwright for full scrape. Kept as-is since it's harmless.
 async function scrapeNYCC() {
   log('Scraping NY Comedy Club...');
   try {
@@ -411,7 +414,7 @@ async function scrapeNYCC() {
 }
 
 // ---- Step 2d: Scrape Big Shows (SeatGeek) ----
-const SEATGEEK_CLIENT_ID = 'MTA3MDA0Nzh8MTc3NDMxMTgyMy45ODI2NDY3';
+const SEATGEEK_CLIENT_ID = process.env.SEATGEEK_CLIENT_ID || 'MTA3MDA0Nzh8MTc3NDMxMTgyMy45ODI2NDY3';
 
 async function scrapeBigShows() {
   log('Scraping Big Shows (SeatGeek)...');
@@ -447,7 +450,7 @@ async function scrapeBigShows() {
 }
 
 // ---- Step 2e: Scrape Ticketmaster ----
-const TM_API_KEY = 'ngUmt60hJ6lHzJxzy9ximMn0HtAts4Cj';
+const TM_API_KEY = process.env.TM_API_KEY || 'ngUmt60hJ6lHzJxzy9ximMn0HtAts4Cj';
 
 async function scrapeTicketmaster() {
   log('Scraping Ticketmaster...');

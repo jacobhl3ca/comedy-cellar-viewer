@@ -1,6 +1,6 @@
 const https = require('https');
 
-const SEATGEEK_CLIENT_ID = 'MTA3MDA0Nzh8MTc3NDMxMTgyMy45ODI2NDY3';
+const SEATGEEK_CLIENT_ID = process.env.SEATGEEK_CLIENT_ID || 'MTA3MDA0Nzh8MTc3NDMxMTgyMy45ODI2NDY3';
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');

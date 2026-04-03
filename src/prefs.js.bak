@@ -451,16 +451,13 @@ function autoResolvePhoto(name, imgEl) {
 // Venue-aware photo lookup: local prebaked first (verified), then external fallbacks
 function getPhotoForVenue(name, venueSource) {
   const dbEntry = comedianDB.find(c => c.name === name);
+  // 1. Local prebaked photo (CDN, verified correct, always wins)
   const local = localPhotoPath(name);
-  // 1. Venue-specific photo from that venue's own site (takes priority over generic local)
-  if (venueSource === 'stand') {
-    if (comedianPhotosStand[name]) return comedianPhotosStand[name];
-    if (dbEntry?.photo_stand) return dbEntry.photo_stand;
-  }
-  if (venueSource === 'cellar' && comedianPhotosCellar[name]) return comedianPhotosCellar[name];
-  if (venueSource === 'nycc' && dbEntry?.photo_nycc) return dbEntry.photo_nycc;
-  // 2. Local prebaked photo (CDN, generic fallback)
   if (local) return local;
+  // 2. Venue-specific photo from that venue's own site
+  if (venueSource === 'cellar' && comedianPhotosCellar[name]) return comedianPhotosCellar[name];
+  if (venueSource === 'stand' && comedianPhotosStand[name]) return comedianPhotosStand[name];
+  if (venueSource === 'nycc' && dbEntry?.photo_nycc) return dbEntry.photo_nycc;
   // 3. Cross-venue external fallbacks
   if (dbEntry?.photo_nycc) return dbEntry.photo_nycc;
   if (comedianPhotosCellar[name]) return comedianPhotosCellar[name];
@@ -649,18 +646,12 @@ async function fetchTheStand() {
     const data = await resp.json();
     standShows = data.shows || [];
     // Extract comedian photos from Stand data into venue-specific map
-    // Apply NAME_FIXES so normalized names get the right photos
     standShows.forEach(show => {
       if (show.comedianPhotos) {
-        Object.entries(show.comedianPhotos).forEach(([rawName, url]) => {
+        Object.entries(show.comedianPhotos).forEach(([name, url]) => {
           if (url) {
-            const name = NAME_FIXES[rawName] || rawName;
             if (!comedianPhotosStand[name]) comedianPhotosStand[name] = url;
             if (!comedianPhotos[name]) comedianPhotos[name] = url;
-            // Also store under raw name for backward compat
-            if (rawName !== name) {
-              if (!comedianPhotosStand[rawName]) comedianPhotosStand[rawName] = url;
-            }
           }
         });
       }
@@ -1141,37 +1132,33 @@ function renderSourceTabs() {
   });
 }
 
-// Insert filter banner at top of container AFTER content has been rendered
-function _insertFilterBanner(container) {
-  const old = document.getElementById('comedian-filter-banner');
-  if (old) old.remove();
-  if (!activeComedianFilter) return;
-  const banner = document.createElement('div');
-  banner.id = 'comedian-filter-banner';
-  banner.className = 'comedian-filter-banner';
-  banner.innerHTML = `Showing shows with <strong>${activeComedianFilter}</strong> <button onclick="filterByComedian('${activeComedianFilter.replace(/'/g, "\\'")}')">✕ Clear</button>`;
-  container.prepend(banner);
-}
-
 function renderShows() {
   const container = document.getElementById('shows-container');
+
+  // Comedian filter banner
+  const existingBanner = document.getElementById('comedian-filter-banner');
+  if (existingBanner) existingBanner.remove();
+  if (activeComedianFilter) {
+    const banner = document.createElement('div');
+    banner.id = 'comedian-filter-banner';
+    banner.className = 'comedian-filter-banner';
+    banner.innerHTML = `Showing shows with <strong>${activeComedianFilter}</strong> <button onclick="filterByComedian('${activeComedianFilter.replace(/'/g, "\\'")}')">✕ Clear</button>`;
+    container.parentElement.insertBefore(banner, container);
+  }
 
   // Route to correct renderer based on active source
   if (activeSource === 'the-stand') {
     renderTheStandShows(container);
     renderBottomTabs();
-    _insertFilterBanner(container);
     return;
   }
   if (activeSource === 'big-shows') {
     renderBigShows(container);
-    _insertFilterBanner(container);
     return;
   }
   if (activeSource === 'all') {
     renderAllVenues(container);
     renderBottomTabs();
-    _insertFilterBanner(container);
     return;
   }
   if (activeSource === 'nycc') {
@@ -1199,7 +1186,6 @@ function renderShows() {
   if (sortVal === 'faves') {
     renderSortedByFaves(container);
     renderBottomTabs();
-    _insertFilterBanner(container);
     return;
   }
 
@@ -1208,7 +1194,6 @@ function renderShows() {
   if (activeDate === 'all' || activeDate === 'calendar') {
     renderAllDaysSchedule(container);
     renderBottomTabs();
-    _insertFilterBanner(container);
     return;
   }
 
@@ -1259,7 +1244,6 @@ function renderShows() {
 
   // Render bottom nav tabs
   renderBottomTabs();
-  _insertFilterBanner(container);
 }
 
 function showTitlePopup(el) {
@@ -1343,7 +1327,7 @@ function renderShowCard(show, hideSkips, onlyFavs, dateStr) {
   const isPlainVenue = venueStart.startsWith('macdougal') || venueStart.startsWith('fat black') || venueStart.startsWith('village');
 
   return `
-    <div class="${cardClass}" data-venue-source="cellar">
+    <div class="${cardClass}">
       <div class="show-header">
         <div>
           <span class="show-time">${formatTime(show.time)}</span>
@@ -1497,7 +1481,7 @@ function renderSortedByFaves(container) {
     const chips = renderComedianChips(show.comedians, hideSkips, 'cellar');
 
     html += `
-      <div class="${cardClass}" data-venue-source="cellar">
+      <div class="${cardClass}">
         <div class="show-header">
           <div><span class="show-time">${formatTime(show.time)}</span>${badge}</div>
           ${!isPlainVenue ? (getCellarPoster(show.venue) ? `<span class="show-name poster-wrap">Comedy Cellar: ${show.venue}<img class="poster-preview" src="${getCellarPoster(show.venue)}" alt="${show.venue}"></span>` : `<span class="show-name">Comedy Cellar: ${show.venue}</span>`) : '<span class="show-name">Comedy Cellar</span>'}
@@ -1625,7 +1609,7 @@ function renderAllDaysSchedule(container) {
       const chips = renderComedianChips(show.comedians, document.getElementById('hide-skips').checked, 'cellar');
 
       dayHtml += `
-        <div class="${cardClass} schedule-card" data-venue-source="cellar">
+        <div class="${cardClass} schedule-card">
           <div class="show-header">
             <div><span class="show-time">${formatTime(show.time)}</span>${badge}</div>
             <span class="show-venue">${show.venue}</span>
@@ -1749,7 +1733,7 @@ function renderStandShowCard(show) {
   const cardClass = 'show-card' + (soldOut ? ' sold-out' : '');
 
   return `
-    <div class="${cardClass}" data-venue-source="stand">
+    <div class="${cardClass}">
       <div class="show-header">
         <div><span class="show-time">${formatTime(show.time)}</span></div>
         ${posterHtml}
@@ -1973,7 +1957,7 @@ function renderAllVenues(container) {
       const preferred = links.find(l => l.source === 'seatgeek') || links[0];
       const ticketUrl = preferred?.url || evt.url;
       html += `
-        <div class="${cardClass}" data-venue-source="big">
+        <div class="${cardClass}">
           <div class="show-header">
             <div><span class="show-time">${formatTime(evt.time)}</span></div>
             <span class="show-name">${evt.title}</span>
@@ -2343,17 +2327,11 @@ function handleComedianClick(el) {
   // Determine venue source from show card context
   const showCard = el.closest('.show-card');
   let panelVenueSource = 'cellar'; // default
-  // Check data attribute first (most reliable)
-  if (showCard?.dataset?.venueSource) {
-    panelVenueSource = showCard.dataset.venueSource;
-  } else if (activeSource === 'the-stand') {
-    panelVenueSource = 'stand';
-  } else if (activeSource === 'all' && showCard) {
+  if (activeSource === 'the-stand') panelVenueSource = 'stand';
+  else if (activeSource === 'all' && showCard) {
     const venueEl = showCard.querySelector('.show-venue');
-    const showNameEl = showCard.querySelector('.show-name');
     const venueText = venueEl?.textContent?.toLowerCase() || '';
-    const showName = showNameEl?.textContent?.toLowerCase() || '';
-    if (venueText.includes('stand') || showName.includes('stand')) panelVenueSource = 'stand';
+    if (venueText.includes('stand')) panelVenueSource = 'stand';
     else if (venueText.includes('gotham')) panelVenueSource = 'gotham';
     else if (venueText.includes('comedy club')) panelVenueSource = 'nycc';
   }
@@ -2420,7 +2398,7 @@ function handleComedianClick(el) {
           ${isSkipd ? '✕ Skipped' : '— Skip'}
         </button>
         <button class="exp-btn ${alerted ? 'is-alert' : ''}" onclick="toggleAlertBtn('${esc}', this)">
-          ${alerted ? '🔔 Notifications on' : '🔕 Notify me'}
+          ${alerted ? '🔔 Alerted' : '🔕 Alert me'}
         </button>
         <button class="exp-btn" onclick="filterByComedian('${esc}')">
           🔍 Filter shows
@@ -2435,14 +2413,14 @@ function handleComedianClick(el) {
 function toggleAlertBtn(name, btn) {
   // Prompt for email on first alert if not set
   if (!isAlerted(name) && !getAlertEmail()) {
-    const email = prompt('Enter your email to get notified when this comedian is in an upcoming lineup:');
+    const email = prompt('Enter your email to get notified when this comedian is performing:');
     if (!email || !email.includes('@')) return;
     setAlertEmail(email.trim());
   }
   toggleAlert(name);
   const alerted = isAlerted(name);
   btn.className = 'exp-btn' + (alerted ? ' is-alert' : '');
-  btn.textContent = alerted ? '🔔 Notifications on' : '🔕 Notify me';
+  btn.textContent = alerted ? '🔔 Alerted' : '🔕 Alert me';
 }
 
 // Global filter state for comedian filtering
