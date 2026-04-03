@@ -275,11 +275,9 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 }
 .settings-btn:hover { border-color: var(--accent); color: var(--accent); }
 .settings-btn.has-comedians {
-  background: linear-gradient(135deg, var(--accent), #ff4f4f);
-  border: none; color: #fff; letter-spacing: 0.3px;
-  box-shadow: 0 2px 8px rgba(230, 54, 54, 0.25);
+  background: var(--accent); border-color: var(--accent); color: #fff;
 }
-.settings-btn.has-comedians:hover { background: linear-gradient(135deg, #ff4f4f, var(--accent)); box-shadow: 0 3px 12px rgba(230, 54, 54, 0.4); }
+.settings-btn.has-comedians:hover { background: var(--accent); border-color: var(--accent); color: #fff; opacity: 0.85; }
 .settings-btn.jingle-intro {
   background: linear-gradient(135deg, var(--accent), #ff4f4f);
   border: none; color: #fff; letter-spacing: 0.3px;
