@@ -4063,7 +4063,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/matthew-broussard",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/matthew-broussard.jpg",
-    "bio": "Matthew Broussard is a stand-up comedian known for his clever wordplay and math-based humor. He's appeared on The Tonight Show, Conan, and Comedy Central. A regular at NYC comedy clubs."
+    "bio": "Matthew Broussard is a stand-up comedian known for his clever wordplay and math-based humor. He's appeared on The Tonight Show, Conan, and Comedy Central. A regular at NYC comedy clubs.",
+    "tagline_cellar": "FROM CONAN, COMEDY CENTRAL HALF HOUR, FINALIST ON JEFF ROSS' \"ROAST BATTLE\""
   },
   {
     "name": "Max Manticof",
@@ -6009,5 +6010,17 @@
   {
     "name": "Darlene Bereznicki",
     "venues": []
+  },
+  {
+    "name": "Chris Turner",
+    "venues": [],
+    "bio": "RUNNER UP ON AGT, \"MAD APPLE\" AT CIRQUE DE SOLEIL, THE LATE SHOW WITH STEPHEN COLBERT, BBC RADIO, EDINBURGH FESTIVAL",
+    "tagline_cellar": "RUNNER UP ON AGT, \"MAD APPLE\" AT CIRQUE DE SOLEIL, THE LATE SHOW WITH STEPHEN COLBERT, BBC RADIO, EDINBURGH FESTIVAL"
+  },
+  {
+    "name": "Peng Dang",
+    "venues": [],
+    "bio": "VOLTURE, USA TODAY",
+    "tagline_cellar": "VOLTURE, USA TODAY"
   }
 ]
