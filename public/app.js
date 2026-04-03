@@ -2445,6 +2445,8 @@ function openModal() {
 function closeModal() {
   document.getElementById('modal-overlay').classList.add('hidden');
   showBookmarkToast();
+  updateSettingsBtnState();
+  updateResetBtn();
   renderTabs();
   renderShows();
 }
@@ -2520,16 +2522,7 @@ function renderModal(filter = '') {
 }
 
 function modalCycle(name) {
-  const prevPrefs = loadPrefs();
-  const hadAny = prevPrefs.faves.length > 0 || prevPrefs.skips.length > 0;
   cycleComedian(name);
-  const newPrefs = loadPrefs();
-  const hasAny = newPrefs.faves.length > 0 || newPrefs.skips.length > 0;
-  // Show onboarding hint after first selection
-  if (!hadAny && hasAny) {
-    const hint = document.getElementById('modal-onboard-hint');
-    if (hint) hint.style.display = 'block';
-  }
   const search = document.getElementById('comedian-search').value;
   renderModal(search);
 }

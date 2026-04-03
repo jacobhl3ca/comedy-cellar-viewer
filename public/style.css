@@ -582,12 +582,6 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 }
 .btn-done:hover { opacity: 0.85; }
 
-/* Modal onboarding hint */
-.modal-onboard-hint {
-  background: var(--accent); color: #fff; border-radius: 8px;
-  padding: 10px 16px; margin: 0 0 8px; font-size: 13px; text-align: center;
-}
-.modal-onboard-hint strong { color: #fff; }
 
 /* Onboarding */
 .onboard-banner {
