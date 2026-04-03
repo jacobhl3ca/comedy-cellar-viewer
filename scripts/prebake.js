@@ -461,7 +461,11 @@ async function scrapeTicketmaster() {
 
       const performerImages = {};
       (evt._embedded?.attractions || []).forEach(a => {
-        const imgs = a.images || [];
+        const imgs = (a.images || []).filter(i => {
+          // Filter out Ticketmaster generic category images (/dam/c/ = category, /dam/a/ = artist)
+          if (i.url && /ticketm\.net\/dam\/c\//.test(i.url)) return false;
+          return true;
+        });
         const best = imgs.filter(i => i.ratio === '16_9').sort((x, y) => (y.width || 0) - (x.width || 0))[0]
           || imgs.sort((x, y) => (y.width || 0) - (x.width || 0))[0];
         if (best?.url) performerImages[a.name] = best.url;
@@ -787,6 +791,21 @@ async function main() {
       allComedians.set(name, { ...data });
     } else if (!allComedians.get(name).photoUrl && data.photoUrl) {
       allComedians.get(name).photoUrl = data.photoUrl;
+    }
+  }
+
+  // Add Big Show performers to photo pipeline
+  for (const evt of bigShowEvents) {
+    const performers = (evt.performers || '').split(',').map(p => p.split(' - ')[0].trim()).filter(Boolean);
+    for (const name of performers) {
+      if (allComedians.has(name)) continue;
+      // Get best performer image, filtering out generic Ticketmaster category images (/dam/c/)
+      let photoUrl = '';
+      if (evt.performerImages?.[name]) {
+        const url = evt.performerImages[name];
+        if (!url.includes('/dam/c/')) photoUrl = url; // /dam/c/ = TM category placeholder
+      }
+      allComedians.set(name, { photoUrl, tagline: '', source: evt.source || 'big-show' });
     }
   }
 

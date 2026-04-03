@@ -364,6 +364,8 @@ function isBadPhotoUrl(url) {
   if (/instagram\.com/i.test(url) && !/\/v\/|\/t51\.|\/p\//.test(url)) return true;
   // SeatGeek placeholders
   if (/seatgeek\.com/i.test(url) && /placeholder|generic/i.test(url)) return true;
+  // Ticketmaster generic category images (not actual performer photos)
+  if (/ticketm\.net\/dam\/c\//i.test(url)) return true;
   return false;
 }
 
