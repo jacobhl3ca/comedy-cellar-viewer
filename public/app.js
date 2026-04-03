@@ -1472,8 +1472,7 @@ function renderAllDaysSchedule(container) {
       let dayShows = standShows.filter(s => s.date === dateStr && !isShowPast(dateStr, s.time));
       if (activeStandRoom !== 'all') {
         dayShows = dayShows.filter(s => {
-          const r = s.room ? s.room.replace('&nbsp;', ' ').replace(/^The Stand\s*[-–—]\s*/i, '').trim() : 'Main';
-          return r === activeStandRoom;
+          return cleanStandRoom(s.room) === activeStandRoom;
         });
       }
       if (timeFilterStand && timeFilterStand !== 'any') {
@@ -1573,6 +1572,15 @@ function renderAllDaysSchedule(container) {
   container.innerHTML = html;
 }
 
+// ---- Stand room helpers ----
+function cleanStandRoom(room) {
+  if (!room) return 'Main';
+  let r = room.replace('&nbsp;', ' ').replace(/^The Stand\s*[-–—]\s*/i, '').trim();
+  // Discard street addresses (e.g. "407 W 15th St") — these are venue addresses, not rooms
+  if (/^\d+\s/.test(r)) return 'Main';
+  return r || 'Main';
+}
+
 // ---- Stand room filter ----
 function renderStandRoomFilters() {
   const container = document.getElementById('venue-filters');
@@ -1580,10 +1588,7 @@ function renderStandRoomFilters() {
   if (activeSource !== 'the-stand') return;
 
   // Get unique rooms from Stand shows
-  const rooms = [...new Set(standShows.map(s => {
-    const r = s.room ? s.room.replace('&nbsp;', ' ').replace(/^The Stand\s*[-–—]\s*/i, '').trim() : '';
-    return r || 'Main';
-  }))].sort();
+  const rooms = [...new Set(standShows.map(s => cleanStandRoom(s.room)))].sort();
 
   const allRooms = ['all', ...rooms];
   container.innerHTML = allRooms.map(r => {
@@ -1656,12 +1661,8 @@ function renderStandShowCard(show) {
     }
   }
 
-  const room = show.room ? show.room.replace('&nbsp;', ' ').replace(/^The Stand\s*[-–—]\s*/i, '') : '';
-  // Shorten room names and capitalize properly
-  let shortRoom = room.replace(/^The Stand\s*/i, '').trim();
-  // Capitalize each word
-  shortRoom = shortRoom.replace(/\b\w/g, c => c.toUpperCase());
-  const venueText = shortRoom || 'The Stand';
+  const shortRoom = cleanStandRoom(show.room);
+  const venueText = shortRoom === 'Main' ? 'The Stand' : shortRoom.replace(/\b\w/g, c => c.toUpperCase());
 
   // Poster hover
   const posterHtml = show.poster
@@ -1878,30 +1879,33 @@ function renderAllVenues(container) {
       const evt = item.show;
       const evtSoldOut = !!evt.soldout;
       if (evtSoldOut && document.getElementById('hide-sold-out')?.checked) return;
-      let evtPhoto = '';
+      // Build performer list for comedian chips — use performers string or fall back to title
+      const evtPerformers = evt.performers
+        ? evt.performers.split(',').map(p => p.split(' - ')[0].trim()).filter(Boolean)
+        : [evt.title];
+      // Seed performerImages into comedianPhotos so renderComedianChips can find them
       if (evt.performerImages) {
-        evtPhoto = Object.values(evt.performerImages)[0] || '';
+        Object.entries(evt.performerImages).forEach(([name, url]) => {
+          if (!comedianPhotos[name]) comedianPhotos[name] = url;
+        });
       }
-      if (!evtPhoto) evtPhoto = getPhotoForVenue(evt.title, 'cellar') || localPhotoPath(evt.title) || comedianPhotos[evt.title] || '';
-      const evtPhotoHtml = evtPhoto ? `<img class="comedian-photo" src="${evtPhoto}" alt="" style="width:48px;height:48px;border-radius:50%;object-fit:cover;margin-right:8px;">` : '';
+      const hideSkipsBig = document.getElementById('hide-skips')?.checked;
+      const evtChips = renderComedianChips(evtPerformers, hideSkipsBig, 'big');
+      const cardClass = 'show-card' + (evtSoldOut ? ' sold-out' : '');
+      const links = evt.ticketLinks || (evt.url ? [{ source: evt.source || 'tickets', url: evt.url }] : []);
+      const preferred = links.find(l => l.source === 'seatgeek') || links[0];
+      const ticketUrl = preferred?.url || evt.url;
       html += `
-        <div class="big-show-card${evtSoldOut ? ' sold-out' : ''}">
+        <div class="${cardClass}">
           <div class="show-header">
             <div><span class="show-time">${formatTime(evt.time)}</span></div>
             <span class="show-name">${evt.title}</span>
             <span class="show-venue">${cleanVenueName(evt.venue) || ''}</span>
           </div>
-          <div class="big-show-info" style="padding:10px 16px;display:flex;align-items:center;gap:8px;">
-            ${evtPhotoHtml}
-            ${evt.price ? `<span class="big-show-price">From $${evt.price}</span>` : ''}
-            ${(() => {
-              const links = evt.ticketLinks || (evt.url ? [{ source: evt.source || 'tickets', url: evt.url }] : []);
-              // Prefer SeatGeek, fallback to first available
-              const preferred = links.find(l => l.source === 'seatgeek') || links[0];
-              const ticketUrl = preferred?.url || evt.url;
-              return ticketUrl ? `<a href="${ticketUrl}" target="_blank" class="reserve-btn${evtSoldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${evtSoldOut ? 'Sold Out' : 'Tickets'}</a>` : '';
-            })()}
-            ${evtSoldOut ? hideSoldOutToggle(evtSoldOut) : ''}
+          <div class="show-lineup">${evtChips}</div>
+          <div class="show-footer">
+            ${ticketUrl ? `<a href="${ticketUrl}" target="_blank" class="reserve-btn${evtSoldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${evtSoldOut ? 'Sold Out' : 'Tickets'}</a>` : '<span></span>'}
+            ${evtSoldOut ? hideSoldOutToggle(evtSoldOut) : '<span class="fav-count"></span>'}
           </div>
         </div>`;
     }
