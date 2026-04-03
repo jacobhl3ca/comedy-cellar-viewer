@@ -2585,6 +2585,17 @@ function initTheme() {
   });
 }
 
+function initSettingsJingle() {
+  if (localStorage.getItem('settings-jingle-shown')) return;
+  localStorage.setItem('settings-jingle-shown', '1');
+  const btn = document.getElementById('open-settings');
+  if (!btn) return;
+  btn.classList.add('jingle-intro');
+  btn.addEventListener('animationend', () => {
+    btn.classList.remove('jingle-intro');
+  }, { once: true });
+}
+
 // ---- Tagline helpers ----
 const comedianTaglines = {};       // Cellar API taglines (live)
 const comedianWikiBios = {};       // Wikipedia bios (last resort)
@@ -2735,6 +2746,7 @@ async function init() {
   if (pmEl && !pmEl.checked) pmEl.checked = true;
   initTheme();
   initCalendar();
+  initSettingsJingle();
   renderSourceTabs();
   renderTabs();
   renderShows();
