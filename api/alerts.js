@@ -1,16 +1,17 @@
-// Alert system — Vercel KV for storage
+// Alert system — Upstash Redis for storage
 // GET /api/alerts?email=x — get alert subscriptions
 // POST /api/alerts — save { email, comedians: [...] }
 // DELETE /api/alerts?email=x — remove subscription
 
-let kv;
-try { kv = require('@vercel/kv'); } catch {}
+const { Redis } = require('@upstash/redis');
 
 const ALERTS_PREFIX = 'alert:';
 
-async function getStore() {
-  if (!kv || !process.env.KV_REST_API_URL) return null;
-  return kv;
+let redis;
+function getStore() {
+  if (!process.env.KV_REST_API_URL || !process.env.KV_REST_API_TOKEN) return null;
+  if (!redis) redis = new Redis({ url: process.env.KV_REST_API_URL, token: process.env.KV_REST_API_TOKEN });
+  return redis;
 }
 
 module.exports = async (req, res) => {
@@ -19,7 +20,7 @@ module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  const store = await getStore();
+  const store = getStore();
 
   if (req.method === 'GET') {
     const email = req.query.email;

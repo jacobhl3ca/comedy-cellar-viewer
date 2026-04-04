@@ -1,8 +1,14 @@
 // Cron job: check today's lineups against alert subscriptions and send emails
 // Runs daily via Vercel cron (vercel.json)
 
-let kv;
-try { kv = require('@vercel/kv'); } catch {}
+const { Redis } = require('@upstash/redis');
+
+let redis;
+function getKV() {
+  if (!process.env.KV_REST_API_URL || !process.env.KV_REST_API_TOKEN) return null;
+  if (!redis) redis = new Redis({ url: process.env.KV_REST_API_URL, token: process.env.KV_REST_API_TOKEN });
+  return redis;
+}
 
 const CELLAR_API = 'https://www.comedycellar.com/lineup/api/';
 
@@ -49,7 +55,8 @@ module.exports = async (req, res) => {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
-  if (!kv || !process.env.KV_REST_API_URL) {
+  const kv = getKV();
+  if (!kv) {
     return res.status(200).json({ message: 'KV not configured, skipping' });
   }
 
