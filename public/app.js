@@ -2830,6 +2830,11 @@ async function init() {
   updateFooterInfo();
   document.getElementById('schedule-filter-area')?.classList.add('ready');
 
+  // Open My Comedians modal if #alerts in URL
+  if (window.location.hash === '#alerts') {
+    openModal();
+  }
+
   // Enrich bios from Wikipedia in background (don't block render)
   enrichBiosFromWikipedia().then(() => {
     // Re-render to show new bios if user has bios toggled on

@@ -104,7 +104,7 @@ module.exports = async (req, res) => {
         html += `<p><strong>${dateLabel(dateStr)}</strong>: ${names.join(', ')}</p>`;
       }
       html += `<p style="margin-top: 16px;"><a href="https://tonightnyc.com" style="color: #e63636;">View lineups & reserve →</a></p>`;
-      html += `<p style="font-size: 11px; color: #888; margin-top: 24px;">You're getting this because you set up alerts on Cellar Tonight. <a href="https://tonightnyc.com">Manage alerts</a></p>`;
+      html += `<p style="font-size: 11px; color: #888; margin-top: 24px;">You're getting this because you set up alerts on Tonight NYC. <a href="https://tonightnyc.com#alerts">Manage alerts</a></p>`;
       html += `</div>`;
 
       const sent = await sendEmail(
