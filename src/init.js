@@ -338,7 +338,9 @@ function pwaInstall() {
   });
 }
 
-// Cmd+F search popup
+// Cmd+F search popup — commented out for now, revisit as non-overriding suggestion popup
+// Intent: show a suggestion popup pointing to My Comedians / filter, without overriding native Cmd+F
+/*
 document.addEventListener('keydown', (e) => {
   if ((e.metaKey || e.ctrlKey) && e.key === 'f') {
     e.preventDefault();
@@ -348,7 +350,7 @@ document.addEventListener('keydown', (e) => {
 
 function showSearchPopup() {
   let overlay = document.getElementById('search-popup-overlay');
-  if (overlay) { overlay.remove(); return; } // toggle off
+  if (overlay) { overlay.remove(); return; }
   overlay = document.createElement('div');
   overlay.id = 'search-popup-overlay';
   overlay.innerHTML = `
@@ -373,15 +375,10 @@ function showSearchPopup() {
       `<button class="search-result-item" onclick="filterByComedian('${n.replace(/'/g, "\\'")}');document.getElementById('search-popup-overlay')?.remove();">${n}</button>`
     ).join('');
   });
-  // Close on Escape
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') overlay.remove();
-  });
-  // Close on click outside popup
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) overlay.remove();
-  });
+  input.addEventListener('keydown', (e) => { if (e.key === 'Escape') overlay.remove(); });
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
 }
+*/
 
 // Expose functions needed by inline onclick handlers (terser mangles names)
 window.openModal = openModal;
