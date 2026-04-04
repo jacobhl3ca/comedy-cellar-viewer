@@ -94,7 +94,7 @@ function updateResetBtn() {
     document.getElementById('expand-long-bios')?.checked ||
     (document.getElementById('time-filter')?.value !== 'any') ||
     !!window._timeFilterMin ||
-    !document.getElementById('hide-sold-out')?.checked ||
+    document.getElementById('hide-sold-out')?.checked ||
     !!activeComedianFilter;
   btn.style.visibility = anyActive ? 'visible' : 'hidden';
   // Show row if reset button is visible OR filters panel is open

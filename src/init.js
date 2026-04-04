@@ -174,7 +174,7 @@
     document.getElementById('quick-mode').checked = false;
     const pm = document.getElementById('picture-mode'); if (pm) pm.checked = true;
     const npf = document.getElementById('no-photo-filter'); if (npf) npf.checked = false;
-    const hso = document.getElementById('hide-sold-out'); if (hso) hso.checked = true;
+    const hso = document.getElementById('hide-sold-out'); if (hso) hso.checked = false;
     const sp = document.getElementById('show-photos'); if (sp) sp.checked = true;
     const tf = document.getElementById('time-filter');
     if (tf) tf.value = 'any';
