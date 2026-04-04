@@ -30,7 +30,7 @@ async function sendEmail(to, subject, html) {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        from: 'Cellar Tonight <alerts@cellartonight.com>',
+        from: 'Tonight NYC <alerts@tonightnyc.com>',
         to,
         subject,
         html,
@@ -96,8 +96,8 @@ module.exports = async (req, res) => {
       for (const [dateStr, names] of Object.entries(matches)) {
         html += `<p><strong>${dateLabel(dateStr)}</strong>: ${names.join(', ')}</p>`;
       }
-      html += `<p style="margin-top: 16px;"><a href="https://cellartonight.com" style="color: #e63636;">View lineups & reserve →</a></p>`;
-      html += `<p style="font-size: 11px; color: #888; margin-top: 24px;">You're getting this because you set up alerts on Cellar Tonight. <a href="https://cellartonight.com">Manage alerts</a></p>`;
+      html += `<p style="margin-top: 16px;"><a href="https://tonightnyc.com" style="color: #e63636;">View lineups & reserve →</a></p>`;
+      html += `<p style="font-size: 11px; color: #888; margin-top: 24px;">You're getting this because you set up alerts on Cellar Tonight. <a href="https://tonightnyc.com">Manage alerts</a></p>`;
       html += `</div>`;
 
       const sent = await sendEmail(
