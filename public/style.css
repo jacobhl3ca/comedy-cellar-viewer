@@ -351,7 +351,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .show-card.sold-out > .show-footer .reserve-group,
 .show-card.sold-out > .show-footer .standby-note,
 .show-card.sold-out > .show-footer .fav-count { opacity: 0.6; }
-.show-card.sold-out .hide-sold-out-inline { opacity: 0.6; }
+.show-card.sold-out .hide-sold-out-inline { opacity: 0.7; }
 .reserve-btn.sold-out-btn { background: #666; color: #ccc; pointer-events: none; }
 .reserve-group { display: inline-flex; align-items: center; gap: 8px; }
 .standby-note { font-size: 11px; color: var(--text-dim); font-style: italic; }
