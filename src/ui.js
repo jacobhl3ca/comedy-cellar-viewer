@@ -236,8 +236,7 @@ async function init() {
   await loadPrefsFromHash();
 
   dates = getDateRange();
-  // Default to today's date
-  activeDate = formatDateParam(dates[0]);
+  activeDate = 'all';
 
   // Fetch all sources in parallel — prebaked static JSON first, live API fallback
   const [batchData] = await Promise.all([

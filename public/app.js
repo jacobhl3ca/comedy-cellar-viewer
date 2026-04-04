@@ -2756,8 +2756,7 @@ async function init() {
   await loadPrefsFromHash();
 
   dates = getDateRange();
-  // Default to today's date
-  activeDate = formatDateParam(dates[0]);
+  activeDate = 'all';
 
   // Fetch all sources in parallel — prebaked static JSON first, live API fallback
   const [batchData] = await Promise.all([
@@ -3116,6 +3115,51 @@ function pwaInstall() {
     deferredInstallPrompt = null;
     const btn = document.getElementById('pwa-install-btn');
     if (btn) btn.style.display = 'none';
+  });
+}
+
+// Cmd+F search popup
+document.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'f') {
+    e.preventDefault();
+    showSearchPopup();
+  }
+});
+
+function showSearchPopup() {
+  let overlay = document.getElementById('search-popup-overlay');
+  if (overlay) { overlay.remove(); return; } // toggle off
+  overlay = document.createElement('div');
+  overlay.id = 'search-popup-overlay';
+  overlay.innerHTML = `
+    <div class="search-popup">
+      <input type="text" id="search-popup-input" placeholder="Search comedians..." autocomplete="off" />
+      <div id="search-popup-results"></div>
+      <div class="search-popup-actions">
+        <button onclick="openModal();document.getElementById('search-popup-overlay')?.remove();">My Comedians</button>
+        <button onclick="document.getElementById('sort-select').value='faves';document.getElementById('sort-select').dispatchEvent(new Event('change'));document.getElementById('search-popup-overlay')?.remove();">Sort by Faves</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  const input = document.getElementById('search-popup-input');
+  input.focus();
+  input.addEventListener('input', () => {
+    const q = input.value.toLowerCase().trim();
+    const results = document.getElementById('search-popup-results');
+    if (!q) { results.innerHTML = ''; return; }
+    const matches = [...allComediansSeen].filter(n => n.toLowerCase().includes(q)).slice(0, 8);
+    results.innerHTML = matches.map(n =>
+      `<button class="search-result-item" onclick="filterByComedian('${n.replace(/'/g, "\\'")}');document.getElementById('search-popup-overlay')?.remove();">${n}</button>`
+    ).join('');
+  });
+  // Close on Escape
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') overlay.remove();
+  });
+  // Close on click outside popup
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) overlay.remove();
   });
 }
 

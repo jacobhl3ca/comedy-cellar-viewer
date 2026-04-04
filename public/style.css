@@ -1053,3 +1053,37 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
   margin: 8px 0;
 }
 #pwa-install-btn:hover { opacity: 0.9; }
+
+/* Cmd+F search popup */
+#search-popup-overlay {
+  position: fixed; inset: 0; z-index: 10000;
+  background: rgba(0,0,0,0.5); display: flex;
+  justify-content: center; padding-top: 80px;
+}
+.search-popup {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px; width: 340px; max-width: 90vw;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4); height: fit-content;
+}
+#search-popup-input {
+  width: 100%; padding: 10px 12px; font-size: 16px; border: 1px solid var(--border);
+  border-radius: 8px; background: var(--bg); color: var(--text);
+  outline: none; box-sizing: border-box;
+}
+#search-popup-input:focus { border-color: var(--accent); }
+#search-popup-results {
+  display: flex; flex-direction: column; gap: 2px; margin-top: 8px; max-height: 240px; overflow-y: auto;
+}
+.search-result-item {
+  background: none; border: none; color: var(--text); padding: 8px 12px;
+  text-align: left; font-size: 14px; border-radius: 6px; cursor: pointer;
+}
+.search-result-item:hover { background: var(--surface2); }
+.search-popup-actions {
+  display: flex; gap: 8px; margin-top: 12px; border-top: 1px solid var(--border); padding-top: 12px;
+}
+.search-popup-actions button {
+  flex: 1; padding: 8px; border: 1px solid var(--border); border-radius: 6px;
+  background: var(--surface2); color: var(--text); font-size: 13px; cursor: pointer;
+}
+.search-popup-actions button:hover { border-color: var(--accent); }
