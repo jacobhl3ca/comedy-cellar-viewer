@@ -319,6 +319,25 @@ init();
   });
 })();
 
+// PWA install prompt
+let deferredInstallPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  const btn = document.getElementById('pwa-install-btn');
+  if (btn) btn.style.display = 'inline-block';
+});
+
+function pwaInstall() {
+  if (!deferredInstallPrompt) return;
+  deferredInstallPrompt.prompt();
+  deferredInstallPrompt.userChoice.then(() => {
+    deferredInstallPrompt = null;
+    const btn = document.getElementById('pwa-install-btn');
+    if (btn) btn.style.display = 'none';
+  });
+}
+
 // Expose functions needed by inline onclick handlers (terser mangles names)
 window.openModal = openModal;
 window.closeModal = closeModal;
@@ -334,3 +353,4 @@ window.filterByComedian = filterByComedian;
 window.trackReserve = trackReserve;
 window.removeAlert = removeAlert;
 window.expandBioInPanel = expandBioInPanel;
+window.pwaInstall = pwaInstall;

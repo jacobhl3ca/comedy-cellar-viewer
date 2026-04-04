@@ -1553,7 +1553,7 @@ function handleComedianClick(el) {
         const MAX = 300;
         if (longMode || fullBio.length <= MAX) return `<div class="exp-tagline">${fullBio}</div>`;
         const truncated = fullBio.substring(0, MAX).replace(/\s+\S*$/, '') + '...';
-        return `<div class="exp-tagline exp-bio-truncated">${truncated} <a href="#" class="bio-more-link" onclick="event.preventDefault();expandBioInPanel(this);" style="color:var(--accent);font-weight:500;">more</a></div>`;
+        return `<div class="exp-tagline exp-bio-truncated">${truncated} <a href="#" class="bio-more-link" onclick="event.preventDefault();expandBioInPanel(this);" style="color:var(--text-dim);font-weight:500;">more</a></div>`;
       })() : ''}
       ${venues ? `<div style="font-size:11px;color:var(--text-dim);margin-top:4px;">Also at: ${venues}</div>` : ''}
       <div class="exp-actions">

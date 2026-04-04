@@ -2413,7 +2413,7 @@ function handleComedianClick(el) {
         const MAX = 300;
         if (longMode || fullBio.length <= MAX) return `<div class="exp-tagline">${fullBio}</div>`;
         const truncated = fullBio.substring(0, MAX).replace(/\s+\S*$/, '') + '...';
-        return `<div class="exp-tagline exp-bio-truncated">${truncated} <a href="#" class="bio-more-link" onclick="event.preventDefault();expandBioInPanel(this);" style="color:var(--accent);font-weight:500;">more</a></div>`;
+        return `<div class="exp-tagline exp-bio-truncated">${truncated} <a href="#" class="bio-more-link" onclick="event.preventDefault();expandBioInPanel(this);" style="color:var(--text-dim);font-weight:500;">more</a></div>`;
       })() : ''}
       ${venues ? `<div style="font-size:11px;color:var(--text-dim);margin-top:4px;">Also at: ${venues}</div>` : ''}
       <div class="exp-actions">
@@ -2614,7 +2614,7 @@ function updateResetBtn() {
     document.getElementById('expand-long-bios')?.checked ||
     (document.getElementById('time-filter')?.value !== 'any') ||
     !!window._timeFilterMin ||
-    !document.getElementById('hide-sold-out')?.checked ||
+    document.getElementById('hide-sold-out')?.checked ||
     !!activeComedianFilter;
   btn.style.visibility = anyActive ? 'visible' : 'hidden';
   // Show row if reset button is visible OR filters panel is open
@@ -2756,7 +2756,8 @@ async function init() {
   await loadPrefsFromHash();
 
   dates = getDateRange();
-  activeDate = 'all';
+  // Default to today's date
+  activeDate = formatDateParam(dates[0]);
 
   // Fetch all sources in parallel — prebaked static JSON first, live API fallback
   const [batchData] = await Promise.all([
@@ -2954,7 +2955,7 @@ async function init() {
     document.getElementById('quick-mode').checked = false;
     const pm = document.getElementById('picture-mode'); if (pm) pm.checked = true;
     const npf = document.getElementById('no-photo-filter'); if (npf) npf.checked = false;
-    const hso = document.getElementById('hide-sold-out'); if (hso) hso.checked = true;
+    const hso = document.getElementById('hide-sold-out'); if (hso) hso.checked = false;
     const sp = document.getElementById('show-photos'); if (sp) sp.checked = true;
     const tf = document.getElementById('time-filter');
     if (tf) tf.value = 'any';
@@ -3099,6 +3100,25 @@ init();
   });
 })();
 
+// PWA install prompt
+let deferredInstallPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  const btn = document.getElementById('pwa-install-btn');
+  if (btn) btn.style.display = 'inline-block';
+});
+
+function pwaInstall() {
+  if (!deferredInstallPrompt) return;
+  deferredInstallPrompt.prompt();
+  deferredInstallPrompt.userChoice.then(() => {
+    deferredInstallPrompt = null;
+    const btn = document.getElementById('pwa-install-btn');
+    if (btn) btn.style.display = 'none';
+  });
+}
+
 // Expose functions needed by inline onclick handlers (terser mangles names)
 window.openModal = openModal;
 window.closeModal = closeModal;
@@ -3114,3 +3134,4 @@ window.filterByComedian = filterByComedian;
 window.trackReserve = trackReserve;
 window.removeAlert = removeAlert;
 window.expandBioInPanel = expandBioInPanel;
+window.pwaInstall = pwaInstall;
