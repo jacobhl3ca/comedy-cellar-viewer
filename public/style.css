@@ -235,6 +235,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
   display: flex; align-items: center; gap: 8px; margin-left: auto;
 }
 .toolbar-toggle { flex-shrink: 0; }
+#hide-sold-out + span { font-weight: 700; }
 .toolbar-btn {
   padding: 6px 14px; border-radius: 6px; font-size: 13px; font-weight: 500;
   background: var(--surface2); border: 1px solid var(--border); color: var(--text-dim);
