@@ -937,6 +937,28 @@ async function main() {
 
   log(`Bios — Stand profiles: ${standBioCount}, Wikipedia: ${bioCount}`);
 
+  // Enrich Big Shows performerImages with local photos for events missing API images
+  let enrichedCount = 0;
+  for (const evt of bigShowEvents) {
+    const performers = (evt.performers || '').split(',').map(p => p.split(' - ')[0].trim()).filter(Boolean);
+    for (const name of performers) {
+      if (evt.performerImages[name]) continue; // already has an API image
+      const filename = nameToFilename(name);
+      if (manifest[filename]) {
+        evt.performerImages[name] = `/photos/${filename}${manifest[filename]}`;
+        enrichedCount++;
+      }
+    }
+  }
+  if (enrichedCount > 0) {
+    log(`Enriched ${enrichedCount} Big Shows performers with local photos`);
+    // Re-write big-shows-cache.json with enriched images
+    fs.writeFileSync(path.join(CACHE_DIR, 'big-shows-cache.json'), JSON.stringify({
+      events: bigShowEvents, count: bigShowEvents.length, source: 'seatgeek.com+ticketmaster.com',
+      prebaked: new Date().toISOString()
+    }) + '\n');
+  }
+
   // Sort manifest alphabetically for clean diffs
   const sortedManifest = {};
   for (const key of Object.keys(manifest).sort()) {

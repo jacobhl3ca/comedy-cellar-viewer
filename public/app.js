@@ -1005,7 +1005,29 @@ function renderCalendar() {
   const today = new Date();
   today.setHours(0,0,0,0);
   const maxDate = new Date(today);
-  maxDate.setDate(today.getDate() + 13); // 14 days total
+  maxDate.setDate(today.getDate() + 13); // 14 days default
+
+  // Extend calendar range for sources with events beyond 14 days
+  if (activeSource === 'big-shows' && bigShows.length > 0) {
+    const latestBigShow = bigShows.reduce((max, e) => e.date > max ? e.date : max, '');
+    if (latestBigShow) {
+      const latestDate = new Date(latestBigShow + 'T12:00:00');
+      if (latestDate > maxDate) maxDate.setTime(latestDate.getTime());
+    }
+  } else if (activeSource === 'the-stand' && standShows.length > 0) {
+    const latestStand = standShows.reduce((max, s) => s.date > max ? s.date : max, '');
+    if (latestStand) {
+      const latestDate = new Date(latestStand + 'T12:00:00');
+      if (latestDate > maxDate) maxDate.setTime(latestDate.getTime());
+    }
+  } else if (activeSource === 'all') {
+    const allDates = [...bigShows.map(e => e.date), ...standShows.map(s => s.date)];
+    const latest = allDates.reduce((max, d) => d > max ? d : max, '');
+    if (latest) {
+      const latestDate = new Date(latest + 'T12:00:00');
+      if (latestDate > maxDate) maxDate.setTime(latestDate.getTime());
+    }
+  }
 
   // Find the Monday of the week containing today
   const startOfWeek = new Date(today);
