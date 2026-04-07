@@ -1040,12 +1040,24 @@ function renderCalendar() {
   if (edow !== 0) endOfWeek.setDate(endOfWeek.getDate() + (7 - edow));
 
   let html = '<div class="calendar-grid">';
+
+  let lastMonth = -1;
+  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+  // Add initial month + day headers
+  const cursor = new Date(startOfWeek);
+  lastMonth = cursor.getMonth();
+  html += `<div class="cal-month-label">${monthNames[lastMonth]}</div>`;
   ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(d => {
     html += `<div class="cal-header">${d}</div>`;
   });
 
-  const cursor = new Date(startOfWeek);
   while (cursor <= endOfWeek) {
+    // Month separator row when month changes (at start of a week / Monday)
+    if (cursor.getMonth() !== lastMonth && cursor.getDay() === 1) {
+      lastMonth = cursor.getMonth();
+      html += `<div class="cal-month-label">${monthNames[lastMonth]}</div>`;
+    }
     const dateStr = cursor.toISOString().split('T')[0];
     const isToday = cursor.getTime() === today.getTime();
     const inRange = cursor >= today && cursor <= maxDate;

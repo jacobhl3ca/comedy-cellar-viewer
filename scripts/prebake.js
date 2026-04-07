@@ -332,7 +332,16 @@ async function findPhoto(name) {
     }
   } catch {}
 
-  // Source 3: Instagram og:image — REMOVED
+  // Source 3: SeatGeek performer search (has real photos for many acts)
+  try {
+    const data = await fetchJSON(`https://api.seatgeek.com/2/performers?q=${encodeURIComponent(name)}&client_id=${SEATGEEK_CLIENT_ID}`);
+    const perf = (data.performers || []).find(p =>
+      p.name.toLowerCase() === name.toLowerCase() && p.image && !p.image.includes('/generic-comedy')
+    );
+    if (perf?.image) return { url: perf.image, source: 'seatgeek-performer' };
+  } catch {}
+
+  // Source 4: Instagram og:image — REMOVED
   // Instagram no longer serves real profile photos via og:image. It returns the
   // Instagram app icon/logo which gets saved as comedian photos. Disabled permanently.
 
@@ -500,6 +509,11 @@ async function scrapeTicketmaster() {
   }
 }
 
+// Non-comedy acts that get scraped due to broad Ticketmaster/SeatGeek classification
+const BIG_SHOWS_BLOCKLIST = [
+  'dj akademiks',
+];
+
 // ---- Dedupe SeatGeek + Ticketmaster events ----
 function mergeEvents(seatgeekEvents, ticketmasterEvents) {
   // Build lookup from SeatGeek: normalize title+date → index in merged array
@@ -577,8 +591,15 @@ function mergeEvents(seatgeekEvents, ticketmasterEvents) {
       added++;
     }
   });
-  log(`Merge: ${seatgeekEvents.length} SeatGeek + ${ticketmasterEvents.length} Ticketmaster → ${linked} linked (multi-source), ${added} unique TM added → ${merged.length} total`);
-  return merged;
+  // Filter out non-comedy acts
+  const filtered = merged.filter(evt => {
+    const title = (evt.title || '').toLowerCase();
+    const performers = (evt.performers || '').toLowerCase();
+    return !BIG_SHOWS_BLOCKLIST.some(b => title.includes(b) || performers.includes(b));
+  });
+  const blockedCount = merged.length - filtered.length;
+  log(`Merge: ${seatgeekEvents.length} SeatGeek + ${ticketmasterEvents.length} Ticketmaster → ${linked} linked (multi-source), ${added} unique TM added → ${filtered.length} total${blockedCount ? ` (${blockedCount} blocked)` : ''}`);
+  return filtered;
 }
 
 // ---- Step 4: Download image ----
