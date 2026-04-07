@@ -12,11 +12,12 @@ module.exports = async (req, res) => {
 
   const slug = name.toLowerCase().replace(/['']/g, '').replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '');
 
-  // Try sources in order: The Stand → NYCC → Comedy Cellar → Instagram
+  // Try sources in order: The Stand → NYCC → Comedy Cellar → Ticketmaster → Instagram
   const sources = [
     { name: 'stand', fn: () => tryStand(slug) },
     { name: 'nycc', fn: () => tryNYCC(slug) },
     { name: 'cellar', fn: () => tryCellar(slug) },
+    { name: 'ticketmaster', fn: () => tryTicketmaster(name) },
     { name: 'instagram', fn: () => tryInstagram(name) },
   ];
 
@@ -72,6 +73,35 @@ async function tryNYCC(slug) {
   if (!match) return '';
   const path = match[1].split('?')[0]; // strip cache buster
   return `https://www.newyorkcomedyclub.com${path}`;
+}
+
+// Ticketmaster — attraction + event search for performer photos
+async function tryTicketmaster(name) {
+  const TM_API_KEY = process.env.TM_API_KEY || 'ngUmt60hJ6lHzJxzy9ximMn0HtAts4Cj';
+  // Try attraction images first
+  try {
+    const data = JSON.parse(await fetchHTML(`https://app.ticketmaster.com/discovery/v2/attractions.json?apikey=${TM_API_KEY}&keyword=${encodeURIComponent(name)}&size=5`));
+    const attraction = (data._embedded?.attractions || []).find(a =>
+      a.name.toLowerCase() === name.toLowerCase() && a.images?.length
+    );
+    if (attraction) {
+      const imgs = (attraction.images || []).filter(i => i.url && !/ticketm\.net\/dam\/c\//.test(i.url));
+      const best = imgs.filter(i => i.ratio === '16_9').sort((x, y) => (y.width || 0) - (x.width || 0))[0]
+        || imgs.sort((x, y) => (y.width || 0) - (x.width || 0))[0];
+      if (best?.url) return best.url;
+    }
+  } catch {}
+  // Fall back to event-level images (promotional posters)
+  try {
+    const data = JSON.parse(await fetchHTML(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${TM_API_KEY}&keyword=${encodeURIComponent(name)}&size=5&sort=date,asc`));
+    for (const evt of (data._embedded?.events || [])) {
+      const imgs = (evt.images || []).filter(i => i.url && !/ticketm\.net\/dam\/c\//.test(i.url));
+      const best = imgs.filter(i => i.ratio === '16_9').sort((x, y) => (y.width || 0) - (x.width || 0))[0]
+        || imgs.sort((x, y) => (y.width || 0) - (x.width || 0))[0];
+      if (best?.url) return best.url;
+    }
+  } catch {}
+  return '';
 }
 
 // Comedy Cellar — try common wp-content upload paths

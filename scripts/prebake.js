@@ -337,13 +337,36 @@ async function findPhoto(name) {
     const data = await fetchJSON(`https://api.seatgeek.com/2/performers?q=${encodeURIComponent(name)}&client_id=${SEATGEEK_CLIENT_ID}`);
     const perf = (data.performers || []).find(p =>
       p.name.toLowerCase() === name.toLowerCase() && p.image && !p.image.includes('/generic-comedy')
+      && !(p.image_attribution || '').toLowerCase().startsWith('seatgeek')
     );
     if (perf?.image) return { url: perf.image, source: 'seatgeek-performer' };
   } catch {}
 
-  // Source 4: Instagram og:image — REMOVED
-  // Instagram no longer serves real profile photos via og:image. It returns the
-  // Instagram app icon/logo which gets saved as comedian photos. Disabled permanently.
+  // Source 4: Ticketmaster attraction search (good photos for touring acts)
+  try {
+    const data = await fetchJSON(`https://app.ticketmaster.com/discovery/v2/attractions.json?apikey=${TM_API_KEY}&keyword=${encodeURIComponent(name)}&size=5`);
+    const attraction = (data._embedded?.attractions || []).find(a =>
+      a.name.toLowerCase() === name.toLowerCase() && a.images?.length
+    );
+    if (attraction) {
+      const imgs = (attraction.images || []).filter(i => i.url && !/ticketm\.net\/dam\/c\//.test(i.url));
+      const best = imgs.filter(i => i.ratio === '16_9').sort((x, y) => (y.width || 0) - (x.width || 0))[0]
+        || imgs.sort((x, y) => (y.width || 0) - (x.width || 0))[0];
+      if (best?.url) return { url: best.url, source: 'ticketmaster-attraction' };
+    }
+  } catch {}
+
+  // Source 5: Ticketmaster event search — find event-level promotional images (/dam/e/ or /dam/a/)
+  // Useful when attraction has only generic /dam/c/ images but events have real promotional photos
+  try {
+    const data = await fetchJSON(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${TM_API_KEY}&keyword=${encodeURIComponent(name)}&size=5&sort=date,asc`);
+    for (const evt of (data._embedded?.events || [])) {
+      const imgs = (evt.images || []).filter(i => i.url && !/ticketm\.net\/dam\/c\//.test(i.url));
+      const best = imgs.filter(i => i.ratio === '16_9').sort((x, y) => (y.width || 0) - (x.width || 0))[0]
+        || imgs.sort((x, y) => (y.width || 0) - (x.width || 0))[0];
+      if (best?.url) return { url: best.url, source: 'ticketmaster-event' };
+    }
+  } catch {}
 
   return null;
 }
@@ -483,6 +506,12 @@ async function scrapeTicketmaster() {
         if (best?.url) performerImages[a.name] = best.url;
       });
 
+      // Event-level image (promotional poster/photo — /dam/e/ or /dam/a/, not /dam/c/)
+      const evtImgs = (evt.images || []).filter(i => i.url && !/ticketm\.net\/dam\/c\//.test(i.url));
+      const bestEvtImg = evtImgs.filter(i => i.ratio === '16_9').sort((x, y) => (y.width || 0) - (x.width || 0))[0]
+        || evtImgs.sort((x, y) => (y.width || 0) - (x.width || 0))[0];
+      const eventImage = bestEvtImg?.url || '';
+
       // Ticketmaster status: "onsale", "offsale", "cancelled", "rescheduled", "postponed"
       const statusCode = evt.dates?.status?.code || '';
       const soldout = statusCode === 'offsale' || statusCode === 'cancelled';
@@ -494,6 +523,7 @@ async function scrapeTicketmaster() {
         venue: venue?.name || '',
         performers: (evt._embedded?.attractions || []).map(a => a.name).join(', '),
         performerImages,
+        eventImage,
         price: evt.priceRanges?.[0]?.min || null,
         url: evt.url || '',
         id: evt.id,
@@ -582,9 +612,10 @@ function mergeEvents(seatgeekEvents, ticketmasterEvents) {
         merged[matchIdx].ticketLinks.push({ source: 'ticketmaster', url: evt.url });
         linked++;
       }
-      // Also grab TM price/soldout if SG doesn't have it
+      // Also grab TM price/soldout/eventImage if SG doesn't have it
       if (!merged[matchIdx].price && evt.price) merged[matchIdx].price = evt.price;
       if (evt.soldout && !merged[matchIdx].soldout) merged[matchIdx].soldout = evt.soldout;
+      if (!merged[matchIdx].eventImage && evt.eventImage) merged[matchIdx].eventImage = evt.eventImage;
     } else {
       // Unique TM event — add with ticketLinks
       merged.push({ ...evt, ticketLinks: [{ source: 'ticketmaster', url: evt.url }] });
@@ -608,14 +639,43 @@ async function downloadPhoto(url, filename) {
     const buffer = await fetch(url);
     if (buffer.length < 500) return null; // too small, probably error page
 
-    // Reject known bad images: Instagram icons are large PNGs (typically 4168x4168, ~778KB)
-    // Check PNG dimensions from header bytes (width at offset 16-19, height at 20-23)
+    // Reject tiny images (SeatGeek generic thumbnails are 280x210 / ~5-8KB)
+    if (buffer.length < 10000) {
+      log(`  Rejected ${filename}: too small (${buffer.length} bytes)`);
+      return null;
+    }
+
+    // Check image dimensions from headers
     if (buffer[0] === 0x89 && buffer[1] === 0x50) { // PNG
       const w = buffer.readUInt32BE(16);
       const h = buffer.readUInt32BE(20);
+      // Reject Instagram icons (large square PNGs)
       if (w === h && w > 2000 && buffer.length > 500000) {
         log(`  Rejected ${filename}: suspicious icon (${w}x${h}, ${buffer.length} bytes)`);
         return null;
+      }
+      // Reject tiny PNGs
+      if (w < 300 && h < 300) {
+        log(`  Rejected ${filename}: too small (${w}x${h})`);
+        return null;
+      }
+    } else if (buffer[0] === 0xFF && buffer[1] === 0xD8) { // JPEG
+      // Parse JPEG SOF marker for dimensions
+      let offset = 2;
+      while (offset < buffer.length - 8) {
+        if (buffer[offset] !== 0xFF) break;
+        const marker = buffer[offset + 1];
+        if (marker >= 0xC0 && marker <= 0xCF && marker !== 0xC4 && marker !== 0xC8 && marker !== 0xCC) {
+          const h = buffer.readUInt16BE(offset + 5);
+          const w = buffer.readUInt16BE(offset + 7);
+          if (w < 300 && h < 300) {
+            log(`  Rejected ${filename}: too small (${w}x${h})`);
+            return null;
+          }
+          break;
+        }
+        const len = buffer.readUInt16BE(offset + 2);
+        offset += 2 + len;
       }
     }
 
@@ -854,6 +914,8 @@ async function main() {
         const url = evt.performerImages[name];
         if (!url.includes('/dam/c/')) photoUrl = url; // /dam/c/ = TM category placeholder
       }
+      // Fall back to event-level image (promotional poster from Ticketmaster)
+      if (!photoUrl && evt.eventImage) photoUrl = evt.eventImage;
       allComedians.set(name, { photoUrl, tagline: '', source: evt.source || 'big-show' });
     }
   }
@@ -958,17 +1020,24 @@ async function main() {
 
   log(`Bios — Stand profiles: ${standBioCount}, Wikipedia: ${bioCount}`);
 
-  // Enrich Big Shows performerImages with local photos for events missing API images
+  // Enrich Big Shows performerImages with local photos or eventImage for events missing images
   let enrichedCount = 0;
   for (const evt of bigShowEvents) {
     const performers = (evt.performers || '').split(',').map(p => p.split(' - ')[0].trim()).filter(Boolean);
+    let hasAnyPhoto = Object.keys(evt.performerImages || {}).length > 0;
     for (const name of performers) {
       if (evt.performerImages[name]) continue; // already has an API image
       const filename = nameToFilename(name);
       if (manifest[filename]) {
         evt.performerImages[name] = `/photos/${filename}${manifest[filename]}`;
         enrichedCount++;
+        hasAnyPhoto = true;
       }
+    }
+    // Last resort: use eventImage (TM promotional poster) if no performer photo found
+    if (!hasAnyPhoto && evt.eventImage && performers.length > 0) {
+      evt.performerImages[performers[0]] = evt.eventImage;
+      enrichedCount++;
     }
   }
   if (enrichedCount > 0) {

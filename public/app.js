@@ -764,6 +764,7 @@ async function fetchBigShows() {
               merged[idx].ticketLinks.push({ source: 'ticketmaster', url: e.url });
             }
             if (!merged[idx].price && e.price) merged[idx].price = e.price;
+            if (!merged[idx].eventImage && e.eventImage) merged[idx].eventImage = e.eventImage;
           } else {
             merged.push({ ...e, ticketLinks: [{ source: 'ticketmaster', url: e.url }] });
           }
@@ -2166,13 +2167,16 @@ function renderBigShows(container) {
     // Performer photo
     let photoUrl = '';
     if (data.performerImages) {
-      photoUrl = Object.values(data.performerImages)[0] || '';
+      // Find first non-bad performer image
+      for (const url of Object.values(data.performerImages)) {
+        if (url && !isBadPhotoUrl(url)) { photoUrl = url; break; }
+      }
     }
     if (!photoUrl) {
-      photoUrl = getPhotoForVenue(title, 'cellar') || localPhotoPath(title) || comedianPhotos[title] || '';
+      photoUrl = getPhotoForVenue(title, 'cellar') || localPhotoPath(title) || '';
       if (!photoUrl && data.performers) {
         for (const p of data.performers.split(', ')) {
-          photoUrl = getPhotoForVenue(p, 'cellar') || localPhotoPath(p) || comedianPhotos[p] || '';
+          photoUrl = getPhotoForVenue(p, 'cellar') || localPhotoPath(p) || '';
           if (photoUrl) break;
         }
       }
@@ -2180,6 +2184,12 @@ function renderBigShows(container) {
     const lookupName = data.performers ? data.performers.split(', ')[0] : title;
     if (!photoUrl && photoLookupCache[lookupName] && !isBadPhotoUrl(photoLookupCache[lookupName])) photoUrl = photoLookupCache[lookupName];
     if (!photoUrl && photoLookupCache[title] && !isBadPhotoUrl(photoLookupCache[title])) photoUrl = photoLookupCache[title];
+    // Last resort: use event-level image (TM promotional poster)
+    if (!photoUrl && data.events) {
+      for (const evt of data.events) {
+        if (evt.eventImage && !isBadPhotoUrl(evt.eventImage)) { photoUrl = evt.eventImage; break; }
+      }
+    }
     const needsLookup = !photoUrl;
     const photoId = needsLookup ? `photo-lookup-${title.replace(/[^a-zA-Z0-9]/g, '_')}` : '';
     const photoHtml = photoUrl

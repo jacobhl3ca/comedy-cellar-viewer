@@ -460,6 +460,7 @@ async function fetchBigShows() {
               merged[idx].ticketLinks.push({ source: 'ticketmaster', url: e.url });
             }
             if (!merged[idx].price && e.price) merged[idx].price = e.price;
+            if (!merged[idx].eventImage && e.eventImage) merged[idx].eventImage = e.eventImage;
           } else {
             merged.push({ ...e, ticketLinks: [{ source: 'ticketmaster', url: e.url }] });
           }

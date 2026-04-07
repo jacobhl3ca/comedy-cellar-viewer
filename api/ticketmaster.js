@@ -18,14 +18,20 @@ module.exports = async (req, res) => {
       const dt = startTime ? new Date(`${startDate}T${startTime}`) : null;
       const venue = evt._embedded?.venues?.[0];
 
-      // Get best performer image (prefer 16_9 ratio, large width)
+      // Get best performer image (prefer 16_9 ratio, large width), skip /dam/c/ category placeholders
       const performerImages = {};
       (evt._embedded?.attractions || []).forEach(a => {
-        const imgs = a.images || [];
+        const imgs = (a.images || []).filter(i => i.url && !/ticketm\.net\/dam\/c\//.test(i.url));
         const best = imgs.filter(i => i.ratio === '16_9').sort((a, b) => (b.width || 0) - (a.width || 0))[0]
           || imgs.sort((a, b) => (b.width || 0) - (a.width || 0))[0];
         if (best?.url) performerImages[a.name] = best.url;
       });
+
+      // Event-level image (promotional poster/photo — /dam/e/ or /dam/a/, not /dam/c/)
+      const evtImgs = (evt.images || []).filter(i => i.url && !/ticketm\.net\/dam\/c\//.test(i.url));
+      const bestEvtImg = evtImgs.filter(i => i.ratio === '16_9').sort((a, b) => (b.width || 0) - (a.width || 0))[0]
+        || evtImgs.sort((a, b) => (b.width || 0) - (a.width || 0))[0];
+      const eventImage = bestEvtImg?.url || '';
 
       // Ticketmaster status: "onsale", "offsale", "cancelled", "rescheduled", "postponed"
       const statusCode = evt.dates?.status?.code || '';
@@ -38,6 +44,7 @@ module.exports = async (req, res) => {
         venue: venue?.name || '',
         performers: (evt._embedded?.attractions || []).map(a => a.name).join(', '),
         performerImages,
+        eventImage,
         price: evt.priceRanges?.[0]?.min || null,
         url: evt.url || '',
         id: evt.id,
