@@ -82,7 +82,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 
 /* Header share button — top-right, left of theme toggle */
 .header-share-btn {
-  position: absolute; top: 24px; right: 46px;
+  position: absolute; top: 24px; right: 50px;
   background: var(--surface2); border: 1px solid var(--border);
   border-radius: 50%; width: 38px; height: 38px;
   display: flex; align-items: center; justify-content: center;
@@ -484,6 +484,10 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 
 /* Mobile: constrain expanded bio panel within card */
 @media (max-width: 480px) {
+  .big-pics-label { font-size: 0; }
+  .big-pics-label::after { content: "Big Pics"; font-size: 13px; }
+  .header-share-btn { width: 34px; height: 34px; right: 42px; }
+  .theme-toggle { width: 34px; height: 34px; }
   .comedian-expanded.open {
     flex-wrap: wrap; gap: 8px;
     padding: 8px 10px;
