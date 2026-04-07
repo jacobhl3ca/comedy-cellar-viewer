@@ -192,6 +192,19 @@ function renderCalendar() {
     html += `<div class="cal-header">${d}</div>`;
   });
 
+  // Build set of dates that have shows across all sources
+  const datesWithShows = new Set();
+  // Cellar shows
+  Object.keys(allData).forEach(d => { if (allData[d] && allData[d].length > 0) datesWithShows.add(d); });
+  // The Stand shows
+  standShows.forEach(s => { if (s.date) datesWithShows.add(s.date); });
+  // Big Shows
+  bigShows.forEach(e => { if (e.date) datesWithShows.add(e.date); });
+  // NYCC shows
+  if (typeof nyccShows !== 'undefined') nyccShows.forEach(s => { if (s.date) datesWithShows.add(s.date); });
+  // Gotham shows
+  if (typeof gothamShows !== 'undefined') gothamShows.forEach(s => { if (s.date) datesWithShows.add(s.date); });
+
   while (cursor <= endOfWeek) {
     // Month separator row when month changes (at start of a week / Monday)
     if (cursor.getMonth() !== lastMonth && cursor.getDay() === 1) {
@@ -202,10 +215,12 @@ function renderCalendar() {
     const isToday = cursor.getTime() === today.getTime();
     const inRange = cursor >= today && cursor <= maxDate;
     const isSelected = calendarSelectedDates.has(dateStr);
+    const hasNoShows = inRange && !datesWithShows.has(dateStr);
     const classes = ['cal-day'];
     if (isToday) classes.push('today');
     if (isSelected) classes.push('selected');
     if (!inRange) classes.push('disabled');
+    if (hasNoShows) classes.push('no-shows');
     html += `<div class="${classes.join(' ')}" data-date="${dateStr}">${cursor.getDate()}</div>`;
     cursor.setDate(cursor.getDate() + 1);
   }

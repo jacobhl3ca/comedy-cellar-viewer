@@ -145,6 +145,7 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .calendar-grid .cal-day.selected { background: var(--accent); color: #fff; font-weight: 600; }
 .calendar-grid .cal-day.today { border-color: var(--accent); }
 .calendar-grid .cal-day.disabled { opacity: 0.3; pointer-events: none; }
+.calendar-grid .cal-day.no-shows { text-decoration: line-through; opacity: 0.4; color: var(--text-dim); }
 .calendar-actions { display: flex; gap: 8px; margin-top: 8px; justify-content: flex-end; }
 .calendar-actions button {
   padding: 6px 14px; border-radius: 6px; font-size: 13px; cursor: pointer;
