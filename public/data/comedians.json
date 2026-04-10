@@ -268,7 +268,8 @@
     "bio": "Mike Cannon is a New York City-based comedian, podcaster, writer, and actor. He has headlined at some of the world’s most iconic venues – including a sold-out performance at Gramercy Theatre in his hometown of NYC – and worked as a contributing producer, writer and panelist for ViceTV's Super Maximum Retro Show hosted by Chris Distefano in 2023. Mike released his latest, much anticipated special, ...",
     "venues": [
       "nycc"
-    ]
+    ],
+    "tagline_cellar": "COMEDY CENTRAL, MTV, TRUTV, ALBUM TOP 10 ON BILLBOARD CHARTS"
   },
   {
     "name": "Gray West",
@@ -6548,5 +6549,16 @@
   {
     "name": "The Leone Bros.",
     "venues": []
+  },
+  {
+    "name": "Jeff Scheen",
+    "venues": [],
+    "bio": "FROM \"THE LATE LATE SHOW WITH JAMES CORDEN\", DRYBAR SPECIAL \"ONLY WEIRDO\"",
+    "tagline_cellar": "FROM \"THE LATE LATE SHOW WITH JAMES CORDEN\", DRYBAR SPECIAL \"ONLY WEIRDO\""
+  },
+  {
+    "name": "Joe Avati",
+    "venues": [],
+    "bio_wiki": "\nJoe Avati is an Italian-Australian comedian who is popular among Italian and descendant of Italians from his native Australia, as well as in Canada, United Kingdom and the United States, where he has performed on several occasions."
   }
 ]
