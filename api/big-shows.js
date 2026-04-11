@@ -12,7 +12,16 @@ module.exports = async (req, res) => {
     const url = `https://api.seatgeek.com/2/events?client_id=${SEATGEEK_CLIENT_ID}&venue.city=New+York&taxonomies.name=comedy&per_page=50&sort=datetime_local.asc`;
     const data = await fetchJSON(url);
 
-    const events = (data.events || []).map(evt => {
+    // SeatGeek occasionally cross-classifies music/theater events under comedy
+    // (e.g. Loudon Wainwright III tagged "theater,comedy" but performers are "concert").
+    // Require at least one performer tagged as a comedian.
+    const isComedyEvent = (evt) => {
+      const performers = evt.performers || [];
+      if (performers.length === 0) return true; // can't tell, keep
+      return performers.some(p => (p.taxonomies || []).some(t => t.name === 'comedy'));
+    };
+
+    const events = (data.events || []).filter(isComedyEvent).map(evt => {
       const dt = new Date(evt.datetime_local);
       return {
         title: evt.short_title || evt.title,

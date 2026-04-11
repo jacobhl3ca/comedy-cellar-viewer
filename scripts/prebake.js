@@ -452,7 +452,18 @@ async function scrapeBigShows() {
   log('Scraping Big Shows (SeatGeek)...');
   try {
     const data = await fetchJSON(`https://api.seatgeek.com/2/events?client_id=${SEATGEEK_CLIENT_ID}&venue.city=New+York&taxonomies.name=comedy&per_page=50&sort=datetime_local.asc`);
-    const events = (data.events || []).map(evt => {
+    // SeatGeek occasionally cross-classifies music/theater events under comedy
+    // (e.g. Loudon Wainwright III tagged "theater,comedy" but performers are "concert").
+    // Require at least one performer tagged as a comedian.
+    const rawEvents = data.events || [];
+    const filteredByPerformer = rawEvents.filter(evt => {
+      const performers = evt.performers || [];
+      if (performers.length === 0) return true;
+      return performers.some(p => (p.taxonomies || []).some(t => t.name === 'comedy'));
+    });
+    const droppedNonComedy = rawEvents.length - filteredByPerformer.length;
+    if (droppedNonComedy > 0) log(`Big Shows: dropped ${droppedNonComedy} non-comedy events (no performer tagged comedy)`);
+    const events = filteredByPerformer.map(evt => {
       const dt = new Date(evt.datetime_local);
       return {
         title: evt.short_title || evt.title,
