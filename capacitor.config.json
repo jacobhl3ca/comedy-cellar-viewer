@@ -1,0 +1,9 @@
+{
+  "appId": "com.jacobhl.tonightnyc",
+  "appName": "Tonight NYC",
+  "webDir": "public",
+  "server": {
+    "url": "https://tonightnyc.com",
+    "cleartext": false
+  }
+}
