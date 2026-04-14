@@ -627,6 +627,8 @@ function mergeEvents(seatgeekEvents, ticketmasterEvents) {
       if (!merged[matchIdx].price && evt.price) merged[matchIdx].price = evt.price;
       if (evt.soldout && !merged[matchIdx].soldout) merged[matchIdx].soldout = evt.soldout;
       if (!merged[matchIdx].eventImage && evt.eventImage) merged[matchIdx].eventImage = evt.eventImage;
+      if (!merged[matchIdx].time && evt.time) merged[matchIdx].time = evt.time;
+      if (!merged[matchIdx].venue && evt.venue) merged[matchIdx].venue = evt.venue;
     } else {
       // Unique TM event — add with ticketLinks
       merged.push({ ...evt, ticketLinks: [{ source: 'ticketmaster', url: evt.url }] });
