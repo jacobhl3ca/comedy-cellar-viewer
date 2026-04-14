@@ -1336,9 +1336,12 @@ function renderBigShows(container) {
       : `<img id="${photoId}" alt="${title}" class="big-show-photo" style="display:none;" onerror="this.style.display='none'" data-lookup-name="${lookupName.replace(/"/g, '&quot;')}" data-lookup-title="${title.replace(/"/g, '&quot;')}">`;
 
     // Date boxes — sorted by date, deduplicated by date+time (merges SG/TM duplicates)
+    // Also drop time-less entries when another entry on the same date has a time
     const hideSoldOut = document.getElementById('hide-sold-out')?.checked;
+    const datesWithTime = new Set(data.events.filter(e => e.time).map(e => e.date));
     const seen = new Set();
     const sortedEvents = data.events
+      .filter(evt => evt.time || !datesWithTime.has(evt.date))
       .sort((a, b) => a.date.localeCompare(b.date) || (a.time || '').localeCompare(b.time || ''))
       .filter(evt => {
         const key = evt.date + '|' + (evt.time || '');
