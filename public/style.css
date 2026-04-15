@@ -76,6 +76,7 @@ body {
   overflow-x: clip;
 }
 html { overflow-x: clip; }
+html.native-ios body { padding-top: 72px; }
 
 /* Header */
 header { text-align: center; padding: 24px 0 8px; position: relative; }
