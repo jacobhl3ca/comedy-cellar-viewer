@@ -77,6 +77,8 @@ body {
 }
 html { overflow-x: clip; }
 html.native-ios body { padding-top: 72px; }
+html.native-ios .schedule-day-header { top: 60px; }
+html.native-ios .comedian-filter-banner { top: 60px; }
 
 /* Header */
 header { text-align: center; padding: 24px 0 8px; position: relative; }
