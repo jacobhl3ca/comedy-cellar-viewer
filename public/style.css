@@ -67,7 +67,7 @@ body {
   background: var(--bg); color: var(--text);
   min-height: 100vh;
   padding: 20px;
-  padding-top: calc(20px + env(safe-area-inset-top));
+  padding-top: calc(32px + env(safe-area-inset-top));
   padding-bottom: calc(20px + env(safe-area-inset-bottom));
   padding-left: calc(20px + env(safe-area-inset-left));
   padding-right: calc(20px + env(safe-area-inset-right));
