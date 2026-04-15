@@ -77,6 +77,10 @@ body {
 }
 html { overflow-x: clip; }
 html.native-ios body { padding-top: 72px; }
+html.native-ios body::before {
+  content: ""; position: fixed; top: 0; left: 0; right: 0; height: 60px;
+  background: var(--bg); z-index: 100; pointer-events: none;
+}
 html.native-ios .schedule-day-header { top: 60px; }
 html.native-ios .comedian-filter-banner { top: 60px; }
 
