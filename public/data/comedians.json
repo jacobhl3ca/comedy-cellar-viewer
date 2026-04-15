@@ -1892,7 +1892,8 @@
       "nycc",
       "comedy_cellar"
     ],
-    "tagline_cellar": "WINNER NEW YORKS'S FUNNIEST FOR 2022 AT THE NEW YORK COMEDY FESTIVAL, FROM SETH MYERS SHOW, BBC \"RUSSELL HOWARD'S GOOD NEWS\", BEST NEWCOMER EDINBURGH FRINGE FESTIVAL"
+    "tagline_cellar": "WINNER NEW YORKS'S FUNNIEST FOR 2022 AT THE NEW YORK COMEDY FESTIVAL, FROM SETH MYERS SHOW, BBC \"RUSSELL HOWARD'S GOOD NEWS\", BEST NEWCOMER EDINBURGH FRINGE FESTIVAL",
+    "bio_stand": "Norwegian comic and the 2012 Foster's Edinburgh Comedy Award winner for Best Newcomer. Simonsen has performed at the Edinburgh Festival Fringe since 2009. As well as his Newcomer Award, his show \"Champions\" received positive reviews, he supported Simon Amstell on his UK tour in 2012 and 2015 and appeared on Russell Howard's Good News in 2012. Simonsen has won and been nominated for awards both in Norway and the UK including Chortle Best Newcomer, Best Comedian at Comedy Fight Club and the So You Think You're Funny competition. Since 2014, he has had a recurring role in Vic and Bob's BBC sitcom House of Fools as Erik."
   },
   {
     "name": "Cory Kahaney",
@@ -5065,7 +5066,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "tagline_cellar": "Comedy Central, Timeout NY Comic to Watch, NBC"
+    "tagline_cellar": "Comedy Central, Timeout NY Comic to Watch, NBC",
+    "bio_stand": "Alex Kumin's bold and whip smart standup delights crowds across the city of Chicago and around the US. She is an alumni of the nation's longest running independent standup comedy showcase, The Lincoln Lodge, through which she also teaches Chicago's favorite all-female standup class, Feminine Comique. Her monthly showcase, Diamond Comedy Hour, takes place at the Chicago Laugh Factory on the first Friday of the month, featuring the premiere female comedians in the city and beyond. She has had the pleasure of working with Patton Oswalt, Maria Bamford, Tom Green, Rory Scovel, The Lucas Brothers, Aparna Nancherla, Greg Fitzsimmons, Jen Kirkman, and Todd Barry, among others and was selected as one of eight comedians at Gilda's Laughfest - Best of the Midwest Competition 2017. She made her television debut on WCIU's \"Chicago's One Night Standup\" and has appeared in NBC Universal's Breakout Festival ('16, '17, ‘18), Limestone Comedy Festival, Orlando Indie Comedy Fest and The Chicago Comedy Exposition. In 2016 she was named a comic to watch by Timeout Chicago and was one of Chicago Reader's standout comedians of the year. She has been featured in Chicago Magazine as a comedian with \"unapologetic honesty\", as she tackles heavy hitting social issues like gender inequality and thigh chaffing."
   },
   {
     "name": "Andrew Fiori",
@@ -6234,7 +6236,7 @@
   {
     "name": "Robby Hoffman",
     "venues": [],
-    "bio_wiki": "Rivkah Sarah \"Robby\" Hoffman is an American-Canadian actress. Born in Brooklyn, New York, she began her career as a writer and is known for her work on The Chris Gethard Show, Baroness Von Sketch Show, Workin' Moms, and Odd Squad, the latter of which won an Emmy Award for Outstanding Writing for a C"
+    "bio_wiki": "Rivkah Sarah \"Robby\" Hoffman is an American actress. Born in Brooklyn, New York, she began her career as a writer and is known for her work on The Chris Gethard Show, Baroness Von Sketch Show, Workin' Moms, and Odd Squad, the latter of which won an Emmy Award for Outstanding Writing for a Children's"
   },
   {
     "name": "Kristin Key",
@@ -6634,5 +6636,10 @@
     "venues": [],
     "bio": "world-renowned science communicator and astrophysicist. He is the Director of the Hayden Planetarium at the American Museum of Natural History and the author of several bestsllers and awe-inspiring books including his latest, “Take Me To Your Your Leader: Perspectives on Your First Alien Encounter.”",
     "tagline_cellar": "world-renowned science communicator and astrophysicist. He is the Director of the Hayden Planetarium at the American Museum of Natural History and the author of several bestsllers and awe-inspiring books including his latest, “Take Me To Your Your Leader: Perspectives on Your First Alien Encounter.”"
+  },
+  {
+    "name": "Chelsea Handler",
+    "venues": [],
+    "bio_wiki": "Chelsea Joy Handler is an American stand-up comedian, actress, writer, television host, and producer. She hosted the late-night talk show Chelsea Lately on the E! network from 2007 to 2014 and released a documentary series, Chelsea Does, on Netflix in January 2016. From 2016 to 2017, Handler hosted "
   }
 ]
