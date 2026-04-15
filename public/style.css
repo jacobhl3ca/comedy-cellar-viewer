@@ -770,8 +770,8 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
   display: inline-flex; align-items: center; line-height: 0;
 }
 .info-popup {
-  display: none; position: absolute; left: 0; right: auto;
-  top: 24px; width: 260px; padding: 10px 14px; border-radius: 8px;
+  display: none; position: absolute; right: 0; left: auto;
+  top: 24px; width: 240px; max-width: calc(100vw - 32px); padding: 10px 14px; border-radius: 8px;
   background: var(--surface); border: 1px solid var(--border);
   color: var(--text-dim); font-size: 12px; line-height: 1.5;
   box-shadow: 0 4px 16px rgba(0,0,0,0.3); z-index: 50;
