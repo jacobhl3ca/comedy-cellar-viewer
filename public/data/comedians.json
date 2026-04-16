@@ -2262,7 +2262,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/jared-freid",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/jatrian.jpg",
-    "bio_stand": "Jared Freid is a comedian based out of New York City and originally from the Boston suburb of Needham, Massachusetts. His comedy is current and reflects the ordinary daily thoughts of everyone you know, especially if everyone you know is a millennial, obsessed with dating apps, trying to be a real adult and worried about their body. (For the record, Jared’s mom thinks his body is “just fine.”) He’s a regular at The Stand NYC and Comix at Mohegan Sun. He also had the honor of performing for the 2017 “New Faces” showcase at the 35th annual Just For Laughs festival in Montréal. His television presence has been amping up. He’s currently starring in the Snapchat series “How Low Can You Go?” He’s recently been featured on MTV2’s new series “Vidiots” as well as TruTV’s “NFL Full Contact,” MTV’s “Failosophy,” NBC’s “The Today Show,” NFL Network’s “Top Ten,” and AXS TV’s “Gotham Comedy Live.” His weekly JTrain Podcast is booming and now touring live around the country. It’s already at over 450,000 listeners per month and regularly in the iTunes top 100. The show has a cult following of loyal fans. It’s been called “A Dear Abbey for Dudes” which is why both men and women tune in religiously. Additionally, he co-hosts a modern dating podcast called “U Up?” with Jordana Abraham of Betches where they discuss their take on modern dating with issues ranging from apps to hookups to relationships. Jared’s fans also seek out his voice in the online publishing world. He’s written for TotalFratMove, BroBible, Betches, LuvThis and HeTexted. His columns delve into everything from sports to “The Bachelor” to the pitfalls of dating in the information age. His writing has both sides of the aisle nodding their head while thinking, “I’ve been on the toilet way too long.”"
+    "bio_stand": "Jared Freid is a comedian based out of New York City and originally from the Boston suburb of Needham, Massachusetts. His comedy is current and reflects the ordinary daily thoughts of everyone you know, especially if everyone you know is a millennial, obsessed with dating apps, trying to be a real adult and worried about their body. (For the record, Jared’s mom thinks his body is “just fine.”) He’s a regular at The Stand NYC and Comix at Mohegan Sun. He also had the honor of performing for the 2017 “New Faces” showcase at the 35th annual Just For Laughs festival in Montréal. His television presence has been amping up. He’s currently starring in the Snapchat series “How Low Can You Go?” He’s recently been featured on MTV2’s new series “Vidiots” as well as TruTV’s “NFL Full Contact,” MTV’s “Failosophy,” NBC’s “The Today Show,” NFL Network’s “Top Ten,” and AXS TV’s “Gotham Comedy Live.” His weekly JTrain Podcast is booming and now touring live around the country. It’s already at over 450,000 listeners per month and regularly in the iTunes top 100. The show has a cult following of loyal fans. It’s been called “A Dear Abbey for Dudes” which is why both men and women tune in religiously. Additionally, he co-hosts a modern dating podcast called “U Up?” with Jordana Abraham of Betches where they discuss their take on modern dating with issues ranging from apps to hookups to relationships. Jared’s fans also seek out his voice in the online publishing world. He’s written for TotalFratMove, BroBible, Betches, LuvThis and HeTexted. His columns delve into everything from sports to “The Bachelor” to the pitfalls of dating in the information age. His writing has both sides of the aisle nodding their head while thinking, “I’ve been on the toilet way too long.”",
+    "tagline_cellar": "The Wizard of Ha's"
   },
   {
     "name": "Aparna Nancherla",
@@ -5271,7 +5272,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "tagline_cellar": "NEWEST CAST MEMBER SATURDAY NIGHT LIVE,  JUST FOR LAUGHS NEW FACES"
+    "tagline_cellar": "NEWEST CAST MEMBER SATURDAY NIGHT LIVE,  JUST FOR LAUGHS NEW FACES",
+    "bio_wiki": "Thomas Brennan Schneeman, known professionally as Tommy Brennan, is an American stand-up comedian from St. Paul, Minnesota and a cast member of Saturday Night Live for season 51."
   },
   {
     "name": "Wil Sylvince",
@@ -6696,5 +6698,19 @@
   {
     "name": "Wils Pelton",
     "venues": []
+  },
+  {
+    "name": "Ivy Wolk",
+    "venues": [],
+    "bio_stand": "Ivy Wolk is best known for her recurring arc on Freeform’s EVERYTHING’S GONNA BE OKAY."
+  },
+  {
+    "name": "Daniel Bridge-Gadd",
+    "venues": []
+  },
+  {
+    "name": "Kanan Gill",
+    "venues": [],
+    "bio_wiki": "Kanan Singh Gill is an Indian comedian, actor, author and YouTuber. He won the Punch Line Bangalore Competition. He is known for the YouTube series Pretentious Movie Reviews where he reviews campy Bollywood films along with fellow stand-up comedian Biswa Kalyan Rath. He was one of the main personali"
   }
 ]
