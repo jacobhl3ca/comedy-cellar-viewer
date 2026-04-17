@@ -6,13 +6,13 @@
       "source": "/:path(.*)",
       "has": [{ "type": "host", "value": "cellartonight.com" }],
       "destination": "https://tonightnyc.com/:path",
-      "permanent": false
+      "permanent": true
     },
     {
       "source": "/:path(.*)",
       "has": [{ "type": "host", "value": "www.cellartonight.com" }],
       "destination": "https://tonightnyc.com/:path",
-      "permanent": false
+      "permanent": true
     }
   ],
   "rewrites": [
