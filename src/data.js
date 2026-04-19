@@ -535,6 +535,7 @@ let allComediansSeen = new Set();
 let activeVenue = 'all'; // venue filter
 let activeStandRoom = 'all'; // Stand room filter
 let activeSource = 'all'; // venue source tab — default to All Venues
+let activeNeighborhood = 'all'; // All Venues tab: all/downtown/midtown/uptown
 
 // ---- Render ----
 function renderTabs() {

@@ -72,6 +72,7 @@
       activeSource = (newSource === activeSource && newSource !== 'all') ? 'all' : newSource;
       activeVenue = 'all';
       activeStandRoom = 'all';
+      activeNeighborhood = 'all';
       // Preserve selected date across tabs if that date exists in new source
       if (prevDate && prevDate !== 'all') {
         activeDate = prevDate;
@@ -197,6 +198,7 @@
     activeVenue = 'all';
     activeStandRoom = 'all';
     activeBigVenue = 'all';
+    activeNeighborhood = 'all';
     activeComedianFilter = null;
     updateResetBtn();
     renderShows();

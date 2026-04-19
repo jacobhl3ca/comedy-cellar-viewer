@@ -839,6 +839,7 @@ let allComediansSeen = new Set();
 let activeVenue = 'all'; // venue filter
 let activeStandRoom = 'all'; // Stand room filter
 let activeSource = 'all'; // venue source tab — default to All Venues
+let activeNeighborhood = 'all'; // All Venues tab: all/downtown/midtown/uptown
 
 // ---- Render ----
 function renderTabs() {
@@ -1653,39 +1654,8 @@ function renderAllDaysSchedule(container) {
     let dayHtml = '';
     sorted.forEach(show => {
       try {
-      if (isShowPast(dateStr, show.time)) return;
-      if (activeVenue !== 'all' && normalizeVenue(show.venue) !== activeVenue) return;
-      if (timeFilterCellar && timeFilterCellar !== 'any') {
-        const t24 = to24h(show.time);
-        if (t24 && t24 > timeFilterCellar) return;
-      }
-      { const tfMinC = window._timeFilterMin; if (tfMinC) { const t24 = to24h(show.time); if (t24 && t24 < tfMinC) return; } }
-      const stats = scoreShow(show);
-      if (onlyFavs && stats.faves === 0 && stats.likes === 0) return;
-      // Hide entire show if any comedian is a skip
-      if (document.getElementById('hide-skips').checked && stats.skips > 0) return;
-      const soldOut = isShowSoldOut(dateStr, show.time);
-      if (soldOut && document.getElementById('hide-sold-out')?.checked) return;
-      const cardClass = (stats.faves >= 3 ? 'show-card must-go' : 'show-card') + (soldOut ? ' sold-out' : '');
-      let badge = '';
-      if (stats.faves >= 3) badge = `<span class="show-badge badge-must-go">${stats.faves} FAVES</span>`;
-      else if (stats.faves >= 2) badge = `<span class="show-badge badge-faves">${stats.faves} FAVES</span>`;
-
-      const showPhotos = document.getElementById('show-photos')?.checked ?? true;
-      const chips = renderComedianChips(show.comedians, document.getElementById('hide-skips').checked, 'cellar');
-
-      dayHtml += `
-        <div class="${cardClass} schedule-card" data-venue-source="cellar">
-          <div class="show-header">
-            <div><span class="show-time">${formatTime(show.time)}</span>${badge}</div>
-            <span class="show-venue">${show.venue}</span>
-          </div>
-          <div class="show-lineup">${chips}</div>
-          <div class="show-footer">
-            ${show.reserveUrl ? `<span class="reserve-group"><a href="${show.reserveUrl}" target="_blank" class="reserve-btn${soldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${soldOut ? 'Sold Out' : 'Reserve'}</a>${soldOut ? '<span class="standby-note">Standby list opens 1 hr before</span>' : ''}</span>` : '<span></span>'}
-            ${soldOut ? hideSoldOutToggle(soldOut) : `<span class="fav-count">${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''} ${stats.likes > 0 ? `👍 ${stats.likes}` : ''}</span>`}
-          </div>
-        </div>`;
+        const card = renderShowCard(show, document.getElementById('hide-skips').checked, onlyFavs, dateStr);
+        if (card) dayHtml += card;
       } catch (e) { console.error('renderAllDaysSchedule Cellar card error:', e, show); }
     });
     // Only render day header if there are visible shows
@@ -1868,8 +1838,7 @@ function renderAllVenues(container) {
   if (pictureMode) container.classList.add('picture-mode');
   else container.classList.remove('picture-mode');
 
-  const vf = document.getElementById('venue-filters');
-  if (vf) vf.innerHTML = '';
+  renderAllVenuesSourceFilter();
 
   // Show onboarding if no prefs
   const prefsAV = loadPrefs();
@@ -1913,6 +1882,11 @@ function renderAllVenues(container) {
     allItems = allItems.filter(item => calendarSelectedDates.has(item.dateStr));
   } else if (activeDate && activeDate !== 'all') {
     allItems = allItems.filter(item => item.dateStr === activeDate);
+  }
+
+  // Filter by neighborhood if not "all"
+  if (activeNeighborhood !== 'all') {
+    allItems = allItems.filter(item => getNeighborhood(item) === activeNeighborhood);
   }
 
   // Time filter
@@ -2041,6 +2015,39 @@ function renderAllVenues(container) {
 
   html += '</div>';
   container.innerHTML = html;
+}
+
+function getNeighborhood(item) {
+  if (item.type === 'cellar' || item.type === 'stand') return 'downtown';
+  if (item.type === 'gotham') return 'midtown';
+  const venue = (item.show.venue || '').toLowerCase();
+  if (venue.includes('beacon') || venue.includes('apollo')) return 'uptown';
+  if (venue.includes('gramercy theatre') || venue.includes('irving plaza')) return 'downtown';
+  if (venue.includes('ny comedy club') || venue.includes('new york comedy club')) return 'downtown';
+  // Default: Big Shows Midtown (MSG, Radio City, Town Hall, Sony Hall, City Winery, Gotham)
+  return 'midtown';
+}
+
+function renderAllVenuesSourceFilter() {
+  const container = document.getElementById('venue-filters');
+  if (!container) return;
+  if (activeSource !== 'all') { container.innerHTML = ''; return; }
+  const opts = [
+    { key: 'all', label: 'All' },
+    { key: 'downtown', label: 'Downtown' },
+    { key: 'midtown', label: 'Midtown' },
+    { key: 'uptown', label: 'Uptown' },
+  ];
+  container.innerHTML = opts.map(o => {
+    const cls = o.key === activeNeighborhood ? 'venue-btn active' : 'venue-btn';
+    return `<button class="${cls}" onclick="setNeighborhood('${o.key}')">${o.label}</button>`;
+  }).join('');
+}
+
+function setNeighborhood(nb) {
+  activeNeighborhood = nb;
+  updateResetBtn();
+  renderShows();
 }
 
 let activeBigVenue = 'all';
@@ -2914,6 +2921,7 @@ async function init() {
       activeSource = (newSource === activeSource && newSource !== 'all') ? 'all' : newSource;
       activeVenue = 'all';
       activeStandRoom = 'all';
+      activeNeighborhood = 'all';
       // Preserve selected date across tabs if that date exists in new source
       if (prevDate && prevDate !== 'all') {
         activeDate = prevDate;
@@ -3039,6 +3047,7 @@ async function init() {
     activeVenue = 'all';
     activeStandRoom = 'all';
     activeBigVenue = 'all';
+    activeNeighborhood = 'all';
     activeComedianFilter = null;
     updateResetBtn();
     renderShows();
