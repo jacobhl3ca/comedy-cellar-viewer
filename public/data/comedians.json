@@ -1711,7 +1711,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/joe-list",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/00-og.jpg",
-    "bio_stand": "Comedy Central, Conan, Netflix, Tonight Show with Jimmy Fallon, The Joe Rogan Experience, The Late Late Show with James Corden"
+    "bio_stand": "Comedy Central, Conan, Netflix, Tonight Show with Jimmy Fallon, The Joe Rogan Experience, The Late Late Show with James Corden",
+    "tagline_cellar": "WRITER AND STAR OF \"FOURTH OF JULY\" MOVIE, FROM THE TONIGHT SHOW WITH JIMMY FALLON, NETFLIX SPECIAL, CONAN"
   },
   {
     "name": "Carmen Lynch",
@@ -5820,7 +5821,8 @@
     "name": "Daniela Mora",
     "venues": [],
     "bio": "TUBI, AMAZON PRIME, ADULT SWIM",
-    "tagline_cellar": "TUBI, AMAZON PRIME, ADULT SWIM"
+    "tagline_cellar": "TUBI, AMAZON PRIME, ADULT SWIM",
+    "bio_stand": "Daniela Mora is a NYC-based stand-up comedian and content creator. She is best known for her viral TikToks where she shares personal stories with hilarious commentary. With reposts from accounts such as @betches, @girls, and celebrities like Miley Cyrus, she’s a curator of comedy in all verticals. Daniela also produces and hosts several shows in Manhattan and loves connecting with audiences via crowdwork."
   },
   {
     "name": "Anthony Moore",
@@ -6768,5 +6770,14 @@
     "name": "Amit Tandon",
     "venues": [],
     "bio_wiki": "Amit Tandon is an Indian singer, musician, and a television actor. His career in the entertainment industry started after he participated in the reality show Indian Idol 1. He is known for playing the characters of Prithvi Bose in Kaisa Ye Pyar Hai and Dr. Abhimanyu Modi in Dill Mill Gayye. He also "
+  },
+  {
+    "name": "Lucas Stone",
+    "venues": [],
+    "bio_stand": "Lucas Stone is an NYC-based Actor, Comedian, and Musician. He grew up in New York City and remained there to study at NYU’s Tisch School of the Arts. He trained at the Lee Strasberg Institute, The Experimental Theatre Wing, and at Stone Street Studios, under talented instructors including Geoffrey Horne, Cormac Bluestone, Gil Zabarsky, Andy Roth, and David Cady. Since graduating, he has worked in Theatre as well as Film/Television. He has appeared in industrials, shorts, and has a deep passion for voiceover. He is also a stand-up comic, trained UCB Improvisor, and a musician with 10+ years of Guitar/Percussion experience."
+  },
+  {
+    "name": "Alexis Carabaño",
+    "venues": []
   }
 ]
