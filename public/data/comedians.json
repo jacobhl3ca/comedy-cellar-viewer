@@ -3603,7 +3603,7 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/jamie-wolf",
-    "tagline_cellar": "TIMEOUT 2025 COMIC TO WATCH,  WINNER NY'S FUNNIEST 2024, AMAZON PRIME, SF SKETCHFEST 2023, NY COMEDY FESTIVAL COMICS TO WATCH, PHILLY'S PHUNNIEST 2019",
+    "tagline_cellar": "\"NETFLIXIA A JOKE FEST 2026\" TIMEOUT 2025 COMIC TO WATCH,  WINNER NY'S FUNNIEST 2024, AMAZON PRIME, SF SKETCHFEST 2023, NY COMEDY FESTIVAL COMICS TO WATCH, PHILLY'S PHUNNIEST 2019",
     "bio_stand": "Jamie is a comedian, writer, actor, and former opiate user with a penchant for tackling dark and taboo subjects with tight writing and a dynamic stage presence that not only makes it work, but makes it kill. He was named a Timeout Comic to Watch in 2025, New York’s Funniest Standup at the New York Comedy Festival in 2024, a New York Comedy Festival “Comic to Watch” in 2019, and won Philly’s Phunniest 2019. He is a regular at The Stand in NYC and has over 290K followers across social media platforms."
   },
   {
@@ -6839,6 +6839,10 @@
   },
   {
     "name": "National Coalition Against Censorship",
+    "venues": []
+  },
+  {
+    "name": "Ross Watkins",
     "venues": []
   }
 ]
