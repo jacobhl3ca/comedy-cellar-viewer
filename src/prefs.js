@@ -158,16 +158,22 @@ function cycleComedian(name) {
     // Neutral → Fave
     prefs.faves.push(name);
     if (window.va) window.va('event', { name: 'fave', data: { comedian: name } });
+    if (typeof Native !== 'undefined') Native.impact('Medium');
   } else if (inFavs) {
     // Fave → Skip
     prefs.skips.push(name);
     if (window.va) window.va('event', { name: 'skip', data: { comedian: name } });
+    if (typeof Native !== 'undefined') Native.impact('Light');
+  } else {
+    if (typeof Native !== 'undefined') Native.impact('Light');
   }
-  // Skip → Neutral (already removed)
 
   savePrefs(prefs);
   updateSettingsBtnState();
   if (typeof updateResetBtn === 'function') updateResetBtn();
+  if (typeof window !== 'undefined' && typeof window._rescheduleReminders === 'function') {
+    window._rescheduleReminders();
+  }
 }
 
 function updateSettingsBtnState() {

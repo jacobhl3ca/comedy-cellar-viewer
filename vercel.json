@@ -16,7 +16,9 @@
     }
   ],
   "rewrites": [
-    { "source": "/api/lineup", "destination": "/api/lineup" }
+    { "source": "/api/lineup", "destination": "/api/lineup" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/support", "destination": "/support.html" }
   ],
   "headers": [
     {

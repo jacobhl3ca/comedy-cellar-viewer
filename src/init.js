@@ -63,9 +63,29 @@
     }
   });
 
+  // Auto-schedule local reminders for favorited comedians' upcoming shows (native only)
+  function _collectReminderItems() {
+    const items = [];
+    Object.entries(allData).forEach(([dateStr, shows]) => {
+      (shows || []).forEach(show => {
+        items.push({ dateStr, time: show.time, title: show.room || 'Comedy Cellar', venue: 'Comedy Cellar', comedians: show.comedians || [] });
+      });
+    });
+    (standShows || []).forEach(show => {
+      if (show.date && show.time) items.push({ dateStr: show.date, time: show.time, title: show.room || 'The Stand', venue: 'The Stand', comedians: show.comedians || [] });
+    });
+    return items;
+  }
+  window._rescheduleReminders = function() {
+    if (!Native.isNative()) return;
+    Native.scheduleReminders(_collectReminderItems());
+  };
+  window._rescheduleReminders();
+
   // Venue source tab listeners
   document.querySelectorAll('.venue-source-tab').forEach(btn => {
     btn.addEventListener('click', () => {
+      Native.selection();
       const prevDate = activeDate;
       // Unselect: clicking active source goes back to All Venues
       const newSource = btn.dataset.source;
@@ -266,18 +286,26 @@
     }
   }
 
-  document.getElementById('share-link').addEventListener('click', async () => {
+  async function doShare(sourceBtn, onCopyFeedback) {
     const url = await buildShareUrl();
-    navigator.clipboard.writeText(url).then(() => {
+    const result = await Native.share('Tonight NYC', 'My Comedy Cellar picks', url);
+    if (result === 'clipboard' || result === 'failed') {
+      onCopyFeedback && onCopyFeedback();
+    }
+  }
+
+  document.getElementById('share-link').addEventListener('click', () => {
+    Native.impact('Light');
+    doShare(null, () => {
       const btn = document.getElementById('share-link');
       btn.textContent = 'Copied!';
       setTimeout(() => { btn.textContent = 'Copy Share Link'; }, 2000);
     });
   });
 
-  document.getElementById('header-share').addEventListener('click', async () => {
-    const url = await buildShareUrl();
-    navigator.clipboard.writeText(url).then(() => {
+  document.getElementById('header-share').addEventListener('click', () => {
+    Native.impact('Light');
+    doShare(null, () => {
       const btn = document.getElementById('header-share');
       btn.querySelector('.share-icon-svg').style.display = 'none';
       btn.querySelector('.share-check').style.display = '';
