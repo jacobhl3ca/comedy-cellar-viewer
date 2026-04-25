@@ -345,6 +345,9 @@ function _insertFilterBanner(container) {
 function renderShows() {
   const container = document.getElementById('shows-container');
 
+  // Toggle directory-mode body class for CSS-based hiding of irrelevant filters
+  document.body.classList.toggle('dir-mode', activeSource === 'comedians');
+
   // Route to correct renderer based on active source
   if (activeSource === 'the-stand') {
     renderTheStandShows(container);
@@ -355,6 +358,10 @@ function renderShows() {
   if (activeSource === 'big-shows') {
     renderBigShows(container);
     _insertFilterBanner(container);
+    return;
+  }
+  if (activeSource === 'comedians') {
+    renderComedianDirectory(container);
     return;
   }
   if (activeSource === 'all') {
@@ -1699,6 +1706,174 @@ function setPref(name, type) {
   renderTabs();
   renderShows();
 }
+
+// ---- Comedian Directory (archive + alert browse) ----
+window._dirSearch = window._dirSearch || '';
+window._dirOnlyFaves = window._dirOnlyFaves || false;
+window._dirOnlyLive = window._dirOnlyLive || false;
+window._dirShowCount = window._dirShowCount || 60;
+
+function _dirLiveSet() {
+  const live = new Set();
+  Object.values(allData).forEach(day => { if (day) day.forEach(s => s.comedians.forEach(n => live.add(n))); });
+  standShows.forEach(s => s.comedians.forEach(n => live.add(n)));
+  if (typeof gothamShows !== 'undefined') gothamShows.forEach(s => (s.comedians || []).forEach(n => live.add(n)));
+  if (typeof bigShows !== 'undefined') bigShows.forEach(e => {
+    if (e.title) live.add(e.title.trim());
+    if (e.performers) e.performers.split(/,\s*/).forEach(n => { if (n.trim()) live.add(n.trim()); });
+  });
+  return live;
+}
+
+function renderComedianDirectory(container) {
+  const prefs = loadPrefs();
+  const liveSet = _dirLiveSet();
+  const search = (window._dirSearch || '').toLowerCase().trim();
+  const onlyFaves = window._dirOnlyFaves;
+  const onlyLive = window._dirOnlyLive;
+
+  // Filter
+  let list = (comedianDB || []).slice();
+  if (search) list = list.filter(c => c.name.toLowerCase().includes(search));
+  if (onlyFaves) list = list.filter(c => prefs.faves.includes(c.name));
+  if (onlyLive) list = list.filter(c => liveSet.has(c.name));
+
+  // Sort: faves first, then live, then alphabetical
+  list.sort((a, b) => {
+    const af = prefs.faves.includes(a.name) ? 0 : 1;
+    const bf = prefs.faves.includes(b.name) ? 0 : 1;
+    if (af !== bf) return af - bf;
+    const al = liveSet.has(a.name) ? 0 : 1;
+    const bl = liveSet.has(b.name) ? 0 : 1;
+    if (al !== bl) return al - bl;
+    return a.name.localeCompare(b.name);
+  });
+
+  const total = list.length;
+  const showCount = Math.min(window._dirShowCount, total);
+  const visible = list.slice(0, showCount);
+
+  const scrollY = window.scrollY;
+
+  container.innerHTML = `
+    <div class="comedian-directory">
+      <div class="dir-controls">
+        <input type="text" id="dir-search" class="dir-search" placeholder="Search ${total} comedians..." value="${(window._dirSearch || '').replace(/"/g, '&quot;')}">
+        <div class="dir-toggles">
+          <label class="dir-toggle"><input type="checkbox" id="dir-only-faves" ${onlyFaves ? 'checked' : ''}><span>My faves only</span></label>
+          <label class="dir-toggle"><input type="checkbox" id="dir-only-live" ${onlyLive ? 'checked' : ''}><span>Booked this week</span></label>
+        </div>
+        <div class="dir-count">${total === 0 ? 'No comedians match' : `${showCount === total ? total : showCount + ' of ' + total} comedian${total === 1 ? '' : 's'}`}</div>
+      </div>
+      <div class="dir-grid">
+        ${visible.map(c => _dirCardHTML(c, prefs, liveSet)).join('')}
+      </div>
+      ${showCount < total ? `<button class="dir-load-more" id="dir-load-more">Show more (${total - showCount} left)</button>` : ''}
+    </div>
+  `;
+
+  // Restore scroll for in-place updates (e.g. after fave toggle)
+  if (scrollY > 0) window.scrollTo(0, scrollY);
+
+  // Wire controls
+  const searchInput = document.getElementById('dir-search');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      window._dirSearch = e.target.value;
+      window._dirShowCount = 60;
+      _dirRerenderDebounced();
+    });
+    if (document.activeElement !== searchInput && search) {
+      // keep focus if user was typing — but only if they're already focused; don't steal focus
+    }
+  }
+  const onlyFavesCb = document.getElementById('dir-only-faves');
+  if (onlyFavesCb) onlyFavesCb.addEventListener('change', (e) => {
+    window._dirOnlyFaves = e.target.checked;
+    window._dirShowCount = 60;
+    renderShows();
+  });
+  const onlyLiveCb = document.getElementById('dir-only-live');
+  if (onlyLiveCb) onlyLiveCb.addEventListener('change', (e) => {
+    window._dirOnlyLive = e.target.checked;
+    window._dirShowCount = 60;
+    renderShows();
+  });
+  const loadMoreBtn = document.getElementById('dir-load-more');
+  if (loadMoreBtn) loadMoreBtn.addEventListener('click', () => {
+    window._dirShowCount += 60;
+    renderShows();
+  });
+}
+
+let _dirSearchTimer = null;
+function _dirRerenderDebounced() {
+  clearTimeout(_dirSearchTimer);
+  _dirSearchTimer = setTimeout(() => {
+    const grid = document.querySelector('.dir-grid');
+    const countEl = document.querySelector('.dir-count');
+    const loadMore = document.getElementById('dir-load-more');
+    if (!grid) { renderShows(); return; }
+    const prefs = loadPrefs();
+    const liveSet = _dirLiveSet();
+    const search = (window._dirSearch || '').toLowerCase().trim();
+    let list = (comedianDB || []).slice();
+    if (search) list = list.filter(c => c.name.toLowerCase().includes(search));
+    if (window._dirOnlyFaves) list = list.filter(c => prefs.faves.includes(c.name));
+    if (window._dirOnlyLive) list = list.filter(c => liveSet.has(c.name));
+    list.sort((a, b) => {
+      const af = prefs.faves.includes(a.name) ? 0 : 1;
+      const bf = prefs.faves.includes(b.name) ? 0 : 1;
+      if (af !== bf) return af - bf;
+      const al = liveSet.has(a.name) ? 0 : 1;
+      const bl = liveSet.has(b.name) ? 0 : 1;
+      if (al !== bl) return al - bl;
+      return a.name.localeCompare(b.name);
+    });
+    const total = list.length;
+    const showCount = Math.min(window._dirShowCount, total);
+    const visible = list.slice(0, showCount);
+    grid.innerHTML = visible.map(c => _dirCardHTML(c, prefs, liveSet)).join('');
+    if (countEl) countEl.textContent = total === 0 ? 'No comedians match' : `${showCount === total ? total : showCount + ' of ' + total} comedian${total === 1 ? '' : 's'}`;
+    if (loadMore) {
+      if (showCount < total) {
+        loadMore.textContent = `Show more (${total - showCount} left)`;
+        loadMore.style.display = '';
+      } else {
+        loadMore.style.display = 'none';
+      }
+    }
+  }, 120);
+}
+
+function _dirCardHTML(c, prefs, liveSet) {
+  const name = c.name;
+  const esc = name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+  const isFavd = prefs.faves.includes(name);
+  const isSkipd = prefs.skips.includes(name);
+  const alerted = (typeof isAlerted === 'function') ? isAlerted(name) : false;
+  const isLive = liveSet.has(name);
+  // Photo: prefer prebaked local, then DB venue photos
+  const photo = (typeof getPhotoForVenue === 'function') ? getPhotoForVenue(name, '') : (c.photo_stand || c.photo_nycc || '');
+  const bio = (typeof getBioForVenue === 'function') ? getBioForVenue(name, '') : (c.bio || '');
+  const bioShort = bio ? (bio.length > 140 ? bio.substring(0, 140).replace(/\s+\S*$/, '') + '…' : bio) : '';
+  return `
+    <div class="dir-card ${isFavd ? 'is-fav' : ''} ${isSkipd ? 'is-skip' : ''}">
+      <div class="dir-card-photo">${photo ? `<img src="${photo}" alt="${name}" loading="lazy" onerror="this.style.display='none'">` : '<div class="dir-photo-placeholder">🎤</div>'}</div>
+      <div class="dir-card-body">
+        <div class="dir-card-name">${name}${isLive ? ' <span class="dir-live-dot" title="Booked in upcoming lineup">●</span>' : ''}</div>
+        ${bioShort ? `<div class="dir-card-bio">${bioShort}</div>` : ''}
+        <div class="dir-card-actions">
+          <button class="dir-btn ${isFavd ? 'is-fav' : ''}" onclick="setPref('${esc}','${isFavd ? 'neutral' : 'fav'}')" title="${isFavd ? 'Remove favorite' : 'Favorite'}">${isFavd ? '⭐' : '☆'}</button>
+          <button class="dir-btn ${isSkipd ? 'is-skip' : ''}" onclick="setPref('${esc}','${isSkipd ? 'neutral' : 'skip'}')" title="${isSkipd ? 'Un-skip' : 'Skip'}">${isSkipd ? '✕' : '—'}</button>
+          <button class="dir-btn ${alerted ? 'is-alert' : ''}" onclick="toggleAlertBtn('${esc}', this)" title="${alerted ? 'Notifications on' : 'Notify when booked'}">${alerted ? '🔔' : '🔕'}</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+window.renderComedianDirectory = renderComedianDirectory;
 
 // ---- Modal ----
 function openModal() {
