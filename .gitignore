@@ -4,3 +4,4 @@ backup-*/
 .vercel
 *.DS_Store
 scripts/prebake.log
+data/.gap-fill-*.json

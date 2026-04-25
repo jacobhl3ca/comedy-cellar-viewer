@@ -1738,6 +1738,10 @@ function renderComedianDirectory(container) {
   if (onlyFaves) list = list.filter(c => prefs.faves.includes(c.name));
   if (onlyLive) list = list.filter(c => liveSet.has(c.name));
 
+  // Split deceased into separate section
+  const deceasedList = list.filter(c => c.deceased).sort((a, b) => a.name.localeCompare(b.name));
+  list = list.filter(c => !c.deceased);
+
   // Sort: faves first, then live, then alphabetical
   list.sort((a, b) => {
     const af = prefs.faves.includes(a.name) ? 0 : 1;
@@ -1749,9 +1753,10 @@ function renderComedianDirectory(container) {
     return a.name.localeCompare(b.name);
   });
 
-  const total = list.length;
-  const showCount = Math.min(window._dirShowCount, total);
-  const visible = list.slice(0, showCount);
+  const total = list.length + deceasedList.length;
+  const livingShown = Math.min(window._dirShowCount, list.length);
+  const visible = list.slice(0, livingShown);
+  const showRip = !onlyFaves && !onlyLive && deceasedList.length > 0 && livingShown >= list.length;
 
   const scrollY = window.scrollY;
 
@@ -1763,12 +1768,20 @@ function renderComedianDirectory(container) {
           <label class="dir-toggle"><input type="checkbox" id="dir-only-faves" ${onlyFaves ? 'checked' : ''}><span>My faves only</span></label>
           <label class="dir-toggle"><input type="checkbox" id="dir-only-live" ${onlyLive ? 'checked' : ''}><span>Booked this week</span></label>
         </div>
-        <div class="dir-count">${total === 0 ? 'No comedians match' : `${showCount === total ? total : showCount + ' of ' + total} comedian${total === 1 ? '' : 's'}`}</div>
+        <div class="dir-count">${total === 0 ? 'No comedians match' : `${livingShown === list.length ? total : livingShown + ' of ' + total} comedian${total === 1 ? '' : 's'}`}</div>
       </div>
       <div class="dir-grid">
         ${visible.map(c => _dirCardHTML(c, prefs, liveSet)).join('')}
       </div>
-      ${showCount < total ? `<button class="dir-load-more" id="dir-load-more">Show more (${total - showCount} left)</button>` : ''}
+      ${livingShown < list.length ? `<button class="dir-load-more" id="dir-load-more">Show more (${list.length - livingShown} left)</button>` : ''}
+      ${showRip ? `
+        <div class="dir-rip-section">
+          <h3 class="dir-rip-heading">In Memoriam</h3>
+          <div class="dir-grid">
+            ${deceasedList.map(c => _dirCardHTML(c, prefs, liveSet)).join('')}
+          </div>
+        </div>
+      ` : ''}
     </div>
   `;
 
@@ -1821,6 +1834,7 @@ function _dirRerenderDebounced() {
     if (search) list = list.filter(c => c.name.toLowerCase().includes(search));
     if (window._dirOnlyFaves) list = list.filter(c => prefs.faves.includes(c.name));
     if (window._dirOnlyLive) list = list.filter(c => liveSet.has(c.name));
+    list = list.filter(c => !c.deceased); // RIP section is static between renders
     list.sort((a, b) => {
       const af = prefs.faves.includes(a.name) ? 0 : 1;
       const bf = prefs.faves.includes(b.name) ? 0 : 1;
@@ -1830,14 +1844,16 @@ function _dirRerenderDebounced() {
       if (al !== bl) return al - bl;
       return a.name.localeCompare(b.name);
     });
-    const total = list.length;
-    const showCount = Math.min(window._dirShowCount, total);
-    const visible = list.slice(0, showCount);
+    const livingShown = Math.min(window._dirShowCount, list.length);
+    const visible = list.slice(0, livingShown);
+    // Keep this update scoped to the LIVING grid (first .dir-grid). RIP grid is below.
     grid.innerHTML = visible.map(c => _dirCardHTML(c, prefs, liveSet)).join('');
-    if (countEl) countEl.textContent = total === 0 ? 'No comedians match' : `${showCount === total ? total : showCount + ' of ' + total} comedian${total === 1 ? '' : 's'}`;
+    const deceasedCount = (comedianDB || []).filter(c => c.deceased).length;
+    const total = list.length + deceasedCount;
+    if (countEl) countEl.textContent = total === 0 ? 'No comedians match' : `${livingShown === list.length ? total : livingShown + ' of ' + total} comedian${total === 1 ? '' : 's'}`;
     if (loadMore) {
-      if (showCount < total) {
-        loadMore.textContent = `Show more (${total - showCount} left)`;
+      if (livingShown < list.length) {
+        loadMore.textContent = `Show more (${list.length - livingShown} left)`;
         loadMore.style.display = '';
       } else {
         loadMore.style.display = 'none';
@@ -1853,21 +1869,23 @@ function _dirCardHTML(c, prefs, liveSet) {
   const isSkipd = prefs.skips.includes(name);
   const alerted = (typeof isAlerted === 'function') ? isAlerted(name) : false;
   const isLive = liveSet.has(name);
-  // Photo: prefer prebaked local, then DB venue photos
-  const photo = (typeof getPhotoForVenue === 'function') ? getPhotoForVenue(name, '') : (c.photo_stand || c.photo_nycc || '');
-  const bio = (typeof getBioForVenue === 'function') ? getBioForVenue(name, '') : (c.bio || '');
+  const isDeceased = !!c.deceased;
+  // Photo: prefer prebaked local, then DB venue photos, then Wikipedia thumbnail
+  let photo = (typeof getPhotoForVenue === 'function') ? getPhotoForVenue(name, '') : (c.photo_stand || c.photo_nycc || '');
+  if (!photo && c.photo_wiki) photo = c.photo_wiki;
+  const bio = (typeof getBioForVenue === 'function') ? getBioForVenue(name, '') : (c.bio || c.bio_wiki || '');
   const bioShort = bio ? (bio.length > 140 ? bio.substring(0, 140).replace(/\s+\S*$/, '') + '…' : bio) : '';
   return `
-    <div class="dir-card ${isFavd ? 'is-fav' : ''} ${isSkipd ? 'is-skip' : ''}">
+    <div class="dir-card ${isFavd ? 'is-fav' : ''} ${isSkipd ? 'is-skip' : ''} ${isDeceased ? 'deceased' : ''}">
       <div class="dir-card-photo">${photo ? `<img src="${photo}" alt="${name}" loading="lazy" onerror="this.style.display='none'">` : '<div class="dir-photo-placeholder">🎤</div>'}</div>
       <div class="dir-card-body">
         <div class="dir-card-name">${name}${isLive ? ' <span class="dir-live-dot" title="Booked in upcoming lineup">●</span>' : ''}</div>
         ${bioShort ? `<div class="dir-card-bio">${bioShort}</div>` : ''}
-        <div class="dir-card-actions">
+        ${isDeceased ? '' : `<div class="dir-card-actions">
           <button class="dir-btn ${isFavd ? 'is-fav' : ''}" onclick="setPref('${esc}','${isFavd ? 'neutral' : 'fav'}')" title="${isFavd ? 'Remove favorite' : 'Favorite'}">${isFavd ? '⭐' : '☆'}</button>
           <button class="dir-btn ${isSkipd ? 'is-skip' : ''}" onclick="setPref('${esc}','${isSkipd ? 'neutral' : 'skip'}')" title="${isSkipd ? 'Un-skip' : 'Skip'}">${isSkipd ? '✕' : '—'}</button>
           <button class="dir-btn ${alerted ? 'is-alert' : ''}" onclick="toggleAlertBtn('${esc}', this)" title="${alerted ? 'Notifications on' : 'Notify when booked'}">${alerted ? '🔔' : '🔕'}</button>
-        </div>
+        </div>`}
       </div>
     </div>
   `;

@@ -123,6 +123,7 @@ const NAME_FIXES = {
   'Will Sylvince': 'Wil Sylvince',
   'Luis Gomez': 'Luis J Gomez',
   'Peter Fowler': 'Peter James Fowler',
+  'Crystal Marie': 'Crystal Marie Denha',
 };
 
 function normalizeName(name) {
@@ -1060,6 +1061,76 @@ async function main() {
       events: bigShowEvents, count: bigShowEvents.length, source: 'seatgeek.com+ticketmaster.com',
       prebaked: new Date().toISOString()
     }) + '\n');
+  }
+
+  // ---- Step 7: Self-healing Wikipedia gap-fill ----
+  // For every comedian still missing a bio or photo (across all sources +
+  // local blob), hit Wikipedia REST and fill bio_wiki / photo_wiki.
+  // NEVER overwrites existing fields. Failures are logged and swallowed
+  // so a Wikipedia outage cannot break the prebake.
+  try {
+    // Tight disambiguation: require comedy person-noun, reject TV series/film/album extracts,
+    // require last-name token in extract (avoids Jake Silberman → Silbermann mismatches).
+    const COMEDIAN_RE = /\b(comedian|stand-up|stand up|comic\b|comedy festival|sketch comedy|comedy central|saturday night live|snl writer|conan o'brien|tonight show)\b/i;
+    const NOT_PERSON_RE = /\bis an? (american|british|canadian|australian|irish|new zealand)?\s*(television series|tv series|sitcom|drama|crime drama|film|movie|album|song|video game|book|novel|play|musical|reality (show|series)|podcast series)\b/i;
+    const lastTok = (name) => {
+      const parts = name.replace(/\b(jr|sr|ii|iii|iv)\b\.?/gi, '').replace(/[^a-z\s]/gi, ' ').trim().split(/\s+/);
+      return parts.length ? parts[parts.length - 1].toLowerCase() : '';
+    };
+    const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+    async function wikiSummary(name, allowVariant = true) {
+      try {
+        const slug = encodeURIComponent(name.replace(/\s+/g, '_'));
+        const data = await fetchJSON(`https://en.wikipedia.org/api/rest_v1/page/summary/${slug}`);
+        if (!data || data.type === 'disambiguation' || !data.extract) {
+          if (allowVariant) { await sleep(100); return wikiSummary(`${name} (comedian)`, false); }
+          return null;
+        }
+        const extract = data.extract;
+        if (NOT_PERSON_RE.test(extract)) {
+          if (allowVariant) { await sleep(100); return wikiSummary(`${name} (comedian)`, false); }
+          return null;
+        }
+        if (!COMEDIAN_RE.test(extract.toLowerCase())) {
+          if (allowVariant) { await sleep(100); return wikiSummary(`${name} (comedian)`, false); }
+          return null;
+        }
+        const last = lastTok(name);
+        if (last && last.length >= 3 && !extract.toLowerCase().includes(last)) {
+          if (allowVariant) { await sleep(100); return wikiSummary(`${name} (comedian)`, false); }
+          return null;
+        }
+        return { bio: extract.substring(0, 300), photo: data.thumbnail?.source || '' };
+      } catch {
+        return null;
+      }
+    }
+
+    const blobs = new Set(fs.readdirSync(path.join(ROOT, 'public', 'photos')));
+    let scanned = 0, addedBios = 0, addedPhotos = 0;
+    for (const c of comedianDB) {
+      const hasBio = c.bio || c.bio_stand || c.bio_wiki || c.tagline_cellar;
+      const hasPhotoUrl = c.photo_nycc || c.photo_stand || c.photo_cellar || c.photo_wiki;
+      let hasBlob = false;
+      if (!hasPhotoUrl) {
+        const fn = nameToFilename(c.name);
+        hasBlob = ['jpg', 'jpeg', 'png', 'webp'].some(ext => blobs.has(`${fn}.${ext}`));
+      }
+      const needBio = !hasBio;
+      const needPhoto = !hasPhotoUrl && !hasBlob;
+      if (!needBio && !needPhoto) continue;
+      scanned++;
+      const w = await wikiSummary(c.name);
+      if (w) {
+        if (needBio && w.bio && !c.bio_wiki) { c.bio_wiki = w.bio; addedBios++; }
+        if (needPhoto && w.photo && !c.photo_wiki) { c.photo_wiki = w.photo; addedPhotos++; }
+      }
+      await sleep(100);
+    }
+    log(`🩹 Gap-fill: scanned ${scanned}, added ${addedBios} bios, ${addedPhotos} photos`);
+  } catch (e) {
+    log(`Gap-fill skipped (error): ${e.message}`);
   }
 
   // Sort manifest alphabetically for clean diffs

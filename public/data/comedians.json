@@ -1049,10 +1049,12 @@
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/crystal-marie-denha",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/BlankBackground-1-f83d0c00-thumb-image.jpg?1774299549",
     "venues": [
-      "nycc"
+      "nycc",
+      "the_stand"
     ],
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/CrystalHeadshot3.jpeg",
-    "bio": "Crystal Marie Denha is a stand-up comedian and TV personality. She's appeared on MTV and performs at clubs across the country."
+    "bio": "Crystal Marie Denha is a stand-up comedian and TV personality. She's appeared on MTV and performs at clubs across the country.",
+    "stand_profile": "https://thestandnyc.com/comedians/crystal-marie"
   },
   {
     "name": "Dan Carney",
@@ -3155,7 +3157,8 @@
     "venues": [
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/comedian-cp"
+    "stand_profile": "https://thestandnyc.com/comedians/comedian-cp",
+    "bio_wiki": "Christopher Powell, also known as Comedian CP, is an American actor, writer, and comedian. He appeared on Empire, Detroiters, All Def Comedy, and season two of HBO Max's Love Life."
   },
   {
     "name": "Courtney Bee",
@@ -3181,13 +3184,6 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/cristina-mariani",
     "bio_stand": "Cristina Mariani is a stand-up comedian who can currently be seen performing across the nation as well as nightly at her home club COMEDY MOTHERSHIP in Austin, Texas. She made her comedy debut on episode 517 of the podcast KILL TONY and has completely taken off since, garnering millions of views online with her standup videos. Cristina has toured with Theo Von and opened for many other renowned comedians, such as Tom Segura, Christina Pazsitzky, Harland Williams, Ari Shaffir, Fahim Anwar, Pauly Shore, and even Grammy-nominated rapper Freddie Gibbs. She is currently a regular on Brian Redban’s famous SECRETSHOW, has appeared on FIRST DATE LIVE with Lauren Compton, and been on FUNNY UBER RIDES with Darren Levy. For more on Cristina, visit her Instagram, TikTok, and YouTube pages."
-  },
-  {
-    "name": "Crystal Marie",
-    "venues": [
-      "the_stand"
-    ],
-    "stand_profile": "https://thestandnyc.com/comedians/crystal-marie"
   },
   {
     "name": "Dan Ahdoot",
@@ -4740,7 +4736,8 @@
     "venues": [
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/sarah-sherman"
+    "stand_profile": "https://thestandnyc.com/comedians/sarah-sherman",
+    "bio_wiki": "Sarah Nicole Sherman, also known professionally as Sarah Squirm, is an American comedian, actress, and screenwriter. Sherman is known for using surreal and body horror comedy. She became a featured player on the NBC sketch comedy series Saturday Night Live starting with its 47th season in October 20"
   },
   {
     "name": "Sasha Merci",
@@ -5473,12 +5470,18 @@
   {
     "name": "Norm Macdonald",
     "bio": "Norm Macdonald was a stand-up comedian, actor, and writer. He was the Weekend Update anchor on SNL and starred in multiple TV shows. Widely regarded as one of the greatest comedians ever, he passed away in 2021.",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Norman Gene Macdonald was a Canadian stand-up comedian, actor, and writer whose style was characterized by deadpan delivery, eccentric understatement, and the use of folksy, old-fashioned turns of phrase. He appeared in numerous films and was a frequent guest on late-night talk shows, where he devel",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Norm_MacDonald_%2826378045703%29_%28cropped%29.jpg/330px-Norm_MacDonald_%2826378045703%29_%28cropped%29.jpg",
+    "deceased": true
   },
   {
     "name": "Mitch Hedberg",
     "bio": "Mitch Hedberg was a stand-up comedian known for his surreal, one-liner comedy style and laid-back delivery. His albums Strategic Grill Locations and Mitch All Together are beloved. He passed away in 2005 but remains hugely influential.",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Mitchell Lee Hedberg was an American stand-up comedian and filmmaker known for his surreal humor and deadpan delivery. His comedy typically featured short, sometimes one-line jokes mixed with absurd elements and non sequiturs.",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d5/Mitch_Hedberg.jpg/330px-Mitch_Hedberg.jpg",
+    "deceased": true
   },
   {
     "name": "Maria Bamford",
@@ -5608,12 +5611,18 @@
   {
     "name": "Bob Saget",
     "bio": "Bob Saget was a stand-up comedian, actor, and TV host. He starred as Danny Tanner on Full House and hosted America's Funniest Home Videos. Known for his surprisingly raunchy stand-up, he passed away in 2022.",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Robert Lane Saget was an American stand-up comedian, actor, director, and television host. He portrayed Danny Tanner on the sitcom Full House (1987–1995) and its sequel Fuller House (2016–2020). Saget was the original host of America's Funniest Home Videos (1989–1997), and the voice of narrator Ted ",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Bob_Saget%2C_Behind_The_Velvet_Rope_TV_.05.jpg/330px-Bob_Saget%2C_Behind_The_Velvet_Rope_TV_.05.jpg",
+    "deceased": true
   },
   {
     "name": "Gilbert Gottfried",
     "bio": "Gilbert Gottfried was a stand-up comedian, actor, and voice artist. Known for his distinctive voice and boundary-pushing comedy. He voiced Iago in Aladdin and was an iconic figure in comedy until his passing in 2022.",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Gilbert Jeremy Gottfried was an American stand-up comedian and actor. He was best known for his exaggerated shrill voice, strong New York dialect, his squint, and his edgy, often controversial sense of humor. His numerous roles in film and television included voicing Iago in The Walt Disney Company'",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Gilbert_Gottfried_%2849732474471%29.jpg/330px-Gilbert_Gottfried_%2849732474471%29.jpg",
+    "deceased": true
   },
   {
     "name": "Katt Williams",
@@ -5623,7 +5632,10 @@
   {
     "name": "Patrice O'Neal",
     "bio": "Patrice O'Neal was a stand-up comedian known for his brilliant, uncompromising comedy. He appeared on Tough Crowd and The Office. Widely regarded as one of the greatest comedians who never got his due mainstream recognition. He passed away in 2011.",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Patrice Lumumba Malcolm O'Neal was an American comedian and actor. He was known for his stand-up comedy career and his regular guest appearances on the talk show Tough Crowd with Colin Quinn and the radio show Opie and Anthony.",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Patrice_O%27Neal_-_Jan_2006.jpg/330px-Patrice_O%27Neal_-_Jan_2006.jpg",
+    "deceased": true
   },
   {
     "name": "Conan O'Brien",
@@ -6737,7 +6749,8 @@
   },
   {
     "name": "Josh Thomas",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Joshua Michael Thomas is an Australian comedian, actor, and writer. In 2005, he won the Melbourne International Comedy Festival's Raw Comedy Competition. He has since appeared on television numerous times, including as a regular and Generation Y team captain on Network 10's Talkin' 'Bout Your Genera"
   },
   {
     "name": "Justin Willman",
@@ -6857,6 +6870,27 @@
   },
   {
     "name": "Jeff Lawrence",
+    "venues": []
+  },
+  {
+    "name": "Greg Giraldo",
+    "bio_wiki": "Gregory Carlos Giraldo was an American stand-up comedian, television personality, and lawyer. He is remembered for his appearances on Comedy Central's televised roast specials, and for his work on that network's television shows Tough Crowd with Colin Quinn, Lewis Black's Root of All Evil, and the p",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Giraldo.png/330px-Giraldo.png",
+    "deceased": true,
+    "venues": []
+  },
+  {
+    "name": "Robin Williams",
+    "bio_wiki": "Robin McLaurin Williams was an American actor and comedian. Known for his improvisational skills and the wide variety of characters he created spontaneously and portrayed in drama and comedy films, he is regarded as one of the greatest comedians of all time. Williams received numerous accolades incl",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Robin_Williams_1996_%28cropped%29_2.jpg/330px-Robin_Williams_1996_%28cropped%29_2.jpg",
+    "deceased": true,
+    "venues": []
+  },
+  {
+    "name": "Richard Lewis",
+    "bio_wiki": "Richard Philip Lewis was an American stand-up comedian, actor, and writer. Lewis came to prominence in the 1980s and became known for his dark, neurotic, and self-deprecating humor. As an actor, he was known for starring in the ABC sitcom Anything but Love from 1989 to 1992, and for playing the role",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Richard_Lewis_2015_chicago_%28cropped%29.jpg/330px-Richard_Lewis_2015_chicago_%28cropped%29.jpg",
+    "deceased": true,
     "venues": []
   }
 ]

@@ -218,6 +218,7 @@ const NAME_FIXES = {
   'Wil Sylvince': 'Wil Sylvince',
   'Luis Gomez': 'Luis J Gomez',
   'Peter Fowler': 'Peter James Fowler',
+  'Crystal Marie': 'Crystal Marie Denha',
 };
 function normalizeName(name) {
   // Sanitize HTML entities to prevent XSS from API data
