@@ -4871,7 +4871,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/stef-dag",
-    "bio_stand": "Hi! I'm a NY-based comedian, writer, and actor who's too self conscious to write in third person. I'm allegedly a rising stand up comedian (their words not mine!!), and a 2022 New York Comedy Festival \"Creator to Watch.\" You may have seen me complaining out loud at The Stand, SF Sketch Fest, Union Hall, The Bell House, or at New York Comedy Festival. Still not convinced? I host the popular digital dating show, Hot and Single, in which I flirt with eligible singles in an effort to find out if they are the problem. I also have a viral TikTok show where I interview men about female anatomy (spoiler alert: it's bleak) and write a monthly newsletter This Sucks, which has an accompanying live show! You should come and bring your crush. Against all odds, people have *willingly* employed me. I'm currently the Senior Editor at Overheard NY and I've directed digital videos for Vogue, Glamour, and Vanity Fair, where I've written digital sketches for Bill Hader, Michael Che & Colin Jost, Rebel Wilson, and more. I wrote the popular Vogue series Everything You Need to Know, which won a Vimeo Staff Pick."
+    "bio_stand": "Hi! I'm a NY-based comedian, writer, and actor who's too self conscious to write in third person. I'm allegedly a rising stand up comedian (their words not mine!!), and a 2022 New York Comedy Festival \"Creator to Watch.\" You may have seen me complaining out loud at The Stand, SF Sketch Fest, Union Hall, The Bell House, or at New York Comedy Festival. Still not convinced? I host the popular digital dating show, Hot and Single, in which I flirt with eligible singles in an effort to find out if they are the problem. I also have a viral TikTok show where I interview men about female anatomy (spoiler alert: it's bleak) and write a monthly newsletter This Sucks, which has an accompanying live show! You should come and bring your crush. Against all odds, people have *willingly* employed me. I'm currently the Senior Editor at Overheard NY and I've directed digital videos for Vogue, Glamour, and Vanity Fair, where I've written digital sketches for Bill Hader, Michael Che & Colin Jost, Rebel Wilson, and more. I wrote the popular Vogue series Everything You Need to Know, which won a Vimeo Staff Pick.",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/2025-12-11-stefdag-colorcorrected.jpg/330px-2025-12-11-stefdag-colorcorrected.jpg"
   },
   {
     "name": "Steve Trevino",
@@ -5488,7 +5489,8 @@
   {
     "name": "Demetri Martin",
     "bio": "Demetri Martin is a stand-up comedian, actor, and writer. Known for his one-liner comedy and visual aids, he had his own Comedy Central show and has appeared in multiple films. He performs at clubs across the country.",
-    "venues": []
+    "venues": [],
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Demetri_Martin.jpg/330px-Demetri_Martin.jpg"
   },
   {
     "name": "Whitney Cummings",
@@ -5769,7 +5771,8 @@
   {
     "name": "Nathan Fielder",
     "bio": "Nathan Fielder is a comedian, writer, director, and actor. He created Nathan for You and The Rehearsal on HBO. His unique blend of cringe comedy and social experiments has made him one of the most innovative comedians working.",
-    "venues": []
+    "venues": [],
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Nathan_Fielder.jpg/330px-Nathan_Fielder.jpg"
   },
   {
     "name": "Eric Andre",
@@ -5802,7 +5805,8 @@
   {
     "name": "Jimmy Carr",
     "bio": "Jimmy Carr is a British stand-up comedian and TV host. Known for his dark one-liners and audience roasting, he hosts 8 Out of 10 Cats and has multiple Netflix specials. One of the biggest comedians in the UK.",
-    "venues": []
+    "venues": [],
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Jimmy_Carr_2024_%28cropped%29.png/330px-Jimmy_Carr_2024_%28cropped%29.png"
   },
   {
     "name": "Ricky Gervais",
@@ -5852,7 +5856,8 @@
   {
     "name": "Bridget Everett",
     "bio": "Bridget Everett is a stand-up comedian, singer, actress, and writer. She created and starred in Somebody Somewhere on HBO. Known for her outrageous cabaret-style performances.",
-    "venues": []
+    "venues": [],
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/BridgetEverett2023.jpg/330px-BridgetEverett2023.jpg"
   },
   {
     "name": "Ian Edwards",
@@ -7012,5 +7017,11 @@
   {
     "name": "Angie Stroud",
     "venues": []
+  },
+  {
+    "name": "David Sedaris",
+    "venues": [],
+    "bio_wiki": "David Raymond Sedaris is an American humorist, comedian, author, and radio contributor. He was publicly recognized in 1992 when National Public Radio broadcast his essay \"Santaland Diaries\". He published his first collection of essays and short stories, Barrel Fever, in 1994. His next book, Naked (1",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/David_Sedaris-4724.jpg/330px-David_Sedaris-4724.jpg"
   }
 ]
