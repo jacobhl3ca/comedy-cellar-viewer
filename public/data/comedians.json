@@ -5381,7 +5381,8 @@
     "bio": "Chris Rock is a legendary stand-up comedian, actor, writer, and director. He hosted SNL, starred in multiple films, and his comedy specials are among the most acclaimed ever. He performs occasional surprise sets at the Comedy Cellar.",
     "venues": [
       "comedy_cellar"
-    ]
+    ],
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Chris_Rock_2014.jpg/330px-Chris_Rock_2014.jpg"
   },
   {
     "name": "Jerry Seinfeld",
@@ -7075,5 +7076,15 @@
     "name": "Charlie Pearson",
     "venues": [],
     "bio_stand": "Charlie Pearson is a New Jersey–based stand-up comedian blending fearless honesty with sharp, intentional writing. A student of Dave Chappelle and Norm Macdonald, his comedy aims to uncover uncomfortable truths and challenge perspective while keeping audiences laughing. His material is bold, thought-provoking, and real—every joke crafted with purpose. Creator of Mad Funny Show, a premier independent comedy showcase known for top-tier lineups , Charlie has performed across the U.S. and internationally, including Paris. His comedy doesn’t just hit—it makes you think long after the laugh."
+  },
+  {
+    "name": "Alex Edelman",
+    "venues": [],
+    "bio": "EMMY WINNER, SPECIAL TONY AWARD WINNER FOR HIS STAND UP SHOW ON BROADWAY, THE LATE SHOW WITH STEPHEN COLBERT, CONAN, THE EDINBURGH COMEDY AWARD WINNER",
+    "tagline_cellar": "EMMY WINNER, SPECIAL TONY AWARD WINNER FOR HIS STAND UP SHOW ON BROADWAY, THE LATE SHOW WITH STEPHEN COLBERT, CONAN, THE EDINBURGH COMEDY AWARD WINNER"
+  },
+  {
+    "name": "Josh Thomas",
+    "venues": []
   }
 ]
