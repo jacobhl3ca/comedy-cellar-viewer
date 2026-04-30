@@ -124,6 +124,15 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 [data-theme="light"] #theme-icon-sun { display: none; }
 [data-theme="light"] #theme-icon-moon { display: block; }
 
+/* Mobile + iOS app: hide manual toggle. Mobile follows OS setting; native is forced dark. */
+@media (max-width: 768px) {
+  .theme-toggle { display: none; }
+  /* Pull share button back to where the toggle used to anchor it. */
+  .header-share-btn { right: 0; }
+}
+html.native-ios .theme-toggle { display: none; }
+html.native-ios .header-share-btn { right: 0; }
+
 /* Day Tabs */
 .day-tabs-row {
   display: flex; align-items: stretch; gap: 6px;
