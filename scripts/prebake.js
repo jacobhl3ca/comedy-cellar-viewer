@@ -122,8 +122,10 @@ function postJSON(hostname, path, body) {
 const NAME_FIXES = {
   'Will Sylvince': 'Wil Sylvince',
   'Luis Gomez': 'Luis J Gomez',
+  'Luis J. Gomez': 'Luis J Gomez',
   'Peter Fowler': 'Peter James Fowler',
   'Crystal Marie': 'Crystal Marie Denha',
+  'H.Foley': 'H. Foley',
 };
 
 function normalizeName(name) {

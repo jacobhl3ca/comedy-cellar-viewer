@@ -48,9 +48,12 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/LuisJ-headshot-1-e5e00b65-thumb-image.jpg?1747153063",
     "bio": "Luis J. Gomez is a comedian, writer, podcaster, and producer based out of New York City. He is most known for being one of the hosts of the popular podcast Legion of Skanks. His television appearances include NBC's \"Last Comic Standing\", Comedy Central's \"Roast Battle\", TruTV's \"Comedy Knockout\", two seasons of NBC Seeso's \"What's Your F@%king Deal?!\", and more. Luis co-hosted \"The Countdown\" on S...",
     "venues": [
-      "nycc"
+      "nycc",
+      "the_stand"
     ],
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/13-og.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/13-og.jpg",
+    "stand_profile": "https://thestandnyc.com/comedians/luis-j-gomez",
+    "bio_stand": "Hour Special “Luis J Gomez Presents Luis J Gomez“, Podcast Legion of Skanks"
   },
   {
     "name": "Michael Kosta",
@@ -2574,8 +2577,10 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/h-foley-826e086f-thumb-image.jpg?1687363654",
     "bio": "The co-host of the Are You Garbage? Podcast. H.Foley is a New York based comedian, actor and podcaster. Foley fuses personal stories and hilarious observations in a unique, charismatic package. He has appeared on Gilly And Keeves, The Jim Gaffigan Show, Manifest, Full Frontal With Samantha Bee, Netflix's Iron Fist, Gotham Comedy Live, Gotham, Difficult People, Alternatino, The Last O.G., Comedy Ce...",
     "venues": [
-      "nycc"
-    ]
+      "nycc",
+      "comedy_cellar"
+    ],
+    "tagline_cellar": "ARE YOU GARBAGE? PODCAST"
   },
   {
     "name": "Negin Farsad",
@@ -4046,15 +4051,6 @@
     "bio_stand": "Lucas Zelnick is a stand-up comedian born, raised, and based in New York City, who challenges his cushy upbringing through punch-heavy material. Lucas has appeared in SF Sketchfest and the New York Comedy Festival. He’s been featured in the New York Times, appeared as a guest on Amazon Prime Video’s Sports Talk, and is a tour opener for Ashley Gavin. In 2022, Lucas began headlining comedy clubs nationally, including the Helium and Zanies clubs. For no particular reason, he also earned an MBA from the Stanford Graduate School of Business. Lucas’s stand-up clips have exploded online, where he has received over 100M views and 250K+ followers across Instagram and TikTok."
   },
   {
-    "name": "Luis J. Gomez",
-    "venues": [
-      "the_stand"
-    ],
-    "stand_profile": "https://thestandnyc.com/comedians/luis-j-gomez",
-    "bio": "Luis J. Gomez is a stand-up comedian, podcaster, and comedy club owner. He co-hosts Legion of Skanks and owns Skankfest, one of the biggest indie comedy festivals. He co-owns the Gas Digital podcast network and is a fixture of the NYC alternative comedy scene.",
-    "bio_stand": "Hour Special “Luis J Gomez Presents Luis J Gomez“, Podcast Legion of Skanks"
-  },
-  {
     "name": "Luis Lopez",
     "venues": [
       "the_stand"
@@ -5199,13 +5195,6 @@
     ],
     "tagline_cellar": "FROM THE \"LOUIE\" CK SHOW, \"THE ARISTOCRATS\", \"THE CONAN O'BRIEN SHOW\", COMEDY CENTRAL'S \"TOUGH CROWD\" AND \"THE TONIGHT SHOW\".",
     "bio_wiki": "Gregg Rogell is an American professional comedian. Born on Long Island, Rogell resides in New York City and is a regular performer at the Comedy Cellar and the Comic Strip Live. He has appeared on The Tonight Show, Late Night with Conan O'Brien, Louie, Half Baked, and The Nanny. He has had his own h"
-  },
-  {
-    "name": "H.Foley",
-    "venues": [
-      "comedy_cellar"
-    ],
-    "tagline_cellar": "ARE YOU GARBAGE? PODCAST"
   },
   {
     "name": "Hot Soup",
@@ -6862,12 +6851,6 @@
     "venues": [],
     "bio_wiki": "Kathleen Mary Griffin is an American comedian and actress who has starred in television series, comedy specials and has released multiple comedy albums. In 2007 and 2008, Griffin won Primetime Emmy Awards for her reality show Kathy Griffin: My Life on the D-List. She has also appeared in supporting ",
     "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Kathy_Griffin_%40_SXSW_2019_%2840387773813%29_%28cropped%29.jpg/330px-Kathy_Griffin_%40_SXSW_2019_%2840387773813%29_%28cropped%29.jpg"
-  },
-  {
-    "name": "Josh Thomas",
-    "venues": [],
-    "bio_wiki": "Joshua Michael Thomas is an Australian comedian, actor, and writer. In 2005, he won the Melbourne International Comedy Festival's Raw Comedy Competition. He has since appeared on television numerous times, including as a regular and Generation Y team captain on Network 10's Talkin' 'Bout Your Genera",
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Josh_Thomas_at_the_Brunswick_Picture_House_01.jpg/330px-Josh_Thomas_at_the_Brunswick_Picture_House_01.jpg"
   },
   {
     "name": "Justin Willman",

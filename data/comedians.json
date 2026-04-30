@@ -45,8 +45,11 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/LuisJ-headshot-1-e5e00b65-thumb-image.jpg?1747153063",
     "bio": "Luis J. Gomez is a comedian, writer, podcaster, and producer based out of New York City. He is most known for being one of the hosts of the popular podcast Legion of Skanks. His television appearances include NBC's \"Last Comic Standing\", Comedy Central's \"Roast Battle\", TruTV's \"Comedy Knockout\", two seasons of NBC Seeso's \"What's Your F@%king Deal?!\", and more. Luis co-hosted \"The Countdown\" on S...",
     "venues": [
-      "nycc"
-    ]
+      "nycc",
+      "the_stand"
+    ],
+    "stand_profile": "https://thestandnyc.com/comedians/luis-j-gomez",
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/luis-j-gomez.jpg"
   },
   {
     "name": "Michael Kosta",
@@ -2481,7 +2484,8 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/h-foley-826e086f-thumb-image.jpg?1687363654",
     "bio": "The co-host of the Are You Garbage? Podcast. H.Foley is a New York based comedian, actor and podcaster. Foley fuses personal stories and hilarious observations in a unique, charismatic package. He has appeared on Gilly And Keeves, The Jim Gaffigan Show, Manifest, Full Frontal With Samantha Bee, Netflix's Iron Fist, Gotham Comedy Live, Gotham, Difficult People, Alternatino, The Last O.G., Comedy Ce...",
     "venues": [
-      "nycc"
+      "nycc",
+      "comedy_cellar"
     ]
   },
   {
@@ -3800,14 +3804,6 @@
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/lucas-zelnick.jpg"
   },
   {
-    "name": "Luis J. Gomez",
-    "venues": [
-      "the_stand"
-    ],
-    "stand_profile": "https://thestandnyc.com/comedians/luis-j-gomez",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/luis-j-gomez.jpg"
-  },
-  {
     "name": "Luis Lopez",
     "venues": [
       "the_stand"
@@ -4826,12 +4822,6 @@
       "comedy_cellar"
     ],
     "bio_wiki": "Gregg Rogell is an American professional comedian. Born on Long Island, Rogell resides in New York City and is a regular performer at the Comedy Cellar and the Comic Strip Live. He has appeared on The Tonight Show, Late Night with Conan O'Brien, Louie, Half Baked, and The Nanny. He has had his own h"
-  },
-  {
-    "name": "H.Foley",
-    "venues": [
-      "comedy_cellar"
-    ]
   },
   {
     "name": "Hot Soup",
