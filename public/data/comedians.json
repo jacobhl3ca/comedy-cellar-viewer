@@ -4178,7 +4178,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/matt-braunger",
     "bio": "Matt Braunger is a stand-up comedian and actor. He was a cast member on MADtv and has multiple Comedy Central specials. He's appeared on Conan, The Tonight Show, and performs at clubs across the country.",
-    "bio_stand": "Matt’s television credits include a role on NBC’s UP ALL NIGHT, a series regular role on MADtv, as well as appearances on CONAN, The Tonight Show with Conan O’Brien, The Late Show with David Letterman, United States of Tara, Pushing Daisies, Carpoolers, The Late Late Show with Craig Ferguson, Acceptable TV, and Live At Gotham. He is also a regular guest on the Chelsea Lately roundtable. In 2009, he was named to Variety’s Top 10 Comics to Watch and Comedy Central’s Hot 9 in ’09 list, his debut album Soak Up The Night was released by Comedy Central Records and named to the iTunes REWIND Top 20 Albums of 2009 In 2010, he recorded his half hour Comedy Central Presents special and in 2012 released his debut hour-long special entitled Shovel Fighter. Along with touring comedy clubs across the country he is also a regular at the Upright Citizens Brigade in Los Angeles. Matt has also performed at a variety of prestigious comedy festivals including the Just For Laughs Festival in Montreal and Chicago, The TBS Comedy Festival Las Vegas, South By Southwest. Matt won the 2008 “Best Of The Fest” at the inaugural Rooftop Comedy Festival in Aspen and he co-founded the popular Bridgetown Comedy Festival that takes place annually in Portland."
+    "bio_stand": "Matt’s television credits include a role on NBC’s UP ALL NIGHT, a series regular role on MADtv, as well as appearances on CONAN, The Tonight Show with Conan O’Brien, The Late Show with David Letterman, United States of Tara, Pushing Daisies, Carpoolers, The Late Late Show with Craig Ferguson, Acceptable TV, and Live At Gotham. He is also a regular guest on the Chelsea Lately roundtable. In 2009, he was named to Variety’s Top 10 Comics to Watch and Comedy Central’s Hot 9 in ’09 list, his debut album Soak Up The Night was released by Comedy Central Records and named to the iTunes REWIND Top 20 Albums of 2009 In 2010, he recorded his half hour Comedy Central Presents special and in 2012 released his debut hour-long special entitled Shovel Fighter. Along with touring comedy clubs across the country he is also a regular at the Upright Citizens Brigade in Los Angeles. Matt has also performed at a variety of prestigious comedy festivals including the Just For Laughs Festival in Montreal and Chicago, The TBS Comedy Festival Las Vegas, South By Southwest. Matt won the 2008 “Best Of The Fest” at the inaugural Rooftop Comedy Festival in Aspen and he co-founded the popular Bridgetown Comedy Festival that takes place annually in Portland.",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Matt_Braunger_%286800221857%29.jpg/330px-Matt_Braunger_%286800221857%29.jpg"
   },
   {
     "name": "Matt Friend",
@@ -6503,7 +6504,7 @@
   {
     "name": "Jimmy Fowlie",
     "venues": [],
-    "bio_wiki": "Jimmy Fowlie is an American actor, writer and comedian who publishes YouTube content. Formerly of The Groundlings, he produced Go-Go Boy Interrupted, an LGBT-themed comedy web series based on his live sketch comedy show of the same name. He is also known for writing and performing as Emma Stone in t"
+    "bio_wiki": "Jimmy Fowlie is an American actor, writer and comedian who publishes YouTube content. Formerly of The Groundlings, he produced Go-Go Boy Interrupted, an LGBT-themed comedy web series based on his live sketch comedy show of the same name. He is also known for writing and performing as Emma Stone's La"
   },
   {
     "name": "Ben Marshall",
@@ -7086,6 +7087,18 @@
   },
   {
     "name": "Josh Thomas",
+    "venues": []
+  },
+  {
+    "name": "Reg Thomas",
+    "venues": []
+  },
+  {
+    "name": "Jonah Nigh",
+    "venues": []
+  },
+  {
+    "name": "Jack Ferguson",
     "venues": []
   }
 ]
