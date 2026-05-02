@@ -1212,7 +1212,25 @@ body.dir-mode .toolbar { display: none !important; }
   font-size: 14px; cursor: pointer;
 }
 .dir-load-more:hover { border-color: var(--accent); }
-.dir-sentinel { height: 1px; margin: 0; padding: 0; }
+.dir-sentinel { height: 1px; margin: 0; padding: 0; grid-column: 1 / -1; }
+
+/* Sticky section headers in the Comedians grid.
+   Span the full grid row, stick below the controls bar (which itself sticks to top:0,
+   or top:60px on iOS native). --dir-ctrl-h is set by ResizeObserver in renderComedianDirectory. */
+.dir-section-header {
+  grid-column: 1 / -1;
+  position: sticky;
+  top: var(--dir-ctrl-h, 0px);
+  z-index: 4;
+  background: var(--bg);
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-dim);
+  padding: 10px 4px 6px;
+  margin: 4px 0 4px;
+  border-bottom: 1px solid var(--border);
+}
+html.native-ios .dir-section-header { top: calc(60px + var(--dir-ctrl-h, 0px)); }
 
 @media (max-width: 480px) {
   .dir-grid { grid-template-columns: 1fr 1fr; gap: 8px; }

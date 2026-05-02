@@ -2737,6 +2737,34 @@ function _dirLiveSet() {
   return live;
 }
 
+// Section bucketing for the comedian directory.
+// Buckets reflect the existing sort order: faves first, then live, then alphabetical letter.
+function _dirSectionFor(c, prefs, liveSet) {
+  if (prefs.faves.includes(c.name)) return { key: 'fav', label: 'Your Favorites' };
+  if (liveSet.has(c.name)) return { key: 'live', label: 'Booked This Week' };
+  const ch = (c.name[0] || '#').toUpperCase();
+  const letter = /[A-Z]/.test(ch) ? ch : '#';
+  return { key: 'alpha-' + letter, label: letter };
+}
+
+// Render a slice of cards with sticky section headers inserted at section boundaries.
+// `prevSectionKey` lets the infinite-scroll path resume without duplicating a header.
+function _dirCardsWithSections(slice, prefs, liveSet, prevSectionKey) {
+  let last = prevSectionKey || null;
+  let html = '';
+  for (const c of slice) {
+    const s = _dirSectionFor(c, prefs, liveSet);
+    if (s.key !== last) {
+      html += `<div class="dir-section-header" data-section="${s.key}">${s.label}</div>`;
+      last = s.key;
+    }
+    html += _dirCardHTML(c, prefs, liveSet);
+  }
+  // Stash the last-emitted section so infinite scroll can pick up where this slice ended.
+  window._dirLastSection = last;
+  return html;
+}
+
 function renderComedianDirectory(container) {
   const prefs = loadPrefs();
   const liveSet = _dirLiveSet();
@@ -2783,7 +2811,7 @@ function renderComedianDirectory(container) {
         <div class="dir-count">${total === 0 ? 'No comedians match' : `${livingShown === list.length ? total : livingShown + ' of ' + total} comedian${total === 1 ? '' : 's'}`}</div>
       </div>
       <div class="dir-grid">
-        ${visible.map(c => _dirCardHTML(c, prefs, liveSet)).join('')}
+        ${_dirCardsWithSections(visible, prefs, liveSet)}
       </div>
       ${livingShown < list.length ? `<div id="dir-sentinel" class="dir-sentinel" aria-hidden="true"></div>` : ''}
       ${showRip ? `
@@ -2799,6 +2827,17 @@ function renderComedianDirectory(container) {
 
   // Restore scroll for in-place updates (e.g. after fave toggle)
   if (scrollY > 0) window.scrollTo(0, scrollY);
+
+  // Track the height of .dir-controls so section headers can stick directly below it.
+  // Without this, sticky letter dividers would slide *under* the controls bar.
+  const ctrls = document.querySelector('.dir-controls');
+  if (ctrls) {
+    const setVar = () => document.documentElement.style.setProperty('--dir-ctrl-h', ctrls.offsetHeight + 'px');
+    setVar();
+    if (window._dirCtrlObserver) window._dirCtrlObserver.disconnect();
+    window._dirCtrlObserver = new ResizeObserver(setVar);
+    window._dirCtrlObserver.observe(ctrls);
+  }
 
   // Wire controls
   const searchInput = document.getElementById('dir-search');
@@ -2858,7 +2897,7 @@ function _dirAttachInfiniteScroll() {
     const next = Math.min(prev + 60, list.length);
     if (next <= prev) return;
     const slice = list.slice(prev, next);
-    grid.insertAdjacentHTML('beforeend', slice.map(c => _dirCardHTML(c, prefs, liveSet)).join(''));
+    grid.insertAdjacentHTML('beforeend', _dirCardsWithSections(slice, prefs, liveSet, window._dirLastSection));
     window._dirShowCount = next;
     const countEl = document.querySelector('.dir-count');
     const deceasedCount = (comedianDB || []).filter(c => c.deceased).length;
@@ -2900,7 +2939,8 @@ function _dirRerenderDebounced() {
     const livingShown = Math.min(window._dirShowCount, list.length);
     const visible = list.slice(0, livingShown);
     // Keep this update scoped to the LIVING grid (first .dir-grid). RIP grid is below.
-    grid.innerHTML = visible.map(c => _dirCardHTML(c, prefs, liveSet)).join('');
+    window._dirLastSection = null;
+    grid.innerHTML = _dirCardsWithSections(visible, prefs, liveSet);
     const deceasedCount = (comedianDB || []).filter(c => c.deceased).length;
     const total = list.length + deceasedCount;
     if (countEl) countEl.textContent = total === 0 ? 'No comedians match' : `${livingShown === list.length ? total : livingShown + ' of ' + total} comedian${total === 1 ? '' : 's'}`;
