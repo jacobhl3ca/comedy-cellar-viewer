@@ -432,6 +432,12 @@ html.native-ios .header-share-btn { right: 0; }
   transition: width 0.2s, height 0.2s;
   pointer-events: none;
 }
+.comedian-photo-placeholder {
+  background: var(--surface2); display: inline-flex; align-items: center; justify-content: center;
+  color: var(--text-dim); opacity: 0.55;
+}
+.comedian-photo-placeholder .ico { width: 14px; height: 14px; }
+.picture-mode .comedian-photo-placeholder .ico { width: 26px; height: 26px; }
 
 /* Picture mode: larger photos, grid layout */
 .picture-mode .show-lineup {

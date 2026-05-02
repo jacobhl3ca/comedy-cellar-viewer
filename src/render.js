@@ -595,8 +595,10 @@ function renderComedianChips(comedians, hideSkips, venueSource) {
     // No-photo filter: hide comedians that have photos, highlight those without
     if (noPhotoFilter && hasPhoto) return '';
     if (noPhotoFilter && !hasPhoto) cls += ' no-photo-highlight';
-    const photoHtml = (showPhotos && photoUrl)
-      ? `<img class="comedian-photo" src="${photoUrl}" alt="" loading="lazy">`
+    const photoHtml = showPhotos
+      ? (photoUrl
+          ? `<img class="comedian-photo" src="${photoUrl}" alt="" loading="lazy" onerror="window.swapPhotoPlaceholder(this)">`
+          : `<span class="comedian-photo comedian-photo-placeholder">${ICON.mic}</span>`)
       : '';
     // Get venue-aware bio
     const tagline = getBioForVenue(name, venueSource || 'cellar');

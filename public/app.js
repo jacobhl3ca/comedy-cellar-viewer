@@ -441,6 +441,14 @@ const ICON = {
   check: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>',
   smartphonePlus: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>',
 };
+// Expose so inline onerror handlers can reach the mic SVG to swap in a placeholder
+window.ICON = ICON;
+window.swapPhotoPlaceholder = function(img) {
+  const span = document.createElement('span');
+  span.className = 'comedian-photo comedian-photo-placeholder';
+  span.innerHTML = ICON.mic;
+  img.replaceWith(span);
+};
 
 // ---- NYC Comedy Regulars ----
 // REMOVED session 8 — newcomer/regular logic needs rethinking. Will re-add later.
@@ -1599,8 +1607,10 @@ function renderComedianChips(comedians, hideSkips, venueSource) {
     // No-photo filter: hide comedians that have photos, highlight those without
     if (noPhotoFilter && hasPhoto) return '';
     if (noPhotoFilter && !hasPhoto) cls += ' no-photo-highlight';
-    const photoHtml = (showPhotos && photoUrl)
-      ? `<img class="comedian-photo" src="${photoUrl}" alt="" loading="lazy">`
+    const photoHtml = showPhotos
+      ? (photoUrl
+          ? `<img class="comedian-photo" src="${photoUrl}" alt="" loading="lazy" onerror="window.swapPhotoPlaceholder(this)">`
+          : `<span class="comedian-photo comedian-photo-placeholder">${ICON.mic}</span>`)
       : '';
     // Get venue-aware bio
     const tagline = getBioForVenue(name, venueSource || 'cellar');
