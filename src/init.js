@@ -288,7 +288,7 @@
 
   async function doShare(sourceBtn, onCopyFeedback) {
     const url = await buildShareUrl();
-    const result = await Native.share('Tonight NYC', 'My Comedy Cellar picks', url);
+    const result = await Native.share('Tonight NYC', url);
     if (result === 'clipboard' || result === 'failed') {
       onCopyFeedback && onCopyFeedback();
     }

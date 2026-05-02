@@ -18,15 +18,15 @@ const Native = (function() {
     try { await Haptics.selectionStart(); await Haptics.selectionChanged(); await Haptics.selectionEnd(); } catch {}
   }
 
-  async function share(title, text, url) {
+  async function share(title, url) {
     if (isNative()) {
       const Share = plugin('Share');
       if (Share) {
-        try { await Share.share({ title, text, url, dialogTitle: title }); return 'native'; } catch { return 'cancelled'; }
+        try { await Share.share({ title, url, dialogTitle: title }); return 'native'; } catch { return 'cancelled'; }
       }
     }
     if (navigator.share) {
-      try { await navigator.share({ title, text, url }); return 'webshare'; } catch { return 'cancelled'; }
+      try { await navigator.share({ title, url }); return 'webshare'; } catch { return 'cancelled'; }
     }
     try { await navigator.clipboard.writeText(url); return 'clipboard'; } catch { return 'failed'; }
   }
@@ -3576,7 +3576,7 @@ async function init() {
 
   async function doShare(sourceBtn, onCopyFeedback) {
     const url = await buildShareUrl();
-    const result = await Native.share('Tonight NYC', 'My Comedy Cellar picks', url);
+    const result = await Native.share('Tonight NYC', url);
     if (result === 'clipboard' || result === 'failed') {
       onCopyFeedback && onCopyFeedback();
     }
