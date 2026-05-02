@@ -83,6 +83,7 @@ html.native-ios body::before {
 }
 html.native-ios .schedule-day-header { top: 60px; }
 html.native-ios .comedian-filter-banner { top: 60px; }
+html.native-ios .dir-controls { top: 60px; }
 
 /* Header */
 header { text-align: center; padding: 24px 0 8px; position: relative; }
@@ -1211,6 +1212,7 @@ body.dir-mode .toolbar { display: none !important; }
   font-size: 14px; cursor: pointer;
 }
 .dir-load-more:hover { border-color: var(--accent); }
+.dir-sentinel { height: 1px; margin: 0; padding: 0; }
 
 @media (max-width: 480px) {
   .dir-grid { grid-template-columns: 1fr 1fr; gap: 8px; }

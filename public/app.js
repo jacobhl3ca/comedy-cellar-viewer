@@ -539,8 +539,6 @@ function isBadPhotoUrl(url) {
   if (/instagram\.com/i.test(url) && !/\/v\/|\/t51\.|\/p\//.test(url)) return true;
   // SeatGeek placeholders
   if (/seatgeek\.com/i.test(url) && /placeholder|generic/i.test(url)) return true;
-  // Ticketmaster generic category images (not actual performer photos)
-  if (/ticketm\.net\/dam\/c\//i.test(url)) return true;
   return false;
 }
 
@@ -2655,7 +2653,7 @@ function handleComedianClick(el) {
           ${isSkipd ? `${ICON.x} Skipped` : `${ICON.minus} Skip`}
         </button>
         <button class="exp-btn ${alerted ? 'is-alert' : ''}" onclick="toggleAlertBtn('${esc}', this)">
-          ${alerted ? `${ICON.bell} Notifications on` : `${ICON.bellOff} Notify me`}
+          ${alerted ? `${ICON.bell} Notifications on` : `${ICON.bell} Notify me`}
         </button>
         <button class="exp-btn" onclick="filterByComedian('${esc}')">
           ${ICON.search} Filter shows
@@ -2687,7 +2685,7 @@ function toggleAlertBtn(name, btn) {
   toggleAlert(name);
   const alerted = isAlerted(name);
   btn.className = 'exp-btn' + (alerted ? ' is-alert' : '');
-  btn.innerHTML = alerted ? `${ICON.bell} Notifications on` : `${ICON.bellOff} Notify me`;
+  btn.innerHTML = alerted ? `${ICON.bell} Notifications on` : `${ICON.bell} Notify me`;
 }
 
 // Global filter state for comedian filtering
@@ -2787,7 +2785,7 @@ function renderComedianDirectory(container) {
       <div class="dir-grid">
         ${visible.map(c => _dirCardHTML(c, prefs, liveSet)).join('')}
       </div>
-      ${livingShown < list.length ? `<button class="dir-load-more" id="dir-load-more">Show more (${list.length - livingShown} left)</button>` : ''}
+      ${livingShown < list.length ? `<div id="dir-sentinel" class="dir-sentinel" aria-hidden="true"></div>` : ''}
       ${showRip ? `
         <div class="dir-rip-section">
           <h3 class="dir-rip-heading">In Memoriam</h3>
@@ -2826,11 +2824,52 @@ function renderComedianDirectory(container) {
     window._dirShowCount = 60;
     renderShows();
   });
-  const loadMoreBtn = document.getElementById('dir-load-more');
-  if (loadMoreBtn) loadMoreBtn.addEventListener('click', () => {
-    window._dirShowCount += 60;
-    renderShows();
-  });
+  _dirAttachInfiniteScroll();
+}
+
+// Auto-load more comedian cards when the sentinel scrolls into view.
+// Avoids a full renderShows() call to preserve scroll position.
+function _dirAttachInfiniteScroll() {
+  const sentinel = document.getElementById('dir-sentinel');
+  if (!sentinel) return;
+  if (window._dirObserver) window._dirObserver.disconnect();
+  window._dirObserver = new IntersectionObserver((entries) => {
+    if (!entries.some(e => e.isIntersecting)) return;
+    const grid = document.querySelectorAll('.dir-grid')[0];
+    if (!grid) return;
+    const prefs = loadPrefs();
+    const liveSet = _dirLiveSet();
+    const search = (window._dirSearch || '').toLowerCase().trim();
+    let list = (comedianDB || []).slice();
+    if (search) list = list.filter(c => c.name.toLowerCase().includes(search));
+    if (window._dirOnlyFaves) list = list.filter(c => prefs.faves.includes(c.name));
+    if (window._dirOnlyLive) list = list.filter(c => liveSet.has(c.name));
+    list = list.filter(c => !c.deceased);
+    list.sort((a, b) => {
+      const af = prefs.faves.includes(a.name) ? 0 : 1;
+      const bf = prefs.faves.includes(b.name) ? 0 : 1;
+      if (af !== bf) return af - bf;
+      const al = liveSet.has(a.name) ? 0 : 1;
+      const bl = liveSet.has(b.name) ? 0 : 1;
+      if (al !== bl) return al - bl;
+      return a.name.localeCompare(b.name);
+    });
+    const prev = window._dirShowCount;
+    const next = Math.min(prev + 60, list.length);
+    if (next <= prev) return;
+    const slice = list.slice(prev, next);
+    grid.insertAdjacentHTML('beforeend', slice.map(c => _dirCardHTML(c, prefs, liveSet)).join(''));
+    window._dirShowCount = next;
+    const countEl = document.querySelector('.dir-count');
+    const deceasedCount = (comedianDB || []).filter(c => c.deceased).length;
+    const total = list.length + deceasedCount;
+    if (countEl) countEl.textContent = total === 0 ? 'No comedians match' : `${next === list.length ? total : next + ' of ' + total} comedian${total === 1 ? '' : 's'}`;
+    if (next >= list.length) {
+      window._dirObserver.disconnect();
+      sentinel.remove();
+    }
+  }, { rootMargin: '600px 0px' });
+  window._dirObserver.observe(sentinel);
 }
 
 let _dirSearchTimer = null;
@@ -2865,6 +2904,21 @@ function _dirRerenderDebounced() {
     const deceasedCount = (comedianDB || []).filter(c => c.deceased).length;
     const total = list.length + deceasedCount;
     if (countEl) countEl.textContent = total === 0 ? 'No comedians match' : `${livingShown === list.length ? total : livingShown + ' of ' + total} comedian${total === 1 ? '' : 's'}`;
+    // Re-attach infinite-scroll sentinel after a debounced filter change.
+    let sentinel = document.getElementById('dir-sentinel');
+    if (livingShown < list.length) {
+      if (!sentinel) {
+        sentinel = document.createElement('div');
+        sentinel.id = 'dir-sentinel';
+        sentinel.className = 'dir-sentinel';
+        sentinel.setAttribute('aria-hidden', 'true');
+        grid.parentNode.insertBefore(sentinel, grid.nextSibling);
+      }
+      _dirAttachInfiniteScroll();
+    } else if (sentinel) {
+      if (window._dirObserver) window._dirObserver.disconnect();
+      sentinel.remove();
+    }
     if (loadMore) {
       if (livingShown < list.length) {
         loadMore.textContent = `Show more (${list.length - livingShown} left)`;
@@ -2898,7 +2952,7 @@ function _dirCardHTML(c, prefs, liveSet) {
         ${isDeceased ? '' : `<div class="dir-card-actions">
           <button class="dir-btn ${isFavd ? 'is-fav' : ''}" onclick="setPref('${esc}','${isFavd ? 'neutral' : 'fav'}')" title="${isFavd ? 'Remove favorite' : 'Favorite'}">${isFavd ? ICON.starFilled : ICON.starOutline}</button>
           <button class="dir-btn ${isSkipd ? 'is-skip' : ''}" onclick="setPref('${esc}','${isSkipd ? 'neutral' : 'skip'}')" title="${isSkipd ? 'Un-skip' : 'Skip'}">${isSkipd ? ICON.x : ICON.minus}</button>
-          <button class="dir-btn ${alerted ? 'is-alert' : ''}" onclick="toggleAlertBtn('${esc}', this)" title="${alerted ? 'Notifications on' : 'Notify when booked'}">${alerted ? ICON.bell : ICON.bellOff}</button>
+          <button class="dir-btn ${alerted ? 'is-alert' : ''}" onclick="toggleAlertBtn('${esc}', this)" title="${alerted ? 'Notifications on' : 'Notify when booked'}">${alerted ? ICON.bell : ICON.bell}</button>
         </div>`}
       </div>
     </div>
