@@ -15,7 +15,7 @@
   if (alertList) {
     alertList.innerHTML = alerts.comedians
       .filter(n => n.toLowerCase().includes(filterLower))
-      .map(n => `<span class="chip alert-state" onclick="removeAlert('${n.replace(/'/g, "\\'")}')">${n} ✕</span>`)
+      .map(n => `<span class="chip alert-state" onclick="removeAlert('${n.replace(/'/g, "\\'")}')">${n} ${ICON.x}</span>`)
       .join('') || '<span style="color:var(--text-dim);font-size:13px;">No alerts set</span>';
     document.getElementById('alert-count').textContent = `(${alerts.comedians.length})`;
     const emailInput = document.getElementById('alert-email');

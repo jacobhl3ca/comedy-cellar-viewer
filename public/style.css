@@ -1166,7 +1166,21 @@ body.dir-mode .toolbar { display: none !important; }
 
 .dir-card-photo { flex: 0 0 70px; height: 70px; border-radius: 50%; overflow: hidden; background: var(--surface2); }
 .dir-card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.dir-photo-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 22px; opacity: 0.4; }
+.dir-photo-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 0.4; }
+.dir-photo-placeholder .ico { width: 28px; height: 28px; }
+
+/* Inline SVG icon helper (replaces emoji that render as ? on iOS) */
+.ico { width: 14px; height: 14px; display: inline-block; vertical-align: -2px; flex-shrink: 0; }
+.exp-btn .ico { margin-right: 2px; }
+.dir-btn .ico { width: 16px; height: 16px; vertical-align: middle; }
+.fav-count .ico { width: 12px; height: 12px; vertical-align: -1px; }
+.fav-count .ico[fill="currentColor"], .star .ico { color: var(--accent); }
+.star .ico { width: 13px; height: 13px; vertical-align: -2px; }
+.comedian-filter-banner button .ico { width: 12px; height: 12px; }
+.data-warning .ico { width: 14px; height: 14px; }
+.chip.alert-state .ico { width: 11px; height: 11px; }
+#pwa-install-btn .ico { width: 14px; height: 14px; vertical-align: -2px; }
+.share-check .ico { width: 16px; height: 16px; }
 
 .dir-card-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
 .dir-card-name { font-weight: 600; font-size: 14px; color: var(--text); line-height: 1.2; }

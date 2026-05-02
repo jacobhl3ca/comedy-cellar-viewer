@@ -426,6 +426,22 @@ function removeAlert(name) {
   renderModal(search);
 }
 
+// ---- Inline SVG icons (replaces emoji that render as ? on iOS) ----
+const ICON = {
+  bell: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>',
+  bellOff: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.73 21a2 2 0 0 1-3.46 0"/><path d="M18.63 13A17.89 17.89 0 0 1 18 8"/><path d="M6.26 6.26A5.86 5.86 0 0 0 6 8c0 7-3 9-3 9h14"/><path d="M18 8a6 6 0 0 0-9.33-5"/><line x1="1" y1="1" x2="23" y2="23"/></svg>',
+  search: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+  starFilled: '<svg class="ico" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+  starOutline: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+  x: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+  minus: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/></svg>',
+  thumbsUp: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3z"/><line x1="7" y1="22" x2="7" y2="11"/></svg>',
+  mic: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>',
+  warning: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+  check: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>',
+  smartphonePlus: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>',
+};
+
 // ---- NYC Comedy Regulars ----
 // REMOVED session 8 — newcomer/regular logic needs rethinking. Will re-add later.
 
@@ -1326,7 +1342,7 @@ function _insertFilterBanner(container) {
   const banner = document.createElement('div');
   banner.id = 'comedian-filter-banner';
   banner.className = 'comedian-filter-banner';
-  banner.innerHTML = `Showing shows with <strong>${activeComedianFilter}</strong> <button onclick="filterByComedian('${activeComedianFilter.replace(/'/g, "\\'")}')">✕ Clear</button>`;
+  banner.innerHTML = `Showing shows with <strong>${activeComedianFilter}</strong> <button onclick="filterByComedian('${activeComedianFilter.replace(/'/g, "\\'")}')">${ICON.x} Clear</button>`;
   container.prepend(banner);
 }
 
@@ -1541,7 +1557,7 @@ function renderShowCard(show, hideSkips, onlyFavs, dateStr) {
         ${show.reserveUrl
           ? `<span class="reserve-group"><a href="${show.reserveUrl}" target="_blank" class="reserve-btn${soldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${soldOut ? 'Sold Out' : 'Reserve'}</a>${soldOut ? '<span class="standby-note">Standby list opens 1 hr before</span>' : ''}</span>`
           : '<span></span>'}
-        ${soldOut ? hideSoldOutToggle(soldOut) : `<span class="fav-count">${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''}</span>`}
+        ${soldOut ? hideSoldOutToggle(soldOut) : `<span class="fav-count">${stats.faves > 0 ? `${ICON.starFilled} ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''}</span>`}
       </div>
     </div>
   `;
@@ -1566,11 +1582,11 @@ function renderComedianChips(comedians, hideSkips, venueSource) {
 
     if (favd) {
       cls += ' fav';
-      prefix = '<span class="star">⭐</span>';
+      prefix = `<span class="star">${ICON.starFilled}</span>`;
     } else if (liked) {
       // Legacy likes treated as faves
       cls += ' fav';
-      prefix = '<span class="star">⭐</span>';
+      prefix = `<span class="star">${ICON.starFilled}</span>`;
     } else if (skipped) {
       cls += ' skip';
       if (hideSkips) cls += ' hidden-skip';
@@ -1690,7 +1706,7 @@ function renderSortedByFaves(container) {
         <div class="show-lineup">${chips}</div>
         <div class="show-footer">
           ${show.reserveUrl ? `<span class="reserve-group"><a href="${show.reserveUrl}" target="_blank" class="reserve-btn${soldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${soldOut ? 'Sold Out' : 'Reserve'}</a>${soldOut ? '<span class="standby-note">Standby list opens 1 hr before</span>' : ''}</span>` : '<span></span>'}
-          ${soldOut ? hideSoldOutToggle(soldOut) : `<span class="fav-count">${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''} ${stats.likes > 0 ? `👍 ${stats.likes}` : ''}</span>`}
+          ${soldOut ? hideSoldOutToggle(soldOut) : `<span class="fav-count">${stats.faves > 0 ? `${ICON.starFilled} ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''} ${stats.likes > 0 ? `${ICON.thumbsUp} ${stats.likes}` : ''}</span>`}
         </div>
       </div>`;
     } catch (e) { console.error('renderSortedByFaves card error:', e, show); }
@@ -2620,19 +2636,19 @@ function handleComedianClick(el) {
       ${venues ? `<div style="font-size:11px;color:var(--text-dim);margin-top:4px;">Also at: ${venues}</div>` : ''}
       <div class="exp-actions">
         <button class="exp-btn ${isFavd ? 'is-fav' : ''}" onclick="setPref('${esc}','fav')">
-          ${isFavd ? '⭐ Favorited' : '☆ Favorite'}
+          ${isFavd ? `${ICON.starFilled} Favorited` : `${ICON.starOutline} Favorite`}
         </button>
         <button class="exp-btn ${isNeutral ? 'is-neutral' : ''}" onclick="setPref('${esc}','neutral')">
           ${isNeutral ? '● Neutral' : '○ Neutral'}
         </button>
         <button class="exp-btn ${isSkipd ? 'is-skip' : ''}" onclick="setPref('${esc}','skip')">
-          ${isSkipd ? '✕ Skipped' : '— Skip'}
+          ${isSkipd ? `${ICON.x} Skipped` : `${ICON.minus} Skip`}
         </button>
         <button class="exp-btn ${alerted ? 'is-alert' : ''}" onclick="toggleAlertBtn('${esc}', this)">
-          ${alerted ? '🔔 Notifications on' : '🔕 Notify me'}
+          ${alerted ? `${ICON.bell} Notifications on` : `${ICON.bellOff} Notify me`}
         </button>
         <button class="exp-btn" onclick="filterByComedian('${esc}')">
-          🔍 Filter shows
+          ${ICON.search} Filter shows
         </button>
       </div>
     </div>
@@ -2661,7 +2677,7 @@ function toggleAlertBtn(name, btn) {
   toggleAlert(name);
   const alerted = isAlerted(name);
   btn.className = 'exp-btn' + (alerted ? ' is-alert' : '');
-  btn.textContent = alerted ? '🔔 Notifications on' : '🔕 Notify me';
+  btn.innerHTML = alerted ? `${ICON.bell} Notifications on` : `${ICON.bellOff} Notify me`;
 }
 
 // Global filter state for comedian filtering
@@ -2865,14 +2881,14 @@ function _dirCardHTML(c, prefs, liveSet) {
   const bioShort = bio ? (bio.length > 140 ? bio.substring(0, 140).replace(/\s+\S*$/, '') + '…' : bio) : '';
   return `
     <div class="dir-card ${isFavd ? 'is-fav' : ''} ${isSkipd ? 'is-skip' : ''} ${isDeceased ? 'deceased' : ''}">
-      <div class="dir-card-photo">${photo ? `<img src="${photo}" alt="${name}" loading="lazy" onerror="this.style.display='none'">` : '<div class="dir-photo-placeholder">🎤</div>'}</div>
+      <div class="dir-card-photo">${photo ? `<img src="${photo}" alt="${name}" loading="lazy" onerror="this.style.display='none'">` : `<div class="dir-photo-placeholder">${ICON.mic}</div>`}</div>
       <div class="dir-card-body">
         <div class="dir-card-name">${name}${isLive ? ' <span class="dir-live-dot" title="Booked in upcoming lineup">●</span>' : ''}</div>
         ${bioShort ? `<div class="dir-card-bio">${bioShort}</div>` : ''}
         ${isDeceased ? '' : `<div class="dir-card-actions">
-          <button class="dir-btn ${isFavd ? 'is-fav' : ''}" onclick="setPref('${esc}','${isFavd ? 'neutral' : 'fav'}')" title="${isFavd ? 'Remove favorite' : 'Favorite'}">${isFavd ? '⭐' : '☆'}</button>
-          <button class="dir-btn ${isSkipd ? 'is-skip' : ''}" onclick="setPref('${esc}','${isSkipd ? 'neutral' : 'skip'}')" title="${isSkipd ? 'Un-skip' : 'Skip'}">${isSkipd ? '✕' : '—'}</button>
-          <button class="dir-btn ${alerted ? 'is-alert' : ''}" onclick="toggleAlertBtn('${esc}', this)" title="${alerted ? 'Notifications on' : 'Notify when booked'}">${alerted ? '🔔' : '🔕'}</button>
+          <button class="dir-btn ${isFavd ? 'is-fav' : ''}" onclick="setPref('${esc}','${isFavd ? 'neutral' : 'fav'}')" title="${isFavd ? 'Remove favorite' : 'Favorite'}">${isFavd ? ICON.starFilled : ICON.starOutline}</button>
+          <button class="dir-btn ${isSkipd ? 'is-skip' : ''}" onclick="setPref('${esc}','${isSkipd ? 'neutral' : 'skip'}')" title="${isSkipd ? 'Un-skip' : 'Skip'}">${isSkipd ? ICON.x : ICON.minus}</button>
+          <button class="dir-btn ${alerted ? 'is-alert' : ''}" onclick="toggleAlertBtn('${esc}', this)" title="${alerted ? 'Notifications on' : 'Notify when booked'}">${alerted ? ICON.bell : ICON.bellOff}</button>
         </div>`}
       </div>
     </div>
@@ -2923,7 +2939,7 @@ function renderModal(filter = '') {
   if (alertList) {
     alertList.innerHTML = alerts.comedians
       .filter(n => n.toLowerCase().includes(filterLower))
-      .map(n => `<span class="chip alert-state" onclick="removeAlert('${n.replace(/'/g, "\\'")}')">${n} ✕</span>`)
+      .map(n => `<span class="chip alert-state" onclick="removeAlert('${n.replace(/'/g, "\\'")}')">${n} ${ICON.x}</span>`)
       .join('') || '<span style="color:var(--text-dim);font-size:13px;">No alerts set</span>';
     document.getElementById('alert-count').textContent = `(${alerts.comedians.length})`;
     const emailInput = document.getElementById('alert-email');
@@ -3199,7 +3215,7 @@ async function init() {
   if (failedSources.length) {
     const warn = document.createElement('div');
     warn.className = 'data-warning';
-    warn.innerHTML = `⚠ Could not load: ${failedSources.join(', ')}. <button onclick="this.parentElement.remove()">✕</button>`;
+    warn.innerHTML = `${ICON.warning} Could not load: ${failedSources.join(', ')}. <button onclick="this.parentElement.remove()">${ICON.x}</button>`;
     document.getElementById('shows-container').prepend(warn);
   }
 

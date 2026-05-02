@@ -31,7 +31,7 @@
   if (failedSources.length) {
     const warn = document.createElement('div');
     warn.className = 'data-warning';
-    warn.innerHTML = `⚠ Could not load: ${failedSources.join(', ')}. <button onclick="this.parentElement.remove()">✕</button>`;
+    warn.innerHTML = `${ICON.warning} Could not load: ${failedSources.join(', ')}. <button onclick="this.parentElement.remove()">${ICON.x}</button>`;
     document.getElementById('shows-container').prepend(warn);
   }
 

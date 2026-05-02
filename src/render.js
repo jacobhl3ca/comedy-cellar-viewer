@@ -338,7 +338,7 @@ function _insertFilterBanner(container) {
   const banner = document.createElement('div');
   banner.id = 'comedian-filter-banner';
   banner.className = 'comedian-filter-banner';
-  banner.innerHTML = `Showing shows with <strong>${activeComedianFilter}</strong> <button onclick="filterByComedian('${activeComedianFilter.replace(/'/g, "\\'")}')">✕ Clear</button>`;
+  banner.innerHTML = `Showing shows with <strong>${activeComedianFilter}</strong> <button onclick="filterByComedian('${activeComedianFilter.replace(/'/g, "\\'")}')">${ICON.x} Clear</button>`;
   container.prepend(banner);
 }
 
@@ -553,7 +553,7 @@ function renderShowCard(show, hideSkips, onlyFavs, dateStr) {
         ${show.reserveUrl
           ? `<span class="reserve-group"><a href="${show.reserveUrl}" target="_blank" class="reserve-btn${soldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${soldOut ? 'Sold Out' : 'Reserve'}</a>${soldOut ? '<span class="standby-note">Standby list opens 1 hr before</span>' : ''}</span>`
           : '<span></span>'}
-        ${soldOut ? hideSoldOutToggle(soldOut) : `<span class="fav-count">${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''}</span>`}
+        ${soldOut ? hideSoldOutToggle(soldOut) : `<span class="fav-count">${stats.faves > 0 ? `${ICON.starFilled} ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''}</span>`}
       </div>
     </div>
   `;
@@ -578,11 +578,11 @@ function renderComedianChips(comedians, hideSkips, venueSource) {
 
     if (favd) {
       cls += ' fav';
-      prefix = '<span class="star">⭐</span>';
+      prefix = `<span class="star">${ICON.starFilled}</span>`;
     } else if (liked) {
       // Legacy likes treated as faves
       cls += ' fav';
-      prefix = '<span class="star">⭐</span>';
+      prefix = `<span class="star">${ICON.starFilled}</span>`;
     } else if (skipped) {
       cls += ' skip';
       if (hideSkips) cls += ' hidden-skip';
@@ -702,7 +702,7 @@ function renderSortedByFaves(container) {
         <div class="show-lineup">${chips}</div>
         <div class="show-footer">
           ${show.reserveUrl ? `<span class="reserve-group"><a href="${show.reserveUrl}" target="_blank" class="reserve-btn${soldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${soldOut ? 'Sold Out' : 'Reserve'}</a>${soldOut ? '<span class="standby-note">Standby list opens 1 hr before</span>' : ''}</span>` : '<span></span>'}
-          ${soldOut ? hideSoldOutToggle(soldOut) : `<span class="fav-count">${stats.faves > 0 ? `⭐ ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''} ${stats.likes > 0 ? `👍 ${stats.likes}` : ''}</span>`}
+          ${soldOut ? hideSoldOutToggle(soldOut) : `<span class="fav-count">${stats.faves > 0 ? `${ICON.starFilled} ${stats.faves} fave${stats.faves > 1 ? 's' : ''}` : ''} ${stats.likes > 0 ? `${ICON.thumbsUp} ${stats.likes}` : ''}</span>`}
         </div>
       </div>`;
     } catch (e) { console.error('renderSortedByFaves card error:', e, show); }
@@ -1632,19 +1632,19 @@ function handleComedianClick(el) {
       ${venues ? `<div style="font-size:11px;color:var(--text-dim);margin-top:4px;">Also at: ${venues}</div>` : ''}
       <div class="exp-actions">
         <button class="exp-btn ${isFavd ? 'is-fav' : ''}" onclick="setPref('${esc}','fav')">
-          ${isFavd ? '⭐ Favorited' : '☆ Favorite'}
+          ${isFavd ? `${ICON.starFilled} Favorited` : `${ICON.starOutline} Favorite`}
         </button>
         <button class="exp-btn ${isNeutral ? 'is-neutral' : ''}" onclick="setPref('${esc}','neutral')">
           ${isNeutral ? '● Neutral' : '○ Neutral'}
         </button>
         <button class="exp-btn ${isSkipd ? 'is-skip' : ''}" onclick="setPref('${esc}','skip')">
-          ${isSkipd ? '✕ Skipped' : '— Skip'}
+          ${isSkipd ? `${ICON.x} Skipped` : `${ICON.minus} Skip`}
         </button>
         <button class="exp-btn ${alerted ? 'is-alert' : ''}" onclick="toggleAlertBtn('${esc}', this)">
-          ${alerted ? '🔔 Notifications on' : '🔕 Notify me'}
+          ${alerted ? `${ICON.bell} Notifications on` : `${ICON.bellOff} Notify me`}
         </button>
         <button class="exp-btn" onclick="filterByComedian('${esc}')">
-          🔍 Filter shows
+          ${ICON.search} Filter shows
         </button>
       </div>
     </div>
@@ -1673,7 +1673,7 @@ function toggleAlertBtn(name, btn) {
   toggleAlert(name);
   const alerted = isAlerted(name);
   btn.className = 'exp-btn' + (alerted ? ' is-alert' : '');
-  btn.textContent = alerted ? '🔔 Notifications on' : '🔕 Notify me';
+  btn.innerHTML = alerted ? `${ICON.bell} Notifications on` : `${ICON.bellOff} Notify me`;
 }
 
 // Global filter state for comedian filtering
@@ -1877,14 +1877,14 @@ function _dirCardHTML(c, prefs, liveSet) {
   const bioShort = bio ? (bio.length > 140 ? bio.substring(0, 140).replace(/\s+\S*$/, '') + '…' : bio) : '';
   return `
     <div class="dir-card ${isFavd ? 'is-fav' : ''} ${isSkipd ? 'is-skip' : ''} ${isDeceased ? 'deceased' : ''}">
-      <div class="dir-card-photo">${photo ? `<img src="${photo}" alt="${name}" loading="lazy" onerror="this.style.display='none'">` : '<div class="dir-photo-placeholder">🎤</div>'}</div>
+      <div class="dir-card-photo">${photo ? `<img src="${photo}" alt="${name}" loading="lazy" onerror="this.style.display='none'">` : `<div class="dir-photo-placeholder">${ICON.mic}</div>`}</div>
       <div class="dir-card-body">
         <div class="dir-card-name">${name}${isLive ? ' <span class="dir-live-dot" title="Booked in upcoming lineup">●</span>' : ''}</div>
         ${bioShort ? `<div class="dir-card-bio">${bioShort}</div>` : ''}
         ${isDeceased ? '' : `<div class="dir-card-actions">
-          <button class="dir-btn ${isFavd ? 'is-fav' : ''}" onclick="setPref('${esc}','${isFavd ? 'neutral' : 'fav'}')" title="${isFavd ? 'Remove favorite' : 'Favorite'}">${isFavd ? '⭐' : '☆'}</button>
-          <button class="dir-btn ${isSkipd ? 'is-skip' : ''}" onclick="setPref('${esc}','${isSkipd ? 'neutral' : 'skip'}')" title="${isSkipd ? 'Un-skip' : 'Skip'}">${isSkipd ? '✕' : '—'}</button>
-          <button class="dir-btn ${alerted ? 'is-alert' : ''}" onclick="toggleAlertBtn('${esc}', this)" title="${alerted ? 'Notifications on' : 'Notify when booked'}">${alerted ? '🔔' : '🔕'}</button>
+          <button class="dir-btn ${isFavd ? 'is-fav' : ''}" onclick="setPref('${esc}','${isFavd ? 'neutral' : 'fav'}')" title="${isFavd ? 'Remove favorite' : 'Favorite'}">${isFavd ? ICON.starFilled : ICON.starOutline}</button>
+          <button class="dir-btn ${isSkipd ? 'is-skip' : ''}" onclick="setPref('${esc}','${isSkipd ? 'neutral' : 'skip'}')" title="${isSkipd ? 'Un-skip' : 'Skip'}">${isSkipd ? ICON.x : ICON.minus}</button>
+          <button class="dir-btn ${alerted ? 'is-alert' : ''}" onclick="toggleAlertBtn('${esc}', this)" title="${alerted ? 'Notifications on' : 'Notify when booked'}">${alerted ? ICON.bell : ICON.bellOff}</button>
         </div>`}
       </div>
     </div>
