@@ -1164,9 +1164,9 @@ body.dir-mode .toolbar { display: none !important; }
 .dir-rip-section { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border); }
 .dir-rip-heading { font-size: 14px; font-weight: 600; color: var(--text-dim); text-align: center; margin: 0 0 16px; letter-spacing: 0.08em; text-transform: uppercase; }
 
-.dir-card-photo { flex: 0 0 70px; height: 70px; border-radius: 50%; overflow: hidden; background: var(--surface2); }
-.dir-card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.dir-photo-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 0.4; }
+.dir-card-photo { position: relative; flex: 0 0 70px; height: 70px; border-radius: 50%; overflow: hidden; background: var(--surface2); }
+.dir-card-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 1; }
+.dir-photo-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0.4; color: var(--text-dim); }
 .dir-photo-placeholder .ico { width: 28px; height: 28px; }
 
 /* Inline SVG icon helper (replaces emoji that render as ? on iOS) */

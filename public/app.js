@@ -2881,7 +2881,7 @@ function _dirCardHTML(c, prefs, liveSet) {
   const bioShort = bio ? (bio.length > 140 ? bio.substring(0, 140).replace(/\s+\S*$/, '') + '…' : bio) : '';
   return `
     <div class="dir-card ${isFavd ? 'is-fav' : ''} ${isSkipd ? 'is-skip' : ''} ${isDeceased ? 'deceased' : ''}">
-      <div class="dir-card-photo">${photo ? `<img src="${photo}" alt="${name}" loading="lazy" onerror="this.style.display='none'">` : `<div class="dir-photo-placeholder">${ICON.mic}</div>`}</div>
+      <div class="dir-card-photo"><div class="dir-photo-placeholder">${ICON.mic}</div>${photo ? `<img src="${photo}" alt="${name}" loading="lazy" onerror="this.style.display='none'">` : ''}</div>
       <div class="dir-card-body">
         <div class="dir-card-name">${name}${isLive ? ' <span class="dir-live-dot" title="Booked in upcoming lineup">●</span>' : ''}</div>
         ${bioShort ? `<div class="dir-card-bio">${bioShort}</div>` : ''}
