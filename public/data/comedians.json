@@ -6054,7 +6054,8 @@
   {
     "name": "D.L. Hughley",
     "bio": "D.L. Hughley is a stand-up comedian, actor, and radio host. He was one of the Original Kings of Comedy and has starred in multiple TV shows. He hosts a nationally syndicated radio show.",
-    "venues": []
+    "venues": [],
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/D._L._Hughley%2C_Robin_Roberts%2C_and_Doreen_Ringer-Ross%2C_May_2013_%28cropped%29x.jpg/330px-D._L._Hughley%2C_Robin_Roberts%2C_and_Doreen_Ringer-Ross%2C_May_2013_%28cropped%29x.jpg"
   },
   {
     "name": "Steve Harvey",
@@ -7408,6 +7409,22 @@
   },
   {
     "name": "Dayton Bissett",
+    "venues": []
+  },
+  {
+    "name": "Jo Sunday",
+    "venues": []
+  },
+  {
+    "name": "Ally Taylor",
+    "venues": []
+  },
+  {
+    "name": "Nina Kharoufeh",
+    "venues": []
+  },
+  {
+    "name": "Youngmi Mayer",
     "venues": []
   }
 ]
