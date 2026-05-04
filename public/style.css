@@ -125,14 +125,13 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 [data-theme="light"] #theme-icon-sun { display: none; }
 [data-theme="light"] #theme-icon-moon { display: block; }
 
-/* Mobile + iOS app: hide manual toggle. Mobile follows OS setting; native is forced dark. */
-@media (max-width: 768px) {
+/* Hide toggle on very narrow screens (no room) and on any iOS (we follow OS theme there). */
+@media (max-width: 380px) {
   .theme-toggle { display: none; }
-  /* Pull share button back to where the toggle used to anchor it. */
   .header-share-btn { right: 0; }
 }
-html.native-ios .theme-toggle { display: none; }
-html.native-ios .header-share-btn { right: 0; }
+html.ios-mobile .theme-toggle { display: none; }
+html.ios-mobile .header-share-btn { right: 0; }
 
 /* Day Tabs */
 .day-tabs-row {
@@ -1229,6 +1228,16 @@ body.dir-mode .toolbar { display: none !important; }
   padding: 10px 4px 6px;
   margin: 4px 0 4px;
   border-bottom: 1px solid var(--border);
+}
+/* Paint over the 12px grid row-gap below so cards don't show through when sticky-pinned. */
+.dir-section-header::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: 100%;
+  height: 14px;
+  background: var(--bg);
+  pointer-events: none;
 }
 html.native-ios .dir-section-header { top: calc(60px + var(--dir-ctrl-h, 0px)); }
 

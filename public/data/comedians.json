@@ -89,7 +89,8 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Olivia-Stadler-d1bb0b1e-thumb-image.jpg?1755785191",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio": "Olivia Stadler is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Jared Harvin",
@@ -97,7 +98,8 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Jared-Harvin-b5d90a28-thumb-image.jpg?1654831662",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio": "Jared Harvin is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Kristal Adams",
@@ -122,7 +124,8 @@
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/mike-goldstein",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio": "Mike Goldstein is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Tim Smith",
@@ -139,7 +142,8 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Dan-Goodman-a8eb09b0-thumb-image.jpg?1718133793",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio": "Dan Goodman is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Derrick Stroup",
@@ -179,7 +183,8 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/img-9611-jpeg-b40b099f-img-9611-jpeg.jpg?1712153052",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio": "Matt Lopes is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Michael Longfellow",
@@ -227,7 +232,8 @@
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/james-mwaura",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio": "James Mwaura is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Big Jay Oakerson",
@@ -257,7 +263,8 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Comedy-Hamburger-Jones-3df50deb-thumb-image.jpg?1745261421",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio": "Alonzo Hamburger Jones is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Paula J. Leon",
@@ -961,7 +968,8 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Jake-Silberman-c1aa0ab4-thumb-image.png?1711103660",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio": "Jake Silberman is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Kerryn Feehan",
@@ -1000,7 +1008,8 @@
     "venues": [
       "nycc"
     ],
-    "bio_stand": "Shaunak Godkhindi is an Atlanta comedian who performs all around the country at clubs and indie venues. He has also been a performer at SXSW, Laughing Skull Fest, Red Clay Comedy Festival, and New South Comedy Fest. Shaunak has opened up for Kyle Kinane, Rory Scovel, Joe Zimmerman, Nore Davis, Sean Patton, Aakash Singh, and many more. His comedy style is energetic, optimistic, and fun. He once made a lady laugh so hard she peed a little and she emailed him after the show saying that her night was ruined.​"
+    "bio_stand": "Shaunak Godkhindi is an Atlanta comedian who performs all around the country at clubs and indie venues. He has also been a performer at SXSW, Laughing Skull Fest, Red Clay Comedy Festival, and New South Comedy Fest. Shaunak has opened up for Kyle Kinane, Rory Scovel, Joe Zimmerman, Nore Davis, Sean Patton, Aakash Singh, and many more. His comedy style is energetic, optimistic, and fun. He once made a lady laugh so hard she peed a little and she emailed him after the show saying that her night was ruined.​",
+    "bio": "Shaunak Godkhindi is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Olivia Carter",
@@ -1025,7 +1034,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/glorelys-mora",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Glorelys_Mora_1.jpg",
-    "bio_stand": "Glorelys \"Glory\" Mora is a New York-based stand-up comedian, writer and producer. She was born on June 15th, 1990 in New York City and grew up in between the worlds of Harlem and Washington Heights, raised by parents that immigrated from the Dominican Republic. The content for her comedy is pulled directly from interactions she has had with nepotism, racism and micro-aggressions throughout life and while working in the advertising industry. Additionally, she loves to discuss her observations of white privilege, the cis female experiences and social injustices in a ‘pretty’ digestible way for audiences to reflect upon after deep laughter. She is pretty funny."
+    "bio_stand": "Glorelys \"Glory\" Mora is a New York-based stand-up comedian, writer and producer. She was born on June 15th, 1990 in New York City and grew up in between the worlds of Harlem and Washington Heights, raised by parents that immigrated from the Dominican Republic. The content for her comedy is pulled directly from interactions she has had with nepotism, racism and micro-aggressions throughout life and while working in the advertising industry. Additionally, she loves to discuss her observations of white privilege, the cis female experiences and social injustices in a ‘pretty’ digestible way for audiences to reflect upon after deep laughter. She is pretty funny.",
+    "bio": "Glorelys Mora is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Mark Hayes",
@@ -1124,7 +1134,8 @@
       "nycc",
       "comedy_cellar"
     ],
-    "tagline_cellar": "FROM THE TONIGHT SHOW, COMEDY CENTRAL"
+    "tagline_cellar": "FROM THE TONIGHT SHOW, COMEDY CENTRAL",
+    "bio": "Peter Revello is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Olga Namer",
@@ -1192,7 +1203,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/jarrett-campbell",
     "bio_stand": "Jarrett Campbell is the fastest rising talent in Canadian comedy. His work has been featured on MTV, Comedy Network, CTV, SiriusXM and his debut comedy album, ‘Straight White Fail’, was nominated for Comedy Album of the Year at the 2020 Junos. Recently he recorded his second television set on the Jim Jefferies Gala at Just for Laughs in Montreal, appeared on Jeff Ross’s Roast Battle at JFL, can currently been seen on seasons 1 and 4 of Roast Battle Canada on CraveTV, recorded a set for CBC Gem’s New Wave of Standup and was featured at the Winnipeg Comedy Festival. In 2019, Jarrett was nominated as the 2019 Breakout Artist of the Year at the Canadian Comedy Awards and as a writer he has previously been nominated for Best Writing in a Comedy Series. From New York to Vancouver, Jarrett has been on stages all across North America and has previously headlined all across Canada with Yuk Yuk’s. He has opened for the likes of Theo Von, Andrew Schulz, Mark Normand, Andrew Santino, and many more.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/jarrettcampbell_1.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/jarrettcampbell_1.jpg",
+    "bio": "Jarrett Campbell is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Ashley Austin Morris",
@@ -1220,7 +1232,8 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/ryan-dacalos-a5e40a06-thumb-image.jpg?1522269492",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio": "Ryan Dacalos is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Riley Lassin",
@@ -1228,7 +1241,8 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Riley-Lassin-b8a00a4b-thumb-image.jpg?1753902957",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio": "Riley Lassin is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Andrew Dice Clay",
@@ -1914,7 +1928,8 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/6339f558186753fcc3e35205-hollie-harper-f96d10e7-thumb-image.jpg?1670519653",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio": "Hollie Harper is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Elon Gold",
@@ -1981,7 +1996,8 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Steve-Lipman-b6fd0a4e-thumb-image.png?1711014864",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio": "Steve Lipman is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Chloe Hillard",
@@ -1998,7 +2014,8 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/ericf-717807c1-thumb-image.jpg?1686259983",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio": "Eric Fretty is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Seth Herzog",
@@ -2023,7 +2040,8 @@
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/joseph-vescey",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio": "Joseph Vescey is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Steve Rannazzisi",
@@ -2060,7 +2078,8 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Tom-Van-Horn-b28209f3-thumb-image.png?1711016967",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio": "Tom Van Horn is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Erik Bergstrom",
@@ -2068,7 +2087,8 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/BERGSTROM-8cb10863-thumb-image.jpg?1631830589",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio": "Erik Bergstrom is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Matty Litwack",
@@ -2733,7 +2753,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/abby-rosenquist",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/26-og.jpg",
-    "bio_stand": "Abby Rosenquist started performing stand up while pursuing a degree in construction engineering at the University of Nebraska. Since graduation her dark, fast paced comedy has gotten her invited to perform at various festivals and venues all over including the prestigious Just For Laughs Festival in Montreal, Moontower Comedy and Oddity Festival, Laughing Skull Festival, and Bridgetown Comedy Festival. Abby will be making her television debut on Fuse's Uproarious this fall."
+    "bio_stand": "Abby Rosenquist started performing stand up while pursuing a degree in construction engineering at the University of Nebraska. Since graduation her dark, fast paced comedy has gotten her invited to perform at various festivals and venues all over including the prestigious Just For Laughs Festival in Montreal, Moontower Comedy and Oddity Festival, Laughing Skull Festival, and Bridgetown Comedy Festival. Abby will be making her television debut on Fuse's Uproarious this fall.",
+    "bio": "Abby Rosenquist is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Adam Carolla",
@@ -2753,7 +2774,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/adam-ferrara",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/adamferrara.jpg",
     "bio_stand": "Adam Ferrara the Actor/Comedian who Entertainment Weekly dubbed “Hilarious,” is currently starring on CBS's All Access show, Why Women Kill with Ginnifer Goodwin, Lucy Liu and an all star cast. Also currently streaming on Amazon, in the Indie movie Little Italy, along side Emma Roberts and Hayden Christenson. His new podcast The Adam Ferrara Podcast is a breakout hit, considered a “must listen” by Hidden Remote. His new comedy album Unconditional was Interrobang’s People’s Choice of Album of the Year. For six seasons Adam co-hosted the critically acclaimed BBC sensation, Top Gear US. He proudly played Chief Needles Nelson on the Emmy® nominated FX drama Rescue Me. Adam co-starred with Emmy® Award winner Edie Falco on Showtime’s hit series Nurse Jackie. He has also co-starred alongside Kevin James in the hit movie Paul Blart: Mall Cop and Definitely Maybe with Ryan Reynolds. Some of Ferrara's other TV credits include CBS's The Good Fight, Criminal Minds, Kevin Can Wait, The King Of Queens, NBC's Law & Order, ABC's Ugly Betty.",
-    "tagline_cellar": "HBO's \"NURSE JACKIE\",FROM THE MOVIE \"PAUL BLART: MALL COP\", \"DIRTY MOVIE\", \"WINTER OF FROZEN DREAMS\", \"DEFINITELY MAYBE\", FX DENIS LEARY'S \"RESCUE ME\", COMEDY CENTRAL'S \"TOUGH CROWD\", ABC'S \"THE JOB\", AND \"THE LETTERMAN SHOW\"."
+    "tagline_cellar": "HBO's \"NURSE JACKIE\",FROM THE MOVIE \"PAUL BLART: MALL COP\", \"DIRTY MOVIE\", \"WINTER OF FROZEN DREAMS\", \"DEFINITELY MAYBE\", FX DENIS LEARY'S \"RESCUE ME\", COMEDY CENTRAL'S \"TOUGH CROWD\", ABC'S \"THE JOB\", AND \"THE LETTERMAN SHOW\".",
+    "bio": "Adam Ferrara is a stand-up comedian and actor. He starred in Rescue Me and was a host on Top Gear America. He's a veteran of the NYC comedy scene and regular at comedy clubs."
   },
   {
     "name": "Adam Friedland",
@@ -2762,7 +2784,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/adam-friedland",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/adam.jpg",
-    "bio_stand": "Adam Friedland was a comic in DC for years before moving on to New York. He is the host of the live sketch and stand-up comedy show, Funny Moms. Adam is also one of the three hosts of the popular podcast, Cumtown."
+    "bio_stand": "Adam Friedland was a comic in DC for years before moving on to New York. He is the host of the live sketch and stand-up comedy show, Funny Moms. Adam is also one of the three hosts of the popular podcast, Cumtown.",
+    "bio": "Adam Friedland is a stand-up comedian and podcaster. He co-hosts The Adam Friedland Show (formerly Cum Town) with Nick Mullen. He's a regular on the NYC comedy circuit."
   },
   {
     "name": "Adrienne Iapalucci",
@@ -2772,7 +2795,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/adrienne-iapalucci",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Adrienne_Iapalucci_1.jpg",
     "tagline_cellar": "FROM THE LATE SHOW WITH DAVID LETTERMAN, FROM THE ARTIE LANGE SHOW, LAST COMIC STANDING",
-    "bio_stand": "Born and bred in the Bronx, Adrienne Iapalucci's skewed look on life is reflected in her unique brand of intelligent comedy. Her dark sense of humor is enhanced by her political incorrectness and counteracted by her love of dogs. Comedy fans might recognize Adrienne from her performances as a semifinalist on season 7 of NBC's Last Comic Standing and her recent appearance on the Late Show with David Letterman. In 2009, Adrienne won the first ever People's Choice award at the New York Comedy Festival. She was also a semifinalist in the festival's New York Funniest Stand-Up Contest and a runner-up in the New York Underground Comdy Festival's Best of the Boroughs contest. Adrienne has been featured in the Daily News, New York Times, Reader's Digest, and TimeOut NY magazine. In 2010 Adrienne made her international debut as part of Montreal's Just For Laughs Festival, where she took part in \"New Faces.\""
+    "bio_stand": "Born and bred in the Bronx, Adrienne Iapalucci's skewed look on life is reflected in her unique brand of intelligent comedy. Her dark sense of humor is enhanced by her political incorrectness and counteracted by her love of dogs. Comedy fans might recognize Adrienne from her performances as a semifinalist on season 7 of NBC's Last Comic Standing and her recent appearance on the Late Show with David Letterman. In 2009, Adrienne won the first ever People's Choice award at the New York Comedy Festival. She was also a semifinalist in the festival's New York Funniest Stand-Up Contest and a runner-up in the New York Underground Comdy Festival's Best of the Boroughs contest. Adrienne has been featured in the Daily News, New York Times, Reader's Digest, and TimeOut NY magazine. In 2010 Adrienne made her international debut as part of Montreal's Just For Laughs Festival, where she took part in \"New Faces.\"",
+    "bio": "Adrienne Iapalucci is a stand-up comedian based in New York City. She's appeared on The Late Show and is a regular at the Comedy Cellar. Her Netflix special is dark and unflinching. Known for her deadpan delivery and dark humor."
   },
   {
     "name": "Ahmed Ahmed",
@@ -2802,7 +2826,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/aldo-campana",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/aldo.jpeg",
-    "bio_stand": "Aldo Campana is a stand-up comedian based in Phoenix, Arizona. He writes jokes about his upbringing in the city and learning the ropes of becoming an adult. He enjoys skateboarding, weightlifting as well as goldfish crackers."
+    "bio_stand": "Aldo Campana is a stand-up comedian based in Phoenix, Arizona. He writes jokes about his upbringing in the city and learning the ropes of becoming an adult. He enjoys skateboarding, weightlifting as well as goldfish crackers.",
+    "bio": "Aldo Campana is a stand-up comedian performing in New York City. He's a regular at The Stand and other clubs."
   },
   {
     "name": "Alex English",
@@ -2813,7 +2838,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/alex-english",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/alexenglish.jpg",
     "bio_stand": "Alex English is an Emmy-nominated writer who recently completed his third season writing on Saturday Night Live. Prior to joining SNL, he was a writer and performer on the National Lampoon Radio Hour podcast. His other credits include B.E.T’s The Rundown with Robin Thede and Netflix’s The Fix with Jimmy Carr, Paramount+’s Inside Amy Schumer, HBOMax’s That Damn Michael Che and HBO’s Pause with Sam Jay and High Maintenance. He also appeared on the Ilana Glazer produced Tight Five for Comedy Central Digital and has opened for such comedians as Michael Che, Roy Wood, Jr., Michelle Wolf and Sam Morril. New York Magazine listed him as a “Comedian You Should & Will Know” and The New York Times lauded him as one of “The Queer Young Comics Redefining American Humor.”",
-    "tagline_cellar": "FROM SNL, THAT DAMN MICHAEL CHE, PAUSE WITH SAM JAY, COMEDY CENTRAL"
+    "tagline_cellar": "FROM SNL, THAT DAMN MICHAEL CHE, PAUSE WITH SAM JAY, COMEDY CENTRAL",
+    "bio": "Alex English is a stand-up comedian and regular at the Comedy Cellar. He's appeared on Comedy Central and performs at clubs across New York City."
   },
   {
     "name": "Alexis Guerreros",
@@ -2822,7 +2848,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/alexis-guerreros",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Alexis%2BGuerreros%2BHeadshot%2B%281%29.jpg",
-    "bio_stand": "Alexis survived growing up in Newark, NJ and a single Cuban mother with a mean left hook. After being laid-off from a horrible (but well paying) corporate job, Alexis started comedy and never looked back. His wife has, many times, but he has not. Alexis performs nightly in NYC at clubs such as NY Comedy Club, Gotham, Stand Up NY, Carolines, and more. Alexis has performed on television on Gotham Comedy Live, as well as festivals throughout the country from NY Comedy Festival, Laughing Skull, Red Clay Comedy Fest, and more. Alexis is also the cohost of The Cooligans, the #1 show on the Fubo Sports Network, the funniest soccer show in the world. The Cooligans also signed on to be hosts of the official NYCFC pre-game show on the NYCFC YouTube Channel. Alexis also has appeared in many sketches and shows on Comedy Central and was a host on HQ Trivia. You can hear Alexis as three different characters on BoJack Horseman (Netflix) and as the co-host of the wildly popular The Cooligans podcast. The Cooligans tour throughout the country doing live podcasts and hosting soccer events, recently performing stand up and doing a live podcast at Audi Field, the home of DC United (MLS). Alexis was honored to be chosen as part of the ABC Discovers showcase as one of 12 actors, out of 16,000 applicants. Also, pizza, the guy knows way too much about pizza. Please don’t bring him to a pizza place you like, he’ll ruin it for you. I’m being serious. He doesn’t know I’m writing this."
+    "bio_stand": "Alexis survived growing up in Newark, NJ and a single Cuban mother with a mean left hook. After being laid-off from a horrible (but well paying) corporate job, Alexis started comedy and never looked back. His wife has, many times, but he has not. Alexis performs nightly in NYC at clubs such as NY Comedy Club, Gotham, Stand Up NY, Carolines, and more. Alexis has performed on television on Gotham Comedy Live, as well as festivals throughout the country from NY Comedy Festival, Laughing Skull, Red Clay Comedy Fest, and more. Alexis is also the cohost of The Cooligans, the #1 show on the Fubo Sports Network, the funniest soccer show in the world. The Cooligans also signed on to be hosts of the official NYCFC pre-game show on the NYCFC YouTube Channel. Alexis also has appeared in many sketches and shows on Comedy Central and was a host on HQ Trivia. You can hear Alexis as three different characters on BoJack Horseman (Netflix) and as the co-host of the wildly popular The Cooligans podcast. The Cooligans tour throughout the country doing live podcasts and hosting soccer events, recently performing stand up and doing a live podcast at Audi Field, the home of DC United (MLS). Alexis was honored to be chosen as part of the ABC Discovers showcase as one of 12 actors, out of 16,000 applicants. Also, pizza, the guy knows way too much about pizza. Please don’t bring him to a pizza place you like, he’ll ruin it for you. I’m being serious. He doesn’t know I’m writing this.",
+    "bio": "Alexis Guerreros is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Ali Macofsky",
@@ -2849,7 +2876,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/amber-nelson",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/31-og.png"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/31-og.png",
+    "bio": "Amber Nelson is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Aminah Imani",
@@ -2859,7 +2887,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/aminah-imani",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/aminah.jpg",
     "tagline_cellar": "JUST FOR LAUGHS NEW FACES, FROM \"INSIDE AMY SHUMER\", FLATBUSH MISDEMEANORS, UP EARLY TONIGHT, COMEDY CENTRAL",
-    "bio_stand": "Aminah Imani is a stand-up comedian, host, and actor who can be seen nightly at reputable comedy clubs and venues in New York city. Aminah’s notable performance at her alma mater, Howard University's Homecoming Comedy Show paved the way for career highlights including; 2018 Carolines on Broadway March Madness Comedy competition, the DC Comedy Festival, Skankfest Comedy Festival, online content with Buzzfeed and television appearance on Viceland. Aminah currently produces the Wine Before Nine podcast and hosts a weekly comedy show in New York, Comedy at the Knitting Factory."
+    "bio_stand": "Aminah Imani is a stand-up comedian, host, and actor who can be seen nightly at reputable comedy clubs and venues in New York city. Aminah’s notable performance at her alma mater, Howard University's Homecoming Comedy Show paved the way for career highlights including; 2018 Carolines on Broadway March Madness Comedy competition, the DC Comedy Festival, Skankfest Comedy Festival, online content with Buzzfeed and television appearance on Viceland. Aminah currently produces the Wine Before Nine podcast and hosts a weekly comedy show in New York, Comedy at the Knitting Factory.",
+    "bio": "Aminah Imani is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Amy Miller",
@@ -2879,7 +2908,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/andre-de-freitas",
     "bio_stand": "André De Freitas is a critically acclaimed and award-winning comedian known for his sharp, personal comedy and global perspective. He has performed across Europe, the U.S., Dubai, and Australia — where he won Best International New Act at the Melbourne International Comedy Festival. In 2023, André’s debut solo hour What If premiered at the Edinburgh Fringe Festival to critical acclaim, earning multiple 5-star reviews and a spot on The Telegraph’s list of the funniest jokes of the Fringe. The full special was released on YouTube in June 2025. He is the co-creator and star of Comedy Therapy, a live show and podcast blending humor and mental health, which became a box office success and charted as the #3 podcast in Portugal. André has generated over 50 million views across social platforms. He was featured in the BBC World Service Arts Hour Comedy Special (2024), and previously co-wrote and co-starred in a global ad campaign for Bybit alongside Formula 1 champions Max Verstappen and Sergio “Checo” Perez.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/andre_defreitasSQ.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/andre_defreitasSQ.jpg",
+    "bio": "Andre De Freitas is a stand-up comedian and regular at the Comedy Cellar in New York City. He performs regularly on the NYC comedy circuit."
   },
   {
     "name": "Andre Kim",
@@ -2888,7 +2918,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/andre-kim",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Andre_Kim_1.jpeg",
-    "bio_stand": "Andre Kim is a Stand Up Comedian from Queens, New York. This queens native has an observational style that relates to people of all ages. The Korean-American performer has also served as an opening act for Louis Ck, Dave Attell, and Artie Lange. He’s also worked with Comedy Central, iHeartradio, and SiriusXM. Andre has been headlining at comedy clubs across the country and is based out of NYC."
+    "bio_stand": "Andre Kim is a Stand Up Comedian from Queens, New York. This queens native has an observational style that relates to people of all ages. The Korean-American performer has also served as an opening act for Louis Ck, Dave Attell, and Artie Lange. He’s also worked with Comedy Central, iHeartradio, and SiriusXM. Andre has been headlining at comedy clubs across the country and is based out of NYC.",
+    "bio": "Andre Kim is a stand-up comedian performing on the New York City comedy scene. He's a regular at The Stand and other clubs across the city."
   },
   {
     "name": "Andrew Casertano",
@@ -2897,7 +2928,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/andrew-casertano",
     "bio_stand": "Andrew Casertano is a comedian living and working in Brooklyn, NY. He has been featured in the New York Comedy Festival sponsored by Comedy Central and has been entertaining audiences all over the New York comedy scene with his unique rhythmic approach. Casertano has utilized his comedic stylings in the acting world and has appeared in nationally-aired commercials for GEICO Auto Insurance and HP Paper. You can catch Andrew performing regularly at The Stand, as well as other clubs all over NYC.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/casertano.jpeg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/casertano.jpeg",
+    "bio": "Andrew Casertano is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Anjelica Scannura",
@@ -2906,7 +2938,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/anjelica-scannura",
     "bio_stand": "Anjelica Scannura is a 2025 Just For Laughs New Face of Stand-Up, and the first Canadian woman to win the Boston Comedy Festival. She recently also won the Jersey City Comedy Festival, and has performed on iconic stages including Massey Hall and The Wilbur. Her debut comedy EP with JFL Originals can be heard on SiriusXM, and she’s also recorded for the Winnipeg Comedy Festival and CBC’s Laugh Out Loud multiple times. She has opened for Shane Gillis, Joe List, Stavros, Rachel Feinstein, and Jay Pharoah. On screen, Anjelica has appeared in Disney’s Camp Rock, CTV’s Satisfaction, CBC’s Frankie Drake Mysteries, and Netflix’s Little Italy. Her Don’t Tell Comedy set can be viewed online, and she recently taped Roast Battle Canada at JFL Montreal, where Russell Peters called her battle the top 10 of all time. Anjelica has been performing at leading comedy festivals across North America and will next be appearing at Skankfest.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/AnjelicaScannura_SubmissionShot.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/AnjelicaScannura_SubmissionShot.jpg",
+    "bio": "Anjelica Scannura is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Anna Roisman",
@@ -2915,7 +2948,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/anna-roisman",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/roismananna2026.jpg",
-    "bio_stand": "Anna Roisman is a comedian, actress, host, writer and content creator known for her sharp wit, viral comedy videos and spot-on celebrity impressions - including fan favorites like Kris Jenner, Steve from Sex And The City (Miranda?), Bethenny Frankel, Parker Posey, and iconic reality TV parodies. With millions of views across TikTok and Instagram, Anna has become a go-to voice for pop culture satire. She’s also recognized for her work as the host of HQ Words and HQ Trivia on the formerly viral, Emmy-nominated app. Anna has been to Just For Laughs (Montreal) and The Tribeca Film Festival with her own projects. She was named a “Content Creator To Watch” by the New York Comedy Festival. Anna’s podcast Big Wigs showcases her comedy and impressions (and wigs) alongside her co-host, and her podcast Unemployed With Anna Roisman is an interview based podcast about jobs. Her one-woman live show, \"Anna Roisman: Triple Threat\" has sold out in cities across the country. Anna has also hosted shows for Amazon, Buzzfeed and MTV News, & more. She performs standup comedy all over and sings with The Losers Lounge at Joe's Pub in NYC."
+    "bio_stand": "Anna Roisman is a comedian, actress, host, writer and content creator known for her sharp wit, viral comedy videos and spot-on celebrity impressions - including fan favorites like Kris Jenner, Steve from Sex And The City (Miranda?), Bethenny Frankel, Parker Posey, and iconic reality TV parodies. With millions of views across TikTok and Instagram, Anna has become a go-to voice for pop culture satire. She’s also recognized for her work as the host of HQ Words and HQ Trivia on the formerly viral, Emmy-nominated app. Anna has been to Just For Laughs (Montreal) and The Tribeca Film Festival with her own projects. She was named a “Content Creator To Watch” by the New York Comedy Festival. Anna’s podcast Big Wigs showcases her comedy and impressions (and wigs) alongside her co-host, and her podcast Unemployed With Anna Roisman is an interview based podcast about jobs. Her one-woman live show, \"Anna Roisman: Triple Threat\" has sold out in cities across the country. Anna has also hosted shows for Amazon, Buzzfeed and MTV News, & more. She performs standup comedy all over and sings with The Losers Lounge at Joe's Pub in NYC.",
+    "bio": "Anna Roisman is a stand-up comedian, writer, and actress based in New York City. She's appeared on Broad City and performs regularly at NYC comedy clubs including The Stand."
   },
   {
     "name": "Annie Lederman",
@@ -2953,7 +2987,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/asad-benbow",
     "bio_stand": "Asad Benbow is a New York based stand up comedian, who will be seen on the upcoming season of \"Wild N' Out\", where won the “Rookie of The Year” title. He also was a “Comic to Watch” in the 2023 New York Comedy Festival. At his young age he has made a name for himself in the New York comedy scene and comedy writers have described him as “someone who can’t even approach the bar, yet still has been able to raise the bar for everyone around him.\"",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Asad_Benbow_1.jpeg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Asad_Benbow_1.jpeg",
+    "bio": "Asad Benbow is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Ashima Franklin",
@@ -2962,7 +2997,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/ashima-franklin",
     "bio_stand": "Originally from Alabama, Ashima Franklin has a “girl next door” personality that mixes with her no holds barred delivery to form a hilarious comedy routine that’s inspired by her real-world situations as a working “Baby Momma”. Ashima rose to fame after appearances on Showtime’s “Kattpacalypse,” having toured the country with comedian Katt Williams on the Conspiracy Theory & Development Spurt tours, and also from Bounce TVs “From the String.” She was also a writer for Russell Simmons All Def Digital which offers over 2.2 million subscribers and counting.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/ashimafranklinn.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/ashimafranklinn.jpg",
+    "bio": "Ashima Franklin is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Ashley Hesseltine",
@@ -2971,7 +3007,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/ashley-hesseltine",
     "bio_stand": "Standup comedian, writer, and founder of @brosbeingbasic + @fashiondads_. Hobbies include: group texting, wine “tasting”, taco eating, dancing, hanging with her dog and petting every other dog she sees. Turn-ons: sense of humor, passion for ‘90s hip-hop. Turn-offs: cheapness, angry drunks. I enjoy candlelit pizza dinners, long walks around the East Village, and GUYS WHO HAVE THEIR SHIT TOGETHER (sorry for yelling).",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/AH_2025_headshot_crop.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/AH_2025_headshot_crop.jpg",
+    "bio": "Ashley Hesseltine is a stand-up comedian and podcaster. She co-hosts the Girls Gotta Eat podcast and performs at clubs across the country."
   },
   {
     "name": "Asif Ali",
@@ -3000,7 +3037,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/bassam-shawl",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Bassam_Shawl_SQ.jpeg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Bassam_Shawl_SQ.jpeg",
+    "bio": "Bassam Shawl is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Bassem Youssef",
@@ -3071,7 +3109,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/brandi-denise",
     "bio_stand": "Brandi Denise Boyd is a social worker turned standup comedian, actor, and writer! Most recently she was selected as one of Just For Laughs New Faces of Comedy. Her new Comedy Central Feature just dropped and is going viral. Brandi had a series regular role on the BET show GAMES PEOPLE PLAY, and can be seen recurring on Starz’ POWER and POWER BOOK II: GHOST. Brandi is an alumnus of Chicago Second City Improv Program and a Conservatory Student, Annoyance theater alumni and the I.O. Writing for a TV Program. Brandi‘s standup comedy is often described as honest, witty, and refreshing with huge bursts of energy. You can catch her all over the country regularly performing at some of the notable clubs or tune in and listen to her on Netflix XM Comedy Station “Are You Still Listening”.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Brandi_Denise.jpeg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Brandi_Denise.jpeg",
+    "bio": "Brandi Denise is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Brandon Wardell",
@@ -3112,7 +3151,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/brian-holtzman",
     "bio_stand": "Brian Holtzman is a stand-up comic who performs regularly at Joe Rogan's Comedy Mothership in Austin Texas, as well as The Comedy Store in Los Angeles. In 2023 Brian Holtzman released his stand-up comedy special #CANCELHOLTZMAN now streaming on YouTube. Brian Holtzman was also featured in the Showtime documentary The Comedy Store (2020). Brian Holtzman is originally from Long Island, New York, where he graduated from General Douglas MacArthur High School. After being honorably discharged from the United States Air Force, Holtzman moved to the Bay Area, where he began performing stand-up at the Holy City Zoo, the Other Cafe, the Punchline and other clubs throughout Northern California, where he became a favorite. His often-perplexed scenarios of everyday life, intertwined with his own neurotic behavior, are not to be missed by any serious aficionado of comedy. Holtzman has added \"actor\" to his resume, having appeared on My Wife and Kids, Mind of Mencia, Minding the Store, and in movies like Pauly Shore Is Dead, Sheep Man, Foolish, and Looking for Lenny. Brian is the host and creator of the DEAD AIR series of podcasts streaming everywhere now.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Brian_Holtzman.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Brian_Holtzman.jpg",
+    "bio": "Brian Holtzman is a veteran stand-up comedian known for his wild, unpredictable performances. He's been a fixture of the LA and NYC comedy scenes for decades."
   },
   {
     "name": "Brian Scott McFadden",
@@ -3122,7 +3162,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/brian-scott-mcfadden",
     "tagline_cellar": "FROM THE DAVID LETTERMAN SHOW AND COMEDY CENTRAL.",
     "bio_stand": "Actor/Comedian/ Brian Scott McFadden is one of the funniest stand up comics working in the industry today. A regular on the NY comedy club circuit, Brian has recently taken his act to a whole new level with his high energy performances & some of the most unique, incisive & hilarious routines around. After making his debut on The Late Show with David Letterman Brian followed that up with an appearance on The Late Late Show with Craig Ferguson on CBS. A multi­dimensional performer Brian is both an accomplished stage actor, who has played Hamlet in New York, and a versatile voice over artist with a vast range of accents and character voices in his repertoire. Brian was recently seen on the big screen in The Secret Life of Walter Mitty with Ben Stiller & also performed in such films as Ice Age II with Ray Romano and Robots with Robin Williams & Halle Berry. Brian has just released his first live Comedy CD “What Women Want.”",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/brian-scott-mcfadden.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/brian-scott-mcfadden.jpg",
+    "bio": "Brian Scott McFadden is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Brian Simpson",
@@ -3162,7 +3203,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/carlos-hernandez",
     "bio_stand": "Carlos Hernández (Only in Dade, ABC, NBC, Telemundo) is a stand up comedian, improviser, and actor from Miami, FL. You may recognize him from Only in Dade’s “On The Spot” interviews, his viral Spanish Accent Challenge videos, or as his Reggaeton Star alter-ego, Yurisbel, whom he took to American Idol and ended up receiving a golden ticket from Katy Perry, Luke Bryan and Lionel Richie without hitting a single note. His energy, fast pace, and unique take on life as a latino man (that looks like Jake Paul if he gave up) is infectious. He's trained with iO Chicago, The Groundlings, Second City, UCB, and JTF. He’s opened for Michael Rapapport, Tim Dillon, Aida Rodriguez, Craig Robinson, Carlos Mencia, amongst others. He's also appeared in various films, TV/online series, and national commercials for Toyota, Sedano's, Boost Mobile, Spectrum, US Cellular, Zumba, Mattress Firm, and FIFA - amongst others. You can see him on NBC and Telemundo every week recap-ing the ridiculousness that is Miami on ONLYinDADE, our through his On The Spot man-on-the-street and celebrity interviews.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/carloshernandez.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/carloshernandez.jpg",
+    "bio": "Carlos Hernandez is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Carolina Montesquieu",
@@ -3171,7 +3213,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/carolina-montesquieu",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Carolina_Montesquieu.jpeg",
-    "bio_stand": "Carolina Montesquieu is a Dominican-American standup comedian. With a big personality, sharp writing, and perfectly performed delivery, her comedy hits with charisma and precision. Unexpectedly dark, deeply honest, and always magnetic. Carolina started her comedy journey July 2022. She has since opened for Hannibal Buress, Vladimir Caamaño, and Radel Ortiz, and her momentum is building fast. She’s featured on Veeps’ Newcomers Showcase (NY Comedy Festival 2025), with upcoming tapings being released for Cracked Comedy Club and OnlyFans LMFAO Presents."
+    "bio_stand": "Carolina Montesquieu is a Dominican-American standup comedian. With a big personality, sharp writing, and perfectly performed delivery, her comedy hits with charisma and precision. Unexpectedly dark, deeply honest, and always magnetic. Carolina started her comedy journey July 2022. She has since opened for Hannibal Buress, Vladimir Caamaño, and Radel Ortiz, and her momentum is building fast. She’s featured on Veeps’ Newcomers Showcase (NY Comedy Festival 2025), with upcoming tapings being released for Cracked Comedy Club and OnlyFans LMFAO Presents.",
+    "bio": "Carolina Montesquieu is a stand-up comedian based in New York City. She performs regularly at The Stand and other NYC clubs."
   },
   {
     "name": "Chanel Ali",
@@ -3180,7 +3223,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/chanel-ali",
     "bio_stand": "Chanel Ali is a standup comedian, writer and actress living in New York City. After blossoming on the Philadelphia circuit, she quickly became a crowd favorite with her commanding stage presence and story-telling style. Her observational comedy covers her upbringing, her unique worldview, and the realities of being a polite person in the entertainment industry. Chanel has performed at the Limestone Comedy Festival and the Women in Comedy Festival, and earlier this year she filmed an episode of Night Train with Wyatt Cenac for Seeso.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Chanel_Ali.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Chanel_Ali.jpg",
+    "bio": "Chanel Ali is a stand-up comedian and actress. She's a regular at the Comedy Cellar and has appeared on The Late Show and Comedy Central. Known for her bold, honest comedy style."
   },
   {
     "name": "Che Durena",
@@ -3199,7 +3243,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/chris-barnes",
     "bio_stand": "Chris Barnes is a stand up comedian, writer and content creator originally from Long Island but now based out of New York City. He's well known for his frequently viral sketches that have gained over 100 million views and have helped him grow his following to over 300k. His work has been featured by Barstool Sports, Comedy Central, and US Weekly. He routinely performs around New York City and has begun headlining around the country!",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Chris_Barnes_SQ.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Chris_Barnes_SQ.jpg",
+    "bio": "Chris Barnes is a stand-up comedian performing regularly in the New York City comedy scene. He's appeared at clubs across the city and is building a following with his sharp, relatable material."
   },
   {
     "name": "Chris O'Connor",
@@ -3207,7 +3252,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/chris-o'connor",
-    "bio_stand": "Chris is a comic from Philadelphia. His work has been featured on Comedy Central, SiriusXM, TeamCoco, Funny or Die, Buzzfeed, iTunes, Spotify, Huffington Post and Barstool Sports. He is a regular at Helium Comedy Club, The Punchline Philly and Good Good Comedy. He's been featured in the Comedy Central series Resolutions, Laugh Factory Chicago's 'Chicago's Best’ Showcase, Boston's 'Thunderfest' and was selected to the Boston Comedy Festival. In addition, he's starred in a pair of viral videos that garnered more than 3 million views (Samesies and Man hears for the first time) as well as the digital series Tires. He's also worked with Ethan T. Berlin (Super Jail, creator of IFC's Bunk) on Ethan's Tech Buffet."
+    "bio_stand": "Chris is a comic from Philadelphia. His work has been featured on Comedy Central, SiriusXM, TeamCoco, Funny or Die, Buzzfeed, iTunes, Spotify, Huffington Post and Barstool Sports. He is a regular at Helium Comedy Club, The Punchline Philly and Good Good Comedy. He's been featured in the Comedy Central series Resolutions, Laugh Factory Chicago's 'Chicago's Best’ Showcase, Boston's 'Thunderfest' and was selected to the Boston Comedy Festival. In addition, he's starred in a pair of viral videos that garnered more than 3 million views (Samesies and Man hears for the first time) as well as the digital series Tires. He's also worked with Ethan T. Berlin (Super Jail, creator of IFC's Bunk) on Ethan's Tech Buffet.",
+    "bio": "Chris O'Connor is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Chris Porter",
@@ -3226,7 +3272,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/chris-riggins",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Chris_Riggins.png",
-    "bio_stand": "Chris Riggins’ comedy comes from a very sincere place. A native of Berkeley, California, his comedy comes second to his intellect, and his ability to comment on the world around him. To see Chris perform is to see a window into the reality of American culture, both comic and tragic. While Chris has many credits to his name, including opening for legends like Dave Chappelle, his true appeal is in his brutally honest comedy, which will force you to think while laughing."
+    "bio_stand": "Chris Riggins’ comedy comes from a very sincere place. A native of Berkeley, California, his comedy comes second to his intellect, and his ability to comment on the world around him. To see Chris perform is to see a window into the reality of American culture, both comic and tragic. While Chris has many credits to his name, including opening for legends like Dave Chappelle, his true appeal is in his brutally honest comedy, which will force you to think while laughing.",
+    "bio": "Chris Riggins is a stand-up comedian performing in New York City. He's a regular at The Stand and other clubs on the NYC circuit."
   },
   {
     "name": "Christi Somers",
@@ -3235,14 +3282,16 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/christi-somers",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/ChristiSomers.jpg",
-    "bio_stand": "Christi made her national TV debut roasting Jimmy Carr on Comedy Central’s Roast Battle and has appeared on Comedy Central Stand-Up Featuring, This Joka with Will Smith, TruTV’s Late Night Snack, Chris Gethard Presents, IFC’s Comedy Crib, and Kevin Hart’s LOL Network. Her solo show It’s Christi, Bitch! at Joe’s Pub was praised by The New York Times and called a “must-see” by Time Out New York. Named a “New Face of Comedy” by the International Just For Laughs Festival, Christi appeared in the comedy special Dead Moms Club alongside Bob the Drag Queen, starred in the musical Foreverland at Manhattan Theatre Club, and made her film debut in the SXSW-premiering Molli and Max in the Future. Her voice acting credits include Pinkalicious & Peterrific (PBS Kids) and Teenage Euthanasia (Adult Swim) and Christi has starred in national television and radio campaigns for IKEA. Christi’s roast battles are enshrined at the National Comedy Center, and her jokes appear in the MacMillan anthology Eating Salad Drunk. She currently writes for some of the biggest comedians working today and tours nationally as the opening act for Nicole Byer!"
+    "bio_stand": "Christi made her national TV debut roasting Jimmy Carr on Comedy Central’s Roast Battle and has appeared on Comedy Central Stand-Up Featuring, This Joka with Will Smith, TruTV’s Late Night Snack, Chris Gethard Presents, IFC’s Comedy Crib, and Kevin Hart’s LOL Network. Her solo show It’s Christi, Bitch! at Joe’s Pub was praised by The New York Times and called a “must-see” by Time Out New York. Named a “New Face of Comedy” by the International Just For Laughs Festival, Christi appeared in the comedy special Dead Moms Club alongside Bob the Drag Queen, starred in the musical Foreverland at Manhattan Theatre Club, and made her film debut in the SXSW-premiering Molli and Max in the Future. Her voice acting credits include Pinkalicious & Peterrific (PBS Kids) and Teenage Euthanasia (Adult Swim) and Christi has starred in national television and radio campaigns for IKEA. Christi’s roast battles are enshrined at the National Comedy Center, and her jokes appear in the MacMillan anthology Eating Salad Drunk. She currently writes for some of the biggest comedians working today and tours nationally as the opening act for Nicole Byer!",
+    "bio": "Christi Somers is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Christine Berg",
     "venues": [
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/christine-berg"
+    "stand_profile": "https://thestandnyc.com/comedians/christine-berg",
+    "bio": "Christine Berg is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Cipha Sounds",
@@ -3264,7 +3313,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/colum-tyrrell",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Colum_Tyrrell_1.jpg",
     "tagline_cellar": "From: Sirius XM,  The Tonight Show",
-    "bio_stand": "Colum is an Irish Comedian who has been based in America since 2014. Having started his career in Ireland, Colum’s talents quickly became known on the Irish circuit as he became a finalist in the nationally broadcasted TV show “RTE New Comedy Awards”. His outstanding performance at the Galway Comedy Festival led to him being booked in every comedy club and festival in Ireland. He can now be seen performing at prestigious clubs such as The Stand. He will either become a star or a meth addict."
+    "bio_stand": "Colum is an Irish Comedian who has been based in America since 2014. Having started his career in Ireland, Colum’s talents quickly became known on the Irish circuit as he became a finalist in the nationally broadcasted TV show “RTE New Comedy Awards”. His outstanding performance at the Galway Comedy Festival led to him being booked in every comedy club and festival in Ireland. He can now be seen performing at prestigious clubs such as The Stand. He will either become a star or a meth addict.",
+    "bio": "Colum Tyrrell is a stand-up comedian from Ireland based in New York City. He performs at clubs across the city."
   },
   {
     "name": "Comedian CP",
@@ -3272,7 +3322,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/comedian-cp",
-    "bio_wiki": "Christopher Powell, also known as Comedian CP, is an American actor, writer, and comedian. He appeared on Empire, Detroiters, All Def Comedy, and season two of HBO Max's Love Life."
+    "bio_wiki": "Christopher Powell, also known as Comedian CP, is an American actor, writer, and comedian. He appeared on Empire, Detroiters, All Def Comedy, and season two of HBO Max's Love Life.",
+    "bio": "Comedian CP is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Courtney Bee",
@@ -3281,7 +3332,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/courtney-bee",
     "bio_stand": "Courtney Bee is a Detroit bred comedian determined to make you laugh. Living in New York City, Courtney is taking the comedy scene by storm.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Courtney-Bee-3-scaled.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Courtney-Bee-3-scaled.jpg",
+    "bio": "Courtney Bee is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Craig Conant",
@@ -3300,7 +3352,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/cristina-mariani",
     "bio_stand": "Cristina Mariani is a stand-up comedian who can currently be seen performing across the nation as well as nightly at her home club COMEDY MOTHERSHIP in Austin, Texas. She made her comedy debut on episode 517 of the podcast KILL TONY and has completely taken off since, garnering millions of views online with her standup videos. Cristina has toured with Theo Von and opened for many other renowned comedians, such as Tom Segura, Christina Pazsitzky, Harland Williams, Ari Shaffir, Fahim Anwar, Pauly Shore, and even Grammy-nominated rapper Freddie Gibbs. She is currently a regular on Brian Redban’s famous SECRETSHOW, has appeared on FIRST DATE LIVE with Lauren Compton, and been on FUNNY UBER RIDES with Darren Levy. For more on Cristina, visit her Instagram, TikTok, and YouTube pages.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Cristina-Mariani_1980x1980.png"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Cristina-Mariani_1980x1980.png",
+    "bio": "Cristina Mariani is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Dan Ahdoot",
@@ -3318,7 +3371,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/dan-donohue",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/donohue.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/donohue.jpg",
+    "bio": "Dan Donohue is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Dan Naturman",
@@ -3361,7 +3415,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/danny-polishchuk",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Danny_Polishchuk.jpg",
-    "bio_stand": "Danny Polishchuk is a New York City based comedian, actor and writer seen regularly in many hit viral sketches and is the co-host of the Boyscast with Ryan Long, the Host of the weekly Youtube call-in show Low Value Mail and the host of the Bath House a live comedian hang shot in the green room of the Stand Comedy Club."
+    "bio_stand": "Danny Polishchuk is a New York City based comedian, actor and writer seen regularly in many hit viral sketches and is the co-host of the Boyscast with Ryan Long, the Host of the weekly Youtube call-in show Low Value Mail and the host of the Bath House a live comedian hang shot in the green room of the Stand Comedy Club.",
+    "bio": "Danny Polishchuk is a stand-up comedian based in New York City. Originally from Ukraine, he performs regularly at NYC comedy clubs and brings a unique immigrant perspective to his comedy."
   },
   {
     "name": "Daphnique Springs",
@@ -3410,7 +3465,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/derek-drescher",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Derek_Drescher.JPG",
-    "bio_stand": "Derek is an NYC comedian, trainer at @conbody works for a non-profit, and is also an advocate for mental health and recovery."
+    "bio_stand": "Derek is an NYC comedian, trainer at @conbody works for a non-profit, and is also an advocate for mental health and recovery.",
+    "bio": "Derek Drescher is a stand-up comedian performing in New York City. He's a regular at The Stand and other clubs on the NYC circuit."
   },
   {
     "name": "Donnell Rawlings",
@@ -3430,7 +3486,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/drew-dunn",
     "bio_stand": "Drew Dunn is a standup comedian that has quickly made a name for himself with his quick wit and unique point of view. He was a featured performer at the Johnny Carson Great American Comedy Festival after just 2 years after stepping on stage for the first time. Starting comedy out of New Hampshire in 2014, Drew has since moved to New York City to continue his pursuit. Drew was featured as a New Face of Comedy at the Just for Laughs Comedy Festival in Montreal in 2019. He was also the winner of the multiple other comedy festivals including the Boston Comedy Festival in 2017 and the Seattle International Comedy Competition in 2018. Drew now headlines comedy clubs across the US and Canada along with performing regularly around New York City and the Northeast. He is also a co-creator of the Character Debates Podcast and makes a variety of online content amassing over 12 million views just last year.",
     "tagline_cellar": "FROM THE TONIGHT SHOW, SIRIUS XM, JUST FOR LAUGHS, WINNER OF BOSTON AND SEATTLE COMEDY FESTIVALS",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Drew_Dunn.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Drew_Dunn.jpg",
+    "bio": "Drew Dunn is a stand-up comedian and regular at the Comedy Cellar. He's appeared on The Tonight Show and has a growing following. Known for his sharp writing and observations about modern life."
   },
   {
     "name": "Dulce Sloan",
@@ -3514,7 +3571,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/eva-evans",
     "tagline_cellar": "NETFLIX, VH1, DON'T TELL COMEDY",
     "bio_stand": "Eva Evans is a Comedian and Host specializing in Stand-Up Comedy, and a wealth of other talents within her genre. After graduating from St. John’s University with a degree in TV & Film, she thought a career behind the scenes at a major Television network would be her start up the corporate ladder of success. But within a few years, she realized Corporate America was not for her; that realization, in addition to ending an engagement, she decided she needed to pursue what truly made her happy, and turn her pain into laughter. Writing her first joke while sitting in her cubicle, she quickly began pinning more, and after a few months, participated in her first Open Mic at Broadway Comedy Club in NYC. Shortly thereafter, she found herself resigning from her day job and began to chase her dream of becoming a Full-Time Comedian. Since graduating from the Manhattan School of Comedy at Gotham Comedy Club (NYC) in 2016, Evans has performed in various festivals and shows, including the Harlem Comedy Festival (NYC) in 2018; she was the only Black woman to reach the finals and essentially became the Winner of the 2017 Manhattan Comedy Festival (NYC). She’s been featured onSway in the Morning at Caroline’s and The Wendy Williams Show. At the request of Senator Jessie Williams, Evans performed at the 2018 Women’s Empowerment Awards. She also has been a featured act for fellow comics, including Def Comedy Jam’s Leonard Ouzts, TruTVHost Damien Lemon, Toronto-based Comedian Trixx and Mason Pryor, son of the late Richard Pryor. Evans will make her Television debut this fall on the new Reality TV Series, “Hustle in Brooklyn,” and as quoted by BET, will “explore the social and professional lives of some of Brooklyn’s most sought after and influential personalities.” Eva has been described as “the true definition of a hustler.” (Shadow and Act, August 2018) Evans currently resides in Brooklyn, NY (originally from Jamaica and Englewood, NJ, respectively), where she’s been a resident for nearly a decade and hosts a monthly comedy showcase, “Mascara and Spliffs” at the Brooklyn House of Comedy. She is the only woman of a group of comedians with security access to perform for inmates at Rikers Island. She continues to perform at notable clubs throughout the US. She keeps her followers and new fans abreast of her moves and moments on Instagram at @evaevanscomedy. Inquires for media requests and bookings can be sent to Rashidi Hendrix via email @ <a href=\"/cdn-cgi/l/email-protection\" class=\"__cf_email__\" data-cfemail=\"154774667d7c717c3b7d707b71677c6d557870617479797c76707b613b767a78\">[email&#160;protected]</a> “If laughter is the best medicine, then I’m handing out prescriptions.” — Eva Evans “Laughter is wine for the soul – laughter soft, or loud and deep, tinged through with seriousness – the hilarious declaration made by man that life is worth living.” ― Seán O’Casey",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Eva_Evans_2.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Eva_Evans_2.jpg",
+    "bio": "Eva Evans is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Evan Williams",
@@ -3523,7 +3581,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/evan-williams",
     "bio_stand": "Sober at 19, married at 21, Carolina-born Actor/Comedian Evan Williams has been putting a light spin on dark life events in NYC since 2012. Currently bi-coastal, he’s been featured as a 2016 ‘New Face’ at the Montreal Just For Laughs Festival. He had a role in the Season 6 premiere of The Americans on FX, as well as on Michelle Wolff’s ‘The Break’ on Netflix, CBS’s FBI, Comedy Central’s Roast Battle 2, and a series of Comedy Central digital sketches. He’s been listed as a ‘Top Comedian Under 30’ by Complex Magazine, one of Addiction.com‘s ‘5 Sober Comics You Should Know’, and has been featured in TimeOut NY, The Interrobang, Buzzfeed, and The New York Times and is a regular at The Stand NYC, as well as all over the country. He was a finalist in “New York’s Funniest”, streaming on Amazon Prime, and has guested on Marvel’s “Eat The Universe”. You may also recognize him from a collection of viral characters on TikTok and instagram such as The Credit Card Fraud Dept. His debut album “It’s All Embarrassing” is available everywhere (linked below). He has a short film that he wrote, produced, and starred in titled The Recovery Call which is available now on Amazon Prime (linked below):",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/evanwilliams.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/evanwilliams.jpg",
+    "bio": "Evan Williams is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Felipe Esparza",
@@ -3552,7 +3611,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/gabby-bryan",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Gabby_Bryan_1.png",
-    "bio_stand": "Gabby Bryan is a New York-based stand-up comedian, actress, Emmy-award winning producer, and overall girlie girl. This winter, she brought her Fringe hit Billy and the Situation to Union Hall, garnering praise in the New York Times, after a successful Edinburgh Fringe Festival run. She performed alongside Olivia Wilde and Oscar Isaac in the film “Life Itself” (Amazon Prime), appeared in the bilingual film “Ruta Viva” (HBO), and featured in Ilana Glazer’s special “Comedy on Earth” (Comedy Central). Gabby co-hosts \"L'Podcast\" with comedian Zack Signore,which has built a global audience, as well as \"Let Me Ask My Dad” Podcast with musician and composer David Bryan. Gabby has toured all around the globe, including shows in London, Dublin, Los Angeles, Boston and hits the road again with her headlining tour \"Gabby Bryan is my Best Friend\" this fall. She is wildly popular on social media with over 270K followers, sharing viral stand up clips & comedy sketches. Follow her at @gabbyisbryan on all platforms!"
+    "bio_stand": "Gabby Bryan is a New York-based stand-up comedian, actress, Emmy-award winning producer, and overall girlie girl. This winter, she brought her Fringe hit Billy and the Situation to Union Hall, garnering praise in the New York Times, after a successful Edinburgh Fringe Festival run. She performed alongside Olivia Wilde and Oscar Isaac in the film “Life Itself” (Amazon Prime), appeared in the bilingual film “Ruta Viva” (HBO), and featured in Ilana Glazer’s special “Comedy on Earth” (Comedy Central). Gabby co-hosts \"L'Podcast\" with comedian Zack Signore,which has built a global audience, as well as \"Let Me Ask My Dad” Podcast with musician and composer David Bryan. Gabby has toured all around the globe, including shows in London, Dublin, Los Angeles, Boston and hits the road again with her headlining tour \"Gabby Bryan is my Best Friend\" this fall. She is wildly popular on social media with over 270K followers, sharing viral stand up clips & comedy sketches. Follow her at @gabbyisbryan on all platforms!",
+    "bio": "Gabby Bryan is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Gary Gulman",
@@ -3571,7 +3631,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/gastor-almonte",
     "bio_stand": "Gastor Almonte is a comedian and storyteller from Brooklyn, NY (East New York specifically.) He has twice appeared on Comedy Central’s This Is Not Happen, Comedy Central’s Featuring, Vice Live, and the PBS featured Stories From The Stage. His appearance on Stories From The Stage won the 2020 Webby People’s Voice award for Best Individual Performance. Timeout Magazine named him “One of your new comedy obsessions.” His debut album, Immigrant Made, debut at #1 on the iTunes Comedy, Google Play Comedy and Amazon Music Comedy charts. His self-funded independent special, “Immigrant Made”, can be seen on Amazon Prime. He is a producer and board member of the science-storytelling non-profit Story Collider. He is also the producer and co-host of the topical news comedy podcast, The War Report, with co-host Shalewa Sharpe. Currently, Gastor can be seen touring the country and workshoping his one-man show, The Sugar.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/gastor-almonte.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/gastor-almonte.jpg",
+    "bio": "Gastor Almonte is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Gavin Matts",
@@ -3650,7 +3711,8 @@
     "venues": [
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/harry-settel"
+    "stand_profile": "https://thestandnyc.com/comedians/harry-settel",
+    "bio": "Harry Settel is a stand-up comedian performing in New York City. He's a regular on the NYC comedy circuit."
   },
   {
     "name": "Ian Fidance",
@@ -3660,7 +3722,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/ian-fidance",
     "tagline_cellar": "BEIN IAN PODCAST, NPR’S THIS AMERICAN LIFE, NETFLIX, SOPRANOS PRIMA VOLTA",
     "bio_stand": "Ian Fidance is an offbeat yet upbeat New York City comic, actor, and writer, that Dave Attell has described as a “Power Act” and Ron Bennington has called “One of the most unique comics working today.” An absolute force on stage, Ian is insanely positive and positively insane. Equal parts thoughtful, explicit, and silly, he can be seen performing throughout New York City. Fidance, originally from Wilmington, Delaware, has been featured on popular podcasts such as The Joe Rogan Experience, Your Mom’s House with Tom Segura & Christina P., Duncan Trussell’s Family Hour, and Kill Tony to name a few. His television, writing, and other credits include NPR’s This American Life, The Gilly and Keeves Sketch Show, Crank Yankers (Comedy Central), Pause with Sam Jay (HBO Max), Waffles + Mochi (Netflix), The Last O.G. (TBS), as well as writing for multiple Roasts on Comedy Central. His wildly popular podcast co-hosted by fellow comic Jordan Jensen “Bein’ Ian with Jordan” is available on all platforms. Ian currently resides in Brooklyn, NY with his cats Samson and Glenn.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/iancropfidance.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/iancropfidance.jpg",
+    "bio": "Ian Fidance is a stand-up comedian based in New York City. He's a regular on the NYC comedy circuit and known for his unique, eccentric comedy style."
   },
   {
     "name": "Ian Lara",
@@ -3690,7 +3753,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/jd-witherspoon",
     "bio_wiki": "John Witherspoon was an American actor and comedian who performed in various television shows and films. He played Willie Jones in the Friday series, and starred in films such as Hollywood Shuffle (1987), Boomerang (1992), The Five Heartbeats (1991), and Vampire in Brooklyn (1995). In addition, With",
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/JohnWithersppon2019_%28Cropped%29.png/330px-JohnWithersppon2019_%28Cropped%29.png"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/JohnWithersppon2019_%28Cropped%29.png/330px-JohnWithersppon2019_%28Cropped%29.png",
+    "bio": "J.D. Witherspoon is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "JC Mendoza",
@@ -3699,7 +3763,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/jc-mendoza",
     "bio_stand": "JC Mendoza is an NYC based Standup Comedian. He has been featured on Will Ferrell’s “Funny Or Die” network and in the 2021 Red Clay Comedy Festival in Atlanta, GA. This Puerto Rican Prince of Comedy hits the stage with high energy, quick wit, and 2 decades worth of unresolved family trauma.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/JC_Mendoza_1.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/JC_Mendoza_1.jpg",
+    "bio": "JC Mendoza is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Jackie Kashian",
@@ -3762,7 +3827,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/jamie-wolf",
     "tagline_cellar": "\"NETFLIXIA A JOKE FEST 2026\" TIMEOUT 2025 COMIC TO WATCH,  WINNER NY'S FUNNIEST 2024, AMAZON PRIME, SF SKETCHFEST 2023, NY COMEDY FESTIVAL COMICS TO WATCH, PHILLY'S PHUNNIEST 2019",
     "bio_stand": "Jamie is a comedian, writer, actor, and former opiate user with a penchant for tackling dark and taboo subjects with tight writing and a dynamic stage presence that not only makes it work, but makes it kill. He was named a Timeout Comic to Watch in 2025, New York’s Funniest Standup at the New York Comedy Festival in 2024, a New York Comedy Festival “Comic to Watch” in 2019, and won Philly’s Phunniest 2019. He is a regular at The Stand in NYC and has over 290K followers across social media platforms.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Jamie_Wolf_1.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Jamie_Wolf_1.jpg",
+    "bio": "Jamie Wolf is a stand-up comedian and regular at the Comedy Cellar in New York City. He performs regularly on the NYC comedy scene."
   },
   {
     "name": "Jared Waters",
@@ -3772,7 +3838,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/jared-waters",
     "tagline_cellar": "DONT TELL COMEDY, THE TAMRON HALL SHOW, SERIOUS XM",
     "bio_stand": "Jared Waters is a comedian who hails from Brunssum, The Netherlands. He gained his stand up legs in Tampa, Florida. Currently, Jared resides in New York City . His hard work and consistency with the ability to work clean and edgy has lead him to be one of the most impressive Up and Coming comedians in the New York Area. When Jared Waters is in between jokes, the future of this great nation is residing on his shoulders as Kindergarten teacher. His funny stories from the classroom to his far-fetched comedy has the ability to make audiences feel like their minds are on several planets as then he brilliantly brings them back to earth with a gut full laughter. Jared has opened up for Don Rickles, Robert Kelly, Emo Phillips, Joey Kola, D.C Benny and more. His talents can be seen at the Improv’s, Funny Bones, Broadway Comedy Club, Governors Comedy Club, Banana's Comedy Club, Side Splitters Comedy Club, and countless festivals.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Jared_Waters_2.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Jared_Waters_2.jpg",
+    "bio": "Jared Waters is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Jason Ellis",
@@ -3781,7 +3848,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/jason-ellis",
     "bio_stand": "Retired professional skateboarder from Australia, and retired professional MMA fighter, hosted The Jason Ellis Show on SiriusXM for 15 years. Now a Comedian and Podcaster of multiple podcasts including The Jason Ellis Show, Hawk vs. Wolf, and Awesome World. In 2013 became a New York Times bestseller with I’m Awesome and then wrote the successful follow-up I’m Still Awesome. Founder of the MMA-meets-music festival, Ellismania. Husband and proud father. Advocate of the LGBTQ community.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/jasonellis.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/jasonellis.jpg",
+    "bio": "Jason Ellis is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Jay Pharoah",
@@ -3863,7 +3931,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/jetski-johnson",
     "bio_stand": "Jessie Johnson is a music school drop-out and trumpet player turned standup comedian from Phoenix, now blossoming in Los Angeles. She is a \"Door Guy\" at the World Famous Comedy Store and is a former full time cast member of the Kill Tony Podcast and a current member of the Bad Friends Podcast with Andrew Santino and Bobby Lee.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Jetski_Johnson.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Jetski_Johnson.jpg",
+    "bio": "Jetski Johnson is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Jiaoying Summers",
@@ -3916,7 +3985,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/joe-derosa",
     "bio_stand": "Writer, actor, and standup comedian Joe DeRosa has become a favorite on the comedy circuit. His brand of comedy mixing brutal honesty and frustration at the workings of the world has won over comedy fans, radio listeners, and TV audiences nationwide. In February 2013 Joe taped his second half hour special for Comedy Central, and in September of that year released his third standup comedy album \"You Will Die.\" His first two standup albums, \"The Depression Auction\" and \"Return of The Son of The Depression Auction,\" were released on Comedy Central records in 2010 and 2011 respectively. A fourth album, \"Mistakes Were Made: The B‐Sides\" was released in August of 2014. DeRosa was a writer on Netflix's highly anticipated Wet Hot American Summer TV series. He also wrote and was a featured performer on TBS' acclaimed The Pete Holmes Show. Online, Joe created, wrote, and starred in Bedrocket's 2013 web series We Should Break Up and the Warner Brothers web series What Are We Waiting For? In 2011 he directed and, along with fellow comedians Bill Burr and Robert Kelly, co‐wrote and starred in the short film CHEAT, which premiered at The Tribeca Film Festival that year. Simon and Schuster released a book based on the film, which was written by the three, in October 2012. In recent years, DeRosa has been seen in a recurring role on AMC's Better Call Saul, and has made appearances on Comedy Central's Inside Amy Schumer, FX's Louie, HBO's Bored To Death, E's Chelsea Lately, and in the video game Grand Theft Auto V. Joe headlines comedy clubs and colleges both in and out of the country and has been featured repeatedly at renowned festivals like South By Southwest, The Montreal Comedy Festival, JFL 42, The Moontower Comedy Festival, The New York Comedy Festival, Gilda's Laughfest, and Bonnaroo.",
     "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Jderosa2013.jpg/330px-Jderosa2013.jpg",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Joe_DeRosa.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Joe_DeRosa.jpg",
+    "bio": "Joe DeRosa is a stand-up comedian, writer, and actor. He's appeared on Better Call Saul and Bored to Death. He's released multiple comedy albums and specials and is a regular on the NYC comedy scene."
   },
   {
     "name": "Joe Praino",
@@ -3925,7 +3995,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/joe-praino",
     "bio_stand": "Joe Praino is a comedian, actor and podcast host with his sights set on his own late-night talk show. He has two podcasts, Dirty Sports (with Andy Ruther), which showcases his immense depth of sports knowledge, and the Kooks of Komedy (with Lachlan Patterson). He can be seen performing at several clubs in New York City & L.A., including Gotham Comedy Club, The Stand, The Improv and the Westside Comedy Theater. A native New Yorker, Praino began his stand-up career at the early age of 19 while majoring in Journalism and Communications at Lehigh University, where he was Program Director of the campus radio station. Praino made a name for himself when his ambition and performing talents led him to host his own comedy/music show, \"The Joe Show,\" with guests ranging from the University President to inmates from the Lehigh Valley Correctional facility. While developing his material on the club circuit, Praino further learned the programming business as an intern at the legendary radio station 102.7 WNEW-FM in New York, as a CBS Page and finally as a Desk Assistant at the Evening News With Dan Rather before stand-up comedy eventually won out as his full-time pursuit. His unique background and smart, funny POV earned him regular spots at the Comic Strip Live and Boston Comedy Club and he hosted his own variety show, Miscellaneous, at Galapagos in Brooklyn. It wasn't long before Praino landed some acting roles in indie films, hosted shows for CSTV, and had appearances on \"Gotham Comedy Live\" and several episodes of \"ESPN Instant,\" where he was in the company of some of his favorite analysts and commentators. Praino is a sports enthusiast, with a three-sport varsity background of football, basketball and baseball, who lived a dream when he threw out the first pitch at a Mets game in 2015. Now an avid surfer he regularly waveslides on both the East & West coasts with the occasional excursion to Baja and Costa Rica. He finds great reward in coaching high school baseball and volunteering at camps & clinics. While surfing in New York one day in early 2010, it started to snow and Praino thought \"Maybe it's time to try L.A.\" He made the move and happily lives in Venice with his dog, Vince, who has an unusually small trachea.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/prainoooo.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/prainoooo.jpg",
+    "bio": "Joe Praino is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Joey Dardano",
@@ -3934,7 +4005,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/joey-dardano",
     "bio_stand": "Joey Dardano is a stand-up, actor, writer, singer, dancer and all around Hot Boi. He is Cuban, Italian and sorry about being so loud. You can see him in the Jonah Feingold rom-com '31 Candles' and as a featured cast member on 'Wild n Out.' He's currently a member of the touring cast of the wildly popular live comedy experience, Stamptown.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Joey_Dardano_1.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Joey_Dardano_1.jpg",
+    "bio": "Joey Dardano is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Joey Gay",
@@ -3943,7 +4015,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/joey-gay",
     "bio_stand": "Joseph Vincent \"Joey\" Victory Gay is an American actor and comedian who competed in Last Comic Standing 4. He has had numerous appearances in Law & Order, and appeared on Live at Gotham. Gay purchased Pips Comedy Club, regarded as one of the oldest comedy clubs in the United States, in 2004.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/JoeyGaySQ.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/JoeyGaySQ.jpg",
+    "bio": "Joey Gay is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "John Kennedy",
@@ -3951,7 +4024,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/john-kennedy",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/johnkennedy.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/johnkennedy.jpg",
+    "bio": "John Kennedy is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Johnny Mitchell",
@@ -3960,7 +4034,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/johnny-mitchell",
     "bio_stand": "Johnny Mitchell is a stand-up comedian, writer, and podcaster from Portland, Oregon. He began doing stand-up comedy while serving time in the Oregon State Penitentiary for marijuana trafficking, and upon his release, he moved to Hollywood to try his hand at show business. A decade later, he is one of the most prominent up-and-coming comedic voices in the country. In 2020 he published a novel, “Days Of The Trap” about his experience as a drug smuggler and his time spent in prison. The book was published in 5 languages and sold more than 50,000 copies. In the fall of 2022 he launched a podcast and YouTube series “The Connect: with Johnny Mitchell,” which became an overnight success. 9 months later, his channel has 765,000 active subscribers and over 350 million views. He has been featured on top comedy podcasts like “Flagrant” with Andrew Schulz and “Your Mom’s House” with Tom Segura and Christina Pazsitzky, as well as many of the top true crime podcasts. He performs nightly at comedy clubs all over Los Angeles, and has begun a tour of the U.S",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/johnnymitchell.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/johnnymitchell.jpg",
+    "bio": "Johnny Mitchell is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Jordan Jensen",
@@ -3971,7 +4046,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/jordan-jensen",
     "tagline_cellar": "\"TAKE ME WITH YOU\" on Netflix, Late Late Show, WINNER NEW YORK'S FUNNIEST STAND UP 2021, JUST FOR LAUGHS NEW FACE 2019",
     "bio_stand": "Jordan Jensen started comedy in upstate NY before moving to Nashville TN, where she spent a year working for clubs and taking her comedy on the road in her pickup truck. Jordan now co-hosts the podcast \"Bein' Ian with Jordan\" with comedian Ian Fidance and her first half hour special, presented by GaS Digital Media, is available on her YouTube channel. Most recently, Jordan was featured on Vulture’s “The Comedians You Should and Will Know in 2023”. Jordan’s stand-up has been featured on \"The Late Late Show with James Corden\", “Comedy Central Features” and “Don’t Tell Comedy”. In 2021, Jordan was named the first female comic to win “NY’s Funniest Stand Up” at the NY Comedy Festival. She now lives in Brooklyn NY and is a regular at The Stand NYC. Her comedy consists of tales of her bizarre upbringing, highly unconventional family, and filterless confessions of her time on this filthy planet.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Jordan_Jensen_1.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Jordan_Jensen_1.jpg",
+    "bio": "Jordan Jensen is a stand-up comedian performing on the New York City comedy scene. She performs regularly at clubs across the city."
   },
   {
     "name": "Josh Adam Meyers",
@@ -4001,7 +4077,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/josh-mandl",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Josh_Mandl.jpg",
-    "bio_stand": "Josh Mandl is an young, fresh comedian making a name for himself in the Boston Comedy Scene. He was the winner of the Big Blue Ball Comedy and has appeared at Flappers Comedy Club."
+    "bio_stand": "Josh Mandl is an young, fresh comedian making a name for himself in the Boston Comedy Scene. He was the winner of the Big Blue Ball Comedy and has appeared at Flappers Comedy Club.",
+    "bio": "Josh Mandl is a stand-up comedian based in New York City. He performs regularly at clubs across the city."
   },
   {
     "name": "Josh Wesson",
@@ -4020,7 +4097,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/jourdain-fisher",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/37-og.jpg",
     "tagline_cellar": "2 TONIGHT SHOWS, JFL, BET, NBC",
-    "bio_stand": "Now residing in New York, the North Carolina native, Jourdain Fisher is a comedian on the rise. With his fun material and open personality, audiences are drawn to his style and sense of humor. Jourdain is consistently pushing himself to create the best comedy experience for any venue he plays and has been doing so as a nationally touring act for the past seven years. After performing stand up for the first time at the age of 17 he continued to do so through high school and college. Stand up became a priority for him and now Jourdain has a degree that he doesn't use and a budding comedy career that should allow him to keep from working at the funeral home that his family owns. He has featured for crowd favorites such as Mike Epps, Tom Segura, D.L. Hugely, and Gary Gulman to name a few. Jourdain was selected to be a part of the 2015 Laugh Your Asheville Off Comedy Festival, was a back to back winner of The Ultimate Comic Challenge, a finalist in 2014's Carolina's Funniest Competition and a Regional Showcase Finalist for 2015's Stand Up NBC in New York. For any more personal information you can catch him talking about his life on a stage near you."
+    "bio_stand": "Now residing in New York, the North Carolina native, Jourdain Fisher is a comedian on the rise. With his fun material and open personality, audiences are drawn to his style and sense of humor. Jourdain is consistently pushing himself to create the best comedy experience for any venue he plays and has been doing so as a nationally touring act for the past seven years. After performing stand up for the first time at the age of 17 he continued to do so through high school and college. Stand up became a priority for him and now Jourdain has a degree that he doesn't use and a budding comedy career that should allow him to keep from working at the funeral home that his family owns. He has featured for crowd favorites such as Mike Epps, Tom Segura, D.L. Hugely, and Gary Gulman to name a few. Jourdain was selected to be a part of the 2015 Laugh Your Asheville Off Comedy Festival, was a back to back winner of The Ultimate Comic Challenge, a finalist in 2014's Carolina's Funniest Competition and a Regional Showcase Finalist for 2015's Stand Up NBC in New York. For any more personal information you can catch him talking about his life on a stage near you.",
+    "bio": "Jourdain Fisher is a stand-up comedian based in New York City. He performs regularly at The Stand and other NYC clubs."
   },
   {
     "name": "Julio Diaz",
@@ -4028,7 +4106,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/julio-diaz",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/juliodiaz.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/juliodiaz.jpg",
+    "bio": "Julio Diaz is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Justin Martindale",
@@ -4057,7 +4136,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/kareem-green",
     "bio_stand": "As a three-time champion at Showtime at the Apollo, Kareem Green is a multi-faceted entertainer and comedian whose talents include stand-up, improv, acting and writing. Kareems relatable comedic style has earned him television appearances on BETComicView and TV-Ones Bill Bellamys Whos Got Jokes. Often compared to Dave Chapelle, Kareem shares a wittiness that keeps audiences in stitches throughout the U.S., Europe and the Caribbean Islands about his experiences in foster care, summer camp programs, and having an extremely unsuccessful criminal career. As well as being an accomplished comedian, Kareem is a skilled actor and has had key roles in the movies Gold Digger Killer, Holla If I Kill You and Comedy In The Hood. His headliner appearances at colleges and comedy clubs proves Kareem is soon to be a household name. Kareem has been featured at New Yorks top comedy clubs, including Carolines on Broadway, Standup New York, Gotham Comedy Club and the Comic Strip Live. He has received national recognition in nationwide comedy competitions such as Comedy Centrals Laugh Riots and The Salem Orb Contest. And in 2009, Kareem was crowned Winner of the Bay Area Black Comedy Competition and Top Finalist in NBC’s Standup for Diversity. Kareem Green is, by far, a rising star!",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Kareem_Green.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Kareem_Green.jpg",
+    "bio": "Kareem Green is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Kate Quigley",
@@ -4075,7 +4155,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/katherine-blanford",
     "bio_stand": "Katherine Blanford has brought her human Golden Retriever presence across the country and internationally, sharing confessions of her southern family secrets and awkward adolescent years. The Kentucky born comedian has appeared on The Tonight Show starring Jimmy Fallon twice, a panelist on CBS's After Midnight and Vice TV’s Super Maximum Retro Show, and was featured on Netflix Radio. Her debut album, Salt Daddy, was released in June 2022 reaching number one on iTunes Charts and her Don’t Tell Comedy set has amassed millions of views online. You can catch her weekly co-hosting her podcast, Cheaties, with fellow comedian, Lace Larrabee. The juicy series follows two comedians healing through laughter after sharing stories of heartbreak. Not bad for a girl whose parents are cousins",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Katherine_Blanford.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Katherine_Blanford.jpg",
+    "bio": "Katherine Blanford is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Katie Hannigan",
@@ -4085,7 +4166,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/katie-hannigan",
     "bio_stand": "Katie Hannigan is a stand up comic, actor and writer. Her stand up has been featured on The Late Show with Stephen Colbert, Comedy Central, Just For Laughs New Faces, The Late Late Show with James Cordon, and MTV. Her debut album Feeling of Emptiness was named Ten Best of 2022 by the Interrobang. Katie performs nightly in NYC at the Comedy Cellar, New York Comedy Club, and Gotham Comedy Club. Katie is a member of SAG AFTRA and has appeared in That Damn Michael Che, on HBO, City Island, on PBS Kids, commercials for Subway, Cheezits, Mabelline, Home Depot, and many indie films and sketches. Katie's writing credits include the original series Death Hacks staring Thomas Middleditch and Kristen Schaal, for Augenblick Studios. Katie is passionate about spreading climate awareness and has also participated in Yes and Laughter Lab and The Climate Comedy Cohort. Katie hosts the popular podcast Lady Journey with comedian Sarah Tollemache. ​",
     "tagline_cellar": "FROM THE LATE LATE SHOW, THE LATE SHOW, COMEDY CENTRAL, HBOMAX, JFL",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Katie_Hannigan.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Katie_Hannigan.jpg",
+    "bio": "Katie Hannigan is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Kelsey Cook",
@@ -4104,7 +4186,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/kevin-brennan",
     "bio_stand": "Known for his no holds barred style, Kevin Brennan is one of the top standup comedians in the country. Brennan started his comedy career in Chicago but soon relocated to New York City to pursue his dream of being on the “Late Show with David Letterman.” He shined on his first Letterman appearance which then led to subsequent memorable appearances on “Late Night with Conan O’Brien” and “Last Call with Carson Daly”. Kevin was voted “Best Comedian” at the 2005 Aspen Comedy Festival, which led to his own HBO half‐ hour comedy special. A former writer/performer on “Saturday Night Live,” Kevin taped a pilot for NBC called “Number One Son” about growing up in a big Irish‐Catholic family. Most recently, Kevin has written for Comedy Central’s “Sports Show with Norm Macdonald” as well as the “Latin Grammys” hosted by George Lopez. He is a sought out guest on many comedy podcasts such as Breuer Unleashed, on Sirius Satellite Radio. Kevin’s comedy CD entitled, “I Said It”, has garnered rave reviews and will keep audiences laughing for years to come. Currently based in New York but ever bi‐coastal, Kevin Brennan continues to impress as a performer and writer.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Kevin-Brennan-525x525.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Kevin-Brennan-525x525.jpg",
+    "bio": "Kevin Brennan is a stand-up comedian and former SNL writer. He hosts his own podcast and is a regular on the NYC comedy scene. Brother of comedian Neal Brennan."
   },
   {
     "name": "Kim Congdon",
@@ -4123,7 +4206,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/kitty-reynolds",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/kittyreynolds.jpg",
-    "bio_stand": "Kitty Reynolds is a New York City based Writer & Comedian who uses social media writing, comedy writing, TV writing, and stand-up to bring people laughter."
+    "bio_stand": "Kitty Reynolds is a New York City based Writer & Comedian who uses social media writing, comedy writing, TV writing, and stand-up to bring people laughter.",
+    "bio": "Kitty Reynolds is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Kristen Toomey",
@@ -4132,7 +4216,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/kristen-toomey",
     "bio_stand": "Kristen Toomey’s comedy career began in 2008. Since then she has performed in L.A., New York City and everywhere in between. Her commanding stage presence and energetic, expressive and truthful style of comedy are just a few of the reasons entertainment website, The A.V. Club, said, “Kristen Toomey is a Chicago original.” Kristen is a regular on the late-night comedy show Man of the People with Pat Tomasulo. She is an actress as well, most recently appearing on an episode of Chicago Med. You can see & hear her on her podcast, I’m Upset!, Kevin Hart’s LOL Network, WGN Radio 720, & NPR’s The 21st.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Kristen_Toomey.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Kristen_Toomey.jpg",
+    "bio": "Kristen Toomey is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Kyle Dunnigan",
@@ -4152,7 +4237,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/kylie-vincent",
     "bio_stand": "KYLIE VINCENT IS A 22 YEAR OLD STAND-UP, ACTIVIST, AND THEATER ARTIST IN NEW YORK CITY, CURRENTLY TRAVELING WITH HER SOLO SHOW BIRD AND PERFORMING STAND-UP ACROSS THE UNITED STATES. NEW YORK AUDIENCES SAY VINCENT IS “A HILARIOUS, THOUGHTFUL, BADASS” AND BIRD IS “HONEST, HILARIOUS AND TEAR JERKING.” VINCENT HAS SOLD OUT HER SOLO SHOW IN LOS ANGELES (LYRIC HYPERION THEATRE), AUSTIN (FALLOUT THEATRE), & AS A GUEST ARTIST AT LSU & SEWANEE UNIVERSITY. OTHER FAVORITE CREDITS INCLUDE ADULT SWIM, NBC, AMSTERDAM TOUR, & HEADLINING IN ATLANTA.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Kylie_Vincent_.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Kylie_Vincent_.jpg",
+    "bio": "Kylie Vincent is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Lachlan Patterson",
@@ -4171,7 +4257,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/laura-peek",
     "bio_stand": "Laura Peek is a comic from Nashville living in LA. Recently named of the 50 best undiscovered comics in the country by Thrillist, Laura has shared the stage with the likes of Marc Maron, Rhea Butcher, Chris Distefano, Rory Scovel, and Dave Attell. She was named a 2019 Standup NBC semifinalist and was featured in the 2019 Laughing Skull and Limestone Comedy Festivals.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/laurapeek2025.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/laurapeek2025.jpg",
+    "bio": "Laura Peek is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Leah Sampson",
@@ -4180,7 +4267,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/leah-sampson",
     "bio_stand": "Lea’h Sampson is a charismatic stand up comedian, writer, actress, wig mom originally from Houston Tx. Creator and producer of Hear Me bitch podcast including being featured on The Roast Battle Podcast. She’s done festivals such as Out Of Bounds Festival, Moontower Comedy Festival, and Come and Take It Comedy Festival. Lea’h has opened and toured with entertainers such as Julio Iglesias, Michael Blackson, King Bach and many others. Lea’h’s Comedy is described as “dark, wild, fun” and “unexpected”.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Leah_Sampson.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Leah_Sampson.jpg",
+    "bio": "Leah Sampson is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Leah Lamarr",
@@ -4189,7 +4277,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/leah-lamarr",
     "bio_stand": "Leah Lamarr is a stand-up comedian, actress, social-audio influencer, writer and podcaster born and raised in NYC. Easily one of the fastest rising comedians working right now, Leah created Hot on the Mic (66k Members), the premiere venue for comedy on Clubhouse, which hosts daily stand-up shows to over 75,000 listeners per week. Additionally, Leah is currently the Clubhouse Icon (an app with 30.2 Million Users) with over 240,000 followers. She regularly features for Erik Griffin (“Workaholics”), Chris Redd (SNL) and for Dane Cook. She is also a recurring host on “America’s Funniest Home Videos”. She wrote, produced, directed, edited and starred in her web series, “The Real Witches of West Hollywood”, which won over 11 awards at festivals in 2019 and premiered at The TCL Chinese Theatre at Dances With Films, WON LA Top Shorts, the LA Film Awards and Hollywood Art & Movie Awards.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Leah_Lamarr.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Leah_Lamarr.jpg",
+    "bio": "Leah Lamarr is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Lev Fer",
@@ -4199,7 +4288,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/lev-fer",
     "tagline_cellar": "FROM RAY DONOVAN ON SHOWTIME, PODCAST \"THE LEV FER SHOW\"' SIRIUS XM",
     "bio_stand": "Lev Fer started his stand-up career at just 17 years old in Raleigh, North Carolina. The week that he turned 18, he left his high school early to move to New York City and dive head-first into the world of comedy. Upon arrival, Lev quickly broke into the New York Comedy Festival where he was named a “Comic to Watch” and has been repeatedly featured at the Skankfest Comedy Festival. On TV, Lev has played “Teen Gary O’ Malley” in season 7 of the popular Showtime series Ray Donovan, and has been featured on Sirius XM shows The Bonfire, Bennington, and popular comedy podcasts like Legion of Skanks. He also hosts his own podcast The Lev Fer Show on the GaS Digital Network. Lev can be seen headlining on the road as well as regularly performing at The Stand Comedy Club in New York City.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Lev_Fer_1.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Lev_Fer_1.jpg",
+    "bio": "Lev Fer is a stand-up comedian and regular at the Comedy Cellar in New York City. Originally from Russia, he's known for his unique perspective and deadpan delivery."
   },
   {
     "name": "Lewis Black",
@@ -4230,7 +4320,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/lucas-zelnick",
     "tagline_cellar": "COMEDY CENTRAL, NETFLIX IS A JOKE, AMAZON PRIME MOONTOWER COMEDY FESTIVAL",
     "bio_stand": "Lucas Zelnick is a stand-up comedian born, raised, and based in New York City, who challenges his cushy upbringing through punch-heavy material. Lucas has appeared in SF Sketchfest and the New York Comedy Festival. He’s been featured in the New York Times, appeared as a guest on Amazon Prime Video’s Sports Talk, and is a tour opener for Ashley Gavin. In 2022, Lucas began headlining comedy clubs nationally, including the Helium and Zanies clubs. For no particular reason, he also earned an MBA from the Stanford Graduate School of Business. Lucas’s stand-up clips have exploded online, where he has received over 100M views and 250K+ followers across Instagram and TikTok.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/zelnick_1.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/zelnick_1.jpg",
+    "bio": "Lucas Zelnick is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Luis Lopez",
@@ -4239,7 +4330,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/luis-lopez",
     "bio_stand": "Luis Lopez (that's me) is a stand up comedian in New York City. He's a regular at several clubs around the city including New York Comedy Club, Stand Up NY, and more. Luis was a 2022 Comic to Watch for New York Comedy Festival. He was a finalist in the New York Comedy Club Competition and a finalist in the Carolines March Madness Comedy Tournament. He has appeared on Amazon TV, and was also part of All Things Comedy Presents at Stand Up NY. He tours comedy venues across the country and is actually pretty good at it.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Luis_Lopez.jpeg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Luis_Lopez.jpeg",
+    "bio": "Luis Lopez is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Lukas McCrary",
@@ -4248,7 +4340,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/lukas-mccrary",
     "bio_stand": "Originally from East Tennessee, Lukas is an Austin, TX-based comedian. His stand-up was featured on Netflix's 20 Somethings, and he has performed at SXSW and Skankfest. On Instagram and TikTok, his comedy has been seen over 7 million times. He has worked with numerous headliners including Tim Dillon, Maria Bamford, and Brian Simpson. In Austin, Lukas successfully auditioned to be in the first class of comedians at Joe Rogan's club, the Comedy Mothership.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Lukas_Mccrary.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Lukas_Mccrary.jpg",
+    "bio": "Lukas McCrary is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Lynne Koplitz",
@@ -4269,7 +4362,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/maddi-mays",
     "bio_stand": "Maddi Mays is Houston-raised, Los Angeles-based Artist, Costume Designer, Stylist & Illustrator, who approaches every project as a new world to dive into. Maddi has experience working in TV/Film, Theatre & Music Videos. She has worked on TV shows like Hulu's Dollface and NBC's Bust Down as a costume illustrator and PA, additionally graphic designing the logo for Bust Down. Maddi has also worked as a stylist for the artist Peyton on her music video Perfect Peach and for BRS Kash on his music video, I'm Hot, and has assistant styled for Migos & Brent Faiyaz. Additionally, Maddi has licensed her original artwork for HBO's \"PAUSE with Sam Jay\", which can be seen on the walls of every episode. Maddi's work explores character, identity and femininity. She is passionate about creating work that is striking and thought-provoking, whilst capturing subtle nuances that create an honest and fully-grounded world.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Maddi_Mays.jpeg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Maddi_Mays.jpeg",
+    "bio": "Maddi Mays is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Madison Sinclair",
@@ -4278,7 +4372,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/madison-sinclair",
     "bio_stand": "Stand up comedian, writer, and producer. She produced a series of live comedy shows called Last Call Comedy in Tallahassee, FL before moving to Los Angles to work on The Soup on E!. Her stand up has appeared on Seth Rogan's Hilarity for Charity and the MoveOn Organization's \"Laughter Trumps Hate\" Campaign. She is a two time #PointsMe finalist on Comedy Central's show @Midnight. She worked on Comedy Central's new series Roast Battle and performs regularly at the live Roast Battle events at the World Famous Comedy Store in Los Angeles, California.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/210622-Madison-Sinnclair-062-copy-scaled.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/210622-Madison-Sinnclair-062-copy-scaled.jpg",
+    "bio": "Madison Sinclair is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Marcello Hernandez",
@@ -4308,7 +4403,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/marie-faustin",
     "tagline_cellar": "COMEDY CENTRAL, HBO, VICE, BROAD CITY, THAT DAMN MICHAEL CHE",
     "bio_stand": "Marie Faustin is an NYC-based comedian and actress. She has appeared on Broad City, Comedy Central Stand-Up, MTV's Girl Code, VH1, The BET Awards, and TruTV. She co-hosted Viceland's nightly variety show VICE LIVE, as well as Oxygen's Very Real Talk. Marie was named a 2018 Comedian You Should Know by Vulture. She was also selected as one of Just For Laughs Montreal's New Faces in 2017. Marie has performed at Comedy Central's Clusterfest and TBS' New York Comedy Festival. Marie co-hosts the weekly podcast Peak 2000s and, before that, The Unofficial Expert (named #2 on Time Out's list of \"Best NYC Podcasts\") as well as the notable and long-running stand-up showcase Comedy at the Knit at The Knitting Factory in Brooklyn. She has also appeared on podcasts like Las Culturistas, Inside the Closet, Girls Gotta Eat, and more.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Marie_Faustin.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Marie_Faustin.jpg",
+    "bio": "Marie Faustin is a stand-up comedian based in New York City. She's appeared on Comedy Central and performs at clubs across the city."
   },
   {
     "name": "Marito Lopez",
@@ -4317,7 +4413,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/marito-lopez",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/marito.jpeg",
-    "bio_stand": "Marito Lopez is one of Canada’s top headliners. He is a Latinx comedian, originally from El Salvador, who has left his mark on every major city in the country. He is a regular at the Just For Laughs Festival, is a two-time Canadian Screen Award nominee, has appeared at the Winnipeg Comedy Festival, Icebreakers Comedy Festival and has been featured on CBC Gem’s ‘New Wave Of Stand Up’, Kevin Hart’s ‘LOL Network’, CTV’s ‘Roast Battle Canada’, ‘Rick Mercer’s Comedy Night In Canada’ and can be heard on CBC Radio’s The Debaters and Laugh Out Loud. He can also be seen on CBC’s “One More Time” as a recurring character. Marito’s electric energy is sure to bring any audience to their feet. Brown is beautiful. All praises due to Allah."
+    "bio_stand": "Marito Lopez is one of Canada’s top headliners. He is a Latinx comedian, originally from El Salvador, who has left his mark on every major city in the country. He is a regular at the Just For Laughs Festival, is a two-time Canadian Screen Award nominee, has appeared at the Winnipeg Comedy Festival, Icebreakers Comedy Festival and has been featured on CBC Gem’s ‘New Wave Of Stand Up’, Kevin Hart’s ‘LOL Network’, CTV’s ‘Roast Battle Canada’, ‘Rick Mercer’s Comedy Night In Canada’ and can be heard on CBC Radio’s The Debaters and Laugh Out Loud. He can also be seen on CBC’s “One More Time” as a recurring character. Marito’s electric energy is sure to bring any audience to their feet. Brown is beautiful. All praises due to Allah.",
+    "bio": "Marito Lopez is a stand-up comedian performing on the New York City comedy scene. He's a regular at The Stand and other clubs across the city."
   },
   {
     "name": "Mark Gagnon",
@@ -4327,7 +4424,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/mark-gagnon",
     "bio_stand": "Mark Gagnon is an internationally touring comedian opening for Andrew Schulz’s “Infamous Tour”. He is the Co-Creator of the Netflix Series “Schulz Saves America” and a co-host on the “Flagrant 2” Podcast.",
     "tagline_cellar": "FLAGRANT PODCAST, JUST FOR LAUGHS, NETFLIX IS A JOKE,",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Mark_Gagnon.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Mark_Gagnon.jpg",
+    "bio": "Mark Gagnon is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Mark Viera",
@@ -4336,7 +4434,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/mark-viera",
     "bio_stand": "Born and raised in The Bronx, New York, Mark Viera became fascinated with comedy very early on. While Mark’s mom spent countless hours as a social worker to provide for her family, Mark and his older brother would pass the time watching the popular TV shows of the 70’s and 80’s. He became so engaged in the performances of his favorite comic personalities, it didn’t take long before he began to emulate the characters he came to love. On any given night, he would entertain his family with remarkably accurate portrayals from shows like “Carol Burnett”, “Sanford and Son”, and “Three’s Company”. As his career flourished, Mark personalized his artistic passion and parlayed it into one of his greatest labors of love: A one-hour Showtime special aptly entitled “Tales of a Nuyorican.” The show, an homage to his upbringing and hilarious life experiences, became an instant classic. With the success of Nuyorican, and a sold-out tour with singer Marc Anthony, he firmly established himself as a force to be reckoned with. Mark, a devoted family man with an altruistic nature, seized the opportunity to give back by first performing on a comedy special, “Stand Up For Family”, for American Family Insurance. “Stand Up For Family”, hosted by good friend and fellow comic Bill Bellamy, became a benchmark for family friendly entertainment. Shows like the “Make a Wish Foundation” and the “VIP Drug Rehabilitation Centers” in his native Bronx, as well as several command performances for our U.S. military overseas, accent his philanthropic efforts. Mark made his network television debut on NBC’s Emmy award winning show “30Rock,” an opportunity that piqued the interest of the industry’s most prominent executives. The comic and businessman recently sold a sitcom based on his compelling life to Warner Bros. and FOX. The project, which was executively produced by comedy legend George Lopez, is currently being re-developed. Mark is unfazed by his growing popularity and remains loyal to his New York roots. Known to his fans as the Latin Prince, he performs regularly at top comedy clubs including Caroline’s on Broadway and Gotham Comedy Club. He also headlines at Improv’s and FunnyBone Comedy Clubs nationwide. Mark was hand picked to headline on several ships for Norwegian Cruise Line. One of Mark’s favorite shows to perform in is the “Leatherneck” tour for the U.S. Marine Corps, now in its third year. Mark’s numerous television credits include performances on the critically acclaimed “Martin Lawrence Presents 1st Amendment Stand-Up”, “Comedy Central’s Russell Simmons Presents Stand-Up at the El Rey”, AXS TV’s “Gotham Comedy Live” a live stand up performance, BET’s “ComicView”, and Comedy Centrals “Gabriel Iglesias Presents: Stand Up Revolution”. Mark’s most recent television appearances are several episodes of Byron Allen’s “Comic Unleashed.” He was recently asked to join comic icon Gabriel Iglesias’s “Unity Through Laughter” world tour.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Mark_Viera.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Mark_Viera.jpg",
+    "bio": "Mark Viera is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Mary Beth Barone",
@@ -4426,7 +4525,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/matthew-broussard",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/matthew-broussard.jpg",
     "bio_stand": "Born in New Jersey, raised in Atlanta, and, in 2012, winner of Houston's Funniest Person, Matthew Broussard is not exactly sure where he's from. Matthew earned a degree in Applied Mathematics and a job as a financial analyst before moving to West Hollywood to pursue stand-up comedy full time. His brand of playful, witty humor covers topics from physics & grammar to the hardships of looking like an 80s movie villain. Aside from his popular webcomic, mondaypunday.com, he can be seen on The League, The Mindy Project, Conan, Roast Battle, and has his own Half Hour Special on Comedy Central. But his Cajun father and Jewish mother still really want him to take the GMAT.",
-    "tagline_cellar": "FROM CONAN, COMEDY CENTRAL HALF HOUR, FINALIST ON JEFF ROSS' \"ROAST BATTLE\""
+    "tagline_cellar": "FROM CONAN, COMEDY CENTRAL HALF HOUR, FINALIST ON JEFF ROSS' \"ROAST BATTLE\"",
+    "bio": "Matthew Broussard is a stand-up comedian known for his clever wordplay and math-based humor. He's appeared on The Tonight Show, Conan, and Comedy Central. A regular at NYC comedy clubs."
   },
   {
     "name": "Max Manticof",
@@ -4435,7 +4535,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/max-manticof",
     "bio_stand": "Max Manticof is a Latino and Jewish standup comedian, writer, and actor born and raised in Queens, NY. He has been seen on Amazon Prime’s “Basement Yard” with host Joe Santagato, as well as “Lyft Comics” on Kevin Hart's LOL Network. When he's not headlining around the country Max has enjoyed touring with Tim Dillon, Leonard Ouzts, Matt Rife, and more. Known for his wildly popular “Street Talk Comedy” which has since produced 100+ shows in 15+ cities around the country and was selected as a Just For Laughs New Face of Comedy in 2023.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Max_Manticof.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Max_Manticof.jpg",
+    "bio": "Max Manticof is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Maz Jobrani",
@@ -4474,7 +4575,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/mic-nguyen",
     "bio_stand": "Mic Nguyen (@nicepantsdude) is a writer and comedian who has written for such illustrious websites as NBC News, Racked, and his mom’s 60th birthday e-vite. When he’s not tweeting you can find him doing stand-up onstage, working on a sci-fi short story about sneakers, or co-hosting the Asian, Not Asian comedy podcast. He lives in Brooklyn.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/micn.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/micn.jpg",
+    "bio": "Mic Nguyen is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Michael Blaustein",
@@ -4514,7 +4616,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/mike-figs",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/figs_sq_2024.jpeg",
-    "bio_stand": "Mike Figs is a dynamic stand-up comedian from The Bronx, New York, known for his sharp wit and infectious energy. His bold, unfiltered style and knack for crowd work have made him a standout at top comedy clubs. As a co-host of the Something Went Wrong podcast with Vinny Guadagnino of The Jersey Shore fame, and a regular on all podcasts GAS DIGITAL (LOS, Story Wars, TTI) Mike brings his quick humor to discussions on pop culture and life’s absurdities, further showcasing his comedic versatility. Currently, Mike is tearing up stages nationwide on the “Vinny G & Friends” tour alongside Vinny Guadagnino, delivering high-energy sets at sold-out shows at venues all over the country. His festival appearances, including the New York Comedy Festival, and social media presence as an MC on the “NewYorkers” Instagram page (+1 million followers), have solidified his reputation as a rising star in comedy. Whether riffing on his Latino/Italian roots or roasting modern-day quirks, Mike’s performances at clubs and festivals highlight his unique voice and undeniable stage presence, making him one of the most exciting comics to watch today."
+    "bio_stand": "Mike Figs is a dynamic stand-up comedian from The Bronx, New York, known for his sharp wit and infectious energy. His bold, unfiltered style and knack for crowd work have made him a standout at top comedy clubs. As a co-host of the Something Went Wrong podcast with Vinny Guadagnino of The Jersey Shore fame, and a regular on all podcasts GAS DIGITAL (LOS, Story Wars, TTI) Mike brings his quick humor to discussions on pop culture and life’s absurdities, further showcasing his comedic versatility. Currently, Mike is tearing up stages nationwide on the “Vinny G & Friends” tour alongside Vinny Guadagnino, delivering high-energy sets at sold-out shows at venues all over the country. His festival appearances, including the New York Comedy Festival, and social media presence as an MC on the “NewYorkers” Instagram page (+1 million followers), have solidified his reputation as a rising star in comedy. Whether riffing on his Latino/Italian roots or roasting modern-day quirks, Mike’s performances at clubs and festivals highlight his unique voice and undeniable stage presence, making him one of the most exciting comics to watch today.",
+    "bio": "Mike Figs is a stand-up comedian performing regularly in New York City. He's a regular at The Stand and other clubs on the NYC comedy circuit."
   },
   {
     "name": "Mike Lawrence",
@@ -4585,7 +4688,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/nacya-marreiro",
     "bio_stand": "Meet Nacya Marreiro: a multi-talented comedian, actress, and writer currently making waves in the entertainment industry. Born and raised in the South of Portugal, Nacya first discovered her love for stand-up comedy while traveling around the world as a flight attendant, and hasn't stopped ever since. She has performed on stages from coast to coast- including NYC's The Stand and Grisly Pear Comedy, Creek and the Cave and Vulcan in Austin, Laugh Factory, The Comedy Store, Bourbon Room, Haha Comedy Club, Hollywood Improv in Los Angeles and internationally at Yalla Comedy in Abu Dhabi. She's also created her own comedy show, \"The Riff,\" which is currently at the Hollywood Improv which attracts high-profile guests like Joe Rogan, Tiffany Haddish, and TJ Miller. Nacya also produces and hosts her own comedy cooking show, \"Mouth Full\" found on YouTube. Nacya's diverse skillset has led to some exciting projects, including her first comedy special on YouTube in 2021 as well as the lead role \"Moving Valentine,\" available on Amazon Prime. She was also the lead “Rita” in the award-winning indie short film “Down Way to Mexico.\" Nacya often features at venues in the US and Canada for Academy Award nominees The Lucas Brothers (Judas and the Black Messiah). With her tenacious dedication to the craft and naturally funny personality, Nacya is on the rise. Follow her on Instagram @nacya_marreiro.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Nacya_Marreiro_1.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Nacya_Marreiro_1.jpg",
+    "bio": "Nacya Marreiro is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Naomi Karavani",
@@ -4603,7 +4707,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/natalie-cuomo",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/natalieucomo2023.jpeg",
-    "bio_stand": "Born and raised in Queens, NY, Natalie Cuomo has quickly risen within the ranks of standup comedy in New York City. Her debut album Shut Up You Loved It released by The Stand Comedy Club Records debuted at #1 on the iTunes comedy charts. Natalie was named one of New York Comedy Festival's \"Comics To Watch\" in 2023. She has been featured in Time Out NY, New York Magazine, Inked Magazine, and Metal Injection. Her podcast Help! with Natalie Cuomo can be found everywhere you find podcasts."
+    "bio_stand": "Born and raised in Queens, NY, Natalie Cuomo has quickly risen within the ranks of standup comedy in New York City. Her debut album Shut Up You Loved It released by The Stand Comedy Club Records debuted at #1 on the iTunes comedy charts. Natalie was named one of New York Comedy Festival's \"Comics To Watch\" in 2023. She has been featured in Time Out NY, New York Magazine, Inked Magazine, and Metal Injection. Her podcast Help! with Natalie Cuomo can be found everywhere you find podcasts.",
+    "bio": "Natalie Cuomo is a stand-up comedian and podcaster based in New York City. She hosts the Natalie Cuomo is Unwell podcast and performs regularly at The Stand and other NYC clubs."
   },
   {
     "name": "Nate Bargatze",
@@ -4635,7 +4740,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/neel-nanda",
     "bio_stand": "Starting comedy in Atlanta, GA and now based in Los Angeles, Neel Nanda has performed all over the country with some of comedies’ biggest acts. Neel has most recently performed stand up on ABC's JIMMY KIMMEL LIVE & has acted and performed on COMEDY CENTRAL's ADAM DEVINE'S HOUSE PARTY. In 2018 he was a featured comedian on AMAZON PRIME’S INSIDE JOKE with Asif Ali. Neel has also made notable appearances on MTV and on IFC's GARKUNKEL AND OATES SHOW. Other networks where you can catch his stand up comedy include HULU's COMING TO THE STAGE, & several episodes of the series FLOPHOUSE for VICELAND directed by Lance Bangs. Neel recently featured at Bridgetown Comedy Festival in Portland, the Laughing Skull Festival in Atlanta and was the runner up for the Westside Stand Up Showdown (2015) in Los Angeles. Aside from just performing standup, he currently produces a few shows in LA including \"Unnecessary Evil\" at the Westside Comedy Theater, which was recently named one of LA Weekly’s top 10 stand up shows. You can catch Neel every week at his show on the Westside where he has shared the stage with comedians like Hannibal Buress, Demetri Martin, Laura Kightlinger, and even Yakov Smirnoff.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/neelnanda.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/neelnanda.jpg",
+    "bio": "Neel Nanda is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Nick Mullen",
@@ -4655,7 +4761,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/nick-viagas",
     "bio_stand": "Nick Viagas is a New York based comedian. He can regularly be seen at The Stand or his monthly show Struggle Bus with Ivy Wolk. In 2024 he was named a finalist of the New York’s Funniest competition at New York Comedy Festival. He has appeared on RIP with Jordan Jensen, Subway Takes, and Stavys World. In the new year he will be making his television debut on CBS’ Comics Unleashed.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/NickViagas2025SQ.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/NickViagas2025SQ.jpg",
+    "bio": "Nick Viagas is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Nicole Aimee Schreiber",
@@ -4664,7 +4771,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/nicole-aimee-schreiber",
     "bio_stand": "Comedian with lady parts. Currently on Oxygen's Funny Girls.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/nicole-aimee-schreiber.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/nicole-aimee-schreiber.jpg",
+    "bio": "Nicole Aimee Schreiber is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Nikki Glaser",
@@ -4683,7 +4791,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/nina-daniels",
     "bio_stand": "Nina Daniels is an LA based stand-up comedian, actor and content creator originally from Long Island, NY. Nina’s youtube video My Man Is a Jewmaican was featured on the front pages of both Funny or Die and Elizabeth Bank’s WhoHaHa.com. Nina TV appearances include Season 3 and 4 of IFC’s MARON, Showtime’s MASTER’S OF SEX and she can be seen in the Sundance Award winning film PARIAH. Nina is currently developing her own half hour comedy which she will star, write and produce. Every last Tuesday of the month you can find Nina at the Nerdmelt Showroom hosting one of LA’s hottest new shows Nina Daniels Presents: The Playground. Produced with Brianne Trosie (Producer Funny or Die). Nina can be seen on some of your favorite alt stand-up shows including The Meltdown w/ Jonah and Kumail, The Super Serious Show, Hot Tub, The New Negroes, Night Train with Wyatt Cenac, Comedy at the Knitting Factory among others. You can also see at comedy clubs across the country including the Hollywood Improv, Punch Line SF, Zannies, Caroline’s and many others.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/IMG_4025_%281%29.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/IMG_4025_%281%29.jpg",
+    "bio": "Nina Daniels is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Noah Gardenswartz",
@@ -4712,7 +4821,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/onika-mclean",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/IMG_20250820_232214~2.jpg",
-    "bio_stand": "Born in North Carolina, and raised in East New York Brooklyn, Onika McLean single mother of two, legal professional, her no nonsense perspective on life, love, single motherhood and her mid life crisis. She was the fan favorite on Bravo Television, The Single’s Project. Onika is taking the comedy arena by storm her high energy and know it all attitude entertains crowds all over New York City."
+    "bio_stand": "Born in North Carolina, and raised in East New York Brooklyn, Onika McLean single mother of two, legal professional, her no nonsense perspective on life, love, single motherhood and her mid life crisis. She was the fan favorite on Bravo Television, The Single’s Project. Onika is taking the comedy arena by storm her high energy and know it all attitude entertains crowds all over New York City.",
+    "bio": "Onika McLean is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Ophira Eisenberg",
@@ -4735,7 +4845,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/orion-levine",
     "bio_stand": "Orion Levine is a NYC based comedian from Berkeley, California. He was recently named one of Deadline’s “Comics to Watch in 2026”, has appeared on The Late Late Show with James Corden, Comedy Central, Amazon Prime Video, was named a New Face at the Just for Laughs Comedy Festival in 2022, and was featured on Netflix Radio. He is also incredibly handsome.",
     "tagline_cellar": "COMEDY CENTRAL, THE LATE LATE SHOW WITH JAMES CORDEN",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/orionlevine_sq.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/orionlevine_sq.jpg",
+    "bio": "Orion Levine is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Oscar Aydin",
@@ -4744,7 +4855,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/oscar-aydin",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Oscar_Aydin_SQ.JPG",
-    "bio_stand": "Oscar Aydin is a New York City based comedian and host known for his unfiltered \"rainbow pushing\" style. He’s been featured on BBC, Daily Mail, Queerty LOL and as guest commentator on Amazon. He is a regular at The Stand and across NYC clubs and has performed on stages alongside Nikki Glaser, Anthony Jeselnik and Andrew Schulz. He’s also featured across the US for comedians such as Ashley Hesseltine, Hannah Berner and Jessica Kirson. Oscar hosts the hilarious bi-weekly podcast, \"Oh Oscar!” where guests share their wild, crazy, and sometimes awkward date and hook-up stories on the popular and hysterical segment, \"Dickssappointed.” His audacious personality has won over both live and digital crowds, leaving them saying \"Oh Oscar!!\" and steadily coming back for more."
+    "bio_stand": "Oscar Aydin is a New York City based comedian and host known for his unfiltered \"rainbow pushing\" style. He’s been featured on BBC, Daily Mail, Queerty LOL and as guest commentator on Amazon. He is a regular at The Stand and across NYC clubs and has performed on stages alongside Nikki Glaser, Anthony Jeselnik and Andrew Schulz. He’s also featured across the US for comedians such as Ashley Hesseltine, Hannah Berner and Jessica Kirson. Oscar hosts the hilarious bi-weekly podcast, \"Oh Oscar!” where guests share their wild, crazy, and sometimes awkward date and hook-up stories on the popular and hysterical segment, \"Dickssappointed.” His audacious personality has won over both live and digital crowds, leaving them saying \"Oh Oscar!!\" and steadily coming back for more.",
+    "bio": "Oscar Aydin is a stand-up comedian performing on the New York City comedy scene. He's a regular at The Stand and other clubs across the city."
   },
   {
     "name": "Paris Sashay",
@@ -4753,7 +4865,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/paris-sashay",
     "bio_stand": "Paris Sashay is comedienne, actor, and producer from Washington, DC. Her command as a seasoned storyteller makes even the mundane experience feel like an adventure. Audiences across the country fall in love with her infectious laugh, wit, and style. Nothing can stop Paris’ ascension to stardom, unequivocally one of the funniest rising comediennes with highlight performances at the Howard Theatre (DC), The Kennedy Center(DC), Comedy Store (LA), Caroline’s on Broadway (NY) and BET. She triumphantly debuted at the DC Improv only days after losing several teeth in a brutal attack by a toxic man sexually harassing her on the street. In 2016, Paris launched the #TeethAndTittiesCampaign raising awareness about violence against women. Paris has featured for Dick Gregory, Domonique, Sampson McCormick, Jen Kirkman, and Michael Che offering her piercing insight on issues of the day. She has been a panel member on “Wild’n Out Wednesday’s with Roland Martin” on TV One, BET and interviewed on Fox 5 DC, NBC 4 Washington, and WUSA 9 regarding her assault. Additionally, Paris frequently serves as a motivational speaker, having the honor of being the 2013 Commencement Speaker at The Foundation School in Gaithersburg, MD",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/paris-sashay.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/paris-sashay.jpg",
+    "bio": "Paris Sashay is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Pat McGann",
@@ -4781,7 +4894,8 @@
     "venues": [
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/peter-james-fowler"
+    "stand_profile": "https://thestandnyc.com/comedians/peter-james-fowler",
+    "bio": "Peter James Fowler is a stand-up comedian based in New York City. He performs regularly at The Stand and other NYC clubs."
   },
   {
     "name": "Petey DeAbreu",
@@ -4792,7 +4906,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/petey-deabreu",
     "tagline_cellar": "HBO:THAT DAMN MICHAEL CHE SHOW, NPR: WAIT WAIT...DON'T TELL ME",
     "bio_stand": "Born and raised in the Bronx, Petey DeAbreu brings something fresh to the world of comedy that has not been seen since the golden age of New York city entertainment. Bringing down the house wherever he hits the stage, Petey has most recently toured with Broad City’s Ilana Glazer as well as performed at Comedy Central’s Clusterfest. He also co-produced Ilana Glazer’s “The Planet is Burning” on Amazon(2020) as well as co-produced and performed with Ilana on Ilana Glazer Presents Comedy on Earth on Comedy Central (2021). Through his 10 year career Petey DeAbreu has expanded his talents to more than just stand-up comedy. Petey is a celebrated producer, writer, actor, host and personality. His multifaceted career makes him ideal for your next project, show, screenplay, or anything you need to get the laughs.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Petey_DeAbreu.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Petey_DeAbreu.jpg",
+    "bio": "Petey DeAbreu is a stand-up comedian performing on the New York City comedy scene. He's a regular at clubs across the city."
   },
   {
     "name": "Preacher Lawson",
@@ -4844,7 +4959,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/randall-otis",
     "bio_stand": "Randall Otis is a writer, comedian and actor based in Manhattan, hailing from Florida. He currently works as a writer at The Daily Show with Trevor Noah. He has performed around the country, including the New York Comedy Festival, the New South Comedy Festival to name a few. Randall has also been featured on the The Late Show with Stephen Colbert, VICE, Above Average, AllDefDigital, The Huffington Post.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Randall_Otis.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Randall_Otis.jpg",
+    "bio": "Randall Otis is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Rayna Greenberg",
@@ -4853,7 +4969,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/rayna-greenberg",
     "bio_stand": "Girls Gotta Eat Podcast",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Rayna_Greenberg_1.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Rayna_Greenberg_1.jpg",
+    "bio": "Rayna Greenberg is a stand-up comedian and podcaster. She co-hosts the Girls Gotta Eat podcast and performs at clubs across the country."
   },
   {
     "name": "Remy Kassimir",
@@ -4862,7 +4979,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/remy-kassimir",
     "bio_stand": "Remy Kassimir is a New York City native stand up comedian and actor. She hosts the popular podcast “How Cum” on iTunes and is a regular guest on Sirius XM’s Insight Channel. She has been seen on The Meredith Veiera Show and in the background of one episode of 30 Rock (but for like, the whole episode. It’s cool).",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/remy2020.jpeg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/remy2020.jpeg",
+    "bio": "Remy Kassimir is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Richie Redding",
@@ -4872,7 +4990,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/richie-redding",
     "tagline_cellar": "KEVIN HARTS LOL NETWORK, AMAZON PRIME VIDEO",
     "bio_stand": "Richie Redding is one of the funniest guys that you’ve probably never heard of. As a graduate of the University of Pennsylvania it was unlikely that his comedy career start off in urban rooms and burlesque shows, but that’s how it happened. He left the corporate world determined to get paid to have fun which is obvious every time he takes the stage. His set is edgy, high energy and autobiographical, drawing on a lifetime of ridiculous true stories that can only happen to a recovering alcoholic Ivy Leaguer. His boy band looks and colorful word selection have gained him well-deserved attention. In 2012, he was selected to perform in Walter Latham’s Comedy After Dark and became a regular on HOT 97FM. In 2013 he beat out 32 comics from all over the world to win the Bermuda International Comedy Competition and also had his TV debut on AXS TV’s Gotham Live! He has headlined in six foreign countries and also had the honor of being selected to feature in a USO tour of South Korea, entertaining the 30,000 American troops stationed there. 2014 was a pivotal year, as he was hand picked by Katt Williams to be the official host of the Growth Spurt Tour and for the HBO special Priceless. Based on that success, Katt then asked him to be his featured act for the Born Again, Again Tour. His fanbase has grown rapidly since, as he was regularly killing crowds of 10,000 people or more! He continues to be a constant presence in New York’s top clubs, especially after command performances at both the Barclay’s Center and Madison Square Garden.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Richie_Redding.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Richie_Redding.jpg",
+    "bio": "Richie Redding is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Rita Brent",
@@ -4934,7 +5053,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/ryan-beck",
     "bio_stand": "Ryan Beck is a New York City based comedian from St. Louis, Missouri. Ryan is a regular at the Comedy Cellar in New York and his stand up has been featured on Comedy Central. Ryan has also performed in the New York Comedy Festival, Brooklyn Comedy Festival, and Limestone Comedy Festival. Ryan is a former digital creator for Comedy Central and has appeared on MTV’s Girl Code, Comedy Central’s Alternatino, This Week At The Comedy Cellar, and The Daily Show with Jon Stewart. He's been heard on The Bob and Tom Show and Sirius XM. As a writer, he’s contributed to the Comedy Central Roasts of Bob Saget, Roseanne Barr and James Franco and The Road to Roast Battle. Ryan has also written for the Snapchat original animated series Death Hacks. He has written and produced his web series #RyanBeckShow and the interactive short film We Need To Talk. He is a graduate of the University of Missouri.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/ryanbeck.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/ryanbeck.jpg",
+    "bio": "Ryan Beck is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Ryan Long",
@@ -4964,7 +5084,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/saaniya-abbas",
     "bio_stand": "Saaniya Abbas is a Dubai-based comedian and storyteller whose rise from sheltered good girl to globe-trotting cutie has captured audiences across continents. Her comedy is a cheeky rebellion - warm, witty, and rooted in the grey spaces most people skip past. She’s toured the UK and India, amassed a global online following, and will be performing her debut solo hour at the Edinburgh Fringe this year. Whether on stage or in pixels, Saaniya is unpacking the real world and her place in it, mic in hand.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/saaniya_1.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/saaniya_1.jpg",
+    "bio": "Saaniya Abbas is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Sahib Singh",
@@ -4975,7 +5096,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/sahib-singh",
     "tagline_cellar": "COMEDY CENTRAL, ADULT SWIM, JFL NEW FACES",
     "bio_stand": "Sahib Singh is a rising star of the Baltimore/D.C. stand-up scene. He has performed at clubs and colleges across the East Coast, and in 2019, he won the Magooby’s New Comedian of the Year competition. His original videos have earned him a strong following on social media, and in 2021, he worked as a writer and performer for Comedy Central. His work has been featured on the CBS Comedy Showcase and the digital series AS SEEN ON ADULT SWIM.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Sahib_Headshot_2025.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Sahib_Headshot_2025.jpg",
+    "bio": "Sahib Singh is a stand-up comedian based in New York City. He's a regular at the Comedy Cellar and performs across the NYC comedy circuit."
   },
   {
     "name": "Salma Hindy",
@@ -4984,7 +5106,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/salma-hindy",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/salmahindy_sq.jpg",
-    "bio_stand": "Salma Hindy is a NYC-based comedian, actor, and writer. She stars as the lead voice in Ramy Youssef’s new A24/Amazon adult animated series, #1 Happy Family USA, recently nominated for a Gotham TV Award for Breakthrough Comedy Series. She has opened for Chelsea Handler on two tours. Salma is the creator and host of the rapidly growing podcast The Secret Sex Lives of Muslim Women, and she produces and headlines the monthly NYC comedy show Not My Father’s Daughter around daddy issues. Her debut comedy album, Born on 9/11, has been playing on SiriusXM since 2022 and received strong critical praise. She is also a Canadian Screen Award winner for her writing on CBC’s This Hour Has 22 Minutes. Her TEDx Talk, “Why People Pleasing is Hurting You,” has resonated with audiences internationally and explores the emotional origin of her comedy career."
+    "bio_stand": "Salma Hindy is a NYC-based comedian, actor, and writer. She stars as the lead voice in Ramy Youssef’s new A24/Amazon adult animated series, #1 Happy Family USA, recently nominated for a Gotham TV Award for Breakthrough Comedy Series. She has opened for Chelsea Handler on two tours. Salma is the creator and host of the rapidly growing podcast The Secret Sex Lives of Muslim Women, and she produces and headlines the monthly NYC comedy show Not My Father’s Daughter around daddy issues. Her debut comedy album, Born on 9/11, has been playing on SiriusXM since 2022 and received strong critical praise. She is also a Canadian Screen Award winner for her writing on CBC’s This Hour Has 22 Minutes. Her TEDx Talk, “Why People Pleasing is Hurting You,” has resonated with audiences internationally and explores the emotional origin of her comedy career.",
+    "bio": "Salma Hindy is a stand-up comedian based in New York City. She performs at clubs across the city."
   },
   {
     "name": "Sam Jay",
@@ -5004,7 +5127,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/sara-huntington",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Sara_Huntington_1.jpg",
-    "bio_stand": "Sara is awkwardly fierce. She’s a lovely balance between self-depreciating and an absolute joy. She is edgy and hits topics of relationships and growing up in the country. She’s a viral sensation on social media as sarapoptarts. Sara started making videos online because she was a stand-up comic living in Indiana but desperate to be seen. She’s headlined clubs around the Midwest and performed at festivals such as Rise Comedy Festival and Let’s Fest Comedy. Outside of comedy she enjoys cats, smelling candles, and dipping sauces."
+    "bio_stand": "Sara is awkwardly fierce. She’s a lovely balance between self-depreciating and an absolute joy. She is edgy and hits topics of relationships and growing up in the country. She’s a viral sensation on social media as sarapoptarts. Sara started making videos online because she was a stand-up comic living in Indiana but desperate to be seen. She’s headlined clubs around the Midwest and performed at festivals such as Rise Comedy Festival and Let’s Fest Comedy. Outside of comedy she enjoys cats, smelling candles, and dipping sauces.",
+    "bio": "Sara Huntington is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Sara Weinshenk",
@@ -5013,7 +5137,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/sara-weinshenk",
     "bio_stand": "Sara Weinshenk is a LA-based comedian, writer and podcaster. Since starting stand up in 2010, she has made many loyal fans from her stand up, as well as her podcast, SHENK. Sara can be seen on her digital series on the comedy central, \"Shenks For Smoking\" and has appeared on Deathsquad podcasts, JRE, GAS DIGITAL, and Lights Out With David Spade on Comedy Central",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/sara_weinshenk_photo.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/sara_weinshenk_photo.jpg",
+    "bio": "Sara Weinshenk is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Sarah Sherman",
@@ -5022,7 +5147,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/sarah-sherman",
     "bio_wiki": "Sarah Nicole Sherman, also known professionally as Sarah Squirm, is an American comedian, actress, and screenwriter. Sherman is known for using surreal and body horror comedy. She became a featured player on the NBC sketch comedy series Saturday Night Live starting with its 47th season in October 20",
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Sarah_Sherman%2C_April_2026_%28cropped2%29.jpg/330px-Sarah_Sherman%2C_April_2026_%28cropped2%29.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Sarah_Sherman%2C_April_2026_%28cropped2%29.jpg/330px-Sarah_Sherman%2C_April_2026_%28cropped2%29.jpg",
+    "bio": "Sarah Sherman is a stand-up comedian and cast member on Saturday Night Live. Known for her absurdist, gross-out comedy style and memorable SNL sketches. She performs regularly at NYC comedy clubs."
   },
   {
     "name": "Sasha Merci",
@@ -5031,7 +5157,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/sasha-merci",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/sashamerci.jpg",
-    "bio_stand": "Second-generation Dominican American comedian, actress, and digital creator Sasha Merci is a Bronx native now based in Los Angeles. Sasha can be seen starring in the feature film De Lo Mio (HBO), her very own series Like, Subscribe Demilo (FUSE), and in the popular web-series Group Therapy (COMPLEX). Sasha has amassed a social media following of over 180k and has collaborated with brands like Bumble, AT&T, Heineken, Old Spice and many more. Last year Sasha was selected as one of Freeform TV's #YoungBlackAndFreeform inaugural honoree's which celebrates diverse content creators and thought leaders, and this year you can catch her starring in the feature film SHELTER opposite Lisa Vidal and Cam Gigandet."
+    "bio_stand": "Second-generation Dominican American comedian, actress, and digital creator Sasha Merci is a Bronx native now based in Los Angeles. Sasha can be seen starring in the feature film De Lo Mio (HBO), her very own series Like, Subscribe Demilo (FUSE), and in the popular web-series Group Therapy (COMPLEX). Sasha has amassed a social media following of over 180k and has collaborated with brands like Bumble, AT&T, Heineken, Old Spice and many more. Last year Sasha was selected as one of Freeform TV's #YoungBlackAndFreeform inaugural honoree's which celebrates diverse content creators and thought leaders, and this year you can catch her starring in the feature film SHELTER opposite Lisa Vidal and Cam Gigandet.",
+    "bio": "Sasha Merci is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Sean Donnelly",
@@ -5041,7 +5168,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/sean-donnelly",
     "tagline_cellar": "FROM THE TONIGHT SHOW, FROM THE LATE SHOW WITH STEPHEN COLBERT,  THE DAVID LETTERMAN SHOW, CONAN O'BRIEN, COMEDY CENTRAL HALF HOUR SPECIAL",
     "bio_stand": "When he’s not catching a nap with his bulldog, Rickles, Sean can be found headlining clubs and festivals all over the country. He has appeared on The Late Show with David Letterman, Conan and NBC’s Last Comic Standing. Sean co-hosts the podcast My Dumb Friends with fellow comedian Dan St. Germain on the All Things Comedy network. He released his debut comedy album “Manual Labor Face” in 2015 on Comedy Central Records. Sean has been featured on the truTV series World’s Dumbest and Almost Genius as well as Adam Devine’s House Party, The Half Hour, Broad City, and Inside Amy Schumer on Comedy Central, Amazon’s Alpha House, GSN’s Lie Detectors, Limitless on CBS, and Billions on Showtime.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/seandonnelly.jpeg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/seandonnelly.jpeg",
+    "bio": "Sean Donnelly is a stand-up comedian and podcaster. He co-hosts My Dumb Friends with Dan Soder and is a regular at NYC comedy clubs. He's appeared on AXS TV's Gotham Comedy Live and multiple late night shows."
   },
   {
     "name": "Sean Millea",
@@ -5050,7 +5178,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/sean-millea",
     "bio_stand": "From New Jersey and an alumni of the NYU film program, Sean is best known for his many viral comedy videos across Youtube, Tiktok, and Instagram. His wide range of content has received over 100 million views, garnering him more than a million followers across all of his platforms. He has opened for comedians like Mark Normand and Trevor Wallace, had a brief appearance on the Tim Dillon podcast with Gary Vee, and even went viral for winning the “musical chairs boxing” tournament at the Skankfest comedy festival - dubbing him the nickname “Bowie”.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Sean_Millea.png"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Sean_Millea.png",
+    "bio": "Sean Millea is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Sean Patton",
@@ -5092,7 +5221,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/shannon-fiedler",
     "bio_stand": "I’m a writer, director, and stand-up comedian, but you already know that. I used to be a competitive figure skater, I’ve been to Disney World more times than I should probably admit to, and I’m an absolute trivia fiend. I often get caught dancing at my desk, but hey, if you’re not having fun, what’s the point? Oh and…yeah, you should use the Oxford Comma.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Shannon_Fiedler.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Shannon_Fiedler.jpg",
+    "bio": "Shannon Fiedler is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Shari Diaz",
@@ -5101,7 +5231,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/shari-diaz",
     "bio_stand": "Bronx, NY native, Shari Diaz, switched up her stomping grounds for Raleigh, NC in 2014 where she started standup comedy at Goodnights Comedy Club and Raleigh Improv. Her crossover appeal and crowd working skills had quickly built a platform and a diverse following ranging from hipsters to moms screaming for a night out. With all the positive feedback, she founded a comedy production as an avenue for local comedians to collaborate and bring forth gut wrenching shows. Shari Díaz is also a Co-Producer for the first official Raleigh comedy festival called, Oak City Comedy Festival. In 2019, she moved back to NYC to pursue comedy where she has been booked consistently on some of the hottest comedy shows in the NYC and produces comedy shows all over the city. Shari is also the co-host of Tres Betches Podcast, alongside co-hosts Trina Alper and Jessica Clayton. Her accolades include opening for Joey Medina, Gina Brillon, Pauly Shore, Michael Yo, Carlos Mencia, Godfrey, Mark Viera, The Lucas Bros, Shawn Wayans and Maria Bamford. Shari has been performing at comedy festivals around the country, such as, North Carolina’s Comedy Festival 2018 & 2019 in Greensboro, NC, Big Pine Comedy Festival 2018 in Flagstaff, AZ where she won “Best of Fest”, BTF Comedy Festival in Philly 2019 and Dallas Comedy Festival 2019, and DC’s Comedy Festival 2019, and New York Comedy Festival 2019. You can catch her first comedy special on HBO Max’s “Entre Nos Episode 11: What She Said!”.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Shari_Diaz.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Shari_Diaz.jpg",
+    "bio": "Shari Diaz is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Shaun Anthoney",
@@ -5109,7 +5240,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/shaun-anthoney",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/anthoney.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/anthoney.jpg",
+    "bio": "Shaun Anthoney is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Stacy Cay",
@@ -5118,7 +5250,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/stacy-cay",
     "bio_stand": "Stacy Cay is a Kansas City comic with a unique voice you won’t want to miss. Stacy is a trans woman comedian and model raised in rural Arkansas. She’s performed at the New York Comedy Festival, has opened for Josh Gondelman and Niles Abston, and produces the live, slumber party themed standup comedy sensation: Spend the Night. Audiences describe her as “hilarious”, her senators say she’s \"disgraceful”, and Tucker Carlson calls her \"satanic.”",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Stacy_Cay.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Stacy_Cay.jpg",
+    "bio": "Stacy Cay is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Stef Dag",
@@ -5128,7 +5261,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/stef-dag",
     "bio_stand": "Hi! I'm a NY-based comedian, writer, and actor who's too self conscious to write in third person. I'm allegedly a rising stand up comedian (their words not mine!!), and a 2022 New York Comedy Festival \"Creator to Watch.\" You may have seen me complaining out loud at The Stand, SF Sketch Fest, Union Hall, The Bell House, or at New York Comedy Festival. Still not convinced? I host the popular digital dating show, Hot and Single, in which I flirt with eligible singles in an effort to find out if they are the problem. I also have a viral TikTok show where I interview men about female anatomy (spoiler alert: it's bleak) and write a monthly newsletter This Sucks, which has an accompanying live show! You should come and bring your crush. Against all odds, people have *willingly* employed me. I'm currently the Senior Editor at Overheard NY and I've directed digital videos for Vogue, Glamour, and Vanity Fair, where I've written digital sketches for Bill Hader, Michael Che & Colin Jost, Rebel Wilson, and more. I wrote the popular Vogue series Everything You Need to Know, which won a Vimeo Staff Pick.",
     "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/2025-12-11-stefdag-colorcorrected.jpg/330px-2025-12-11-stefdag-colorcorrected.jpg",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Stef_Dag_sq.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Stef_Dag_sq.jpg",
+    "bio": "Stef Dag is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Steve Trevino",
@@ -5146,7 +5280,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/subhah-agarwal",
     "bio_stand": "Subhah's parents immigrated from India to small town America so their children could live the American dream. And by American dream I mean pursue stand up comedy and become an Indian parent's nightmare. She has since become a headlining comedian who has appeared on Comedy Central, Tru Tv, and MTV. She is currently writing on The Jim Jefferies Show for Comedy Central.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/43-og.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/43-og.jpg",
+    "bio": "Subhah Agarwal is a stand-up comedian performing in New York City. She performs at clubs across the city."
   },
   {
     "name": "Sureni Weerasekera",
@@ -5155,7 +5290,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/sureni-weerasekera",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/sureni.jpg",
-    "bio_stand": "Sureni Weerasekera is a Sri Lankan-born, San Diego-raised, & Oakland-based stand-up comedian, actor, and writer. She is known for her lighthearted, conversational banter to her ruthless, dark jabs that shed light on cultural dilemmas in a palatable, enticing way."
+    "bio_stand": "Sureni Weerasekera is a Sri Lankan-born, San Diego-raised, & Oakland-based stand-up comedian, actor, and writer. She is known for her lighthearted, conversational banter to her ruthless, dark jabs that shed light on cultural dilemmas in a palatable, enticing way.",
+    "bio": "Sureni Weerasekera is a stand-up comedian based in New York City. She performs regularly at The Stand and other NYC comedy clubs."
   },
   {
     "name": "Sydnee Washington",
@@ -5185,7 +5321,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/tata-sherise",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/tatasherise.jpg",
-    "bio_stand": "TaTa Sherise is a dynamic NY based comedian , actress, and creator making waves in the comedy scene. She’s been hailed as “The Next Hottest Comedian to Come Out of Philly” by The Philadelphia Inquirer. In 2024, she made history as the first Black woman to win Philly’s Phunniest. TaTa was named a 2023 & 2024 NY Comedy Fest Creator and Comic to Watch. She produces sketches, funny themed comedy shows, and short films. Catch her bringing the giggles and indulging in pure silliness while talking about life with her creative partner “Drizz” on their “Girls Got Giggles” podcast. Known for her high-energy performances, raw humor, and captivating stage presence, she brings real-life stories and unfiltered honesty to the stage. You can find TaTa in films on Tubi and Amazon Prime. TaTa’s comedy connects with audiences through her unique blend of charm, wit, trauma, and movement on stage. She’s most definitely one to keep up with!"
+    "bio_stand": "TaTa Sherise is a dynamic NY based comedian , actress, and creator making waves in the comedy scene. She’s been hailed as “The Next Hottest Comedian to Come Out of Philly” by The Philadelphia Inquirer. In 2024, she made history as the first Black woman to win Philly’s Phunniest. TaTa was named a 2023 & 2024 NY Comedy Fest Creator and Comic to Watch. She produces sketches, funny themed comedy shows, and short films. Catch her bringing the giggles and indulging in pure silliness while talking about life with her creative partner “Drizz” on their “Girls Got Giggles” podcast. Known for her high-energy performances, raw humor, and captivating stage presence, she brings real-life stories and unfiltered honesty to the stage. You can find TaTa in films on Tubi and Amazon Prime. TaTa’s comedy connects with audiences through her unique blend of charm, wit, trauma, and movement on stage. She’s most definitely one to keep up with!",
+    "bio": "TaTa Sherise is a stand-up comedian based in New York City. She performs regularly at The Stand and other NYC clubs and is building a strong following on the city's comedy circuit."
   },
   {
     "name": "Tammy Pescatelli",
@@ -5226,7 +5363,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/tim-butterly",
     "bio_stand": "Tim Butterly is a fat bearded comedian from Philadelphia. In addition to co hosting Dad Meat Podcast, he performs stand up and has acted in numerous commercials, television shows and films, with his defining role coming as a cheese pervert in the film Zeroes. He recently grew a mustache and got jacked, so prepare to be wet.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Tim_Butterly.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Tim_Butterly.jpg",
+    "bio": "Tim Butterly is a stand-up comedian based in New York City. He performs at clubs across the city and has appeared on multiple podcasts."
   },
   {
     "name": "Tim Dillon",
@@ -5245,7 +5383,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/tom-cassidy",
     "bio_stand": "Tom Cassidy is a comedian who started in Philadelphia at The Laff House Comedy Club (urban clubs spell things wrong due to the deterioration of the public school system) where he became a feature act 2 weeks before the club shut down. After spending a few years in his native land, which has produced many great comedians (Kevin Hart, Tina Fey and up until recently Bill Cosby) he moved to New York City where he performs regularly at clubs, basements and back of bars that vary in quality. He has been featured at The New York, Boston, Staten Island and Hoboken Comedy Festival (placed in the order of respect each festival gets) and has performed at colleges throughout the east coast in beautiful theaters and fluorescent cafeteria's. In addition to performing literally wherever will have him Tom is also a writer who has directed several sketches and short films, including \"Babe Ruth Time Traveler\" and it's sequel (you can guess what it's called). Tom is also a co-host on the Center City Comedy podcast where he can be found arguing and making fun of his friends on a weekly basis.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/tom-cassidy.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/tom-cassidy.jpg",
+    "bio": "Tom Cassidy is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Tom Green",
@@ -5293,7 +5432,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/tommy-mitchell",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/tommymitchell.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/tommymitchell.jpg",
+    "bio": "Tommy Mitchell is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Tony Hinchcliffe",
@@ -5324,7 +5464,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/tristan-bowling",
     "bio_stand": "Tristan Bowling is a 25 year old comedian hailing from Phoenix Arizona. Starting at 16 years old, Tristan has worked rigorously in the local scene to climb the Phoenix comedy ladder and has gotten the opportunity to preform across the country. Recently he has gotten recognition from the number one live podcast in the world “Kill Tony” hosted by Tony Hinchcliffe and Brian Redban. There he received a ‘golden ticket’ to preform on the show anytime he wants and since then he’s preformed with them regularly at the world famous Comedy Store, making a name for himself in Los Angeles and across the nation.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Tristan_Bowling.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Tristan_Bowling.jpg",
+    "bio": "Tristan Bowling is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Vladimir Caamano",
@@ -5333,7 +5474,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/vladimir-caamano",
     "bio_stand": "With the name “Vladimir,” few people expect a Dominican from The Bronx to take the stage. His comedic style is the fruit of an immigrant Dominican family living in the cultural mecca that is New York City and is described as an elegant combination of urban grit and intellect. He began polishing his wit in the concrete jungles of The Bronx and Washington Heights and after graduating from Wesleyan University launched into Standup Comedy. After his stand out performance at Just for Laughs (JFL) in 2015, Vlad entered into a put pilot development deal to co-write, and star in a pilot based off of his comedy for NBC with Bill Lawrence and WB supervising. Vlad co-wrote the script with UNDATEABLE writer, Adam Styzikiel and recently shot the pilot directed by Phill Lewis. Vlad was the only one of his New Faces class to be chosen to perform as part of the CW Gala hosted by Howie Mandel. In 2016, Vlad was named one of the Top 10 Comics to Watch by Variety and was honored at JFL. In 2017 Vlad made his late-night standup debut on Jimmy Kimmel Live! and performed again at the prestigious Just for Laughs Gala hosted by Lilly Singh. Vlad has been seen on Brooklyn Nine-Nine, Marvel’s Runaways, and NBC’s Superstore. He is currently developing television shows with top comedy producers and networks.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Vladimir_Caamano_1.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Vladimir_Caamano_1.jpg",
+    "bio": "Vladimir Caamano is a stand-up comedian based in New York City. He performs at clubs across the city."
   },
   {
     "name": "Wilfred Padua",
@@ -5342,7 +5484,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/wilfred-padua",
     "bio_stand": "Wilfred Padua is a comedian in New York who has an MFA in Writing from some place in Chicago. He has performed at Bumbershoot, Bridgetown Comedy Festival, 10,000 Laughs, and was a finalist in the Big Sky Comedy Festival. He has been featured on NPR and Sirius XM, and was named one of the 50 Best Undiscovered Comedians in America by Thrillist where they said his comedy was “impish” for some reason.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/wilfred-image.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/wilfred-image.jpg",
+    "bio": "Wilfred Padua is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Wyatt Cenac",
@@ -5372,7 +5515,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/zach-brazao",
     "bio_stand": "While his accent gives him away as a Boston comic, Zach Brazão has entertained audiences all over the country. He has performed in the Southland Comedy Festival, was a finalist in the Boston Comedy Festival, and was named Best of the Fest at Minneapolis’s 10,000 Laughs Festival. Sporting a baby face and a grandfather’s vernacular, Zach has charmed diverse audiences in multifarious settings ranging from comedy clubs to nursing homes and even an Arena Football halftime show. Much of Zach’s humor centers around the idiosyncrasies of suburban life, parents who loved him too much, and the banality of office life. He is currently reading the Personal Memoirs of Ulysses S. Grant and resides in New York City.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/zach_brazao_-_headshot_-_2021.png"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/zach_brazao_-_headshot_-_2021.png",
+    "bio": "Zach Brazao is a stand-up comedian performing in New York City. He performs at clubs across the city."
   },
   {
     "name": "Aaron Chen",
@@ -5380,7 +5524,8 @@
       "comedy_cellar"
     ],
     "bio_stand": "Born and raised in Sydney, Australia, Aaron has quickly climbed the ranks of the international comedy scene. Aaron made his mark on Australian comedy with his debut solo show in 2017 and since then has toured nationally in front of sold-out crowds and rave reviews, earning him the sought-after awards for Best Newcomer (2017) and Director’s Choice (2019), and nomination for Best Show (2021) at the Melbourne International Comedy Festival. Since his critically acclaimed performance at the 2019 Edinburgh Fringe Festival, Aaron supported comedian Ronny Chieng on his Live Australian Tour, and had feature roles in Ronny Chieng International Student (ABC), Orange is the New Brown (Seven Network), and FISK (Netflix). As a comedian, he also appears on Australia’s #1 panel show, Have You Been Paying Attention (Network 10). Aaron’s acclaimed 2021 Adult Swim special A Life in Questions was for nominated for Best Short Form Comedy special at the Australian Academy of Cinema and Television Arts Awards, and lead to development deals with Adult Swim/Warner Media. His stand-up special, If It Weren’t Filmed, Nobody Would Believe was released on YouTube in September 2022 and has accumulated almost 1 million views.",
-    "tagline_cellar": "FROM LATE NIGHT WITH SETH MEYERS, 'fisk\","
+    "tagline_cellar": "FROM LATE NIGHT WITH SETH MEYERS, 'fisk\",",
+    "bio": "Aaron Chen is a stand-up comedian from Australia based in New York City. He's appeared on Conan and is a regular at the Comedy Cellar. Known for his unique, offbeat comedy style."
   },
   {
     "name": "Adam Gilbert",
@@ -5395,7 +5540,8 @@
       "comedy_cellar"
     ],
     "tagline_cellar": "Comedy Central, Timeout NY Comic to Watch, NBC",
-    "bio_stand": "Alex Kumin's bold and whip smart standup delights crowds across the city of Chicago and around the US. She is an alumni of the nation's longest running independent standup comedy showcase, The Lincoln Lodge, through which she also teaches Chicago's favorite all-female standup class, Feminine Comique. Her monthly showcase, Diamond Comedy Hour, takes place at the Chicago Laugh Factory on the first Friday of the month, featuring the premiere female comedians in the city and beyond. She has had the pleasure of working with Patton Oswalt, Maria Bamford, Tom Green, Rory Scovel, The Lucas Brothers, Aparna Nancherla, Greg Fitzsimmons, Jen Kirkman, and Todd Barry, among others and was selected as one of eight comedians at Gilda's Laughfest - Best of the Midwest Competition 2017. She made her television debut on WCIU's \"Chicago's One Night Standup\" and has appeared in NBC Universal's Breakout Festival ('16, '17, ‘18), Limestone Comedy Festival, Orlando Indie Comedy Fest and The Chicago Comedy Exposition. In 2016 she was named a comic to watch by Timeout Chicago and was one of Chicago Reader's standout comedians of the year. She has been featured in Chicago Magazine as a comedian with \"unapologetic honesty\", as she tackles heavy hitting social issues like gender inequality and thigh chaffing."
+    "bio_stand": "Alex Kumin's bold and whip smart standup delights crowds across the city of Chicago and around the US. She is an alumni of the nation's longest running independent standup comedy showcase, The Lincoln Lodge, through which she also teaches Chicago's favorite all-female standup class, Feminine Comique. Her monthly showcase, Diamond Comedy Hour, takes place at the Chicago Laugh Factory on the first Friday of the month, featuring the premiere female comedians in the city and beyond. She has had the pleasure of working with Patton Oswalt, Maria Bamford, Tom Green, Rory Scovel, The Lucas Brothers, Aparna Nancherla, Greg Fitzsimmons, Jen Kirkman, and Todd Barry, among others and was selected as one of eight comedians at Gilda's Laughfest - Best of the Midwest Competition 2017. She made her television debut on WCIU's \"Chicago's One Night Standup\" and has appeared in NBC Universal's Breakout Festival ('16, '17, ‘18), Limestone Comedy Festival, Orlando Indie Comedy Fest and The Chicago Comedy Exposition. In 2016 she was named a comic to watch by Timeout Chicago and was one of Chicago Reader's standout comedians of the year. She has been featured in Chicago Magazine as a comedian with \"unapologetic honesty\", as she tackles heavy hitting social issues like gender inequality and thigh chaffing.",
+    "bio": "Alex Kumin is a stand-up comedian and regular at the Comedy Cellar in New York City. She performs regularly at clubs across the city."
   },
   {
     "name": "Andrew Fiori",
@@ -5431,7 +5577,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "tagline_cellar": "JFL new faces 2022"
+    "tagline_cellar": "JFL new faces 2022",
+    "bio": "Brendan Sagalow is a stand-up comedian and regular at the Comedy Cellar in New York City. He performs regularly across the NYC comedy scene."
   },
   {
     "name": "Colin Quinn",
@@ -5454,7 +5601,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "tagline_cellar": "BLUE WHALE COMEDY FESTIVAL, THE KNITTING FACTORY,"
+    "tagline_cellar": "BLUE WHALE COMEDY FESTIVAL, THE KNITTING FACTORY,",
+    "bio": "Ethan Simmons-Patterson is a stand-up comedian and regular at the Comedy Cellar in New York City. He performs across the NYC comedy circuit."
   },
   {
     "name": "Greer Barnes",
@@ -5470,7 +5618,8 @@
       "comedy_cellar"
     ],
     "tagline_cellar": "FROM THE \"LOUIE\" CK SHOW, \"THE ARISTOCRATS\", \"THE CONAN O'BRIEN SHOW\", COMEDY CENTRAL'S \"TOUGH CROWD\" AND \"THE TONIGHT SHOW\".",
-    "bio_wiki": "Gregg Rogell is an American professional comedian. Born on Long Island, Rogell resides in New York City and is a regular performer at the Comedy Cellar and the Comic Strip Live. He has appeared on The Tonight Show, Late Night with Conan O'Brien, Louie, Half Baked, and The Nanny. He has had his own h"
+    "bio_wiki": "Gregg Rogell is an American professional comedian. Born on Long Island, Rogell resides in New York City and is a regular performer at the Comedy Cellar and the Comic Strip Live. He has appeared on The Tonight Show, Late Night with Conan O'Brien, Louie, Half Baked, and The Nanny. He has had his own h",
+    "bio": "Gregg Rogell is a stand-up comedian and longtime Comedy Cellar regular. He's appeared on multiple late night shows and Comedy Central specials. A veteran of the NYC comedy scene."
   },
   {
     "name": "Hot Soup",
@@ -5498,7 +5647,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "tagline_cellar": "WINNER OF STAND UP NBC,"
+    "tagline_cellar": "WINNER OF STAND UP NBC,",
+    "bio": "Jon Laster is a stand-up comedian and regular at the Comedy Cellar in New York City. He performs regularly across the NYC comedy scene."
   },
   {
     "name": "Josh Ocean Thomas",
@@ -5544,21 +5694,24 @@
     "venues": [
       "comedy_cellar"
     ],
-    "tagline_cellar": "FROM FOX'S \"ANIMAL CONTROL\", THE TONIGHT SHOW, COMEDY CENTRAL"
+    "tagline_cellar": "FROM FOX'S \"ANIMAL CONTROL\", THE TONIGHT SHOW, COMEDY CENTRAL",
+    "bio": "Michael Rowland is a stand-up comedian and regular at the Comedy Cellar in New York City. He performs regularly on the NYC comedy circuit."
   },
   {
     "name": "Regina DeCicco",
     "venues": [
       "comedy_cellar"
     ],
-    "tagline_cellar": "WARM UP COMIC FOR \"THE VIEW\", SIRIUS XM, AXS-TV, \"SHERRI\""
+    "tagline_cellar": "WARM UP COMIC FOR \"THE VIEW\", SIRIUS XM, AXS-TV, \"SHERRI\"",
+    "bio": "Regina DeCicco is a stand-up comedian and regular at the Comedy Cellar. She's appeared on Comedy Central and performs at clubs across New York City."
   },
   {
     "name": "Rich Aronovitch",
     "venues": [
       "comedy_cellar"
     ],
-    "tagline_cellar": "ACCESS DAILY NBC, BEAT BOBBY FLAY FOOD NETWORK"
+    "tagline_cellar": "ACCESS DAILY NBC, BEAT BOBBY FLAY FOOD NETWORK",
+    "bio": "Rich Aronovitch is a stand-up comedian and regular at the Comedy Cellar in New York City. He performs regularly on the NYC comedy circuit."
   },
   {
     "name": "Ryan Hamilton",
@@ -5615,7 +5768,8 @@
     ],
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Maria_DeCotis.jpg",
     "stand_profile": "https://thestandnyc.com/comedians/maria-decotis",
-    "bio_stand": "Maria DeCotis is a NYC based comedian, actress, and writer from Fayetteville, Georgia where she famously Christmas caroled for Big Boi at age 12. She graduated with her BFA in Acting, Cum Laude from Boston University with a concentration in Playwriting and worked with Commedia dell'Arte professionals in Italy. She has been featured in New York Magazine, Vogue, Rolling Stone, The New York Times, Wall Street Journal, The Guardian, New York Daily News, Today, and many more. Maria’s recent credits include opening for Mike Birbiglia on Broadway, Comedy Central, HBO Women in Comedy Festival, New York Comedy Festival, and a JFL showcase. She wrote and hosted a show for the New York Post called Win the Weekend and was a staff comedy writer for Mezu Money Time. She has completed the most advanced level of study at the Upright Citizens Brigade Theatre. She is a ukulele singer-songwriter (iTunes and Spotify) and Lindy Hopper. Onstage, Maria likes to explore feminism and spaghetti."
+    "bio_stand": "Maria DeCotis is a NYC based comedian, actress, and writer from Fayetteville, Georgia where she famously Christmas caroled for Big Boi at age 12. She graduated with her BFA in Acting, Cum Laude from Boston University with a concentration in Playwriting and worked with Commedia dell'Arte professionals in Italy. She has been featured in New York Magazine, Vogue, Rolling Stone, The New York Times, Wall Street Journal, The Guardian, New York Daily News, Today, and many more. Maria’s recent credits include opening for Mike Birbiglia on Broadway, Comedy Central, HBO Women in Comedy Festival, New York Comedy Festival, and a JFL showcase. She wrote and hosted a show for the New York Post called Win the Weekend and was a staff comedy writer for Mezu Money Time. She has completed the most advanced level of study at the Upright Citizens Brigade Theatre. She is a ukulele singer-songwriter (iTunes and Spotify) and Lindy Hopper. Onstage, Maria likes to explore feminism and spaghetti.",
+    "bio": "Maria DeCotis is a stand-up comedian and regular at the Comedy Cellar in New York City. She's appeared on AXS TV's Gotham Comedy Live and performs at clubs across the city."
   },
   {
     "name": "Peter Fowler",
@@ -5632,7 +5786,8 @@
     ],
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Tom_McGuire.jpeg",
     "stand_profile": "https://thestandnyc.com/comedians/tom-mcguire",
-    "bio_stand": "Starting his comedy career in 2019 after a failed attempt at being a college basketball player, Tom had a short stint in stand up before the Covid-19 Pandemic shut the world down. Returning back to the stage in May of 2021, Tom has made a name for himself as a rising stand up comedian, and was the winner of the 2021 “Long Island Laugh Off.” Present day, Tom can be seen performing regularly all throughout New York City and Long Island. Tom graduated from Sacred Heart University with a Bachelors Degree in Finance. He hopes that he never has to use it since he retained zero of the knowledge he learned, and is shocked he even has a degree in the field. Follow Tom @tommcguirecomedy on all social media platforms."
+    "bio_stand": "Starting his comedy career in 2019 after a failed attempt at being a college basketball player, Tom had a short stint in stand up before the Covid-19 Pandemic shut the world down. Returning back to the stage in May of 2021, Tom has made a name for himself as a rising stand up comedian, and was the winner of the 2021 “Long Island Laugh Off.” Present day, Tom can be seen performing regularly all throughout New York City and Long Island. Tom graduated from Sacred Heart University with a Bachelors Degree in Finance. He hopes that he never has to use it since he retained zero of the knowledge he learned, and is shocked he even has a degree in the field. Follow Tom @tommcguirecomedy on all social media platforms.",
+    "bio": "Tom McGuire is a stand-up comedian based in New York City. He performs regularly at The Stand and other NYC clubs."
   },
   {
     "name": "Amos Gil",
@@ -6583,7 +6738,8 @@
   {
     "name": "Anthony DeVito",
     "venues": [],
-    "bio_stand": "Originally from New Jersey, Anthony DeVito is a NYC based comedian. He's appeared on CBS The Late Show with Stephen Colbert, Comedy Central Stand Up Presents: Anthony DeVito, Comedy Central's Adam Devine's House Party, was one of the “New Faces” at the 2012 Montreal Just for Laughs Festival, has been on \"This American Life,\" AXS TV’s Gotham Comedy Live, and was the 2015 winner of Caroline's March Madness. Also, his debut album \"Dream Occupation\" is available from Comedy Central Records. In addition to stand-up, he's a writer on Netflix's The Break with Michelle Wolf, wrote for the 2018 White House Correspondents Dinner, and was a writer/regular panelist on MSG's People Talking Sports and Other Stuff. He's also has appeared on TV Land's The Jim Gaffigan Show, and is a favorite on Sirius XM's Bennington."
+    "bio_stand": "Originally from New Jersey, Anthony DeVito is a NYC based comedian. He's appeared on CBS The Late Show with Stephen Colbert, Comedy Central Stand Up Presents: Anthony DeVito, Comedy Central's Adam Devine's House Party, was one of the “New Faces” at the 2012 Montreal Just for Laughs Festival, has been on \"This American Life,\" AXS TV’s Gotham Comedy Live, and was the 2015 winner of Caroline's March Madness. Also, his debut album \"Dream Occupation\" is available from Comedy Central Records. In addition to stand-up, he's a writer on Netflix's The Break with Michelle Wolf, wrote for the 2018 White House Correspondents Dinner, and was a writer/regular panelist on MSG's People Talking Sports and Other Stuff. He's also has appeared on TV Land's The Jim Gaffigan Show, and is a favorite on Sirius XM's Bennington.",
+    "bio": "Anthony Devito is a stand-up comedian based in New York City. He's appeared on The Late Show, The Tonight Show, and is a regular at the Comedy Cellar. Known for his sharp, well-crafted jokes."
   },
   {
     "name": "Chris Turner",
@@ -7046,7 +7202,8 @@
     "name": "Chelsea Handler",
     "venues": [],
     "bio_wiki": "Chelsea Joy Handler is an American stand-up comedian, actress, writer, television host, and producer. She hosted the late-night talk show Chelsea Lately on the E! network from 2007 to 2014 and released a documentary series, Chelsea Does, on Netflix in January 2016. From 2016 to 2017, Handler hosted ",
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Sec._John_King_and_Chelsea_Handler_%28cropped%29.jpg/330px-Sec._John_King_and_Chelsea_Handler_%28cropped%29.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Sec._John_King_and_Chelsea_Handler_%28cropped%29.jpg/330px-Sec._John_King_and_Chelsea_Handler_%28cropped%29.jpg",
+    "bio": "Chelsea Handler is a stand-up comedian, actress, writer, and TV host. She hosted Chelsea Lately on E! for seven years and has multiple Netflix specials. She's a bestselling author and one of the most successful female comedians."
   },
   {
     "name": "Ontonio Kareem",
