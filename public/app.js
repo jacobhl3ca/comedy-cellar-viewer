@@ -1054,7 +1054,19 @@ function renderTabs() {
     return;
   }
 
-  dates.forEach(d => {
+  // For All Venues, build the date strip from the union of every venue's dates so
+  // future Stand / Big Shows / NYCC / Gotham dates aren't hidden behind the 7-day Cellar window.
+  let renderDates = dates;
+  if (activeSource === 'all') {
+    const union = new Set(dates.map(formatDateParam));
+    standShows.forEach(s => s.date && union.add(s.date));
+    nyccShows.forEach(s => s.date && union.add(s.date));
+    if (typeof gothamShows !== 'undefined') gothamShows.forEach(s => s.date && union.add(s.date));
+    bigShows.forEach(e => e.date && union.add(e.date));
+    renderDates = [...union].sort().map(s => new Date(s + 'T12:00:00'));
+  }
+
+  renderDates.forEach(d => {
     const dateStr = formatDateParam(d);
     const tab = document.createElement('button');
     const shows = allData[dateStr];
@@ -1085,8 +1097,8 @@ function renderTabs() {
     nav.appendChild(tab);
   });
 
-  // "More days" tab — loads days 8-14 on demand
-  if (!moreDaysLoaded) {
+  // "More days" tab — loads Cellar days 8-14 on demand. (All Venues already shows every union date.)
+  if (!moreDaysLoaded && activeSource !== 'all') {
     const moreTab = document.createElement('button');
     moreTab.className = 'day-tab more-days-tab';
     moreTab.innerHTML = `<span class="tab-day">More</span><span class="tab-date">days →</span>`;
@@ -1242,13 +1254,22 @@ function renderCalendar() {
 
   picker.innerHTML = html;
 
-  // Click handlers for day cells
+  // Click handlers for day cells.
+  // Plain click = single-select + auto-apply + close. Cmd/Shift-click = additive multi-select (use Show selected).
   picker.querySelectorAll('.cal-day:not(.disabled)').forEach(cell => {
-    cell.addEventListener('click', () => {
+    cell.addEventListener('click', (e) => {
       const d = cell.dataset.date;
-      if (calendarSelectedDates.has(d)) calendarSelectedDates.delete(d);
-      else calendarSelectedDates.add(d);
-      cell.classList.toggle('selected');
+      const additive = e.metaKey || e.ctrlKey || e.shiftKey;
+      if (additive) {
+        if (calendarSelectedDates.has(d)) calendarSelectedDates.delete(d);
+        else calendarSelectedDates.add(d);
+        cell.classList.toggle('selected');
+        return;
+      }
+      // Single-tap → replace selection with this date and apply immediately.
+      calendarSelectedDates.clear();
+      calendarSelectedDates.add(d);
+      calendarApply();
     });
   });
 }

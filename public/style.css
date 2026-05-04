@@ -846,6 +846,15 @@ html.ios-mobile .header-share-btn { right: 0; }
   background: var(--bg);
 }
 .schedule-day-header:first-child { margin-top: 0; }
+/* Bleed bg below sticky day header so cards don't show through the 12px schedule-view row gap when pinned. */
+.schedule-day-header::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 100%;
+  height: 14px;
+  background: var(--bg);
+  pointer-events: none;
+}
 .schedule-card { margin-bottom: 12px; }
 
 /* Venue source tabs */
@@ -1052,7 +1061,7 @@ html.ios-mobile .header-share-btn { right: 0; }
   color: #fff;
   padding: 8px 16px;
   border-radius: 8px;
-  margin: 0 0 8px;
+  margin: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1061,7 +1070,16 @@ html.ios-mobile .header-share-btn { right: 0; }
   top: 0;
   z-index: 20;
 }
-/* When filter banner exists, push day headers below it */
+/* Bleed bg below the banner so the schedule scroll area doesn't peek through the gap to the next sticky. */
+.comedian-filter-banner::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 100%;
+  height: 12px;
+  background: var(--bg);
+  pointer-events: none;
+}
+/* When filter banner exists, push day headers below it (banner ~44px tall + 12px bleed). */
 .comedian-filter-banner ~ .schedule-view .schedule-day-header,
 .comedian-filter-banner + .schedule-view .schedule-day-header {
   top: 44px;
@@ -1180,7 +1198,9 @@ body.dir-mode .toolbar { display: none !important; }
 .exp-btn .ico { margin-right: 2px; }
 .dir-btn .ico { width: 16px; height: 16px; vertical-align: middle; }
 .fav-count .ico { width: 12px; height: 12px; vertical-align: -1px; }
-.fav-count .ico[fill="currentColor"], .star .ico { color: var(--accent); }
+.fav-count .ico[fill="currentColor"], .star .ico { color: var(--gold); }
+.dir-btn.is-fav .ico { color: var(--gold); }
+.exp-btn.is-fav .ico { color: var(--gold); }
 .star .ico { width: 13px; height: 13px; vertical-align: -2px; }
 .comedian-filter-banner button .ico { width: 12px; height: 12px; }
 .data-warning .ico { width: 14px; height: 14px; }

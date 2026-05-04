@@ -508,22 +508,21 @@ async function scrapeTicketmaster() {
       const dt = startTime ? new Date(`${startDate}T${startTime}`) : null;
       const venue = evt._embedded?.venues?.[0];
 
+      // Prefer non-/dam/c/ (artist/event-specific) images; fall back to /dam/c/ when nothing else exists.
+      const pickBest = (imgs) => {
+        const nonGeneric = imgs.filter(i => i.url && !/ticketm\.net\/dam\/c\//.test(i.url));
+        const pool = nonGeneric.length ? nonGeneric : imgs.filter(i => i.url);
+        return pool.filter(i => i.ratio === '16_9').sort((x, y) => (y.width || 0) - (x.width || 0))[0]
+          || pool.sort((x, y) => (y.width || 0) - (x.width || 0))[0];
+      };
       const performerImages = {};
       (evt._embedded?.attractions || []).forEach(a => {
-        const imgs = (a.images || []).filter(i => {
-          // Filter out Ticketmaster generic category images (/dam/c/ = category, /dam/a/ = artist)
-          if (i.url && /ticketm\.net\/dam\/c\//.test(i.url)) return false;
-          return true;
-        });
-        const best = imgs.filter(i => i.ratio === '16_9').sort((x, y) => (y.width || 0) - (x.width || 0))[0]
-          || imgs.sort((x, y) => (y.width || 0) - (x.width || 0))[0];
+        const best = pickBest(a.images || []);
         if (best?.url) performerImages[a.name] = best.url;
       });
 
-      // Event-level image (promotional poster/photo — /dam/e/ or /dam/a/, not /dam/c/)
-      const evtImgs = (evt.images || []).filter(i => i.url && !/ticketm\.net\/dam\/c\//.test(i.url));
-      const bestEvtImg = evtImgs.filter(i => i.ratio === '16_9').sort((x, y) => (y.width || 0) - (x.width || 0))[0]
-        || evtImgs.sort((x, y) => (y.width || 0) - (x.width || 0))[0];
+      // Event-level image (promotional poster/photo).
+      const bestEvtImg = pickBest(evt.images || []);
       const eventImage = bestEvtImg?.url || '';
 
       // Ticketmaster status: "onsale", "offsale", "cancelled", "rescheduled", "postponed"
