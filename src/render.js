@@ -186,20 +186,24 @@ function renderCalendar() {
   const dow = startOfWeek.getDay();
   startOfWeek.setDate(startOfWeek.getDate() - ((dow + 6) % 7)); // Monday
 
-  // End on Sunday of the week containing maxDate
-  const endOfWeek = new Date(maxDate);
+  // End on Sunday of the week containing the LAST DAY of maxDate's month — never spill
+  // into a month with no events.
+  const endOfMonth = new Date(maxDate.getFullYear(), maxDate.getMonth() + 1, 0);
+  const endOfWeek = new Date(endOfMonth);
   const edow = endOfWeek.getDay();
   if (edow !== 0) endOfWeek.setDate(endOfWeek.getDate() + (7 - edow));
 
   let html = '<div class="calendar-grid">';
 
   let lastMonth = -1;
+  let lastYear = -1;
   const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
   // Add initial month + day headers
   const cursor = new Date(startOfWeek);
   lastMonth = cursor.getMonth();
-  html += `<div class="cal-month-label">${monthNames[lastMonth]}</div>`;
+  lastYear = cursor.getFullYear();
+  html += `<div class="cal-month-label">${monthNames[lastMonth]} ${lastYear}</div>`;
   ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(d => {
     html += `<div class="cal-header">${d}</div>`;
   });
@@ -221,7 +225,8 @@ function renderCalendar() {
     // Month separator row when month changes (at start of a week / Monday)
     if (cursor.getMonth() !== lastMonth && cursor.getDay() === 1) {
       lastMonth = cursor.getMonth();
-      html += `<div class="cal-month-label">${monthNames[lastMonth]}</div>`;
+      lastYear = cursor.getFullYear();
+      html += `<div class="cal-month-label">${monthNames[lastMonth]} ${lastYear}</div>`;
     }
     const dateStr = cursor.toISOString().split('T')[0];
     const isToday = cursor.getTime() === today.getTime();

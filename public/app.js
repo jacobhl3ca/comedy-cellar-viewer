@@ -431,8 +431,8 @@ const ICON = {
   bell: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>',
   bellOff: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.73 21a2 2 0 0 1-3.46 0"/><path d="M18.63 13A17.89 17.89 0 0 1 18 8"/><path d="M6.26 6.26A5.86 5.86 0 0 0 6 8c0 7-3 9-3 9h14"/><path d="M18 8a6 6 0 0 0-9.33-5"/><line x1="1" y1="1" x2="23" y2="23"/></svg>',
   search: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
-  starFilled: '<svg class="ico" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
-  starOutline: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+  starFilled: '<svg class="ico ico-star" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+  starOutline: '<svg class="ico ico-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
   x: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
   minus: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/></svg>',
   thumbsUp: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3z"/><line x1="7" y1="22" x2="7" y2="11"/></svg>',
@@ -1196,20 +1196,24 @@ function renderCalendar() {
   const dow = startOfWeek.getDay();
   startOfWeek.setDate(startOfWeek.getDate() - ((dow + 6) % 7)); // Monday
 
-  // End on Sunday of the week containing maxDate
-  const endOfWeek = new Date(maxDate);
+  // End on Sunday of the week containing the LAST DAY of maxDate's month — never spill
+  // into a month with no events.
+  const endOfMonth = new Date(maxDate.getFullYear(), maxDate.getMonth() + 1, 0);
+  const endOfWeek = new Date(endOfMonth);
   const edow = endOfWeek.getDay();
   if (edow !== 0) endOfWeek.setDate(endOfWeek.getDate() + (7 - edow));
 
   let html = '<div class="calendar-grid">';
 
   let lastMonth = -1;
+  let lastYear = -1;
   const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
   // Add initial month + day headers
   const cursor = new Date(startOfWeek);
   lastMonth = cursor.getMonth();
-  html += `<div class="cal-month-label">${monthNames[lastMonth]}</div>`;
+  lastYear = cursor.getFullYear();
+  html += `<div class="cal-month-label">${monthNames[lastMonth]} ${lastYear}</div>`;
   ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(d => {
     html += `<div class="cal-header">${d}</div>`;
   });
@@ -1231,7 +1235,8 @@ function renderCalendar() {
     // Month separator row when month changes (at start of a week / Monday)
     if (cursor.getMonth() !== lastMonth && cursor.getDay() === 1) {
       lastMonth = cursor.getMonth();
-      html += `<div class="cal-month-label">${monthNames[lastMonth]}</div>`;
+      lastYear = cursor.getFullYear();
+      html += `<div class="cal-month-label">${monthNames[lastMonth]} ${lastYear}</div>`;
     }
     const dateStr = cursor.toISOString().split('T')[0];
     const isToday = cursor.getTime() === today.getTime();
