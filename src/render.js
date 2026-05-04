@@ -1654,13 +1654,13 @@ function handleComedianClick(el) {
       })() : ''}
       ${venues ? `<div style="font-size:11px;color:var(--text-dim);margin-top:4px;">Also at: ${venues}</div>` : ''}
       <div class="exp-actions">
-        <button class="exp-btn ${isFavd ? 'is-fav' : ''}" onclick="setPref('${esc}','fav')">
+        <button class="exp-btn ${isFavd ? 'is-fav' : ''}" onclick="setPref('${esc}','${isFavd ? 'neutral' : 'fav'}')">
           ${isFavd ? `${ICON.starFilled} Favorited` : `${ICON.starOutline} Favorite`}
         </button>
         <button class="exp-btn ${isNeutral ? 'is-neutral' : ''}" onclick="setPref('${esc}','neutral')">
           ${isNeutral ? '● Neutral' : '○ Neutral'}
         </button>
-        <button class="exp-btn ${isSkipd ? 'is-skip' : ''}" onclick="setPref('${esc}','skip')">
+        <button class="exp-btn ${isSkipd ? 'is-skip' : ''}" onclick="setPref('${esc}','${isSkipd ? 'neutral' : 'skip'}')">
           ${isSkipd ? `${ICON.x} Skipped` : `${ICON.minus} Skip`}
         </button>
         <button class="exp-btn ${alerted ? 'is-alert' : ''}" onclick="toggleAlertBtn('${esc}', this)">
