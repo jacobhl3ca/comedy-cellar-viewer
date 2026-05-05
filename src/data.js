@@ -62,7 +62,7 @@ let availabilityData = {};
 function getDateRange() {
   const dates = [];
   const now = new Date();
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < 30; i++) {
     const d = new Date(now);
     d.setDate(now.getDate() + i);
     dates.push(d);

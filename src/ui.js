@@ -238,11 +238,23 @@ async function init() {
   dates = getDateRange();
   activeDate = 'all';
 
-  // Fetch all sources in parallel — prebaked static JSON first, live API fallback
+  // Fetch all sources in parallel — prebaked static JSON first, live API fallback for any gap.
   const [batchData] = await Promise.all([
     fetchWithTimeout(STATIC_CELLAR, {}, 5000).then(r => r.json())
       .catch(() => fetchWithTimeout(`${API_BATCH_URL}?days=${dates.length}`, {}, 15000).then(r => r.json()))
-      .catch(() => null),
+      .catch(() => null)
+      .then(async (d) => {
+        // If static cache covers fewer dates than `dates`, fetch the rest from the live API and merge.
+        if (!d || !d.results) return d;
+        const haveDates = new Set(Object.keys(d.results));
+        const missing = dates.map(formatDateParam).filter(s => !haveDates.has(s));
+        if (missing.length === 0) return d;
+        try {
+          const live = await fetchWithTimeout(`${API_BATCH_URL}?days=${dates.length}`, {}, 15000).then(r => r.json());
+          if (live?.results) Object.assign(d.results, live.results);
+        } catch {}
+        return d;
+      }),
     fetchTheStand(),
     fetchBigShows(),
     fetchNYCC(),

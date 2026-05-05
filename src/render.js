@@ -91,7 +91,7 @@
     nav.appendChild(tab);
   });
 
-  // "More days" tab — loads Cellar days 8-14 on demand. (All Venues already shows every union date.)
+  // "More days" tab — loads Cellar days 31-60 on demand if user wants to look further.
   if (!moreDaysLoaded && activeSource !== 'all') {
     const moreTab = document.createElement('button');
     moreTab.className = 'day-tab more-days-tab';
@@ -108,13 +108,13 @@ let moreDaysLoaded = false;
 async function loadMoreDays() {
   const now = new Date();
   const extraDates = [];
-  for (let i = 7; i < 14; i++) {
+  for (let i = 30; i < 60; i++) {
     const d = new Date(now);
     d.setDate(now.getDate() + i);
     extraDates.push(d);
   }
   try {
-    const resp = await fetchWithTimeout(`${API_BATCH_URL}?days=14&skip=7`, {}, 15000);
+    const resp = await fetchWithTimeout(`${API_BATCH_URL}?days=60&skip=30`, {}, 15000);
     const batchData = await resp.json();
     extraDates.forEach(d => {
       const dateStr = formatDateParam(d);
@@ -296,7 +296,7 @@ async function calendarApply() {
     // Fetch missing days via batch
     try {
       const resp = await fetchWithTimeout(
-        `${API_BATCH_URL}?days=14`, {}, 15000
+        `${API_BATCH_URL}?days=60`, {}, 15000
       );
       const batchData = await resp.json();
       for (const dateStr of needed) {

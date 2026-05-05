@@ -13,8 +13,8 @@ module.exports = async (req, res) => {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'GET') return res.status(405).json({ error: 'GET only' });
 
-  const days = Math.min(Math.max(parseInt(req.query.days) || 7, 1), 14);
-  const skip = Math.min(Math.max(parseInt(req.query.skip) || 0, 0), 13);
+  const days = Math.min(Math.max(parseInt(req.query.days) || 7, 1), 60);
+  const skip = Math.min(Math.max(parseInt(req.query.skip) || 0, 0), 59);
 
   // Generate date strings
   const dates = [];

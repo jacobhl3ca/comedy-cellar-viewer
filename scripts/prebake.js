@@ -157,7 +157,7 @@ function nameToFilename(name) {
     .replace(/^_|_$/g, '');
 }
 
-// ---- Step 1: Scrape Comedy Cellar (next 7 days) ----
+// ---- Step 1: Scrape Comedy Cellar (next 30 days — covers per-night specials announced ~3 weeks out) ----
 // Returns { comedians: Map, batchResults: object } — batchResults saved as static JSON
 async function scrapeCellar() {
   log('Scraping Comedy Cellar lineups...');
@@ -165,7 +165,7 @@ async function scrapeCellar() {
   const batchResults = {}; // dateStr -> raw API response (saved as static JSON)
 
   const dates = [];
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < 30; i++) {
     const d = new Date();
     d.setDate(d.getDate() + i);
     dates.push(d.toISOString().split('T')[0]);

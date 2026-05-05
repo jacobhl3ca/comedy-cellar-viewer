@@ -489,7 +489,7 @@ let availabilityData = {};
 function getDateRange() {
   const dates = [];
   const now = new Date();
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < 30; i++) {
     const d = new Date(now);
     d.setDate(now.getDate() + i);
     dates.push(d);
@@ -1101,7 +1101,7 @@ function renderTabs() {
     nav.appendChild(tab);
   });
 
-  // "More days" tab — loads Cellar days 8-14 on demand. (All Venues already shows every union date.)
+  // "More days" tab — loads Cellar days 31-60 on demand if user wants to look further.
   if (!moreDaysLoaded && activeSource !== 'all') {
     const moreTab = document.createElement('button');
     moreTab.className = 'day-tab more-days-tab';
@@ -1118,13 +1118,13 @@ let moreDaysLoaded = false;
 async function loadMoreDays() {
   const now = new Date();
   const extraDates = [];
-  for (let i = 7; i < 14; i++) {
+  for (let i = 30; i < 60; i++) {
     const d = new Date(now);
     d.setDate(now.getDate() + i);
     extraDates.push(d);
   }
   try {
-    const resp = await fetchWithTimeout(`${API_BATCH_URL}?days=14&skip=7`, {}, 15000);
+    const resp = await fetchWithTimeout(`${API_BATCH_URL}?days=60&skip=30`, {}, 15000);
     const batchData = await resp.json();
     extraDates.forEach(d => {
       const dateStr = formatDateParam(d);
@@ -1306,7 +1306,7 @@ async function calendarApply() {
     // Fetch missing days via batch
     try {
       const resp = await fetchWithTimeout(
-        `${API_BATCH_URL}?days=14`, {}, 15000
+        `${API_BATCH_URL}?days=60`, {}, 15000
       );
       const batchData = await resp.json();
       for (const dateStr of needed) {
@@ -3301,11 +3301,23 @@ async function init() {
   dates = getDateRange();
   activeDate = 'all';
 
-  // Fetch all sources in parallel — prebaked static JSON first, live API fallback
+  // Fetch all sources in parallel — prebaked static JSON first, live API fallback for any gap.
   const [batchData] = await Promise.all([
     fetchWithTimeout(STATIC_CELLAR, {}, 5000).then(r => r.json())
       .catch(() => fetchWithTimeout(`${API_BATCH_URL}?days=${dates.length}`, {}, 15000).then(r => r.json()))
-      .catch(() => null),
+      .catch(() => null)
+      .then(async (d) => {
+        // If static cache covers fewer dates than `dates`, fetch the rest from the live API and merge.
+        if (!d || !d.results) return d;
+        const haveDates = new Set(Object.keys(d.results));
+        const missing = dates.map(formatDateParam).filter(s => !haveDates.has(s));
+        if (missing.length === 0) return d;
+        try {
+          const live = await fetchWithTimeout(`${API_BATCH_URL}?days=${dates.length}`, {}, 15000).then(r => r.json());
+          if (live?.results) Object.assign(d.results, live.results);
+        } catch {}
+        return d;
+      }),
     fetchTheStand(),
     fetchBigShows(),
     fetchNYCC(),
