@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tonight-nyc-v8';
+const CACHE_NAME = 'tonight-nyc-v9';
 const STATIC_ASSETS = [
   '/',
   '/app.min.js',
@@ -8,8 +8,12 @@ const STATIC_ASSETS = [
 ];
 
 self.addEventListener('install', event => {
+  // Non-fatal pre-cache: any failed asset just gets skipped. addAll() rejects atomically — that's
+  // probably what wedged v8 if even one asset 404'd during install.
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(STATIC_ASSETS))
+    caches.open(CACHE_NAME).then(cache =>
+      Promise.all(STATIC_ASSETS.map(url => cache.add(url).catch(() => null)))
+    )
   );
   self.skipWaiting();
 });

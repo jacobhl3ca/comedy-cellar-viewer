@@ -66,7 +66,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=b2f2ab3">
+  <link rel="stylesheet" href="style.min.css?v=0d72850">
   <script>
     (function() {
       const root = document.documentElement;
@@ -267,11 +267,23 @@
     <p><a href="mailto:hello@tonightnyc.com">hello@tonightnyc.com</a></p>
   </footer>
 
-  <script defer src="app.min.js?v=b2f2ab3"></script>
+  <script defer src="app.min.js?v=0d72850"></script>
   <!-- Vercel Web Analytics — auto-injected when enabled in dashboard -->
   <script defer src="/_vercel/insights/script.js"></script>
   <!-- Vercel Speed Insights -->
   <script defer src="/_vercel/speed-insights/script.js"></script>
-  <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');</script>
+  <script>
+    // ?nosw query param OR existing broken SW recovery: unregister all SWs and clear caches.
+    if ('serviceWorker' in navigator) {
+      const params = new URLSearchParams(location.search);
+      if (params.has('nosw')) {
+        navigator.serviceWorker.getRegistrations().then(regs => Promise.all(regs.map(r => r.unregister())))
+          .then(() => caches.keys().then(keys => Promise.all(keys.map(k => caches.delete(k)))))
+          .then(() => { params.delete('nosw'); location.replace(location.pathname + (params.toString() ? '?' + params : '') + location.hash); });
+      } else {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      }
+    }
+  </script>
 </body>
 </html>
