@@ -46,13 +46,17 @@
 
   // For All Venues, build the date strip from the union of every venue's dates so
   // future Stand / Big Shows / NYCC / Gotham dates aren't hidden behind the 7-day Cellar window.
+  // Cap at 12 months out — drops TBD/placeholder events (some sources emit dates 5 years ahead).
   let renderDates = dates;
   if (activeSource === 'all') {
+    const cap = new Date(); cap.setFullYear(cap.getFullYear() + 1);
+    const capStr = cap.toISOString().split('T')[0];
+    const inRange = (d) => d && d <= capStr;
     const union = new Set(dates.map(formatDateParam));
-    standShows.forEach(s => s.date && union.add(s.date));
-    nyccShows.forEach(s => s.date && union.add(s.date));
-    if (typeof gothamShows !== 'undefined') gothamShows.forEach(s => s.date && union.add(s.date));
-    bigShows.forEach(e => e.date && union.add(e.date));
+    standShows.forEach(s => inRange(s.date) && union.add(s.date));
+    nyccShows.forEach(s => inRange(s.date) && union.add(s.date));
+    if (typeof gothamShows !== 'undefined') gothamShows.forEach(s => inRange(s.date) && union.add(s.date));
+    bigShows.forEach(e => inRange(e.date) && union.add(e.date));
     renderDates = [...union].sort().map(s => new Date(s + 'T12:00:00'));
   }
 
@@ -159,21 +163,26 @@ function renderCalendar() {
   const maxDate = new Date(today);
   maxDate.setDate(today.getDate() + 13); // 14 days default
 
-  // Extend calendar range for sources with events beyond 14 days
+  // Hard cap any source's "latest" date at 12 months from today — drops TBD/placeholder events
+  // (e.g. SeatGeek emits 2031-03-20 for ongoing shows with no real date yet).
+  const HARD_CAP = new Date(today); HARD_CAP.setFullYear(HARD_CAP.getFullYear() + 1);
+  const capStr = HARD_CAP.toISOString().split('T')[0];
+  const safeMax = (d) => d && d <= capStr ? d : '';
+
   if (activeSource === 'big-shows' && bigShows.length > 0) {
-    const latestBigShow = bigShows.reduce((max, e) => e.date > max ? e.date : max, '');
+    const latestBigShow = bigShows.reduce((max, e) => safeMax(e.date) > max ? safeMax(e.date) : max, '');
     if (latestBigShow) {
       const latestDate = new Date(latestBigShow + 'T12:00:00');
       if (latestDate > maxDate) maxDate.setTime(latestDate.getTime());
     }
   } else if (activeSource === 'the-stand' && standShows.length > 0) {
-    const latestStand = standShows.reduce((max, s) => s.date > max ? s.date : max, '');
+    const latestStand = standShows.reduce((max, s) => safeMax(s.date) > max ? safeMax(s.date) : max, '');
     if (latestStand) {
       const latestDate = new Date(latestStand + 'T12:00:00');
       if (latestDate > maxDate) maxDate.setTime(latestDate.getTime());
     }
   } else if (activeSource === 'all') {
-    const allDates = [...bigShows.map(e => e.date), ...standShows.map(s => s.date)];
+    const allDates = [...bigShows.map(e => safeMax(e.date)), ...standShows.map(s => safeMax(s.date))];
     const latest = allDates.reduce((max, d) => d > max ? d : max, '');
     if (latest) {
       const latestDate = new Date(latest + 'T12:00:00');

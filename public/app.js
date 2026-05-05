@@ -431,8 +431,8 @@ const ICON = {
   bell: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>',
   bellOff: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.73 21a2 2 0 0 1-3.46 0"/><path d="M18.63 13A17.89 17.89 0 0 1 18 8"/><path d="M6.26 6.26A5.86 5.86 0 0 0 6 8c0 7-3 9-3 9h14"/><path d="M18 8a6 6 0 0 0-9.33-5"/><line x1="1" y1="1" x2="23" y2="23"/></svg>',
   search: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
-  starFilled: '<svg class="ico ico-star" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
-  starOutline: '<svg class="ico ico-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+  starFilled: '<svg class="ico ico-star" viewBox="0 0 24 24" fill="#FCC419" stroke="#FCC419" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+  starOutline: '<svg class="ico ico-star" viewBox="0 0 24 24" fill="none" stroke="#FCC419" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
   x: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
   minus: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/></svg>',
   thumbsUp: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3z"/><line x1="7" y1="22" x2="7" y2="11"/></svg>',
@@ -1056,13 +1056,17 @@ function renderTabs() {
 
   // For All Venues, build the date strip from the union of every venue's dates so
   // future Stand / Big Shows / NYCC / Gotham dates aren't hidden behind the 7-day Cellar window.
+  // Cap at 12 months out — drops TBD/placeholder events (some sources emit dates 5 years ahead).
   let renderDates = dates;
   if (activeSource === 'all') {
+    const cap = new Date(); cap.setFullYear(cap.getFullYear() + 1);
+    const capStr = cap.toISOString().split('T')[0];
+    const inRange = (d) => d && d <= capStr;
     const union = new Set(dates.map(formatDateParam));
-    standShows.forEach(s => s.date && union.add(s.date));
-    nyccShows.forEach(s => s.date && union.add(s.date));
-    if (typeof gothamShows !== 'undefined') gothamShows.forEach(s => s.date && union.add(s.date));
-    bigShows.forEach(e => e.date && union.add(e.date));
+    standShows.forEach(s => inRange(s.date) && union.add(s.date));
+    nyccShows.forEach(s => inRange(s.date) && union.add(s.date));
+    if (typeof gothamShows !== 'undefined') gothamShows.forEach(s => inRange(s.date) && union.add(s.date));
+    bigShows.forEach(e => inRange(e.date) && union.add(e.date));
     renderDates = [...union].sort().map(s => new Date(s + 'T12:00:00'));
   }
 
@@ -1169,21 +1173,26 @@ function renderCalendar() {
   const maxDate = new Date(today);
   maxDate.setDate(today.getDate() + 13); // 14 days default
 
-  // Extend calendar range for sources with events beyond 14 days
+  // Hard cap any source's "latest" date at 12 months from today — drops TBD/placeholder events
+  // (e.g. SeatGeek emits 2031-03-20 for ongoing shows with no real date yet).
+  const HARD_CAP = new Date(today); HARD_CAP.setFullYear(HARD_CAP.getFullYear() + 1);
+  const capStr = HARD_CAP.toISOString().split('T')[0];
+  const safeMax = (d) => d && d <= capStr ? d : '';
+
   if (activeSource === 'big-shows' && bigShows.length > 0) {
-    const latestBigShow = bigShows.reduce((max, e) => e.date > max ? e.date : max, '');
+    const latestBigShow = bigShows.reduce((max, e) => safeMax(e.date) > max ? safeMax(e.date) : max, '');
     if (latestBigShow) {
       const latestDate = new Date(latestBigShow + 'T12:00:00');
       if (latestDate > maxDate) maxDate.setTime(latestDate.getTime());
     }
   } else if (activeSource === 'the-stand' && standShows.length > 0) {
-    const latestStand = standShows.reduce((max, s) => s.date > max ? s.date : max, '');
+    const latestStand = standShows.reduce((max, s) => safeMax(s.date) > max ? safeMax(s.date) : max, '');
     if (latestStand) {
       const latestDate = new Date(latestStand + 'T12:00:00');
       if (latestDate > maxDate) maxDate.setTime(latestDate.getTime());
     }
   } else if (activeSource === 'all') {
-    const allDates = [...bigShows.map(e => e.date), ...standShows.map(s => s.date)];
+    const allDates = [...bigShows.map(e => safeMax(e.date)), ...standShows.map(s => safeMax(s.date))];
     const latest = allDates.reduce((max, d) => d > max ? d : max, '');
     if (latest) {
       const latestDate = new Date(latest + 'T12:00:00');

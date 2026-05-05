@@ -637,14 +637,18 @@ function mergeEvents(seatgeekEvents, ticketmasterEvents) {
       added++;
     }
   });
-  // Filter out non-comedy acts
+  // Filter out non-comedy acts AND placeholder dates beyond 12 months (SeatGeek emits 5-yr-out dates for TBD shows).
+  const cap12mo = new Date(); cap12mo.setFullYear(cap12mo.getFullYear() + 1);
+  const cap12moStr = cap12mo.toISOString().split('T')[0];
   const filtered = merged.filter(evt => {
     const title = (evt.title || '').toLowerCase();
     const performers = (evt.performers || '').toLowerCase();
-    return !BIG_SHOWS_BLOCKLIST.some(b => title.includes(b) || performers.includes(b));
+    if (BIG_SHOWS_BLOCKLIST.some(b => title.includes(b) || performers.includes(b))) return false;
+    if (evt.date && evt.date > cap12moStr) return false;
+    return true;
   });
   const blockedCount = merged.length - filtered.length;
-  log(`Merge: ${seatgeekEvents.length} SeatGeek + ${ticketmasterEvents.length} Ticketmaster → ${linked} linked (multi-source), ${added} unique TM added → ${filtered.length} total${blockedCount ? ` (${blockedCount} blocked)` : ''}`);
+  log(`Merge: ${seatgeekEvents.length} SeatGeek + ${ticketmasterEvents.length} Ticketmaster → ${linked} linked (multi-source), ${added} unique TM added → ${filtered.length} total${blockedCount ? ` (${blockedCount} dropped: blocklist or >12mo out)` : ''}`);
   return filtered;
 }
 
