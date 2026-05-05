@@ -1156,13 +1156,14 @@ body.dir-mode .toolbar { display: none !important; }
   display: flex; flex-direction: column; gap: 8px;
   border-bottom: 1px solid var(--border); margin: 0;
 }
-/* Paint a 10px bg strip directly below the sticky controls. The section-header pins 10px lower
-   (see top: calc(... + 10px) below) so this strip fills the would-be gap; nothing ever overlaps. */
+/* Generous bg bleed strip below the sticky controls — covers any sub-pixel gap or
+   rendering quirk before the section-header pins. Section-header has higher z-index
+   so its text is never hidden by this strip even when they overlap. */
 .dir-controls::after {
   content: '';
   position: absolute;
   left: 0; right: 0; top: 100%;
-  height: 10px;
+  height: 80px;
   background: var(--bg);
   pointer-events: none;
 }
@@ -1249,9 +1250,9 @@ body.dir-mode .toolbar { display: none !important; }
 .dir-section-header {
   grid-column: 1 / -1;
   position: sticky;
-  /* Pin 10px below the controls' bottom; the controls::after strip fills that 10px so no scroll content ever shows through. */
-  top: calc(var(--dir-ctrl-h, 0px) + 10px);
-  z-index: 4;
+  /* Pin flush against the controls; the controls::after strip below covers any sub-pixel gap. */
+  top: var(--dir-ctrl-h, 0px);
+  z-index: 6; /* above dir-controls (z-index 5) + its ::after, so text is never hidden by the bleed. */
   background: var(--bg);
   font-size: 12px; font-weight: 700;
   letter-spacing: 0.08em; text-transform: uppercase;
