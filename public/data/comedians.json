@@ -1767,7 +1767,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/sam-morril",
     "bio_stand": "Sam Morril, one of the fastest-rising stand-up comics in New York City, is also one of the best joke writers in the scene today. How do you know that’s true? Because he is writing this bio, and he wouldn’t lie about that to get extra work. In 2011, Sam won The Laughing Skull Comedy Festival in Atlanta and was named one of Comedy Central’s “Comics to Watch.” More recently, Sam has been seen on Comedy Central’s Adam Devine’s House Party, the Late Show with Stephen Colbert, and “Conan” on TBS for multiple appearances. He’s also been on Last Comic Standing, America’s Got Talent, @Midnight, and Inside Amy Schumer. Sam recorded his debut album on Comedy Central records, which went to #1 on iTunes and made numerous top 10 lists. He also released his very own half-hour Comedy Central special. Sam is currently hosting his very own show on MSG called “People Talking Sports” Monday-Thursday at 11PM, and each episode is uploaded to YouTube because I know you’re all too cheap to pay for cable. Sam also just finished taping his first hour special on Comedy Central — it’ll be premiered this year in 2018, so be on the lookout! You can see Sam regularly at The Comedy Cellar in New York City, and some other clubs. He even pops into those pretentious indy hipster shows, and is regularly on the road hitting new cities. Now is your chance to see Sam. Do it soon before you catch swine flu or something. It’s out there!",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/59-og.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/59-og.jpg",
+    "tagline_cellar": "FROM NETFLIXS SPECIAL, TWO COMEDY CENTRAL SPECIALS"
   },
   {
     "name": "Joe List",
@@ -7537,7 +7538,9 @@
   },
   {
     "name": "Youngmi Mayer",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Youngmi Mayer is a Korean American author, stand-up comedian, activist, podcast host, and social media influencer. She is the author of I'm Laughing Because I'm Crying and co-host and host of Feeling Asian and Hairy Butthole, podcasts that highlight the Asian American experience.",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Youngmi_Mayer_at_the_National_Book_Awards_2025_02_%28cropped%29.jpg/330px-Youngmi_Mayer_at_the_National_Book_Awards_2025_02_%28cropped%29.jpg"
   },
   {
     "name": "Billy Hockman",
@@ -7558,5 +7561,59 @@
   {
     "name": "Luke Binkow",
     "venues": []
+  },
+  {
+    "name": "Come To Papa",
+    "venues": [],
+    "bio": "A live recording of Tom Papa's award winning radio show:  Come To Papa.  An old-style radio production, with skits, standup comedy, live sound effects, live music, and more.",
+    "tagline_cellar": "A live recording of Tom Papa's award winning radio show:  Come To Papa.  An old-style radio production, with skits, standup comedy, live sound effects, live music, and more."
+  },
+  {
+    "name": "Tom Papa",
+    "venues": [],
+    "bio": "STAR OF \"BAKED\", HBO, LATE SHOW WITH COLBERT, CONAN, SPECIALS ON NETFLIX, EPIX AND HOST OF COME TO PAPA PODCAST",
+    "tagline_cellar": "STAR OF \"BAKED\", HBO, LATE SHOW WITH COLBERT, CONAN, SPECIALS ON NETFLIX, EPIX AND HOST OF COME TO PAPA PODCAST"
+  },
+  {
+    "name": "Rick Crom",
+    "venues": [],
+    "bio": "FROM \"MRS MAISEL\", FROM HBOs \"DIVORCE\", INSIDE AMY SCHUMER, THE MOVIE \"THE POST\"",
+    "tagline_cellar": "FROM \"MRS MAISEL\", FROM HBOs \"DIVORCE\", INSIDE AMY SCHUMER, THE MOVIE \"THE POST\""
+  },
+  {
+    "name": "Clare Malone",
+    "venues": [],
+    "bio": "staff writer at The New Yorker covering the media business, journalism, and politics. She previously wrote for FiveThirtyEight, where she reported on class, race, and electoral politics, and covered the 2016 and 2020 Presidential campaigns. Her writing has also appeared in New York, The Atlantic, GQ, The Columbia Journalism Review, and Harper’s.",
+    "tagline_cellar": "staff writer at The New Yorker covering the media business, journalism, and politics. She previously wrote for FiveThirtyEight, where she reported on class, race, and electoral politics, and covered the 2016 and 2020 Presidential campaigns. Her writing has also appeared in New York, The Atlantic, GQ, The Columbia Journalism Review, and Harper’s."
+  },
+  {
+    "name": "Galen Druke",
+    "venues": [],
+    "bio": "founder and host of the GD POLITICS podcast. He previously hosted and produced the FiveThirtyEight Politics podcast, where he covered American elections for nearly a decade. His reporting and analysis have also regularly appeared on ABC News and the BBC. He began his career working for NPR affiliates in Wisconsin, New York City and Baltimore, where he attended The Johns Hopkins University. He is an executive member of the International Academy of Digital Arts and Sciences and lives in New York City.",
+    "tagline_cellar": "founder and host of the GD POLITICS podcast. He previously hosted and produced the FiveThirtyEight Politics podcast, where he covered American elections for nearly a decade. His reporting and analysis have also regularly appeared on ABC News and the BBC. He began his career working for NPR affiliates in Wisconsin, New York City and Baltimore, where he attended The Johns Hopkins University. He is an executive member of the International Academy of Digital Arts and Sciences and lives in New York City."
+  },
+  {
+    "name": "Nate Silver",
+    "venues": [],
+    "bio": "American statistician, political analyst, author, sports gambler, and poker player who analyzes baseball, basketball and elections. He is the founder of FiveThirtyEight and held the position of editor-in-chief there, along with being a special correspondent for ABC News until May 2023. Since departing FiveThirtyEight, Silver has been publishing in his online newsletter Silver Bulletin and serves as an advisor to Polymarket",
+    "tagline_cellar": "American statistician, political analyst, author, sports gambler, and poker player who analyzes baseball, basketball and elections. He is the founder of FiveThirtyEight and held the position of editor-in-chief there, along with being a special correspondent for ABC News until May 2023. Since departing FiveThirtyEight, Silver has been publishing in his online newsletter Silver Bulletin and serves as an advisor to Polymarket"
+  },
+  {
+    "name": "Matteo lane",
+    "venues": [],
+    "bio": "STEPHEN COLBERT, SETH MEYERS, COMEDY CENTRAL",
+    "tagline_cellar": "STEPHEN COLBERT, SETH MEYERS, COMEDY CENTRAL"
+  },
+  {
+    "name": "Sophie Gerson Healthy Youth Program",
+    "venues": [],
+    "bio": "Family, friends, and colleagues of Sophie Gerson founded Sophie Gerson Healthy Youth in June, 2013. Now, heading into its 10th year, SGHY has positively impacted the lives and futures of so many middle school students.About Our Mission To promote active lifestyles and the physical fitness of young people and to foster the values of good sportspersonship;To advance leadership and life skills through the common language of sports, dance, performing arts, and hands-on science, with special encouragement for girls;Using athletics, the arts, science, sociology and an integrated summer camp program, SGHY helps break the cycle of poverty by creating a sense of achievement, and reduce the incidence of bullying;To help the young adults understand that giving back to the community is a worthwhile endeavor.About Sophie Gerson Healthy Youth",
+    "tagline_cellar": "Family, friends, and colleagues of Sophie Gerson founded Sophie Gerson Healthy Youth in June, 2013. Now, heading into its 10th year, SGHY has positively impacted the lives and futures of so many middle school students.About Our Mission To promote active lifestyles and the physical fitness of young people and to foster the values of good sportspersonship;To advance leadership and life skills through the common language of sports, dance, performing arts, and hands-on science, with special encouragement for girls;Using athletics, the arts, science, sociology and an integrated summer camp program, SGHY helps break the cycle of poverty by creating a sense of achievement, and reduce the incidence of bullying;To help the young adults understand that giving back to the community is a worthwhile endeavor.About Sophie Gerson Healthy Youth"
+  },
+  {
+    "name": "MORE TO BE ANNOUNCED",
+    "venues": [],
+    "bio": "FROM COMEDY CENTRAL, HBO",
+    "tagline_cellar": "FROM COMEDY CENTRAL, HBO"
   }
 ]
