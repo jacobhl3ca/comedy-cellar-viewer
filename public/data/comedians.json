@@ -560,7 +560,8 @@
       "nycc"
     ],
     "bio": "Jamie Lee is a stand-up comedian, actress, and writer. She appeared on MTV's Girl Code and starred in the HBO series Crashing. She's a published author and performs at clubs across the country.",
-    "tagline_cellar": "HBO'S \"CRASHING\" AND \"GIRLCODE\""
+    "tagline_cellar": "HBO'S \"CRASHING\" AND \"GIRLCODE\"",
+    "bio_stand": "Jamie Lee is a stand-up comedian, TV writer and actress, and one of the core cast members on the hit MTV show GirlCode, as well as the host of 10 Things on TruTV and the podcast Best of the Worst. Jamie has appeared on Conan, Chelsea Lately, The Late Late Show with James Corden, Comedy Central's @Midnight, MTV's Ridiculousness, John Oliver's Stand Up Show and was a semi-finalist on Last Comic Standing. She has also written for The Pete Holmes Show, E!, Lifetime and the new Judd Apatow show on HBO, Crashing. She currently lives in Los Angeles with her husband and a labradoodle named Dennis."
   },
   {
     "name": "Christian Finnegan",
@@ -5253,8 +5254,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/sureni-weerasekera",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/sureni.jpg",
-    "bio_stand": "Sureni Weerasekera is a Sri Lankan-born, San Diego-raised, & Oakland-based stand-up comedian, actor, and writer. She is known for her lighthearted, conversational banter to her ruthless, dark jabs that shed light on cultural dilemmas in a palatable, enticing way.",
-    "bio": "Sureni Weerasekera is a stand-up comedian based in New York City. She performs regularly at The Stand and other NYC comedy clubs."
+    "bio_stand": "Sureni Weerasekera is a Sri Lankan-born, San Diego-raised, & Oakland-based stand-up comedian, actor, and writer. She is known for her lighthearted, conversational banter to her ruthless, dark jabs that shed light on cultural dilemmas in a palatable, enticing way."
   },
   {
     "name": "Sydnee Washington",
@@ -7615,5 +7615,37 @@
     "venues": [],
     "bio": "FROM COMEDY CENTRAL, HBO",
     "tagline_cellar": "FROM COMEDY CENTRAL, HBO"
+  },
+  {
+    "name": "Golinsky Comedy Club",
+    "venues": [],
+    "bio": "n December 4, 2015, Dan Golinsky was hit by a reckless driver while on his nightly neighborhood walk, sustaining a traumatic brain injury that took his life eleven months later. His son Evan, then fourteen, founded the Golinsky Comedy Club to honor his father's love of stand-up — and to direct attention and funding toward traumatic brain injuries, a cause too often overlooked.In nearly a decade, the Comedy Club has raised over $120,000 for the Brain Trauma Foundation, Ryder Trauma Center at Jackson Memorial Hospital, and Achieve Miami",
+    "tagline_cellar": "n December 4, 2015, Dan Golinsky was hit by a reckless driver while on his nightly neighborhood walk, sustaining a traumatic brain injury that took his life eleven months later. His son Evan, then fourteen, founded the Golinsky Comedy Club to honor his father's love of stand-up — and to direct attention and funding toward traumatic brain injuries, a cause too often overlooked.In nearly a decade, the Comedy Club has raised over $120,000 for the Brain Trauma Foundation, Ryder Trauma Center at Jackson Memorial Hospital, and Achieve Miami"
+  },
+  {
+    "name": "Yedoye Travis",
+    "venues": [],
+    "bio_stand": "Yedoye Travis is a comedian from Atlanta, currently based in New York. He has performed at the Hell Yes and Bridgetown Comedy festivals and has appeared on the Late Show with Stephen Colbert and the fourth season of Hulu's Coming to the Stage and co-hosts the Rent Party podcast, which is recorded live every third Wednesday of the month at Union Hall."
+  },
+  {
+    "name": "Grace Johnson",
+    "venues": [],
+    "bio_stand": "Grace Johnson is a Nigerian New Yorker, who splits her time doing stand-up, voice acting, and writing for tv. She is a series regular on the Apple Top 50 Podcast “The God Pod” and just wrapped up work in the writer’s room on the CBC Gem TV show “Virgins!” Along with performing on shows around New York City, she’s also a Co-Producer of Pink Lotion Comedy, a NYC-based pop-up show highlighting Black female and Non-binary Comics. Unapologetically nerdy, she calls her brand of humor “Glasses Comedy” as she invites you to see things from her lens."
+  },
+  {
+    "name": "Alan Moreau",
+    "venues": []
+  },
+  {
+    "name": "Alexis Ramirez",
+    "venues": []
+  },
+  {
+    "name": "Sima Sepehri",
+    "venues": []
+  },
+  {
+    "name": "Lissa Lenis",
+    "venues": []
   }
 ]
