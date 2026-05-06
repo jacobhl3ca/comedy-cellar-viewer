@@ -66,7 +66,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=37b712d">
+  <link rel="stylesheet" href="style.min.css?v=3464415">
   <script>
     (function() {
       const root = document.documentElement;
@@ -267,7 +267,7 @@
     <p><a href="mailto:hello@tonightnyc.com">hello@tonightnyc.com</a></p>
   </footer>
 
-  <script defer src="app.min.js?v=37b712d"></script>
+  <script defer src="app.min.js?v=3464415"></script>
   <!-- Vercel Web Analytics — auto-injected when enabled in dashboard -->
   <script defer src="/_vercel/insights/script.js"></script>
   <!-- Vercel Speed Insights -->
@@ -298,7 +298,6 @@
         for (const c of cards) if (c.dataset.name === name) return c;
         return null;
       };
-      if (tag === 'sortfaves') setPrefs(['Ray Devito', 'Danny Polishchuk', 'Todd Barry']);
       (async () => {
         if (!(await waitForReady())) return;
         await wait(300);
@@ -313,15 +312,29 @@
         } else if (tag === 'showdetail') {
           tab('cellar');
           await wait(900);
-          const fisch = findCardWithName('Jon Fisch');
-          if (fisch) {
-            fisch.scrollIntoView({ block: 'center', behavior: 'instant' });
-            await wait(300);
-            fisch.click();
+          let card = findCardWithName('Jon Fisch');
+          if (!card) {
+            // Pick the first visible comedian-photo card (skip any in fixed/sticky chrome)
+            const cards = document.querySelectorAll('.comedian, .comedian-long-wrap');
+            for (const c of cards) { if (c.dataset.name) { card = c; break; } }
+          }
+          if (card) {
+            card.scrollIntoView({ block: 'center', behavior: 'instant' });
+            await wait(400);
+            card.click();
           }
         } else if (tag === 'sortfaves') {
+          // Pick first 3 unique comedian names from rendered shows
+          const seen = new Set();
+          const picks = [];
+          for (const c of document.querySelectorAll('[data-name]')) {
+            const n = c.dataset.name;
+            if (n && !seen.has(n)) { seen.add(n); picks.push(n); }
+            if (picks.length === 3) break;
+          }
+          if (picks.length === 3) setPrefs(picks);
           setSort('faves');
-          await wait(700);
+          await wait(800);
           window.scrollTo({ top: 0, behavior: 'instant' });
         }
       })();
