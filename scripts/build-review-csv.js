@@ -16,7 +16,7 @@ const PHOTO_DIR = path.join(ROOT, 'public', 'photos');
 function nameToFilename(name) {
   return name.toLowerCase()
     .replace(/['‘’]/g, '')
-    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/[^a-z0-9_-]+/g, '_')
     .replace(/_+/g, '_')
     .replace(/^_|_$/g, '');
 }

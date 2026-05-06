@@ -152,7 +152,7 @@ function decodeHtmlEntities(str) {
 function nameToFilename(name) {
   return decodeHtmlEntities(name).toLowerCase()
     .replace(/['''\u2018\u2019]/g, '')
-    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/[^a-z0-9_-]+/g, '_')
     .replace(/_+/g, '_')
     .replace(/^_|_$/g, '');
 }
