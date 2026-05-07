@@ -19,7 +19,7 @@ Tonight NYC pulls live lineups from the Comedy Cellar, The Stand, Big Shows at M
 WHAT YOU CAN DO:
 • Browse tonight's lineups across every NYC comedy venue
 • Mark comedians as Favorites or Skips — see "your show" highlighted
-• Get notified when your favorite comics are booked in upcoming lineups
+• Get a 1-hour-before reminder for any show with a comedian you've favorited
 • See real-time sold-out status — never tap through to find a closed show
 • Browse 800+ comedians with full bios and headshots
 • Big Shows tab tracks arena/theater bookings months in advance
@@ -27,7 +27,7 @@ WHAT YOU CAN DO:
 • Share your filtered lineup with friends — copy a link with all your picks
 
 NO ACCOUNT REQUIRED.
-Your favorites, skips, and notifications stay on your device. No tracking, no signup. Optional email subscription only if you want push-style alerts when a comedian gets booked.
+Your favorites, skips, and notifications stay on your device. No tracking, no signup.
 
 VENUES TRACKED:
 Comedy Cellar (MacDougal, Village Underground, Fat Black Pussycat) · The Stand · New York Comedy Club · Gotham Comedy Club · Carolines · Madison Square Garden · Beacon Theatre · Town Hall · Apollo · Gramercy · Sony Hall · Strand Book Store · Radio City · and more via Ticketmaster + SeatGeek.
@@ -42,7 +42,7 @@ comedy,nyc,standup,comedy cellar,the stand,tickets,lineup,shows,manhattan,bookin
 
 ## Promotional Text (max 170 chars — can be updated without re-submission)
 ```
-Every NYC comedy lineup in one place. Filter by your favorite comics, hide skips, get notified when they're booked. Updated live from 30+ venues.
+Every NYC comedy lineup in one place. Filter by your favorite comics, hide skips, get a 1-hour-before reminder for their shows. Updated live from 30+ venues.
 ```
 
 ## What's New in This Version (v1.0)
@@ -67,15 +67,10 @@ First release.
 ## Privacy Nutrition Labels (App Store Connect → App Privacy)
 
 ### Data NOT collected
-- Contact info, financial info, location, search history, browsing history,
+- Contact info, email, financial info, location, search history, browsing history,
   user content, sensitive info, health info, contacts.
 
 ### Data collected
-**Email Address** (optional)
-- Used for: App Functionality (notification subscriptions only when user opts in)
-- Linked to user: No
-- Used for tracking: No
-
 **Identifiers — Device ID** (Vercel Analytics + Speed Insights, no IDFA)
 - Used for: Analytics
 - Linked to user: No
@@ -161,4 +156,4 @@ To capture:
 
 - **Why is the app loading a website?** Capacitor server.url points to https://tonightnyc.com so users always get the latest data and bug fixes without app store updates. The fallback bundle inside the .ipa renders the same UI offline.
 - **Where is the privacy policy?** /privacy on tonightnyc.com (also linked in About section in-app)
-- **Email collection** is optional — only if user explicitly opts into upcoming-show notifications. Stored in Upstash Redis, used only by the daily cron at /api/cron/check-alerts.
+- **No email collection.** All notifications are local — scheduled on-device via Capacitor LocalNotifications, fire 1 hour before any show with a favorited comedian. No server, no account, no opt-in beyond iOS's standard notification permission.

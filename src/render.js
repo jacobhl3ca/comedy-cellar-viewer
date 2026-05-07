@@ -1677,9 +1677,6 @@ function handleComedianClick(el) {
         <button class="exp-btn ${isSkipd ? 'is-skip' : ''}" onclick="setPref('${esc}','${isSkipd ? 'neutral' : 'skip'}')">
           ${isSkipd ? `${ICON.x} Skipped` : `${ICON.minus} Skip`}
         </button>
-        <button class="exp-btn ${alerted ? 'is-alert' : ''}" onclick="toggleAlertBtn('${esc}', this)">
-          ${alerted ? `${ICON.bell} Notifications on` : `${ICON.bell} Notify me`}
-        </button>
         <button class="exp-btn" onclick="filterByComedian('${esc}')">
           ${ICON.search} Filter shows
         </button>
@@ -2017,7 +2014,6 @@ function _dirCardHTML(c, prefs, liveSet) {
         ${isDeceased ? '' : `<div class="dir-card-actions">
           <button class="dir-btn ${isFavd ? 'is-fav' : ''}" onclick="setPref('${esc}','${isFavd ? 'neutral' : 'fav'}')" title="${isFavd ? 'Remove favorite' : 'Favorite'}">${isFavd ? ICON.starFilled : ICON.starOutline}</button>
           <button class="dir-btn ${isSkipd ? 'is-skip' : ''}" onclick="setPref('${esc}','${isSkipd ? 'neutral' : 'skip'}')" title="${isSkipd ? 'Un-skip' : 'Skip'}">${isSkipd ? ICON.x : ICON.minus}</button>
-          <button class="dir-btn ${alerted ? 'is-alert' : ''}" onclick="toggleAlertBtn('${esc}', this)" title="${alerted ? 'Notifications on' : 'Notify when booked'}">${alerted ? ICON.bell : ICON.bell}</button>
         </div>`}
       </div>
     </div>
