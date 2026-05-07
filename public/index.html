@@ -66,7 +66,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=ec6b290">
+  <link rel="stylesheet" href="style.min.css?v=bc7a114">
   <script>
     (function() {
       const root = document.documentElement;
@@ -267,11 +267,14 @@
     <p><a href="mailto:hello@tonightnyc.com">hello@tonightnyc.com</a></p>
   </footer>
 
-  <script defer src="app.min.js?v=ec6b290"></script>
-  <!-- Vercel Web Analytics — auto-injected when enabled in dashboard -->
-  <script defer src="/_vercel/insights/script.js"></script>
-  <!-- Vercel Speed Insights -->
-  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="app.min.js?v=bc7a114"></script>
+  <!-- Vercel Web Analytics + Speed Insights — gated to skip Capacitor native shell so iOS app stays "No data collected" on App Store -->
+  <script>
+    if (!window.Capacitor?.isNativePlatform?.()) {
+      const a = document.createElement('script'); a.defer = true; a.src = '/_vercel/insights/script.js'; document.head.appendChild(a);
+      const s = document.createElement('script'); s.defer = true; s.src = '/_vercel/speed-insights/script.js'; document.head.appendChild(s);
+    }
+  </script>
   <script>
     // ?nosw query param OR existing broken SW recovery: unregister all SWs and clear caches.
     if ('serviceWorker' in navigator) {
