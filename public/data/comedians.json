@@ -4267,8 +4267,7 @@
     "stand_profile": "https://thestandnyc.com/comedians/lev-fer",
     "tagline_cellar": "FROM RAY DONOVAN ON SHOWTIME, PODCAST \"THE LEV FER SHOW\"' SIRIUS XM",
     "bio_stand": "Lev Fer started his stand-up career at just 17 years old in Raleigh, North Carolina. The week that he turned 18, he left his high school early to move to New York City and dive head-first into the world of comedy. Upon arrival, Lev quickly broke into the New York Comedy Festival where he was named a “Comic to Watch” and has been repeatedly featured at the Skankfest Comedy Festival. On TV, Lev has played “Teen Gary O’ Malley” in season 7 of the popular Showtime series Ray Donovan, and has been featured on Sirius XM shows The Bonfire, Bennington, and popular comedy podcasts like Legion of Skanks. He also hosts his own podcast The Lev Fer Show on the GaS Digital Network. Lev can be seen headlining on the road as well as regularly performing at The Stand Comedy Club in New York City.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Lev_Fer_1.jpg",
-    "bio": "Lev Fer is a stand-up comedian and regular at the Comedy Cellar in New York City. Originally from Russia, he's known for his unique perspective and deadpan delivery."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Lev_Fer_1.jpg"
   },
   {
     "name": "Lewis Black",
@@ -5009,7 +5008,8 @@
     "bio": "Rosebud Baker is a stand-up comedian based in New York City. She was named a New Face at the Just for Laughs festival and has appeared on The Tonight Show. She's a regular at the Comedy Cellar and released her debut album Whiskey Sour. Known for her dark, unflinching comedy.",
     "bio_stand": "Rosebud Baker is a New York-based comedian, actress, and writer who was recently selected as a New Face of Comedy at Montreal's prestigious Just For Laughs Comedy Festival 2018. In 2016, Rosebud was the winner of the New York Comedy Competition at New York Comedy Club, and a finalist in New York’s She-Devil Comedy Festival. She has been listed as one of the Top 10 comics to regularly perform on “Roastmasters” at The Stand Comedy Club. The Village Voice included her as one of “The Best of Just For Laughs New Faces Showcase“ stating 'Rosebud Baker brought serious New York vibes to her set; you could practically smell the stale cigarette smoke when she stepped out onto the stage...Baker’s no-nonsense, wickedly dirty routine cut through the evening like barbed wire.' Rosebud is a Staff Writer for the online news platform Elite Daily, and co-hosts the weekly podcast, “Two Less Lonely Girls” with Corinne Fischer. She regularly performs live at The Stand NYC.",
     "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/9/9f/RosebudOnWMBD_%28cropped%29.png",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Rosebud.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Rosebud.jpg",
+    "tagline_cellar": "WRITER FOR SATURDAY NIGHT LIVE UPDATE, COMEDY CENTRAL SPECIAL: \"WHISKEY FISTS\", \"LIFE &BETH\" ON HULU, \"THAT DAMN MICHAEL CHE\", ON HBO"
   },
   {
     "name": "Ryan Beck",
@@ -7646,6 +7646,10 @@
   },
   {
     "name": "Lissa Lenis",
+    "venues": []
+  },
+  {
+    "name": "Becky Z.",
     "venues": []
   }
 ]
