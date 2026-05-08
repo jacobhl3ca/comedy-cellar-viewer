@@ -3342,8 +3342,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/cristina-mariani",
     "bio_stand": "Cristina Mariani is a stand-up comedian who can currently be seen performing across the nation as well as nightly at her home club COMEDY MOTHERSHIP in Austin, Texas. She made her comedy debut on episode 517 of the podcast KILL TONY and has completely taken off since, garnering millions of views online with her standup videos. Cristina has toured with Theo Von and opened for many other renowned comedians, such as Tom Segura, Christina Pazsitzky, Harland Williams, Ari Shaffir, Fahim Anwar, Pauly Shore, and even Grammy-nominated rapper Freddie Gibbs. She is currently a regular on Brian Redban’s famous SECRETSHOW, has appeared on FIRST DATE LIVE with Lauren Compton, and been on FUNNY UBER RIDES with Darren Levy. For more on Cristina, visit her Instagram, TikTok, and YouTube pages.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Cristina-Mariani_1980x1980.png",
-    "bio": "Cristina Mariani is a stand-up comedian performing in New York City. She performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Cristina-Mariani_1980x1980.png"
   },
   {
     "name": "Dan Ahdoot",
@@ -7693,5 +7692,10 @@
   {
     "name": "Jesse Tyler Ferguson",
     "venues": []
+  },
+  {
+    "name": "James Donald Forbes McCann",
+    "venues": [],
+    "bio_stand": "James Donald Forbes McCann is an Australian comedian / writer / composer / poet / essayist / critic / rapper / copywriter / motivational speaker / social media influencer / radio presenter / self-help guru / captain of industry. James Donald has written for television programs like Tonightly with Tom Ballard and Corey White’s Roadmap to Paradise. He has won awards like Adelaide Comedy’s Comedian of the Year, and Best Emerging Comedy: Adelaide Fringe. McCann currently opens for Shane Gillis and is based in Austin, TX."
   }
 ]
