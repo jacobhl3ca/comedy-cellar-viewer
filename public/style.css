@@ -74,6 +74,8 @@ body {
   max-width: 800px; margin: 0 auto;
   transition: background 0.2s, color 0.2s;
   overflow-x: clip;
+  touch-action: pan-x pan-y;
+  -webkit-text-size-adjust: 100%;
 }
 html { overflow-x: clip; }
 html.native-ios body { padding-top: 60px; }
@@ -87,12 +89,44 @@ html.native-ios .dir-controls { top: 60px; }
 
 /* Header */
 header { text-align: center; padding: 24px 0 8px; position: relative; }
+.header-clickable {
+  cursor: pointer; user-select: none; -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.header-clickable:focus { outline: none; }
 .header-row {
   display: flex; align-items: center; justify-content: center; gap: 12px;
 }
 h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .accent { color: var(--accent); }
 .subtitle { color: var(--text-dim); font-size: 14px; margin-top: 4px; }
+
+/* Pull-to-refresh indicator */
+#ptr-indicator {
+  position: fixed; left: 50%; top: env(safe-area-inset-top, 0);
+  transform: translate(-50%, -60px);
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--surface2); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-dim); font-size: 18px; line-height: 1;
+  z-index: 200; pointer-events: none;
+  transition: transform 0.25s ease, opacity 0.2s;
+  opacity: 0;
+}
+#ptr-indicator.pulling { transition: none; opacity: 1; }
+#ptr-indicator.refreshing {
+  opacity: 1;
+  transition: transform 0.2s ease;
+}
+#ptr-indicator.refreshing .ptr-spin {
+  display: inline-block;
+  animation: ptr-spin 0.8s linear infinite;
+}
+@keyframes ptr-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+html.native-ios #ptr-indicator { top: 8px; }
 
 /* Header share button — top-right, left of theme toggle. Hidden until user has prefs to share. */
 .header-share-btn {

@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <script>if(window.Capacitor)document.documentElement.classList.add('native-ios');</script>
   <title>Tonight NYC — NYC Comedy Lineups</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -11,6 +11,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="apple-touch-icon" href="icon-192.png">
+  <meta name="apple-itunes-app" content="app-id=6763027650">
   <meta property="og:title" content="Tonight NYC — NYC Comedy Lineups">
   <meta property="og:description" content="Every NYC comedy show, filtered your way. Mark favorites, skip regulars, book the right set.">
   <meta property="og:url" content="https://tonightnyc.com">
@@ -66,7 +67,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=bc7a114">
+  <link rel="stylesheet" href="style.min.css?v=81a2b28">
   <script>
     (function() {
       const root = document.documentElement;
@@ -91,11 +92,14 @@
   </script>
 </head>
 <body>
+  <div id="ptr-indicator" aria-hidden="true"><span class="ptr-spin">↻</span></div>
   <header>
-    <div class="header-row">
-      <h1 style="cursor:pointer" onclick="activeSource='all'; activeDate='all'; activeVenue='all'; activeStandRoom='all'; renderSourceTabs(); renderTabs(); renderShows(); window.scrollTo({top:0,behavior:'smooth'});">Tonight <span class="accent">NYC</span></h1>
+    <div class="header-clickable" id="header-home" role="button" tabindex="0" aria-label="Reset filters and go home">
+      <div class="header-row">
+        <h1>Tonight <span class="accent">NYC</span></h1>
+      </div>
+      <p class="subtitle">NYC comedy lineups, filtered your way.</p>
     </div>
-    <p class="subtitle">NYC comedy lineups, filtered your way.</p>
     <button class="header-share-btn" id="header-share" aria-label="Copy share link" title="Copy share link">
       <svg class="share-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
@@ -267,7 +271,7 @@
     <p><a href="mailto:hello@tonightnyc.com">hello@tonightnyc.com</a></p>
   </footer>
 
-  <script defer src="app.min.js?v=bc7a114"></script>
+  <script defer src="app.min.js?v=81a2b28"></script>
   <!-- Vercel Web Analytics + Speed Insights — gated to skip Capacitor native shell so iOS app stays "No data collected" on App Store -->
   <script>
     if (!window.Capacitor?.isNativePlatform?.()) {

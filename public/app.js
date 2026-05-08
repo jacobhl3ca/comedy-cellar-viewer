@@ -146,11 +146,12 @@ function savePrefs(prefs) {
 }
 
 function updateShareBtn() {
-  const btn = document.getElementById('header-share');
-  if (!btn) return;
   const p = loadPrefs();
   const has = p.faves.length > 0 || p.skips.length > 0 || p.likes.length > 0;
-  btn.classList.toggle('visible', has);
+  const headerBtn = document.getElementById('header-share');
+  if (headerBtn) headerBtn.classList.toggle('visible', has);
+  const modalBtn = document.getElementById('share-link');
+  if (modalBtn) modalBtn.style.display = has ? '' : 'none';
 }
 
 // Compressed prefs: deflate + base64url of "fave1|fave2\nskip1|skip2\nlike1|like2"
@@ -3583,6 +3584,7 @@ async function init() {
       renderTabs();
       updateSettingsBtnState();
       updateResetBtn();
+      updateShareBtn();
     }
   });
 
@@ -3619,7 +3621,7 @@ async function init() {
 
   async function doShare(sourceBtn, onCopyFeedback) {
     const url = await buildShareUrl();
-    const result = await Native.share('Tonight NYC', url);
+    const result = await Native.share('My Comedians', url);
     if (result === 'clipboard' || result === 'failed') {
       onCopyFeedback && onCopyFeedback();
     }
@@ -3651,6 +3653,101 @@ async function init() {
 }
 
 init();
+
+function resetToHome() {
+  activeSource = 'all';
+  activeDate = 'all';
+  activeVenue = 'all';
+  activeStandRoom = 'all';
+  activeBigVenue = 'all';
+  activeNeighborhood = 'all';
+  activeComedianFilter = null;
+  renderSourceTabs();
+  renderTabs();
+  renderShows();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+(function setupHeaderHome() {
+  const go = () => { Native.impact('Light'); resetToHome(); };
+  const region = document.getElementById('header-home');
+  region.addEventListener('click', go);
+  region.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+  });
+})();
+
+(function setupPullToRefresh() {
+  const indicator = document.getElementById('ptr-indicator');
+  const THRESHOLD = 70;
+  const MAX_PULL = 110;
+  let startY = 0;
+  let pulling = false;
+  let pullingClass = false;
+  let pullDistance = 0;
+  let refreshing = false;
+  let pendingDy = null;
+  let rafId = 0;
+
+  function applyPull() {
+    rafId = 0;
+    if (pendingDy === null || !pulling) return;
+    if (pendingDy <= 0) {
+      pullDistance = 0;
+      if (pullingClass) { indicator.classList.remove('pulling'); pullingClass = false; }
+      indicator.style.transform = '';
+      return;
+    }
+    pullDistance = Math.min(pendingDy * 0.5, MAX_PULL);
+    if (!pullingClass) { indicator.classList.add('pulling'); pullingClass = true; }
+    indicator.style.transform = `translate(-50%, ${pullDistance - 60}px) rotate(${pullDistance * 4}deg)`;
+  }
+
+  function resetPull() {
+    pulling = false;
+    pullDistance = 0;
+    pendingDy = null;
+    if (pullingClass) { indicator.classList.remove('pulling'); pullingClass = false; }
+    if (!refreshing) indicator.style.transform = '';
+  }
+
+  document.addEventListener('touchstart', (e) => {
+    if (refreshing) return;
+    if (window.scrollY > 0) { pulling = false; return; }
+    startY = e.touches[0].clientY;
+    pulling = true;
+    pullDistance = 0;
+  }, { passive: true });
+
+  document.addEventListener('touchmove', (e) => {
+    if (!pulling || refreshing) return;
+    pendingDy = e.touches[0].clientY - startY;
+    if (!rafId) rafId = requestAnimationFrame(applyPull);
+  }, { passive: true });
+
+  document.addEventListener('touchend', () => {
+    if (!pulling || refreshing) { pulling = false; return; }
+    if (pullDistance >= THRESHOLD) {
+      refreshing = true;
+      pulling = false;
+      if (pullingClass) { indicator.classList.remove('pulling'); pullingClass = false; }
+      indicator.classList.add('refreshing');
+      indicator.style.transform = 'translate(-50%, 16px) rotate(0deg)';
+      Native.impact('Medium');
+      setTimeout(() => location.reload(), 350);
+    } else {
+      resetPull();
+    }
+  }, { passive: true });
+
+  document.addEventListener('touchcancel', resetPull, { passive: true });
+})();
+
+// Block pinch-zoom: Safari ignores user-scalable=no for accessibility, so explicitly
+// preventDefault on gesture* events. (touch-action: pan-x pan-y handles double-tap zoom.)
+['gesturestart', 'gesturechange', 'gestureend'].forEach(ev =>
+  document.addEventListener(ev, (e) => e.preventDefault())
+);
 
 // Global poster preview — renders outside card stacking contexts so opacity doesn't trap it
 (function() {

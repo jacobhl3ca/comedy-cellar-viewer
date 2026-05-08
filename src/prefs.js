@@ -29,11 +29,12 @@ function savePrefs(prefs) {
 }
 
 function updateShareBtn() {
-  const btn = document.getElementById('header-share');
-  if (!btn) return;
   const p = loadPrefs();
   const has = p.faves.length > 0 || p.skips.length > 0 || p.likes.length > 0;
-  btn.classList.toggle('visible', has);
+  const headerBtn = document.getElementById('header-share');
+  if (headerBtn) headerBtn.classList.toggle('visible', has);
+  const modalBtn = document.getElementById('share-link');
+  if (modalBtn) modalBtn.style.display = has ? '' : 'none';
 }
 
 // Compressed prefs: deflate + base64url of "fave1|fave2\nskip1|skip2\nlike1|like2"
