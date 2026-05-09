@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tonight-nyc-v11';
+const CACHE_NAME = 'tonight-nyc-v12';
 const STATIC_ASSETS = [
   '/',
   '/app.min.js',
