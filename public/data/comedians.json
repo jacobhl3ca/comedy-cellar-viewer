@@ -3976,8 +3976,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/joe-praino",
     "bio_stand": "Joe Praino is a comedian, actor and podcast host with his sights set on his own late-night talk show. He has two podcasts, Dirty Sports (with Andy Ruther), which showcases his immense depth of sports knowledge, and the Kooks of Komedy (with Lachlan Patterson). He can be seen performing at several clubs in New York City & L.A., including Gotham Comedy Club, The Stand, The Improv and the Westside Comedy Theater. A native New Yorker, Praino began his stand-up career at the early age of 19 while majoring in Journalism and Communications at Lehigh University, where he was Program Director of the campus radio station. Praino made a name for himself when his ambition and performing talents led him to host his own comedy/music show, \"The Joe Show,\" with guests ranging from the University President to inmates from the Lehigh Valley Correctional facility. While developing his material on the club circuit, Praino further learned the programming business as an intern at the legendary radio station 102.7 WNEW-FM in New York, as a CBS Page and finally as a Desk Assistant at the Evening News With Dan Rather before stand-up comedy eventually won out as his full-time pursuit. His unique background and smart, funny POV earned him regular spots at the Comic Strip Live and Boston Comedy Club and he hosted his own variety show, Miscellaneous, at Galapagos in Brooklyn. It wasn't long before Praino landed some acting roles in indie films, hosted shows for CSTV, and had appearances on \"Gotham Comedy Live\" and several episodes of \"ESPN Instant,\" where he was in the company of some of his favorite analysts and commentators. Praino is a sports enthusiast, with a three-sport varsity background of football, basketball and baseball, who lived a dream when he threw out the first pitch at a Mets game in 2015. Now an avid surfer he regularly waveslides on both the East & West coasts with the occasional excursion to Baja and Costa Rica. He finds great reward in coaching high school baseball and volunteering at camps & clinics. While surfing in New York one day in early 2010, it started to snow and Praino thought \"Maybe it's time to try L.A.\" He made the move and happily lives in Venice with his dog, Vince, who has an unusually small trachea.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/prainoooo.jpg",
-    "bio": "Joe Praino is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/prainoooo.jpg"
   },
   {
     "name": "Joey Dardano",
@@ -7545,7 +7544,8 @@
   },
   {
     "name": "Talia Reese",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Talia Reese is an American comedian known for combining her Orthodox Jewish lifestyle with her career in standup."
   },
   {
     "name": "Chris Aileo",
@@ -7565,7 +7565,8 @@
     "name": "Tom Papa",
     "venues": [],
     "bio": "STAR OF \"BAKED\", HBO, LATE SHOW WITH COLBERT, CONAN, SPECIALS ON NETFLIX, EPIX AND HOST OF COME TO PAPA PODCAST",
-    "tagline_cellar": "STAR OF \"BAKED\", HBO, LATE SHOW WITH COLBERT, CONAN, SPECIALS ON NETFLIX, EPIX AND HOST OF COME TO PAPA PODCAST"
+    "tagline_cellar": "STAR OF \"BAKED\", HBO, LATE SHOW WITH COLBERT, CONAN, SPECIALS ON NETFLIX, EPIX AND HOST OF COME TO PAPA PODCAST",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Tom_Papa_on_Stephen_Settani.jpg/330px-Tom_Papa_on_Stephen_Settani.jpg"
   },
   {
     "name": "Rick Crom",
