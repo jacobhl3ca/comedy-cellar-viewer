@@ -1094,9 +1094,9 @@ html.ios-mobile .header-share-btn { right: 0; }
 .comedian-filter-banner {
   background: var(--accent);
   color: #fff;
-  padding: 8px 16px;
-  border-radius: 8px;
-  margin: 0;
+  padding: 8px 36px;
+  border-radius: 0;
+  margin: 0 -20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
