@@ -1120,16 +1120,17 @@ html.ios-mobile .header-share-btn { right: 0; }
   top: 44px;
 }
 .comedian-filter-banner button {
-  background: rgba(255,255,255,0.2);
+  background: #fff;
   border: none;
-  color: #fff;
+  color: var(--accent);
   padding: 4px 10px;
   border-radius: 4px;
   cursor: pointer;
   font-size: 13px;
+  font-weight: 600;
 }
 .comedian-filter-banner button:hover {
-  background: rgba(255,255,255,0.35);
+  background: #f0f0f0;
 }
 .comedian.filter-highlight {
   box-shadow: inset 0 0 0 2px var(--accent);
