@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="7" fill="#e63636"/>
-  <text x="16" y="22" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="16" font-weight="800" fill="#fff" text-anchor="middle" letter-spacing="-0.5">TN</text>
-</svg>
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h32v32h-32z"/><text fill="#fff" font-family="Helvetica,-apple-system,BlinkMacSystemFont,sans-serif" font-size="19" font-weight="700" text-anchor="middle" x="16" y="23">TN</text></svg>
