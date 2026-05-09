@@ -367,14 +367,18 @@ function renderSourceTabs() {
 
 // Insert filter banner at top of container AFTER content has been rendered
 function _insertFilterBanner(container) {
-  const old = document.getElementById('comedian-filter-banner');
+  const old = document.getElementById('comedian-filter-banner-wrap');
   if (old) old.remove();
   if (!activeComedianFilter) return;
+  const wrap = document.createElement('div');
+  wrap.id = 'comedian-filter-banner-wrap';
+  wrap.className = 'comedian-filter-banner-wrap';
   const banner = document.createElement('div');
   banner.id = 'comedian-filter-banner';
   banner.className = 'comedian-filter-banner';
   banner.innerHTML = `Showing shows with <strong>${activeComedianFilter}</strong> <button onclick="filterByComedian('${activeComedianFilter.replace(/'/g, "\\'")}')">${ICON.x} Clear</button>`;
-  container.prepend(banner);
+  wrap.appendChild(banner);
+  container.prepend(wrap);
 }
 
 function renderShows() {
