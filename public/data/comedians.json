@@ -2425,7 +2425,8 @@
     "bio": "Jeff Ross is a respected comedian, writer, and producer also known as “The Roastmaster General”. Most recently Jeff produced and starred in the “Comedy Central Roast of Rob Lowe”. Jeff’s other roast victims include Justin Bieber, James Franco, Charlie Sheen, James Carville and Donald Trump (twice). Jeff’s most recent comedy specials are the critically acclaimed and highly rated “Jeff Ross Roasts C...",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio_stand": "Jeff Ross (AKA “Roastmaster General”) is a one-man verbal assault unit. For years, his name has been synonymous with Roasting. As a staple on the COMEDY CENTRAL ROASTS, Jeff has anchored the roasts of the industry’s most famous people including Justin Bieber, Alec Baldwin, Bruce Willis, James Franco, Charlie Sheen, and former President Donald Trump. Currently, Jeff is developing his one-man show, “Take a Banana For the Ride,” a journey through his life of laughter and loss. This semi-autobiographical show touches on some of the most poignant moments in the comedian’s career to chronicle how he became The Roastmaster. It will debut at the New York Comedy Festival in November. Most recently, he filmed the Peter Farrelly movie, Ricky Stanicky for Amazon starring Zac Efron and John Cena. His television projects include ROAST BATTLE for Comedy Central, a series which Ross produced and starred for three seasons. ROAST BATTLE has become an international phenomenon with markets including England, Germany, Canada and South Africa producing their own versions. Ross also starred in the 3-episode comedy special BUMPING MICS with Dave Attell for Netflix. This rapid-fire, two-man stand up series has a joke-per-minute ratio and if you’re lucky you can catch it live at The Comedy Cellar in New York City. Ross also produced and starred in six episodes of HISTORICAL ROASTS for Netflix, a series which roasted some of the most important figures in history including Abraham Lincoln, Martin Luther King, and Cleopatra. Jeff's has also used comedy specials to turn roasting into social commentary. With JEFF ROSS ROASTS CRIMINALS, JEFF ROSS ROASTS COPS, AND JEFF ROSS ROASTS THE BORDER, Jeff has shed light on some of the more polarizing political issues of our time. These specials have taken him to a maximum security prison, the Boston Police Department, and both sides of the Mexican border. Jeff continues to tour the country doing stand-up and bringing his own brand of speed-roasting to audiences both stateside and abroad."
   },
   {
     "name": "Greg Fitzsimmons",
@@ -3655,7 +3656,6 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/giulio-gallarotti",
-    "bio": "Giulio Gallarotti is a stand-up comedian and podcaster based in New York City. He co-hosts the Out and About podcast with Francis Ellis.",
     "bio_stand": "Giulio Gallarotti is a New York City based standup comedian, actor, host and podcaster. He made his Netflix Standup debut in 2022 on “Pete Davidson Presents: the Best Friends”. His podcast, “Oops”, which he hosts with Francis Ellis, is regularly listed on the iTunes top charts. He has appeared on TV shows such as Hulu’s Ramy, AXS Gotham Comedy Live and MTV’s Totally Clueless/Girl Code as well as Comedy Central and Sirius XM radio. Giulio is an avid traveler which he has documented in several projects including \"Places You Can Go - Iraq\" and “Standup in Rwanda: It’s Not So Different” He performs regularly at comedy clubs in NYC and across the country.",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Giulio_Gallarotti.jpg"
   },
@@ -7714,5 +7714,13 @@
     "venues": [],
     "bio": "From HBO's CRASHING",
     "tagline_cellar": "From HBO's CRASHING"
+  },
+  {
+    "name": "Cianna Violet",
+    "venues": []
+  },
+  {
+    "name": "Angelo Colina",
+    "venues": []
   }
 ]
