@@ -101,6 +101,29 @@ h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
 .accent { color: var(--accent); }
 .subtitle { color: var(--text-dim); font-size: 14px; margin-top: 4px; }
 
+/* Inline mode dropdown that lives inside the subtitle line. Styled to blend with text. */
+.mode-select {
+  appearance: none; -webkit-appearance: none; -moz-appearance: none;
+  background: transparent; border: none; padding: 0 12px 0 0; margin: 0;
+  color: inherit; font: inherit; font-size: inherit; line-height: inherit;
+  text-decoration: underline dotted var(--text-dim); text-underline-offset: 3px;
+  cursor: pointer; outline: none;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+                    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: right 3px top 60%, right 0 top 60%;
+  background-size: 4px 4px, 4px 4px;
+  background-repeat: no-repeat;
+}
+.mode-select:hover, .mode-select:focus { color: var(--text); text-decoration-color: var(--accent); }
+.mode-select option { background: var(--surface); color: var(--text); font-size: 14px; }
+
+/* Jazz-mode chrome adjustments. Comedy-specific UI hidden; only relevant filters remain. */
+body.mode-jazz .toolbar { display: none; }
+body.mode-jazz .calendar-btn { display: none; }
+body.mode-jazz #data-warning { display: none; }
+body.mode-jazz .data-warning { display: none; }
+body.mode-jazz .modal-overlay { display: none !important; }
+
 /* Pull-to-refresh indicator */
 #ptr-indicator {
   position: fixed; left: 50%; top: env(safe-area-inset-top, 0);
@@ -870,15 +893,42 @@ html.ios-mobile .header-share-btn { right: 0; }
 #footer-venue-info { margin-bottom: 12px; }
 .site-footer a { color: var(--accent); text-decoration: none; }
 .site-footer a:hover { text-decoration: underline; }
-.site-footer a.app-store-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  margin: 10px 0 6px; padding: 7px 14px;
-  border: 1px solid var(--border); border-radius: 20px;
-  font-size: 12px; font-weight: 500;
-  color: var(--text);
+
+/* App Store comparison block (temporary — pick one) */
+.app-store-compare { display: flex; flex-direction: column; gap: 10px; align-items: center; margin: 14px 0 10px; }
+.asc-row { display: flex; align-items: center; gap: 10px; }
+.asc-label { font-size: 11px; color: var(--text-dim); width: 14px; text-align: right; font-weight: 600; }
+.site-footer a.asc-badge { display: inline-block; line-height: 0; }
+.site-footer a.asc-badge img { display: block; height: 40px; width: auto; }
+.site-footer a.asc-filled {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 14px; border-radius: 8px;
+  background: #000; color: #fff !important;
+  font-size: 13px; font-weight: 600;
+  border: 1px solid #333;
 }
-.site-footer a.app-store-link:hover { background: var(--border); text-decoration: none; }
-html.native-ios .app-store-link { display: none; }
+.site-footer a.asc-filled:hover { text-decoration: none; background: #111; }
+.site-footer a.asc-text {
+  font-size: 13px; color: var(--accent);
+}
+.site-footer a.asc-outline {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px; border: 1px solid var(--border); border-radius: 16px;
+  font-size: 12px; color: var(--text);
+}
+.site-footer a.asc-outline:hover { background: var(--border); text-decoration: none; }
+html.native-ios .app-store-compare { display: none; }
+
+/* Inline back-to-top link (end of content) */
+.inline-back-to-top-row { text-align: center; padding: 24px 0 8px; }
+.inline-back-to-top {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid var(--border); border-radius: 20px;
+  font-size: 13px; color: var(--text-dim);
+  text-decoration: none;
+}
+.inline-back-to-top:hover { background: var(--border); color: var(--text); }
 
 /* Schedule view */
 .schedule-view { display: flex; flex-direction: column; gap: 12px; }

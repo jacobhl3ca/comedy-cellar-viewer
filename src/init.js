@@ -323,6 +323,10 @@
 init();
 
 function resetToHome() {
+  if (typeof getMode === 'function' && getMode() === 'jazz') {
+    if (typeof jazzResetHome === 'function') jazzResetHome();
+    return;
+  }
   activeSource = 'all';
   activeDate = 'all';
   activeVenue = 'all';
@@ -443,7 +447,7 @@ function resetToHome() {
   const btn = document.getElementById('back-to-top');
   if (!btn) return;
   window.addEventListener('scroll', () => {
-    btn.classList.toggle('visible', window.scrollY > 400);
+    btn.classList.toggle('visible', window.scrollY > 200);
   }, { passive: true });
   btn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
