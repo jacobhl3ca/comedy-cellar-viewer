@@ -894,41 +894,9 @@ html.ios-mobile .header-share-btn { right: 0; }
 .site-footer a { color: var(--accent); text-decoration: none; }
 .site-footer a:hover { text-decoration: underline; }
 
-/* App Store comparison block (temporary — pick one) */
-.app-store-compare { display: flex; flex-direction: column; gap: 10px; align-items: center; margin: 14px 0 10px; }
-.asc-row { display: flex; align-items: center; gap: 10px; }
-.asc-label { font-size: 11px; color: var(--text-dim); width: 14px; text-align: right; font-weight: 600; }
-.site-footer a.asc-badge { display: inline-block; line-height: 0; }
-.site-footer a.asc-badge img { display: block; height: 40px; width: auto; }
-.site-footer a.asc-filled {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 8px 14px; border-radius: 8px;
-  background: #000; color: #fff !important;
-  font-size: 13px; font-weight: 600;
-  border: 1px solid #333;
-}
-.site-footer a.asc-filled:hover { text-decoration: none; background: #111; }
-.site-footer a.asc-text {
-  font-size: 13px; color: var(--accent);
-}
-.site-footer a.asc-outline {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 6px 12px; border: 1px solid var(--border); border-radius: 16px;
-  font-size: 12px; color: var(--text);
-}
-.site-footer a.asc-outline:hover { background: var(--border); text-decoration: none; }
-html.native-ios .app-store-compare { display: none; }
-
-/* Inline back-to-top link (end of content) */
-.inline-back-to-top-row { text-align: center; padding: 24px 0 8px; }
-.inline-back-to-top {
-  display: inline-block;
-  padding: 8px 16px;
-  border: 1px solid var(--border); border-radius: 20px;
-  font-size: 13px; color: var(--text-dim);
-  text-decoration: none;
-}
-.inline-back-to-top:hover { background: var(--border); color: var(--text); }
+.site-footer a.app-store-badge-link { display: inline-block; line-height: 0; margin: 10px 0 6px; }
+.site-footer a.app-store-badge-link img { display: block; height: 40px; width: auto; }
+html.native-ios .app-store-badge-link { display: none; }
 
 /* Schedule view */
 .schedule-view { display: flex; flex-direction: column; gap: 12px; }
