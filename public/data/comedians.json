@@ -1064,7 +1064,8 @@
     "venues": [
       "nycc"
     ],
-    "tagline_cellar": "COMEDY CENTRAL"
+    "tagline_cellar": "COMEDY CENTRAL",
+    "bio_stand": "Ayanna Dookie is a stand-up comedian based in Brooklyn, New York. She is the 2014 winner of The She Devil Comedy Festival. She also earned a spot in the semi-finals of NBC’s Stand-Up for Diversity and a finalist in the New York Underground Comedy Festival Emerging Comics Competition. She has appeared on Comcast-on-Demand, is currently a cast member on Fox's Laughs, and has been featured in the New York Post, Health Magazine, and the Lifetime Network."
   },
   {
     "name": "Maxwell Fine",
@@ -1580,7 +1581,8 @@
     "bio": "The Chicago Tribune hails JEFF ARCURI as \"a joke machine,\" but he’s much more than that—he’s a person! Jeff has showcased his talent on The Late Show with Stephen Colbert, Comedy Central’s Roast Battle, Laughs! on Fox, SiriusXM, and numerous comedy festivals nationwide. His subreddit, r/JeffArcuri, ranks in the top 1% of all subreddits, boasting over 235,000 active members. This makes him one of t...",
     "venues": [
       "nycc"
-    ]
+    ],
+    "tagline_cellar": "THE LATE SHOW W/STEPHEN COLBERT"
   },
   {
     "name": "Joey Diaz",
@@ -2797,8 +2799,7 @@
     "stand_profile": "https://thestandnyc.com/comedians/adrienne-iapalucci",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Adrienne_Iapalucci_1.jpg",
     "tagline_cellar": "FROM THE LATE SHOW WITH DAVID LETTERMAN, FROM THE ARTIE LANGE SHOW, LAST COMIC STANDING",
-    "bio_stand": "Born and bred in the Bronx, Adrienne Iapalucci's skewed look on life is reflected in her unique brand of intelligent comedy. Her dark sense of humor is enhanced by her political incorrectness and counteracted by her love of dogs. Comedy fans might recognize Adrienne from her performances as a semifinalist on season 7 of NBC's Last Comic Standing and her recent appearance on the Late Show with David Letterman. In 2009, Adrienne won the first ever People's Choice award at the New York Comedy Festival. She was also a semifinalist in the festival's New York Funniest Stand-Up Contest and a runner-up in the New York Underground Comdy Festival's Best of the Boroughs contest. Adrienne has been featured in the Daily News, New York Times, Reader's Digest, and TimeOut NY magazine. In 2010 Adrienne made her international debut as part of Montreal's Just For Laughs Festival, where she took part in \"New Faces.\"",
-    "bio": "Adrienne Iapalucci is a stand-up comedian based in New York City. She's appeared on The Late Show and is a regular at the Comedy Cellar. Her Netflix special is dark and unflinching. Known for her deadpan delivery and dark humor."
+    "bio_stand": "Born and bred in the Bronx, Adrienne Iapalucci's skewed look on life is reflected in her unique brand of intelligent comedy. Her dark sense of humor is enhanced by her political incorrectness and counteracted by her love of dogs. Comedy fans might recognize Adrienne from her performances as a semifinalist on season 7 of NBC's Last Comic Standing and her recent appearance on the Late Show with David Letterman. In 2009, Adrienne won the first ever People's Choice award at the New York Comedy Festival. She was also a semifinalist in the festival's New York Funniest Stand-Up Contest and a runner-up in the New York Underground Comdy Festival's Best of the Boroughs contest. Adrienne has been featured in the Daily News, New York Times, Reader's Digest, and TimeOut NY magazine. In 2010 Adrienne made her international debut as part of Montreal's Just For Laughs Festival, where she took part in \"New Faces.\""
   },
   {
     "name": "Ahmed Ahmed",
@@ -5207,8 +5208,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/stacy-cay",
     "bio_stand": "Stacy Cay is a Kansas City comic with a unique voice you won’t want to miss. Stacy is a trans woman comedian and model raised in rural Arkansas. She’s performed at the New York Comedy Festival, has opened for Josh Gondelman and Niles Abston, and produces the live, slumber party themed standup comedy sensation: Spend the Night. Audiences describe her as “hilarious”, her senators say she’s \"disgraceful”, and Tucker Carlson calls her \"satanic.”",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Stacy_Cay.jpg",
-    "bio": "Stacy Cay is a stand-up comedian performing in New York City. She performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Stacy_Cay.jpg"
   },
   {
     "name": "Stef Dag",
@@ -7736,5 +7736,25 @@
     "venues": [],
     "bio": "FOX'S \"BOB'S BURGERS\", NBC'S\"THE GOOD PLACE\", THE OSCAR-NOMINATED \"THE BIG SICK\", ZACH CREGGR'S HORROR-SENSATION, BARBARIAN",
     "tagline_cellar": "FOX'S \"BOB'S BURGERS\", NBC'S\"THE GOOD PLACE\", THE OSCAR-NOMINATED \"THE BIG SICK\", ZACH CREGGR'S HORROR-SENSATION, BARBARIAN"
+  },
+  {
+    "name": "Ramy Shafi",
+    "venues": []
+  },
+  {
+    "name": "Erik Martini",
+    "venues": []
+  },
+  {
+    "name": "Peter Liu",
+    "venues": []
+  },
+  {
+    "name": "Alaina Bamfield",
+    "venues": []
+  },
+  {
+    "name": "Hannah Jones",
+    "venues": []
   }
 ]
