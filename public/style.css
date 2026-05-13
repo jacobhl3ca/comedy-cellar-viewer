@@ -894,15 +894,9 @@ html.ios-mobile .header-share-btn { right: 0; }
 .site-footer a { color: var(--accent); text-decoration: none; }
 .site-footer a:hover { text-decoration: underline; }
 
-.site-footer a.app-store-badge-link { display: inline-block; line-height: 0; margin: 10px 0 6px; }
-.site-footer a.app-store-badge-link.tight { margin: 2px 0 6px; }
+.site-footer a.app-store-badge-link { display: inline-block; line-height: 0; margin: 12px 0 6px; }
 .site-footer a.app-store-badge-link img { display: block; height: 40px; width: auto; margin: 0 auto; }
 html.native-ios .app-store-badge-link { display: none; }
-.badge-pos-variant { padding: 14px 0; border-top: 1px dashed var(--border); }
-.badge-pos-variant:first-of-type { border-top: 1px solid var(--border); margin-top: 8px; }
-.bpv-label { font-size: 10px; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px !important; }
-.tight-above-badge { margin-bottom: 2px !important; }
-html.native-ios .badge-pos-variant { display: none; }
 
 /* Schedule view */
 .schedule-view { display: flex; flex-direction: column; gap: 12px; }
