@@ -7705,7 +7705,8 @@
   {
     "name": "Casey James Salengo",
     "venues": [],
-    "bio_stand": "Casey James Salengo is an NYC based comedian from the mountains of Vermont. He's performed in the Riptide Comedy Festival and the Brooklyn Comedy Festival. He's usually very polite."
+    "bio_stand": "Casey James Salengo is an NYC based comedian from the mountains of Vermont. He's performed in the Riptide Comedy Festival and the Brooklyn Comedy Festival. He's usually very polite.",
+    "tagline_cellar": "From Comedy Central Presents, Jimmy Kimmel Live, Comedy Knockout, JFL New Faces"
   },
   {
     "name": "Saturday Night SESH Showcase",
@@ -7756,5 +7757,11 @@
   {
     "name": "Hannah Jones",
     "venues": []
+  },
+  {
+    "name": "Terry Todd",
+    "venues": [],
+    "bio": "FROM THE MOVIE \"TRAINWRECK\",  FROM THE TONIGHT SHOW",
+    "tagline_cellar": "FROM THE MOVIE \"TRAINWRECK\",  FROM THE TONIGHT SHOW"
   }
 ]
