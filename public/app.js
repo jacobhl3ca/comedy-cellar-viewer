@@ -3998,6 +3998,13 @@ function resetToHome() {
   let pendingDy = null;
   let rafId = 0;
 
+  function isScrollLocked() {
+    // PTR should only fire when the main page is at the top.
+    // Block it when any modal/expanded overlay is open OR when the touch happens inside one.
+    if (document.querySelector('.modal-overlay:not(.hidden)')) return true;
+    return false;
+  }
+
   function applyPull() {
     rafId = 0;
     if (pendingDy === null || !pulling) return;
@@ -4009,18 +4016,17 @@ function resetToHome() {
         pullingClass = false;
       }
       document.body.style.transform = '';
-      indicator.style.transform = '';
+      indicator.style.opacity = '';
       return;
     }
-    pullDistance = Math.min(pendingDy * 0.6, MAX_PULL);
+    pullDistance = Math.min(pendingDy * 0.55, MAX_PULL);
     if (!pullingClass) {
       indicator.classList.add('pulling');
       document.body.classList.add('ptr-pulling');
       pullingClass = true;
     }
     document.body.style.transform = `translateY(${pullDistance}px)`;
-    indicator.style.transform = `translate(-50%, 0) rotate(${pullDistance * 4}deg)`;
-    indicator.style.opacity = Math.min(pullDistance / 30, 1);
+    indicator.style.opacity = Math.min(pullDistance / 40, 1);
   }
 
   function resetPull() {
@@ -4033,12 +4039,14 @@ function resetToHome() {
       pullingClass = false;
     }
     document.body.style.transform = '';
-    if (!refreshing) { indicator.style.transform = ''; indicator.style.opacity = ''; }
+    if (!refreshing) indicator.style.opacity = '';
   }
 
   document.addEventListener('touchstart', (e) => {
     if (refreshing) return;
     if (window.scrollY > 0) { pulling = false; return; }
+    if (isScrollLocked()) { pulling = false; return; }
+    if (e.target.closest('.modal-overlay, .calendar-popup, .expanded-card, .comedian-bio-panel')) { pulling = false; return; }
     startY = e.touches[0].clientY;
     pulling = true;
     pullDistance = 0;
@@ -4057,15 +4065,21 @@ function resetToHome() {
       pulling = false;
       if (pullingClass) {
         indicator.classList.remove('pulling');
+        document.body.classList.remove('ptr-pulling');
         pullingClass = false;
       }
-      // Keep body translated at THRESHOLD until reload, so the gap stays open
+      // Hold the gap open while we refetch
       document.body.style.transform = `translateY(${THRESHOLD}px)`;
       indicator.classList.add('refreshing');
-      indicator.style.transform = 'translate(-50%, 0) rotate(0deg)';
       indicator.style.opacity = '1';
       Native.impact('Medium');
-      setTimeout(() => location.reload(), 350);
+      // In-place refresh: re-fetch data, preserve tab/date state, snap back.
+      refreshShowsInPlace().finally(() => {
+        document.body.style.transform = '';
+        indicator.classList.remove('refreshing');
+        indicator.style.opacity = '';
+        refreshing = false;
+      });
     } else {
       resetPull();
     }
@@ -4190,3 +4204,31 @@ window.trackReserve = trackReserve;
 window.removeAlert = removeAlert;
 window.expandBioInPanel = expandBioInPanel;
 window.pwaInstall = pwaInstall;
+
+// In-place refresh used by pull-to-refresh: refetch data sources, re-parse
+// cellar HTML, re-render the current view without resetting tab/date filters.
+async function refreshShowsInPlace() {
+  try {
+    const [batchData] = await Promise.all([
+      fetchWithTimeout(STATIC_CELLAR, {}, 5000).then(r => r.json())
+        .catch(() => fetchWithTimeout(`${API_BATCH_URL}?days=${dates.length}`, {}, 15000).then(r => r.json()))
+        .catch(() => null),
+      fetchTheStand(),
+      fetchBigShows(),
+      fetchNYCC(),
+      fetchGotham(),
+      fetchAvailability()
+    ]);
+    if (batchData?.results) {
+      dates.forEach(d => {
+        const dateStr = formatDateParam(d);
+        const dayData = batchData.results[dateStr];
+        const html = dayData?.show?.html || '';
+        if (html) allData[dateStr] = parseShows(html, dateStr);
+      });
+    }
+    renderShows();
+  } catch (e) {
+    console.error('refreshShowsInPlace failed:', e);
+  }
+}
