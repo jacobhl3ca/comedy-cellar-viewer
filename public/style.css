@@ -124,23 +124,24 @@ body.mode-jazz #data-warning { display: none; }
 body.mode-jazz .data-warning { display: none; }
 body.mode-jazz .modal-overlay { display: none !important; }
 
-/* Pull-to-refresh indicator */
+/* Pull-to-refresh — body shifts down on pull (browser-like elastic feel),
+   indicator anchored just below the safe-area (clear of notch/Dynamic Island) */
+body { transition: transform 0.25s ease; }
+body.ptr-pulling { transition: none; }
 #ptr-indicator {
-  position: fixed; left: 50%; top: env(safe-area-inset-top, 0);
-  transform: translate(-50%, -60px);
+  position: fixed; left: 50%;
+  top: calc(env(safe-area-inset-top, 0px) + 10px);
+  transform: translate(-50%, 0);
   width: 36px; height: 36px; border-radius: 50%;
   background: var(--surface2); border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
   color: var(--text-dim); font-size: 18px; line-height: 1;
   z-index: 200; pointer-events: none;
-  transition: transform 0.25s ease, opacity 0.2s;
+  transition: opacity 0.2s;
   opacity: 0;
 }
 #ptr-indicator.pulling { transition: none; opacity: 1; }
-#ptr-indicator.refreshing {
-  opacity: 1;
-  transition: transform 0.2s ease;
-}
+#ptr-indicator.refreshing { opacity: 1; }
 #ptr-indicator.refreshing .ptr-spin {
   display: inline-block;
   animation: ptr-spin 0.8s linear infinite;
@@ -149,7 +150,6 @@ body.mode-jazz .modal-overlay { display: none !important; }
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-html.native-ios #ptr-indicator { top: 8px; }
 
 /* Header share button — top-right, left of theme toggle. Hidden until user has prefs to share. */
 .header-share-btn {

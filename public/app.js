@@ -3903,6 +3903,44 @@ async function init() {
     });
   });
 
+  document.getElementById('import-go')?.addEventListener('click', async () => {
+    const input = document.getElementById('import-url');
+    const status = document.getElementById('import-status');
+    const raw = (input.value || '').trim();
+    if (!raw) return;
+    const pMatch = raw.match(/[#?&]p=([A-Za-z0-9_-]+)/);
+    if (!pMatch) {
+      status.textContent = 'Could not find a share code in that link. Make sure the URL contains #p=...';
+      status.style.color = 'var(--accent)';
+      return;
+    }
+    try {
+      Native.impact('Light');
+      const imported = await decompressPrefs(pMatch[1]);
+      const current = loadPrefs();
+      const merged = {
+        faves: [...new Set([...(current.faves || []), ...(imported.faves || [])])],
+        skips: [...new Set([...(current.skips || []), ...(imported.skips || [])])],
+        likes: [...new Set([...(current.likes || []), ...(imported.likes || [])])]
+      };
+      savePrefs(merged);
+      input.value = '';
+      Native.impact('Medium');
+      if (typeof renderModal === 'function') renderModal('');
+      if (typeof renderShows === 'function') renderShows();
+      updateShareBtn();
+      status.style.color = 'var(--text-dim)';
+      status.textContent = `Imported ${imported.faves.length} faves, ${imported.skips.length} skips, ${imported.likes.length} likes. Merged with what you had.`;
+      setTimeout(() => {
+        status.textContent = 'Merges favorites & skips from another device’s share link with what you have here.';
+      }, 5000);
+    } catch (e) {
+      console.error('Import failed:', e);
+      status.style.color = 'var(--accent)';
+      status.textContent = 'Could not import — link may be invalid or corrupted.';
+    }
+  });
+
   document.getElementById('header-share').addEventListener('click', () => {
     Native.impact('Light');
     doShare(null, () => {
@@ -3965,21 +4003,37 @@ function resetToHome() {
     if (pendingDy === null || !pulling) return;
     if (pendingDy <= 0) {
       pullDistance = 0;
-      if (pullingClass) { indicator.classList.remove('pulling'); pullingClass = false; }
+      if (pullingClass) {
+        indicator.classList.remove('pulling');
+        document.body.classList.remove('ptr-pulling');
+        pullingClass = false;
+      }
+      document.body.style.transform = '';
       indicator.style.transform = '';
       return;
     }
-    pullDistance = Math.min(pendingDy * 0.5, MAX_PULL);
-    if (!pullingClass) { indicator.classList.add('pulling'); pullingClass = true; }
-    indicator.style.transform = `translate(-50%, ${pullDistance - 60}px) rotate(${pullDistance * 4}deg)`;
+    pullDistance = Math.min(pendingDy * 0.6, MAX_PULL);
+    if (!pullingClass) {
+      indicator.classList.add('pulling');
+      document.body.classList.add('ptr-pulling');
+      pullingClass = true;
+    }
+    document.body.style.transform = `translateY(${pullDistance}px)`;
+    indicator.style.transform = `translate(-50%, 0) rotate(${pullDistance * 4}deg)`;
+    indicator.style.opacity = Math.min(pullDistance / 30, 1);
   }
 
   function resetPull() {
     pulling = false;
     pullDistance = 0;
     pendingDy = null;
-    if (pullingClass) { indicator.classList.remove('pulling'); pullingClass = false; }
-    if (!refreshing) indicator.style.transform = '';
+    if (pullingClass) {
+      indicator.classList.remove('pulling');
+      document.body.classList.remove('ptr-pulling');
+      pullingClass = false;
+    }
+    document.body.style.transform = '';
+    if (!refreshing) { indicator.style.transform = ''; indicator.style.opacity = ''; }
   }
 
   document.addEventListener('touchstart', (e) => {
@@ -4001,9 +4055,15 @@ function resetToHome() {
     if (pullDistance >= THRESHOLD) {
       refreshing = true;
       pulling = false;
-      if (pullingClass) { indicator.classList.remove('pulling'); pullingClass = false; }
+      if (pullingClass) {
+        indicator.classList.remove('pulling');
+        pullingClass = false;
+      }
+      // Keep body translated at THRESHOLD until reload, so the gap stays open
+      document.body.style.transform = `translateY(${THRESHOLD}px)`;
       indicator.classList.add('refreshing');
-      indicator.style.transform = 'translate(-50%, 16px) rotate(0deg)';
+      indicator.style.transform = 'translate(-50%, 0) rotate(0deg)';
+      indicator.style.opacity = '1';
       Native.impact('Medium');
       setTimeout(() => location.reload(), 350);
     } else {

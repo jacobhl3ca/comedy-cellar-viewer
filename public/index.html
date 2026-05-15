@@ -67,7 +67,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=ce9f844">
+  <link rel="stylesheet" href="style.min.css?v=bbb7648">
   <script>
     (function() {
       const root = document.documentElement;
@@ -253,6 +253,14 @@
           <div id="alert-list" class="chip-list"></div>
           <p style="font-size:11px;color:var(--text-dim);margin-top:6px;">Get emailed when your watched comedians are in an upcoming lineup. Turn on notifications from any comedian's expanded bio panel.</p>
         </div>
+        <div class="modal-section">
+          <h3>Import from Share Link</h3>
+          <div class="alert-email-row" style="gap:8px;">
+            <input type="text" id="import-url" placeholder="Paste a tonightnyc.com share link..." class="modal-search" style="flex:1;">
+            <button class="btn-done" id="import-go" style="padding:6px 12px;font-size:13px;">Import</button>
+          </div>
+          <p id="import-status" style="font-size:11px;color:var(--text-dim);margin-top:6px;">Merges favorites &amp; skips from another device's share link with what you have here.</p>
+        </div>
       </div>
       <div class="modal-footer">
         <button class="btn-reset" id="reset-prefs">Reset All</button>
@@ -274,7 +282,7 @@
     <button id="pwa-install-btn" onclick="pwaInstall()" style="display:none;"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Add to Home Screen</button>
   </footer>
 
-  <script defer src="app.min.js?v=ce9f844"></script>
+  <script defer src="app.min.js?v=bbb7648"></script>
   <!-- Vercel Web Analytics + Speed Insights — gated to skip Capacitor native shell so iOS app stays "No data collected" on App Store -->
   <script>
     if (!window.Capacitor?.isNativePlatform?.()) {
