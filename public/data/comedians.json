@@ -4084,7 +4084,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/julio-diaz",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/juliodiaz.jpg",
-    "tagline_cellar": "HULU, DONTTELLCOMEDY"
+    "tagline_cellar": "HULU, DONTTELLCOMEDY",
+    "bio_wiki": "Julio Díaz may refer to:Julio Díaz, Spanish footballer\nJulio Díaz, Spanish footballer\nJulio Diaz (actor), Filipino actor\nJulio Díaz (boxer), Mexican boxer\nJulio Salvador y Díaz-Benjumea (1910–1987), Spanish general\n"
   },
   {
     "name": "Justin Martindale",
@@ -5905,7 +5906,8 @@
     "name": "Fortune Feimster",
     "bio": "Fortune Feimster is a stand-up comedian, actress, and writer. She appeared on Chelsea Lately, The Mindy Project, and has Netflix specials. Known for her Southern charm and self-deprecating humor.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Fortune_Feimster_2016.png/330px-Fortune_Feimster_2016.png"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Fortune_Feimster_2016.png/330px-Fortune_Feimster_2016.png",
+    "tagline_cellar": "WHAT A JOKE WITH PAPA AND FORTUNE ON SIRIUSXM, FORTUNE FEIMSTER: CRUSHING IT NETFLIX SPECIAL"
   },
   {
     "name": "Norm Macdonald",
@@ -7763,5 +7765,21 @@
     "venues": [],
     "bio": "FROM THE MOVIE \"TRAINWRECK\",  FROM THE TONIGHT SHOW",
     "tagline_cellar": "FROM THE MOVIE \"TRAINWRECK\",  FROM THE TONIGHT SHOW"
+  },
+  {
+    "name": "Hassan Phills",
+    "venues": []
+  },
+  {
+    "name": "Bridget Foley",
+    "venues": []
+  },
+  {
+    "name": "Dan Yang",
+    "venues": []
+  },
+  {
+    "name": "Tatiana Frank",
+    "venues": []
   }
 ]
