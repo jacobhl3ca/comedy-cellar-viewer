@@ -124,10 +124,12 @@ body.mode-jazz #data-warning { display: none; }
 body.mode-jazz .data-warning { display: none; }
 body.mode-jazz .modal-overlay { display: none !important; }
 
-/* Pull-to-refresh — body shifts down on pull (browser-like elastic feel),
-   thin system-style ring spinner anchored just below the safe-area. */
-body { transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
-body.ptr-pulling { transition: none; }
+/* Pull-to-refresh — wrap-shifts on pull, thin system ring spinner stays viewport-fixed.
+   #page-wrap (created at runtime, wraps everything except #ptr-indicator) gets the
+   transform so #ptr-indicator (a sibling, not descendant) keeps position:fixed
+   working against the viewport. */
+#page-wrap { transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+#page-wrap.ptr-pulling { transition: none; }
 #ptr-indicator {
   position: fixed; left: 50%;
   top: calc(env(safe-area-inset-top, 0px) + 14px);

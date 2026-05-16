@@ -389,6 +389,19 @@ function resetToHome() {
 
 (function setupPullToRefresh() {
   const indicator = document.getElementById('ptr-indicator');
+  // Wrap all body children except the indicator into a #page-wrap div so the pull
+  // transform applies to the wrapper, NOT body. This keeps #ptr-indicator (a sibling
+  // of the wrapper) viewport-fixed instead of being trapped by body's transform's
+  // new containing block. Idempotent — runs once.
+  let pageWrap = document.getElementById('page-wrap');
+  if (!pageWrap && indicator) {
+    pageWrap = document.createElement('div');
+    pageWrap.id = 'page-wrap';
+    Array.from(document.body.children).forEach(child => {
+      if (child !== indicator) pageWrap.appendChild(child);
+    });
+    document.body.appendChild(pageWrap);
+  }
   const THRESHOLD = 70;
   const MAX_PULL = 110;
   let startY = 0;
@@ -413,20 +426,20 @@ function resetToHome() {
       pullDistance = 0;
       if (pullingClass) {
         indicator.classList.remove('pulling');
-        document.body.classList.remove('ptr-pulling');
+        pageWrap?.classList.remove('ptr-pulling');
         pullingClass = false;
       }
-      document.body.style.transform = '';
+      if (pageWrap) pageWrap.style.transform = '';
       indicator.style.opacity = '';
       return;
     }
     pullDistance = Math.min(pendingDy * 0.55, MAX_PULL);
     if (!pullingClass) {
       indicator.classList.add('pulling');
-      document.body.classList.add('ptr-pulling');
+      pageWrap?.classList.add('ptr-pulling');
       pullingClass = true;
     }
-    document.body.style.transform = `translateY(${pullDistance}px)`;
+    if (pageWrap) pageWrap.style.transform = `translateY(${pullDistance}px)`;
     indicator.style.opacity = Math.min(pullDistance / 40, 1);
   }
 
@@ -436,10 +449,10 @@ function resetToHome() {
     pendingDy = null;
     if (pullingClass) {
       indicator.classList.remove('pulling');
-      document.body.classList.remove('ptr-pulling');
+      pageWrap?.classList.remove('ptr-pulling');
       pullingClass = false;
     }
-    document.body.style.transform = '';
+    if (pageWrap) pageWrap.style.transform = '';
     if (!refreshing) indicator.style.opacity = '';
   }
 
@@ -466,17 +479,17 @@ function resetToHome() {
       pulling = false;
       if (pullingClass) {
         indicator.classList.remove('pulling');
-        document.body.classList.remove('ptr-pulling');
+        pageWrap?.classList.remove('ptr-pulling');
         pullingClass = false;
       }
       // Hold the gap open while we refetch
-      document.body.style.transform = `translateY(${THRESHOLD}px)`;
+      if (pageWrap) pageWrap.style.transform = `translateY(${THRESHOLD}px)`;
       indicator.classList.add('refreshing');
       indicator.style.opacity = '1';
       Native.impact('Medium');
       // In-place refresh: re-fetch data, preserve tab/date state, snap back.
       refreshShowsInPlace().finally(() => {
-        document.body.style.transform = '';
+        if (pageWrap) pageWrap.style.transform = '';
         indicator.classList.remove('refreshing');
         indicator.style.opacity = '';
         refreshing = false;
