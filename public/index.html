@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <script>if(window.Capacitor)document.documentElement.classList.add('native-ios');</script>
-  <title>Tonight NYC — NYC Comedy Lineups</title>
+  <title>Tonight NYC — Comedy Lineups</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#000000">
@@ -12,7 +12,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="apple-touch-icon" href="icon-192.png">
   <meta name="apple-itunes-app" content="app-id=6763027650">
-  <meta property="og:title" content="Tonight NYC — NYC Comedy Lineups">
+  <meta property="og:title" content="Tonight NYC — Comedy Lineups">
   <meta property="og:description" content="Every NYC comedy show, filtered your way. Mark favorites, skip regulars, book the right set.">
   <meta property="og:url" content="https://tonightnyc.com">
   <meta property="og:image" content="https://tonightnyc.com/og-image.png">
@@ -23,7 +23,7 @@
   <meta name="twitter:image" content="https://tonightnyc.com/og-image.png">
   <meta name="description" content="NYC comedy lineups from Comedy Cellar, The Stand, and more. Per-show breakdowns, favorites, skips, and direct booking.">
   <link rel="canonical" href="https://tonightnyc.com">
-  <meta name="twitter:title" content="Tonight NYC — NYC Comedy Lineups">
+  <meta name="twitter:title" content="Tonight NYC — Comedy Lineups">
   <meta name="twitter:description" content="Every NYC comedy show, filtered your way. Mark favorites, skip regulars, book the right set.">
   <script type="application/ld+json">
   {
@@ -67,7 +67,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=e173cb4">
+  <link rel="stylesheet" href="style.min.css?v=7954b9a">
   <script>
     (function() {
       const root = document.documentElement;
@@ -98,7 +98,7 @@
       <div class="header-row">
         <h1>Tonight <span class="accent">NYC</span></h1>
       </div>
-      <p class="subtitle">NYC <select id="mode-select" class="mode-select" aria-label="Switch category" onclick="event.stopPropagation()" onkeydown="event.stopPropagation()"><option value="comedy">comedy</option><option value="jazz">jazz</option></select> lineups, filtered your way.</p>
+      <p class="subtitle">NYC comedy lineups, filtered your way.</p>
     </div>
     <button class="header-share-btn" id="header-share" aria-label="Copy share link" title="Copy share link">
       <svg class="share-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -106,6 +106,17 @@
         <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
       </svg>
       <span class="share-check" style="display:none"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>
+    </button>
+    <a class="header-icon-btn header-appstore-btn" id="header-appstore" href="https://apps.apple.com/us/app/tonight-nyc/id6763027650" target="_blank" rel="noopener" aria-label="Download on the App Store" title="Download on the App Store">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.05 12.04a4.74 4.74 0 0 1 2.27-3.98 4.86 4.86 0 0 0-3.82-2.07c-1.6-.17-3.14.96-3.96.96-.84 0-2.09-.94-3.45-.91a5.1 5.1 0 0 0-4.3 2.62c-1.84 3.2-.47 7.9 1.33 10.49.88 1.27 1.92 2.69 3.28 2.64 1.32-.05 1.82-.85 3.42-.85s2.05.85 3.45.82c1.43-.02 2.33-1.28 3.21-2.55a11.32 11.32 0 0 0 1.46-3 4.6 4.6 0 0 1-2.89-4.17M14.85 4.27a4.66 4.66 0 0 0 1.07-3.35 4.76 4.76 0 0 0-3.07 1.59 4.45 4.45 0 0 0-1.1 3.23 3.93 3.93 0 0 0 3.1-1.47Z"></path>
+      </svg>
+    </a>
+    <button class="header-icon-btn header-settings-btn" id="header-settings" aria-label="App settings" title="Settings">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+      </svg>
     </button>
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
       <svg class="theme-icon-svg" id="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -167,10 +178,11 @@
             <input type="checkbox" id="picture-mode">
             <span class="big-pics-label">Big Pictures</span>
           </label>
-          <label class="toggle toolbar-toggle">
-            <input type="checkbox" id="hide-sold-out" onchange="updateResetBtn(); renderShows();">
-            <span>Hide Sold Out</span>
-          </label>
+          <select id="soldout-filter" class="sort-select" onchange="document.getElementById('hide-sold-out').checked = (this.value === 'hide'); updateResetBtn(); renderShows();">
+            <option value="all">All shows</option>
+            <option value="hide">Hide sold-out</option>
+            <option value="only">Only sold-out</option>
+          </select>
           <select id="sort-select" class="sort-select">
             <option value="none">Sort by...</option>
             <option value="faves">Top rated</option>
@@ -205,6 +217,7 @@
   <!-- Hidden elements kept for JS compatibility -->
   <input type="checkbox" id="only-faves" style="display:none;">
   <input type="checkbox" id="hide-skips" style="display:none;">
+  <input type="checkbox" id="hide-sold-out" style="display:none;">
   <input type="checkbox" id="no-photo-filter" style="display:none;">
   <input type="checkbox" id="expand-bios" style="display:none;">
   <input type="checkbox" id="expand-long-bios" style="display:none;">
@@ -270,19 +283,78 @@
     </div>
   </div>
 
+  <!-- App Settings Modal -->
+  <div class="modal-overlay hidden" id="app-settings-overlay">
+    <div class="modal app-settings-modal">
+      <div class="modal-header">
+        <h2>Settings</h2>
+        <button class="modal-close" id="app-settings-close" aria-label="Close settings">&times;</button>
+      </div>
+
+      <div class="modal-sections">
+        <div class="modal-section">
+          <h3>Brand color</h3>
+          <p class="settings-desc">Pick a brand color.</p>
+          <div class="color-swatches" id="color-swatches">
+            <button class="color-swatch" data-color="#e63636" style="--c:#e63636" title="Red (default)" aria-label="Red"></button>
+            <button class="color-swatch" data-color="#f59e0b" style="--c:#f59e0b" title="Amber" aria-label="Amber"></button>
+            <button class="color-swatch" data-color="#10b981" style="--c:#10b981" title="Emerald" aria-label="Emerald"></button>
+            <button class="color-swatch" data-color="#3b82f6" style="--c:#3b82f6" title="Blue" aria-label="Blue"></button>
+            <button class="color-swatch" data-color="#8b5cf6" style="--c:#8b5cf6" title="Violet" aria-label="Violet"></button>
+            <button class="color-swatch" data-color="#ec4899" style="--c:#ec4899" title="Pink" aria-label="Pink"></button>
+            <button class="color-swatch" data-color="#ffffff" style="--c:#ffffff" title="White" aria-label="White"></button>
+          </div>
+          <div class="color-custom-row">
+            <label for="color-custom-input" style="font-size:13px;color:var(--text-dim);">Custom:</label>
+            <input type="color" id="color-custom-input" value="#e63636">
+            <button class="btn-reset" id="reset-color" type="button">Reset</button>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3>Default tab on open</h3>
+          <p class="settings-desc">Which venue tab should the app land on?</p>
+          <select id="default-tab-select" class="bio-select">
+            <option value="all">All Venues</option>
+            <option value="cellar">Comedy Cellar</option>
+            <option value="the-stand">The Stand</option>
+            <option value="big-shows">Big Shows</option>
+            <option value="comedians">Comedians</option>
+          </select>
+        </div>
+
+        <div class="modal-section">
+          <h3>Default for sold-out shows</h3>
+          <p class="settings-desc">Pick what shows up by default.</p>
+          <select id="default-soldout-mode" class="bio-select">
+            <option value="all">All shows</option>
+            <option value="hide">Hide sold-out</option>
+            <option value="only">Only sold-out</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-reset" id="reset-all-settings" type="button">Reset all</button>
+        <button class="btn-share" id="copy-settings-link" type="button" style="display:none;">Copy settings link</button>
+        <button class="btn-done" id="app-settings-done">Done</button>
+      </div>
+    </div>
+  </div>
+
   <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
 
   <footer class="site-footer">
     <div id="footer-venue-info"></div>
     <p>Built by fans, for fans.</p>
     <p><a href="mailto:hello@tonightnyc.com">hello@tonightnyc.com</a></p>
-    <a class="app-store-badge-link" href="https://apps.apple.com/app/id6763027650" target="_blank" rel="noopener" aria-label="Download Tonight NYC on the App Store">
+    <a class="app-store-badge-link" href="https://apps.apple.com/us/app/tonight-nyc/id6763027650" target="_blank" rel="noopener" aria-label="Download Tonight NYC on the App Store">
       <img src="/app-store-badge.svg" alt="Download on the App Store" height="40">
     </a>
     <button id="pwa-install-btn" onclick="pwaInstall()" style="display:none;"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Add to Home Screen</button>
   </footer>
 
-  <script defer src="app.min.js?v=e173cb4"></script>
+  <script defer src="app.min.js?v=7954b9a"></script>
   <!-- Vercel Web Analytics + Speed Insights — gated to skip Capacitor native shell so iOS app stays "No data collected" on App Store -->
   <script>
     if (!window.Capacitor?.isNativePlatform?.()) {

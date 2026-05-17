@@ -126,6 +126,13 @@ const NAME_FIXES = {
   'Peter Fowler': 'Peter James Fowler',
   'Crystal Marie': 'Crystal Marie Denha',
   'H.Foley': 'H. Foley',
+  'Roy Wood Jr': 'Roy Wood Jr.',
+  'Eric D\'Alessandro': 'Eric D’Alessandro',
+  'Maria Decotis': 'Maria DeCotis',
+  'Matteo lane': 'Matteo Lane',
+  'Onika Mclean': 'Onika McLean',
+  'Tom Mcguire': 'Tom McGuire',
+  'Anthony Devito': 'Anthony DeVito',
 };
 
 function normalizeName(name) {
@@ -410,36 +417,60 @@ async function scrapeGotham() {
 }
 
 // ---- Step 2c: Scrape NYCC ----
-// NOTE: NYCC site is JS-rendered — this scraper gets minimal data.
-// Would need Puppeteer/Playwright for full scrape. Kept as-is since it's harmless.
+// Parses newyorkcomedyclub.com/calendar/<YYYY-MM> — each day cell embeds an event list
+// inside the `data-content` popover attribute (HTML-encoded HTML).
+function _nyccDecode(s) {
+  return s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'").replace(/&apos;/g, "'").replace(/&amp;/g, '&');
+}
+function _nyccTo24h(t) {
+  const m = /^(\d{1,2}):(\d{2})\s*(AM|PM)$/i.exec(t.trim());
+  if (!m) return '';
+  let h = parseInt(m[1], 10); const min = m[2]; const ap = m[3].toUpperCase();
+  if (ap === 'PM' && h !== 12) h += 12;
+  if (ap === 'AM' && h === 12) h = 0;
+  return `${String(h).padStart(2, '0')}:${min}`;
+}
+function _nyccParseCalendar(html) {
+  if (!html) return [];
+  const shows = [];
+  const dayPattern = /<td[^>]*data-date="(\d{4}-\d{2}-\d{2})"[\s\S]*?data-content="([^"]+)"/g;
+  let m;
+  while ((m = dayPattern.exec(html)) !== null) {
+    const date = m[1];
+    const content = _nyccDecode(m[2]);
+    const evPattern = /<a[^>]+href="(\/events\/[^"]+)"[^>]*>([^<]+?)\s-\s(\d{1,2}:\d{2}\s*[AP]M)<\/a>/gi;
+    let em;
+    while ((em = evPattern.exec(content)) !== null) {
+      const titleRaw = em[2].trim();
+      const isLineup = !/^[^,]+ ft:?\s|:\s/i.test(titleRaw);
+      const comedians = isLineup ? titleRaw.split(',').map(s => s.trim()).filter(Boolean) : [];
+      shows.push({
+        title: titleRaw, date, time: _nyccTo24h(em[3].trim()),
+        comedians, url: 'https://newyorkcomedyclub.com' + em[1],
+        venue: 'NY Comedy Club', room: ''
+      });
+    }
+  }
+  return shows;
+}
 async function scrapeNYCC() {
   log('Scraping NY Comedy Club...');
   try {
-    const html = await fetchText('https://newyorkcomedyclub.com/shows');
-    const shows = [];
+    const now = new Date();
+    const next = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+    const months = [
+      `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`,
+      `${next.getFullYear()}-${String(next.getMonth() + 1).padStart(2, '0')}`,
+    ];
+    const pages = await Promise.all(months.map(m =>
+      fetchText(`https://newyorkcomedyclub.com/calendar/${m}`).catch(() => '')
+    ));
+    const all = pages.flatMap(_nyccParseCalendar);
     const seen = new Set();
-    // Try show cards
-    const cardPattern = /href="(\/shows\/[^"]+)"[^>]*>[\s\S]*?<h\d[^>]*>([\s\S]*?)<\/h\d>[\s\S]*?(?:<time[^>]*>([\s\S]*?)<\/time>)?/g;
-    let match;
-    while ((match = cardPattern.exec(html)) !== null) {
-      const p = match[1];
-      if (seen.has(p)) continue;
-      seen.add(p);
-      const title = match[2].replace(/<[^>]+>/g, '').trim();
-      const dateStr = match[3] ? match[3].replace(/<[^>]+>/g, '').trim() : '';
-      if (title) shows.push({ title, date: dateStr, time: '', comedians: [], url: 'https://newyorkcomedyclub.com' + p, venue: 'NY Comedy Club', room: '' });
-    }
-    // Fallback: extract show links
-    if (shows.length === 0) {
-      const linkPattern = /href="(\/shows\/([^"]+))"[^>]*>/g;
-      while ((match = linkPattern.exec(html)) !== null) {
-        const p = match[1]; const slug = match[2];
-        if (seen.has(p)) continue;
-        seen.add(p);
-        const title = slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-        shows.push({ title, date: '', time: '', comedians: [], url: 'https://newyorkcomedyclub.com' + p, venue: 'NY Comedy Club', room: '' });
-      }
-    }
+    const shows = all
+      .filter(s => { const k = `${s.url}|${s.date}|${s.time}`; if (seen.has(k)) return false; seen.add(k); return true; })
+      .sort((a, b) => a.date.localeCompare(b.date) || (a.time || '').localeCompare(b.time || ''));
     log(`NYCC: ${shows.length} shows`);
     return shows;
   } catch (e) {

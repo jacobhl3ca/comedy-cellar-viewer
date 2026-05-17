@@ -507,11 +507,18 @@ function showTitlePopup(el) {
   requestAnimationFrame(() => document.addEventListener('click', dismiss));
 }
 
-function hideSoldOutToggle(soldOut) {
-  if (!soldOut) return '';
-  const checked = document.getElementById('hide-sold-out')?.checked ? ' checked' : '';
-  return `<label class="toggle hide-sold-out-inline"><input type="checkbox"${checked} onchange="toggleHideSoldOut()"><span>Hide Sold Out</span></label>`;
+// Sold-out filter mode: 'all' (default), 'hide' (skip sold-out), 'only' (skip not-sold-out).
+function getSoldOutFilter() {
+  return document.getElementById('soldout-filter')?.value || 'all';
 }
+function shouldHideShow(isSoldOut) {
+  const f = getSoldOutFilter();
+  if (f === 'hide' && isSoldOut) return true;
+  if (f === 'only' && !isSoldOut) return true;
+  return false;
+}
+// Inline per-card toggle replaced by the toolbar dropdown — keep stub for compatibility.
+function hideSoldOutToggle() { return ''; }
 
 function toggleHideSoldOut() {
   const cb = document.getElementById('hide-sold-out');
@@ -569,7 +576,7 @@ function renderShowCard(show, hideSkips, onlyFavs, dateStr) {
   }
 
   const soldOut = dateStr ? isShowSoldOut(dateStr, show.time) : false;
-  if (soldOut && document.getElementById('hide-sold-out')?.checked) return '';
+  if (shouldHideShow(soldOut)) return '';
   const cardClass = (stats.faves >= 3 ? 'show-card must-go' : 'show-card') + (soldOut ? ' sold-out' : '');
 
   // Detect named/special shows vs plain venue variants
@@ -695,7 +702,7 @@ function renderSortedByFaves(container) {
       if (timeFilter && timeFilter !== 'any' && showTime24_sf && showTime24_sf > timeFilter) return;
       if (timeFilterMin2 && showTime24_sf && showTime24_sf < timeFilterMin2) return;
       const soldOut = isShowSoldOut(dateStr, show.time);
-      if (soldOut && document.getElementById('hide-sold-out')?.checked) return;
+      if (shouldHideShow(soldOut)) return;
       allShows.push({ ...show, dateStr, dateObj: d, faves: stats.faves, score: stats.score, stats, soldOut });
     });
   });
@@ -799,11 +806,8 @@ function renderAllDaysSchedule(container) {
       if (tfMinStand) {
         dayShows = dayShows.filter(s => { const t24 = to24h(s.time); return !t24 || t24 >= tfMinStand; });
       }
-      // Filter sold-out shows if hidden
-      const hideSoldOutStand = document.getElementById('hide-sold-out')?.checked;
-      if (hideSoldOutStand) {
-        dayShows = dayShows.filter(s => !isShowSoldOut(s.date, s.time));
-      }
+      // Filter sold-out shows per dropdown
+      dayShows = dayShows.filter(s => !shouldHideShow(isShowSoldOut(s.date, s.time)));
       if (dayShows.length === 0) return;
       html += `<h2 class="schedule-day-header">${dayLabel}</h2>`;
       dayShows.forEach(show => {
@@ -922,7 +926,7 @@ function renderStandShowCard(show) {
   if (activeComedianFilter && !show.comedians.some(c => c.toLowerCase() === activeComedianFilter.toLowerCase())) return '';
 
   const soldOut = !!show.soldout;
-  if (soldOut && document.getElementById('hide-sold-out')?.checked) return '';
+  if (shouldHideShow(soldOut)) return '';
 
   const hideSkipsStand = document.getElementById('hide-skips')?.checked;
   // Hide entire show if any comedian is a skip
@@ -1100,13 +1104,11 @@ function renderAllVenues(container) {
   // Hide past shows (2+ hours ago)
   allItems = allItems.filter(item => !isShowPast(item.dateStr, item.show.time));
 
-  // Hide sold-out shows if toggle is checked
-  if (document.getElementById('hide-sold-out')?.checked) {
-    allItems = allItems.filter(item => {
-      if (item.type === 'cellar') return !isShowSoldOut(item.dateStr, item.show.time);
-      return !item.show.soldout;
-    });
-  }
+  // Apply sold-out filter (hide / only / all)
+  allItems = allItems.filter(item => {
+    const soldOut = item.type === 'cellar' ? isShowSoldOut(item.dateStr, item.show.time) : !!item.show.soldout;
+    return !shouldHideShow(soldOut);
+  });
 
   // Sort — by faves if dropdown selected, otherwise by date+time
   const sortValAV = document.getElementById('sort-select')?.value || 'none';
@@ -1165,7 +1167,7 @@ function renderAllVenues(container) {
     } else {
       const evt = item.show;
       const evtSoldOut = !!evt.soldout;
-      if (evtSoldOut && document.getElementById('hide-sold-out')?.checked) return;
+      if (shouldHideShow(evtSoldOut)) return;
       // Build performer list for comedian chips — use performers string or fall back to title
       const evtPerformers = evt.performers
         ? evt.performers.split(',').map(p => p.split(' - ')[0].trim()).filter(Boolean)
@@ -1391,7 +1393,6 @@ function renderBigShows(container) {
 
     // Date boxes — sorted by date, deduplicated by date+time (merges SG/TM duplicates)
     // Also drop time-less entries when another entry on the same date has a time
-    const hideSoldOut = document.getElementById('hide-sold-out')?.checked;
     const datesWithTime = new Set(data.events.filter(e => e.time).map(e => e.date));
     const seen = new Set();
     const sortedEvents = data.events
@@ -1403,11 +1404,10 @@ function renderBigShows(container) {
         seen.add(key);
         return true;
       });
-    const allSoldOut = sortedEvents.length > 0 && sortedEvents.every(evt => evt.soldout);
-    if (allSoldOut && hideSoldOut) return;
-    // Filter out individual sold-out events when Hide Sold Out is checked
-    const visibleEvents = hideSoldOut ? sortedEvents.filter(evt => !evt.soldout) : sortedEvents;
+    // Apply sold-out filter (hide / only / all)
+    const visibleEvents = sortedEvents.filter(evt => !shouldHideShow(!!evt.soldout));
     if (visibleEvents.length === 0) return;
+    const allSoldOut = visibleEvents.every(evt => evt.soldout);
     const dateBoxes = visibleEvents.map(evt => {
       const d = new Date(evt.date + 'T12:00:00');
       const shortDate = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
@@ -1751,6 +1751,16 @@ window._dirOnlyFaves = window._dirOnlyFaves || false;
 window._dirOnlyLive = window._dirOnlyLive || false;
 window._dirShowCount = window._dirShowCount || 60;
 
+// Hide entries with no bio AND no photo (124 orphans from past venue scrapes).
+// Keeps anyone with at least a photo OR a bio OR a venue OR featured/deceased flag.
+function _dirIsEmpty(c) {
+  if (c.deceased || c.featured) return false;
+  if ((c.venues || []).length > 0) return false;
+  const hasBio = c.bio || c.bio_stand || c.bio_wiki || c.tagline_cellar;
+  const hasPhoto = c.photo_nycc || c.photo_stand || c.photo_cellar || c.photo_wiki;
+  return !hasBio && !hasPhoto;
+}
+
 function _dirLiveSet() {
   const live = new Set();
   Object.values(allData).forEach(day => { if (day) day.forEach(s => s.comedians.forEach(n => live.add(n))); });
@@ -1799,7 +1809,7 @@ function renderComedianDirectory(container) {
   const onlyLive = window._dirOnlyLive;
 
   // Filter
-  let list = (comedianDB || []).slice();
+  let list = (comedianDB || []).slice().filter(c => !_dirIsEmpty(c));
   if (search) list = list.filter(c => c.name.toLowerCase().includes(search));
   if (onlyFaves) list = list.filter(c => prefs.faves.includes(c.name));
   if (onlyLive) list = list.filter(c => liveSet.has(c.name));
@@ -1816,6 +1826,9 @@ function renderComedianDirectory(container) {
     const al = liveSet.has(a.name) ? 0 : 1;
     const bl = liveSet.has(b.name) ? 0 : 1;
     if (al !== bl) return al - bl;
+    const afe = a.featured ? 0 : 1;
+    const bfe = b.featured ? 0 : 1;
+    if (afe !== bfe) return afe - bfe;
     return a.name.localeCompare(b.name);
   });
 
@@ -1905,7 +1918,7 @@ function _dirAttachInfiniteScroll() {
     const prefs = loadPrefs();
     const liveSet = _dirLiveSet();
     const search = (window._dirSearch || '').toLowerCase().trim();
-    let list = (comedianDB || []).slice();
+    let list = (comedianDB || []).slice().filter(c => !_dirIsEmpty(c));
     if (search) list = list.filter(c => c.name.toLowerCase().includes(search));
     if (window._dirOnlyFaves) list = list.filter(c => prefs.faves.includes(c.name));
     if (window._dirOnlyLive) list = list.filter(c => liveSet.has(c.name));
@@ -1917,6 +1930,9 @@ function _dirAttachInfiniteScroll() {
       const al = liveSet.has(a.name) ? 0 : 1;
       const bl = liveSet.has(b.name) ? 0 : 1;
       if (al !== bl) return al - bl;
+      const afe = a.featured ? 0 : 1;
+      const bfe = b.featured ? 0 : 1;
+      if (afe !== bfe) return afe - bfe;
       return a.name.localeCompare(b.name);
     });
     const prev = window._dirShowCount;
@@ -1948,7 +1964,7 @@ function _dirRerenderDebounced() {
     const prefs = loadPrefs();
     const liveSet = _dirLiveSet();
     const search = (window._dirSearch || '').toLowerCase().trim();
-    let list = (comedianDB || []).slice();
+    let list = (comedianDB || []).slice().filter(c => !_dirIsEmpty(c));
     if (search) list = list.filter(c => c.name.toLowerCase().includes(search));
     if (window._dirOnlyFaves) list = list.filter(c => prefs.faves.includes(c.name));
     if (window._dirOnlyLive) list = list.filter(c => liveSet.has(c.name));
@@ -1960,6 +1976,9 @@ function _dirRerenderDebounced() {
       const al = liveSet.has(a.name) ? 0 : 1;
       const bl = liveSet.has(b.name) ? 0 : 1;
       if (al !== bl) return al - bl;
+      const afe = a.featured ? 0 : 1;
+      const bfe = b.featured ? 0 : 1;
+      if (afe !== bfe) return afe - bfe;
       return a.name.localeCompare(b.name);
     });
     const livingShown = Math.min(window._dirShowCount, list.length);

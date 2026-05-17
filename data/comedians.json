@@ -1077,7 +1077,6 @@
   {
     "name": "Crystal Marie Denha",
     "nycc_profile": "https://newyorkcomedyclub.com/comedians/crystal-marie-denha",
-    "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/BlankBackground-1-f83d0c00-thumb-image.jpg?1774299549",
     "venues": [
       "nycc",
       "the_stand"
@@ -1308,7 +1307,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/pete-davidson",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/pete-davidson.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/pete-davidson.jpg",
+    "featured": true
   },
   {
     "name": "Dave Attell",
@@ -1365,7 +1365,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/michael-che",
     "tagline_cellar": "THE HEAD CO-WRITER \"SATURDAY NIGHT LIVE\" , \"THE DAVID LETTERMAN SHOW\", \" THE DAILY SHOW\"",
     "bio_stand": "Comedian, writer and Actor Michael Che is quickly leaving his mark on the media landscape. A native of lower Manhattan, Che’s comedy uses humor to identify humanity in the most controversial actions. He applies street culture to world issues with a delivery that The New York Times describes as \"a reflective, laid-back stage presence with jokes that draw as much from his city upbringing…as from blunt, insightful points that bring the abstract into focus.” Most recently, Che released his original comedy series That Damn Michael Che on HBO Max. The groundbreaking new series uses sketches and vignettes to illustrate what it feels like to experience various every-day situations including racial profiling, unemployment, falling in love and more, from his perspective - It’s less about being “right” and more about being honest, even at the risk of being controversial. Che is currently in his 7th season as co-anchor of Saturday Night Live’s iconic “Weekend Update” segment where he is also a co-head writer for the show. Prior to joining SNL, he was a correspondent on Comedy Central’s Emmy & Peabody Award-winning program The Daily Show with Jon Stewart. Che has performed stand-up on NBC's Late Night with Seth Meyers and on CBS's Late Show with David Letterman. In 2016, he released his first hour-long stand-up special entitled Michael Che Matters on Netflix. Che has made numerous other television and film appearances. In 2018 he co-hosted the 70th Annual Primetime EMMY Awards on NBC. Che’s other appearances include Chris Rock’s film Top Five, Comedy Central's hit series @midnight, and as a weekly cast member on Vh1’s Best Week Ever. Che has been nominated for multiple EMMY Awards for his writing on SNL. In 2013, he was named as one of Rolling Stone’s “50 Funniest People” and in 2012 he was crowned the winner of the New York’s Funniest Stand-Up competition at the New York Comedy Festival. When he is not on camera, Che headlines comedy shows nationally and internationally.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/IMG_20240812_114731~2.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/IMG_20240812_114731~2.jpg",
+    "featured": true
   },
   {
     "name": "Joanne McNally",
@@ -1457,7 +1458,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/ronny-chieng",
     "bio_stand": "Ronny Chieng is Chinese stand-up comedian and actor born in Johor Bahru, Malaysia, raised in Manchester, NH, USA and Singapore, who graduated from the University of Melbourne in Australia in 2009 with a Bachelor of Laws and a Bachelor of Commerce. Ronny started comedy in Melbourne in 2009. Since then has he had 3 sold out global stand up comedy theater tours in Australia, New Zealand, Singapore, Malaysia and London. Ronny has been invited to the Just for Laughs Comedy Festival in Montreal in 2012, 2013 and 2015. He made his US television debut on the Late Late Show with Craig Ferguson in 2015. He was also invited to open for Dave Chappelle and Bill Burr on their national stand up comedy tours of Australia. Ronny has toured and recorded 4 separate stand up comedy specials - The Ron Way (2012), Can You Do This? No You Can't. (2013), Chieng Reaction (2014), You Don't Know What You're Talking About (2015). In 2015 Ronny moved to New York City after being hired as a correspondent on the Daily Show with Trevor Noah on Comedy Central. He also lost 11kg but that was unrelated to comedy.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/ronny-chieng.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/ronny-chieng.jpg",
+    "featured": true
   },
   {
     "name": "Andrew Schulz",
@@ -1472,7 +1474,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/andrew-schulz",
     "tagline_cellar": "‘INFAMOUS’ SPECIAL, FLAGRANT PODCAST, NETFLIX’S ’SCHULZ SAVES AMERICA,’ NETFLIX’S 'YOU PEOPLE,’ MTV’S ‘GUY CODE'",
     "bio_stand": "A native New Yorker and internationally touring stand-up, Andrew Schulz is known for his hilarious and unapologetic comedy. Schulz challenges conventional wisdom with an NYC tone that is often idiotic, at times brilliant, but always hysterical. His debut album 5:5:1 launched in June 2018 as the #1 comedy album and #19 album across all genres on iTunes. He recently starred in the sitcom BENDERS (now available on Netflix), can be seen in Amazon’s SNEAKY PETE and the new season of HBO’s CRASHING, co-stars in the new Hulu dramedy THERE’S JOHNNY, and appears in the feature films FEAST OF THE SEVEN FISHES, THE FEMALE BRAIN and David Gordon Green’s HALLOWEEN reboot. Schulz additionally starred in numerous shows for MTV including GUY CODE, GIRL CODE and UNCOMMON SENSE. In the podcast realm, Schulz can be heard on the wildly popular THE BRILLIANT IDIOTS — co-hosted by nationally syndicated radio and television personality Charlamagne tha God — the hilarious sports commentary podcast FLAGRANT 2, and the film and TV analysis podcast WESTERBROS. On social media, Schulz maintains a high level of engagement with his fan base of over 100,000 Instagram followers and 200,000 YouTube subscribers. His stand-up clips on YouTube have over five million views.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/AS-HS-1-USE.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/AS-HS-1-USE.jpg",
+    "featured": true
   },
   {
     "name": "Justin Hires",
@@ -1535,7 +1538,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/akaash-singh",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Akaash_Singh.jpg",
-    "bio_stand": "An Indian American born and raised in Texas, Akaash Singh is a nationally touring stand up comedian who is quickly working his way up to becoming a household name. His comedy is driven by cultural differences, an intense pride in his upbringing, and a desire to challenge the audience. This past year he was in \"The Leftovers\" on HBO; and \"Wild N' Out\", \"Joking Off\" and \"Guy Code\" on MTV2. Akaash is respected for his relentless, thought-provoking brand of humor that catapults and energizes audiences who are left in laughter from the fearless honesty and his gripping stage presence."
+    "bio_stand": "An Indian American born and raised in Texas, Akaash Singh is a nationally touring stand up comedian who is quickly working his way up to becoming a household name. His comedy is driven by cultural differences, an intense pride in his upbringing, and a desire to challenge the audience. This past year he was in \"The Leftovers\" on HBO; and \"Wild N' Out\", \"Joking Off\" and \"Guy Code\" on MTV2. Akaash is respected for his relentless, thought-provoking brand of humor that catapults and energizes audiences who are left in laughter from the fearless honesty and his gripping stage presence.",
+    "featured": true
   },
   {
     "name": "Nimesh Patel",
@@ -1549,19 +1553,6 @@
     "stand_profile": "https://thestandnyc.com/comedians/nimesh-patel",
     "bio_stand": "I AM NIMESH PATEL I like family, sarcasm, water, the Lakers, and dancing while drunk. I AM A STAND UP COMEDIAN Find me at clubs around NYC, usually. I AM A WRITER I wrote for SNL. I've written for the White House Correspondents' Dinner, Comedy KO, the 2016 Oscars with Chris Rock, and lots of other cool stuff. I AM NOT AN ASSHOLE If you've not read David Foster Wallace's \"This is Water,\" go read it.",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/nimish_patel_1_-_courtesy_photo.jpg"
-  },
-  {
-    "name": "Roy Wood Jr",
-    "nycc_profile": "https://newyorkcomedyclub.com/comedians/roy-wood-jr",
-    "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/roy-wood-jr-aebf09fc-thumb-image.jpg?1492703586",
-    "bio": "Currently a correspondent on The Daily Show w/ Trevor Noah, Roy has been described by the Hollywood Reporter as “A Standout”, and Entertainment Weekly called his brand of thought provoking comedy as “charismatic crankiness”. Prior to The Daily Show, Roy spent three years on the TBS sitcom, Sullivan and Son, and still appears as a regular guest. He’s currently a featured comedian on Conan, ESPN’s ‘...",
-    "venues": [
-      "nycc",
-      "the_stand"
-    ],
-    "stand_profile": "https://thestandnyc.com/comedians/roy-wood-jr",
-    "bio_stand": "Currently a correspondent on ‘The Daily Show w/ Trevor Noah’, Roy has been described by the Hollywood Reporter as “A Standout”, and Entertainment Weekly called his brand of thought provoking comedy as “charismatic crankiness”. In 2016 ‘Variety’ magazine named him one of 10 Comics to watch. Prior to ‘The Daily Show’ Roy spent three years on the TBS‘ sitcom, Sullivan and Son. And is still a regular on He’s currently a regular on ‘Conan’, ESPN’s ‘SportsNation’ & Comedy Central’s @Midnight. A native of Birmingham, Alabama, Roy began his comedy career in 1998 at the age of 19 while attending Florida A&M University. He went on to make his television debut in 2006 on The Late Show with David Letterman. and finished third in the 2010 season of Last Comic Standing. He’s also appeared on HBO’s Def Comedy Jam, Comedy Central’s Premium Blend and The Late, Late Show with Craig Ferguson Prior to this he also appeared at the 2006 Montreal Just for Laughs Comedy Festival in the “New Faces Showcase”. In 2006, Wood appeared on the Bob and Tom Radio Show: The Comedy Tour on Comedy Central. Also a veteran of radio (2001-2012) Roy’s morning show took home awards from the Alabama Broadcasters association for ‘Best Large Market Morning Show’. Wood has recorded three nationally-released prank call CD’s: My Momma Made Me Wear This (2003), Confessions of a High School Bench Warmer (2005) and I’ll Slap You to Sleep! (2009). And has recently released his first comedy CD Things I think, I think (2013)",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/89-og.jpg"
   },
   {
     "name": "Ardie Fuqua",
@@ -2285,7 +2276,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/ari-shaffir",
     "bio_stand": "Two Netflix Specials, Creator \"Ari Shaffir's Renamed Storytelling Show\", Podcast \"Skeptic Tank\"",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/ari-shaffir.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/ari-shaffir.jpg",
+    "featured": true
   },
   {
     "name": "Pete Lee",
@@ -2744,7 +2736,8 @@
     "bio": "Hasan Minhaj is an American comedian, writer, producer, political commentator, actor, and television host. Born of Indian descent, much of Minhaj's comedy centers around his takes on Indian culture and the modern American political landscape through the use of satire, observational comedy, and black comedy. Five years after his breakout Peabody-Award-winning Netflix special Homecoming King, Hasan ...",
     "venues": [
       "nycc"
-    ]
+    ],
+    "featured": true
   },
   {
     "name": "Abby Rosenquist",
@@ -3079,7 +3072,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/bert-kreischer",
     "bio": "Bert Kreischer is a stand-up comedian, podcaster, and actor known as 'The Machine.' His shirtless performances and storytelling style made him a fan favorite. He co-hosts 2 Bears, 1 Cave with Tom Segura and has multiple Netflix specials. The Machine movie was released in 2023 based on his famous story.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/56-og.png"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/56-og.png",
+    "featured": true
   },
   {
     "name": "Bill Burr",
@@ -3089,7 +3083,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/bill-burr",
     "bio": "Bill Burr is one of the top comedians in the world. Known for his brash, unapologetic style, he's hosted SNL, starred in and created the Netflix animated series F Is for Family, and appeared in The Mandalorian and Breaking Bad. His Monday Morning Podcast is one of the most popular comedy podcasts. He's released multiple hour specials including Paper Tiger and Live at Red Rocks.",
     "bio_stand": "Bill Burr is an American comedian or a comedian from the North American Union, depending on when you read this. He grew up outside of Boston, Massachusetts and did fairly poorly in school, despite the fact that he applied himself. Having first gained notoriety for his recurring role on the second season of Chappelle’s Show, Bill developed a comedic style of uninformed logic that has made him a regular with Conan O’Brien, Jimmy Fallon and Jimmy Kimmel. From January through May 2019, Bill toured the U.K. and Europe and on March 4 & 5 he shot his sixth hour-long special at London’s Royal Albert Hall. This summer Bill is shooting the untitled Judd Apatow/Pete Davidson film alongside Marisa Tomei, and he is working on the fourth season of his hit animated Netflix series, F Is For Family, featuring Bill, Laura Dern and Justin Long as the Murphy family. The third season premiered on November 30, 2018, the second season premiered on May 30, 2017, and the first season premiered on December 18, 2015. Bill can be seen in the films, The Front Runner, starring Hugh Jackman, Daddy’s Home with Mark Wahlberg and Will Ferrell, Black or White with Kevin Costner, Walk of Shame with Elizabeth Banks, The Heat with Sandra Bullock and Melissa McCarthy, Stand Up Guys with Al Pacino and Christopher Walken, and Date Night with Steve Carell and Tina Fey. Bill received raves for his recurring role as “Kuby” on the hit AMC-TV show, Breaking Bad and he was seen in multiple episodes of the hit Comedy Central show, Kroll Show. He guest starred on Fox TV’s New Girl in 2013 and contributed to the 2012 and 2011 ESPYS. One of the most popular comedy podcasts on the web, Bill’s Monday Morning Podcast, is an off-the-cuff, twice-weekly rant that has become a fan favorite. Bill began the podcast in May of 2007. Founded by Bill and Al Madrigal, All Things Comedy (ATC), is owned and operated by comedians, giving each comedian not only the opportunity to create the content they think is funny but to take ownership in the company that distributes it. Today, ATC is the leading comedy podcast network with over 50 shows hosted by some of the best comedians in the business. After experiencing rapid audience growth over the past five years, ATC has launched a full-scale studio creating digital series and a development slate for television and feature distribution. In the fall of 2018, ATC announced a production deal with Comedy Central to produce an original stand-up series hosted by Bill along with three one-hour stand-up specials. The first one-hour special under the deal, Bill Burr Presents Paul Virzi: I’ll Say This, premiered on November 2, 2018 on Comedy Central. For more on ATC visit the website, subscribe to the ATC YouTube page and follow ATC on Twitter, Instagram and Facebook. Bill returned to Madison Square Garden on November 7, 2018 after his sold-out debut at MSG on November 14, 2015, and he made his sold-out debut at Royal Albert Hall on June 6, 2018. Bill’s fifth hour-long stand-up special, Walk Your Way Out, premiered on Netflix on January 31, 2017. The special was shot on October 21, 2016 at The Ryman Auditorium in Nashville. In the summer of 2016, his fourth European theatre tour brought Bill back to Ireland, the U.K., Amsterdam and he made first visits to the Edinburgh Fringe Festival, Cologne, Germany and Antwerp, Belgium. From January 27 through February 10, 2015 Bill made his first tour of theaters in Australia, New Zealand, Singapore, Hong Kong and Mumbai. On December 5, 2014, Bill premiered his fourth hour-long special, I’m Sorry You Feel That Way, on Netflix; the special was recorded on June 20, 2014 at The Tabernacle in Atlanta. On September 30, 2014, Bill released the vinyl album, Live At Andrew’s House, a recording of his 2011 Carnegie Hall performance, from Third Man Records. In July of 2014, Bill received the Stand-up Comedian of the Year Award from the prestigious Just For Laughs Festival in Montreal. In December 2013, his third European theater tour played to rave reviews in London, Glasgow, Dublin, Amsterdam, Helsinki, Copenhagen, Oslo, Stockholm and Reykjavik. In October 2012, Bill released his third hour-long special, You People Are All The Same, available for download exclusively through his website and streaming on Netflix. Bill starred in two hour-long specials on Comedy Central: Bill Burr: Let It Go (2010) is available as a DVD, a digital audio download and on Netflix; Why Do I Do This? (2008) is available on CD, DVD and Netflix. Simon & Schuster released the book, Cheat, written by Bill, Joe DeRosa and Robert Kelly in October 2012. The book was inspired by the short film, Cheat, which Burr, DeRosa and Kelly produced, co-wrote and star in. Based on a true story, the film made its World Premiere at the 2011 Tribeca Film Festival and screened at the 2011 Just For Laughs Festival in Montreal. Bill is against organized religion and believes we should go back to the gold standard for our currency. None of his opinions are based on any sort of reliable information. He tends to go with his first thought, because reading makes him sleepy.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/bill-burr.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/bill-burr.jpg",
+    "featured": true
   },
   {
     "name": "Brad Williams",
@@ -3964,7 +3959,8 @@
     "bio": "Jim Norton is a stand-up comedian, radio host, author, and actor. He co-hosts Jim Norton & Sam Roberts on SiriusXM. He's released numerous HBO and Netflix specials and is a Comedy Cellar regular known for his brutally honest, no-holds-barred comedy about taboo subjects.",
     "tagline_cellar": "FROM THE \"LATE SHOW WITH DAVID LETTERMAN\", HBO'S \"LUCKY LOUIE\", THE \"OPIE & ANTHONY\" RADIO SHOW, AND COMEDY CENTRAL'S \"TOUGH CROWD\".",
     "bio_stand": "Known for his aggressive style, his love of controversial subjects, and his hatred of Derek Jeter, comedian Jim Norton has earned a fanatical following thanks to his busy touring schedule and hilarious contributions to the Opie & Anthony radio show. Raised in suburban New Jersey, Norton fell in love with the work of Richard Pryor at the age of 12. A normal childhood turned into turbulent teen years with Norton dealing with low self-esteem, alcohol abuse, and eventually a successful stint in rehab. He hit the standup circuit in 1989 and met comic Jim Florentine a year later. The two would become friends and roommates, and would tour together for several years while both were pursuing careers in show business. Norton ’s big break arrived in 1999 when he became a frequent guest on the nationally syndicated Opie & Anthony radio show. He would officially join the O&A crew five years later as the show was making the jump to XM Satellite Radio. Appearances on television as a Tough Crowd with Colin Quinn panelist and a co-star on Louis C.K. ’s HBO series Lucky Louie led to Norton landing his own one-hour HBO special, Monster Rain, which aired in 2007. That same year he released his first book, the autobiographical collection of essays Happy Endings: The Tales of a Meaty-Breasted Zilch. In 2009 he became a regular on Jay Leno’s short-lived post-Tonight Show vehicle The Jay Leno Show; in 2010 he launched his own XM series The Jim Norton Show; and in 2011 he released the comedy album Despicable on his own EatABullet record label. Recorded live in Boston, No Baby for You! followed in 2012, the same year he premiered his television special Please Be Offended.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/84-og.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/84-og.jpg",
+    "featured": true
   },
   {
     "name": "Joe Bartnick",
@@ -4392,7 +4388,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/maria-decotis",
     "bio_stand": "Maria DeCotis is a NYC based comedian, actress, and writer from Fayetteville, Georgia where she famously Christmas caroled for Big Boi at age 12. She graduated with her BFA in Acting, Cum Laude from Boston University with a concentration in Playwriting and worked with Commedia dell'Arte professionals in Italy. She has been featured in New York Magazine, Vogue, Rolling Stone, The New York Times, Wall Street Journal, The Guardian, New York Daily News, Today, and many more. Maria’s recent credits include opening for Mike Birbiglia on Broadway, Comedy Central, HBO Women in Comedy Festival, New York Comedy Festival, and a JFL showcase. She wrote and hosted a show for the New York Post called Win the Weekend and was a staff comedy writer for Mezu Money Time. She has completed the most advanced level of study at the Upright Citizens Brigade Theatre. She is a ukulele singer-songwriter (iTunes and Spotify) and Lindy Hopper. Onstage, Maria likes to explore feminism and spaghetti.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Maria_DeCotis.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Maria_DeCotis.jpg",
+    "bio": "Maria DeCotis is a stand-up comedian and regular at the Comedy Cellar in New York City. She's appeared on AXS TV's Gotham Comedy Live and performs at clubs across the city."
   },
   {
     "name": "Marie Faustin",
@@ -4782,7 +4779,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/nikki-glaser",
     "bio": "Nikki Glaser is a stand-up comedian, podcast host, and TV personality. She hosted the Golden Globes in 2025 and is known for her Netflix special Someday You'll Die. She's appeared on multiple Comedy Central roasts and hosted several TV shows including The Nikki Glaser Podcast and Welcome Home Nikki Glaser on E!.",
     "bio_stand": "Nikki Glaser is a comedian, writer, and host whose television appearances have included The Tonight Show, CONAN, and Last Comic Standing. She was the co-host of the MTV late night talk show, Nikki & Sara LIVE, as well as the popular podcast, You Had To Be There. She lives in New York City, performing nightly at clubs such as The Comedy Cellar and The Stand, and travels frequently as a nationally touring headliner. Nikki can currently be seen as a regular contestant on Comedy Central’s @Midnight and will guest star on the upcoming season of Inside Amy Schumer.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/nikki_glaser05.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/nikki_glaser05.jpg",
+    "featured": true
   },
   {
     "name": "Nina Daniels",
@@ -5148,7 +5146,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/sarah-sherman",
     "bio_wiki": "Sarah Nicole Sherman, also known professionally as Sarah Squirm, is an American comedian, actress, and screenwriter. Sherman is known for using surreal and body horror comedy. She became a featured player on the NBC sketch comedy series Saturday Night Live starting with its 47th season in October 20",
     "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Sarah_Sherman%2C_April_2026_%28cropped2%29.jpg/330px-Sarah_Sherman%2C_April_2026_%28cropped2%29.jpg",
-    "bio": "Sarah Sherman is a stand-up comedian and cast member on Saturday Night Live. Known for her absurdist, gross-out comedy style and memorable SNL sketches. She performs regularly at NYC comedy clubs."
+    "bio": "Sarah Sherman is a stand-up comedian and cast member on Saturday Night Live. Known for her absurdist, gross-out comedy style and memorable SNL sketches. She performs regularly at NYC comedy clubs.",
+    "featured": true
   },
   {
     "name": "Sasha Merci",
@@ -5354,7 +5353,8 @@
     "bio": "Theo Von is a stand-up comedian and podcast host from Covington, Louisiana. His podcast This Past Weekend is one of the most popular comedy podcasts. He's released Netflix specials Regular People and appeared on numerous podcasts. Known for his Southern storytelling style and unique observations.",
     "bio_stand": "Theo Von grew up in the stray animal belt of southern Louisiana. He was a child there and became an adult there, slowly. He can be seen and heard weekly on his podcast THIS PAST WEEKEND, where he talks with guests, himself, and with his listeners who he truly loves. He has comedy specials on Netflix, but so do a lot of people. Theo is currently selling out venues for his Return of the Rat Tour. He feels grateful and overwhelmed at the same time. If you want to know how Theo is doing he is probably doing the best he can; which varies He currently resides in Nashville and Los Angeles. He wrote this. Gang.",
     "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Theo_Von_Edited_James_Tamim.jpg/330px-Theo_Von_Edited_James_Tamim.jpg",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/theovon560x520-0cb8bcc715.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/theovon560x520-0cb8bcc715.jpg",
+    "featured": true
   },
   {
     "name": "Tim Butterly",
@@ -5374,7 +5374,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/tim-dillon",
     "bio": "Tim Dillon is a stand-up comedian, podcaster, and actor. The Tim Dillon Show is one of the top comedy podcasts. He's appeared on Joe Rogan multiple times and released a Netflix special. Known for his bombastic rants and satirical takes on American culture and politics.",
     "bio_stand": "Tim Dillon is American stand-up comedian, writer and actor. Known for his no-holds-barred humor and incisive social commentary, Dillon’s comedy has captured audiences around the globe. His podcast, “The Tim Dillon Show,” averages a million viewers a week between video and audio downloads. He tours theaters internationally and has a Netflix Special, “Tim Dillon: A Real Hero.” Tim has been a guest on the Joe Rogan Experience 13 times. As an actor, Tim has appeared in the movie Thanksgiving (2023) and is set to be in more major projects in 2024. His Book ”Death by Boomers: How the Worst Generation Destroyed the Planet, but First a Child” will be published later in 2024.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Tim_Dillon.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Tim_Dillon.jpg",
+    "featured": true
   },
   {
     "name": "Tom Cassidy",
@@ -5404,7 +5405,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/tom-mcguire",
     "bio_stand": "Starting his comedy career in 2019 after a failed attempt at being a college basketball player, Tom had a short stint in stand up before the Covid-19 Pandemic shut the world down. Returning back to the stage in May of 2021, Tom has made a name for himself as a rising stand up comedian, and was the winner of the 2021 “Long Island Laugh Off.” Present day, Tom can be seen performing regularly all throughout New York City and Long Island. Tom graduated from Sacred Heart University with a Bachelors Degree in Finance. He hopes that he never has to use it since he retained zero of the knowledge he learned, and is shocked he even has a degree in the field. Follow Tom @tommcguirecomedy on all social media platforms.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Tom_McGuire.jpeg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Tom_McGuire.jpeg",
+    "bio": "Tom McGuire is a stand-up comedian based in New York City. He performs regularly at The Stand and other NYC clubs."
   },
   {
     "name": "Tom Rhodes",
@@ -5495,7 +5497,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/wyatt-cenac",
     "bio": "Wyatt Cenac is a stand-up comedian, actor, and writer. He was a correspondent on The Daily Show and created Problem Areas on HBO. He's released Netflix specials and performs at clubs in NYC.",
     "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Wyatt_Cenac_Earth_launch_Shankbone.jpg/330px-Wyatt_Cenac_Earth_launch_Shankbone.jpg",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/51-og.png"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/51-og.png",
+    "featured": true
   },
   {
     "name": "Yannis Pappas",
@@ -5559,13 +5562,6 @@
     "tagline_cellar": "LATE NIGHT WITH JIMMY FALLON, CONAN, COMEDY CENTRAL PRESENTS, ROAST BATTLE"
   },
   {
-    "name": "Anthony Devito",
-    "venues": [
-      "comedy_cellar"
-    ],
-    "tagline_cellar": "CBS LATE SHOW W/STEPHEN COLBERT, COMEDY CENTRAL ADAM DEVINE'S HOUSE PARTY, THIS AMERICAN LIFE"
-  },
-  {
     "name": "Are You Garbage",
     "venues": [
       "comedy_cellar"
@@ -5586,7 +5582,8 @@
       "comedy_cellar"
     ],
     "bio": "Colin Quinn is a legendary stand-up comedian, actor, and writer. He was the Weekend Update anchor on SNL and starred in Tough Crowd with Colin Quinn on Comedy Central. He's written and performed multiple one-man Broadway shows including Long Story Short and New York Story. A Comedy Cellar institution.",
-    "tagline_cellar": "FROM THE MOVIE \"TRAINWRECK\", STAR OF ONE MAN SHOWS:\"RED STATE BLUE STATE\", \"UNCONSTITUTIONAL\", \"LONG STORY SHORT\" ON BROADWAY AND HBO, STAR OF COMEDY CENTRAL'S \"TOUGH CROWD\", SATURDAY NIGHT LIVE, NBC'S \"THE COLIN QUINN SHOW'."
+    "tagline_cellar": "FROM THE MOVIE \"TRAINWRECK\", STAR OF ONE MAN SHOWS:\"RED STATE BLUE STATE\", \"UNCONSTITUTIONAL\", \"LONG STORY SHORT\" ON BROADWAY AND HBO, STAR OF COMEDY CENTRAL'S \"TOUGH CROWD\", SATURDAY NIGHT LIVE, NBC'S \"THE COLIN QUINN SHOW'.",
+    "featured": true
   },
   {
     "name": "Dan Davies",
@@ -5762,32 +5759,12 @@
     "bio_stand": "Harry, also more commonly known as Lil Sasquatch, works at Barstool Sports and his funny videos have accumulated thousands of views across all social media platforms. He is the co-host of the Son Of A Boy Dad Pocast."
   },
   {
-    "name": "Maria Decotis",
-    "venues": [
-      "the_stand"
-    ],
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Maria_DeCotis.jpg",
-    "stand_profile": "https://thestandnyc.com/comedians/maria-decotis",
-    "bio_stand": "Maria DeCotis is a NYC based comedian, actress, and writer from Fayetteville, Georgia where she famously Christmas caroled for Big Boi at age 12. She graduated with her BFA in Acting, Cum Laude from Boston University with a concentration in Playwriting and worked with Commedia dell'Arte professionals in Italy. She has been featured in New York Magazine, Vogue, Rolling Stone, The New York Times, Wall Street Journal, The Guardian, New York Daily News, Today, and many more. Maria’s recent credits include opening for Mike Birbiglia on Broadway, Comedy Central, HBO Women in Comedy Festival, New York Comedy Festival, and a JFL showcase. She wrote and hosted a show for the New York Post called Win the Weekend and was a staff comedy writer for Mezu Money Time. She has completed the most advanced level of study at the Upright Citizens Brigade Theatre. She is a ukulele singer-songwriter (iTunes and Spotify) and Lindy Hopper. Onstage, Maria likes to explore feminism and spaghetti.",
-    "bio": "Maria DeCotis is a stand-up comedian and regular at the Comedy Cellar in New York City. She's appeared on AXS TV's Gotham Comedy Live and performs at clubs across the city."
-  },
-  {
     "name": "Peter Fowler",
     "venues": [
       "the_stand"
     ],
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/pjf2025_%281%29_1.jpg",
     "stand_profile": "https://thestandnyc.com/comedians/peter-fowler"
-  },
-  {
-    "name": "Tom Mcguire",
-    "venues": [
-      "the_stand"
-    ],
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Tom_McGuire.jpeg",
-    "stand_profile": "https://thestandnyc.com/comedians/tom-mcguire",
-    "bio_stand": "Starting his comedy career in 2019 after a failed attempt at being a college basketball player, Tom had a short stint in stand up before the Covid-19 Pandemic shut the world down. Returning back to the stage in May of 2021, Tom has made a name for himself as a rising stand up comedian, and was the winner of the 2021 “Long Island Laugh Off.” Present day, Tom can be seen performing regularly all throughout New York City and Long Island. Tom graduated from Sacred Heart University with a Bachelors Degree in Finance. He hopes that he never has to use it since he retained zero of the knowledge he learned, and is shocked he even has a degree in the field. Follow Tom @tommcguirecomedy on all social media platforms.",
-    "bio": "Tom McGuire is a stand-up comedian based in New York City. He performs regularly at The Stand and other NYC clubs."
   },
   {
     "name": "Amos Gil",
@@ -5805,7 +5782,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Dave_Chappelle_at_Preamiere_of_%22Dave_Chappelle_In_Real_Life%22_%282%29_%28cropped%29.jpg/330px-Dave_Chappelle_at_Preamiere_of_%22Dave_Chappelle_In_Real_Life%22_%282%29_%28cropped%29.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Dave_Chappelle_at_Preamiere_of_%22Dave_Chappelle_In_Real_Life%22_%282%29_%28cropped%29.jpg/330px-Dave_Chappelle_at_Preamiere_of_%22Dave_Chappelle_In_Real_Life%22_%282%29_%28cropped%29.jpg",
+    "featured": true
   },
   {
     "name": "Chris Rock",
@@ -5813,7 +5791,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Chris_Rock_2014.jpg/330px-Chris_Rock_2014.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Chris_Rock_2014.jpg/330px-Chris_Rock_2014.jpg",
+    "featured": true
   },
   {
     "name": "Jerry Seinfeld",
@@ -5821,7 +5800,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Jerry_Seinfeld_2023.jpg/330px-Jerry_Seinfeld_2023.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Jerry_Seinfeld_2023.jpg/330px-Jerry_Seinfeld_2023.jpg",
+    "featured": true
   },
   {
     "name": "Louis C.K.",
@@ -5835,49 +5815,57 @@
     "name": "Kevin Hart",
     "bio": "Kevin Hart is one of the biggest comedians in the world. He's starred in numerous blockbuster films and his comedy tours have broken box office records. His Netflix specials and Laugh Out Loud network have made him a comedy mogul.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Kevin_Hart_2014_%28cropped_2%29.jpg/330px-Kevin_Hart_2014_%28cropped_2%29.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Kevin_Hart_2014_%28cropped_2%29.jpg/330px-Kevin_Hart_2014_%28cropped_2%29.jpg",
+    "featured": true
   },
   {
     "name": "Sebastian Maniscalco",
     "bio": "Sebastian Maniscalco is one of the top-grossing stand-up comedians in the world. His physical comedy and Italian-American observations have sold out arenas. He's starred in multiple Netflix specials and appeared in The Irishman and About My Father.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Sebastian_Maniscalco_2018.jpg/330px-Sebastian_Maniscalco_2018.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Sebastian_Maniscalco_2018.jpg/330px-Sebastian_Maniscalco_2018.jpg",
+    "featured": true
   },
   {
     "name": "John Mulaney",
     "bio": "John Mulaney is a stand-up comedian, actor, and writer. A former SNL writer, his Netflix specials Kid Gorgeous, New in Town, and Baby J are hugely popular. He performs live regularly and has hosted SNL multiple times.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/John_Mulaney_PaleyFest_crop.jpg/330px-John_Mulaney_PaleyFest_crop.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/John_Mulaney_PaleyFest_crop.jpg/330px-John_Mulaney_PaleyFest_crop.jpg",
+    "featured": true
   },
   {
     "name": "Tom Segura",
     "bio": "Tom Segura is a stand-up comedian and podcaster. He co-hosts Your Mom's House podcast with his wife Christina P. He has multiple Netflix specials including Ball Hog and Sledgehammer. He headlines arenas across the country.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Tom_segura_%2852703641878%29_%28cropped%29.jpg/330px-Tom_segura_%2852703641878%29_%28cropped%29.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Tom_segura_%2852703641878%29_%28cropped%29.jpg/330px-Tom_segura_%2852703641878%29_%28cropped%29.jpg",
+    "featured": true
   },
   {
     "name": "Joe Rogan",
     "bio": "Joe Rogan is a stand-up comedian, podcast host, and UFC commentator. The Joe Rogan Experience is one of the most popular podcasts in the world. He has multiple comedy specials and performs at his own comedy club, Comedy Mothership, in Austin.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Joe_Rogan.png/330px-Joe_Rogan.png"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Joe_Rogan.png/330px-Joe_Rogan.png",
+    "featured": true
   },
   {
     "name": "Ali Wong",
     "bio": "Ali Wong is a stand-up comedian, actress, and writer. Her Netflix specials Baby Cobra and Hard Knock Wife were massive hits. She starred in Always Be My Maybe, Beef (winning an Emmy), and performs live regularly.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Ali_Wong_2012.jpg/330px-Ali_Wong_2012.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Ali_Wong_2012.jpg/330px-Ali_Wong_2012.jpg",
+    "featured": true
   },
   {
     "name": "Trevor Noah",
     "bio": "Trevor Noah is a stand-up comedian, writer, and former host of The Daily Show. Born in South Africa, his memoir Born a Crime was a bestseller. He continues to tour globally as one of the biggest comedians in the world.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Trevor_Noah_%2853554114243%29_%28portrait_crop%29.jpg/330px-Trevor_Noah_%2853554114243%29_%28portrait_crop%29.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Trevor_Noah_%2853554114243%29_%28portrait_crop%29.jpg/330px-Trevor_Noah_%2853554114243%29_%28portrait_crop%29.jpg",
+    "featured": true
   },
   {
     "name": "Wanda Sykes",
     "bio": "Wanda Sykes is a stand-up comedian, actress, and writer. She's starred in multiple TV shows, won an Emmy for writing on The Chris Rock Show, and has Netflix specials. One of the most respected voices in comedy.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Wanda_Sykes_2010_GLAAD_Media_Awards.jpg/330px-Wanda_Sykes_2010_GLAAD_Media_Awards.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Wanda_Sykes_2010_GLAAD_Media_Awards.jpg/330px-Wanda_Sykes_2010_GLAAD_Media_Awards.jpg",
+    "featured": true
   },
   {
     "name": "Gabriel Iglesias",
@@ -5890,13 +5878,15 @@
     "bio": "Jim Gaffigan is a stand-up comedian, actor, and author. Known for his clean comedy about food and parenting, he's released numerous specials and bestselling books. He's performed at the Comedy Cellar and sells out arenas.",
     "venues": [
       "comedy_cellar"
-    ]
+    ],
+    "featured": true
   },
   {
     "name": "Russell Peters",
     "bio": "Russell Peters is a stand-up comedian known internationally for his comedy about cultural stereotypes and growing up Indian-Canadian. He was one of the first comedians to go viral on YouTube and sells out arenas worldwide.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Russell_Peters_by_Robert_Trick_Johnston_%28cropped%29.jpg/330px-Russell_Peters_by_Robert_Trick_Johnston_%28cropped%29.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Russell_Peters_by_Robert_Trick_Johnston_%28cropped%29.jpg/330px-Russell_Peters_by_Robert_Trick_Johnston_%28cropped%29.jpg",
+    "featured": true
   },
   {
     "name": "Amy Schumer",
@@ -5910,19 +5900,22 @@
     "name": "Bo Burnham",
     "bio": "Bo Burnham is a stand-up comedian, filmmaker, and musician. His Netflix specials Make Happy and Inside were critically acclaimed. He directed the film Eighth Grade and acts in films like Promising Young Woman.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Bo_Burnham_Montaclair_Film_Festival_%28cropped%29.jpg/330px-Bo_Burnham_Montaclair_Film_Festival_%28cropped%29.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Bo_Burnham_Montaclair_Film_Festival_%28cropped%29.jpg/330px-Bo_Burnham_Montaclair_Film_Festival_%28cropped%29.jpg",
+    "featured": true
   },
   {
     "name": "Demetri Martin",
     "bio": "Demetri Martin is a stand-up comedian, actor, and writer. Known for his one-liner comedy and visual aids, he had his own Comedy Central show and has appeared in multiple films. He performs at clubs across the country.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Demetri_Martin.jpg/330px-Demetri_Martin.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Demetri_Martin.jpg/330px-Demetri_Martin.jpg",
+    "featured": true
   },
   {
     "name": "Whitney Cummings",
     "bio": "Whitney Cummings is a stand-up comedian, actress, and writer. She co-created 2 Broke Girls, created and starred in Whitney, and has multiple Netflix specials. She performs at clubs and theaters across the country.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/0/07/Whitney_Cummings_2019.png"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/0/07/Whitney_Cummings_2019.png",
+    "featured": true
   },
   {
     "name": "Dane Cook",
@@ -5933,7 +5926,8 @@
   {
     "name": "Iliza Shlesinger",
     "bio": "Iliza Shlesinger is a stand-up comedian and actress. She won Last Comic Standing Season 6 and has released multiple Netflix specials including Elder Millennial and Hot Forever. She performs at theaters across the country.",
-    "venues": []
+    "venues": [],
+    "featured": true
   },
   {
     "name": "Hannibal Buress",
@@ -5941,13 +5935,15 @@
     "venues": [
       "comedy_cellar"
     ],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Hannibal_at_the_RISE_Hong_Kong_Convention%2C_2019_%28cropped%29.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Hannibal_at_the_RISE_Hong_Kong_Convention%2C_2019_%28cropped%29.jpg",
+    "featured": true
   },
   {
     "name": "Patton Oswalt",
     "bio": "Patton Oswalt is a stand-up comedian, actor, and writer. He voices Remy in Ratatouille, starred in King of Queens, and has won Grammy Awards and an Emmy for his comedy specials. One of the most respected comedians working.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Patton_Oswalt_in_2025_%28cropped%29.jpg/330px-Patton_Oswalt_in_2025_%28cropped%29.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Patton_Oswalt_in_2025_%28cropped%29.jpg/330px-Patton_Oswalt_in_2025_%28cropped%29.jpg",
+    "featured": true
   },
   {
     "name": "Pete Holmes",
@@ -5981,19 +5977,22 @@
     "name": "Maria Bamford",
     "bio": "Maria Bamford is a stand-up comedian and actress. She created and starred in Lady Dynamite on Netflix. Known for her character voices and comedy about mental health, she's one of the most unique voices in comedy.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Mariba.JPG/330px-Mariba.JPG"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Mariba.JPG/330px-Mariba.JPG",
+    "featured": true
   },
   {
     "name": "Brendan Schaub",
     "bio": "Brendan Schaub is a stand-up comedian, podcaster, and former UFC fighter. He hosts The Fighter and the Kid and Thiccc Boy podcasts. He performs at clubs and theaters across the country.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Brendan_Schaub%2C_co-host_of_%22The_Fighter_and_the_Kid%22_Podcast.jpg/330px-Brendan_Schaub%2C_co-host_of_%22The_Fighter_and_the_Kid%22_Podcast.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Brendan_Schaub%2C_co-host_of_%22The_Fighter_and_the_Kid%22_Podcast.jpg/330px-Brendan_Schaub%2C_co-host_of_%22The_Fighter_and_the_Kid%22_Podcast.jpg",
+    "featured": true
   },
   {
     "name": "Bobby Lee",
     "bio": "Bobby Lee is a stand-up comedian, actor, and podcaster. He was a cast member on MADtv and hosts the TigerBelly podcast. He's appeared in multiple TV shows and films and performs at clubs across the country.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Bobby_Lee_Edited_James_Tamim.jpeg/330px-Bobby_Lee_Edited_James_Tamim.jpeg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Bobby_Lee_Edited_James_Tamim.jpeg/330px-Bobby_Lee_Edited_James_Tamim.jpeg",
+    "featured": true
   },
   {
     "name": "Lil Rel Howery",
@@ -6005,8 +6004,16 @@
     "name": "Roy Wood Jr.",
     "bio": "Roy Wood Jr. is a stand-up comedian, actor, and correspondent on The Daily Show. He's released comedy specials and performs at clubs across the country. Known for his Southern-tinged observations about race and politics.",
     "venues": [
-      "comedy_cellar"
-    ]
+      "comedy_cellar",
+      "nycc",
+      "the_stand"
+    ],
+    "nycc_profile": "https://newyorkcomedyclub.com/comedians/roy-wood-jr",
+    "photo_nycc": "https://newyorkcomedyclub.com/img/imagetest/roy-wood-jr-aebf09fc-thumb-image.jpg?1492703586",
+    "stand_profile": "https://thestandnyc.com/comedians/roy-wood-jr",
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/89-og.jpg",
+    "bio_stand": "Currently a correspondent on ‘The Daily Show w/ Trevor Noah’, Roy has been described by the Hollywood Reporter as “A Standout”, and Entertainment Weekly called his brand of thought provoking comedy as “charismatic crankiness”. In 2016 ‘Variety’ magazine named him one of 10 Comics to watch. Prior to ‘The Daily Show’ Roy spent three years on the TBS‘ sitcom, Sullivan and Son. And is still a regular on He’s currently a regular on ‘Conan’, ESPN’s ‘SportsNation’ & Comedy Central’s @Midnight. A native of Birmingham, Alabama, Roy began his comedy career in 1998 at the age of 19 while attending Florida A&M University. He went on to make his television debut in 2006 on The Late Show with David Letterman. and finished third in the 2010 season of Last Comic Standing. He’s also appeared on HBO’s Def Comedy Jam, Comedy Central’s Premium Blend and The Late, Late Show with Craig Ferguson Prior to this he also appeared at the 2006 Montreal Just for Laughs Comedy Festival in the “New Faces Showcase”. In 2006, Wood appeared on the Bob and Tom Radio Show: The Comedy Tour on Comedy Central. Also a veteran of radio (2001-2012) Roy’s morning show took home awards from the Alabama Broadcasters association for ‘Best Large Market Morning Show’. Wood has recorded three nationally-released prank call CD’s: My Momma Made Me Wear This (2003), Confessions of a High School Bench Warmer (2005) and I’ll Slap You to Sleep! (2009). And has recently released his first comedy CD Things I think, I think (2013)",
+    "featured": true
   },
   {
     "name": "Gary Owen",
@@ -6042,7 +6049,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Tracy_Morgan_3_Shankbone_2009_NYC.jpg/330px-Tracy_Morgan_3_Shankbone_2009_NYC.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Tracy_Morgan_3_Shankbone_2009_NYC.jpg/330px-Tracy_Morgan_3_Shankbone_2009_NYC.jpg",
+    "featured": true
   },
   {
     "name": "Craig Robinson",
@@ -6085,7 +6093,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Sarah_Silverman_DNC_July_2016.jpg/330px-Sarah_Silverman_DNC_July_2016.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Sarah_Silverman_DNC_July_2016.jpg/330px-Sarah_Silverman_DNC_July_2016.jpg",
+    "featured": true
   },
   {
     "name": "Marc Maron",
@@ -6103,7 +6112,8 @@
     "name": "Mike Birbiglia",
     "bio": "Mike Birbiglia is a stand-up comedian, filmmaker, and actor. His one-man shows including Sleepwalk with Me and The New One have played on Broadway. He's released multiple specials and directed films.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/MikeBirbiglia_2020_Photo_by_JesseAustin.jpg/330px-MikeBirbiglia_2020_Photo_by_JesseAustin.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/MikeBirbiglia_2020_Photo_by_JesseAustin.jpg/330px-MikeBirbiglia_2020_Photo_by_JesseAustin.jpg",
+    "featured": true
   },
   {
     "name": "Aziz Ansari",
@@ -6111,7 +6121,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Aziz_Ansari_at_TIFF_2025_02.jpg/330px-Aziz_Ansari_at_TIFF_2025_02.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Aziz_Ansari_at_TIFF_2025_02.jpg/330px-Aziz_Ansari_at_TIFF_2025_02.jpg",
+    "featured": true
   },
   {
     "name": "Margaret Cho",
@@ -6153,18 +6164,21 @@
     "name": "Conan O'Brien",
     "bio": "Conan O'Brien is a comedian, TV host, writer, and podcaster. He hosted Late Night, The Tonight Show, and Conan. His podcast Conan O'Brien Needs a Friend is one of the most popular podcasts. A Harvard Lampoon president who became a comedy icon.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Conan_O%27Brien_at_the_2025_Sundance_Film_Festival_03_%28cropped%29.jpg/330px-Conan_O%27Brien_at_the_2025_Sundance_Film_Festival_03_%28cropped%29.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Conan_O%27Brien_at_the_2025_Sundance_Film_Festival_03_%28cropped%29.jpg/330px-Conan_O%27Brien_at_the_2025_Sundance_Film_Festival_03_%28cropped%29.jpg",
+    "featured": true
   },
   {
     "name": "Stephen Colbert",
     "bio": "Stephen Colbert is a comedian, TV host, and writer. He hosted The Colbert Report and is the current host of The Late Show. His satirical character and sharp wit have made him one of the most important comedians in America.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/StephenColbert-byPhilipRomano.jpg/330px-StephenColbert-byPhilipRomano.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/StephenColbert-byPhilipRomano.jpg/330px-StephenColbert-byPhilipRomano.jpg",
+    "featured": true
   },
   {
     "name": "Seth Meyers",
     "bio": "Seth Meyers is a comedian, TV host, and writer. He's the host of Late Night with Seth Meyers and was the head writer and Weekend Update anchor on SNL. Known for his political comedy and A Closer Look segment.",
-    "venues": []
+    "venues": [],
+    "featured": true
   },
   {
     "name": "Jon Stewart",
@@ -6182,7 +6196,8 @@
     "name": "Eddie Murphy",
     "bio": "Eddie Murphy is one of the greatest comedians and actors of all time. His stand-up specials Delirious and Raw are legendary. He starred in Beverly Hills Cop, Coming to America, The Nutty Professor, and Shrek.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Eddie_Murphy_by_David_Shankbone.jpg/330px-Eddie_Murphy_by_David_Shankbone.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Eddie_Murphy_by_David_Shankbone.jpg/330px-Eddie_Murphy_by_David_Shankbone.jpg",
+    "featured": true
   },
   {
     "name": "George Lopez",
@@ -6194,7 +6209,8 @@
     "name": "Tig Notaro",
     "bio": "Tig Notaro is a stand-up comedian, actress, and writer. Her set about being diagnosed with cancer became legendary and was released as a Grammy-nominated album. She starred in Star Trek: Discovery and has multiple HBO specials.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Tig_Notaro_Come_See_Me_In_The_Good_Light-12.jpg/330px-Tig_Notaro_Come_See_Me_In_The_Good_Light-12.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Tig_Notaro_Come_See_Me_In_The_Good_Light-12.jpg/330px-Tig_Notaro_Come_See_Me_In_The_Good_Light-12.jpg",
+    "featured": true
   },
   {
     "name": "Nathan Fielder",
@@ -6241,7 +6257,8 @@
     "name": "Ricky Gervais",
     "bio": "Ricky Gervais is a British comedian, actor, writer, and director. He created The Office, Extras, and After Life. He's hosted the Golden Globes multiple times and has Netflix specials. One of the most influential comedians of the 21st century.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/GervaisPall230921_%285_of_17%29_%2851528328440%29_%28cropped%29.jpg/330px-GervaisPall230921_%285_of_17%29_%2851528328440%29_%28cropped%29.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/GervaisPall230921_%285_of_17%29_%2851528328440%29_%28cropped%29.jpg/330px-GervaisPall230921_%285_of_17%29_%2851528328440%29_%28cropped%29.jpg",
+    "featured": true
   },
   {
     "name": "James Acaster",
@@ -6291,11 +6308,6 @@
   {
     "name": "Ian Edwards",
     "bio": "Ian Edwards is a stand-up comedian and writer. He's written for multiple TV shows and performs at clubs across the country. Known for his smart, laid-back comedy style.",
-    "venues": []
-  },
-  {
-    "name": "Eric D'Alessandro",
-    "bio": "Eric D'Alessandro is a stand-up comedian from New York. Known for his Italian-American humor and viral videos, he performs at clubs and theaters across the country.",
     "venues": []
   },
   {
@@ -6737,9 +6749,12 @@
   },
   {
     "name": "Anthony DeVito",
-    "venues": [],
+    "venues": [
+      "comedy_cellar"
+    ],
     "bio_stand": "Originally from New Jersey, Anthony DeVito is a NYC based comedian. He's appeared on CBS The Late Show with Stephen Colbert, Comedy Central Stand Up Presents: Anthony DeVito, Comedy Central's Adam Devine's House Party, was one of the “New Faces” at the 2012 Montreal Just for Laughs Festival, has been on \"This American Life,\" AXS TV’s Gotham Comedy Live, and was the 2015 winner of Caroline's March Madness. Also, his debut album \"Dream Occupation\" is available from Comedy Central Records. In addition to stand-up, he's a writer on Netflix's The Break with Michelle Wolf, wrote for the 2018 White House Correspondents Dinner, and was a writer/regular panelist on MSG's People Talking Sports and Other Stuff. He's also has appeared on TV Land's The Jim Gaffigan Show, and is a favorite on Sirius XM's Bennington.",
-    "bio": "Anthony Devito is a stand-up comedian based in New York City. He's appeared on The Late Show, The Tonight Show, and is a regular at the Comedy Cellar. Known for his sharp, well-crafted jokes."
+    "bio": "Anthony Devito is a stand-up comedian based in New York City. He's appeared on The Late Show, The Tonight Show, and is a regular at the Comedy Cellar. Known for his sharp, well-crafted jokes.",
+    "tagline_cellar": "CBS LATE SHOW W/STEPHEN COLBERT, COMEDY CENTRAL ADAM DEVINE'S HOUSE PARTY, THIS AMERICAN LIFE"
   },
   {
     "name": "Chris Turner",
@@ -6808,7 +6823,8 @@
   {
     "name": "John Oliver",
     "venues": [],
-    "bio_wiki": "John William Oliver is a British and American comedian, political commentator and television personality. He hosts Last Week Tonight with John Oliver on HBO and started his career as a stand-up comedian in the United Kingdom and came to wider attention for his work in the United States as the senior"
+    "bio_wiki": "John William Oliver is a British and American comedian, political commentator and television personality. He hosts Last Week Tonight with John Oliver on HBO and started his career as a stand-up comedian in the United Kingdom and came to wider attention for his work in the United States as the senior",
+    "featured": true
   },
   {
     "name": "Modi",
@@ -7585,5 +7601,103 @@
   {
     "name": "Youngmi Mayer",
     "venues": []
+  },
+  {
+    "name": "Colin Jost",
+    "featured": true,
+    "venues": [],
+    "bio_wiki": "Colin Kelly Jost is an American comedian, writer, and actor. He has been a staff writer for the NBC sketch comedy series Saturday Night Live since 2005, and co-anchor of Weekend Update since 2014. He also served as one of the show's co-head writers from 2012 to 2015 and later came back as one of the",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Colin_Jost_301_%28cropped%29_%28cropped%29.jpg/330px-Colin_Jost_301_%28cropped%29_%28cropped%29.jpg"
+  },
+  {
+    "name": "Bowen Yang",
+    "featured": true,
+    "venues": [],
+    "bio_wiki": "Bowen Yang is an American comedian, actor, podcaster, and writer. Yang was a staff writer for the NBC sketch comedy series Saturday Night Live in 2018, and a cast member for seven seasons from 2019 until his departure in 2025. He became the first SNL featured player to be nominated for a Primetime E",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Bowen_Yang_in_2025_by_Andrew_Lipovsky.jpg/330px-Bowen_Yang_in_2025_by_Andrew_Lipovsky.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  {
+    "name": "Cecily Strong",
+    "featured": true,
+    "venues": [],
+    "bio_wiki": "Cecily Legler Strong is an American actress and comedian. She was a cast member on the NBC sketch comedy series Saturday Night Live from 2012 to 2022. She is the longest-tenured female cast member in the show's history.",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/CecilyStrong-byPhilipRomano.jpg/330px-CecilyStrong-byPhilipRomano.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  {
+    "name": "Sasheer Zamata",
+    "featured": true,
+    "venues": [],
+    "bio_wiki": "Sasheer Zamata Moore is an American actress and comedian. She rose to prominence as a cast member on the NBC sketch comedy series Saturday Night Live from 2014 to 2017. Since departing SNL, she has garnered wider attention for her starring roles in the TV series Woke (2020–2022), Home Economics (202",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Sasheer_Zamata_%2881960%29b_%28cropped%29.jpg/330px-Sasheer_Zamata_%2881960%29b_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  {
+    "name": "Heidi Gardner",
+    "featured": true,
+    "venues": [],
+    "bio_wiki": "Heidi Lynn Gardner is an American actress, comedian, and writer. She was a cast member on the NBC sketch comedy series Saturday Night Live for eight seasons from season 43 in 2017 until season 50 in 2025. She was promoted to repertory status on the show in 2019.",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/3/30/Heidi_Gardner_%28NYCC_Interview_2016%29_01.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  {
+    "name": "Chloe Fineman",
+    "featured": true,
+    "venues": [],
+    "bio_wiki": "Chloe Rose Fineman is an American actress and comedian. She became a featured player on the NBC sketch comedy series Saturday Night Live (SNL) in its 45th season in September 2019, and was promoted to repertory status in 2021 at the beginning of season 47.",
+    "photo_wiki": ""
+  },
+  {
+    "name": "Anthony Jeselnik",
+    "featured": true,
+    "venues": [],
+    "bio_wiki": "Anthony Jeselnik is an American comedian, writer, actor, and producer. He is known for his dark comedy style, which emphasizes ironic misdirection, non sequiturs, biting insults, an arrogant demeanor, and a stage persona that frequently takes amoral stances.",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Anthony_Jeselnik_in_2012.jpg/330px-Anthony_Jeselnik_in_2012.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  {
+    "name": "Doug Stanhope",
+    "featured": true,
+    "venues": [],
+    "bio_wiki": "Doug Stanhope is an American stand-up comedian, author, actor, political activist and podcast host. His stand-up material consist of profane and confrontational observations of life.",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Doug_Stanhope_-_2010.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  {
+    "name": "Andrew Santino",
+    "featured": true,
+    "venues": [],
+    "bio_wiki": "Andrew James Santino is an American stand-up comedian and actor. He is known for television series and films such as Sin City Saints, The Disaster Artist, Mixology, I'm Dying Up Here, Beef, and Dave. He was also the star of a YouTube web series called Duncan Rocks.",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Andrew_Santino_in_2024.png/330px-Andrew_Santino_in_2024.png"
+  },
+  {
+    "name": "Brian Regan",
+    "featured": true,
+    "venues": [],
+    "bio_wiki": "Brian Joseph Regan is an American stand-up comedian who uses observational, sarcastic, and self-deprecating humor. He is known for incorporating body language and facial expressions into his act. His performances are often described as clean as he refrains from profanity as well as taboo subject mat",
+    "photo_wiki": ""
+  },
+  {
+    "name": "Jimmy Fallon",
+    "featured": true,
+    "venues": [],
+    "bio_wiki": "James Thomas Fallon is an American comedian, television host, actor, singer, writer, and producer, best known for his work in television.",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Jimmy_Fallon%2C_Montclair_Film_Festival%2C_2013.jpg/330px-Jimmy_Fallon%2C_Montclair_Film_Festival%2C_2013.jpg"
+  },
+  {
+    "name": "David Letterman",
+    "featured": true,
+    "venues": [],
+    "bio_wiki": "David Michael Letterman is an American television host, comedian, writer, producer, and auto racing team owner. He hosted late-night television talk shows for 33 years, beginning with the February 1, 1982, debut of Late Night with David Letterman on NBC and ending with the May 20, 2015, broadcast of",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Celebration_of_Service_160505-F-HS721-010_%28cropped%29_%28cropped%29.jpg/330px-Celebration_of_Service_160505-F-HS721-010_%28cropped%29_%28cropped%29.jpg"
+  },
+  {
+    "name": "Bill Maher",
+    "featured": true,
+    "venues": [],
+    "bio_wiki": "William Maher is an American television host, comedian, actor and political commentator. Known for his political satire, he is the host of the HBO political talk show Real Time with Bill Maher (2003–present) and podcast Club Random (2022–present). He previously hosted late-night show called Politica",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/BillMaherSept10.jpg/330px-BillMaherSept10.jpg"
+  },
+  {
+    "name": "Jimmy Kimmel",
+    "featured": true,
+    "venues": [],
+    "bio_wiki": "James Christian Kimmel is an American television host and comedian. He is best known as the host and executive producer of Jimmy Kimmel Live!, which has aired on ABC since 2003. Kimmel has hosted the Primetime Emmy Awards three times, in 2012, 2016 and 2020, and the Academy Awards four times, in 201",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Jimmy_Kimmel_June_2022.jpg/330px-Jimmy_Kimmel_June_2022.jpg"
   }
 ]
