@@ -5362,8 +5362,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/tom-mcguire",
     "bio_stand": "Starting his comedy career in 2019 after a failed attempt at being a college basketball player, Tom had a short stint in stand up before the Covid-19 Pandemic shut the world down. Returning back to the stage in May of 2021, Tom has made a name for himself as a rising stand up comedian, and was the winner of the 2021 “Long Island Laugh Off.” Present day, Tom can be seen performing regularly all throughout New York City and Long Island. Tom graduated from Sacred Heart University with a Bachelors Degree in Finance. He hopes that he never has to use it since he retained zero of the knowledge he learned, and is shocked he even has a degree in the field. Follow Tom @tommcguirecomedy on all social media platforms.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Tom_McGuire.jpeg",
-    "bio": "Tom McGuire is a stand-up comedian based in New York City. He performs regularly at The Stand and other NYC clubs."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Tom_McGuire.jpeg"
   },
   {
     "name": "Tom Rhodes",
@@ -6703,7 +6702,6 @@
       "comedy_cellar"
     ],
     "bio_stand": "Originally from New Jersey, Anthony DeVito is a NYC based comedian. He's appeared on CBS The Late Show with Stephen Colbert, Comedy Central Stand Up Presents: Anthony DeVito, Comedy Central's Adam Devine's House Party, was one of the “New Faces” at the 2012 Montreal Just for Laughs Festival, has been on \"This American Life,\" AXS TV’s Gotham Comedy Live, and was the 2015 winner of Caroline's March Madness. Also, his debut album \"Dream Occupation\" is available from Comedy Central Records. In addition to stand-up, he's a writer on Netflix's The Break with Michelle Wolf, wrote for the 2018 White House Correspondents Dinner, and was a writer/regular panelist on MSG's People Talking Sports and Other Stuff. He's also has appeared on TV Land's The Jim Gaffigan Show, and is a favorite on Sirius XM's Bennington.",
-    "bio": "Anthony Devito is a stand-up comedian based in New York City. He's appeared on The Late Show, The Tonight Show, and is a regular at the Comedy Cellar. Known for his sharp, well-crafted jokes.",
     "tagline_cellar": "CBS LATE SHOW W/STEPHEN COLBERT, COMEDY CENTRAL ADAM DEVINE'S HOUSE PARTY, THIS AMERICAN LIFE"
   },
   {
@@ -6773,7 +6771,7 @@
   {
     "name": "John Oliver",
     "venues": [],
-    "bio_wiki": "John William Oliver is a British and American comedian, political commentator and television personality. He hosts Last Week Tonight with John Oliver on HBO and started his career as a stand-up comedian in the United Kingdom and came to wider attention for his work in the United States as the senior",
+    "bio_wiki": "John William Oliver is a British and American comedian, political commentator and television personality. He hosts Last Week Tonight with John Oliver on HBO and started his career as a stand-up comedian in the United Kingdom. He came to wider attention for his work in the United States as the senior",
     "featured": true
   },
   {
