@@ -14,15 +14,33 @@ const CELLAR_API = 'https://www.comedycellar.com/lineup/api/';
 
 async function fetchLineup(dateStr) {
   const body = `action=cc_get_shows&json=${encodeURIComponent(JSON.stringify({ date: dateStr, venue: 'newyork', type: 'lineup' }))}`;
-  const resp = await fetch(CELLAR_API, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body,
-  });
-  const data = await resp.json();
-  if (!data?.show?.html) return [];
-  const names = [...data.show.html.matchAll(/<span class="name">(.*?)<\/span>/g)].map(m => m[1].trim());
-  return [...new Set(names)];
+  try {
+    const resp = await fetch(CELLAR_API, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'User-Agent': 'Mozilla/5.0 (compatible; TonightNYC/1.0; +https://tonightnyc.com)',
+        'Accept': 'application/json, text/plain, */*',
+      },
+      body,
+    });
+    if (!resp.ok) {
+      console.error(`[alert-check] Cellar API ${dateStr} HTTP ${resp.status}`);
+      return [];
+    }
+    const text = await resp.text();
+    let data;
+    try { data = JSON.parse(text); } catch {
+      console.error(`[alert-check] Cellar API ${dateStr} non-JSON response (len=${text.length})`);
+      return [];
+    }
+    if (!data?.show?.html) return [];
+    const names = [...data.show.html.matchAll(/<span class="name">(.*?)<\/span>/g)].map(m => m[1].trim());
+    return [...new Set(names)];
+  } catch (e) {
+    console.error(`[alert-check] fetchLineup ${dateStr} failed:`, e.message);
+    return [];
+  }
 }
 
 async function sendEmail(to, subject, html) {
