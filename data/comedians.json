@@ -125,7 +125,8 @@
     "venues": [
       "nycc"
     ],
-    "bio": "Mike Goldstein is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "bio": "Mike Goldstein is a stand-up comedian performing in New York City. He performs at clubs across the city.",
+    "photo_stand": "https://thestandnyc.com//images/site/twitter-card.jpg"
   },
   {
     "name": "Tim Smith",
@@ -233,7 +234,8 @@
     "venues": [
       "nycc"
     ],
-    "bio": "James Mwaura is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "bio": "James Mwaura is a stand-up comedian performing in New York City. He performs at clubs across the city.",
+    "photo_stand": "https://thestandnyc.com//images/site/twitter-card.jpg"
   },
   {
     "name": "Big Jay Oakerson",
@@ -2032,7 +2034,8 @@
     "venues": [
       "nycc"
     ],
-    "bio": "Joseph Vescey is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "bio": "Joseph Vescey is a stand-up comedian performing in New York City. He performs at clubs across the city.",
+    "photo_stand": "https://thestandnyc.com//images/site/twitter-card.jpg"
   },
   {
     "name": "Steve Rannazzisi",
@@ -4103,7 +4106,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/julio-diaz",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/juliodiaz.jpg",
-    "bio": "Julio Diaz is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "bio": "Julio Diaz is a stand-up comedian performing in New York City. He performs at clubs across the city.",
+    "bio_wiki": "Julio Díaz may refer to:Julio Díaz, Spanish footballer\nJulio Díaz, Spanish footballer\nJulio Diaz (actor), Filipino actor\nJulio Díaz (boxer), Mexican boxer\nJulio Salvador y Díaz-Benjumea (1910–1987), Spanish general\n"
   },
   {
     "name": "Justin Martindale",
@@ -7600,7 +7604,9 @@
   },
   {
     "name": "Youngmi Mayer",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Youngmi Mayer is a Korean American author, stand-up comedian, activist, podcast host, and social media influencer. She is the author of I'm Laughing Because I'm Crying and co-host and host of Feeling Asian and Hairy Butthole, podcasts that highlight the Asian American experience.",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Youngmi_Mayer_at_the_National_Book_Awards_2025_02_%28cropped%29.jpg/330px-Youngmi_Mayer_at_the_National_Book_Awards_2025_02_%28cropped%29.jpg"
   },
   {
     "name": "Colin Jost",
@@ -7699,5 +7705,33 @@
     "venues": [],
     "bio_wiki": "James Christian Kimmel is an American television host and comedian. He is best known as the host and executive producer of Jimmy Kimmel Live!, which has aired on ABC since 2003. Kimmel has hosted the Primetime Emmy Awards three times, in 2012, 2016 and 2020, and the Academy Awards four times, in 201",
     "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Jimmy_Kimmel_June_2022.jpg/330px-Jimmy_Kimmel_June_2022.jpg"
+  },
+  {
+    "name": "Marlon Wayans",
+    "featured": true,
+    "venues": [],
+    "bio_wiki": "Marlon Lamont Wayans is an American actor, comedian, writer, and producer. He is best known for his work with his brother Shawn Wayans on The WB sitcom The Wayans Bros. (1995–1999) and the comedy films Don't Be a Menace (1996), Scary Movie (2000), Scary Movie 2 (2001), White Chicks (2004), Little Ma",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Marlon_Wayans_%282018%29_%28cropped%29.jpg/330px-Marlon_Wayans_%282018%29_%28cropped%29.jpg"
+  },
+  {
+    "name": "Reggie Watts",
+    "featured": true,
+    "venues": [],
+    "bio_wiki": "Reginald Lucien Frank Roger Watts is an American comedian, musician and actor. His improvised musical sets are created using only his voice, a keyboard, and a looping machine. He refers to himself as a \"disinformationist\" who aims to disorient his audience in a comedic fashion. He was the regular ho",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Reggie_Watts_%2836059512662%29_%28cropped%29.jpg/330px-Reggie_Watts_%2836059512662%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  {
+    "name": "Doug Benson",
+    "featured": true,
+    "venues": [],
+    "bio_wiki": "Douglas Steven Benson is an American comedian, marijuana rights advocate, television and podcast host, and actor, best known for hosting the podcasts and TV series Doug Loves Movies (2006–present), The Benson Interruption (2010–2013), Getting Doug with High (2013–2019) and The High Court with Doug B",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Doug_Benson_by_Gage_Skidmore.jpg/330px-Doug_Benson_by_Gage_Skidmore.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  {
+    "name": "Jessica Williams",
+    "featured": true,
+    "venues": [],
+    "bio_wiki": "Jessica Renee Williams is an American actress and comedian. She has appeared as a senior correspondent on The Daily Show, as cohost of the podcast 2 Dope Queens (2016–2019), as Lally Hicks in the Fantastic Beasts film series (2018–2022), as Gaby in Shrinking (2023–present), and as Meadow in Entergal",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Jessica_Williams_at_Televerse_2025.jpg/330px-Jessica_Williams_at_Televerse_2025.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   }
 ]

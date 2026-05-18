@@ -1069,6 +1069,55 @@ html.native-ios .app-store-badge-link { display: none; }
 
 /* App settings modal — color swatches + rows */
 .settings-desc { font-size: 13px; color: var(--text-dim); margin: 0 0 8px; }
+.app-settings-modal .modal-section h3 {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+  font-weight: 600; color: var(--text-dim); margin-bottom: 6px;
+}
+.settings-pills {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.settings-pill {
+  background: var(--surface2); border: 1px solid var(--border); color: var(--text);
+  padding: 5px 12px; border-radius: 6px; cursor: pointer; transition: all .15s ease;
+  font-size: 13px; font-weight: 500; line-height: 1.3; text-align: center;
+  white-space: nowrap;
+}
+.settings-pill:hover { border-color: var(--accent); }
+.settings-pill[aria-checked="true"] {
+  background: var(--accent); border-color: var(--accent); color: #fff;
+}
+
+.settings-import-row { display: flex; gap: 8px; }
+.settings-import-row .modal-search { flex: 1; }
+
+.settings-qr-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+  display: flex; align-items: center; justify-content: center; z-index: 1000;
+  padding: 16px;
+}
+.settings-qr-overlay.hidden { display: none; }
+.settings-qr-card {
+  background: var(--surface); color: var(--text); border: 1px solid var(--border);
+  border-radius: 12px; padding: 18px 18px 14px; max-width: 360px; width: 100%;
+  position: relative;
+}
+.settings-qr-card .modal-close { position: absolute; top: 8px; right: 10px; background: transparent; border: 0; color: var(--text-dim); font-size: 22px; cursor: pointer; }
+#settings-qr-canvas img, #settings-qr-canvas canvas { max-width: 100%; height: auto; image-rendering: pixelated; background: #fff; padding: 8px; border-radius: 6px; }
+
+.settings-toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  background: var(--surface); color: var(--text); border: 1px solid var(--border);
+  padding: 10px 14px; border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  display: flex; align-items: center; gap: 12px; z-index: 999;
+  font-size: 13px; max-width: calc(100vw - 32px);
+}
+.settings-toast.hidden { display: none; }
+.settings-toast button {
+  background: transparent; border: 1px solid var(--border); color: var(--text);
+  padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 12px;
+}
+.settings-toast button:hover { border-color: var(--accent); color: var(--accent); }
+#settings-toast-close { padding: 4px 8px; font-size: 16px; border: 0; }
 .color-swatches { display: flex; flex-wrap: wrap; gap: 8px; padding: 4px 0 10px; }
 .color-swatch {
   width: 28px; height: 28px; border-radius: 50%;
@@ -1378,4 +1427,14 @@ html.native-ios .dir-section-header { top: calc(60px + var(--dir-ctrl-h, 0px)); 
   .dir-card-photo { flex: 0 0 56px; height: 56px; }
   .dir-card-name { font-size: 13px; }
   .dir-card-bio { font-size: 11px; -webkit-line-clamp: 2; }
+}
+
+/* Bio expand affordance in directory cards */
+.dir-card-bio.truncated { cursor: pointer; }
+.dir-card-bio.truncated:hover { color: var(--text); }
+.dir-card-bio.expanded {
+  -webkit-line-clamp: unset;
+  display: block;
+  -webkit-box-orient: initial;
+  overflow: visible;
 }

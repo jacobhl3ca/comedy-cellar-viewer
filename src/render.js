@@ -1749,6 +1749,7 @@ function setPref(name, type) {
 window._dirSearch = window._dirSearch || '';
 window._dirOnlyFaves = window._dirOnlyFaves || false;
 window._dirOnlyLive = window._dirOnlyLive || false;
+window._dirAlphaMode = window._dirAlphaMode || false;
 window._dirShowCount = window._dirShowCount || 60;
 
 // Hide entries with no bio AND no photo (124 orphans from past venue scrapes).
@@ -1774,13 +1775,30 @@ function _dirLiveSet() {
 }
 
 // Section bucketing for the comedian directory.
-// Buckets reflect the existing sort order: faves first, then live, then alphabetical letter.
+// One divider per tier (fav / live / alpha) — NOT per letter. The letter is shown inside
+// the sticky header via a span that gets updated by _dirUpdateStickyLetters as you scroll.
+// Faves header has no letter slot per Jacob's spec.
 function _dirSectionFor(c, prefs, liveSet) {
+  if (window._dirAlphaMode) {
+    return { key: 'alpha', label: '<span class="dir-letter" data-tier="alpha">A</span>' };
+  }
   if (prefs.faves.includes(c.name)) return { key: 'fav', label: 'Your Favorites' };
-  if (liveSet.has(c.name)) return { key: 'live', label: 'Booked This Week' };
+  if (liveSet.has(c.name)) return { key: 'live', label: 'Booked This Week · <span class="dir-letter" data-tier="live">A</span>' };
+  return { key: 'alpha', label: 'Alphabetical · <span class="dir-letter" data-tier="alpha">A</span>' };
+}
+
+// Tag each card with its tier + first-letter so the scroll listener can quickly find the
+// topmost-visible card per tier and update the sticky header's letter slot.
+function _dirTierFor(c, prefs, liveSet) {
+  if (window._dirAlphaMode) return 'alpha';
+  if (prefs.faves.includes(c.name)) return 'fav';
+  if (liveSet.has(c.name)) return 'live';
+  return 'alpha';
+}
+
+function _dirLetterFor(c) {
   const ch = (c.name[0] || '#').toUpperCase();
-  const letter = /[A-Z]/.test(ch) ? ch : '#';
-  return { key: 'alpha-' + letter, label: letter };
+  return /[A-Z]/.test(ch) ? ch : '#';
 }
 
 // Render a slice of cards with sticky section headers inserted at section boundaries.
@@ -1807,6 +1825,7 @@ function renderComedianDirectory(container) {
   const search = (window._dirSearch || '').toLowerCase().trim();
   const onlyFaves = window._dirOnlyFaves;
   const onlyLive = window._dirOnlyLive;
+  const alphaOnly = window._dirAlphaMode;
 
   // Filter
   let list = (comedianDB || []).slice().filter(c => !_dirIsEmpty(c));
@@ -1819,16 +1838,16 @@ function renderComedianDirectory(container) {
   list = list.filter(c => !c.deceased);
 
   // Sort: faves first, then live, then alphabetical
+  const alphaMode = !!window._dirAlphaMode;
   list.sort((a, b) => {
-    const af = prefs.faves.includes(a.name) ? 0 : 1;
-    const bf = prefs.faves.includes(b.name) ? 0 : 1;
-    if (af !== bf) return af - bf;
-    const al = liveSet.has(a.name) ? 0 : 1;
-    const bl = liveSet.has(b.name) ? 0 : 1;
-    if (al !== bl) return al - bl;
-    const afe = a.featured ? 0 : 1;
-    const bfe = b.featured ? 0 : 1;
-    if (afe !== bfe) return afe - bfe;
+    if (!alphaMode) {
+      const af = prefs.faves.includes(a.name) ? 0 : 1;
+      const bf = prefs.faves.includes(b.name) ? 0 : 1;
+      if (af !== bf) return af - bf;
+      const al = liveSet.has(a.name) ? 0 : 1;
+      const bl = liveSet.has(b.name) ? 0 : 1;
+      if (al !== bl) return al - bl;
+    }
     return a.name.localeCompare(b.name);
   });
 
@@ -1846,6 +1865,7 @@ function renderComedianDirectory(container) {
         <div class="dir-toggles">
           <label class="dir-toggle"><input type="checkbox" id="dir-only-faves" ${onlyFaves ? 'checked' : ''}><span>My faves only</span></label>
           <label class="dir-toggle"><input type="checkbox" id="dir-only-live" ${onlyLive ? 'checked' : ''}><span>Booked this week</span></label>
+          <label class="dir-toggle"><input type="checkbox" id="dir-alpha-mode" ${alphaOnly ? 'checked' : ''}><span>Alphabetical</span></label>
         </div>
         <div class="dir-count">${total === 0 ? 'No comedians match' : `${livingShown === list.length ? total : livingShown + ' of ' + total} comedian${total === 1 ? '' : 's'}`}</div>
       </div>
@@ -1902,7 +1922,58 @@ function renderComedianDirectory(container) {
     window._dirShowCount = 60;
     renderShows();
   });
+  const alphaModeCb = document.getElementById('dir-alpha-mode');
+  if (alphaModeCb) alphaModeCb.addEventListener('change', (e) => {
+    window._dirAlphaMode = e.target.checked;
+    window._dirShowCount = 60;
+    renderShows();
+  });
   _dirAttachInfiniteScroll();
+  _dirAttachStickyLetterUpdater();
+}
+
+// Updates the letter span inside each sticky tier header so the visible header always shows
+// the letter of the topmost card currently in that tier. Throttled via rAF; scan stops as
+// soon as we've resolved a letter for every tier currently in the DOM.
+function _dirUpdateStickyLetters() {
+  const headers = document.querySelectorAll('.dir-section-header');
+  if (!headers.length) return;
+  const ctrls = document.querySelector('.dir-controls');
+  const threshold = ctrls ? ctrls.getBoundingClientRect().bottom : 0;
+  const headerH = headers[0].getBoundingClientRect().height || 0;
+  // We want the letter of the first card whose top is below the sticky header — i.e., the
+  // topmost not-yet-scrolled-past card. Threshold = bottom of controls + sticky header height.
+  const cutoff = threshold + headerH;
+  const cards = document.querySelectorAll('.dir-card');
+  const currentByTier = {};
+  for (const card of cards) {
+    const tier = card.dataset.tier;
+    if (!tier || currentByTier[tier]) continue;
+    const rect = card.getBoundingClientRect();
+    if (rect.bottom < cutoff) continue;
+    currentByTier[tier] = card.dataset.letter || '';
+  }
+  document.querySelectorAll('.dir-letter[data-tier]').forEach(span => {
+    const next = currentByTier[span.dataset.tier];
+    if (next && span.textContent !== next) span.textContent = next;
+  });
+}
+
+function _dirAttachStickyLetterUpdater() {
+  if (window._dirStickyAttached) {
+    _dirUpdateStickyLetters();
+    return;
+  }
+  let queued = false;
+  const handler = () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => { queued = false; _dirUpdateStickyLetters(); });
+  };
+  window.addEventListener('scroll', handler, { passive: true });
+  window.addEventListener('resize', handler, { passive: true });
+  window._dirStickyAttached = true;
+  _dirUpdateStickyLetters();
 }
 
 // Auto-load more comedian cards when the sentinel scrolls into view.
@@ -1923,16 +1994,16 @@ function _dirAttachInfiniteScroll() {
     if (window._dirOnlyFaves) list = list.filter(c => prefs.faves.includes(c.name));
     if (window._dirOnlyLive) list = list.filter(c => liveSet.has(c.name));
     list = list.filter(c => !c.deceased);
+    const alphaMode = !!window._dirAlphaMode;
     list.sort((a, b) => {
-      const af = prefs.faves.includes(a.name) ? 0 : 1;
-      const bf = prefs.faves.includes(b.name) ? 0 : 1;
-      if (af !== bf) return af - bf;
-      const al = liveSet.has(a.name) ? 0 : 1;
-      const bl = liveSet.has(b.name) ? 0 : 1;
-      if (al !== bl) return al - bl;
-      const afe = a.featured ? 0 : 1;
-      const bfe = b.featured ? 0 : 1;
-      if (afe !== bfe) return afe - bfe;
+      if (!alphaMode) {
+        const af = prefs.faves.includes(a.name) ? 0 : 1;
+        const bf = prefs.faves.includes(b.name) ? 0 : 1;
+        if (af !== bf) return af - bf;
+        const al = liveSet.has(a.name) ? 0 : 1;
+        const bl = liveSet.has(b.name) ? 0 : 1;
+        if (al !== bl) return al - bl;
+      }
       return a.name.localeCompare(b.name);
     });
     const prev = window._dirShowCount;
@@ -1949,6 +2020,7 @@ function _dirAttachInfiniteScroll() {
       window._dirObserver.disconnect();
       sentinel.remove();
     }
+    _dirUpdateStickyLetters();
   }, { rootMargin: '600px 0px' });
   window._dirObserver.observe(sentinel);
 }
@@ -1969,16 +2041,16 @@ function _dirRerenderDebounced() {
     if (window._dirOnlyFaves) list = list.filter(c => prefs.faves.includes(c.name));
     if (window._dirOnlyLive) list = list.filter(c => liveSet.has(c.name));
     list = list.filter(c => !c.deceased); // RIP section is static between renders
+    const alphaMode = !!window._dirAlphaMode;
     list.sort((a, b) => {
-      const af = prefs.faves.includes(a.name) ? 0 : 1;
-      const bf = prefs.faves.includes(b.name) ? 0 : 1;
-      if (af !== bf) return af - bf;
-      const al = liveSet.has(a.name) ? 0 : 1;
-      const bl = liveSet.has(b.name) ? 0 : 1;
-      if (al !== bl) return al - bl;
-      const afe = a.featured ? 0 : 1;
-      const bfe = b.featured ? 0 : 1;
-      if (afe !== bfe) return afe - bfe;
+      if (!alphaMode) {
+        const af = prefs.faves.includes(a.name) ? 0 : 1;
+        const bf = prefs.faves.includes(b.name) ? 0 : 1;
+        if (af !== bf) return af - bf;
+        const al = liveSet.has(a.name) ? 0 : 1;
+        const bl = liveSet.has(b.name) ? 0 : 1;
+        if (al !== bl) return al - bl;
+      }
       return a.name.localeCompare(b.name);
     });
     const livingShown = Math.min(window._dirShowCount, list.length);
@@ -2012,6 +2084,7 @@ function _dirRerenderDebounced() {
         loadMore.style.display = 'none';
       }
     }
+    _dirUpdateStickyLetters();
   }, 120);
 }
 
@@ -2027,13 +2100,20 @@ function _dirCardHTML(c, prefs, liveSet) {
   let photo = (typeof getPhotoForVenue === 'function') ? getPhotoForVenue(name, '') : (c.photo_stand || c.photo_nycc || '');
   if (!photo && c.photo_wiki) photo = c.photo_wiki;
   const bio = (typeof getBioForVenue === 'function') ? getBioForVenue(name, '') : (c.bio || c.bio_wiki || '');
-  const bioShort = bio ? (bio.length > 140 ? bio.substring(0, 140).replace(/\s+\S*$/, '') + '…' : bio) : '';
+  const isTruncated = bio && bio.length > 140;
+  const bioShort = bio ? (isTruncated ? bio.substring(0, 140).replace(/\s+\S*$/, '') + '…' : bio) : '';
+  const bioAttr = isTruncated ? bio.replace(/"/g, '&quot;') : '';
+  const bioShortAttr = isTruncated ? bioShort.replace(/"/g, '&quot;') : '';
+  const tier = _dirTierFor(c, prefs, liveSet);
+  const letter = _dirLetterFor(c);
   return `
-    <div class="dir-card ${isFavd ? 'is-fav' : ''} ${isSkipd ? 'is-skip' : ''} ${isDeceased ? 'deceased' : ''}">
+    <div class="dir-card ${isFavd ? 'is-fav' : ''} ${isSkipd ? 'is-skip' : ''} ${isDeceased ? 'deceased' : ''}" data-tier="${tier}" data-letter="${letter}">
       <div class="dir-card-photo"><div class="dir-photo-placeholder">${ICON.mic}</div>${photo ? `<img src="${photo}" alt="${name}" loading="lazy" onerror="this.style.display='none'">` : ''}</div>
       <div class="dir-card-body">
         <div class="dir-card-name">${name}${isLive ? ' <span class="dir-live-dot" title="Booked in upcoming lineup">●</span>' : ''}</div>
-        ${bioShort ? `<div class="dir-card-bio">${bioShort}</div>` : ''}
+        ${bioShort ? (isTruncated
+          ? `<div class="dir-card-bio truncated" data-full="${bioAttr}" data-short="${bioShortAttr}" onclick="event.stopPropagation();_dirToggleBio(this)" title="Click to expand">${bioShort}</div>`
+          : `<div class="dir-card-bio">${bioShort}</div>`) : ''}
         ${isDeceased ? '' : `<div class="dir-card-actions">
           <button class="dir-btn ${isFavd ? 'is-fav' : ''}" onclick="setPref('${esc}','${isFavd ? 'neutral' : 'fav'}')" title="${isFavd ? 'Remove favorite' : 'Favorite'}">${isFavd ? ICON.starFilled : ICON.starOutline}</button>
           <button class="dir-btn ${isSkipd ? 'is-skip' : ''}" onclick="setPref('${esc}','${isSkipd ? 'neutral' : 'skip'}')" title="${isSkipd ? 'Un-skip' : 'Skip'}">${isSkipd ? ICON.x : ICON.minus}</button>
@@ -2042,6 +2122,19 @@ function _dirCardHTML(c, prefs, liveSet) {
     </div>
   `;
 }
+
+function _dirToggleBio(el) {
+  if (el.classList.contains('expanded')) {
+    el.textContent = el.dataset.short;
+    el.classList.remove('expanded');
+    el.title = 'Click to expand';
+  } else {
+    el.textContent = el.dataset.full;
+    el.classList.add('expanded');
+    el.title = 'Click to collapse';
+  }
+}
+window._dirToggleBio = _dirToggleBio;
 
 window.renderComedianDirectory = renderComedianDirectory;
 

@@ -67,7 +67,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=7954b9a">
+  <link rel="stylesheet" href="style.min.css?v=9405e99">
   <script>
     (function() {
       const root = document.documentElement;
@@ -312,34 +312,154 @@
         </div>
 
         <div class="modal-section">
-          <h3>Default tab on open</h3>
-          <p class="settings-desc">Which venue tab should the app land on?</p>
-          <select id="default-tab-select" class="bio-select">
-            <option value="all">All Venues</option>
-            <option value="cellar">Comedy Cellar</option>
+          <h3>Starting venue tab</h3>
+          <p class="settings-desc">Which venue you land on.</p>
+          <div class="settings-pills" id="default-tab-pills" role="radiogroup" aria-label="Starting venue tab">
+            <button class="settings-pill" data-value="all" role="radio" aria-checked="true">All</button>
+            <button class="settings-pill" data-value="cellar" role="radio" aria-checked="false">Cellar</button>
+            <button class="settings-pill" data-value="the-stand" role="radio" aria-checked="false">The Stand</button>
+            <button class="settings-pill" data-value="big-shows" role="radio" aria-checked="false">Big shows</button>
+            <button class="settings-pill" data-value="comedians" role="radio" aria-checked="false">Comedians</button>
+          </div>
+          <select id="default-tab-select" style="display:none;">
+            <option value="all">All</option>
+            <option value="cellar">Cellar</option>
             <option value="the-stand">The Stand</option>
-            <option value="big-shows">Big Shows</option>
+            <option value="big-shows">Big shows</option>
             <option value="comedians">Comedians</option>
           </select>
         </div>
 
         <div class="modal-section">
-          <h3>Default for sold-out shows</h3>
-          <p class="settings-desc">Pick what shows up by default.</p>
-          <select id="default-soldout-mode" class="bio-select">
+          <h3>Starting schedule</h3>
+          <p class="settings-desc">Which day you land on.</p>
+          <div class="settings-pills" id="default-schedule-pills" role="radiogroup" aria-label="Starting schedule">
+            <button class="settings-pill" data-value="all" role="radio" aria-checked="true">Full schedule</button>
+            <button class="settings-pill" data-value="today" role="radio" aria-checked="false">Today</button>
+            <button class="settings-pill" data-value="tomorrow" role="radio" aria-checked="false">Tomorrow</button>
+            <button class="settings-pill" data-value="weekend" role="radio" aria-checked="false">This weekend</button>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3>Neighborhood</h3>
+          <p class="settings-desc">Filters the All venues tab to one part of the city.</p>
+          <div class="settings-pills" id="default-neighborhood-pills" role="radiogroup" aria-label="Neighborhood">
+            <button class="settings-pill" data-value="all" role="radio" aria-checked="true">All</button>
+            <button class="settings-pill" data-value="downtown" role="radio" aria-checked="false">Downtown</button>
+            <button class="settings-pill" data-value="midtown" role="radio" aria-checked="false">Midtown</button>
+            <button class="settings-pill" data-value="uptown" role="radio" aria-checked="false">Uptown</button>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3>Sold-out shows</h3>
+          <p class="settings-desc">What you see on open.</p>
+          <div class="settings-pills" id="default-soldout-pills" role="radiogroup" aria-label="Sold-out shows">
+            <button class="settings-pill" data-value="all" role="radio" aria-checked="true">All shows</button>
+            <button class="settings-pill" data-value="hide" role="radio" aria-checked="false">Hide sold-out</button>
+            <button class="settings-pill" data-value="only" role="radio" aria-checked="false">Only sold-out</button>
+          </div>
+          <select id="default-soldout-mode" style="display:none;">
             <option value="all">All shows</option>
             <option value="hide">Hide sold-out</option>
             <option value="only">Only sold-out</option>
           </select>
         </div>
+
+        <div class="modal-section">
+          <h3>Earliest show time</h3>
+          <p class="settings-desc">Hide shows that start before this time.</p>
+          <div class="settings-pills" id="default-time-pills" role="radiogroup" aria-label="Earliest show time">
+            <button class="settings-pill" data-value="any" role="radio" aria-checked="true">Any</button>
+            <button class="settings-pill" data-value="19:00" role="radio" aria-checked="false">7 PM</button>
+            <button class="settings-pill" data-value="20:00" role="radio" aria-checked="false">8 PM</button>
+            <button class="settings-pill" data-value="21:00" role="radio" aria-checked="false">9 PM</button>
+            <button class="settings-pill" data-value="22:00" role="radio" aria-checked="false">10 PM</button>
+            <button class="settings-pill" data-value="23:00" role="radio" aria-checked="false">11 PM</button>
+          </div>
+          <select id="default-time-filter" style="display:none;">
+            <option value="any">Any</option>
+            <option value="19:00">7 PM</option>
+            <option value="20:00">8 PM</option>
+            <option value="21:00">9 PM</option>
+            <option value="22:00">10 PM</option>
+            <option value="23:00">11 PM</option>
+          </select>
+        </div>
+
+        <div class="modal-section">
+          <h3>Show order</h3>
+          <p class="settings-desc">How shows are sorted.</p>
+          <div class="settings-pills" id="default-sort-pills" role="radiogroup" aria-label="Show order">
+            <button class="settings-pill" data-value="none" role="radio" aria-checked="true">By time</button>
+            <button class="settings-pill" data-value="faves" role="radio" aria-checked="false">Top rated</button>
+          </div>
+          <select id="default-sort" style="display:none;">
+            <option value="none">By time</option>
+            <option value="faves">Top rated</option>
+          </select>
+        </div>
+
+        <div class="modal-section">
+          <h3>Comedian bios</h3>
+          <p class="settings-desc">How much context to show with each name.</p>
+          <div class="settings-pills" id="default-bio-pills" role="radiogroup" aria-label="Comedian bios">
+            <button class="settings-pill" data-value="none" role="radio" aria-checked="true">Hidden</button>
+            <button class="settings-pill" data-value="short" role="radio" aria-checked="false">Short</button>
+            <button class="settings-pill" data-value="long" role="radio" aria-checked="false">Long</button>
+          </div>
+          <select id="default-bio-mode" style="display:none;">
+            <option value="none">Hidden</option>
+            <option value="short">Short</option>
+            <option value="long">Long</option>
+          </select>
+        </div>
+
+        <div class="modal-section">
+          <h3>Tapping a name</h3>
+          <p class="settings-desc">What happens when you tap a comedian.</p>
+          <div class="settings-pills" id="default-ratings-pills" role="radiogroup" aria-label="Tapping a name">
+            <button class="settings-pill" data-value="off" role="radio" aria-checked="true">Show bio</button>
+            <button class="settings-pill" data-value="on" role="radio" aria-checked="false">Rate (fave / skip)</button>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3>Import a setup</h3>
+          <p class="settings-desc">Paste a tonightnyc link to apply someone's settings + faves.</p>
+          <div class="settings-import-row">
+            <input type="text" id="settings-import-url" placeholder="Paste a tonightnyc.com link..." class="modal-search">
+            <button class="btn-done" id="settings-import-go" type="button">Import</button>
+          </div>
+          <p id="settings-import-status" class="settings-desc" style="margin-top:6px;min-height:1em;"></p>
+        </div>
       </div>
 
       <div class="modal-footer">
         <button class="btn-reset" id="reset-all-settings" type="button">Reset all</button>
-        <button class="btn-share" id="copy-settings-link" type="button" style="display:none;">Copy settings link</button>
+        <button class="btn-share" id="show-settings-qr" type="button" style="display:none;">QR</button>
+        <button class="btn-share" id="copy-settings-link" type="button" style="display:none;">Copy my setup</button>
         <button class="btn-done" id="app-settings-done">Done</button>
       </div>
+
+      <!-- QR overlay (lazy) -->
+      <div class="settings-qr-overlay hidden" id="settings-qr-overlay">
+        <div class="settings-qr-card">
+          <button class="modal-close" id="settings-qr-close" aria-label="Close QR">&times;</button>
+          <h3 style="margin:0 0 8px;">Scan to import on another device</h3>
+          <div id="settings-qr-canvas" style="display:flex;justify-content:center;padding:10px 0;"></div>
+          <p id="settings-qr-url" class="settings-desc" style="word-break:break-all;text-align:center;"></p>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <!-- Auto-import toast -->
+  <div class="settings-toast hidden" id="settings-toast" role="status">
+    <span id="settings-toast-msg"></span>
+    <button id="settings-toast-undo" type="button">Undo</button>
+    <button id="settings-toast-close" type="button" aria-label="Dismiss">&times;</button>
   </div>
 
   <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
@@ -354,7 +474,7 @@
     <button id="pwa-install-btn" onclick="pwaInstall()" style="display:none;"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Add to Home Screen</button>
   </footer>
 
-  <script defer src="app.min.js?v=7954b9a"></script>
+  <script defer src="app.min.js?v=9405e99"></script>
   <!-- Vercel Web Analytics + Speed Insights — gated to skip Capacitor native shell so iOS app stays "No data collected" on App Store -->
   <script>
     if (!window.Capacitor?.isNativePlatform?.()) {
