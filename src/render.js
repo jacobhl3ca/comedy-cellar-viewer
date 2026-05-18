@@ -2115,9 +2115,11 @@ function _dirCardHTML(c, prefs, liveSet) {
   if (!photo && c.photo_wiki) photo = c.photo_wiki;
   const bio = (typeof getBioForVenue === 'function') ? getBioForVenue(name, '') : (c.bio || c.bio_wiki || '');
   const isTruncated = bio && bio.length > 140;
-  const bioShort = bio ? (isTruncated ? bio.substring(0, 140).replace(/\s+\S*$/, '') + '…' : bio) : '';
+  // Short = ~140 chars (1 paragraph) for the default card view, with a clickable "..." trigger.
+  // Full = the entire stored bio (up to 2000 chars). Two-stage: click "..." to expand, click text to collapse.
+  const bioShortNoEllipsis = bio ? (isTruncated ? bio.substring(0, 140).replace(/\s+\S*$/, '') : bio) : '';
   const bioAttr = isTruncated ? bio.replace(/"/g, '&quot;') : '';
-  const bioShortAttr = isTruncated ? bioShort.replace(/"/g, '&quot;') : '';
+  const bioShortAttr = isTruncated ? bioShortNoEllipsis.replace(/"/g, '&quot;') : '';
   const tier = _dirTierFor(c, prefs, liveSet);
   const letter = _dirLetterFor(c);
   return `
@@ -2125,9 +2127,9 @@ function _dirCardHTML(c, prefs, liveSet) {
       <div class="dir-card-photo"${photo ? ` onclick="_dirOpenPhoto('${photo.replace(/'/g, "\\'")}','${esc}')"` : ''}><div class="dir-photo-placeholder">${ICON.mic}</div>${photo ? `<img src="${photo}" alt="${name}" loading="lazy" onerror="this.style.display='none'">` : ''}</div>
       <div class="dir-card-body">
         <div class="dir-card-name">${name}${isLive ? ' <span class="dir-live-dot" title="Booked in upcoming lineup">●</span>' : ''}</div>
-        ${bioShort ? (isTruncated
-          ? `<div class="dir-card-bio truncated" data-full="${bioAttr}" data-short="${bioShortAttr}" onclick="event.stopPropagation();_dirToggleBio(this)" title="Click to expand">${bioShort}</div>`
-          : `<div class="dir-card-bio">${bioShort}</div>`) : ''}
+        ${bio ? (isTruncated
+          ? `<div class="dir-card-bio truncated" data-full="${bioAttr}" data-short="${bioShortAttr}"><span class="bio-text">${bioShortNoEllipsis} </span><span class="bio-more" onclick="event.stopPropagation();_dirExpandBio(this.parentElement)" title="Read more">…</span></div>`
+          : `<div class="dir-card-bio">${bioShortNoEllipsis}</div>`) : ''}
         ${isDeceased ? '' : `<div class="dir-card-actions">
           <button class="dir-btn ${isFavd ? 'is-fav' : ''}" onclick="setPref('${esc}','${isFavd ? 'neutral' : 'fav'}')" title="${isFavd ? 'Remove favorite' : 'Favorite'}">${isFavd ? ICON.starFilled : ICON.starOutline}</button>
           <button class="dir-btn ${isSkipd ? 'is-skip' : ''}" onclick="setPref('${esc}','${isSkipd ? 'neutral' : 'skip'}')" title="${isSkipd ? 'Un-skip' : 'Skip'}">${isSkipd ? ICON.x : ICON.minus}</button>
@@ -2137,18 +2139,19 @@ function _dirCardHTML(c, prefs, liveSet) {
   `;
 }
 
-function _dirToggleBio(el) {
-  if (el.classList.contains('expanded')) {
-    el.textContent = el.dataset.short;
-    el.classList.remove('expanded');
-    el.title = 'Click to expand';
-  } else {
-    el.textContent = el.dataset.full;
-    el.classList.add('expanded');
-    el.title = 'Click to collapse';
-  }
+function _dirExpandBio(el) {
+  // Two-stage: click "..." → show full bio. Click full bio text → collapse back.
+  const full = el.dataset.full || '';
+  el.classList.add('expanded');
+  el.innerHTML = `<span class="bio-text" onclick="event.stopPropagation();_dirCollapseBio(this.parentElement)" title="Click to collapse">${full.replace(/&quot;/g, '"')}</span>`;
 }
-window._dirToggleBio = _dirToggleBio;
+function _dirCollapseBio(el) {
+  const short = el.dataset.short || '';
+  el.classList.remove('expanded');
+  el.innerHTML = `<span class="bio-text">${short.replace(/&quot;/g, '"')} </span><span class="bio-more" onclick="event.stopPropagation();_dirExpandBio(this.parentElement)" title="Read more">…</span>`;
+}
+window._dirExpandBio = _dirExpandBio;
+window._dirCollapseBio = _dirCollapseBio;
 
 function _dirOpenPhoto(photoUrl, name) {
   if (!photoUrl) return;

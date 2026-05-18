@@ -1430,15 +1430,27 @@ html.native-ios .dir-section-header { top: calc(60px + var(--dir-ctrl-h, 0px)); 
   .dir-card-bio { font-size: 11px; -webkit-line-clamp: 2; }
 }
 
-/* Bio expand affordance in directory cards */
-.dir-card-bio.truncated { cursor: pointer; }
-.dir-card-bio.truncated:hover { color: var(--text); }
+/* Bio expand affordance — two-stage:
+   collapsed: text isn't clickable, "..." is the expand trigger (accent color, pill hover);
+   expanded:  text IS clickable to roll back up. */
+.dir-card-bio.truncated { cursor: default; }
+.dir-card-bio .bio-more {
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: 700;
+  padding: 0 4px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+}
+.dir-card-bio .bio-more:hover { background: rgba(230, 54, 54, 0.14); }
 .dir-card-bio.expanded {
   -webkit-line-clamp: unset;
   display: block;
   -webkit-box-orient: initial;
   overflow: visible;
 }
+.dir-card-bio.expanded .bio-text { cursor: pointer; }
+.dir-card-bio.expanded .bio-text:hover { color: var(--text); }
 
 /* Touring Legends section */
 .dir-featured-section { margin-top: 40px; padding-top: 24px; border-top: 2px solid var(--border); position: relative; }
