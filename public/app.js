@@ -3154,7 +3154,7 @@ function _dirCardHTML(c, prefs, liveSet) {
       <div class="dir-card-body">
         <div class="dir-card-name">${name}${isLive ? ' <span class="dir-live-dot" title="Booked in upcoming lineup">●</span>' : ''}</div>
         ${bio ? (isLong
-          ? `<div class="dir-card-bio truncated" data-full="${bioAttr}" data-short="${bioShortAttr}" data-medium="${bioMedAttr}" data-has-more="${hasMore ? '1' : '0'}" onclick="event.stopPropagation();_dirBioToMedium(this)" title="Read more">${bioShortText}<span class="bio-more">…</span></div>`
+          ? `<div class="dir-card-bio truncated" data-full="${bioAttr}" data-short="${bioShortAttr}" data-medium="${bioMedAttr}" data-has-more="${hasMore ? '1' : '0'}" onclick="_dirBioClick(event, this)" title="Read more">${bioShortText}<span class="bio-more">…</span></div>`
           : `<div class="dir-card-bio">${bioShortText}</div>`) : ''}
         ${isDeceased ? '' : `<div class="dir-card-actions">
           <button class="dir-btn ${isFavd ? 'is-fav' : ''}" onclick="setPref('${esc}','${isFavd ? 'neutral' : 'fav'}')" title="${isFavd ? 'Remove favorite' : 'Favorite'}">${isFavd ? ICON.starFilled : ICON.starOutline}</button>
@@ -3168,49 +3168,51 @@ function _dirCardHTML(c, prefs, liveSet) {
 // Three-stage bio expand/collapse.
 //
 //   truncated (~140 chars + red "...")
-//   -- click anywhere on bio --> expanded-medium (~400 chars / one paragraph)
-//                                if bio is longer than 400 chars, shows a red "..." at the end.
-//   -- click "..." --> expanded-full (entire stored bio, up to 2000 chars)
-//   -- click paragraph text body --> back to truncated
+//     -- click anywhere on bio --> expanded-medium
+//   expanded-medium (~400 chars / one paragraph; trailing "..." if more available)
+//     -- click "..." --> expanded-full
+//     -- click text body --> truncated
+//   expanded-full (entire stored bio, up to 2000 chars)
+//     -- click anywhere --> truncated
 //
-// Implementation note: in expanded-* states, the bio text is wrapped in <span class="bio-text">
-// so clicking the text vs the trailing "..." is unambiguous.
-function _dirBioToMedium(el) {
-  if (el.classList.contains('expanded-medium') || el.classList.contains('expanded-full')) return;
+// Single delegated onclick on the .dir-card-bio div routes based on (state, target).
+// Bio text and ellipsis are rendered as innerHTML — children don't have their own handlers.
+function _dirBioClick(e, el) {
+  e.stopPropagation();
+  const isMore = e.target && e.target.classList && e.target.classList.contains('bio-more');
   const medium = (el.dataset.medium || '').replace(/&quot;/g, '"');
-  const hasMore = el.dataset.hasMore === '1';
-  el.classList.add('expanded-medium');
-  el.classList.remove('truncated');
-  el.onclick = null;
-  el.title = '';
-  if (hasMore) {
-    el.innerHTML =
-      `<span class="bio-text" onclick="event.stopPropagation();_dirBioToShort(this.parentElement)" title="Click to collapse">${medium}</span>` +
-      `<span class="bio-more" onclick="event.stopPropagation();_dirBioToFull(this.parentElement)" title="Read more">…</span>`;
-  } else {
-    // bio is short enough that medium == full — single click on text collapses
-    el.innerHTML =
-      `<span class="bio-text" onclick="event.stopPropagation();_dirBioToShort(this.parentElement)" title="Click to collapse">${medium}</span>`;
-  }
-}
-function _dirBioToFull(el) {
   const full = (el.dataset.full || '').replace(/&quot;/g, '"');
-  el.classList.remove('expanded-medium');
-  el.classList.add('expanded-full');
-  el.innerHTML =
-    `<span class="bio-text" onclick="event.stopPropagation();_dirBioToShort(this.parentElement)" title="Click to collapse">${full}</span>`;
-}
-function _dirBioToShort(el) {
   const short = (el.dataset.short || '').replace(/&quot;/g, '"');
-  el.classList.remove('expanded-medium', 'expanded-full');
-  el.classList.add('truncated');
-  el.onclick = (e) => { e.stopPropagation(); _dirBioToMedium(el); };
-  el.title = 'Read more';
-  el.innerHTML = `${short}<span class="bio-more">…</span>`;
+  const hasMore = el.dataset.hasMore === '1';
+
+  if (el.classList.contains('expanded-full')) {
+    el.classList.remove('expanded-full');
+    el.classList.add('truncated');
+    el.innerHTML = `${short}<span class="bio-more">…</span>`;
+    el.title = 'Read more';
+    return;
+  }
+  if (el.classList.contains('expanded-medium')) {
+    if (isMore && hasMore) {
+      el.classList.remove('expanded-medium');
+      el.classList.add('expanded-full');
+      el.innerHTML = full;
+      el.title = 'Click to collapse';
+    } else {
+      el.classList.remove('expanded-medium');
+      el.classList.add('truncated');
+      el.innerHTML = `${short}<span class="bio-more">…</span>`;
+      el.title = 'Read more';
+    }
+    return;
+  }
+  // truncated → medium
+  el.classList.remove('truncated');
+  el.classList.add('expanded-medium');
+  el.innerHTML = hasMore ? `${medium}<span class="bio-more">…</span>` : medium;
+  el.title = hasMore ? 'Click "..." for full bio, or click text to collapse' : 'Click to collapse';
 }
-window._dirBioToMedium = _dirBioToMedium;
-window._dirBioToFull = _dirBioToFull;
-window._dirBioToShort = _dirBioToShort;
+window._dirBioClick = _dirBioClick;
 
 function _dirOpenPhoto(photoUrl, name) {
   if (!photoUrl) return;
