@@ -1430,27 +1430,34 @@ html.native-ios .dir-section-header { top: calc(60px + var(--dir-ctrl-h, 0px)); 
   .dir-card-bio { font-size: 11px; -webkit-line-clamp: 2; }
 }
 
-/* Bio expand affordance — two-stage:
-   collapsed: text isn't clickable, "..." is the expand trigger (accent color, pill hover);
-   expanded:  text IS clickable to roll back up. */
-.dir-card-bio.truncated { cursor: default; }
+/* Bio expand affordance — three-stage:
+   truncated:        whole div clicks → medium. Red "..." at end signals "more"
+   expanded-medium:  text clicks → collapse; trailing "..." (if present) clicks → full
+   expanded-full:    text clicks → collapse */
+.dir-card-bio.truncated { cursor: pointer; }
+.dir-card-bio.truncated:hover { color: var(--text); }
 .dir-card-bio .bio-more {
-  cursor: pointer;
   color: var(--accent);
   font-weight: 700;
   padding: 0 4px;
   border-radius: 3px;
   letter-spacing: 1px;
 }
-.dir-card-bio .bio-more:hover { background: rgba(230, 54, 54, 0.14); }
-.dir-card-bio.expanded {
+.dir-card-bio.expanded-medium .bio-more,
+.dir-card-bio.expanded-full .bio-more { cursor: pointer; }
+.dir-card-bio.expanded-medium .bio-more:hover,
+.dir-card-bio.expanded-full .bio-more:hover { background: rgba(230, 54, 54, 0.14); }
+.dir-card-bio.expanded-medium,
+.dir-card-bio.expanded-full {
   -webkit-line-clamp: unset;
   display: block;
   -webkit-box-orient: initial;
   overflow: visible;
 }
-.dir-card-bio.expanded .bio-text { cursor: pointer; }
-.dir-card-bio.expanded .bio-text:hover { color: var(--text); }
+.dir-card-bio.expanded-medium .bio-text,
+.dir-card-bio.expanded-full .bio-text { cursor: pointer; }
+.dir-card-bio.expanded-medium .bio-text:hover,
+.dir-card-bio.expanded-full .bio-text:hover { color: var(--text); }
 
 /* Touring Legends section */
 .dir-featured-section { margin-top: 40px; padding-top: 24px; border-top: 2px solid var(--border); position: relative; }
