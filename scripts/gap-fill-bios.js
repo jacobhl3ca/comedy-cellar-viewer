@@ -86,7 +86,7 @@ async function fetchWiki(name, allowVariant = true) {
     return null;
   }
   return {
-    bio: extract.substring(0, 300),
+    bio: extract.substring(0, 2000),
     photo: data.thumbnail?.source || ''
   };
 }

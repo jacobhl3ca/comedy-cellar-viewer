@@ -806,6 +806,9 @@ async function fetchWikiBio(name) {
 function isGenericBio(bio) {
   if (!bio || bio.length < 10) return true;
   const lower = bio.toLowerCase();
+  // NYCC's site-wide og:description boilerplate ("Comedians peforming at upcoming shows...",
+  // "Info on X including upcoming shows...") — never an actual bio.
+  if (/^comedians peforming at|^comedians performing at|^info on .+ (including|at) upcoming shows/i.test(bio)) return true;
   // Pure template bios
   if (/^[\w\s.'-]+ is a (stand-up )?comedian/.test(lower) && bio.length < 80) return true;
   if (/^[\w\s.'-]+ is a regular at/.test(lower)) return true;
@@ -1144,7 +1147,7 @@ async function main() {
           if (allowVariant) { await sleep(100); return wikiSummary(`${name} (comedian)`, false); }
           return null;
         }
-        return { bio: extract.substring(0, 300), photo: data.thumbnail?.source || '' };
+        return { bio: extract.substring(0, 2000), photo: data.thumbnail?.source || '' };
       } catch {
         return null;
       }

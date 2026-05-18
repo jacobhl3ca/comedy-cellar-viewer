@@ -1439,3 +1439,42 @@ html.native-ios .dir-section-header { top: calc(60px + var(--dir-ctrl-h, 0px)); 
   -webkit-box-orient: initial;
   overflow: visible;
 }
+
+/* Touring Legends section */
+.dir-featured-section { margin-top: 40px; padding-top: 24px; border-top: 2px solid var(--border); position: relative; }
+.dir-featured-section::before { content: ""; display: block; width: 40px; height: 2px; background: var(--accent); margin: 0 auto 14px; opacity: 0.6; }
+.dir-featured-heading { font-size: 15px; font-weight: 700; color: var(--accent); text-align: center; margin: 0 0 20px; letter-spacing: 0.12em; text-transform: uppercase; }
+.dir-card.featured .dir-card-photo { box-shadow: 0 0 0 2px var(--accent); }
+
+/* Photo lightbox */
+.dir-lightbox {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.88);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px; box-sizing: border-box;
+  animation: fadeIn 0.15s ease-out;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.dir-lightbox-content {
+  max-width: 90vw; max-height: 90vh;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+.dir-lightbox-img {
+  max-width: 100%; max-height: 80vh;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  object-fit: contain;
+}
+.dir-lightbox-name {
+  color: #fff; font-size: 16px; font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+.dir-lightbox-close {
+  position: absolute; top: 16px; right: 16px;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(255,255,255,0.1); color: #fff;
+  border: none; font-size: 22px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.dir-lightbox-close:hover { background: rgba(255,255,255,0.2); }
+.dir-card-photo { cursor: zoom-in; }

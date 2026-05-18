@@ -104,7 +104,7 @@ async function fetchWiki(name, allowVariant = true) {
     if (allowVariant) { await sleep(100); return fetchWiki(`${name} (comedian)`, false); }
     return null;
   }
-  return { bio: extract.substring(0, 300), photo: data.thumbnail?.source || '' };
+  return { bio: extract.substring(0, 2000), photo: data.thumbnail?.source || '' };
 }
 
 (async () => {

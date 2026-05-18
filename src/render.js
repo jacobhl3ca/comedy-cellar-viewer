@@ -1834,9 +1834,10 @@ function renderComedianDirectory(container) {
   if (onlyFaves) list = list.filter(c => prefs.faves.includes(c.name));
   if (onlyLive) list = list.filter(c => liveSet.has(c.name));
 
-  // Split deceased into separate section
+  // Split deceased AND featured (touring legends) into their own sections
   const deceasedList = list.filter(c => c.deceased).sort((a, b) => a.name.localeCompare(b.name));
-  list = list.filter(c => !c.deceased);
+  const featuredList = list.filter(c => c.featured && !c.deceased).sort((a, b) => a.name.localeCompare(b.name));
+  list = list.filter(c => !c.deceased && !c.featured);
 
   // Sort: faves first, then live, then alphabetical
   const alphaMode = !!window._dirAlphaMode;
@@ -1852,11 +1853,11 @@ function renderComedianDirectory(container) {
     return a.name.localeCompare(b.name);
   });
 
-  const total = list.length + deceasedList.length;
+  const total = list.length + deceasedList.length + featuredList.length;
   const livingShown = Math.min(window._dirShowCount, list.length);
   const visible = list.slice(0, livingShown);
-  // RIP section always visible at bottom when there are deceased entries —
-  // not gated on scrolling through all living comedians.
+  // Featured + RIP sections always visible — not gated on scrolling.
+  const showFeatured = !onlyFaves && !onlyLive && featuredList.length > 0;
   const showRip = !onlyFaves && !onlyLive && deceasedList.length > 0;
 
   const scrollY = window.scrollY;
@@ -1876,6 +1877,14 @@ function renderComedianDirectory(container) {
         ${_dirCardsWithSections(visible, prefs, liveSet)}
       </div>
       ${livingShown < list.length ? `<div id="dir-sentinel" class="dir-sentinel" aria-hidden="true"></div>` : ''}
+      ${showFeatured ? `
+        <div class="dir-featured-section">
+          <h3 class="dir-featured-heading">Touring Legends</h3>
+          <div class="dir-grid">
+            ${featuredList.map(c => _dirCardHTML(c, prefs, liveSet)).join('')}
+          </div>
+        </div>
+      ` : ''}
       ${showRip ? `
         <div class="dir-rip-section">
           <h3 class="dir-rip-heading">In Memoriam</h3>
@@ -1996,7 +2005,7 @@ function _dirAttachInfiniteScroll() {
     if (search) list = list.filter(c => c.name.toLowerCase().includes(search));
     if (window._dirOnlyFaves) list = list.filter(c => prefs.faves.includes(c.name));
     if (window._dirOnlyLive) list = list.filter(c => liveSet.has(c.name));
-    list = list.filter(c => !c.deceased);
+    list = list.filter(c => !c.deceased && !c.featured);
     const alphaMode = !!window._dirAlphaMode;
     list.sort((a, b) => {
       if (!alphaMode) {
@@ -2017,7 +2026,8 @@ function _dirAttachInfiniteScroll() {
     window._dirShowCount = next;
     const countEl = document.querySelector('.dir-count');
     const deceasedCount = (comedianDB || []).filter(c => c.deceased).length;
-    const total = list.length + deceasedCount;
+    const featuredCount = (comedianDB || []).filter(c => c.featured && !c.deceased).length;
+    const total = list.length + deceasedCount + featuredCount;
     if (countEl) countEl.textContent = total === 0 ? 'No comedians match' : `${next === list.length ? total : next + ' of ' + total} comedian${total === 1 ? '' : 's'}`;
     if (next >= list.length) {
       window._dirObserver.disconnect();
@@ -2043,7 +2053,7 @@ function _dirRerenderDebounced() {
     if (search) list = list.filter(c => c.name.toLowerCase().includes(search));
     if (window._dirOnlyFaves) list = list.filter(c => prefs.faves.includes(c.name));
     if (window._dirOnlyLive) list = list.filter(c => liveSet.has(c.name));
-    list = list.filter(c => !c.deceased); // RIP section is static between renders
+    list = list.filter(c => !c.deceased && !c.featured); // RIP + Touring Legends sections are static between renders
     const alphaMode = !!window._dirAlphaMode;
     list.sort((a, b) => {
       if (!alphaMode) {
@@ -2062,7 +2072,8 @@ function _dirRerenderDebounced() {
     window._dirLastSection = null;
     grid.innerHTML = _dirCardsWithSections(visible, prefs, liveSet);
     const deceasedCount = (comedianDB || []).filter(c => c.deceased).length;
-    const total = list.length + deceasedCount;
+    const featuredCount = (comedianDB || []).filter(c => c.featured && !c.deceased).length;
+    const total = list.length + deceasedCount + featuredCount;
     if (countEl) countEl.textContent = total === 0 ? 'No comedians match' : `${livingShown === list.length ? total : livingShown + ' of ' + total} comedian${total === 1 ? '' : 's'}`;
     // Re-attach infinite-scroll sentinel after a debounced filter change.
     let sentinel = document.getElementById('dir-sentinel');
@@ -2110,8 +2121,8 @@ function _dirCardHTML(c, prefs, liveSet) {
   const tier = _dirTierFor(c, prefs, liveSet);
   const letter = _dirLetterFor(c);
   return `
-    <div class="dir-card ${isFavd ? 'is-fav' : ''} ${isSkipd ? 'is-skip' : ''} ${isDeceased ? 'deceased' : ''}" data-tier="${tier}" data-letter="${letter}">
-      <div class="dir-card-photo"><div class="dir-photo-placeholder">${ICON.mic}</div>${photo ? `<img src="${photo}" alt="${name}" loading="lazy" onerror="this.style.display='none'">` : ''}</div>
+    <div class="dir-card ${isFavd ? 'is-fav' : ''} ${isSkipd ? 'is-skip' : ''} ${isDeceased ? 'deceased' : ''} ${c.featured ? 'featured' : ''}" data-tier="${tier}" data-letter="${letter}">
+      <div class="dir-card-photo"${photo ? ` onclick="_dirOpenPhoto('${photo.replace(/'/g, "\\'")}','${esc}')"` : ''}><div class="dir-photo-placeholder">${ICON.mic}</div>${photo ? `<img src="${photo}" alt="${name}" loading="lazy" onerror="this.style.display='none'">` : ''}</div>
       <div class="dir-card-body">
         <div class="dir-card-name">${name}${isLive ? ' <span class="dir-live-dot" title="Booked in upcoming lineup">●</span>' : ''}</div>
         ${bioShort ? (isTruncated
@@ -2138,6 +2149,27 @@ function _dirToggleBio(el) {
   }
 }
 window._dirToggleBio = _dirToggleBio;
+
+function _dirOpenPhoto(photoUrl, name) {
+  if (!photoUrl) return;
+  const existing = document.querySelector('.dir-lightbox');
+  if (existing) existing.remove();
+  const overlay = document.createElement('div');
+  overlay.className = 'dir-lightbox';
+  overlay.innerHTML = `
+    <button class="dir-lightbox-close" aria-label="Close">&times;</button>
+    <div class="dir-lightbox-content">
+      <img class="dir-lightbox-img" src="${photoUrl}" alt="${name}">
+      <div class="dir-lightbox-name">${name}</div>
+    </div>
+  `;
+  const close = () => overlay.remove();
+  overlay.addEventListener('click', (e) => { if (e.target === overlay || e.target.classList.contains('dir-lightbox-close')) close(); });
+  document.body.appendChild(overlay);
+  const escHandler = (e) => { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', escHandler); } };
+  document.addEventListener('keydown', escHandler);
+}
+window._dirOpenPhoto = _dirOpenPhoto;
 
 window.renderComedianDirectory = renderComedianDirectory;
 
