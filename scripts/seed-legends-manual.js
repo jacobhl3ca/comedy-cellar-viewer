@@ -161,8 +161,8 @@ async function standPhotoFetch(slug) {
       src = 'stand';
     }
     if (!photoUrl) { failed.push(name + ' (no venue photo found)'); await sleep(150); continue; }
-    // Reject obvious placeholder URLs
-    if (/BlankBackground|placeholder|default-headshot/i.test(photoUrl)) {
+    // Reject obvious placeholder URLs — including The Stand's site-wide twitter-card fallback
+    if (/BlankBackground|placeholder|default-headshot|twitter-card|site-default|\/images\/site\//i.test(photoUrl)) {
       failed.push(name + ' (got placeholder URL: ' + photoUrl + ')');
       await sleep(150); continue;
     }
