@@ -1454,11 +1454,10 @@ html.native-ios .dir-section-header { top: calc(60px + var(--dir-ctrl-h, 0px)); 
   -webkit-box-orient: initial;
   overflow: visible;
   color: var(--text);
+  cursor: pointer;
 }
-.dir-card-bio.expanded-medium .bio-text,
-.dir-card-bio.expanded-full .bio-text { cursor: pointer; }
-.dir-card-bio.expanded-medium .bio-text:hover,
-.dir-card-bio.expanded-full .bio-text:hover { color: var(--text); }
+.dir-card-bio.expanded-medium:hover,
+.dir-card-bio.expanded-full:hover { color: var(--text); }
 
 /* Touring Legends section */
 .dir-featured-section { margin-top: 40px; padding-top: 24px; border-top: 2px solid var(--border); position: relative; }
