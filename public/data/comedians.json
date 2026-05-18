@@ -2998,8 +2998,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/ashley-hesseltine",
     "bio_stand": "Standup comedian, writer, and founder of @brosbeingbasic + @fashiondads_. Hobbies include: group texting, wine “tasting”, taco eating, dancing, hanging with her dog and petting every other dog she sees. Turn-ons: sense of humor, passion for ‘90s hip-hop. Turn-offs: cheapness, angry drunks. I enjoy candlelit pizza dinners, long walks around the East Village, and GUYS WHO HAVE THEIR SHIT TOGETHER (sorry for yelling).",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/AH_2025_headshot_crop.jpg",
-    "bio": "Ashley Hesseltine is a stand-up comedian and podcaster. She co-hosts the Girls Gotta Eat podcast and performs at clubs across the country."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/AH_2025_headshot_crop.jpg"
   },
   {
     "name": "Asif Ali",
@@ -5565,7 +5564,7 @@
       "comedy_cellar"
     ],
     "tagline_cellar": "FROM THE \"LOUIE\" CK SHOW, \"THE ARISTOCRATS\", \"THE CONAN O'BRIEN SHOW\", COMEDY CENTRAL'S \"TOUGH CROWD\" AND \"THE TONIGHT SHOW\".",
-    "bio_wiki": "Gregg Rogell is an American professional comedian. Born on Long Island, Rogell resides in New York City and is a regular performer at the Comedy Cellar and the Comic Strip Live. He has appeared on The Tonight Show, Late Night with Conan O'Brien, Louie, Half Baked, and The Nanny. He has had his own half hour special on Comedy Central, and was a featured performer in the movie The Aristocrats."
+    "bio_wiki": "Gregg Rogell is an American professional comedian. Born on Long Island, Rogell resides in New York City and is a regular performer at the Comedy Cellar and the Comic Strip Live. He has appeared on The Tonight Show, Late Night with Conan O'Brien, Louie, Half Baked, and The Nanny. He has had his own h"
   },
   {
     "name": "Hot Soup",
@@ -6771,7 +6770,7 @@
   {
     "name": "John Oliver",
     "venues": [],
-    "bio_wiki": "John William Oliver is a British and American comedian, political commentator, and television personality. He hosts Last Week Tonight with John Oliver on HBO and started his career as a stand-up comedian in the United Kingdom. He came to wider attention for his work in the United States as the senior British correspondent on The Daily Show with Jon Stewart from 2006 to 2013. Oliver won three Primetime Emmy Awards for writing for The Daily Show and became its guest host for an eight-week period in 2013. He also co-hosted the comedy podcast The Bugle with Andy Zaltzman, with whom Oliver had previously worked on the radio series Political Animal and The Department. From 2010 to 2013, he hosted the stand-up series John Oliver's New York Stand-Up Show on Comedy Central. His acting roles include Ian Duncan on the NBC sitcom Community, as well as voice work in the animated films The Smurfs (2011), The Smurfs 2 (2013), and The Lion King remake (2019).",
+    "bio_wiki": "John William Oliver is a British and American comedian, political commentator, and television personality. He hosts Last Week Tonight with John Oliver on HBO and started his career as a stand-up comedian in the United Kingdom. He came to wider attention for his work in the United States as the senio",
     "featured": true
   },
   {
@@ -7987,5 +7986,13 @@
     "venues": [],
     "bio_wiki": "Gerald Isaac Stiller was an American comedian and actor. He spent many years as part of the comedy duo Stiller and Meara with his wife, Anne Meara, to whom he was married for over 60 years until her death in 2015. Stiller saw a late-career resurgence starting in 1993, playing Frank Costanza on the sitcom Seinfeld, a part which earned him an Emmy nomination. In 1998, Stiller began his role as Arthur Spooner on the CBS comedy series The King of Queens, another role that garnered widespread acclaim.",
     "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Jerry_Stiller_-_Anne_Meara_%28cropped%29.JPG/330px-Jerry_Stiller_-_Anne_Meara_%28cropped%29.JPG"
+  },
+  {
+    "name": "Dina Martina",
+    "venues": []
+  },
+  {
+    "name": "Matt Mathews",
+    "venues": []
   }
 ]
