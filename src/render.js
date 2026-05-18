@@ -1752,14 +1752,15 @@ window._dirOnlyLive = window._dirOnlyLive || false;
 window._dirAlphaMode = window._dirAlphaMode || false;
 window._dirShowCount = window._dirShowCount || 60;
 
-// Hide entries with no bio AND no photo (124 orphans from past venue scrapes).
-// Keeps anyone with at least a photo OR a bio OR a venue OR featured/deceased flag.
+// Hide-empty filter: previously hid ~124 orphans with no venue/bio/photo,
+// but per user feedback (2026-05-18) these include real emerging comedians
+// with blank venue profiles. Now we keep everyone — user audits junk
+// entries via data/comedian-review.csv and deletes manually.
+//
+// Entries flagged not_a_person:true (set manually) ARE hidden — escape
+// hatch for clearly non-person entries like event titles.
 function _dirIsEmpty(c) {
-  if (c.deceased || c.featured) return false;
-  if ((c.venues || []).length > 0) return false;
-  const hasBio = c.bio || c.bio_stand || c.bio_wiki || c.tagline_cellar;
-  const hasPhoto = c.photo_nycc || c.photo_stand || c.photo_cellar || c.photo_wiki;
-  return !hasBio && !hasPhoto;
+  return !!c.not_a_person;
 }
 
 function _dirLiveSet() {
@@ -1854,7 +1855,9 @@ function renderComedianDirectory(container) {
   const total = list.length + deceasedList.length;
   const livingShown = Math.min(window._dirShowCount, list.length);
   const visible = list.slice(0, livingShown);
-  const showRip = !onlyFaves && !onlyLive && deceasedList.length > 0 && livingShown >= list.length;
+  // RIP section always visible at bottom when there are deceased entries —
+  // not gated on scrolling through all living comedians.
+  const showRip = !onlyFaves && !onlyLive && deceasedList.length > 0;
 
   const scrollY = window.scrollY;
 

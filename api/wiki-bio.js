@@ -15,10 +15,12 @@ module.exports = async (req, res) => {
   await Promise.all(names.map(async (name) => {
     try {
       const data = await fetchJSON(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(name.replace(/ /g, '_'))}`);
-      if (data.type === 'standard' && data.extract) {
+      // Reject disambiguation pages ("X may refer to:Y (comedian)...") + show/film/album extracts.
+      if (data.type === 'standard' && data.extract && !/\bmay refer to\b/i.test(data.extract)) {
         // Only accept bios about comedians/performers (avoid wrong-person matches)
         const lower = data.extract.toLowerCase();
-        const isComedian = /\b(comedian|comedy|stand-up|comic|actor|actress|television|tv show|podcast|improv|sketch|humor|humour|entertainer|writer.*performer)\b/.test(lower);
+        const isShowOrAlbum = /\bis an? (american|british|canadian|australian|indian|pakistani|irish)?\s*(tv series|television series|film|movie|album|sitcom|crime drama)\b/i.test(data.extract);
+        const isComedian = !isShowOrAlbum && /\b(comedian|comedy|stand-up|comic|actor|actress|television|tv show|podcast|improv|sketch|humor|humour|entertainer|writer.*performer)\b/.test(lower);
         if (isComedian) {
           results[name] = {
             bio: data.extract.substring(0, 300),

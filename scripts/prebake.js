@@ -784,6 +784,13 @@ async function fetchWikiBio(name) {
     const data = await fetchJSON(`https://en.wikipedia.org/api/rest_v1/page/summary/${encoded}`);
     if (!data.extract) return null;
 
+    // REJECT disambiguation pages — extracts like "X may refer to:Y (comedian)..."
+    // contain "comedian" so the regex would falsely pass them.
+    if (data.type === 'disambiguation' || /\bmay refer to\b/i.test(data.extract)) return null;
+
+    // Reject extracts about TV shows / films / albums (not the person).
+    if (/\bis an? (american|british|canadian|australian|indian|pakistani|irish)?\s*(tv series|television series|film|movie|album|sitcom|crime drama)\b/i.test(data.extract)) return null;
+
     // Verify it's about a comedian/performer
     const text = data.extract.toLowerCase();
     const isComedian = /comedian|comedy|stand-up|tv show|podcast|actor|actress|writer|improv|sketch|snl|netflix|hbo|late night|tonight show/i.test(text);
