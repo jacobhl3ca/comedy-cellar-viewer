@@ -1453,6 +1453,7 @@ html.native-ios .dir-section-header { top: calc(60px + var(--dir-ctrl-h, 0px)); 
   display: block;
   -webkit-box-orient: initial;
   overflow: visible;
+  color: var(--text);
 }
 .dir-card-bio.expanded-medium .bio-text,
 .dir-card-bio.expanded-full .bio-text { cursor: pointer; }
