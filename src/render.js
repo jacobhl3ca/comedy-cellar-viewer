@@ -74,13 +74,15 @@
       noLineup = !hasCellar;
     }
     tab.className = 'day-tab' + (dateStr === activeDate ? ' active' : '') + (noLineup ? ' no-lineup' : '');
-    const maxScore = shows ? Math.max(0, ...shows.map(s => { const sc = scoreShow(s); return sc.faves + sc.likes; })) : 0;
-    const maxFavs = shows ? Math.max(0, ...shows.map(s => scoreShow(s).faves)) : 0;
+    // All Venues: count faves across every source. Cellar tab: Cellar shows only.
+    const maxFavs = activeSource === 'all'
+      ? dayMaxFaves(dateStr)
+      : (shows ? Math.max(0, ...shows.map(s => scoreShow(s).faves)) : 0);
 
     tab.innerHTML = `
       <span class="tab-day">${getDayName(d)}</span>
       <span class="tab-date">${getDateLabel(d)}</span>
-      ${maxFavs >= 2 ? `<span class="tab-badge">${maxFavs} faves</span>` : (maxScore >= 2 ? `<span class="tab-badge">${maxScore} picks</span>` : '')}
+      ${maxFavs >= 2 ? `<span class="tab-badge">${maxFavs} faves</span>` : ''}
     `;
 
     tab.addEventListener('click', () => {

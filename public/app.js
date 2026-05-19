@@ -1035,6 +1035,28 @@ function scoreShow(show) {
   return { faves, likes: 0, skips, newFaces, score };
 }
 
+// Max favorited/liked comedians stacked on a single lineup that day, across
+// EVERY venue source — drives the date-strip badge in All Venues view.
+// (scoreShow above only sees Comedy Cellar shows in allData.)
+function dayMaxFaves(dateStr) {
+  let max = 0;
+  const scan = (shows) => {
+    for (const show of (shows || [])) {
+      let faves = 0;
+      for (const name of (show.comedians || [])) {
+        if (isFav(name) || isLike(name)) faves++;
+      }
+      if (faves > max) max = faves;
+    }
+  };
+  scan(allData[dateStr]);
+  if (typeof standShows !== 'undefined') scan(standShows.filter(s => s.date === dateStr));
+  if (typeof nyccShows !== 'undefined') scan(nyccShows.filter(s => s.date === dateStr));
+  if (typeof gothamShows !== 'undefined') scan(gothamShows.filter(s => s.date === dateStr));
+  if (typeof bigShows !== 'undefined') scan(bigShows.filter(e => e.date === dateStr));
+  return max;
+}
+
 // ---- Fetch with timeout ----
 function fetchWithTimeout(url, options = {}, timeoutMs = 10000) {
   const controller = new AbortController();
@@ -1355,13 +1377,15 @@ function renderTabs() {
       noLineup = !hasCellar;
     }
     tab.className = 'day-tab' + (dateStr === activeDate ? ' active' : '') + (noLineup ? ' no-lineup' : '');
-    const maxScore = shows ? Math.max(0, ...shows.map(s => { const sc = scoreShow(s); return sc.faves + sc.likes; })) : 0;
-    const maxFavs = shows ? Math.max(0, ...shows.map(s => scoreShow(s).faves)) : 0;
+    // All Venues: count faves across every source. Cellar tab: Cellar shows only.
+    const maxFavs = activeSource === 'all'
+      ? dayMaxFaves(dateStr)
+      : (shows ? Math.max(0, ...shows.map(s => scoreShow(s).faves)) : 0);
 
     tab.innerHTML = `
       <span class="tab-day">${getDayName(d)}</span>
       <span class="tab-date">${getDateLabel(d)}</span>
-      ${maxFavs >= 2 ? `<span class="tab-badge">${maxFavs} faves</span>` : (maxScore >= 2 ? `<span class="tab-badge">${maxScore} picks</span>` : '')}
+      ${maxFavs >= 2 ? `<span class="tab-badge">${maxFavs} faves</span>` : ''}
     `;
 
     tab.addEventListener('click', () => {

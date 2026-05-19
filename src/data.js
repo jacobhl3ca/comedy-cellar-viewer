@@ -347,6 +347,28 @@ function scoreShow(show) {
   return { faves, likes: 0, skips, newFaces, score };
 }
 
+// Max favorited/liked comedians stacked on a single lineup that day, across
+// EVERY venue source — drives the date-strip badge in All Venues view.
+// (scoreShow above only sees Comedy Cellar shows in allData.)
+function dayMaxFaves(dateStr) {
+  let max = 0;
+  const scan = (shows) => {
+    for (const show of (shows || [])) {
+      let faves = 0;
+      for (const name of (show.comedians || [])) {
+        if (isFav(name) || isLike(name)) faves++;
+      }
+      if (faves > max) max = faves;
+    }
+  };
+  scan(allData[dateStr]);
+  if (typeof standShows !== 'undefined') scan(standShows.filter(s => s.date === dateStr));
+  if (typeof nyccShows !== 'undefined') scan(nyccShows.filter(s => s.date === dateStr));
+  if (typeof gothamShows !== 'undefined') scan(gothamShows.filter(s => s.date === dateStr));
+  if (typeof bigShows !== 'undefined') scan(bigShows.filter(e => e.date === dateStr));
+  return max;
+}
+
 // ---- Fetch with timeout ----
 function fetchWithTimeout(url, options = {}, timeoutMs = 10000) {
   const controller = new AbortController();
