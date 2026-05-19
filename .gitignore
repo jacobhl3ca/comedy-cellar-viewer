@@ -5,3 +5,4 @@ backup-*/
 *.DS_Store
 scripts/prebake.log
 data/.gap-fill-*.json
+BACKLOG.md

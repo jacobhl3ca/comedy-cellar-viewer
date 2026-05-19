@@ -96,8 +96,17 @@ function nameToSlug(name) {
     // Sanity guard: first 30 alphanumeric chars of new bio should match old bio's start
     // (apostrophe/quote encoding may differ between python scraper output + NYCC's current HTML)
     const normalize = s => s.toLowerCase().replace(/[^a-z0-9]/g, '').substring(0, 30);
-    if (normalize(c.bio) !== normalize(newBio)) {
-      failed.push(`${c.name} (prefix mismatch)`);
+    const prefixMatches = normalize(c.bio) === normalize(newBio);
+    // Looser fallback: new bio is substantially longer AND contains at least one name token
+    // (covers cases where NYCC genuinely refreshed the bio for an existing comedian).
+    let looseOk = false;
+    if (!prefixMatches && newBio.length >= 500) {
+      const nameTokens = c.name.toLowerCase().replace(/[^a-z\s]/g, ' ').trim().split(/\s+/).filter(t => t.length >= 3);
+      const newLower = newBio.toLowerCase();
+      looseOk = nameTokens.some(t => newLower.includes(t));
+    }
+    if (!prefixMatches && !looseOk) {
+      failed.push(`${c.name} (prefix mismatch, len ${newBio.length})`);
       await sleep(120); continue;
     }
     const oldLen = c.bio.length;
