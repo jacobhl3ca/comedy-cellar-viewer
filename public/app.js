@@ -1,3 +1,260 @@
+// ---- Jazz mode ----
+// When mode-select is set to 'jazz' the comedy data path is skipped; this module
+// owns rendering for the jazz feed. Reuses the existing #venue-source-tabs,
+// #day-tabs, and #shows-container DOM plus the .big-show-card CSS that Tonight
+// NYC already ships.
+
+const JAZZ_MODE_KEY = 'tonightnyc-mode';
+
+let JAZZ_DATA = { shows: [], today: '', generated_at: '' };
+let JAZZ_PHOTOS = {};
+let jazzActiveVenue = 'all';
+let jazzActiveDate = 'all';
+
+const JAZZ_VENUE_TABS = [
+  { key: 'all',                    label: 'All Venues' },
+  { key: 'Blue Note NYC',          label: 'Blue Note' },
+  { key: 'Village Vanguard',       label: 'Vanguard' },
+  { key: 'Smoke Jazz',             label: 'Smoke' },
+  { key: 'Birdland',               label: 'Birdland' },
+  { key: 'Jazz at Lincoln Center', label: 'JALC' },
+  { key: 'Smalls',                 label: 'Smalls/Mezzrow' },
+  { key: 'Other',                  label: 'Other' },
+];
+
+const JAZZ_SMALLS_LIKE = new Set(['Smalls', 'Mezzrow', 'Jazzcultural']);
+const JAZZ_BARE_CITY_RX = /^[A-Z][a-zA-Z]+(?:[\s.-]+[A-Z][a-zA-Z]+)*,\s*[A-Z]{2}$/;
+const JAZZ_MIC_ICON = `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>`;
+
+function jazzEscape(s) {
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
+function jazzVenueMatches(show) {
+  if (jazzActiveVenue === 'all') return true;
+  if (jazzActiveVenue === 'Smalls') return JAZZ_SMALLS_LIKE.has(show.venue_label);
+  return show.venue_label === jazzActiveVenue;
+}
+
+function jazzFilteredShows() {
+  return JAZZ_DATA.shows.filter(s => {
+    if (!jazzVenueMatches(s)) return false;
+    if (jazzActiveDate !== 'all' && s.date !== jazzActiveDate) return false;
+    return true;
+  });
+}
+
+function jazzDayTabLabel(iso) {
+  const d = new Date(iso + 'T00:00:00');
+  const today = new Date(JAZZ_DATA.today + 'T00:00:00');
+  const tomorrow = new Date(today); tomorrow.setDate(today.getDate() + 1);
+  if (iso === JAZZ_DATA.today) return 'Today';
+  if (d.getTime() === tomorrow.getTime()) return 'Tmrw';
+  return d.toLocaleDateString('en-US', { weekday: 'short' }) + ' ' + (d.getMonth() + 1) + '/' + d.getDate();
+}
+
+function jazzRenderVenueTabs() {
+  const container = document.getElementById('venue-source-tabs');
+  if (!container) return;
+  container.innerHTML = JAZZ_VENUE_TABS.map(t =>
+    `<button class="venue-source-tab ${t.key === jazzActiveVenue ? 'active' : ''}" data-venue="${jazzEscape(t.key)}">${jazzEscape(t.label)}</button>`
+  ).join('');
+  container.querySelectorAll('.venue-source-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      jazzActiveVenue = btn.dataset.venue;
+      jazzRenderVenueTabs();
+      jazzRenderDayTabs();
+      jazzRenderShows();
+    });
+  });
+}
+
+function jazzRenderDayTabs() {
+  const tabs = document.getElementById('day-tabs');
+  if (!tabs) return;
+  const dates = [...new Set(JAZZ_DATA.shows
+    .filter(s => jazzActiveVenue === 'all' || jazzVenueMatches(s))
+    .map(s => s.date))]
+    .sort();
+  const buttons = [`<button class="day-tab ${jazzActiveDate === 'all' ? 'active' : ''}" data-date="all">All</button>`]
+    .concat(dates.slice(0, 21).map(d =>
+      `<button class="day-tab ${jazzActiveDate === d ? 'active' : ''}" data-date="${d}">${jazzEscape(jazzDayTabLabel(d))}</button>`
+    ));
+  tabs.innerHTML = buttons.join('');
+  tabs.querySelectorAll('.day-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      jazzActiveDate = jazzActiveDate === btn.dataset.date ? 'all' : btn.dataset.date;
+      jazzRenderDayTabs();
+      jazzRenderShows();
+    });
+  });
+}
+
+function jazzGroupShows(shows) {
+  const groups = new Map();
+  for (const s of shows) {
+    const artists = Array.isArray(s.artists) ? s.artists : [];
+    const title = (s.title || artists[0] || '').trim();
+    const key = `${s.venue_label}|${title.toLowerCase()}|${[...artists].sort().join(',').toLowerCase()}`;
+    if (!groups.has(key)) {
+      groups.set(key, {
+        title, artists,
+        venue_label: s.venue_label,
+        city: s.city,
+        ticket_url: s.ticket_url,
+        dates: [],
+      });
+    }
+    groups.get(key).dates.push(s.date);
+  }
+  for (const g of groups.values()) {
+    g.dates = [...new Set(g.dates)].sort();
+    g.firstDate = g.dates[0];
+  }
+  return [...groups.values()].sort((a, b) =>
+    a.firstDate.localeCompare(b.firstDate) ||
+    a.venue_label.localeCompare(b.venue_label)
+  );
+}
+
+function jazzPickPhoto(g) {
+  for (const a of g.artists) {
+    if (JAZZ_PHOTOS[a]) return JAZZ_PHOTOS[a];
+  }
+  return '';
+}
+
+function jazzDateBoxHTML(iso, ticketUrl) {
+  const d = new Date(iso + 'T12:00:00');
+  const today = new Date(JAZZ_DATA.today + 'T00:00:00');
+  const tomorrow = new Date(today); tomorrow.setDate(today.getDate() + 1);
+  const isToday = iso === JAZZ_DATA.today;
+  const isTomorrow = d.getTime() === tomorrow.getTime();
+  const dayLabel = isToday ? 'Tonight' : isTomorrow ? 'Tmrw' : d.toLocaleDateString('en-US', { weekday: 'short' });
+  const dateLabel = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  const inner = `<span class="bdb-day">${jazzEscape(dayLabel)} ${jazzEscape(dateLabel)}</span>`;
+  const todayClass = isToday ? ' is-today' : '';
+  return ticketUrl
+    ? `<div class="bdb-wrap"><a href="${jazzEscape(ticketUrl)}" target="_blank" rel="noopener" class="big-date-box${todayClass}">${inner}</a></div>`
+    : `<div class="bdb-wrap"><span class="big-date-box${todayClass}">${inner}</span></div>`;
+}
+
+function jazzBigShowCardHTML(g) {
+  const photoUrl = jazzPickPhoto(g);
+  const photoHtml = photoUrl
+    ? `<img src="${jazzEscape(photoUrl)}" alt="" class="big-show-photo" loading="lazy" onerror="this.style.display='none'">`
+    : `<span class="big-show-photo big-show-photo-placeholder">${JAZZ_MIC_ICON}</span>`;
+
+  const venue = g.venue_label || 'Other';
+  const isBareCity = g.city && JAZZ_BARE_CITY_RX.test(g.city);
+  const isKnownVenue = venue !== 'Other';
+  const showCity = g.city && g.city !== venue && !(isBareCity && isKnownVenue);
+  const venueLine = showCity
+    ? `<div class="big-show-venue">${jazzEscape(venue)} · ${jazzEscape(g.city)}</div>`
+    : `<div class="big-show-venue">${jazzEscape(venue)}</div>`;
+
+  const dateBoxes = g.dates.map(d => jazzDateBoxHTML(d, g.ticket_url)).join('');
+
+  const titleClean = (g.title || '').replace(/<[^>]+>/g, '');
+  const showSubtitle = g.artists.length > 1 && titleClean.toLowerCase() !== g.artists.join(' · ').toLowerCase();
+  const subtitle = showSubtitle
+    ? `<div class="big-show-subtitle">${jazzEscape(g.artists.join(' · '))}</div>`
+    : '';
+
+  return `
+    <div class="big-show-card">
+      <div class="big-show-info">
+        ${photoHtml}
+        <div class="big-show-details">
+          <div class="big-show-title" title="${jazzEscape(titleClean)}">${jazzEscape(titleClean)}</div>
+          ${subtitle}
+          ${venueLine}
+          <div class="big-date-boxes">${dateBoxes}</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function jazzRenderShows() {
+  const container = document.getElementById('shows-container');
+  if (!container) return;
+  const shows = jazzFilteredShows();
+  if (!shows.length) {
+    container.innerHTML = '<div class="loading">No jazz shows match the current filter.</div>';
+    return;
+  }
+  const groups = jazzGroupShows(shows);
+  const cards = groups.map(jazzBigShowCardHTML).join('');
+  container.innerHTML = `<div class="big-shows-section">${cards}</div>`;
+}
+
+function jazzResetHome() {
+  jazzActiveVenue = 'all';
+  jazzActiveDate = 'all';
+  jazzRenderVenueTabs();
+  jazzRenderDayTabs();
+  jazzRenderShows();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+async function initJazzMode() {
+  document.body.classList.add('mode-jazz');
+  document.body.classList.add('picture-mode');
+
+  // Theme — same wiring as comedy mode.
+  if (typeof initTheme === 'function') {
+    try { initTheme(); } catch {}
+  }
+
+  const cacheBust = 'v=' + Date.now();
+  try {
+    const [showsR, photosR] = await Promise.all([
+      fetch('data/jazz_shows.json?' + cacheBust),
+      fetch('data/jazz_photo_manifest.json?' + cacheBust).catch(() => null),
+    ]);
+    JAZZ_DATA = await showsR.json();
+    if (photosR && photosR.ok) {
+      try { JAZZ_PHOTOS = await photosR.json(); } catch { JAZZ_PHOTOS = {}; }
+    }
+  } catch (e) {
+    document.getElementById('shows-container').innerHTML =
+      '<div class="loading">Failed to load jazz data. Run <code>npm run build</code> first.</div>';
+    document.getElementById('loading')?.style && (document.getElementById('loading').style.display = 'none');
+    document.getElementById('schedule-filter-area')?.classList.add('ready');
+    return;
+  }
+
+  document.getElementById('loading')?.style && (document.getElementById('loading').style.display = 'none');
+  jazzRenderVenueTabs();
+  jazzRenderDayTabs();
+  jazzRenderShows();
+  document.getElementById('schedule-filter-area')?.classList.add('ready');
+}
+
+function setupModeSelect() {
+  const sel = document.getElementById('mode-select');
+  if (!sel) return;
+  const current = localStorage.getItem(JAZZ_MODE_KEY) === 'jazz' ? 'jazz' : 'comedy';
+  sel.value = current;
+  sel.addEventListener('change', () => {
+    localStorage.setItem(JAZZ_MODE_KEY, sel.value);
+    location.reload();
+  });
+}
+
+function getMode() {
+  // Jazz mode disabled in UI for now — dropdown removed pending rework. Restore by returning the localStorage check.
+  return 'comedy';
+}
+
+// Expose to global scope — prevents terser from DCE'ing through the typeof guards in init.
+window.initJazzMode = initJazzMode;
+window.setupModeSelect = setupModeSelect;
+window.getMode = getMode;
+window.jazzResetHome = jazzResetHome;
 // ---- Native bridge (Capacitor on iOS, no-op on web) ----
 const Native = (function() {
   function cap() { return window.Capacitor; }
@@ -147,11 +404,14 @@ function savePrefs(prefs) {
 
 function updateShareBtn() {
   const p = loadPrefs();
-  const has = p.faves.length > 0 || p.skips.length > 0 || p.likes.length > 0;
+  const hasPrefs = p.faves.length > 0 || p.skips.length > 0 || p.likes.length > 0;
+  // Settings can also produce a non-default share link.
+  const hasSettings = typeof window.__tonightNycHasNonDefault === 'function' && window.__tonightNycHasNonDefault();
+  const visible = hasPrefs || hasSettings;
   const headerBtn = document.getElementById('header-share');
-  if (headerBtn) headerBtn.classList.toggle('visible', has);
+  if (headerBtn) headerBtn.classList.toggle('visible', visible);
   const modalBtn = document.getElementById('share-link');
-  if (modalBtn) modalBtn.style.display = has ? '' : 'none';
+  if (modalBtn) modalBtn.style.display = hasPrefs ? '' : 'none';
 }
 
 // Compressed prefs: deflate + base64url of "fave1|fave2\nskip1|skip2\nlike1|like2"
@@ -3496,6 +3756,13 @@ document.addEventListener('click', (e) => {
 
 // ---- Init ----
 async function init() {
+  // Mode toggle (comedy / jazz). When jazz, the rest of the comedy pipeline is skipped.
+  if (typeof setupModeSelect === 'function') setupModeSelect();
+  if (typeof getMode === 'function' && getMode() === 'jazz') {
+    await initJazzMode();
+    return;
+  }
+
   // Import prefs from URL hash (shared link) before anything renders
   await loadPrefsFromHash();
 
@@ -3806,6 +4073,10 @@ async function init() {
   }
 
   async function buildShareUrl() {
+    // Unified format includes prefs + non-default settings.
+    if (typeof window.__tonightNycBuildShareLink === 'function') {
+      try { return await window.__tonightNycBuildShareLink(); } catch { /* fall through */ }
+    }
     const prefs = loadPrefs();
     try {
       if (typeof CompressionStream !== 'undefined') {
@@ -4182,3 +4453,552 @@ async function refreshShowsInPlace() {
     console.error('refreshShowsInPlace failed:', e);
   }
 }
+
+// === App Settings (brand color, defaults, filters, unified share/import, QR, toast) ===
+(function setupAppSettings(){
+  const KEY = 'tonight-nyc-settings';
+  const DEFAULTS = {
+    accent: '#e63636',
+    defaultTab: 'all',
+    scheduleDay: 'all',
+    neighborhood: 'all',
+    soldOutMode: 'all',
+    timeFilter: 'any',
+    sort: 'none',
+    bioMode: 'none',
+    ratingsMode: 'off',
+  };
+  const PILL_GROUPS = {
+    defaultTab: 'default-tab-pills',
+    scheduleDay: 'default-schedule-pills',
+    neighborhood: 'default-neighborhood-pills',
+    soldOutMode: 'default-soldout-pills',
+    timeFilter: 'default-time-pills',
+    sort: 'default-sort-pills',
+    bioMode: 'default-bio-pills',
+    ratingsMode: 'default-ratings-pills',
+  };
+  // Mirror selects (hidden) we keep so external code that polls these IDs still works.
+  const MIRROR_SELECTS = {
+    defaultTab: 'default-tab-select',
+    soldOutMode: 'default-soldout-mode',
+    timeFilter: 'default-time-filter',
+    sort: 'default-sort',
+    bioMode: 'default-bio-mode',
+  };
+
+  function load(){
+    try { return Object.assign({}, DEFAULTS, JSON.parse(localStorage.getItem(KEY)) || {}); }
+    catch { return { ...DEFAULTS }; }
+  }
+  function save(s){ localStorage.setItem(KEY, JSON.stringify(s)); }
+  function isDefault(s){
+    for (const k of Object.keys(DEFAULTS)) if (s[k] !== DEFAULTS[k]) return false;
+    return true;
+  }
+
+  // ---- Unified share encoding (prefs + settings) using CompressionStream when available ----
+  function b64uEncode(bytes){
+    let s = '';
+    for (const b of bytes) s += String.fromCharCode(b);
+    return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  }
+  function b64uDecode(str){
+    let b64 = str.replace(/-/g, '+').replace(/_/g, '/');
+    while (b64.length % 4) b64 += '=';
+    const bin = atob(b64);
+    const out = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out;
+  }
+  async function compressJson(obj){
+    const json = JSON.stringify(obj);
+    if (typeof CompressionStream === 'undefined') {
+      // Fallback: plain base64 of UTF-8
+      const enc = new TextEncoder().encode(json);
+      return 'r' + b64uEncode(enc); // 'r' prefix = raw (uncompressed)
+    }
+    const stream = new Blob([json]).stream().pipeThrough(new CompressionStream('deflate-raw'));
+    const bytes = new Uint8Array(await new Response(stream).arrayBuffer());
+    return 'd' + b64uEncode(bytes); // 'd' prefix = deflate-raw
+  }
+  async function decompressJson(str){
+    if (!str) return null;
+    try {
+      const prefix = str[0];
+      const body = str.slice(1);
+      const bytes = b64uDecode(body);
+      if (prefix === 'r') return JSON.parse(new TextDecoder().decode(bytes));
+      if (prefix === 'd') {
+        if (typeof DecompressionStream === 'undefined') return null;
+        const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('deflate-raw'));
+        const json = await new Response(stream).text();
+        return JSON.parse(json);
+      }
+      return null;
+    } catch { return null; }
+  }
+
+  function snapshotPrefs(){
+    try {
+      return typeof loadPrefs === 'function'
+        ? loadPrefs()
+        : (JSON.parse(localStorage.getItem('cellar-tonight-prefs')) || { faves: [], skips: [], likes: [] });
+    } catch { return { faves: [], skips: [], likes: [] }; }
+  }
+  function writePrefs(p){
+    if (typeof savePrefs === 'function') { savePrefs(p); return; }
+    localStorage.setItem('cellar-tonight-prefs', JSON.stringify(p));
+  }
+  function buildPayload(){
+    const prefs = snapshotPrefs();
+    // Omit defaults from settings to keep payload small. Decoder fills in via DEFAULTS.
+    const s = {};
+    for (const k of Object.keys(DEFAULTS)) {
+      if (settings[k] !== DEFAULTS[k]) s[k] = settings[k];
+    }
+    const p = {};
+    if (prefs.faves?.length) p.f = prefs.faves;
+    if (prefs.skips?.length) p.s = prefs.skips;
+    if (prefs.likes?.length) p.l = prefs.likes;
+    const out = {};
+    if (Object.keys(s).length) out.s = s;
+    if (Object.keys(p).length) out.p = p;
+    return out;
+  }
+  async function buildShareLink(){
+    const payload = buildPayload();
+    if (Object.keys(payload).length === 0) {
+      return window.location.origin + window.location.pathname;
+    }
+    const compressed = await compressJson(payload);
+    return window.location.origin + window.location.pathname + '#cfg=' + compressed;
+  }
+
+  // ---- Hash import: handles #cfg= (new), #p= (legacy prefs), #s= (legacy settings) ----
+  // Runs synchronously at script load so the imported state flows through normal init.
+  let didImport = false;
+  let priorSnapshot = null;
+  async function tryImportFromHash(hashStr){
+    if (!hashStr) return null;
+    const cfgMatch = hashStr.match(/[#&]cfg=([^&]+)/);
+    const pMatch = hashStr.match(/[#&]p=([A-Za-z0-9_-]+)/);
+    const sMatch = hashStr.match(/[#&]s=([^&]+)/);
+    if (cfgMatch) {
+      const decoded = await decompressJson(cfgMatch[1]);
+      if (!decoded) return null;
+      return { prefs: decoded.p, settings: decoded.s };
+    }
+    if (pMatch && typeof decompressPrefs === 'function') {
+      try {
+        const prefs = await decompressPrefs(pMatch[1]);
+        return { prefs: { f: prefs.faves, s: prefs.skips, l: prefs.likes } };
+      } catch { /* ignore */ }
+    }
+    if (sMatch) {
+      // Legacy #s= was plain base64 of settings JSON
+      try {
+        const bytes = b64uDecode(sMatch[1]);
+        const json = new TextDecoder().decode(bytes);
+        return { settings: JSON.parse(json) };
+      } catch { /* ignore */ }
+    }
+    return null;
+  }
+
+  function pickPrefsFromImport(p){
+    if (!p) return null;
+    return {
+      faves: p.f || p.faves || [],
+      skips: p.s || p.skips || [],
+      likes: p.l || p.likes || [],
+    };
+  }
+
+  // ---- Visual application ----
+  function setFavicon(color){
+    const svg = `<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path fill="${color}" d="m0 0h32v32h-32z"/><text fill="#fff" font-family="Helvetica,-apple-system,BlinkMacSystemFont,sans-serif" font-size="19" font-weight="700" text-anchor="middle" x="16" y="23">TN</text></svg>`;
+    const url = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+    document.querySelectorAll('link[rel="icon"]').forEach(l => l.href = url);
+  }
+  function resetFavicon(){
+    document.querySelectorAll('link[rel="icon"]').forEach(l => l.href = 'favicon.svg');
+  }
+  function applyAccent(s){
+    document.documentElement.style.setProperty('--accent', s.accent);
+    if (s.accent !== DEFAULTS.accent) setFavicon(s.accent); else resetFavicon();
+  }
+
+  // Resolve "schedule day" setting → activeDate value.
+  function resolveScheduleDay(value){
+    const fmt = (d) => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    const now = new Date();
+    if (value === 'today') return fmt(now);
+    if (value === 'tomorrow') { const t = new Date(now); t.setDate(t.getDate()+1); return fmt(t); }
+    if (value === 'weekend') {
+      const d = new Date(now);
+      const dow = d.getDay(); // 0=Sun, 6=Sat
+      if (dow === 0 || dow === 6) return fmt(d);
+      const daysUntilSat = (6 - dow + 7) % 7;
+      d.setDate(d.getDate() + daysUntilSat);
+      return fmt(d);
+    }
+    return 'all';
+  }
+
+  // Apply filter defaults to the live toolbar controls so the first render reflects them.
+  function applyFilterDefaults(s){
+    // Time filter
+    const tfVisible = document.getElementById('time-filter-visible');
+    const tfHidden = document.getElementById('time-filter');
+    if (tfHidden && s.timeFilter) tfHidden.value = s.timeFilter;
+    if (tfVisible && s.timeFilter) tfVisible.value = s.timeFilter;
+    // Sort
+    const sortSel = document.getElementById('sort-select');
+    if (sortSel && s.sort) sortSel.value = s.sort;
+    // Bio mode
+    const bioSel = document.getElementById('bio-mode');
+    if (bioSel && s.bioMode) bioSel.value = s.bioMode;
+    // Ratings (quick-mode)
+    const qm = document.getElementById('quick-mode');
+    if (qm) qm.checked = s.ratingsMode === 'on';
+    // Neighborhood
+    if (typeof activeNeighborhood !== 'undefined' && s.neighborhood) {
+      activeNeighborhood = s.neighborhood;
+    }
+    // Schedule day → activeDate
+    if (typeof activeDate !== 'undefined' && s.scheduleDay) {
+      activeDate = resolveScheduleDay(s.scheduleDay);
+    }
+  }
+
+  // ---- Synchronous import → save → strip-hash, then load merged settings ----
+  // (Runs in a top-level async IIFE — but we need it to complete BEFORE init resumes
+  //  from its first `await`. We trigger it sync and let it set localStorage immediately
+  //  on the synchronous portion via fallback when CompressionStream is unavailable;
+  //  for the compressed path we rely on the loadPrefsFromHash awaited in init to
+  //  read what we wrote.)
+  (async function importFromHashOnLoad(){
+    const hashStr = window.location.hash;
+    const imported = await tryImportFromHash(hashStr);
+    if (!imported) return;
+    priorSnapshot = { prefs: snapshotPrefs(), settings: load() };
+    if (imported.settings) {
+      const merged = Object.assign({}, DEFAULTS, imported.settings);
+      save(merged);
+      Object.assign(settings, merged);
+      applyAccent(settings);
+      // If init has already mounted, re-apply filter defaults now.
+      applyFilterDefaults(settings);
+      // Sold-out filter dropdown:
+      const soldSelNow = document.getElementById('soldout-filter');
+      if (soldSelNow) soldSelNow.value = settings.soldOutMode || 'all';
+      const hideCbNow = document.getElementById('hide-sold-out');
+      if (hideCbNow) hideCbNow.checked = settings.soldOutMode === 'hide';
+    }
+    const prefs = pickPrefsFromImport(imported.prefs);
+    if (prefs && (prefs.faves.length || prefs.skips.length || prefs.likes.length)) {
+      writePrefs(prefs);
+    }
+    didImport = true;
+    // Strip cfg/p/s from the hash.
+    const cleaned = window.location.hash
+      .replace(/[#&]?cfg=[^&]+/, '')
+      .replace(/[#&]?p=[^&]+/, '')
+      .replace(/[#&]?s=[^&]+/, '')
+      .replace(/^#&/, '#');
+    history.replaceState(null, '', window.location.pathname + (cleaned === '#' ? '' : cleaned));
+    // Toast (after a tick so the modal/render is up).
+    setTimeout(() => {
+      showImportToast(imported);
+      if (typeof renderShows === 'function') renderShows();
+      if (typeof updateShareBtn === 'function') updateShareBtn();
+    }, 200);
+  })();
+
+  const settings = load();
+  applyAccent(settings);
+
+  // Pre-set the venue tab before init's first render. activeSource is declared in data.js.
+  if (settings.defaultTab && typeof activeSource !== 'undefined') {
+    activeSource = settings.defaultTab;
+  }
+  applyFilterDefaults(settings);
+  const soldSel = document.getElementById('soldout-filter');
+  if (soldSel && settings.soldOutMode) soldSel.value = settings.soldOutMode;
+  const hideCb = document.getElementById('hide-sold-out');
+  if (hideCb) hideCb.checked = settings.soldOutMode === 'hide';
+
+  // ---- DOM refs ----
+  const overlay = document.getElementById('app-settings-overlay');
+  const openBtn = document.getElementById('header-settings');
+  const closeBtn = document.getElementById('app-settings-close');
+  const doneBtn = document.getElementById('app-settings-done');
+  const swatches = document.getElementById('color-swatches');
+  const custom = document.getElementById('color-custom-input');
+  const resetColorBtn = document.getElementById('reset-color');
+  const shareBtn = document.getElementById('copy-settings-link');
+  const qrBtn = document.getElementById('show-settings-qr');
+  const resetAllBtn = document.getElementById('reset-all-settings');
+  const importInput = document.getElementById('settings-import-url');
+  const importGoBtn = document.getElementById('settings-import-go');
+  const importStatus = document.getElementById('settings-import-status');
+  const qrOverlay = document.getElementById('settings-qr-overlay');
+  const qrCloseBtn = document.getElementById('settings-qr-close');
+  const qrCanvas = document.getElementById('settings-qr-canvas');
+  const qrUrlOut = document.getElementById('settings-qr-url');
+
+  // ---- Pill / swatch refresh helpers ----
+  function refreshPills(key){
+    const groupId = PILL_GROUPS[key];
+    if (!groupId) return;
+    const group = document.getElementById(groupId);
+    if (!group) return;
+    const value = String(settings[key] ?? DEFAULTS[key]);
+    group.querySelectorAll('.settings-pill').forEach(p => {
+      p.setAttribute('aria-checked', p.dataset.value === value ? 'true' : 'false');
+    });
+    // Mirror into hidden select
+    const mirrorId = MIRROR_SELECTS[key];
+    if (mirrorId) {
+      const sel = document.getElementById(mirrorId);
+      if (sel) sel.value = value;
+    }
+  }
+  function refreshSwatches(){
+    if (!swatches) return;
+    const cur = (settings.accent || '').toLowerCase();
+    swatches.querySelectorAll('.color-swatch').forEach(b => {
+      b.classList.toggle('active', (b.dataset.color || '').toLowerCase() === cur);
+    });
+  }
+  function refreshShareUI(){
+    const show = !isDefault(settings) || hasAnyPrefs();
+    if (shareBtn) {
+      shareBtn.style.display = show ? '' : 'none';
+      shareBtn.textContent = 'Copy my setup';
+    }
+    if (qrBtn) qrBtn.style.display = show ? '' : 'none';
+    if (typeof updateShareBtn === 'function') updateShareBtn();
+  }
+  function hasAnyPrefs(){
+    const p = snapshotPrefs();
+    return (p.faves?.length || 0) + (p.skips?.length || 0) + (p.likes?.length || 0) > 0;
+  }
+  function persist(){
+    save(settings);
+    refreshShareUI();
+  }
+
+  function syncToolbarFromSettings(){
+    // Push current settings.* into live toolbar controls + re-render.
+    applyFilterDefaults(settings);
+    if (soldSel) soldSel.value = settings.soldOutMode;
+    if (hideCb) hideCb.checked = settings.soldOutMode === 'hide';
+    // Switch venue tab + reset date when starting tab changes.
+    if (typeof activeSource !== 'undefined' && settings.defaultTab) {
+      activeSource = settings.defaultTab;
+    }
+    if (typeof renderSourceTabs === 'function') renderSourceTabs();
+    if (typeof renderTabs === 'function') renderTabs();
+    if (typeof updateFooterInfo === 'function') updateFooterInfo();
+    if (typeof updateResetBtn === 'function') updateResetBtn();
+    if (typeof renderShows === 'function') renderShows();
+  }
+
+  function openSettings(){
+    if (!overlay) return;
+    if (custom) custom.value = settings.accent;
+    Object.keys(PILL_GROUPS).forEach(refreshPills);
+    refreshSwatches();
+    refreshShareUI();
+    if (importStatus) importStatus.textContent = '';
+    if (importInput) importInput.value = '';
+    overlay.classList.remove('hidden');
+  }
+  function closeSettings(){ overlay?.classList.add('hidden'); }
+
+  openBtn?.addEventListener('click', openSettings);
+  closeBtn?.addEventListener('click', closeSettings);
+  doneBtn?.addEventListener('click', closeSettings);
+  overlay?.addEventListener('click', (e) => { if (e.target === overlay) closeSettings(); });
+
+  // ---- Brand color ----
+  swatches?.addEventListener('click', (e) => {
+    const btn = e.target.closest('.color-swatch');
+    if (!btn) return;
+    settings.accent = btn.dataset.color;
+    persist(); applyAccent(settings);
+    if (custom) custom.value = settings.accent;
+    refreshSwatches();
+  });
+  custom?.addEventListener('input', () => {
+    settings.accent = custom.value;
+    persist(); applyAccent(settings); refreshSwatches();
+  });
+  resetColorBtn?.addEventListener('click', () => {
+    settings.accent = DEFAULTS.accent;
+    persist(); applyAccent(settings);
+    if (custom) custom.value = settings.accent;
+    refreshSwatches();
+  });
+
+  // ---- Pill groups (all default-* sections) — generic handler ----
+  Object.entries(PILL_GROUPS).forEach(([key, groupId]) => {
+    const group = document.getElementById(groupId);
+    group?.addEventListener('click', (e) => {
+      const pill = e.target.closest('.settings-pill');
+      if (!pill) return;
+      settings[key] = pill.dataset.value;
+      persist();
+      refreshPills(key);
+      // Live-apply the change to the home page so the user sees the effect immediately.
+      syncToolbarFromSettings();
+    });
+  });
+
+  // ---- Copy share link ----
+  shareBtn?.addEventListener('click', async () => {
+    const url = await buildShareLink();
+    try {
+      await navigator.clipboard.writeText(url);
+      shareBtn.textContent = 'Copied!';
+      setTimeout(() => { shareBtn.textContent = 'Copy my setup'; }, 1800);
+    } catch {
+      shareBtn.textContent = 'Copy failed';
+      setTimeout(() => { shareBtn.textContent = 'Copy my setup'; }, 1800);
+    }
+  });
+
+  // ---- QR ----
+  async function loadQrLib(){
+    if (window.qrcode) return window.qrcode;
+    return new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js';
+      s.onload = () => resolve(window.qrcode);
+      s.onerror = reject;
+      document.head.appendChild(s);
+    });
+  }
+  qrBtn?.addEventListener('click', async () => {
+    if (!qrOverlay) return;
+    qrCanvas.innerHTML = '<p style="color:var(--text-dim);text-align:center;">Generating…</p>';
+    qrOverlay.classList.remove('hidden');
+    try {
+      const qrcode = await loadQrLib();
+      const url = await buildShareLink();
+      qrUrlOut.textContent = url;
+      // Build QR with error-correction L for max data capacity; size 0 = auto.
+      const qr = qrcode(0, 'L');
+      qr.addData(url);
+      qr.make();
+      qrCanvas.innerHTML = qr.createSvgTag({ cellSize: 5, margin: 4, scalable: true });
+    } catch (e) {
+      qrCanvas.innerHTML = '<p style="color:var(--accent);">Could not load QR generator.</p>';
+    }
+  });
+  qrCloseBtn?.addEventListener('click', () => qrOverlay?.classList.add('hidden'));
+  qrOverlay?.addEventListener('click', (e) => { if (e.target === qrOverlay) qrOverlay.classList.add('hidden'); });
+
+  // ---- Import ----
+  importGoBtn?.addEventListener('click', async () => {
+    const raw = (importInput?.value || '').trim();
+    if (!raw) return;
+    // Extract hash portion from full URL or accept bare hash.
+    let hashPart = raw;
+    const hashIdx = raw.indexOf('#');
+    if (hashIdx >= 0) hashPart = raw.slice(hashIdx);
+    else if (!/^cfg=|^p=|^s=/.test(raw)) hashPart = '#' + raw;
+    else hashPart = '#' + raw;
+    const imported = await tryImportFromHash(hashPart);
+    if (!imported) {
+      if (importStatus) { importStatus.style.color = 'var(--accent)'; importStatus.textContent = 'Could not read that link.'; }
+      return;
+    }
+    priorSnapshot = { prefs: snapshotPrefs(), settings: load() };
+    let summary = [];
+    if (imported.settings) {
+      const merged = Object.assign({}, DEFAULTS, imported.settings);
+      save(merged);
+      Object.assign(settings, merged);
+      applyAccent(settings);
+      syncToolbarFromSettings();
+      summary.push('settings');
+    }
+    const prefsIn = pickPrefsFromImport(imported.prefs);
+    if (prefsIn && (prefsIn.faves.length || prefsIn.skips.length || prefsIn.likes.length)) {
+      // Merge with existing, like the prefs modal import does.
+      const current = snapshotPrefs();
+      const merged = {
+        faves: [...new Set([...(current.faves || []), ...prefsIn.faves])],
+        skips: [...new Set([...(current.skips || []), ...prefsIn.skips])],
+        likes: [...new Set([...(current.likes || []), ...prefsIn.likes])],
+      };
+      writePrefs(merged);
+      summary.push(`${prefsIn.faves.length} faves, ${prefsIn.skips.length} skips`);
+    }
+    if (importStatus) {
+      importStatus.style.color = 'var(--text-dim)';
+      importStatus.textContent = `Imported: ${summary.join(' · ') || 'nothing'}.`;
+    }
+    if (importInput) importInput.value = '';
+    // Refresh modal UI
+    openSettings();
+    if (typeof renderShows === 'function') renderShows();
+    if (typeof updateShareBtn === 'function') updateShareBtn();
+    showImportToast(imported);
+  });
+
+  // ---- Toast ----
+  const toast = document.getElementById('settings-toast');
+  const toastMsg = document.getElementById('settings-toast-msg');
+  const toastUndo = document.getElementById('settings-toast-undo');
+  const toastClose = document.getElementById('settings-toast-close');
+  let toastTimer = null;
+  function hideToast(){ toast?.classList.add('hidden'); if (toastTimer) clearTimeout(toastTimer); toastTimer = null; }
+  function showImportToast(imported){
+    if (!toast) return;
+    const parts = [];
+    if (imported.settings) parts.push('settings');
+    const prefsIn = pickPrefsFromImport(imported.prefs);
+    if (prefsIn && (prefsIn.faves.length || prefsIn.skips.length || prefsIn.likes.length)) parts.push('faves');
+    if (parts.length === 0) return;
+    toastMsg.textContent = `Applied shared ${parts.join(' + ')}.`;
+    toast.classList.remove('hidden');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(hideToast, 6000);
+  }
+  toastUndo?.addEventListener('click', () => {
+    if (!priorSnapshot) { hideToast(); return; }
+    save(priorSnapshot.settings);
+    Object.assign(settings, priorSnapshot.settings);
+    applyAccent(settings);
+    syncToolbarFromSettings();
+    writePrefs(priorSnapshot.prefs);
+    priorSnapshot = null;
+    refreshShareUI();
+    if (typeof renderShows === 'function') renderShows();
+    hideToast();
+  });
+  toastClose?.addEventListener('click', hideToast);
+
+  // ---- Reset all ----
+  resetAllBtn?.addEventListener('click', () => {
+    if (!confirm('Reset all app settings to defaults? Your faves and skips are kept.')) return;
+    Object.assign(settings, DEFAULTS);
+    persist();
+    applyAccent(settings);
+    if (custom) custom.value = settings.accent;
+    Object.keys(PILL_GROUPS).forEach(refreshPills);
+    refreshSwatches();
+    syncToolbarFromSettings();
+  });
+
+  // Initial visibility of share + qr buttons after first render.
+  setTimeout(refreshShareUI, 200);
+
+  // Expose for the share button in the header.
+  window.__tonightNycBuildShareLink = buildShareLink;
+  window.__tonightNycHasNonDefault = () => !isDefault(settings) || hasAnyPrefs();
+})();

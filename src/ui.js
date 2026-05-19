@@ -232,6 +232,13 @@ document.addEventListener('click', (e) => {
 
 // ---- Init ----
 async function init() {
+  // Mode toggle (comedy / jazz). When jazz, the rest of the comedy pipeline is skipped.
+  if (typeof setupModeSelect === 'function') setupModeSelect();
+  if (typeof getMode === 'function' && getMode() === 'jazz') {
+    await initJazzMode();
+    return;
+  }
+
   // Import prefs from URL hash (shared link) before anything renders
   await loadPrefsFromHash();
 

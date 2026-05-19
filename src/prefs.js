@@ -30,11 +30,14 @@ function savePrefs(prefs) {
 
 function updateShareBtn() {
   const p = loadPrefs();
-  const has = p.faves.length > 0 || p.skips.length > 0 || p.likes.length > 0;
+  const hasPrefs = p.faves.length > 0 || p.skips.length > 0 || p.likes.length > 0;
+  // Settings can also produce a non-default share link.
+  const hasSettings = typeof window.__tonightNycHasNonDefault === 'function' && window.__tonightNycHasNonDefault();
+  const visible = hasPrefs || hasSettings;
   const headerBtn = document.getElementById('header-share');
-  if (headerBtn) headerBtn.classList.toggle('visible', has);
+  if (headerBtn) headerBtn.classList.toggle('visible', visible);
   const modalBtn = document.getElementById('share-link');
-  if (modalBtn) modalBtn.style.display = has ? '' : 'none';
+  if (modalBtn) modalBtn.style.display = hasPrefs ? '' : 'none';
 }
 
 // Compressed prefs: deflate + base64url of "fave1|fave2\nskip1|skip2\nlike1|like2"

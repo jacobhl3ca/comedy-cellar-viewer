@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cat src/native.js src/prefs.js src/data.js src/render.js src/ui.js src/init.js > public/app.js && npx terser public/app.js -c -m -o public/app.min.js && npx cleancss -o public/style.min.css public/style.css && node scripts/cachebust.js",
+    "build": "python3 scripts/build_jazz_data.py || true && cat src/jazz.js src/native.js src/prefs.js src/data.js src/render.js src/ui.js src/init.js > public/app.js && npx terser public/app.js -c -m -o public/app.min.js && npx cleancss -o public/style.min.css public/style.css && node scripts/cachebust.js",
     "dev": "npm run build && npx serve public -p 3000",
     "dev:vercel": "npm run build && npx vercel dev --listen 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
