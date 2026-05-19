@@ -400,6 +400,10 @@ function renderShows() {
     return;
   }
   if (activeSource === 'comedians') {
+    // Comedians directory has its own controls; the bottom-tabs "Full Schedule" + day picker
+    // is irrelevant here, so kill any stale nav from previous renders.
+    const stale = document.getElementById('bottom-tabs');
+    if (stale) stale.remove();
     renderComedianDirectory(container);
     return;
   }
