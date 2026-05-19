@@ -4,9 +4,11 @@
       const d = new Date(dateStr + 'T12:00:00');
       const tab = document.createElement('button');
       tab.className = 'day-tab' + (dateStr === activeDate ? ' active' : '');
+      const maxFavs = maxLineupFaves(standShows.filter(s => s.date === dateStr));
       tab.innerHTML = `
         <span class="tab-day">${getDayName(d)}</span>
         <span class="tab-date">${getDateLabel(d)}</span>
+        ${faveBadgeHtml(maxFavs)}
       `;
       tab.addEventListener('click', () => {
         activeDate = activeDate === dateStr ? 'all' : dateStr;
@@ -24,7 +26,8 @@
       const d = new Date(dateStr + 'T12:00:00');
       const tab = document.createElement('button');
       tab.className = 'day-tab' + (dateStr === activeDate ? ' active' : '');
-      tab.innerHTML = `<span class="tab-day">${getDayName(d)}</span><span class="tab-date">${getDateLabel(d)}</span>`;
+      const maxFavs = maxLineupFaves(bigShows.filter(e => e.date === dateStr));
+      tab.innerHTML = `<span class="tab-day">${getDayName(d)}</span><span class="tab-date">${getDateLabel(d)}</span>${faveBadgeHtml(maxFavs)}`;
       tab.addEventListener('click', () => { activeDate = activeDate === dateStr ? 'all' : dateStr; renderTabs(); renderShows(); });
       nav.appendChild(tab);
     });
@@ -37,7 +40,8 @@
       const d = new Date(dateStr + 'T12:00:00');
       const tab = document.createElement('button');
       tab.className = 'day-tab' + (dateStr === activeDate ? ' active' : '');
-      tab.innerHTML = `<span class="tab-day">${getDayName(d)}</span><span class="tab-date">${getDateLabel(d)}</span>`;
+      const maxFavs = maxLineupFaves(gothamShows.filter(s => s.date === dateStr));
+      tab.innerHTML = `<span class="tab-day">${getDayName(d)}</span><span class="tab-date">${getDateLabel(d)}</span>${faveBadgeHtml(maxFavs)}`;
       tab.addEventListener('click', () => { activeDate = activeDate === dateStr ? 'all' : dateStr; renderTabs(); renderShows(); });
       nav.appendChild(tab);
     });
@@ -77,12 +81,12 @@
     // All Venues: count faves across every source. Cellar tab: Cellar shows only.
     const maxFavs = activeSource === 'all'
       ? dayMaxFaves(dateStr)
-      : (shows ? Math.max(0, ...shows.map(s => scoreShow(s).faves)) : 0);
+      : maxLineupFaves(shows);
 
     tab.innerHTML = `
       <span class="tab-day">${getDayName(d)}</span>
       <span class="tab-date">${getDateLabel(d)}</span>
-      ${maxFavs >= 2 ? `<span class="tab-badge">${maxFavs} faves</span>` : ''}
+      ${faveBadgeHtml(maxFavs)}
     `;
 
     tab.addEventListener('click', () => {

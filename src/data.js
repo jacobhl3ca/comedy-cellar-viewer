@@ -347,26 +347,47 @@ function scoreShow(show) {
   return { faves, likes: 0, skips, newFaces, score };
 }
 
-// Max favorited/liked comedians stacked on a single lineup that day, across
-// EVERY venue source — drives the date-strip badge in All Venues view.
-// (scoreShow above only sees Comedy Cellar shows in allData.)
-function dayMaxFaves(dateStr) {
+// Date-strip fave badge helpers. scoreShow above is Cellar-flavored and not
+// defensive about `.comedians`; these are safe across every source (Stand /
+// NYCC / Gotham / Big Shows, including Big Shows' performers-string events).
+
+// Favorited/liked comedians on a single lineup.
+function lineupFaves(show) {
+  let n = 0;
+  for (const name of (show.comedians || [])) {
+    if (isFav(name) || isLike(name)) n++;
+  }
+  return n;
+}
+
+// Max lineupFaves across an array of shows (caller pre-filters by date).
+function maxLineupFaves(shows) {
   let max = 0;
-  const scan = (shows) => {
-    for (const show of (shows || [])) {
-      let faves = 0;
-      for (const name of (show.comedians || [])) {
-        if (isFav(name) || isLike(name)) faves++;
-      }
-      if (faves > max) max = faves;
-    }
-  };
-  scan(allData[dateStr]);
-  if (typeof standShows !== 'undefined') scan(standShows.filter(s => s.date === dateStr));
-  if (typeof nyccShows !== 'undefined') scan(nyccShows.filter(s => s.date === dateStr));
-  if (typeof gothamShows !== 'undefined') scan(gothamShows.filter(s => s.date === dateStr));
-  if (typeof bigShows !== 'undefined') scan(bigShows.filter(e => e.date === dateStr));
+  for (const s of (shows || [])) {
+    const n = lineupFaves(s);
+    if (n > max) max = n;
+  }
   return max;
+}
+
+// All Venues: max faves on any single lineup that date, across every source.
+function dayMaxFaves(dateStr) {
+  let max = maxLineupFaves(allData[dateStr]);
+  const bump = (arr) => {
+    if (!arr) return;
+    const n = maxLineupFaves(arr.filter(s => s.date === dateStr));
+    if (n > max) max = n;
+  };
+  if (typeof standShows !== 'undefined') bump(standShows);
+  if (typeof nyccShows !== 'undefined') bump(nyccShows);
+  if (typeof gothamShows !== 'undefined') bump(gothamShows);
+  if (typeof bigShows !== 'undefined') bump(bigShows);
+  return max;
+}
+
+// "3 faves" / "1 fave" badge HTML, empty string if no faves.
+function faveBadgeHtml(n) {
+  return n >= 1 ? `<span class="tab-badge">${n} fave${n === 1 ? '' : 's'}</span>` : '';
 }
 
 // ---- Fetch with timeout ----
