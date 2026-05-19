@@ -214,10 +214,11 @@ function parseShows(html, dateStr) {
     }
   });
 
+  const seen = new Set();
   blocks.forEach(block => {
     const timeMatch = block.match(/<span class="bold">(.*?)<span/);
     const venueMatch = block.match(/<span class="title">(.*?)<\/span>/);
-    const linkMatch = block.match(/href="(\/reservations-newyork\/\?showid=\d+)"/);
+    const linkMatch = block.match(/href="(\/reservations-newyork\/\?showid=(\d+))"/);
     const names = [...block.matchAll(/<span class="name">(.*?)<\/span>/g)].map(m => normalizeName(m[1]));
 
     const time = timeMatch ? timeMatch[1].trim() : '';
@@ -226,9 +227,11 @@ function parseShows(html, dateStr) {
       ? 'https://www.comedycellar.com' + linkMatch[1] + '&date=' + dateStr
       : '';
 
-    if (time) {
-      shows.push({ time, venue, comedians: names, reserveUrl });
-    }
+    if (!time) return;
+    const key = linkMatch ? `id:${linkMatch[2]}` : `tv:${time}|${venue}|${names.join(',')}`;
+    if (seen.has(key)) return;
+    seen.add(key);
+    shows.push({ time, venue, comedians: names, reserveUrl });
   });
 
   return shows;

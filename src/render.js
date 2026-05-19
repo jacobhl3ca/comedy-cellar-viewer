@@ -1664,7 +1664,7 @@ function handleComedianClick(el) {
   panel.dataset.for = name;
   if (fullBio) panel.dataset.fullBio = fullBio;
   panel.innerHTML = `
-    ${dbPhoto ? `<img src="${dbPhoto}" alt="${name}">` : ''}
+    ${dbPhoto ? `<img src="${dbPhoto}" alt="${name}" class="exp-photo" onclick="event.stopPropagation();_dirOpenPhoto('${dbPhoto.replace(/'/g, "\\'")}','${esc}')">` : ''}
     <div class="exp-info">
       <div class="exp-name">${name}</div>
       ${fullBio ? (() => {
