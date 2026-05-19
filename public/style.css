@@ -579,6 +579,7 @@ html.ios-mobile.native-ios .header-share-btn { right: 46px; }
 .comedian-expanded img {
   width: 64px; height: 64px; border-radius: 8px; object-fit: cover; flex-shrink: 0;
 }
+.comedian-expanded img.exp-photo { cursor: zoom-in; }
 .comedian-expanded .exp-info { flex: 1; }
 .comedian-expanded .exp-name {
   font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px;
@@ -1353,15 +1354,23 @@ body.dir-mode .toolbar { display: none !important; }
 .dir-card.deceased { opacity: 0.85; }
 .dir-card.deceased:hover { border-color: var(--border); }
 
-.dir-rip-section { margin-top: 56px; padding-top: 32px; border-top: 2px solid var(--border); position: relative; }
-.dir-rip-section::before { content: ""; display: block; width: 40px; height: 2px; background: var(--text-dim); margin: 0 auto 18px; opacity: 0.4; }
-.dir-rip-heading {
-  font-size: 15px; font-weight: 700; color: var(--text-dim); text-align: center;
-  margin: 0 0 24px; letter-spacing: 0.12em; text-transform: uppercase;
-  position: sticky; top: var(--dir-ctrl-h, 0px); z-index: 6;
-  background: var(--bg); padding: 12px 4px; border-bottom: 1px solid var(--border);
+.dir-rip-section { margin-top: 28px; position: relative; }
+/* Touring Legends + In Memoriam headings: match the alphabetical .dir-section-header format */
+.dir-rip-heading, .dir-featured-heading {
+  position: sticky;
+  top: var(--dir-ctrl-h, 0px);
+  z-index: 6;
+  background: var(--bg);
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: left;
+  padding: 10px 4px 18px;
+  margin: 0 0 -12px;
+  border-bottom: 1px solid var(--border);
 }
-html.native-ios .dir-rip-heading { top: calc(60px + var(--dir-ctrl-h, 0px)); }
+html.native-ios .dir-rip-heading,
+html.native-ios .dir-featured-heading { top: calc(60px + var(--dir-ctrl-h, 0px)); }
 
 .dir-card-photo { position: relative; flex: 0 0 70px; height: 70px; border-radius: 50%; overflow: hidden; background: var(--surface2); }
 .dir-card-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 1; }
@@ -1466,15 +1475,7 @@ html.native-ios .dir-section-header { top: calc(60px + var(--dir-ctrl-h, 0px)); 
 .dir-card-bio.expanded-full:hover { color: var(--text); }
 
 /* Touring Legends section */
-.dir-featured-section { margin-top: 40px; padding-top: 24px; border-top: 2px solid var(--border); position: relative; }
-.dir-featured-section::before { content: ""; display: block; width: 40px; height: 2px; background: var(--accent); margin: 0 auto 14px; opacity: 0.6; }
-.dir-featured-heading {
-  font-size: 15px; font-weight: 700; color: var(--accent); text-align: center;
-  margin: 0 0 20px; letter-spacing: 0.12em; text-transform: uppercase;
-  position: sticky; top: var(--dir-ctrl-h, 0px); z-index: 6;
-  background: var(--bg); padding: 12px 4px; border-bottom: 1px solid var(--border);
-}
-html.native-ios .dir-featured-heading { top: calc(60px + var(--dir-ctrl-h, 0px)); }
+.dir-featured-section { margin-top: 28px; position: relative; }
 .dir-card.featured .dir-card-photo { box-shadow: 0 0 0 2px var(--accent); }
 
 /* Photo lightbox */
