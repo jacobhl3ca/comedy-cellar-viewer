@@ -3076,6 +3076,10 @@ function _dirSectionFor(c, prefs, liveSet) {
 // Tag each card with its tier + first-letter so the scroll listener can quickly find the
 // topmost-visible card per tier and update the sticky header's letter slot.
 function _dirTierFor(c, prefs, liveSet) {
+  // Deceased + featured render in their own sections — give them dedicated tiers
+  // so their sticky headers get a scrolling letter slot like the others.
+  if (c.deceased) return 'rip';
+  if (c.featured) return 'featured';
   if (window._dirAlphaMode) return 'alpha';
   if (prefs.faves.includes(c.name)) return 'fav';
   if (liveSet.has(c.name)) return 'live';
@@ -3164,7 +3168,7 @@ function renderComedianDirectory(container) {
       ${livingShown < list.length ? `<div id="dir-sentinel" class="dir-sentinel" aria-hidden="true"></div>` : ''}
       ${showFeatured ? `
         <div class="dir-featured-section">
-          <h3 class="dir-featured-heading">Touring Legends</h3>
+          <h3 class="dir-featured-heading">Touring Legends · <span class="dir-letter" data-tier="featured">A</span></h3>
           <div class="dir-grid">
             ${featuredList.map(c => _dirCardHTML(c, prefs, liveSet)).join('')}
           </div>
@@ -3172,7 +3176,7 @@ function renderComedianDirectory(container) {
       ` : ''}
       ${showRip ? `
         <div class="dir-rip-section">
-          <h3 class="dir-rip-heading">In Memoriam</h3>
+          <h3 class="dir-rip-heading">In Memoriam · <span class="dir-letter" data-tier="rip">A</span></h3>
           <div class="dir-grid">
             ${deceasedList.map(c => _dirCardHTML(c, prefs, liveSet)).join('')}
           </div>
