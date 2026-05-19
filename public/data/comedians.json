@@ -2881,8 +2881,7 @@
     "stand_profile": "https://thestandnyc.com/comedians/aminah-imani",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/aminah.jpg",
     "tagline_cellar": "JUST FOR LAUGHS NEW FACES, FROM \"INSIDE AMY SHUMER\", FLATBUSH MISDEMEANORS, UP EARLY TONIGHT, COMEDY CENTRAL",
-    "bio_stand": "Aminah Imani is a stand-up comedian, host, and actor who can be seen nightly at reputable comedy clubs and venues in New York city. Aminah’s notable performance at her alma mater, Howard University's Homecoming Comedy Show paved the way for career highlights including; 2018 Carolines on Broadway March Madness Comedy competition, the DC Comedy Festival, Skankfest Comedy Festival, online content with Buzzfeed and television appearance on Viceland. Aminah currently produces the Wine Before Nine podcast and hosts a weekly comedy show in New York, Comedy at the Knitting Factory.",
-    "bio": "Aminah Imani is a stand-up comedian performing in New York City. She performs at clubs across the city."
+    "bio_stand": "Aminah Imani is a stand-up comedian, host, and actor who can be seen nightly at reputable comedy clubs and venues in New York city. Aminah’s notable performance at her alma mater, Howard University's Homecoming Comedy Show paved the way for career highlights including; 2018 Carolines on Broadway March Madness Comedy competition, the DC Comedy Festival, Skankfest Comedy Festival, online content with Buzzfeed and television appearance on Viceland. Aminah currently produces the Wine Before Nine podcast and hosts a weekly comedy show in New York, Comedy at the Knitting Factory."
   },
   {
     "name": "Amy Miller",
@@ -8079,6 +8078,16 @@
   },
   {
     "name": "Jenny Tian",
+    "venues": []
+  },
+  {
+    "name": "Patrick Radden Keefe",
+    "venues": [],
+    "bio": "Patrick Radden Keefe is an award-winning New Yorker staff writer and author of the New York Times best-sellers Empire of Pain, Rogues, Say Nothing and his latest book: London Falling. He's traveled the world reporting on fraudsters, fabulists and fakes.",
+    "tagline_cellar": "Patrick Radden Keefe is an award-winning New Yorker staff writer and author of the New York Times best-sellers Empire of Pain, Rogues, Say Nothing and his latest book: London Falling. He's traveled the world reporting on fraudsters, fabulists and fakes."
+  },
+  {
+    "name": "Cristina Cote",
     "venues": []
   }
 ]
