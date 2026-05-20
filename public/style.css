@@ -1355,7 +1355,11 @@ body.dir-mode .toolbar { display: none !important; }
 .dir-card.deceased:hover { border-color: var(--border); }
 
 .dir-rip-section { margin-top: 28px; position: relative; }
-/* Touring Legends + In Memoriam headings: match the alphabetical .dir-section-header format */
+/* Touring Legends + In Memoriam headings: match the alphabetical .dir-section-header format.
+   Unlike .dir-section-header (a grid item where -12px cancels the 12px row-gap so cards
+   sit flush with the border-bottom), these are block-flow siblings of the inner .dir-grid.
+   There is no gap to cancel, so dropping margin to 0 lands cards directly below the
+   border-bottom — same visual as the main grid. */
 .dir-rip-heading, .dir-featured-heading {
   position: sticky;
   top: var(--dir-ctrl-h, 0px);
@@ -1366,7 +1370,7 @@ body.dir-mode .toolbar { display: none !important; }
   color: var(--text-dim);
   text-align: left;
   padding: 10px 4px 18px;
-  margin: 0 0 -12px;
+  margin: 0;
   border-bottom: 1px solid var(--border);
 }
 html.native-ios .dir-rip-heading,
