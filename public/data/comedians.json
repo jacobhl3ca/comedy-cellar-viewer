@@ -2495,7 +2495,8 @@
     "bio": "Jackie Fabulous is a stand-up comedian, actress and writer whos been featured four times on \"The Tonight Show Starring Jimmy Fallon,\" and has appeared on \"Americas Got Talent All-Stars,\" Showtime’s \"Flatbush Misdemeanors,\" \"The Arsenio Hall Show,\" HBO’s \"Pause,\" The Damn Michael Che,\" and much more. Jackie was named one of Variety’s \"Top 10 to Watch\" in 2024. In addition to her television appearances, Jackies hilarious and affable stand-up can be seen across the country, as well as internationally, on her current tour.",
     "venues": [
       "nycc"
-    ]
+    ],
+    "tagline_cellar": "VARIETY'S TOP 10 COMIC TO WATCH, AMERICA'S GOT TALENT AND AGT ALL STARS, TONIGHT SHOW FOUR TIMES."
   },
   {
     "name": "Eric D’Alessandro",
@@ -8088,6 +8089,29 @@
   },
   {
     "name": "Cristina Cote",
+    "venues": []
+  },
+  {
+    "name": "Kendall Ward",
+    "venues": [],
+    "bio": "COMEDY CENTRAL'S KEVIN HARTS \"HARTOF THE CITY\", BET'S COMIC VIEW, LAST COMIC STANDING",
+    "tagline_cellar": "COMEDY CENTRAL'S KEVIN HARTS \"HARTOF THE CITY\", BET'S COMIC VIEW, LAST COMIC STANDING"
+  },
+  {
+    "name": "JJ Arias",
+    "venues": []
+  },
+  {
+    "name": "Joe Zimmerman",
+    "venues": [],
+    "bio_stand": "Joe Zimmerman grew up in Morgantown, West Virginia, and started his comedy career in North Carolina. While living in the South, his stand-up group the Beards of Comedy landed a record deal with Comedy Central Records. He moved to New York City in 2012, quickly appearing on The Late Late Show and John Oliver’s New York Stand-Up Show, as well as performing at Montreal’s prestigious Just for Laughs festival. His resume has since grown to include The Tonight Show, Conan, Nickelodeon, Last Comic Standing, and his own Comedy Central Half Hour. Joe’s solo album Smiling at Wolves reached number two on the iTunes comedy charts and is played regularly on SiriusXM. (His second, Innocence, is due this summer on Comedy Central Records.) He has also contributed humor pieces to The New York Times. Joe’s new podcast, “A Great Listening Experience” details his questionable attempts to attain infinite knowledge and power. Among his many podcast & radio appearances, he has recently appeared on 2 Dope Queens, The Dork Forest, Bob & Tom, The Todd Barry Podcast, and The Artie Lange Show. Joe is frequently touring, headlining clubs around the country, and occasionally opening for super stars Brian Regan and Ricky Gervais."
+  },
+  {
+    "name": "Rahul Subramanian",
+    "venues": []
+  },
+  {
+    "name": "Leslie Liao",
     "venues": []
   }
 ]
