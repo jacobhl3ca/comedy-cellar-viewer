@@ -2281,7 +2281,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/ari-shaffir",
     "bio_stand": "Two Netflix Specials, Creator \"Ari Shaffir's Renamed Storytelling Show\", Podcast \"Skeptic Tank\"",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/ari-shaffir.jpg",
-    "featured": true
+    "featured": true,
+    "tagline_cellar": "FROM STANDUP COMEDY"
   },
   {
     "name": "Pete Lee",
@@ -4372,8 +4373,7 @@
     "stand_profile": "https://thestandnyc.com/comedians/marie-faustin",
     "tagline_cellar": "COMEDY CENTRAL, HBO, VICE, BROAD CITY, THAT DAMN MICHAEL CHE",
     "bio_stand": "Marie Faustin is an NYC-based comedian and actress. She has appeared on Broad City, Comedy Central Stand-Up, MTV's Girl Code, VH1, The BET Awards, and TruTV. She co-hosted Viceland's nightly variety show VICE LIVE, as well as Oxygen's Very Real Talk. Marie was named a 2018 Comedian You Should Know by Vulture. She was also selected as one of Just For Laughs Montreal's New Faces in 2017. Marie has performed at Comedy Central's Clusterfest and TBS' New York Comedy Festival. Marie co-hosts the weekly podcast Peak 2000s and, before that, The Unofficial Expert (named #2 on Time Out's list of \"Best NYC Podcasts\") as well as the notable and long-running stand-up showcase Comedy at the Knit at The Knitting Factory in Brooklyn. She has also appeared on podcasts like Las Culturistas, Inside the Closet, Girls Gotta Eat, and more.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Marie_Faustin.jpg",
-    "bio": "Marie Faustin is a stand-up comedian based in New York City. She's appeared on Comedy Central and performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Marie_Faustin.jpg"
   },
   {
     "name": "Marito Lopez",
@@ -6778,7 +6778,7 @@
   {
     "name": "John Oliver",
     "venues": [],
-    "bio_wiki": "John William Oliver is a British and American comedian, political commentator, and television personality. He hosts Last Week Tonight with John Oliver on HBO and started his career as a stand-up comedian in the United Kingdom. He came to wider attention for his work in the United States as the senio",
+    "bio_wiki": "John William Oliver is a British and American comedian, writer, producer, political commentator, and television host. He hosts Last Week Tonight with John Oliver on HBO and started his career as a stand-up comedian in the United Kingdom. He came to wider attention for his work in the United States a",
     "featured": true
   },
   {
