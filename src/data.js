@@ -280,6 +280,17 @@ function to24h(timeStr) {
   return `${h.toString().padStart(2, '0')}:${min}`;
 }
 
+// For time-filter and sort comparisons only: a show starting after midnight
+// (00:00-04:59) is a LATE show — it belongs after the evening, not before it.
+// Bump its hour past 24 so "00:30" compares/sorts as "24:30" (later than 9pm),
+// instead of "00:30" reading as the earliest show of the day.
+function to24hSortable(timeStr) {
+  const t24 = to24h(timeStr);
+  if (!t24) return t24;
+  const h = parseInt(t24.slice(0, 2), 10);
+  return h < 5 ? `${h + 24}:${t24.slice(3)}` : t24;
+}
+
 // Normalize display time to "6:45 PM" format (uppercase AM/PM, no "show" suffix)
 function formatTime(timeStr) {
   if (!timeStr) return 'TBD';

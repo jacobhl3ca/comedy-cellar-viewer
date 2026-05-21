@@ -567,7 +567,7 @@ function renderShowCard(show, hideSkips, onlyFavs, dateStr) {
   // Time filter (range)
   const timeFilter = document.getElementById('time-filter')?.value;
   const timeFilterMin = window._timeFilterMin;
-  const showTime24_tf = to24h(show.time);
+  const showTime24_tf = to24hSortable(show.time);
   if (timeFilter && timeFilter !== 'any' && showTime24_tf && showTime24_tf > timeFilter) return '';
   if (timeFilterMin && showTime24_tf && showTime24_tf < timeFilterMin) return '';
 
@@ -712,7 +712,7 @@ function renderSortedByFaves(container) {
       if (hideSkips && stats.skips > 0) return;
       const timeFilter = document.getElementById('time-filter')?.value;
       const timeFilterMin2 = window._timeFilterMin;
-      const showTime24_sf = to24h(show.time);
+      const showTime24_sf = to24hSortable(show.time);
       if (timeFilter && timeFilter !== 'any' && showTime24_sf && showTime24_sf > timeFilter) return;
       if (timeFilterMin2 && showTime24_sf && showTime24_sf < timeFilterMin2) return;
       const soldOut = isShowSoldOut(dateStr, show.time);
@@ -812,13 +812,13 @@ function renderAllDaysSchedule(container) {
       }
       if (timeFilterStand && timeFilterStand !== 'any') {
         dayShows = dayShows.filter(s => {
-          const t24 = to24h(s.time);
+          const t24 = to24hSortable(s.time);
           return !t24 || t24 <= timeFilterStand;
         });
       }
       const tfMinStand = window._timeFilterMin;
       if (tfMinStand) {
-        dayShows = dayShows.filter(s => { const t24 = to24h(s.time); return !t24 || t24 >= tfMinStand; });
+        dayShows = dayShows.filter(s => { const t24 = to24hSortable(s.time); return !t24 || t24 >= tfMinStand; });
       }
       // Filter sold-out shows per dropdown
       dayShows = dayShows.filter(s => !shouldHideShow(isShowSoldOut(s.date, s.time)));
@@ -1058,26 +1058,26 @@ function renderAllVenues(container) {
     const shows = allData[dateStr];
     if (!shows) return;
     shows.forEach(show => {
-      const time24 = to24h(show.time) || '00:00';
+      const time24 = to24hSortable(show.time) || '00:00';
       allItems.push({ type: 'cellar', dateStr, time24, show });
     });
   });
 
   // Stand shows
   standShows.forEach(show => {
-    const time24 = to24h(show.time) || '00:00';
+    const time24 = to24hSortable(show.time) || '00:00';
     allItems.push({ type: 'stand', dateStr: show.date, time24, show });
   });
 
   // Gotham shows
   gothamShows.forEach(show => {
-    const time24 = to24h(show.time) || '00:00';
+    const time24 = to24hSortable(show.time) || '00:00';
     allItems.push({ type: 'gotham', dateStr: show.date, time24, show });
   });
 
   // Big Shows
   bigShows.forEach(evt => {
-    const time24 = to24h(evt.time) || '00:00';
+    const time24 = to24hSortable(evt.time) || '00:00';
     allItems.push({ type: 'big', dateStr: evt.date, time24, show: evt });
   });
 
