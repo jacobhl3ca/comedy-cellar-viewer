@@ -732,7 +732,7 @@ function renderSortedByFaves(container) {
   allShows.forEach(show => {
     try {
     const stats = show.stats;
-    const dayLabel = show.dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+    const dayLabel = getDayHeaderLabel(show.dateObj);
     if (show.dateStr !== lastDateStr) {
       html += `<h2 class="schedule-day-header">${dayLabel}</h2>`;
       lastDateStr = show.dateStr;
@@ -799,7 +799,7 @@ function renderAllDaysSchedule(container) {
     const standDates = [...new Set(standShows.map(s => s.date))].sort();
     standDates.forEach(dateStr => {
       const d = new Date(dateStr + 'T12:00:00');
-      const dayLabel = d.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+      const dayLabel = getDayHeaderLabel(d);
       let dayShows = standShows.filter(s => s.date === dateStr && !isShowPast(dateStr, s.time));
       if (activeStandRoom !== 'all') {
         dayShows = dayShows.filter(s => {
@@ -836,7 +836,7 @@ function renderAllDaysSchedule(container) {
     // Calendar multi-select: skip days not in selection
     if (activeDate === 'calendar' && !calendarSelectedDates.has(dateStr)) return;
     const shows = allData[dateStr];
-    const dayLabel = d.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+    const dayLabel = getDayHeaderLabel(d);
 
     if (!shows || shows.length === 0) {
       html += `<h2 class="schedule-day-header">${dayLabel}</h2>`;
@@ -1007,7 +1007,7 @@ function renderGothamShows(container) {
     try {
     if (show.date !== lastDate) {
       const d = new Date(show.date + 'T12:00:00');
-      html += `<h2 class="schedule-day-header">${d.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}</h2>`;
+      html += `<h2 class="schedule-day-header">${getDayHeaderLabel(d)}</h2>`;
       lastDate = show.date;
     }
     html += `
@@ -1151,7 +1151,7 @@ function renderAllVenues(container) {
     try {
     if (item.dateStr !== lastDate) {
       const d = new Date(item.dateStr + 'T12:00:00');
-      const dayLabel = d.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+      const dayLabel = getDayHeaderLabel(d);
       html += `<h2 class="schedule-day-header">${dayLabel}</h2>`;
       lastDate = item.dateStr;
     }
@@ -1691,6 +1691,9 @@ function handleComedianClick(el) {
         <button class="exp-btn ${isSkipd ? 'is-skip' : ''}" onclick="setPref('${esc}','${isSkipd ? 'neutral' : 'skip'}')">
           ${isSkipd ? `${ICON.x} Skipped` : `${ICON.minus} Skip`}
         </button>
+        <button class="exp-btn ${alerted ? 'is-alert' : ''}" onclick="toggleAlertBtn('${esc}', this)">
+          ${ICON.bell} ${alerted ? 'Notifications on' : 'Notify me'}
+        </button>
         <button class="exp-btn" onclick="filterByComedian('${esc}')">
           ${ICON.search} Filter shows
         </button>
@@ -1840,6 +1843,8 @@ function renderComedianDirectory(container) {
   const search = (window._dirSearch || '').toLowerCase().trim();
   const onlyFaves = window._dirOnlyFaves;
   const onlyLive = window._dirOnlyLive;
+  const onlyFeatured = window._dirOnlyFeatured;
+  const onlyDeceased = window._dirOnlyDeceased;
   const alphaOnly = window._dirAlphaMode;
 
   // Filter
@@ -1852,6 +1857,12 @@ function renderComedianDirectory(container) {
   const deceasedList = list.filter(c => c.deceased).sort((a, b) => a.name.localeCompare(b.name));
   const featuredList = list.filter(c => c.featured && !c.deceased).sort((a, b) => a.name.localeCompare(b.name));
   list = list.filter(c => !c.deceased && !c.featured);
+
+  // "Jump-to-section" filters: isolate the chosen section by emptying everything else.
+  // Section render gating below uses !onlyFaves && !onlyLive as a precondition, so these
+  // filters also clear the conflicting *other* section list to keep counts honest.
+  if (onlyFeatured) { list = []; deceasedList.length = 0; }
+  if (onlyDeceased) { list = []; featuredList.length = 0; }
 
   // Sort: faves first, then live, then alphabetical
   const alphaMode = !!window._dirAlphaMode;
@@ -1883,6 +1894,8 @@ function renderComedianDirectory(container) {
         <div class="dir-toggles">
           <label class="dir-toggle"><input type="checkbox" id="dir-only-faves" ${onlyFaves ? 'checked' : ''}><span>My faves only</span></label>
           <label class="dir-toggle"><input type="checkbox" id="dir-only-live" ${onlyLive ? 'checked' : ''}><span>Booked this week</span></label>
+          <label class="dir-toggle"><input type="checkbox" id="dir-only-featured" ${onlyFeatured ? 'checked' : ''}><span>Touring legends</span></label>
+          <label class="dir-toggle"><input type="checkbox" id="dir-only-deceased" ${onlyDeceased ? 'checked' : ''}><span>In memoriam</span></label>
           <label class="dir-toggle"><input type="checkbox" id="dir-alpha-mode" ${alphaOnly ? 'checked' : ''}><span>Alphabetical</span></label>
         </div>
         <div class="dir-count">${total === 0 ? 'No comedians match' : `${livingShown === list.length ? total : livingShown + ' of ' + total} comedian${total === 1 ? '' : 's'}`}</div>
@@ -1945,6 +1958,18 @@ function renderComedianDirectory(container) {
   const onlyLiveCb = document.getElementById('dir-only-live');
   if (onlyLiveCb) onlyLiveCb.addEventListener('change', (e) => {
     window._dirOnlyLive = e.target.checked;
+    window._dirShowCount = 60;
+    renderShows();
+  });
+  const onlyFeaturedCb = document.getElementById('dir-only-featured');
+  if (onlyFeaturedCb) onlyFeaturedCb.addEventListener('change', (e) => {
+    window._dirOnlyFeatured = e.target.checked;
+    window._dirShowCount = 60;
+    renderShows();
+  });
+  const onlyDeceasedCb = document.getElementById('dir-only-deceased');
+  if (onlyDeceasedCb) onlyDeceasedCb.addEventListener('change', (e) => {
+    window._dirOnlyDeceased = e.target.checked;
     window._dirShowCount = 60;
     renderShows();
   });
@@ -2155,6 +2180,7 @@ function _dirCardHTML(c, prefs, liveSet) {
         ${isDeceased ? '' : `<div class="dir-card-actions">
           <button class="dir-btn ${isFavd ? 'is-fav' : ''}" onclick="setPref('${esc}','${isFavd ? 'neutral' : 'fav'}')" title="${isFavd ? 'Remove favorite' : 'Favorite'}">${isFavd ? ICON.starFilled : ICON.starOutline}</button>
           <button class="dir-btn ${isSkipd ? 'is-skip' : ''}" onclick="setPref('${esc}','${isSkipd ? 'neutral' : 'skip'}')" title="${isSkipd ? 'Un-skip' : 'Skip'}">${isSkipd ? ICON.x : ICON.minus}</button>
+          <button class="dir-btn ${alerted ? 'is-alert' : ''}" onclick="toggleAlertBtn('${esc}', this)" title="${alerted ? 'Turn off email alerts' : 'Email me when booked'}">${ICON.bell}</button>
         </div>`}
       </div>
     </div>

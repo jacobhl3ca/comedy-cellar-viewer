@@ -73,6 +73,13 @@ function getDateRange() {
 function formatDateParam(d) { return d.toISOString().split('T')[0]; }
 function getDayName(d) { return d.toLocaleDateString('en-US', { weekday: 'short' }); }
 function getDateLabel(d) { return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); }
+// Schedule-section header. Append the year for non-current-year dates so
+// far-future shows (e.g. a Dec 2026 or Apr 2027 big show) don't read as orphan dates.
+function getDayHeaderLabel(d) {
+  const opts = { weekday: 'long', month: 'short', day: 'numeric' };
+  if (d.getFullYear() !== new Date().getFullYear()) opts.year = 'numeric';
+  return d.toLocaleDateString('en-US', opts);
+}
 
 // Global headshot maps: per-venue + fallback
 const comedianPhotos = {};           // legacy fallback (any source)

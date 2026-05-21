@@ -1,0 +1,223 @@
+{
+  "generated_at": "2026-05-21T08:33:26",
+  "today": "2026-05-21",
+  "shows": [
+    {
+      "id": "87e946a04a3f75af",
+      "artists": [
+        "Kenny Garrett"
+      ],
+      "date": "2026-05-22",
+      "venue_label": "Blue Note NYC",
+      "title": "Kenny Garrett",
+      "city": "New York, NY",
+      "source": "artist",
+      "ticket_url": "https://www.bluenotejazz.com/nyc/shows.html"
+    },
+    {
+      "id": "92582deb3ef80226",
+      "artists": [
+        "Kenny Garrett"
+      ],
+      "date": "2026-05-23",
+      "venue_label": "Blue Note NYC",
+      "title": "Kenny Garrett",
+      "city": "New York, NY",
+      "source": "artist",
+      "ticket_url": "https://www.bluenotejazz.com/nyc/shows.html"
+    },
+    {
+      "id": "28bf5635bd2a6644",
+      "artists": [
+        "Kenny Garrett"
+      ],
+      "date": "2026-05-24",
+      "venue_label": "Blue Note NYC",
+      "title": "Kenny Garrett",
+      "city": "New York, NY",
+      "source": "artist",
+      "ticket_url": "https://www.bluenotejazz.com/nyc/shows.html"
+    },
+    {
+      "id": "266d4ebfca20406c",
+      "artists": [
+        "Ambrose Akinmusire"
+      ],
+      "date": "2026-05-26",
+      "venue_label": "Village Vanguard",
+      "title": "AMBROSE AKINMUSIRE",
+      "city": "Village Vanguard",
+      "source": "venue",
+      "ticket_url": "https://villagevanguard.com/"
+    },
+    {
+      "id": "ca833955aacb3937",
+      "artists": [
+        "Chris Potter"
+      ],
+      "date": "2026-06-09",
+      "venue_label": "Village Vanguard",
+      "title": "Chris Potter",
+      "city": "Village Vanguard",
+      "source": "venue",
+      "ticket_url": "https://villagevanguard.com/"
+    },
+    {
+      "id": "7c9cedff4f9f231a",
+      "artists": [
+        "Eric Alexander"
+      ],
+      "date": "2026-06-11",
+      "venue_label": "Jazzcultural",
+      "title": "Alexander Claffy Quartet \u2014 feat. Eric Alexander",
+      "city": "Jazzcultural (SmallsLIVE)",
+      "source": "venue",
+      "ticket_url": "https://jazzculturaltheatre.com/"
+    },
+    {
+      "id": "6eb6796ce12f9f67",
+      "artists": [
+        "Wynton Marsalis"
+      ],
+      "date": "2026-06-12",
+      "venue_label": "Jazz at Lincoln Center",
+      "title": "The JLCO with Wynton Marsalis",
+      "city": "Jazz at Lincoln Center",
+      "source": "venue",
+      "ticket_url": "https://www.jazz.org/whats-on/calendar/"
+    },
+    {
+      "id": "2c4b11886d361485",
+      "artists": [
+        "Bill Stewart",
+        "John Scofield",
+        "Vicente Archer"
+      ],
+      "date": "2026-06-12",
+      "venue_label": "Other",
+      "title": "Trio with Vicente Archer & Bill Stewart",
+      "city": "Brooklyn, NY",
+      "source": "artist",
+      "ticket_url": null
+    },
+    {
+      "id": "26e1e3dbdc4eeff4",
+      "artists": [
+        "Bill Stewart",
+        "John Scofield",
+        "Vicente Archer"
+      ],
+      "date": "2026-06-13",
+      "venue_label": "Other",
+      "title": "Trio with Vicente Archer & Bill Stewart",
+      "city": "Brooklyn, NY",
+      "source": "artist",
+      "ticket_url": null
+    },
+    {
+      "id": "f424fd487e113a09",
+      "artists": [
+        "Ron Carter"
+      ],
+      "date": "2026-06-19",
+      "venue_label": "Hochstein Hall",
+      "title": "Ron Carter's Foursight Quartet (with Renee Rosnes) Celebrating Juneteenth",
+      "city": "Ron Carter's Foursight Quartet (with Renee Rosnes) Celebrating Juneteenth at the Hochstein Performance Hall, Rochester, NY",
+      "source": "artist",
+      "ticket_url": "https://www.hochstein.org/Concerts"
+    },
+    {
+      "id": "76a23b7932f8ecef",
+      "artists": [
+        "Jeremy Pelt"
+      ],
+      "date": "2026-06-26",
+      "venue_label": "Mezzrow",
+      "title": "Jeremy Pelt Trio",
+      "city": "Mezzrow (SmallsLIVE)",
+      "source": "venue",
+      "ticket_url": "https://mezzrow.com/events/"
+    },
+    {
+      "id": "81b7698b6cf1296f",
+      "artists": [
+        "Jeremy Pelt"
+      ],
+      "date": "2026-06-27",
+      "venue_label": "Mezzrow",
+      "title": "Jeremy Pelt Trio",
+      "city": "Mezzrow (SmallsLIVE)",
+      "source": "venue",
+      "ticket_url": "https://mezzrow.com/events/"
+    },
+    {
+      "id": "6475195aa07a6185",
+      "artists": [
+        "Gilad Hekselman",
+        "John Patitucci",
+        "Nate Wood",
+        "Taylor Eigsti"
+      ],
+      "date": "2026-07-06",
+      "venue_label": "Village Vanguard",
+      "title": "with Gilad Hekselman, Taylor Eigsti, John Patitucci, Nate Wood",
+      "city": "Village Vanguard",
+      "source": "venue",
+      "ticket_url": "https://villagevanguard.com/"
+    },
+    {
+      "id": "ac297e7edcda7212",
+      "artists": [
+        "Tyshawn Sorey"
+      ],
+      "date": "2026-07-13",
+      "venue_label": "Village Vanguard",
+      "title": "Kris Davis | Ingrid Laubrock | Tyshawn Sorey",
+      "city": "Village Vanguard",
+      "source": "venue",
+      "ticket_url": "https://villagevanguard.com/"
+    },
+    {
+      "id": "4eec77842efb901d",
+      "artists": [
+        "Ron Carter"
+      ],
+      "date": "2026-08-01",
+      "venue_label": "Emelin Theatre",
+      "title": "Ron Carter's Foursight Quartet (with Renee Rosnes)",
+      "city": "Ron Carter's Foursight Quartet (with Renee Rosnes) at Emelin Theatre in Mamaroneck, NY",
+      "source": "artist",
+      "ticket_url": "https://www.emelin.org/"
+    },
+    {
+      "id": "58faa3edae430a9a",
+      "artists": [
+        "Adam Deitch",
+        "John Scofield",
+        "Larry Goldings",
+        "Oteil Burbridge"
+      ],
+      "date": "2026-11-17",
+      "venue_label": "Other",
+      "title": "ELECTROSPECTIVE feat. Adam Deitch, Larry Goldings, Oteil Burbridge",
+      "city": "New York, NY",
+      "source": "artist",
+      "ticket_url": null
+    },
+    {
+      "id": "c4fd72e354fdf14c",
+      "artists": [
+        "Adam Deitch",
+        "John Scofield",
+        "Larry Goldings",
+        "Oteil Burbridge"
+      ],
+      "date": "2026-11-18",
+      "venue_label": "Other",
+      "title": "ELECTROSPECTIVE feat. Adam Deitch, Larry Goldings, Oteil Burbridge",
+      "city": "New York, NY",
+      "source": "artist",
+      "ticket_url": null
+    }
+  ]
+}

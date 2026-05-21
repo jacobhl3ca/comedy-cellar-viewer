@@ -533,7 +533,9 @@ async function scrapeTicketmaster() {
   log('Scraping Ticketmaster...');
   try {
     const data = await fetchJSON(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${TM_API_KEY}&classificationName=comedy&subGenreId=KZazBEonSMnZfZ7vF17&city=New+York&stateCode=NY&size=50&sort=date,asc`);
-    const events = (data._embedded?.events || []).map(evt => {
+    const events = (data._embedded?.events || [])
+      .filter(evt => evt.dates?.status?.code !== 'cancelled')
+      .map(evt => {
       const startDate = evt.dates?.start?.localDate || '';
       const startTime = evt.dates?.start?.localTime || '';
       const dt = startTime ? new Date(`${startDate}T${startTime}`) : null;
@@ -556,9 +558,14 @@ async function scrapeTicketmaster() {
       const bestEvtImg = pickBest(evt.images || []);
       const eventImage = bestEvtImg?.url || '';
 
-      // Ticketmaster status: "onsale", "offsale", "cancelled", "rescheduled", "postponed"
+      // Ticketmaster status: "onsale", "offsale", "rescheduled", "postponed"
+      // (cancelled events are filtered out above). 'offsale' is ambiguous: it
+      // covers genuinely sold-out events AND events whose public on-sale hasn't
+      // started yet. Only call it sold out once the public sale window has opened.
       const statusCode = evt.dates?.status?.code || '';
-      const soldout = statusCode === 'offsale' || statusCode === 'cancelled';
+      const saleStart = evt.sales?.public?.startDateTime;
+      const saleStarted = !saleStart || new Date(saleStart) <= new Date();
+      const soldout = statusCode === 'offsale' && saleStarted;
 
       return {
         title: evt.name || '',
