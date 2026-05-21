@@ -227,6 +227,9 @@ html.ios-mobile.native-ios .header-share-btn { right: 46px; }
 .day-tabs {
   display: flex; gap: 6px; overflow-x: auto; flex: 1;
   padding: 4px 0 2px; -webkit-overflow-scrolling: touch;
+  /* flex-start (not stretch): a tab sizes to its own content, so days with no
+     fave badge stay slim instead of all matching the tallest badged tab. */
+  align-items: flex-start;
 }
 .calendar-btn {
   flex-shrink: 0; padding: 10px 12px; border-radius: 8px;
@@ -263,7 +266,7 @@ html.ios-mobile.native-ios .header-share-btn { right: 46px; }
 .calendar-actions button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
 
 .day-tab {
-  flex-shrink: 0; padding: 10px 16px; border-radius: 8px;
+  flex-shrink: 0; padding: 8px 16px; border-radius: 8px;
   background: var(--surface); border: 1px solid var(--border);
   color: var(--text-dim); font-size: 14px; font-weight: 500;
   cursor: pointer; transition: all 0.15s; text-align: center; line-height: 1.3;
@@ -272,13 +275,11 @@ html.ios-mobile.native-ios .header-share-btn { right: 46px; }
 .day-tab.no-lineup { opacity: 0.4; text-decoration: line-through; }
 .day-tab.no-lineup:hover { opacity: 0.7; }
 .day-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
-.day-tab.more-days-tab { border-style: dashed; opacity: 0.7; }
-.day-tab.more-days-tab:hover { opacity: 1; }
 .day-tab .tab-day { display: block; font-size: 13px; }
 .day-tab .tab-date { display: block; font-size: 11px; opacity: 0.7; }
 .day-tab .tab-badge {
   display: inline-block; background: var(--gold); color: #000;
-  font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 4px; margin-top: 3px;
+  font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 4px; margin-top: 2px;
 }
 .day-tab.active .tab-badge { background: #fff; }
 

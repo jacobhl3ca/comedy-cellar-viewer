@@ -408,6 +408,42 @@ function faveBadgeHtml(n) {
   return n >= 1 ? `<span class="tab-badge">${n} fave${n === 1 ? '' : 's'}</span>` : '';
 }
 
+// Top date-strip tab click: toggle the day (re-click clears to Full Schedule),
+// re-render, then jump to top so the new day's lineups start at the viewport top.
+function selectDayTab(dateStr) {
+  activeDate = activeDate === dateStr ? 'all' : dateStr;
+  renderTabs();
+  renderShows();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Does a date have any shows in the currently-active venue source? Used when
+// switching source tabs to decide whether to keep the selected date or reset
+// to Full Schedule (so the user never lands on a blank day).
+function dateInActiveSource(dateStr) {
+  if (!dateStr || dateStr === 'all') return true;
+  switch (activeSource) {
+    case 'all':
+      return !!(allData[dateStr] && allData[dateStr].length)
+        || (typeof standShows !== 'undefined' && standShows.some(s => s.date === dateStr))
+        || (typeof nyccShows !== 'undefined' && nyccShows.some(s => s.date === dateStr))
+        || (typeof gothamShows !== 'undefined' && gothamShows.some(s => s.date === dateStr))
+        || (typeof bigShows !== 'undefined' && bigShows.some(e => e.date === dateStr));
+    case 'cellar':
+      return !!(allData[dateStr] && allData[dateStr].length);
+    case 'the-stand':
+      return typeof standShows !== 'undefined' && standShows.some(s => s.date === dateStr);
+    case 'big-shows':
+      return typeof bigShows !== 'undefined' && bigShows.some(e => e.date === dateStr);
+    case 'gotham':
+      return typeof gothamShows !== 'undefined' && gothamShows.some(s => s.date === dateStr);
+    case 'nycc':
+      return typeof nyccShows !== 'undefined' && nyccShows.some(s => s.date === dateStr);
+    default:
+      return false; // comedians directory etc. — no date concept
+  }
+}
+
 // ---- Fetch with timeout ----
 function fetchWithTimeout(url, options = {}, timeoutMs = 10000) {
   const controller = new AbortController();
@@ -650,6 +686,7 @@ function renderTabs() {
     activeDate = 'all';
     renderTabs();
     renderShows();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
   nav.appendChild(allTab);
 

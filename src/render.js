@@ -10,11 +10,7 @@
         <span class="tab-date">${getDateLabel(d)}</span>
         ${faveBadgeHtml(maxFavs)}
       `;
-      tab.addEventListener('click', () => {
-        activeDate = activeDate === dateStr ? 'all' : dateStr;
-        renderTabs();
-        renderShows();
-      });
+      tab.addEventListener('click', () => selectDayTab(dateStr));
       nav.appendChild(tab);
     });
     return;
@@ -28,7 +24,7 @@
       tab.className = 'day-tab' + (dateStr === activeDate ? ' active' : '');
       const maxFavs = maxLineupFaves(bigShows.filter(e => e.date === dateStr));
       tab.innerHTML = `<span class="tab-day">${getDayName(d)}</span><span class="tab-date">${getDateLabel(d)}</span>${faveBadgeHtml(maxFavs)}`;
-      tab.addEventListener('click', () => { activeDate = activeDate === dateStr ? 'all' : dateStr; renderTabs(); renderShows(); });
+      tab.addEventListener('click', () => selectDayTab(dateStr));
       nav.appendChild(tab);
     });
     return;
@@ -42,7 +38,7 @@
       tab.className = 'day-tab' + (dateStr === activeDate ? ' active' : '');
       const maxFavs = maxLineupFaves(gothamShows.filter(s => s.date === dateStr));
       tab.innerHTML = `<span class="tab-day">${getDayName(d)}</span><span class="tab-date">${getDateLabel(d)}</span>${faveBadgeHtml(maxFavs)}`;
-      tab.addEventListener('click', () => { activeDate = activeDate === dateStr ? 'all' : dateStr; renderTabs(); renderShows(); });
+      tab.addEventListener('click', () => selectDayTab(dateStr));
       nav.appendChild(tab);
     });
     return;
@@ -93,25 +89,9 @@
       ${faveBadgeHtml(maxFavs)}
     `;
 
-    tab.addEventListener('click', () => {
-      activeDate = activeDate === dateStr ? 'all' : dateStr;
-      renderTabs();
-      renderShows();
-    });
+    tab.addEventListener('click', () => selectDayTab(dateStr));
     nav.appendChild(tab);
   });
-
-  // "More days" tab — loads Cellar days 31-60 on demand if user wants to look further.
-  if (!moreDaysLoaded && activeSource !== 'all') {
-    const moreTab = document.createElement('button');
-    moreTab.className = 'day-tab more-days-tab';
-    moreTab.innerHTML = `<span class="tab-day">More</span><span class="tab-date">days →</span>`;
-    moreTab.addEventListener('click', async () => {
-      moreTab.innerHTML = `<span class="tab-day">Loading</span><span class="tab-date">...</span>`;
-      await loadMoreDays();
-    });
-    nav.appendChild(moreTab);
-  }
 }
 
 let moreDaysLoaded = false;
@@ -1848,7 +1828,6 @@ function renderComedianDirectory(container) {
   const onlyFaves = window._dirOnlyFaves;
   const onlyLive = window._dirOnlyLive;
   const onlyFeatured = window._dirOnlyFeatured;
-  const onlyDeceased = window._dirOnlyDeceased;
   const alphaOnly = window._dirAlphaMode;
 
   // Filter
@@ -1862,11 +1841,9 @@ function renderComedianDirectory(container) {
   const featuredList = list.filter(c => c.featured && !c.deceased).sort((a, b) => a.name.localeCompare(b.name));
   list = list.filter(c => !c.deceased && !c.featured);
 
-  // "Jump-to-section" filters: isolate the chosen section by emptying everything else.
-  // Section render gating below uses !onlyFaves && !onlyLive as a precondition, so these
-  // filters also clear the conflicting *other* section list to keep counts honest.
+  // "Jump-to-section" filter: isolate Touring Legends by emptying everything else
+  // (the main living grid + the In Memoriam list) so only that section renders.
   if (onlyFeatured) { list = []; deceasedList.length = 0; }
-  if (onlyDeceased) { list = []; featuredList.length = 0; }
 
   // Sort: faves first, then live, then alphabetical
   const alphaMode = !!window._dirAlphaMode;
@@ -1898,9 +1875,8 @@ function renderComedianDirectory(container) {
         <div class="dir-toggles">
           <label class="dir-toggle"><input type="checkbox" id="dir-only-faves" ${onlyFaves ? 'checked' : ''}><span>My faves only</span></label>
           <label class="dir-toggle"><input type="checkbox" id="dir-only-live" ${onlyLive ? 'checked' : ''}><span>Booked this week</span></label>
-          <label class="dir-toggle"><input type="checkbox" id="dir-only-featured" ${onlyFeatured ? 'checked' : ''}><span>Touring legends</span></label>
-          <label class="dir-toggle"><input type="checkbox" id="dir-only-deceased" ${onlyDeceased ? 'checked' : ''}><span>In memoriam</span></label>
           <label class="dir-toggle"><input type="checkbox" id="dir-alpha-mode" ${alphaOnly ? 'checked' : ''}><span>Alphabetical</span></label>
+          <label class="dir-toggle"><input type="checkbox" id="dir-only-featured" ${onlyFeatured ? 'checked' : ''}><span>Touring legends</span></label>
         </div>
         <div class="dir-count">${total === 0 ? 'No comedians match' : `${livingShown === list.length ? total : livingShown + ' of ' + total} comedian${total === 1 ? '' : 's'}`}</div>
       </div>
@@ -1968,12 +1944,6 @@ function renderComedianDirectory(container) {
   const onlyFeaturedCb = document.getElementById('dir-only-featured');
   if (onlyFeaturedCb) onlyFeaturedCb.addEventListener('change', (e) => {
     window._dirOnlyFeatured = e.target.checked;
-    window._dirShowCount = 60;
-    renderShows();
-  });
-  const onlyDeceasedCb = document.getElementById('dir-only-deceased');
-  if (onlyDeceasedCb) onlyDeceasedCb.addEventListener('change', (e) => {
-    window._dirOnlyDeceased = e.target.checked;
     window._dirShowCount = 60;
     renderShows();
   });

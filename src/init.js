@@ -50,6 +50,11 @@
   updateFooterInfo();
   document.getElementById('schedule-filter-area')?.classList.add('ready');
 
+  // Eagerly pull Cellar days 31-60 in the background so the full date window is
+  // exposed without a "More days" tab. Non-blocking — first paint is already
+  // done; loadMoreDays() re-renders the strip when the extra days arrive.
+  loadMoreDays();
+
   // Open My Comedians modal if #alerts in URL
   if (window.location.hash === '#alerts') {
     openModal();
@@ -93,12 +98,12 @@
       activeVenue = 'all';
       activeStandRoom = 'all';
       activeNeighborhood = 'all';
-      // Preserve selected date across tabs if that date exists in new source
-      if (prevDate && prevDate !== 'all') {
-        activeDate = prevDate;
-      } else {
-        activeDate = 'all';
-      }
+      // Keep the selected date across tabs only if the new source actually has
+      // shows that day — otherwise reset to Full Schedule so the switch never
+      // lands on a blank screen (e.g. Big Shows has nothing on the picked date).
+      activeDate = (prevDate && prevDate !== 'all' && dateInActiveSource(prevDate))
+        ? prevDate
+        : 'all';
       if (window.va) window.va('event', { name: 'tab_switch', data: { source: activeSource } });
       renderSourceTabs();
       renderTabs();
