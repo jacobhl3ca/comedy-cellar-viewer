@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tonight-nyc-v13';
+const CACHE_NAME = 'tonight-nyc-v14';
 const STATIC_ASSETS = [
   '/',
   '/app.min.js',
@@ -29,6 +29,27 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
+
+  // Network-first for page navigations (the HTML document).
+  // index.html is a STABLE url that serves CHANGING markup — and a changing
+  // `app.min.js?v=<sha>` reference. Serving it cache-first pinned returning
+  // visitors to a stale shell that then loaded a mismatched bundle (duplicated
+  // date strip, empty listings). Always fetch fresh when online; fall back to
+  // the cached shell only when the network is unreachable.
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
+        .then(resp => {
+          if (resp.ok) {
+            const clone = resp.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put('/', clone));
+          }
+          return resp;
+        })
+        .catch(() => caches.match(event.request).then(c => c || caches.match('/')))
+    );
+    return;
+  }
 
   // Network-first for data files (always fresh lineups)
   if (url.pathname.startsWith('/data/')) {
