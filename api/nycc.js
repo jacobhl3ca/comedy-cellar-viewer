@@ -19,9 +19,12 @@ module.exports = async (req, res) => {
       fetchPage(`https://newyorkcomedyclub.com/calendar/${m}`).catch(() => '')
     ));
     const shows = pages.flatMap(parseCalendar);
+    // The month calendar includes days already past — drop them.
+    const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
     // Sort by date+time and dedupe by url+date+time.
     const seen = new Set();
     const out = shows
+      .filter(s => s.date >= todayStr)
       .filter(s => {
         const k = `${s.url}|${s.date}|${s.time}`;
         if (seen.has(k)) return false;

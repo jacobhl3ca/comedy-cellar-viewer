@@ -467,8 +467,11 @@ async function scrapeNYCC() {
       fetchText(`https://newyorkcomedyclub.com/calendar/${m}`).catch(() => '')
     ));
     const all = pages.flatMap(_nyccParseCalendar);
+    // The month calendar includes days already past — drop them.
+    const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
     const seen = new Set();
     const shows = all
+      .filter(s => s.date >= todayStr)
       .filter(s => { const k = `${s.url}|${s.date}|${s.time}`; if (seen.has(k)) return false; seen.add(k); return true; })
       .sort((a, b) => a.date.localeCompare(b.date) || (a.time || '').localeCompare(b.time || ''));
     log(`NYCC: ${shows.length} shows`);
