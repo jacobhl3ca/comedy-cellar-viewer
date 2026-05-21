@@ -6779,7 +6779,7 @@
   {
     "name": "John Oliver",
     "venues": [],
-    "bio_wiki": "John William Oliver is a British and American comedian, writer, producer, political commentator, and television host. He hosts Last Week Tonight with John Oliver on HBO and started his career as a stand-up comedian in the United Kingdom. He came to wider attention for his work in the United States a",
+    "bio_wiki": "John William Oliver is a British and American comedian, political commentator, and television personality. He hosts Last Week Tonight with John Oliver on HBO and started his career as a stand-up comedian in the United Kingdom. He came to wider attention for his work in the United States as the senio",
     "featured": true
   },
   {
@@ -8066,7 +8066,8 @@
   },
   {
     "name": "Dina Martina",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Dina Martina is the stage name of Grady West, a drag performer who has also been described as a comedian, dancer, performance artist, and singer."
   },
   {
     "name": "Matt Mathews",
