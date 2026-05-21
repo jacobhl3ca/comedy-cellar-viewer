@@ -184,7 +184,7 @@
     "venues": [
       "nycc"
     ],
-    "bio": "Matt Lopes is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "bio_stand": "Matt Lopes is the house comedian at the Stress Factory Comedy Club in Bridgeport, CT and the co-host of the You Should Be Worried Podcast. He’s headlined all over his home state and in Massachusetts. He’s worked stages such as New York Comedy Club, Stress Factory NJ, Funny Bone Comedy Club, and has amassed over 250k followers across his socials (Tiktok: @maffyooo, Insta: @notmattlopes)."
   },
   {
     "name": "Michael Longfellow",
@@ -3204,8 +3204,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/carolina-montesquieu",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Carolina_Montesquieu.jpeg",
-    "bio_stand": "Carolina Montesquieu is a Dominican-American standup comedian. With a big personality, sharp writing, and perfectly performed delivery, her comedy hits with charisma and precision. Unexpectedly dark, deeply honest, and always magnetic. Carolina started her comedy journey July 2022. She has since opened for Hannibal Buress, Vladimir Caamaño, and Radel Ortiz, and her momentum is building fast. She’s featured on Veeps’ Newcomers Showcase (NY Comedy Festival 2025), with upcoming tapings being released for Cracked Comedy Club and OnlyFans LMFAO Presents.",
-    "bio": "Carolina Montesquieu is a stand-up comedian based in New York City. She performs regularly at The Stand and other NYC clubs."
+    "bio_stand": "Carolina Montesquieu is a Dominican-American standup comedian. With a big personality, sharp writing, and perfectly performed delivery, her comedy hits with charisma and precision. Unexpectedly dark, deeply honest, and always magnetic. Carolina started her comedy journey July 2022. She has since opened for Hannibal Buress, Vladimir Caamaño, and Radel Ortiz, and her momentum is building fast. She’s featured on Veeps’ Newcomers Showcase (NY Comedy Festival 2025), with upcoming tapings being released for Cracked Comedy Club and OnlyFans LMFAO Presents."
   },
   {
     "name": "Chanel Ali",
@@ -8113,6 +8112,15 @@
   },
   {
     "name": "Leslie Liao",
+    "venues": []
+  },
+  {
+    "name": "Chloe Radcliffe",
+    "venues": [],
+    "bio_stand": "Chloe Radcliffe is a Minneapolis-based comic recently named a TBS Comic To Watch at the New York Comedy Festival. Chloe’s comedy is all smiles, no matter how exasperated she is with the world around her. She balances being incredulous with being delightful, and draws from her experience of having a huge birthmark on her cheek (but she doesn’t talk about it too much…or, just enough? Whatever’s correct). In 2017, Chloe was a Semifinalist in StandUp NBC and listed as one of the top five comics in the Twin Cities. She was a quarterfinalist in the Laughing Skull Comedy Festival, and performed at the Women In Comedy and Oddblock festivals. She is on the production team for Minneapolis’ 10,000 Laughs Comedy Festival, entering its eighth year. Chloe helps run the Comedy Corner Underground, a comic-run club in Minneapolis, where she produces REAL SHIT, a comedy and storytelling show. She is a paid opener at all clubs in the Twin Cities, including Acme and the House of Comedy. Along with standup, she produces house sketch shows in her living room, writing and performing personal, grounded sketches for alt-comedy audiences. Chloe competed in speech & debate for ten years, and won two national championships at the college level. She worked as a corporate speechwriter for three years until s"
+  },
+  {
+    "name": "Grace O’Malley",
     "venues": []
   }
 ]
