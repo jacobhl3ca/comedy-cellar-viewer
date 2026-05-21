@@ -1177,7 +1177,7 @@ function renderAllVenues(container) {
       const cardClass = 'show-card' + (evtSoldOut ? ' sold-out' : '');
       const links = evt.ticketLinks || (evt.url ? [{ source: evt.source || 'tickets', url: evt.url }] : []);
       const preferred = links.find(l => l.source === 'seatgeek') || links[0];
-      const ticketUrl = preferred?.url || evt.url;
+      const ticketUrl = venueTicketUrl(evt.venue) || preferred?.url || evt.url;
       html += `
         <div class="${cardClass}" data-venue-source="big">
           <div class="show-header">
@@ -1427,7 +1427,7 @@ function renderBigShows(container) {
       // }
 
       // Single link per date box (uses first available source)
-      const singleUrl = links[0]?.url || evt.url;
+      const singleUrl = venueTicketUrl(data.venue) || links[0]?.url || evt.url;
       return singleUrl
         ? `<div class="bdb-wrap"><a href="${singleUrl}" target="_blank" class="big-date-box" onclick="trackReserve(this)">${dateContent}</a></div>`
         : `<div class="bdb-wrap"><span class="big-date-box">${dateContent}</span></div>`;

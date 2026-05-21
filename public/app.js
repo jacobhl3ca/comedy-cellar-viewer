@@ -769,6 +769,19 @@ function getDayHeaderLabel(d) {
   return d.toLocaleDateString('en-US', opts);
 }
 
+// Venues that sell tickets only through their own site. SeatGeek/Ticketmaster
+// index these events but carry no inventory for them, so the aggregator
+// "Tickets" link is a dead end — route the button to the venue's events page.
+// Extend as more primary-only venues (bookstores etc.) appear in the feed.
+const VENUE_TICKET_URLS = [
+  { match: 'strand book store', url: 'https://www.strandbooks.com/events.html' },
+];
+function venueTicketUrl(venue) {
+  const v = (venue || '').toLowerCase();
+  const hit = VENUE_TICKET_URLS.find(o => v.includes(o.match));
+  return hit ? hit.url : null;
+}
+
 // Global headshot maps: per-venue + fallback
 const comedianPhotos = {};           // legacy fallback (any source)
 const comedianPhotosCellar = {};     // from Cellar API
@@ -2558,7 +2571,7 @@ function renderAllVenues(container) {
       const cardClass = 'show-card' + (evtSoldOut ? ' sold-out' : '');
       const links = evt.ticketLinks || (evt.url ? [{ source: evt.source || 'tickets', url: evt.url }] : []);
       const preferred = links.find(l => l.source === 'seatgeek') || links[0];
-      const ticketUrl = preferred?.url || evt.url;
+      const ticketUrl = venueTicketUrl(evt.venue) || preferred?.url || evt.url;
       html += `
         <div class="${cardClass}" data-venue-source="big">
           <div class="show-header">
@@ -2808,7 +2821,7 @@ function renderBigShows(container) {
       // }
 
       // Single link per date box (uses first available source)
-      const singleUrl = links[0]?.url || evt.url;
+      const singleUrl = venueTicketUrl(data.venue) || links[0]?.url || evt.url;
       return singleUrl
         ? `<div class="bdb-wrap"><a href="${singleUrl}" target="_blank" class="big-date-box" onclick="trackReserve(this)">${dateContent}</a></div>`
         : `<div class="bdb-wrap"><span class="big-date-box">${dateContent}</span></div>`;

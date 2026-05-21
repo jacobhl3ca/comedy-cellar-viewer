@@ -81,6 +81,19 @@ function getDayHeaderLabel(d) {
   return d.toLocaleDateString('en-US', opts);
 }
 
+// Venues that sell tickets only through their own site. SeatGeek/Ticketmaster
+// index these events but carry no inventory for them, so the aggregator
+// "Tickets" link is a dead end — route the button to the venue's events page.
+// Extend as more primary-only venues (bookstores etc.) appear in the feed.
+const VENUE_TICKET_URLS = [
+  { match: 'strand book store', url: 'https://www.strandbooks.com/events.html' },
+];
+function venueTicketUrl(venue) {
+  const v = (venue || '').toLowerCase();
+  const hit = VENUE_TICKET_URLS.find(o => v.includes(o.match));
+  return hit ? hit.url : null;
+}
+
 // Global headshot maps: per-venue + fallback
 const comedianPhotos = {};           // legacy fallback (any source)
 const comedianPhotosCellar = {};     // from Cellar API
