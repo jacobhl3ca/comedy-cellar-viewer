@@ -463,7 +463,9 @@ async function fetchNYCC() {
     const resp = await fetchWithTimeout(STATIC_NYCC, {}, 5000)
       .catch(() => fetchWithTimeout('/api/nycc', {}, 15000));
     const data = await resp.json();
-    nyccShows = data.shows || [];
+    // Drop past shows — the NYCC feed/cache retains weeks-old dates, which
+    // otherwise pollute the All-Venues date strip and show list.
+    nyccShows = (data.shows || []).filter(s => !isShowPast(s.date, s.time));
     return nyccShows;
   } catch (e) {
     console.error('Failed to fetch NYCC:', e);

@@ -55,7 +55,11 @@
   if (activeSource === 'all') {
     const cap = new Date(); cap.setFullYear(cap.getFullYear() + 1);
     const capStr = cap.toISOString().split('T')[0];
-    const inRange = (d) => d && d <= capStr;
+    // Floor at today. A source's cache can carry weeks-old dates (NYCC's does) —
+    // without this lower bound they sort to the front of the strip and shove the
+    // current dates off-screen. Upper cap drops far-future TBD placeholders.
+    const todayStr = formatDateParam(new Date());
+    const inRange = (d) => d && d >= todayStr && d <= capStr;
     const union = new Set(dates.map(formatDateParam));
     standShows.forEach(s => inRange(s.date) && union.add(s.date));
     nyccShows.forEach(s => inRange(s.date) && union.add(s.date));
