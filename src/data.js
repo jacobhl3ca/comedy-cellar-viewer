@@ -421,13 +421,30 @@ function faveBadgeHtml(n) {
   return n >= 1 ? `<span class="tab-badge">${n} fave${n === 1 ? '' : 's'}</span>` : '';
 }
 
+// Snap the viewport to the top after a re-render. Instant, not smooth: a
+// smooth animation started right after renderShows() rebuilds the DOM gets
+// interrupted by image-load reflows, which left the page stranded mid-scroll
+// ("sometimes doesn't go to top" when jumping from the footer strip).
+function scrollToTop() {
+  window.scrollTo(0, 0);
+}
+
 // Top date-strip tab click: toggle the day (re-click clears to Full Schedule),
 // re-render, then jump to top so the new day's lineups start at the viewport top.
 function selectDayTab(dateStr) {
   activeDate = activeDate === dateStr ? 'all' : dateStr;
   renderTabs();
   renderShows();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  scrollToTop();
+}
+
+// Footer strip / Full Schedule: jump straight to a day (no toggle), re-render,
+// snap to top.
+function jumpToDay(dateStr) {
+  activeDate = dateStr;
+  renderTabs();
+  renderShows();
+  scrollToTop();
 }
 
 // Does a date have any shows in the currently-active venue source? Used when
@@ -695,12 +712,7 @@ function renderTabs() {
   const allTab = document.createElement('button');
   allTab.className = 'day-tab' + (activeDate === 'all' ? ' active' : '');
   allTab.innerHTML = `<span class="tab-day">Full</span><span class="tab-date">Schedule</span>`;
-  allTab.addEventListener('click', () => {
-    activeDate = 'all';
-    renderTabs();
-    renderShows();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  allTab.addEventListener('click', () => jumpToDay('all'));
   nav.appendChild(allTab);
 
   if (activeSource === 'the-stand') {

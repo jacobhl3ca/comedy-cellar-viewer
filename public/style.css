@@ -227,9 +227,9 @@ html.ios-mobile.native-ios .header-share-btn { right: 46px; }
 .day-tabs {
   display: flex; gap: 6px; overflow-x: auto; flex: 1;
   padding: 4px 0 2px; -webkit-overflow-scrolling: touch;
-  /* flex-start (not stretch): a tab sizes to its own content, so days with no
-     fave badge stay slim instead of all matching the tallest badged tab. */
-  align-items: flex-start;
+  /* align-items: stretch (default) — every tab matches the tallest, so once any
+     day shows a fave badge the whole strip (incl. Full Schedule) is uniform.
+     No badges anywhere → all tabs slim. Avoids a slim/tall mismatch in one row. */
 }
 .calendar-btn {
   flex-shrink: 0; padding: 10px 12px; border-radius: 8px;
@@ -270,6 +270,9 @@ html.ios-mobile.native-ios .header-share-btn { right: 46px; }
   background: var(--surface); border: 1px solid var(--border);
   color: var(--text-dim); font-size: 14px; font-weight: 500;
   cursor: pointer; transition: all 0.15s; text-align: center; line-height: 1.3;
+  /* Center the day/date (and badge) so a no-badge tab stretched to a badged
+     tab's height keeps its text vertically centered, not floating at the top. */
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
 }
 .day-tab:hover { border-color: var(--accent); color: var(--text); }
 .day-tab.no-lineup { opacity: 0.4; text-decoration: line-through; }

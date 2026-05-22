@@ -159,25 +159,37 @@ function renderCalendar() {
   const capStr = HARD_CAP.toISOString().split('T')[0];
   const safeMax = (d) => d && d <= capStr ? d : '';
 
-  if (activeSource === 'big-shows' && bigShows.length > 0) {
-    const latestBigShow = bigShows.reduce((max, e) => safeMax(e.date) > max ? safeMax(e.date) : max, '');
-    if (latestBigShow) {
-      const latestDate = new Date(latestBigShow + 'T12:00:00');
-      if (latestDate > maxDate) maxDate.setTime(latestDate.getTime());
+  // Every date that has shows in the ACTIVE source — drives both the max-date
+  // extension below and the .no-shows greying further down, so the calendar
+  // always matches whatever venue tab you're on.
+  const sourceDates = (() => {
+    const cellar = () => Object.keys(allData).filter(d => allData[d] && allData[d].length > 0);
+    const arr = (a) => (typeof a !== 'undefined' ? a : []).map(s => s.date).filter(Boolean);
+    switch (activeSource) {
+      case 'cellar':    return cellar();
+      case 'the-stand': return arr(standShows);
+      case 'big-shows': return arr(bigShows);
+      case 'gotham':    return arr(typeof gothamShows !== 'undefined' ? gothamShows : undefined);
+      case 'nycc':      return arr(typeof nyccShows !== 'undefined' ? nyccShows : undefined);
+      default:          return [
+        ...cellar(),
+        ...arr(standShows),
+        ...arr(bigShows),
+        ...arr(typeof nyccShows !== 'undefined' ? nyccShows : undefined),
+        ...arr(typeof gothamShows !== 'undefined' ? gothamShows : undefined),
+      ];
     }
-  } else if (activeSource === 'the-stand' && standShows.length > 0) {
-    const latestStand = standShows.reduce((max, s) => safeMax(s.date) > max ? safeMax(s.date) : max, '');
-    if (latestStand) {
-      const latestDate = new Date(latestStand + 'T12:00:00');
-      if (latestDate > maxDate) maxDate.setTime(latestDate.getTime());
-    }
-  } else if (activeSource === 'all') {
-    const allDates = [...bigShows.map(e => safeMax(e.date)), ...standShows.map(s => safeMax(s.date))];
-    const latest = allDates.reduce((max, d) => d > max ? d : max, '');
-    if (latest) {
-      const latestDate = new Date(latest + 'T12:00:00');
-      if (latestDate > maxDate) maxDate.setTime(latestDate.getTime());
-    }
+  })();
+
+  // Extend the calendar's max date (default 14-day window) to the latest event
+  // in the active source so far-out shows stay reachable.
+  const latestInSource = sourceDates.reduce((max, d) => {
+    const s = safeMax(d);
+    return s > max ? s : max;
+  }, '');
+  if (latestInSource) {
+    const latestDate = new Date(latestInSource + 'T12:00:00');
+    if (latestDate > maxDate) maxDate.setTime(latestDate.getTime());
   }
 
   // Find the Monday of the week containing today
@@ -207,18 +219,9 @@ function renderCalendar() {
     html += `<div class="cal-header">${d}</div>`;
   });
 
-  // Build set of dates that have shows across all sources
-  const datesWithShows = new Set();
-  // Cellar shows
-  Object.keys(allData).forEach(d => { if (allData[d] && allData[d].length > 0) datesWithShows.add(d); });
-  // The Stand shows
-  standShows.forEach(s => { if (s.date) datesWithShows.add(s.date); });
-  // Big Shows
-  bigShows.forEach(e => { if (e.date) datesWithShows.add(e.date); });
-  // NYCC shows
-  if (typeof nyccShows !== 'undefined') nyccShows.forEach(s => { if (s.date) datesWithShows.add(s.date); });
-  // Gotham shows
-  if (typeof gothamShows !== 'undefined') gothamShows.forEach(s => { if (s.date) datesWithShows.add(s.date); });
+  // Dates with shows in the active source (computed above) — days in range but
+  // not in this set get struck through (.no-shows).
+  const datesWithShows = new Set(sourceDates);
 
   while (cursor <= endOfWeek) {
     // Month separator row when month changes (at start of a week / Monday)
@@ -1495,12 +1498,7 @@ function renderBottomTabs() {
   const allTab = document.createElement('button');
   allTab.className = 'day-tab' + (activeDate === 'all' ? ' active' : '');
   allTab.innerHTML = `<span class="tab-day">Full</span><span class="tab-date">Schedule</span>`;
-  allTab.addEventListener('click', () => {
-    activeDate = 'all';
-    renderTabs();
-    renderShows();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  allTab.addEventListener('click', () => jumpToDay('all'));
   nav.appendChild(allTab);
 
   if (activeSource === 'the-stand') {
@@ -1513,12 +1511,7 @@ function renderBottomTabs() {
         <span class="tab-day">${getDayName(d)}</span>
         <span class="tab-date">${getDateLabel(d)}</span>
       `;
-      tab.addEventListener('click', () => {
-        activeDate = dateStr;
-        renderTabs();
-        renderShows();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+      tab.addEventListener('click', () => jumpToDay(dateStr));
       nav.appendChild(tab);
     });
     return;
@@ -1531,7 +1524,7 @@ function renderBottomTabs() {
       const tab = document.createElement('button');
       tab.className = 'day-tab' + (dateStr === activeDate ? ' active' : '');
       tab.innerHTML = `<span class="tab-day">${getDayName(d)}</span><span class="tab-date">${getDateLabel(d)}</span>`;
-      tab.addEventListener('click', () => { activeDate = dateStr; renderTabs(); renderShows(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+      tab.addEventListener('click', () => jumpToDay(dateStr));
       nav.appendChild(tab);
     });
     return;
@@ -1553,12 +1546,7 @@ function renderBottomTabs() {
       <span class="tab-day">${getDayName(d)}</span>
       <span class="tab-date">${getDateLabel(d)}</span>
     `;
-    tab.addEventListener('click', () => {
-      activeDate = dateStr;
-      renderTabs();
-      renderShows();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    tab.addEventListener('click', () => jumpToDay(dateStr));
     nav.appendChild(tab);
   });
 }
@@ -1724,8 +1712,7 @@ function filterByComedian(name) {
   // Collapse expanded panel
   document.querySelectorAll('.expanded-panel').forEach(p => p.remove());
   renderShows();
-  // Scroll to top
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  scrollToTop();
 }
 
 function setPref(name, type) {
