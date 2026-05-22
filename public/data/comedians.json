@@ -4129,8 +4129,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/katherine-blanford",
     "bio_stand": "Katherine Blanford has brought her human Golden Retriever presence across the country and internationally, sharing confessions of her southern family secrets and awkward adolescent years. The Kentucky born comedian has appeared on The Tonight Show starring Jimmy Fallon twice, a panelist on CBS's After Midnight and Vice TV’s Super Maximum Retro Show, and was featured on Netflix Radio. Her debut album, Salt Daddy, was released in June 2022 reaching number one on iTunes Charts and her Don’t Tell Comedy set has amassed millions of views online. You can catch her weekly co-hosting her podcast, Cheaties, with fellow comedian, Lace Larrabee. The juicy series follows two comedians healing through laughter after sharing stories of heartbreak. Not bad for a girl whose parents are cousins",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Katherine_Blanford.jpg",
-    "bio": "Katherine Blanford is a stand-up comedian performing in New York City. She performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Katherine_Blanford.jpg"
   },
   {
     "name": "Katie Hannigan",
@@ -5237,8 +5236,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/subhah-agarwal",
     "bio_stand": "Subhah's parents immigrated from India to small town America so their children could live the American dream. And by American dream I mean pursue stand up comedy and become an Indian parent's nightmare. She has since become a headlining comedian who has appeared on Comedy Central, Tru Tv, and MTV. She is currently writing on The Jim Jefferies Show for Comedy Central.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/43-og.jpg",
-    "bio": "Subhah Agarwal is a stand-up comedian performing in New York City. She performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/43-og.jpg"
   },
   {
     "name": "Sureni Weerasekera",
@@ -8122,5 +8120,16 @@
   {
     "name": "Grace O’Malley",
     "venues": []
+  },
+  {
+    "name": "Braver Angels",
+    "venues": [],
+    "bio": "Launched in 2016, Braver Angels is a bipartisan citizen’s movement to unify our divided nation. By bringing Red and Blue Americans together into a working alliance, we’re building new ways to talk to one another, participate together in public life, and influence the direction of the nation.",
+    "tagline_cellar": "Launched in 2016, Braver Angels is a bipartisan citizen’s movement to unify our divided nation. By bringing Red and Blue Americans together into a working alliance, we’re building new ways to talk to one another, participate together in public life, and influence the direction of the nation."
+  },
+  {
+    "name": "Niles Abston",
+    "venues": [],
+    "bio_stand": "Niles Abston has had success as a stand up comedian, as a writer and as a filmmaker. In stand up, he was named a 2024 Netflix is a Joke festival headliner after having Comedy Central's most viral stand up bit of 2022 and being a Vulture Magazine Comedian To Watch. As a writer, his Season 3 episode of FX's DAVE was named one of the Hollywood Reporter's 10 Best TV Episodes of 2023 and his 2022 directorial debut \"NOTICE TO QUIT\" was named by Vulture Magazine as the \"best comedy short we’ve seen in the past couple of years.\" He recently starred in and produced the award winning short film “‘98 Honda” that won top comedy at HAHA Fest and has been officially selected by Montclair Film Festival and Bushwick Film Festival. Niles is currently a writer on Season 4 of Dan Harmon's animated series \"Krapopolis\" on FOX."
   }
 ]
