@@ -1009,8 +1009,7 @@
     "venues": [
       "nycc"
     ],
-    "bio_stand": "Shaunak Godkhindi is an Atlanta comedian who performs all around the country at clubs and indie venues. He has also been a performer at SXSW, Laughing Skull Fest, Red Clay Comedy Festival, and New South Comedy Fest. Shaunak has opened up for Kyle Kinane, Rory Scovel, Joe Zimmerman, Nore Davis, Sean Patton, Aakash Singh, and many more. His comedy style is energetic, optimistic, and fun. He once made a lady laugh so hard she peed a little and she emailed him after the show saying that her night was ruined.​",
-    "bio": "Shaunak Godkhindi is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "bio_stand": "Shaunak Godkhindi is an Atlanta comedian who performs all around the country at clubs and indie venues. He has also been a performer at SXSW, Laughing Skull Fest, Red Clay Comedy Festival, and New South Comedy Fest. Shaunak has opened up for Kyle Kinane, Rory Scovel, Joe Zimmerman, Nore Davis, Sean Patton, Aakash Singh, and many more. His comedy style is energetic, optimistic, and fun. He once made a lady laugh so hard she peed a little and she emailed him after the show saying that her night was ruined.​"
   },
   {
     "name": "Olivia Carter",
@@ -5217,8 +5216,7 @@
     "stand_profile": "https://thestandnyc.com/comedians/stef-dag",
     "bio_stand": "Hi! I'm a NY-based comedian, writer, and actor who's too self conscious to write in third person. I'm allegedly a rising stand up comedian (their words not mine!!), and a 2022 New York Comedy Festival \"Creator to Watch.\" You may have seen me complaining out loud at The Stand, SF Sketch Fest, Union Hall, The Bell House, or at New York Comedy Festival. Still not convinced? I host the popular digital dating show, Hot and Single, in which I flirt with eligible singles in an effort to find out if they are the problem. I also have a viral TikTok show where I interview men about female anatomy (spoiler alert: it's bleak) and write a monthly newsletter This Sucks, which has an accompanying live show! You should come and bring your crush. Against all odds, people have *willingly* employed me. I'm currently the Senior Editor at Overheard NY and I've directed digital videos for Vogue, Glamour, and Vanity Fair, where I've written digital sketches for Bill Hader, Michael Che & Colin Jost, Rebel Wilson, and more. I wrote the popular Vogue series Everything You Need to Know, which won a Vimeo Staff Pick.",
     "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/2025-12-11-stefdag-colorcorrected.jpg/330px-2025-12-11-stefdag-colorcorrected.jpg",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Stef_Dag_sq.jpg",
-    "bio": "Stef Dag is a stand-up comedian performing in New York City. She performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Stef_Dag_sq.jpg"
   },
   {
     "name": "Steve Trevino",
@@ -5651,7 +5649,7 @@
     "venues": [
       "comedy_cellar"
     ],
-    "tagline_cellar": "ACCESS DAILY NBC, BEAT BOBBY FLAY FOOD NETWORK"
+    "tagline_cellar": "WTF with Marc Maron and Comic’s Unleashed on CBS, ACCESS DAILY NBC, BEAT BOBBY FLAY FOOD NETWORK"
   },
   {
     "name": "Ryan Hamilton",
@@ -6466,7 +6464,8 @@
   },
   {
     "name": "Torey Cole",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Torey Cole is a standup comedian, podcaster and writer based in New York City. She has toured the country featuring for comics in over 30+ cities. Check out her podcast, Torey’s Stupid Podcast on all platforms (Spotify, Apple) as well as video format on YouTube."
   },
   {
     "name": "Riley Edwards",
@@ -8137,5 +8136,29 @@
     "name": "Sammy Obeid",
     "venues": [],
     "bio_wiki": "Sammy K. Obeid is a Palestinian-American writer and stand-up comedian. He has released one comedy album, Get Funny or Die Tryin. The New York Times described his comedy as displaying \"an analytic style full of wordplay, clever misdirection and ethnic humor riffing on his Middle Eastern roots\". On hi"
+  },
+  {
+    "name": "Gianmarco Soresi",
+    "venues": [],
+    "bio": "NETFLIX BONDING, PBS' STORIES FROM THE STAGE, HERE TODAY WITH BILLY CRYSTAL, \"HUSTLERS\" WITH J-LO, COMEDY CENTRAL",
+    "tagline_cellar": "NETFLIX BONDING, PBS' STORIES FROM THE STAGE, HERE TODAY WITH BILLY CRYSTAL, \"HUSTLERS\" WITH J-LO, COMEDY CENTRAL"
+  },
+  {
+    "name": "Zach Noe Towers",
+    "venues": [],
+    "bio_stand": "ZNT is an LA-based comedian, actor, and writer you may have seen on Netflix’s Dear White People or as one of the hosts of E!’s Nightly Pop and Dating #NoFilter. Zach tours nationally as one of the opening acts for Fortune Feimster and Taylor Tomlinson and he can be heard weekly as one of the regular guests on Jeff Lewis Live on SiriusXM. Check out Zach’s popular sex podcast “Good Sod Pod” and be on the lookout for his first hour special “Twink Death” produced by Bob the Drag Queen."
+  },
+  {
+    "name": "Lucas Connolly",
+    "venues": []
+  },
+  {
+    "name": "Gordy McNiff",
+    "venues": []
+  },
+  {
+    "name": "Emily Wilson",
+    "venues": [],
+    "bio_stand": "Emily is a comedian, actress and writer based in New York City. On top of her videos, songs and stand-up, she also produces The Emily Wilson Show every month (when there's not a global pandemic -- so check back soon for the first show back). She was featured in PAPER Magazine as one of the top 100 People Taking Over 2019. Can I just talk in first person? Thanks. My name is Emily and I am a comedian, actress, writer and people-lover. I make videos that range from characters to sketches to music videos for my comedy songs. If I'm not doing any of that, I'm probably eating or using my bidet. I am a curly-haired Jewish girlina from New Jersey with a fresh face and a good attitude. Or at least that's what my dad tells me. And he's kind of right about everything so I would listen to him if I were you... Follow me on Instagram and TikTok if you want to stay the most updated, or hell -- just email me directly on the contact page! I could use some more friends."
   }
 ]
