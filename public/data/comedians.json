@@ -1809,7 +1809,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/ted-alexandro",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/03-og.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/03-og.jpg",
+    "tagline_cellar": "FROM \"THE LATE SHOW WITH DAVID LETTERMAN\", COMEDY CENTRAL \"HALF HOUR\" SPECIAL, AND \"LATE NIGHT WITH CONAN O'BRIEN\"."
   },
   {
     "name": "Leah Bonnema",
@@ -1865,7 +1866,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/stavros-halkias",
     "bio_stand": "Stavros Halkias recently moved to New York City, hoping to get on television and buy his mother a nice house. After dabbling with comedy in college, he started performing regularly in his hometown of Baltimore, where he was named New Comedian of the Year in 2012. Since then he’s toured clubs, colleges, and independent shows across the U.S., been featured on XM Satellite radio, and become a regular on Robert Kelly’s You Know What Dude podcast. Here’s a list of some the great comedians he’s had the opportunity to work with: Tom Papa, Dave Attell, and Tig Notaro. Here’s a list of people that don’t approve of his comedy career: Emmanuel Halkias, his father.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Stavros_Halkias.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Stavros_Halkias.jpg",
+    "tagline_cellar": "FROM COMEDY CENTRAL"
   },
   {
     "name": "Shane Gillis",
@@ -1931,7 +1933,8 @@
     "bio": "Elon Gold is a comedian, actor, and writer known for his stand-up specials—including a Netflix hour special—and recurring roles on shows like Curb Your Enthusiasm. He’s made multiple late-night appearances, starred in series like In-Laws and Stacked, and was a writer/performer on The Dana Carvey Show. He’s currently touring and preparing a new comedy special.",
     "venues": [
       "nycc"
-    ]
+    ],
+    "tagline_cellar": "FROM HBO, CURB YOUR ENTHUSIASM, FROM NETFLIX, HBO \"CRASHING\", THE HOWARD STERN SHOW"
   },
   {
     "name": "John Fugelsang",
