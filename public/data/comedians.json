@@ -1034,8 +1034,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/glorelys-mora",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Glorelys_Mora_1.jpg",
-    "bio_stand": "Glorelys \"Glory\" Mora is a New York-based stand-up comedian, writer and producer. She was born on June 15th, 1990 in New York City and grew up in between the worlds of Harlem and Washington Heights, raised by parents that immigrated from the Dominican Republic. The content for her comedy is pulled directly from interactions she has had with nepotism, racism and micro-aggressions throughout life and while working in the advertising industry. Additionally, she loves to discuss her observations of white privilege, the cis female experiences and social injustices in a ‘pretty’ digestible way for audiences to reflect upon after deep laughter. She is pretty funny.",
-    "bio": "Glorelys Mora is a stand-up comedian performing in New York City. She performs at clubs across the city."
+    "bio_stand": "Glorelys \"Glory\" Mora is a New York-based stand-up comedian, writer and producer. She was born on June 15th, 1990 in New York City and grew up in between the worlds of Harlem and Washington Heights, raised by parents that immigrated from the Dominican Republic. The content for her comedy is pulled directly from interactions she has had with nepotism, racism and micro-aggressions throughout life and while working in the advertising industry. Additionally, she loves to discuss her observations of white privilege, the cis female experiences and social injustices in a ‘pretty’ digestible way for audiences to reflect upon after deep laughter. She is pretty funny."
   },
   {
     "name": "Mark Hayes",
@@ -6909,7 +6908,7 @@
   {
     "name": "Asha Ward",
     "venues": [],
-    "bio_wiki": "Asha Ward is an American comedian and writer. In 2022, she became the youngest-ever writer on the staff of Saturday Night Live."
+    "bio_wiki": "Asha Ward is a Trinidadian American comedian and writer. In 2022, she became the youngest-ever writer on the staff of Saturday Night Live."
   },
   {
     "name": "Jimmy Fowlie",
@@ -8175,6 +8174,21 @@
   },
   {
     "name": "Gadiel Del Orbe",
+    "venues": []
+  },
+  {
+    "name": "Myron Lefkowitz",
+    "venues": [],
+    "bio": "Comedy Central",
+    "tagline_cellar": "Comedy Central"
+  },
+  {
+    "name": "Carlos Sanchez",
+    "venues": [],
+    "bio_stand": "Carlos Sánchez is a stand up comic from the Dominican Republic with a 17-year career. Is known as “The Stand Up Comedy King in the Dominican Republic”. He’s known for his clean family material, about parents, wife, and kids. Carlos has sold out the most important theaters in the Dominican Republic, from 800 to 1600 people, and has opened to the hottest acts in the world, like Marc Anthony in front of seven thousand people. He has shared the stage with the most important names in comedy from Venezuela, Colombia, Cuba, and México. Has traveled to six countries and 17 cities, performing in front of different Latino communities. For “Greatest Hits” we have a very special guess Carlos (Guebin) Molina."
+  },
+  {
+    "name": "Starbomb",
     "venues": []
   }
 ]
