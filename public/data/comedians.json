@@ -3214,8 +3214,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/chanel-ali",
     "bio_stand": "Chanel Ali is a standup comedian, writer and actress living in New York City. After blossoming on the Philadelphia circuit, she quickly became a crowd favorite with her commanding stage presence and story-telling style. Her observational comedy covers her upbringing, her unique worldview, and the realities of being a polite person in the entertainment industry. Chanel has performed at the Limestone Comedy Festival and the Women in Comedy Festival, and earlier this year she filmed an episode of Night Train with Wyatt Cenac for Seeso.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Chanel_Ali.jpg",
-    "bio": "Chanel Ali is a stand-up comedian and actress. She's a regular at the Comedy Cellar and has appeared on The Late Show and Comedy Central. Known for her bold, honest comedy style."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Chanel_Ali.jpg"
   },
   {
     "name": "Che Durena",
@@ -7035,7 +7034,8 @@
     "venues": [],
     "bio": "NETFLIX IS A JOKE, HULU, SIRIUS XM,",
     "tagline_cellar": "NETFLIX IS A JOKE, HULU, SIRIUS XM,",
-    "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Sharief-Johnson-dff20b81-main-image.jpg?1743788697"
+    "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Sharief-Johnson-dff20b81-main-image.jpg?1743788697",
+    "bio_stand": "Sharief Johnson is a young and up and coming American stand-up comedian, writer, actor, and producer. Sharief was born in Bayonne, NJ, April, 20, 1993. Sharief split his youth between Georgia and New Jersey. Growing up in unfortunate circumstances he found happiness in laughter! No matter when or where he was, he was always looking to make people laugh! With this mindset, destiny brought him to the stage where he could do just that and the start of his comedy career began! Sharief Johnson has performed at major clubs all over, such as The Stress Factory in New Bruinswick, NJ, Gotham Comedy Club in New York City, and Carolines on Broadway just to name a few. This is where he developed his clever style of unique improv, theatrical, and storytelling comedy. Johnson’s most recent accomplishment is winning comedy competition that was produced by Sirius Xm Radio and the Sway in the morning show on SHADE 45. During the competition the management at Carolines on Broadway took notice and Johnson actually will be headlining the prestigious comedy club April 17th, 2018! Sharief can be seen working comedy clubs and colleges across the country."
   },
   {
     "name": "Chris Lamberth",
@@ -8189,6 +8189,81 @@
   },
   {
     "name": "Starbomb",
+    "venues": []
+  },
+  {
+    "name": "Jimmy McCullough",
+    "venues": []
+  },
+  {
+    "name": "Chris Miceli",
+    "venues": []
+  },
+  {
+    "name": "Danny Hallinan",
+    "venues": []
+  },
+  {
+    "name": "Adam Thomas",
+    "venues": []
+  },
+  {
+    "name": "Michael Fleming",
+    "venues": []
+  },
+  {
+    "name": "Mariel O’Reilly",
+    "venues": []
+  },
+  {
+    "name": "Riley Flanagan",
+    "venues": []
+  },
+  {
+    "name": "Tanner Simon",
+    "venues": []
+  },
+  {
+    "name": "James Patrick",
+    "venues": []
+  },
+  {
+    "name": "Ryan Rizzuti",
+    "venues": []
+  },
+  {
+    "name": "Bernice Ye",
+    "venues": []
+  },
+  {
+    "name": "Linette Palladino",
+    "venues": [],
+    "bio_stand": "Linette has been a performer all her life. She played the french horn, sang in the choir and acted all the way from grammar school through college. After graduating from Fordham University it was time to fulfill her military obligation. Linette is a Major in the US Army and has deployed overseas three times. Linette's comedy draws on her life as a mom, wife and veteran. She has performed at clubs and festivals all over the United States, and internationally. From Iceland to Hong Kong and for the troops in Iraq, Linette has seen it all. She has opened for some of America's best comics including Dave Attell, and Carole Montgomery. She was one of five nationwide finalists in the HBO Latino Stand-up Competition, wepaaaa! And, most recently, she earned the top block as Jersey's Funniest Female."
+  },
+  {
+    "name": "Gina Hyena",
+    "venues": []
+  },
+  {
+    "name": "Katrina Davis",
+    "venues": [],
+    "bio_stand": "KATRINA DAVIS is a fun-loving writer and comedian with a dark, but ultimately freeing and funny take on the world. Baltimore-born and Florida-raised, her comedy covers everything from heartbreak and hurricane preparation, to fist-fighting for the fine arts. Katrina Davis was named one of Time Out LA’s Comedians to Watch 2019, had one of the most watched videos from Comedy Central in 2022, and was deemed a Comedian You Should and Will Know in 2023 by Vulture and New York Magazine. She acts as comedy relief on the art history podcast Podvant Garde and is also featured on Comedy Central, Don't Tell Comedy, America’s Got Talent (2017), and the Seed & Spark comedy special Everything Is Fine. Her debut comedy special, Figuring It Out, was named in NPR’s End of Year Stand-Up Comedy Spectacular on Bullseye with Jesse Thorn and is now available for streaming on Amazon Prime and other platforms."
+  },
+  {
+    "name": "Malorie Bryant",
+    "venues": [],
+    "bio_stand": "Malorie like calorie… I’m a California native, but I’ve called NYC home for 15 years. I have BFA from NYU Tisch School of the Arts: Musical Theatre. Not long after graduating, I fell out of love with MT, and comedy saved my life. My voice centers on silly, feel good comedy— exposing my failures, falling to pieces, and wrestling to put myself back together again. Unapologetically, unabashedly, coloring outside the lines. I’m the producer of the NBC featured Rooftop Comedy Show: Mad Love Comedy"
+  },
+  {
+    "name": "David J. Hamilton",
+    "venues": []
+  },
+  {
+    "name": "Mike Logan",
+    "venues": []
+  },
+  {
+    "name": "Ed Rodriguez",
     "venues": []
   }
 ]
