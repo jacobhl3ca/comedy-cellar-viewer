@@ -1,54 +1,102 @@
 {
-  "generated_at": "2026-05-21T16:55:03",
-  "today": "2026-05-21",
+  "generated_at": "2026-06-02T12:05:32",
+  "today": "2026-06-02",
   "shows": [
     {
-      "id": "87e946a04a3f75af",
+      "id": "4d59029a6653184f",
       "artists": [
-        "Kenny Garrett"
+        "Chris Potter"
       ],
-      "date": "2026-05-22",
-      "venue_label": "Blue Note NYC",
-      "title": "Kenny Garrett",
-      "city": "New York, NY",
-      "source": "artist",
-      "ticket_url": "https://www.bluenotejazz.com/nyc/shows.html"
-    },
-    {
-      "id": "92582deb3ef80226",
-      "artists": [
-        "Kenny Garrett"
-      ],
-      "date": "2026-05-23",
-      "venue_label": "Blue Note NYC",
-      "title": "Kenny Garrett",
-      "city": "New York, NY",
-      "source": "artist",
-      "ticket_url": "https://www.bluenotejazz.com/nyc/shows.html"
-    },
-    {
-      "id": "28bf5635bd2a6644",
-      "artists": [
-        "Kenny Garrett"
-      ],
-      "date": "2026-05-24",
-      "venue_label": "Blue Note NYC",
-      "title": "Kenny Garrett",
-      "city": "New York, NY",
-      "source": "artist",
-      "ticket_url": "https://www.bluenotejazz.com/nyc/shows.html"
-    },
-    {
-      "id": "266d4ebfca20406c",
-      "artists": [
-        "Ambrose Akinmusire"
-      ],
-      "date": "2026-05-26",
-      "venue_label": "Village Vanguard",
-      "title": "AMBROSE AKINMUSIRE",
-      "city": "Village Vanguard",
+      "date": "2026-06-03",
+      "venue_label": "Smoke Jazz",
+      "title": "Chris Potter \u2013 tenor saxophone (thu & fri)",
+      "city": "Smoke Jazz",
       "source": "venue",
-      "ticket_url": "https://villagevanguard.com/"
+      "ticket_url": "https://smokejazz.com/calendar/"
+    },
+    {
+      "id": "5b422611c3d2d707",
+      "artists": [
+        "John Patitucci"
+      ],
+      "date": "2026-06-03",
+      "venue_label": "Smoke Jazz",
+      "title": "John Patitucci Quartet featuring special guests",
+      "city": "Smoke Jazz",
+      "source": "venue",
+      "ticket_url": "https://smokejazz.com/calendar/"
+    },
+    {
+      "id": "74eef8ae8d9d9f52",
+      "artists": [
+        "Chris Potter"
+      ],
+      "date": "2026-06-04",
+      "venue_label": "Smoke Jazz",
+      "title": "Chris Potter \u2013 tenor saxophone (thu & fri)",
+      "city": "Smoke Jazz",
+      "source": "venue",
+      "ticket_url": "https://smokejazz.com/calendar/"
+    },
+    {
+      "id": "be25496cbf6638af",
+      "artists": [
+        "John Patitucci"
+      ],
+      "date": "2026-06-04",
+      "venue_label": "Smoke Jazz",
+      "title": "John Patitucci Quartet featuring special guests",
+      "city": "Smoke Jazz",
+      "source": "venue",
+      "ticket_url": "https://smokejazz.com/calendar/"
+    },
+    {
+      "id": "929631fdcf0fb175",
+      "artists": [
+        "Chris Potter"
+      ],
+      "date": "2026-06-05",
+      "venue_label": "Smoke Jazz",
+      "title": "Chris Potter \u2013 tenor saxophone (thu & fri)",
+      "city": "Smoke Jazz",
+      "source": "venue",
+      "ticket_url": "https://smokejazz.com/calendar/"
+    },
+    {
+      "id": "7c24aa8610f4f459",
+      "artists": [
+        "John Patitucci"
+      ],
+      "date": "2026-06-05",
+      "venue_label": "Smoke Jazz",
+      "title": "John Patitucci Quartet featuring special guests",
+      "city": "Smoke Jazz",
+      "source": "venue",
+      "ticket_url": "https://smokejazz.com/calendar/"
+    },
+    {
+      "id": "2fa9f074a22ec354",
+      "artists": [
+        "Chris Potter"
+      ],
+      "date": "2026-06-06",
+      "venue_label": "Smoke Jazz",
+      "title": "Chris Potter \u2013 tenor saxophone (thu & fri)",
+      "city": "Smoke Jazz",
+      "source": "venue",
+      "ticket_url": "https://smokejazz.com/calendar/"
+    },
+    {
+      "id": "5dcbbabe5ccbfe2f",
+      "artists": [
+        "John Patitucci"
+      ],
+      "date": "2026-06-06",
+      "venue_label": "Smoke Jazz",
+      "title": "John Patitucci Quartet featuring special guests",
+      "city": "Smoke Jazz",
+      "source": "venue",
+      "ticket_url": "https://smokejazz.com/calendar/"
     },
     {
       "id": "ca833955aacb3937",
@@ -151,6 +199,19 @@
       "ticket_url": "https://mezzrow.com/events/"
     },
     {
+      "id": "cae3e2a0fbdca59f",
+      "artists": [
+        "Brad Mehldau",
+        "Joe Martin"
+      ],
+      "date": "2026-06-29",
+      "venue_label": "Jazzcultural",
+      "title": "Ari Hoenig Trio feat. Brad Mehldau and Joe Martin",
+      "city": "Jazzcultural (SmallsLIVE)",
+      "source": "venue",
+      "ticket_url": "https://jazzculturaltheatre.com/"
+    },
+    {
       "id": "6475195aa07a6185",
       "artists": [
         "Gilad Hekselman",
@@ -205,6 +266,21 @@
       "ticket_url": null
     },
     {
+      "id": "f610c986aa590a9d",
+      "artists": [
+        "Bill Frisell",
+        "Charles Lloyd",
+        "Kweku Sumbry",
+        "Larry Grenadier"
+      ],
+      "date": "2026-11-18",
+      "venue_label": "Blue Note NYC",
+      "title": "Charles Lloyd Quartet featuring Bill Frisell, Larry Grenadier, Kweku Sumbry",
+      "city": "November 18-19, 2026 \u2013 Blue Note \u2013 New York, NY",
+      "source": "artist",
+      "ticket_url": "https://www.bluenotejazz.com/nyc/shows.html"
+    },
+    {
       "id": "c4fd72e354fdf14c",
       "artists": [
         "Adam Deitch",
@@ -216,6 +292,21 @@
       "venue_label": "Other",
       "title": "ELECTROSPECTIVE feat. Adam Deitch, Larry Goldings, Oteil Burbridge",
       "city": "New York, NY",
+      "source": "artist",
+      "ticket_url": null
+    },
+    {
+      "id": "a6aa9c9e2ac0e543",
+      "artists": [
+        "Bill Frisell",
+        "Charles Lloyd",
+        "Kweku Sumbry",
+        "Larry Grenadier"
+      ],
+      "date": "2026-11-21",
+      "venue_label": "Other",
+      "title": "Charles Lloyd Quartet featuring Bill Frisell, Larry Grenadier, Kweku Sumbry",
+      "city": "November 21, 2026 \u2013 NJPAC \u2013 Newark, NJ",
       "source": "artist",
       "ticket_url": null
     }

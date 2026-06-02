@@ -44,6 +44,8 @@
   initSettingsJingle();
   updateSettingsBtnState();
   updateShareBtn();
+  applyPathToSource();
+  syncUrlToSource(activeSource);
   renderSourceTabs();
   renderTabs();
   renderShows();
@@ -95,6 +97,7 @@
       // Unselect: clicking active source goes back to All Venues
       const newSource = btn.dataset.source;
       activeSource = (newSource === activeSource && newSource !== 'all') ? 'all' : newSource;
+      syncUrlToSource(activeSource);
       activeVenue = 'all';
       activeStandRoom = 'all';
       activeNeighborhood = 'all';
@@ -225,6 +228,7 @@
     activeBigVenue = 'all';
     activeNeighborhood = 'all';
     activeComedianFilter = null;
+    activeSearchQuery = '';
     updateResetBtn();
     renderShows();
   });
@@ -369,18 +373,64 @@
 
 init();
 
+// ---- Deep-linkable venue views: URL path <-> activeSource tab ----
+// Each venue tab gets its own shareable URL (/cellar, /stand, /big, /comics).
+// vercel.json rewrites these to index.html, so they all load the same SPA — the
+// path only chooses which tab is active. The prefs hash (#p=...) lives in a
+// separate slot, so path and shared-picks never collide (e.g. /cellar#p=abc).
+const VIEW_BY_PATH = {
+  '/cellar': 'cellar',
+  '/stand': 'the-stand',
+  '/big': 'big-shows',
+  '/comics': 'comedians',
+};
+const VIEW_META = {
+  'all':       { path: '/',       title: 'Tonight NYC — Comedy Lineups' },
+  'cellar':    { path: '/cellar', title: 'Comedy Cellar Tonight — Lineups | Tonight NYC' },
+  'the-stand': { path: '/stand',  title: 'The Stand Tonight — Lineups | Tonight NYC' },
+  'big-shows': { path: '/big',    title: 'Big Comedy Shows in NYC | Tonight NYC' },
+  'comedians': { path: '/comics', title: "NYC Comedians — Who's On Tonight | Tonight NYC" },
+};
+
+function viewSourceFromPath() {
+  const p = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
+  return VIEW_BY_PATH[p] || null;
+}
+
+// Set the active tab from the URL path. An explicit path wins over saved defaultTab.
+function applyPathToSource() {
+  const s = viewSourceFromPath();
+  if (s) activeSource = s;
+}
+
+// Reflect the active tab in the URL path + document title, preserving the prefs hash.
+function syncUrlToSource(source) {
+  const meta = VIEW_META[source] || VIEW_META.all;
+  const current = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
+  if (current !== meta.path) {
+    history.replaceState(null, '', meta.path + window.location.hash);
+  }
+  document.title = meta.title;
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) {
+    canonical.setAttribute('href', 'https://tonightnyc.com' + (meta.path === '/' ? '' : meta.path));
+  }
+}
+
 function resetToHome() {
   if (typeof getMode === 'function' && getMode() === 'jazz') {
     if (typeof jazzResetHome === 'function') jazzResetHome();
     return;
   }
   activeSource = 'all';
+  syncUrlToSource('all');
   activeDate = 'all';
   activeVenue = 'all';
   activeStandRoom = 'all';
   activeBigVenue = 'all';
   activeNeighborhood = 'all';
   activeComedianFilter = null;
+  activeSearchQuery = '';
   renderSourceTabs();
   renderTabs();
   renderShows();
@@ -569,8 +619,8 @@ function pwaInstall() {
   });
 }
 
-// Cmd+F search popup — commented out for now, revisit as non-overriding suggestion popup
-// Intent: show a suggestion popup pointing to My Comedians / filter, without overriding native Cmd+F
+// Cmd+F keyboard shortcut intentionally NOT bound — native browser find should win.
+// The popup is reached via the toolbar search-icon button (showSearchPopup, exposed below).
 /*
 document.addEventListener('keydown', (e) => {
   if ((e.metaKey || e.ctrlKey) && e.key === 'f') {
@@ -578,38 +628,76 @@ document.addEventListener('keydown', (e) => {
     showSearchPopup();
   }
 });
+*/
+
+// Build a unified searchable index: comedians, named shows, and venues.
+function _buildSearchIndex() {
+  const items = [];
+  const seen = new Set();
+  const push = (label, type) => {
+    if (!label) return;
+    const key = type + '|' + label.toLowerCase();
+    if (seen.has(key)) return;
+    seen.add(key);
+    items.push({ label, type });
+  };
+  if (typeof allComediansSeen !== 'undefined') [...allComediansSeen].forEach(n => push(n, 'comedian'));
+  ['Comedy Cellar', 'The Stand', 'Gotham Comedy Club', 'NY Comedy Club'].forEach(v => push(v, 'venue'));
+  try { (typeof bigShows !== 'undefined' ? bigShows : []).forEach(e => { push(e.venue, 'venue'); push(e.title, 'show'); }); } catch {}
+  try { (typeof standShows !== 'undefined' ? standShows : []).forEach(s => push(s.title, 'show')); } catch {}
+  try { (typeof gothamShows !== 'undefined' ? gothamShows : []).forEach(s => push(s.title, 'show')); } catch {}
+  return items;
+}
 
 function showSearchPopup() {
   let overlay = document.getElementById('search-popup-overlay');
   if (overlay) { overlay.remove(); return; }
+  const index = _buildSearchIndex();
   overlay = document.createElement('div');
   overlay.id = 'search-popup-overlay';
   overlay.innerHTML = `
     <div class="search-popup">
-      <input type="text" id="search-popup-input" placeholder="Search comedians..." autocomplete="off" />
+      <input type="text" id="search-popup-input" placeholder="Search comedians, shows, venues…" autocomplete="off" />
       <div id="search-popup-results"></div>
       <div class="search-popup-actions">
-        <button onclick="openModal();document.getElementById('search-popup-overlay')?.remove();">My Comedians</button>
-        <button onclick="document.getElementById('sort-select').value='faves';document.getElementById('sort-select').dispatchEvent(new Event('change'));document.getElementById('search-popup-overlay')?.remove();">Sort by Faves</button>
+        <button onclick="openModal();document.getElementById('search-popup-overlay')?.remove();"><b>My</b> Comedians</button>
+        <button onclick="document.querySelector('.venue-source-tab[data-source=comedians]')?.click();document.getElementById('search-popup-overlay')?.remove();"><b>All</b> Comedians</button>
       </div>
     </div>
   `;
   document.body.appendChild(overlay);
+  const close = () => overlay.remove();
+  const esc = s => String(s).replace(/'/g, "\\'");
+  const escHtml = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const input = document.getElementById('search-popup-input');
   input.focus();
+  const TYPE_LABEL = { comedian: 'Comedian', show: 'Show', venue: 'Venue' };
+  const TYPE_RANK = { comedian: 0, show: 1, venue: 2 };
   input.addEventListener('input', () => {
     const q = input.value.toLowerCase().trim();
     const results = document.getElementById('search-popup-results');
     if (!q) { results.innerHTML = ''; return; }
-    const matches = [...allComediansSeen].filter(n => n.toLowerCase().includes(q)).slice(0, 8);
-    results.innerHTML = matches.map(n =>
-      `<button class="search-result-item" onclick="filterByComedian('${n.replace(/'/g, "\\'")}');document.getElementById('search-popup-overlay')?.remove();">${n}</button>`
-    ).join('');
+    const matches = index
+      .filter(it => it.label.toLowerCase().includes(q))
+      .sort((a, b) => (TYPE_RANK[a.type] - TYPE_RANK[b.type]) || a.label.localeCompare(b.label))
+      .slice(0, 10);
+    // For comedians use exact filterByComedian; for shows/venues use free-text search.
+    results.innerHTML = matches.map(it => {
+      const action = it.type === 'comedian'
+        ? `filterByComedian('${esc(it.label)}')`
+        : `setSearchQuery('${esc(it.label)}')`;
+      return `<button class="search-result-item" onclick="${action};document.getElementById('search-popup-overlay')?.remove();">${escHtml(it.label)}<span class="search-result-type">${TYPE_LABEL[it.type]}</span></button>`;
+    }).join('') || `<button class="search-result-item" onclick="setSearchQuery('${esc(q)}');document.getElementById('search-popup-overlay')?.remove();">Search all for “${escHtml(q)}”</button>`;
   });
-  input.addEventListener('keydown', (e) => { if (e.key === 'Escape') overlay.remove(); });
-  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { close(); return; }
+    if (e.key === 'Enter') {
+      const q = input.value.trim();
+      if (q) { setSearchQuery(q); close(); }
+    }
+  });
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
 }
-*/
 
 // Expose functions needed by inline onclick handlers (terser mangles names)
 window.openModal = openModal;
@@ -623,9 +711,12 @@ window.setStandRoom = setStandRoom;
 window.setBigVenue = setBigVenue;
 window.toggleAlertBtn = toggleAlertBtn;
 window.filterByComedian = filterByComedian;
+window.setSearchQuery = setSearchQuery;
+window.clearSearch = clearSearch;
 window.trackReserve = trackReserve;
 window.removeAlert = removeAlert;
 window.expandBioInPanel = expandBioInPanel;
+window.showSearchPopup = showSearchPopup;
 window.pwaInstall = pwaInstall;
 
 // In-place refresh used by pull-to-refresh: refetch data sources, re-parse
@@ -1000,6 +1091,7 @@ async function refreshShowsInPlace() {
     // Switch venue tab + reset date when starting tab changes.
     if (typeof activeSource !== 'undefined' && settings.defaultTab) {
       activeSource = settings.defaultTab;
+      if (typeof syncUrlToSource === 'function') syncUrlToSource(activeSource);
     }
     if (typeof renderSourceTabs === 'function') renderSourceTabs();
     if (typeof renderTabs === 'function') renderTabs();

@@ -67,7 +67,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=ce368b2">
+  <link rel="stylesheet" href="style.min.css?v=e6942d1">
   <script>
     (function() {
       const root = document.documentElement;
@@ -179,7 +179,7 @@
             <span class="big-pics-label">Big Pictures</span>
           </label>
           <select id="soldout-filter" class="sort-select" onchange="document.getElementById('hide-sold-out').checked = (this.value === 'hide'); updateResetBtn(); renderShows();">
-            <option value="all">All shows</option>
+            <option value="all">Incl. sold-out</option>
             <option value="hide">Hide sold-out</option>
             <option value="only">Only sold-out</option>
           </select>
@@ -187,6 +187,9 @@
             <option value="none">Sort by...</option>
             <option value="faves">Top rated</option>
           </select>
+          <button class="toolbar-icon-btn" id="search-btn" onclick="showSearchPopup()" title="Search comedians" aria-label="Search comedians">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </button>
           <button class="toolbar-btn" id="filters-toggle">Filters ▾</button>
         </div>
       </div>
@@ -474,7 +477,7 @@
     <button id="pwa-install-btn" onclick="pwaInstall()" style="display:none;"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Add to Home Screen</button>
   </footer>
 
-  <script defer src="app.min.js?v=ce368b2"></script>
+  <script defer src="app.min.js?v=e6942d1"></script>
   <!-- Vercel Web Analytics + Speed Insights + Cloudflare Web Analytics — gated to skip Capacitor native shell so iOS app stays "No data collected" on App Store -->
   <script>
     if (!window.Capacitor?.isNativePlatform?.()) {

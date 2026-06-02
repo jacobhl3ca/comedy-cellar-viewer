@@ -358,6 +358,14 @@ html.ios-mobile.native-ios .header-share-btn { right: 46px; }
 }
 .toolbar-btn:hover { border-color: var(--accent); color: var(--text); }
 .toolbar-btn.active { border-color: var(--accent); color: var(--accent); }
+.toolbar-icon-btn {
+  display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+  padding: 6px 9px; border-radius: 6px;
+  background: var(--surface2); border: 1px solid var(--border); color: var(--text-dim);
+  cursor: pointer; transition: all 0.15s;
+}
+.toolbar-icon-btn svg { display: block; }
+.toolbar-icon-btn:hover { border-color: var(--accent); color: var(--accent); }
 
 /* Filters inline — sits left of Reset All in same row */
 .filters-inline {
@@ -1274,7 +1282,7 @@ html.native-ios .app-store-badge-link { display: none; }
 #search-popup-overlay {
   position: fixed; inset: 0; z-index: 10000;
   background: rgba(0,0,0,0.5); display: flex;
-  justify-content: center; padding-top: 80px;
+  align-items: center; justify-content: center; padding: 20px;
 }
 .search-popup {
   background: var(--surface); border: 1px solid var(--border);
@@ -1291,10 +1299,15 @@ html.native-ios .app-store-badge-link { display: none; }
   display: flex; flex-direction: column; gap: 2px; margin-top: 8px; max-height: 240px; overflow-y: auto;
 }
 .search-result-item {
-  background: none; border: none; color: var(--text); padding: 8px 12px;
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  width: 100%; background: none; border: none; color: var(--text); padding: 8px 12px;
   text-align: left; font-size: 14px; border-radius: 6px; cursor: pointer;
 }
 .search-result-item:hover { background: var(--surface2); }
+.search-result-type {
+  flex-shrink: 0; font-size: 11px; color: var(--text-dim); text-transform: uppercase;
+  letter-spacing: 0.04em; border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px;
+}
 .search-popup-actions {
   display: flex; gap: 8px; margin-top: 12px; border-top: 1px solid var(--border); padding-top: 12px;
 }
@@ -1388,6 +1401,12 @@ html.native-ios .dir-featured-heading { top: calc(60px + var(--dir-ctrl-h, 0px))
 /* Inline SVG icon helper (replaces emoji that render as ? on iOS) */
 .ico { width: 14px; height: 14px; display: inline-block; vertical-align: -2px; flex-shrink: 0; }
 .exp-btn .ico { margin-right: 2px; }
+/* Notify bell: square icon button — equal padding around a square block icon */
+.comedian-expanded .exp-btn.exp-btn-bell {
+  display: inline-flex; align-items: center; justify-content: center;
+  align-self: center; padding: 6px 8px; line-height: 0;
+}
+.exp-btn.exp-btn-bell .ico { margin: 0; width: 16px; height: 16px; vertical-align: 0; display: block; }
 .dir-btn .ico { width: 16px; height: 16px; vertical-align: middle; }
 .fav-count .ico { width: 12px; height: 12px; vertical-align: -1px; }
 /* Stars are always gold (filled when favorited, outline when not). Other icons keep currentColor. */

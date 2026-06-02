@@ -13,12 +13,17 @@
       "has": [{ "type": "host", "value": "www.cellartonight.com" }],
       "destination": "https://tonightnyc.com/:path",
       "permanent": true
-    }
+    },
+    { "source": "/comedians", "destination": "/comics", "permanent": true }
   ],
   "rewrites": [
     { "source": "/api/lineup", "destination": "/api/lineup" },
     { "source": "/privacy", "destination": "/privacy.html" },
-    { "source": "/support", "destination": "/support.html" }
+    { "source": "/support", "destination": "/support.html" },
+    { "source": "/cellar", "destination": "/index.html" },
+    { "source": "/stand", "destination": "/index.html" },
+    { "source": "/big", "destination": "/index.html" },
+    { "source": "/comics", "destination": "/index.html" }
   ],
   "headers": [
     {

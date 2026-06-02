@@ -362,14 +362,19 @@ function renderSourceTabs() {
 function _insertFilterBanner(container) {
   const old = document.getElementById('comedian-filter-banner-wrap');
   if (old) old.remove();
-  if (!activeComedianFilter) return;
+  if (!activeComedianFilter && !activeSearchQuery) return;
   const wrap = document.createElement('div');
   wrap.id = 'comedian-filter-banner-wrap';
   wrap.className = 'comedian-filter-banner-wrap';
   const banner = document.createElement('div');
   banner.id = 'comedian-filter-banner';
   banner.className = 'comedian-filter-banner';
-  banner.innerHTML = `Showing shows with <strong>${activeComedianFilter}</strong> <button onclick="filterByComedian('${activeComedianFilter.replace(/'/g, "\\'")}')">${ICON.x} Clear</button>`;
+  if (activeComedianFilter) {
+    banner.innerHTML = `Showing shows with <strong>${activeComedianFilter}</strong> <button onclick="filterByComedian('${activeComedianFilter.replace(/'/g, "\\'")}')">${ICON.x} Clear</button>`;
+  } else {
+    const safe = activeSearchQuery.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    banner.innerHTML = `Search: <strong>${safe}</strong> <button onclick="clearSearch()">${ICON.x} Clear</button>`;
+  }
   wrap.appendChild(banner);
   container.prepend(wrap);
 }
@@ -539,6 +544,7 @@ function renderShowCard(show, hideSkips, onlyFavs, dateStr) {
   try {
   // Comedian filter
   if (activeComedianFilter && !show.comedians.some(c => c.toLowerCase() === activeComedianFilter.toLowerCase())) return '';
+  if (!showMatchesSearch(show, 'Comedy Cellar')) return '';
 
   // Hide past shows (2+ hours ago)
   const showDateStr = dateStr || activeDate;
@@ -921,6 +927,7 @@ function renderStandShowCard(show) {
   try {
   // Comedian filter
   if (activeComedianFilter && !show.comedians.some(c => c.toLowerCase() === activeComedianFilter.toLowerCase())) return '';
+  if (!showMatchesSearch(show, 'The Stand')) return '';
 
   const soldOut = !!show.soldout;
   if (shouldHideShow(soldOut)) return '';
@@ -987,6 +994,7 @@ function renderGothamShows(container) {
     ? (activeDate === 'calendar' ? gothamShows.filter(s => calendarSelectedDates.has(s.date)) : gothamShows)
     : gothamShows.filter(s => s.date === activeDate);
   filtered = filtered.filter(s => !isShowPast(s.date, s.time));
+  filtered = filtered.filter(s => showMatchesSearch(s, 'Gotham Comedy Club'));
 
   let html = '<div class="schedule-view">';
   let lastDate = '';
@@ -1096,6 +1104,11 @@ function renderAllVenues(container) {
       if (item.show.performers && item.show.performers.toLowerCase().includes(filterLower)) return true;
       return false;
     });
+  }
+
+  // Free-text search across comedians, show names, and venues
+  if (activeSearchQuery) {
+    allItems = allItems.filter(item => showMatchesSearch(item.show, VENUE_LABEL_BY_TYPE[item.type] || ''));
   }
 
   // Hide past shows (2+ hours ago)
@@ -1276,6 +1289,7 @@ function renderBigShows(container) {
     filtered = filtered.filter(e => cleanVenueName(e.venue) === activeBigVenue);
   }
   filtered = filtered.filter(e => !isShowPast(e.date, e.time));
+  filtered = filtered.filter(e => showMatchesSearch(e, 'Big Show'));
 
   // Store SeatGeek performer images in global map
   filtered.forEach(evt => {
@@ -1663,11 +1677,11 @@ function handleComedianClick(el) {
         <button class="exp-btn ${isSkipd ? 'is-skip' : ''}" onclick="setPref('${esc}','${isSkipd ? 'neutral' : 'skip'}')">
           ${isSkipd ? `${ICON.x} Skipped` : `${ICON.minus} Skip`}
         </button>
-        <button class="exp-btn ${alerted ? 'is-alert' : ''}" onclick="toggleAlertBtn('${esc}', this)">
-          ${ICON.bell} ${alerted ? 'Notifications on' : 'Notify me'}
-        </button>
         <button class="exp-btn" onclick="filterByComedian('${esc}')">
           ${ICON.search} Filter shows
+        </button>
+        <button class="exp-btn exp-btn-bell ${alerted ? 'is-alert' : ''}" onclick="toggleAlertBtn('${esc}', this)" title="${alerted ? 'Turn off email alerts' : 'Email me when this comedian is booked'}" aria-label="Notify me">
+          ${ICON.bell}
         </button>
       </div>
     </div>
@@ -1695,12 +1709,14 @@ function toggleAlertBtn(name, btn) {
   }
   toggleAlert(name);
   const alerted = isAlerted(name);
-  btn.className = 'exp-btn' + (alerted ? ' is-alert' : '');
-  btn.innerHTML = alerted ? `${ICON.bell} Notifications on` : `${ICON.bell} Notify me`;
+  btn.classList.toggle('is-alert', alerted);
+  btn.title = alerted ? 'Turn off email alerts' : 'Email me when this comedian is booked';
 }
 
 // Global filter state for comedian filtering
 let activeComedianFilter = null;
+// Free-text search across comedians, show names, and venues (set from the toolbar search popup)
+let activeSearchQuery = '';
 
 function filterByComedian(name) {
   if (activeComedianFilter === name) {
@@ -1708,12 +1724,43 @@ function filterByComedian(name) {
     activeComedianFilter = null;
   } else {
     activeComedianFilter = name;
+    activeSearchQuery = ''; // exact-comedian filter and free-text search are mutually exclusive
   }
   // Collapse expanded panel
   document.querySelectorAll('.expanded-panel').forEach(p => p.remove());
   renderShows();
   scrollToTop();
 }
+
+function setSearchQuery(q) {
+  activeSearchQuery = (q || '').toLowerCase().trim();
+  activeComedianFilter = null;
+  document.querySelectorAll('.expanded-panel').forEach(p => p.remove());
+  renderShows();
+  scrollToTop();
+}
+
+function clearSearch() {
+  activeSearchQuery = '';
+  renderShows();
+}
+
+// True if a show matches the active free-text search. venueLabel is the human venue
+// name for the show's source so queries like "cellar" or "gotham" match.
+function showMatchesSearch(show, venueLabel) {
+  if (!activeSearchQuery) return true;
+  if (!show) return false;
+  const parts = [venueLabel];
+  if (show.comedians) parts.push(...show.comedians);
+  if (show.title) parts.push(show.title);
+  if (show.venue) parts.push(show.venue);
+  if (show.room) parts.push(show.room);
+  if (show.performers) parts.push(show.performers);
+  if (show.description) parts.push(show.description);
+  return parts.filter(Boolean).join(' | ').toLowerCase().includes(activeSearchQuery);
+}
+
+const VENUE_LABEL_BY_TYPE = { cellar: 'Comedy Cellar', stand: 'The Stand', gotham: 'Gotham Comedy Club', big: 'Big Show', nycc: 'NY Comedy Club' };
 
 function setPref(name, type) {
   const prefs = loadPrefs();
