@@ -3196,8 +3196,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/carlos-hernandez",
     "bio_stand": "Carlos Hernández (Only in Dade, ABC, NBC, Telemundo) is a stand up comedian, improviser, and actor from Miami, FL. You may recognize him from Only in Dade’s “On The Spot” interviews, his viral Spanish Accent Challenge videos, or as his Reggaeton Star alter-ego, Yurisbel, whom he took to American Idol and ended up receiving a golden ticket from Katy Perry, Luke Bryan and Lionel Richie without hitting a single note. His energy, fast pace, and unique take on life as a latino man (that looks like Jake Paul if he gave up) is infectious. He's trained with iO Chicago, The Groundlings, Second City, UCB, and JTF. He’s opened for Michael Rapapport, Tim Dillon, Aida Rodriguez, Craig Robinson, Carlos Mencia, amongst others. He's also appeared in various films, TV/online series, and national commercials for Toyota, Sedano's, Boost Mobile, Spectrum, US Cellular, Zumba, Mattress Firm, and FIFA - amongst others. You can see him on NBC and Telemundo every week recap-ing the ridiculousness that is Miami on ONLYinDADE, our through his On The Spot man-on-the-street and celebrity interviews.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/carloshernandez.jpg",
-    "bio": "Carlos Hernandez is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/carloshernandez.jpg"
   },
   {
     "name": "Carolina Montesquieu",
@@ -8298,6 +8297,14 @@
   },
   {
     "name": "Nicole Byer",
+    "venues": []
+  },
+  {
+    "name": "NY Laughs Fest",
+    "venues": []
+  },
+  {
+    "name": "Julio Torres",
     "venues": []
   }
 ]
