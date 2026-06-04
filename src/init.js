@@ -288,6 +288,13 @@
     });
   }
 
+  // Keep the toolbar capped at 3 rows; re-evaluate on resize and after fonts load.
+  let _reflowTimer = null;
+  const _scheduleReflow = () => { clearTimeout(_reflowTimer); _reflowTimer = setTimeout(reflowToolbar, 120); };
+  window.addEventListener('resize', _scheduleReflow);
+  window.addEventListener('load', reflowToolbar);
+  if (typeof reflowToolbar === 'function') reflowToolbar();
+
   async function buildShareUrl() {
     // Unified format includes prefs + non-default settings.
     if (typeof window.__tonightNycBuildShareLink === 'function') {

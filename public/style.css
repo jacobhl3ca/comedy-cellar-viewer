@@ -349,6 +349,7 @@ html.ios-mobile.native-ios .header-share-btn { right: 46px; }
 .toolbar-spacer { flex: 1; }
 .toolbar-right-group {
   display: flex; align-items: center; gap: 8px; margin-left: auto;
+  flex-wrap: wrap; justify-content: flex-end;
 }
 .toolbar-toggle { flex-shrink: 0; }
 .toolbar-btn {
@@ -358,6 +359,8 @@ html.ios-mobile.native-ios .header-share-btn { right: 46px; }
 }
 .toolbar-btn:hover { border-color: var(--accent); color: var(--text); }
 .toolbar-btn.active { border-color: var(--accent); color: var(--accent); }
+/* Filters button holds extra controls that were rolled up to fit 3 rows. */
+.toolbar-btn.has-rolled-up { border-color: var(--accent); }
 .toolbar-icon-btn {
   display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
   padding: 6px 9px; border-radius: 6px;

@@ -67,7 +67,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=d4187a5">
+  <link rel="stylesheet" href="style.min.css?v=d90dc40">
   <script>
     (function() {
       const root = document.documentElement;
@@ -174,8 +174,8 @@
           </span>
         </label>
         <div class="toolbar-spacer"></div>
-        <div class="toolbar-right-group">
-          <label class="toggle toolbar-toggle">
+        <div class="toolbar-right-group" id="toolbar-right-group">
+          <label class="toggle toolbar-toggle" id="big-pics-toggle">
             <input type="checkbox" id="picture-mode">
             <span class="big-pics-label">Big Pics</span>
           </label>
@@ -185,7 +185,7 @@
             <option value="only">Only sold-out</option>
           </select>
           <select id="sort-select" class="sort-select">
-            <option value="none">Sort by...</option>
+            <option value="none">Sort</option>
             <option value="faves">Top rated</option>
           </select>
           <button class="toolbar-icon-btn" id="search-btn" onclick="showSearchPopup()" title="Search comedians" aria-label="Search comedians">
@@ -484,7 +484,7 @@
     <button id="pwa-install-btn" onclick="pwaInstall()" style="display:none;"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Add to Home Screen</button>
   </footer>
 
-  <script defer src="app.min.js?v=d4187a5"></script>
+  <script defer src="app.min.js?v=d90dc40"></script>
   <!-- Vercel Web Analytics + Speed Insights + Cloudflare Web Analytics — gated to skip Capacitor native shell so iOS app stays "No data collected" on App Store -->
   <script>
     if (!window.Capacitor?.isNativePlatform?.()) {

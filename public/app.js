@@ -2652,6 +2652,52 @@ function setNeighborhood(nb) {
   renderShows();
 }
 
+// ---- Responsive toolbar: keep it to <=3 rows. When the controls would spill
+//      onto a 4th row, roll the secondary ones (Big Pics, sold-out, Sort) into
+//      the Filters dropdown; the search + Filters buttons always stay visible. ----
+const TOOLBAR_COLLAPSIBLE = ['big-pics-toggle', 'soldout-filter', 'sort-select'];
+
+function _toolbarRowCount() {
+  const rg = document.getElementById('toolbar-right-group');
+  const items = [
+    document.getElementById('open-settings'),
+    document.getElementById('quick-mode-label'),
+    ...(rg ? Array.from(rg.children) : []),
+  ].filter(el => el && el.getClientRects().length);
+  if (!items.length) return 1;
+  // align-items:center means same-row items share a center; bucket centers ~rows.
+  const centers = items
+    .map(el => { const r = el.getBoundingClientRect(); return r.top + r.height / 2; })
+    .sort((a, b) => a - b);
+  let rows = 0, last = -1e9;
+  for (const c of centers) { if (c - last > 18) { rows++; last = c; } }
+  return rows || 1;
+}
+
+function reflowToolbar() {
+  try {
+    const rg = document.getElementById('toolbar-right-group');
+    const fi = document.getElementById('filters-inline');
+    const searchBtn = document.getElementById('search-btn');
+    const filtersBtn = document.getElementById('filters-toggle');
+    if (!rg || !fi || !searchBtn) return;
+    const nodes = TOOLBAR_COLLAPSIBLE.map(id => document.getElementById(id)).filter(Boolean);
+    if (!nodes.length) return;
+    // 1) Expand: secondary controls back in the toolbar, in order, before search.
+    nodes.forEach(n => { rg.insertBefore(n, searchBtn); n.classList.remove('rolled-up'); });
+    // 2) Measure the expanded layout (sync read, no paint between moves -> no flicker).
+    if (_toolbarRowCount() > 3) {
+      // 3) Roll them into the Filters dropdown, preserving order at its front.
+      const ref = fi.firstChild;
+      nodes.forEach(n => { fi.insertBefore(n, ref); n.classList.add('rolled-up'); });
+      filtersBtn?.classList.add('has-rolled-up');
+    } else {
+      filtersBtn?.classList.remove('has-rolled-up');
+    }
+  } catch (e) { /* on any measurement error, leave the toolbar untouched */ }
+}
+window.reflowToolbar = reflowToolbar;
+
 let activeBigVenue = 'all';
 
 function renderBigShowVenueFilters() {
@@ -4265,6 +4311,13 @@ async function init() {
       updateResetBtn();
     });
   }
+
+  // Keep the toolbar capped at 3 rows; re-evaluate on resize and after fonts load.
+  let _reflowTimer = null;
+  const _scheduleReflow = () => { clearTimeout(_reflowTimer); _reflowTimer = setTimeout(reflowToolbar, 120); };
+  window.addEventListener('resize', _scheduleReflow);
+  window.addEventListener('load', reflowToolbar);
+  if (typeof reflowToolbar === 'function') reflowToolbar();
 
   async function buildShareUrl() {
     // Unified format includes prefs + non-default settings.
