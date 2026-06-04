@@ -960,6 +960,11 @@ async function main() {
   const totalSoldOut = Object.values(availability).flat().filter(s => s.soldout).length;
   log(`Saved availability-cache.json (${totalSoldOut} sold out)`);
 
+  // Capture this run's shows into the append-only past-shows archive (public/data/archive/).
+  // Wrapped so an archive hiccup never fails the nightly bake.
+  try { require('./archive-shows').run(); }
+  catch (e) { log(`archive-shows failed: ${e.message}`); }
+
   // Merge all comedian names + photo URLs
   const allComedians = new Map(); // name -> { photoUrl, tagline, source }
   for (const [name, data] of cellarComedians) {
