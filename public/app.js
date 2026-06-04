@@ -1788,6 +1788,13 @@ function _insertFilterBanner(container) {
 function renderShows() {
   const container = document.getElementById('shows-container');
 
+  // Neighborhood filter lives in the Filters dropdown; only relevant on All Venues.
+  const nbSel = document.getElementById('neighborhood-filter');
+  if (nbSel) {
+    nbSel.style.display = activeSource === 'all' ? '' : 'none';
+    nbSel.value = activeNeighborhood;
+  }
+
   // Toggle directory-mode body class for CSS-based hiding of irrelevant filters
   document.body.classList.toggle('dir-mode', activeSource === 'comedians');
 
@@ -2633,19 +2640,10 @@ function getNeighborhood(item) {
 }
 
 function renderAllVenuesSourceFilter() {
+  // Neighborhood (Downtown/Midtown/Uptown) now lives in the Filters dropdown
+  // (#neighborhood-filter); see renderShows() for its show/hide + value sync.
   const container = document.getElementById('venue-filters');
-  if (!container) return;
-  if (activeSource !== 'all') { container.innerHTML = ''; return; }
-  const opts = [
-    { key: 'all', label: 'All' },
-    { key: 'downtown', label: 'Downtown' },
-    { key: 'midtown', label: 'Midtown' },
-    { key: 'uptown', label: 'Uptown' },
-  ];
-  container.innerHTML = opts.map(o => {
-    const cls = o.key === activeNeighborhood ? 'venue-btn active' : 'venue-btn';
-    return `<button class="${cls}" onclick="setNeighborhood('${o.key}')">${o.label}</button>`;
-  }).join('');
+  if (container) container.innerHTML = '';
 }
 
 function setNeighborhood(nb) {
@@ -3795,6 +3793,7 @@ function updateResetBtn() {
     (document.getElementById('time-filter')?.value !== 'any') ||
     !!window._timeFilterMin ||
     document.getElementById('hide-sold-out')?.checked ||
+    (typeof activeNeighborhood !== 'undefined' && activeNeighborhood !== 'all') ||
     !!activeComedianFilter;
   btn.style.visibility = anyActive ? 'visible' : 'hidden';
   // Show row if reset button is visible OR filters panel is open
@@ -4218,6 +4217,16 @@ async function init() {
   document.getElementById('modal-done').addEventListener('click', closeModal);
   document.getElementById('modal-overlay').addEventListener('click', e => {
     if (e.target === e.currentTarget) closeModal();
+  });
+  // Escape closes whichever modal overlay is open (My Comedians / Settings).
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    const myComedians = document.getElementById('modal-overlay');
+    if (myComedians && !myComedians.classList.contains('hidden')) { closeModal(); return; }
+    const appSettings = document.getElementById('app-settings-overlay');
+    if (appSettings && !appSettings.classList.contains('hidden')) {
+      document.getElementById('app-settings-close')?.click();
+    }
   });
   document.getElementById('comedian-search').addEventListener('input', e => {
     renderModal(e.target.value);

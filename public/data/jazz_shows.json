@@ -1,31 +1,7 @@
 {
-  "generated_at": "2026-06-02T12:05:32",
-  "today": "2026-06-02",
+  "generated_at": "2026-06-04T08:24:59",
+  "today": "2026-06-04",
   "shows": [
-    {
-      "id": "4d59029a6653184f",
-      "artists": [
-        "Chris Potter"
-      ],
-      "date": "2026-06-03",
-      "venue_label": "Smoke Jazz",
-      "title": "Chris Potter \u2013 tenor saxophone (thu & fri)",
-      "city": "Smoke Jazz",
-      "source": "venue",
-      "ticket_url": "https://smokejazz.com/calendar/"
-    },
-    {
-      "id": "5b422611c3d2d707",
-      "artists": [
-        "John Patitucci"
-      ],
-      "date": "2026-06-03",
-      "venue_label": "Smoke Jazz",
-      "title": "John Patitucci Quartet featuring special guests",
-      "city": "Smoke Jazz",
-      "source": "venue",
-      "ticket_url": "https://smokejazz.com/calendar/"
-    },
     {
       "id": "74eef8ae8d9d9f52",
       "artists": [
@@ -197,19 +173,6 @@
       "city": "Mezzrow (SmallsLIVE)",
       "source": "venue",
       "ticket_url": "https://mezzrow.com/events/"
-    },
-    {
-      "id": "cae3e2a0fbdca59f",
-      "artists": [
-        "Brad Mehldau",
-        "Joe Martin"
-      ],
-      "date": "2026-06-29",
-      "venue_label": "Jazzcultural",
-      "title": "Ari Hoenig Trio feat. Brad Mehldau and Joe Martin",
-      "city": "Jazzcultural (SmallsLIVE)",
-      "source": "venue",
-      "ticket_url": "https://jazzculturaltheatre.com/"
     },
     {
       "id": "6475195aa07a6185",

@@ -382,6 +382,13 @@ function _insertFilterBanner(container) {
 function renderShows() {
   const container = document.getElementById('shows-container');
 
+  // Neighborhood filter lives in the Filters dropdown; only relevant on All Venues.
+  const nbSel = document.getElementById('neighborhood-filter');
+  if (nbSel) {
+    nbSel.style.display = activeSource === 'all' ? '' : 'none';
+    nbSel.value = activeNeighborhood;
+  }
+
   // Toggle directory-mode body class for CSS-based hiding of irrelevant filters
   document.body.classList.toggle('dir-mode', activeSource === 'comedians');
 
@@ -1227,19 +1234,10 @@ function getNeighborhood(item) {
 }
 
 function renderAllVenuesSourceFilter() {
+  // Neighborhood (Downtown/Midtown/Uptown) now lives in the Filters dropdown
+  // (#neighborhood-filter); see renderShows() for its show/hide + value sync.
   const container = document.getElementById('venue-filters');
-  if (!container) return;
-  if (activeSource !== 'all') { container.innerHTML = ''; return; }
-  const opts = [
-    { key: 'all', label: 'All' },
-    { key: 'downtown', label: 'Downtown' },
-    { key: 'midtown', label: 'Midtown' },
-    { key: 'uptown', label: 'Uptown' },
-  ];
-  container.innerHTML = opts.map(o => {
-    const cls = o.key === activeNeighborhood ? 'venue-btn active' : 'venue-btn';
-    return `<button class="${cls}" onclick="setNeighborhood('${o.key}')">${o.label}</button>`;
-  }).join('');
+  if (container) container.innerHTML = '';
 }
 
 function setNeighborhood(nb) {

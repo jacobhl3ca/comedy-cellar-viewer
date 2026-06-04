@@ -95,6 +95,7 @@ function updateResetBtn() {
     (document.getElementById('time-filter')?.value !== 'any') ||
     !!window._timeFilterMin ||
     document.getElementById('hide-sold-out')?.checked ||
+    (typeof activeNeighborhood !== 'undefined' && activeNeighborhood !== 'all') ||
     !!activeComedianFilter;
   btn.style.visibility = anyActive ? 'visible' : 'hidden';
   // Show row if reset button is visible OR filters panel is open

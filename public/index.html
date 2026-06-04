@@ -67,7 +67,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=e6942d1">
+  <link rel="stylesheet" href="style.min.css?v=d4187a5">
   <script>
     (function() {
       const root = document.documentElement;
@@ -176,7 +176,7 @@
         <div class="toolbar-right-group">
           <label class="toggle toolbar-toggle">
             <input type="checkbox" id="picture-mode">
-            <span class="big-pics-label">Big Pictures</span>
+            <span class="big-pics-label">Big Pics</span>
           </label>
           <select id="soldout-filter" class="sort-select" onchange="document.getElementById('hide-sold-out').checked = (this.value === 'hide'); updateResetBtn(); renderShows();">
             <option value="all">Incl. sold-out</option>
@@ -195,6 +195,12 @@
       </div>
       <div class="reset-row" id="reset-row">
         <div class="filters-inline" id="filters-inline" style="display:none;">
+          <select id="neighborhood-filter" class="bio-select" style="display:none;" onchange="setNeighborhood(this.value);">
+            <option value="all">All neighborhoods</option>
+            <option value="downtown">Downtown</option>
+            <option value="midtown">Midtown</option>
+            <option value="uptown">Uptown</option>
+          </select>
           <select id="bio-mode" class="bio-select">
             <option value="none">Bios</option>
             <option value="short">Short bios</option>
@@ -477,7 +483,7 @@
     <button id="pwa-install-btn" onclick="pwaInstall()" style="display:none;"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Add to Home Screen</button>
   </footer>
 
-  <script defer src="app.min.js?v=e6942d1"></script>
+  <script defer src="app.min.js?v=d4187a5"></script>
   <!-- Vercel Web Analytics + Speed Insights + Cloudflare Web Analytics — gated to skip Capacitor native shell so iOS app stays "No data collected" on App Store -->
   <script>
     if (!window.Capacitor?.isNativePlatform?.()) {

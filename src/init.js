@@ -240,6 +240,16 @@
   document.getElementById('modal-overlay').addEventListener('click', e => {
     if (e.target === e.currentTarget) closeModal();
   });
+  // Escape closes whichever modal overlay is open (My Comedians / Settings).
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    const myComedians = document.getElementById('modal-overlay');
+    if (myComedians && !myComedians.classList.contains('hidden')) { closeModal(); return; }
+    const appSettings = document.getElementById('app-settings-overlay');
+    if (appSettings && !appSettings.classList.contains('hidden')) {
+      document.getElementById('app-settings-close')?.click();
+    }
+  });
   document.getElementById('comedian-search').addEventListener('input', e => {
     renderModal(e.target.value);
   });
