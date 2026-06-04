@@ -90,7 +90,7 @@
     "venues": [
       "nycc"
     ],
-    "bio": "Olivia Stadler is a stand-up comedian performing in New York City. She performs at clubs across the city."
+    "bio_stand": "Olivia Stadler is a comedian and TV writer. She currently writes on the award-winning Crave original show Letterkenny. Olivia was nominated for Breakout Comic of the year in 2020, just two years after being nominated for Newcomer Comic of the year in 2018. She can be seen on Just For Laughs’ Roast Battle Canada seasons 1 & 2 on CTV Comedy and Crave. Olivia Stadler is sharp, observant, and unapologetically honest both onstage and off – she makes as much or more content for the internet as she does for the stage, so be sure to check out her socials! Olivia graduated from the TV writing program at UCLA in 2020, and since then has been working tirelessly on independent and collaborative comedy and web projects, including story-editing on an upcoming digital CBC series created by Bobbi Summers."
   },
   {
     "name": "Jared Harvin",
@@ -8081,7 +8081,8 @@
     "name": "Jenny Tian",
     "venues": [],
     "bio_wiki": "Jeanne Tian is an Australian comedian. Known for both her TikTok and YouTube presence, Tian has also performed live stand-up shows and appeared on television and podcasts.",
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Jenny_Tian_at_the_2025_Edinburgh_Festival_Fringe-27_%28cropped%29.jpg/330px-Jenny_Tian_at_the_2025_Edinburgh_Festival_Fringe-27_%28cropped%29.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Jenny_Tian_at_the_2025_Edinburgh_Festival_Fringe-27_%28cropped%29.jpg/330px-Jenny_Tian_at_the_2025_Edinburgh_Festival_Fringe-27_%28cropped%29.jpg",
+    "tagline_cellar": "DEADLINE' S 20 STAND-UPS TO KEEP AN EYE ON IN 2026, EDINBURGH FRINGE, TASKMASTER AU"
   },
   {
     "name": "Patrick Radden Keefe",
