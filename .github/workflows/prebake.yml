@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  issues: write   # for the failure-alert step below
 
 jobs:
   prebake:
@@ -48,3 +49,24 @@ jobs:
             echo "Push attempt $i failed, retrying in 10s..."
             sleep 10
           done
+
+      # Real-failure alert — only runs if a step above actually FAILED. A job
+      # that never gets a runner runs zero steps, so GitHub-infra blips stay
+      # silent here (lets native Actions emails stay muted). De-dupes onto one
+      # open issue so a sustained problem = one @-mention email.
+      - name: Alert on real failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          title="tonightnyc nightly prebake is failing"
+          run_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          stamp="$(date -u '+%Y-%m-%d %H:%M UTC')"
+          existing="$(gh issue list --state open --search "$title in:title" --json number --jq '.[0].number // empty')"
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "Still failing as of $stamp — $run_url"
+          else
+            gh issue create --title "🔴 $title" \
+              --body "$(printf 'The nightly prebake (Comedy Cellar lineups + photos) ran and **failed** — the site may serve stale data. Not a GitHub runner blip.\n\nFirst seen: %s\nRun log: %s\n\ncc @jacobhl3ca' "$stamp" "$run_url")"
+          fi
