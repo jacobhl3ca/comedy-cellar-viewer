@@ -43,12 +43,18 @@ jobs:
           git config user.email "jacobhl3ca@gmail.com"
           git add public/photos/ public/data/
           git commit -m "Prebake: nightly photo + bio update [$(date -u +%Y-%m-%d)]"
-          # Retry push up to 3 times (transient 403s from GitHub token)
+          # Retry push up to 3 times (transient 403s from GitHub token).
+          # Exit 0 the moment a push succeeds; if all 3 fail, exit 1 so the job
+          # fails and the alert step fires. (Without this the loop's last command
+          # is a sleep, so the step would exit 0 and a push-only failure — stale
+          # site, no commit landed — would go completely unnoticed.)
           for i in 1 2 3; do
-            git push && break
+            git push && exit 0
             echo "Push attempt $i failed, retrying in 10s..."
             sleep 10
           done
+          echo "All 3 push attempts failed."
+          exit 1
 
       # Real-failure alert — only runs if a step above actually FAILED. A job
       # that never gets a runner runs zero steps, so GitHub-infra blips stay
