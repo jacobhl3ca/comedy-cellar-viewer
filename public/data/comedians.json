@@ -7545,7 +7545,8 @@
   },
   {
     "name": "Reg Thomas",
-    "venues": []
+    "venues": [],
+    "tagline_cellar": "PRODUCTIVELY STONED AND COMPLEXTV"
   },
   {
     "name": "Jonah Nigh",
@@ -8360,6 +8361,43 @@
   },
   {
     "name": "Oz The Mentalist Pearlman",
+    "venues": []
+  },
+  {
+    "name": "Sydney Castillo",
+    "venues": [],
+    "bio": "HBO MAX STAND UP APRIL 21RST, WINNER FUNNIEST WINS ON TBS, THE LEAGUE ON FX, MARLON ON NBC, GAME THEORY ON HBO. CURRENTLY WRITING ON HBO SHOW GAME THEORY, THE NEIGHBORHOOD ON CBS, MARLON ON NBC, AWAKE ON NETFLIX",
+    "tagline_cellar": "HBO MAX STAND UP APRIL 21RST, WINNER FUNNIEST WINS ON TBS, THE LEAGUE ON FX, MARLON ON NBC, GAME THEORY ON HBO. CURRENTLY WRITING ON HBO SHOW GAME THEORY, THE NEIGHBORHOOD ON CBS, MARLON ON NBC, AWAKE ON NETFLIX"
+  },
+  {
+    "name": "Ryan Goodcase",
+    "venues": [],
+    "bio": "NETFLIX IS A JOKE FEST, DON'T TELL, WINNER SAN FRANCISCO INTERNATIONAL COMEDY COMPETITION, WINNER 2019 WORLD SERIES OF COMEDY",
+    "tagline_cellar": "NETFLIX IS A JOKE FEST, DON'T TELL, WINNER SAN FRANCISCO INTERNATIONAL COMEDY COMPETITION, WINNER 2019 WORLD SERIES OF COMEDY"
+  },
+  {
+    "name": "Miss Lissa",
+    "venues": [],
+    "bio_stand": "MISS LISSA IS… AN ENTERTAINER, JOURNALIST, HOST AND PRODUCER WITH AN INFECTIOUS PERSONALITY! Born and raised in Hell's Kitchen, Miss Lissa aspired to be a media personality from a young age. Although she was Introduced to the entertainment industry as a wardrobe stylist, Lissa’s spirit soon began to shift to the other side of the camera. In 2010, Miss Lissa Knows decided she would no longer remain 'behind the scenes.’ Hosting live shows became her main focus and she instantly gained recognition for her content and delivery style. Miss Lissa created / executive produced her own internet based radio show entitled, The Miss Lissa Knows Show. This quickly became a notable platform where guests spoke freely because of Lissa's relatable demeanor and comical delivery. Breaking high-profile stories put Miss Lissa in the forefront as a content curator with a unique journalistic style, attracting the attention of TMZ Live, VIBE Magazine, Bossip, MediaTakeOut, The Shade Room, VladTV, Global Grind & The Wendy Williams Show. Today, Miss Lissa continues to create captivating content. Writing screenplays, penning bios for various artists and pitching show concepts to networks. She is also currently executive producing / hosting “The Bacon Egg N’ Cheese Show” with Lady Luck and Babs Bunny while building a riveting platform on her website, MissLissaKnows.com"
+  },
+  {
+    "name": "Danish Maqbool",
+    "venues": []
+  },
+  {
+    "name": "Kyle Gordon",
+    "venues": []
+  },
+  {
+    "name": "LETTERKENNY LIVE!",
+    "venues": []
+  },
+  {
+    "name": "Mo Amer",
+    "venues": []
+  },
+  {
+    "name": "Luke Kidgell",
     "venues": []
   }
 ]
