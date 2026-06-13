@@ -1459,7 +1459,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/ronny-chieng",
     "bio_stand": "Ronny Chieng is Chinese stand-up comedian and actor born in Johor Bahru, Malaysia, raised in Manchester, NH, USA and Singapore, who graduated from the University of Melbourne in Australia in 2009 with a Bachelor of Laws and a Bachelor of Commerce. Ronny started comedy in Melbourne in 2009. Since then has he had 3 sold out global stand up comedy theater tours in Australia, New Zealand, Singapore, Malaysia and London. Ronny has been invited to the Just for Laughs Comedy Festival in Montreal in 2012, 2013 and 2015. He made his US television debut on the Late Late Show with Craig Ferguson in 2015. He was also invited to open for Dave Chappelle and Bill Burr on their national stand up comedy tours of Australia. Ronny has toured and recorded 4 separate stand up comedy specials - The Ron Way (2012), Can You Do This? No You Can't. (2013), Chieng Reaction (2014), You Don't Know What You're Talking About (2015). In 2015 Ronny moved to New York City after being hired as a correspondent on the Daily Show with Trevor Noah on Comedy Central. He also lost 11kg but that was unrelated to comedy.",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/ronny-chieng.jpg",
-    "featured": true
+    "featured": true,
+    "tagline_cellar": "FROM THE MOVIE \"CRAZY RICH ASIANS\"  STAR OF \"RONNY CHIENG:  INTERNATIONAL STUDENT\", CORRESPONDENT ON THE DAILY SHOW WITH TREVOR NOAH, \"CRAZY RICH ASIANS\" THE MOVIE,AND HIS OWN SITCOM \"RONNY CHIENG: INTERNATIONAL STUDENT\" ON COMEDY CENTRAL"
   },
   {
     "name": "Andrew Schulz",
@@ -8151,7 +8152,8 @@
     "name": "Gianmarco Soresi",
     "venues": [],
     "bio": "NETFLIX BONDING, PBS' STORIES FROM THE STAGE, HERE TODAY WITH BILLY CRYSTAL, \"HUSTLERS\" WITH J-LO, COMEDY CENTRAL",
-    "tagline_cellar": "NETFLIX BONDING, PBS' STORIES FROM THE STAGE, HERE TODAY WITH BILLY CRYSTAL, \"HUSTLERS\" WITH J-LO, COMEDY CENTRAL"
+    "tagline_cellar": "NETFLIX BONDING, PBS' STORIES FROM THE STAGE, HERE TODAY WITH BILLY CRYSTAL, \"HUSTLERS\" WITH J-LO, COMEDY CENTRAL",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/GianmarcoSoresi-byPhilipRomano2.jpg/330px-GianmarcoSoresi-byPhilipRomano2.jpg"
   },
   {
     "name": "Zach Noe Towers",
@@ -8305,7 +8307,8 @@
   },
   {
     "name": "Nicole Byer",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Nicole Byer is an American comedian, actress, and television host. She is known as the host of the Netflix comedic reality bake-off series Nailed It! (2018–22), for which she has received four Primetime Emmy Award nominations."
   },
   {
     "name": "NY Laughs Fest",
@@ -8345,7 +8348,8 @@
   {
     "name": "Adam Conover",
     "venues": [],
-    "bio_stand": "Adam Conover is a comedian and the creator, writer and star of the hit series ADAM RUINS EVERYTHING, an educational comedy that dispels common misconceptions. The New York Times calls it “one of history’s most entertaining shows dedicated to the art of debunking” and refers to Adam as a “genial provocateur.” On YouTube, his videos have amassed millions of views. In 2022, his new series THE G WORD premiered on Netflix. Produced in partnership with Barack Obama’s Higher Ground Productions, it pulls the curtain back on how the federal government works using comedy and documentary storytelling. Conover was also the host of the Nickelodeon game show THE CRYSTAL MAZE, and recurs on the animated series BOJACK HORSEMAN and TUCA AND BERTIE. As a standup comedian, Adam performs regularly in top comedy clubs and colleges across the country."
+    "bio_stand": "Adam Conover is a comedian and the creator, writer and star of the hit series ADAM RUINS EVERYTHING, an educational comedy that dispels common misconceptions. The New York Times calls it “one of history’s most entertaining shows dedicated to the art of debunking” and refers to Adam as a “genial provocateur.” On YouTube, his videos have amassed millions of views. In 2022, his new series THE G WORD premiered on Netflix. Produced in partnership with Barack Obama’s Higher Ground Productions, it pulls the curtain back on how the federal government works using comedy and documentary storytelling. Conover was also the host of the Nickelodeon game show THE CRYSTAL MAZE, and recurs on the animated series BOJACK HORSEMAN and TUCA AND BERTIE. As a standup comedian, Adam performs regularly in top comedy clubs and colleges across the country.",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Adam_Conover_photograph.jpg/330px-Adam_Conover_photograph.jpg"
   },
   {
     "name": "Dan Docimo",
@@ -8386,7 +8390,8 @@
   },
   {
     "name": "Kyle Gordon",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Kyle Gordon is an American comedian, singer, and YouTuber."
   },
   {
     "name": "LETTERKENNY LIVE!",
