@@ -8407,7 +8407,8 @@
   },
   {
     "name": "Paul Chowdhry",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Tajpaul Singh Chowdhry, better known as Paul Chowdhry, is a British comedian and actor."
   },
   {
     "name": "Mitch Wood",
@@ -8428,6 +8429,14 @@
   },
   {
     "name": "Larry Owens",
+    "venues": []
+  },
+  {
+    "name": "Ron Josol",
+    "venues": []
+  },
+  {
+    "name": "Ari Matti",
     "venues": []
   }
 ]
