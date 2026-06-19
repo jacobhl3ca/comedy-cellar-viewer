@@ -8463,7 +8463,9 @@
   },
   {
     "name": "Rosie O'Donnell",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Roseann O'Donnell is an American talk show host, comedian, and actress. She began her comedy career as a teenager and received her breakthrough on the television series Star Search in 1984. After a series of television and film roles that introduced her to a larger national audience, O'Donnell hoste",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Rosie_O%27Donnell_2.jpg"
   },
   {
     "name": "Alex Babbitt",
@@ -8492,5 +8494,13 @@
     "venues": [],
     "bio": "FROM THE LATE SHOW WITH STEPHEN COLBERT, COMEDY CENTRAL",
     "tagline_cellar": "FROM THE LATE SHOW WITH STEPHEN COLBERT, COMEDY CENTRAL"
+  },
+  {
+    "name": "Conor Janda",
+    "venues": []
+  },
+  {
+    "name": "Renée Percy",
+    "venues": []
   }
 ]
