@@ -263,8 +263,7 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Comedy-Hamburger-Jones-3df50deb-thumb-image.jpg?1745261421",
     "venues": [
       "nycc"
-    ],
-    "bio": "Alonzo Hamburger Jones is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    ]
   },
   {
     "name": "Paula J. Leon",
@@ -8513,5 +8512,9 @@
     "venues": [],
     "bio": "American music arranger, music composer, record producer, musical director, film composer, musician, entrepreneur, and impresario. In his 20-plus years in the music industry, Lewis has worked on several Grammy Award winning singles and albums, and his production, songs, and arrangements have been featured on #1 albums, gold and platinum albums, films, live productions, and television shows.",
     "tagline_cellar": "American music arranger, music composer, record producer, musical director, film composer, musician, entrepreneur, and impresario. In his 20-plus years in the music industry, Lewis has worked on several Grammy Award winning singles and albums, and his production, songs, and arrangements have been featured on #1 albums, gold and platinum albums, films, live productions, and television shows."
+  },
+  {
+    "name": "Joe DeVito",
+    "venues": []
   }
 ]
