@@ -4092,8 +4092,8 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/justin-martindale",
-    "bio": "Justin Martindale is a stand-up comedian and podcaster. He co-hosts the Just Sayin' podcast and performs at clubs across the country.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/190130-Justine-Martindale-009-copy-e1552610094750.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/190130-Justine-Martindale-009-copy-e1552610094750.jpg",
+    "tagline_cellar": "HOST E! ENTERTANIMENT WEEKLY DIGITALSERIES \"WHAT THE FASHION\"SIRIUS XM. HOSTHIS OWN WEEKLY CHARTING PODCAST \"JUST SAYING\"."
   },
   {
     "name": "Justin Silver",
@@ -4748,7 +4748,8 @@
     "bio": "Nikki Glaser is a stand-up comedian, podcast host, and TV personality. She hosted the Golden Globes in 2025 and is known for her Netflix special Someday You'll Die. She's appeared on multiple Comedy Central roasts and hosted several TV shows including The Nikki Glaser Podcast and Welcome Home Nikki Glaser on E!.",
     "bio_stand": "Nikki Glaser is a comedian, writer, and host whose television appearances have included The Tonight Show, CONAN, and Last Comic Standing. She was the co-host of the MTV late night talk show, Nikki & Sara LIVE, as well as the popular podcast, You Had To Be There. She lives in New York City, performing nightly at clubs such as The Comedy Cellar and The Stand, and travels frequently as a nationally touring headliner. Nikki can currently be seen as a regular contestant on Comedy Central’s @Midnight and will guest star on the upcoming season of Inside Amy Schumer.",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/nikki_glaser05.jpg",
-    "featured": true
+    "featured": true,
+    "tagline_cellar": "FROM THE MOVIE \"TRAINWRECK\", MTV'S \"NIKKI AND SARA LIVE\", FROM THE CONAN O'BRIEN SHOW, TONIGHT SHOW, COMEDY CENTRAL HALF HOUR, LAST COMIC STANDING, FROM THE DOCUMENTARY FILM \"I AM COMIC\"."
   },
   {
     "name": "Nina Daniels",
@@ -8515,7 +8516,8 @@
   },
   {
     "name": "Joe DeVito",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Joe DeVito is a stand-up comedian and writer living on Long Island, New York."
   },
   {
     "name": "Jules Balluffi",
@@ -8528,5 +8530,17 @@
   {
     "name": "Steven Ho",
     "venues": []
+  },
+  {
+    "name": "Tom Thakkar",
+    "venues": [],
+    "bio": "CONAN, COMEDY CENTRAL",
+    "tagline_cellar": "CONAN, COMEDY CENTRAL"
+  },
+  {
+    "name": "Learnmore Jonasi",
+    "venues": [],
+    "bio": "AMERICA'S GOT TALENT (GOLDEN BUZZER), STEVE HARVEY'S SPOTLIGHT, BOSTON COMEDY FESTIVAL WINNER",
+    "tagline_cellar": "AMERICA'S GOT TALENT (GOLDEN BUZZER), STEVE HARVEY'S SPOTLIGHT, BOSTON COMEDY FESTIVAL WINNER"
   }
 ]
