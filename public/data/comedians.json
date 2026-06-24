@@ -233,7 +233,7 @@
     "venues": [
       "nycc"
     ],
-    "bio": "James Mwaura is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "bio_stand": "I’m a comedian, writer, and (relatively) black person living in Brooklyn, New York. I began my comedy career in the San Francisco Bay Area, where I performed regularly for 6 years, before moving to Brooklyn in Fall of 2023."
   },
   {
     "name": "Big Jay Oakerson",
@@ -2233,7 +2233,8 @@
     "bio": "Dave Hill is a comedian, writer, musician, actor, radio host, and man-about-town originally from Cleveland, Ohio but now living in New York City in a totally sweet apartment with a party deck and everything. Hot chicks come over to hang out and eat cheese plates and stuff with him all the time and it’s awesome.  Anyway, on the show business front, Dave has appeared on Netflix’s The Unbreakable Kimmy Schmidt, Adult Swims Joe Pera Talks with You Amazon’s The Tick, Comedy Central’s @midnight andInside Amy Schumer programs, TBS Full Frontal with Samantha Bee, TV Lands The Jim Gaffigan Show, and TruTVs Comedy Knockout among a bunch of others. He is a frequent on-air host for HBO and Cinemax and has been on channels like MTV, VH1, BBC-America, and the Sundance Channel a whole bunch too. Dave also starred in his own television program The King of Miami on the Mojo Network, which was cancelled even though Dave really liked it. The show also aired in the United Kingdom on Sky TV’s Film24 Channel. And you can still watch The King of Miami on Hulu too, which Dave is super pumped about. Oh, and Dave was a correspondent on Hoppus on Music starring Blink 182’s Mark Hoppus on the Fuse channel, which ruled. Dave has been on other shows and in obscure movies too but let’s keep moving for now.  Dave performs live comedy over the world and has appeared at such festivals as the Melbourne International Comedy Festival, SXSW, San Francisco Sketchfest, the Edinburgh Fringe Festival, the U.S. Comedy Arts Festival in Aspen, Sasquatch Festival, Bumbershoot, Bonnaroo, the Bridgetown Comedy Festival in Portland, the Crap Comedy Festival in Oslo, Outside Lands in San Francisco, and then some other ones too. He has also performed comedy at Sing Sing Correctional Facility twice and even ripped some guitar solos inside a Mexican prison a couple times too. In 2007, Variety magazine named Dave one of their “10 Comedians to Watch,” something he still won’t shut up about. Some things are hard to let go of. Dave hosted his own radio show The Goddamn Dave Hill Show on WFMU in Jersey City, New Jersey every Monday night from 9pm to midnight for years and now hosts the podcast Dave Hills Podcasting Incident, which is also broadcast on the UKs Fubar Radio, So...Youre Canadian with Dave Hill, and History Fluffer, on which he is joined by Jim Biederman, Jodi Lennon, and Chris Gersbeck. Dave is also a frequent contributor to public radio’s Live from Here with Chris Thile and This American Life. He has also appeared on podcasts like WTF with Marc Maron, The Adam Carolla Show, The Nerdist, and then roughly 78 other ones besides those. Dave is the author of three books, Parking the Moose (Doubleday Canada/Penguin Random House 2019), Tasteful Nudes (St. Martins Press, 2012) and Dave Hill Doesn’t Live Here Anymore (Blue Rider Press 2016). He has also written for the New York Times, GQ, Salon, The Paris Review, McSweeney’s, New York Observer, The Cleveland Plain Dealer, VICE, Guitar World, and a bunch of other places too. Comedy legend Dick Cavett called Dave “a major figure among American comic writers, past and present,” which is pretty much the coolest thing that has ever happened as far as Dave is concerned. Dave is also a musician who currently sings and plays guitar in the power pop band Valley Lodge, whose song “Go” is the theme song to HBO’s Last Week Tonight with John Oliver, and the psych/garage rock band Painted Doll. He was also a member of Cleveland rock bands Sons of Elvis and Cobra Verde as well as Diamondsnake, a heavy metal band with Moby. Additionally, Dave has played guitar for Walter Schreifels and muscle metal band Thor and bass for Lucy Wainwright Roche and former Faith No More singer Chuck Mosley. He also contributed musical scores to films such as Dirty Deeds, Shoot First and Pray You Live, and then some other ones besides those two. Additionally, Dave’s mostly imaginary Norwegian Black Metal Band Witch Taint is currently bringing its own disturbing brand of comedy and music to audiences all over the world after having existed merely as an absurb email chain for over a decade. They’ve also sold a lot of T-shirts. Dave has made out with a lot of chicks, is sweet at guitar, and smells really great. You can ask anyone.",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio_stand": "Dave Hill is a comedian, writer, musician, actor, radio host, and man-about-town originally from Cleveland, Ohio but now living in New York City in a totally sweet apartment with a party deck and everything. Hot chicks come over to hang out and eat cheese plates and stuff with him all the time and it’s awesome. Anyway, on the show business front, Dave has appeared on Netflix’s The Unbreakable Kimmy Schmidt, Adult Swim's Joe Pera Talks with You Amazon’s The Tick, Comedy Central’s @midnight andInside Amy Schumer programs, TBS' Full Frontal with Samantha Bee, TV Land's The Jim Gaffigan Show, and TruTV's Comedy Knockout among a bunch of others. He is a frequent on-air host for HBO and Cinemax and has been on channels like MTV, VH1, BBC-America, and the Sundance Channel a whole bunch too. Dave also starred in his own television program The King of Miami on the Mojo Network, which was cancelled even though Dave really liked it. The show also aired in the United Kingdom on Sky TV’s Film24 Channel. And you can still watch The King of Miami on Hulu too, which Dave is super pumped about. Oh, and Dave was a correspondent on Hoppus on Music starring Blink 182’s Mark Hoppus on the Fuse channel, which ruled. Dave has been on other shows and in obscure movies too but let’s keep moving for now. Dave performs live comedy over the world and has appeared at such festivals as the Melbourne International Comedy Festival, SXSW, San Francisco Sketchfest, the Edinburgh Fringe Festival, the U.S. Comedy Arts Festival in Aspen, Sasquatch Festival, Bumbershoot, Bonnaroo, the Bridgetown Comedy Festival in Portland, the Crap Comedy Festival in Oslo, Outside Lands in San Francisco, and then some other ones too. He has also performed comedy at Sing Sing Correctional Facility twice and even ripped some guitar solos inside a Mexican prison a couple times too. In 2007, Variety magazine named Dave one of their “10 Comedians to Watch,” something he still won’t shut up about. Some things are hard to let go of. Dave hosted his own radio show The Goddamn Dave Hill Show on WFMU in Jersey City, New Jersey every Monday night from 9pm to midnight for years and now hosts the podcast Dave Hill's Podcasting Incident, which is also broadcast on the UK's Fubar Radio, So...You're Canadian with Dave Hill, and History Fluffer, on which he is joined by Jim Biederman, Jodi Lennon, and Chris Gersbeck. Dave is also a frequent contributor to public radio’s Live from Here with Chris Thile and This American Life. He has also appeared on podcasts like WTF with Marc Maron, The Adam Carolla Show, The Nerdist, and then roughly 78 other ones besides those."
   },
   {
     "name": "Lenny Marcus",
@@ -6642,7 +6643,8 @@
     "name": "Daniel Geneen",
     "venues": [],
     "bio": "RUNNER UP, NEW YORK FUNNIEST 2024, 3X EMMY-NOMINATED FOR\"DAN DOES\". CREATOROF WEBBY-WINNING SHOW \"MISE EN PLACE\"",
-    "tagline_cellar": "RUNNER UP, NEW YORK FUNNIEST 2024, 3X EMMY-NOMINATED FOR\"DAN DOES\". CREATOROF WEBBY-WINNING SHOW \"MISE EN PLACE\""
+    "tagline_cellar": "RUNNER UP, NEW YORK FUNNIEST 2024, 3X EMMY-NOMINATED FOR\"DAN DOES\". CREATOROF WEBBY-WINNING SHOW \"MISE EN PLACE\"",
+    "bio_stand": "Daniel Geneen is a New York City-based producer specializing in audience development and special projects for nationwide food publication Eater. Dan has also produced segments for Howard Stern’s hit radio show, where he interned before earning his masters in journalism and publishing from The New School and degree in classic culinary arts from the International Culinary Center."
   },
   {
     "name": "Maddy Kelly",
@@ -8003,7 +8005,8 @@
     "featured": true,
     "venues": [],
     "bio_wiki": "Douglas Steven Benson is an American comedian, marijuana rights advocate, television and podcast host, and actor, best known for hosting the podcasts and TV series Doug Loves Movies (2006–present), The Benson Interruption (2010–2013), Getting Doug with High (2013–2019) and The High Court with Doug Benson (2017). As a comedian, he has released 10 comedy albums, starting with Professional Humoredian in 2008, and has regularly appeared on TV shows including Comedy Central Presents, Best Week Ever and @midnight. In 2007, he was a contestant on the 5th season of the reality competition show Last Comic Standing.",
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Doug_Benson_by_Gage_Skidmore.jpg/330px-Doug_Benson_by_Gage_Skidmore.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Doug_Benson_by_Gage_Skidmore.jpg/330px-Doug_Benson_by_Gage_Skidmore.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "bio_stand": "American stand-up comedian and actor, born 2 July 1964 in San Diego, California, USA."
   },
   {
     "name": "Jessica Williams",
@@ -8542,5 +8545,33 @@
     "venues": [],
     "bio": "AMERICA'S GOT TALENT (GOLDEN BUZZER), STEVE HARVEY'S SPOTLIGHT, BOSTON COMEDY FESTIVAL WINNER",
     "tagline_cellar": "AMERICA'S GOT TALENT (GOLDEN BUZZER), STEVE HARVEY'S SPOTLIGHT, BOSTON COMEDY FESTIVAL WINNER"
+  },
+  {
+    "name": "Sam Rocha",
+    "venues": []
+  },
+  {
+    "name": "Mo Mussa",
+    "venues": []
+  },
+  {
+    "name": "Rollin Atkinson",
+    "venues": []
+  },
+  {
+    "name": "Jon Bass",
+    "venues": []
+  },
+  {
+    "name": "Adriana Ascencio",
+    "venues": []
+  },
+  {
+    "name": "Zubi Ahmed",
+    "venues": []
+  },
+  {
+    "name": "Michael Cruz Kayne",
+    "venues": []
   }
 ]
