@@ -77,7 +77,7 @@ async function tryNYCC(slug) {
 
 // Ticketmaster — attraction + event search for performer photos
 async function tryTicketmaster(name) {
-  const TM_API_KEY = process.env.TM_API_KEY || 'ngUmt60hJ6lHzJxzy9ximMn0HtAts4Cj';
+  const TM_API_KEY = process.env.TM_API_KEY;
   // Try attraction images first
   try {
     const data = JSON.parse(await fetchHTML(`https://app.ticketmaster.com/discovery/v2/attractions.json?apikey=${TM_API_KEY}&keyword=${encodeURIComponent(name)}&size=5`));

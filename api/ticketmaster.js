@@ -1,6 +1,6 @@
 const https = require('https');
 
-const TM_API_KEY = process.env.TM_API_KEY || 'ngUmt60hJ6lHzJxzy9ximMn0HtAts4Cj';
+const TM_API_KEY = process.env.TM_API_KEY;
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');

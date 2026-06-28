@@ -483,7 +483,7 @@ async function scrapeNYCC() {
 }
 
 // ---- Step 2d: Scrape Big Shows (SeatGeek) ----
-const SEATGEEK_CLIENT_ID = process.env.SEATGEEK_CLIENT_ID || 'MTA3MDA0Nzh8MTc3NDMxMTgyMy45ODI2NDY3';
+const SEATGEEK_CLIENT_ID = process.env.SEATGEEK_CLIENT_ID;
 
 async function scrapeBigShows() {
   log('Scraping Big Shows (SeatGeek)...');
@@ -530,7 +530,7 @@ async function scrapeBigShows() {
 }
 
 // ---- Step 2e: Scrape Ticketmaster ----
-const TM_API_KEY = process.env.TM_API_KEY || 'ngUmt60hJ6lHzJxzy9ximMn0HtAts4Cj';
+const TM_API_KEY = process.env.TM_API_KEY;
 
 async function scrapeTicketmaster() {
   log('Scraping Ticketmaster...');

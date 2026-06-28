@@ -104,7 +104,7 @@ async function downloadFromWikipedia() {
 
 async function downloadFromSeatGeek() {
   console.log('\nFetching SeatGeek performer photos...');
-  const CLIENT_ID = process.env.SEATGEEK_CLIENT_ID || 'MTA3MDA0Nzh8MTc3NDMxMTgyMy45ODI2NDY3';
+  const CLIENT_ID = process.env.SEATGEEK_CLIENT_ID;
   let downloaded = 0;
 
   try {
