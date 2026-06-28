@@ -2849,8 +2849,8 @@ function renderBigShows(container) {
     const needsLookup = !photoUrl;
     const photoId = needsLookup ? `photo-lookup-${title.replace(/[^a-zA-Z0-9]/g, '_')}` : '';
     const photoHtml = photoUrl
-      ? `<img src="${photoUrl}" alt="${title}" class="big-show-photo" onerror="this.style.display='none'">`
-      : `<img id="${photoId}" alt="${title}" class="big-show-photo" style="display:none;" onerror="this.style.display='none'" data-lookup-name="${lookupName.replace(/"/g, '&quot;')}" data-lookup-title="${title.replace(/"/g, '&quot;')}">`;
+      ? `<img src="${photoUrl}" alt="${title}" class="big-show-photo" style="cursor:zoom-in" onerror="this.style.display='none'" onclick="event.stopPropagation(); if(this.src)_dirOpenPhoto(this.src, this.alt)">`
+      : `<img id="${photoId}" alt="${title}" class="big-show-photo" style="display:none;cursor:zoom-in" onerror="this.style.display='none'" onclick="event.stopPropagation(); if(this.src)_dirOpenPhoto(this.src, this.alt)" data-lookup-name="${lookupName.replace(/"/g, '&quot;')}" data-lookup-title="${title.replace(/"/g, '&quot;')}">`;
 
     // Date boxes — sorted by date, deduplicated by date+time (merges SG/TM duplicates)
     // Also drop time-less entries when another entry on the same date has a time
