@@ -1004,7 +1004,8 @@
     "venues": [
       "nycc"
     ],
-    "bio_stand": "Raanan Hershberg is a loud, neurotic Jew from Louisville, KY. He recently made his national television debut on The Late Late Show with James Corden (you can watch here). In 2017, he was a finalist in StandUp NBC and The Laughing Skull Festival in Atlanta, GA. In 2018, he was a finalist in the Boston Comedy Festival. He regularly opens for Kathleen Madigan in sold out theaters across the country. His first album Self-Helpless climbed all the way to the top of the iTunes Comedy Charts. His comedy has been featured on “Laughs” on FOX and is regularly played on Sirius XM. He is the founder of Character Assassination, a popular fictional roast series that started in Louisville and has now branched out to The Laugh Factory in Chicago and The Creek and the Cave in New York City, and was selected to be a part of TBS’s The New York Comedy Festival this year. He recently premiered his latest solo show OFF THE GRID in the New York International Fringe Festival, which was called ‘One of the best one-man shows you are likely to see anywhere’ by Hy Bender in bestnewyorkcomedy.com (you can read the full review here). His new album 'Downhill Ever Since' will be available everywhere you listen to music on February 4th. He currently resides in New York City."
+    "bio_stand": "Raanan Hershberg is a loud, neurotic Jew from Louisville, KY. He recently made his national television debut on The Late Late Show with James Corden (you can watch here). In 2017, he was a finalist in StandUp NBC and The Laughing Skull Festival in Atlanta, GA. In 2018, he was a finalist in the Boston Comedy Festival. He regularly opens for Kathleen Madigan in sold out theaters across the country. His first album Self-Helpless climbed all the way to the top of the iTunes Comedy Charts. His comedy has been featured on “Laughs” on FOX and is regularly played on Sirius XM. He is the founder of Character Assassination, a popular fictional roast series that started in Louisville and has now branched out to The Laugh Factory in Chicago and The Creek and the Cave in New York City, and was selected to be a part of TBS’s The New York Comedy Festival this year. He recently premiered his latest solo show OFF THE GRID in the New York International Fringe Festival, which was called ‘One of the best one-man shows you are likely to see anywhere’ by Hy Bender in bestnewyorkcomedy.com (you can read the full review here). His new album 'Downhill Ever Since' will be available everywhere you listen to music on February 4th. He currently resides in New York City.",
+    "tagline_cellar": "THE LATE SHOW, LATE SHOW WITH JAMES CORDEN, STANDUP NBC FINALIST"
   },
   {
     "name": "Shaunak Godkhindi",
@@ -8608,5 +8609,17 @@
   {
     "name": "Ron Funches",
     "venues": []
+  },
+  {
+    "name": "Bobby St. Petersburg",
+    "venues": [],
+    "bio": "FROM COMEDY CENTRAL,",
+    "tagline_cellar": "FROM COMEDY CENTRAL,"
+  },
+  {
+    "name": "Taylor Williamson",
+    "venues": [],
+    "bio": "RUNNER UP ON AMERICA'S GOT TALENT",
+    "tagline_cellar": "RUNNER UP ON AMERICA'S GOT TALENT"
   }
 ]
