@@ -4253,8 +4253,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/leah-lamarr",
     "bio_stand": "Leah Lamarr is a stand-up comedian, actress, social-audio influencer, writer and podcaster born and raised in NYC. Easily one of the fastest rising comedians working right now, Leah created Hot on the Mic (66k Members), the premiere venue for comedy on Clubhouse, which hosts daily stand-up shows to over 75,000 listeners per week. Additionally, Leah is currently the Clubhouse Icon (an app with 30.2 Million Users) with over 240,000 followers. She regularly features for Erik Griffin (“Workaholics”), Chris Redd (SNL) and for Dane Cook. She is also a recurring host on “America’s Funniest Home Videos”. She wrote, produced, directed, edited and starred in her web series, “The Real Witches of West Hollywood”, which won over 11 awards at festivals in 2019 and premiered at The TCL Chinese Theatre at Dances With Films, WON LA Top Shorts, the LA Film Awards and Hollywood Art & Movie Awards.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Leah_Lamarr.jpg",
-    "bio": "Leah Lamarr is a stand-up comedian performing in New York City. She performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Leah_Lamarr.jpg"
   },
   {
     "name": "Lev Fer",
@@ -6783,7 +6782,7 @@
   {
     "name": "John Oliver",
     "venues": [],
-    "bio_wiki": "John William Oliver is a British and American comedian, progressive political commentator, actor, and television personality. He hosts Last Week Tonight with John Oliver on HBO and started his career as a stand-up comedian in the United Kingdom. He came to wider attention for his work in the United ",
+    "bio_wiki": "John William Oliver is a British and American comedian, progressive political commentator, and television personality. He hosts Last Week Tonight with John Oliver on HBO and started his career as a stand-up comedian in the United Kingdom. He came to wider attention for his work in the United States ",
     "featured": true
   },
   {
@@ -8473,7 +8472,8 @@
   },
   {
     "name": "Alex Babbitt",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Brooklyn native, Alex Babbitt otherwise known as Mr. Babbitt, is a rising star in the New York City comedy scene. Mr. Babbitt started at the ripe age of 16 and now in his early 20’s he is quickly making a name for himself as one of the funniest and most charismatic comedians breaking into the spotlight. As seen on HBO’s All Def Comedy, Mr. Babbitt continues to be observant and methodical as he constantly engages his audience with rapid fire Witt, complimented by his unrivaled energy. All while strolling down memory lane, poking fun at family or sharing lessons learned as a traveling comedian. “Performing gives me the freedom I want to define myself, not by what people want me to be but by who I want to be”. – A.Babbitt Admiration of great performers like, Eddie Murphy, Jamie Foxx, Dave Chappell prompted him to start at such a young age. “They all worked hard to perfect their craft at an early age, so to be honest I have no excuse… Plus, I can’t live with my mom forever.” – A.Babbitt"
   },
   {
     "name": "Leo Diangelis",
@@ -8485,7 +8485,8 @@
     "name": "Nick Thune",
     "venues": [],
     "bio": "FROM THE DAVID LETTERMAN SHOW,",
-    "tagline_cellar": "FROM THE DAVID LETTERMAN SHOW,"
+    "tagline_cellar": "FROM THE DAVID LETTERMAN SHOW,",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/2024-03-08_SXSW-2024_Variety-comedy-awards_04928.jpg/330px-2024-03-08_SXSW-2024_Variety-comedy-awards_04928.jpg"
   },
   {
     "name": "Adam Hunter",
@@ -8608,7 +8609,8 @@
   },
   {
     "name": "Ron Funches",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Ronald Kyle Funches is an American comedian and actor. From 2014 to 2016, Funches starred as a regular on the NBC series Undateable, and in 2015, began performing as a voice actor on such series as BoJack Horseman, The Adventures of Puss in Boots, and Adventure Time. He subsequently voiced Cooper in"
   },
   {
     "name": "Bobby St. Petersburg",
@@ -8621,5 +8623,9 @@
     "venues": [],
     "bio": "RUNNER UP ON AMERICA'S GOT TALENT",
     "tagline_cellar": "RUNNER UP ON AMERICA'S GOT TALENT"
+  },
+  {
+    "name": "Chris Faga",
+    "venues": []
   }
 ]
