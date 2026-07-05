@@ -393,6 +393,12 @@ function renderShows() {
   document.body.classList.toggle('dir-mode', activeSource === 'comedians');
 
   // Route to correct renderer based on active source
+  if (activeSource === 'top-pick') {
+    const stale = document.getElementById('bottom-tabs');
+    if (stale) stale.remove();
+    renderTopPick(container);
+    return;
+  }
   if (activeSource === 'the-stand') {
     renderTheStandShows(container);
     renderBottomTabs();
@@ -1034,6 +1040,135 @@ function renderGothamShows(container) {
 
 // ---- Big Shows (SeatGeek) Renderer ----
 // ---- All Venues combined view ----
+// ---- Top Pick: the single best show per date, scored by YOUR faves ----
+// Collects every upcoming show across all venues, scores each by the user's
+// faved/skipped comedians (fave +2, skip -1), and keeps only the highest-scoring
+// show on each date. Falls back to biggest lineup when no faves are set yet.
+function topPickComedians(item) {
+  const s = item.show;
+  if (item.type === 'cellar' || item.type === 'stand') return s.comedians || [];
+  if (item.type === 'gotham') return s.title ? [s.title] : [];
+  // big shows: performers string "Name - role, Name2" or fall back to title
+  if (s.performers) return s.performers.split(',').map(p => p.split(' - ')[0].trim()).filter(Boolean);
+  return s.title ? [s.title] : [];
+}
+
+function renderTopPick(container) {
+  container.classList.remove('picture-mode');
+  const hideSkips = document.getElementById('hide-skips')?.checked;
+  const prefs = loadPrefs();
+  const hasPrefs = prefs.faves.length > 0 || prefs.likes.length > 0;
+
+  // Collect all upcoming shows (same sources as All Venues)
+  let items = [];
+  dates.forEach(d => {
+    const dateStr = formatDateParam(d);
+    const shows = allData[dateStr];
+    if (shows) shows.forEach(show => items.push({ type: 'cellar', dateStr, time24: to24hSortable(show.time) || '00:00', show }));
+  });
+  standShows.forEach(show => items.push({ type: 'stand', dateStr: show.date, time24: to24hSortable(show.time) || '00:00', show }));
+  if (typeof gothamShows !== 'undefined') gothamShows.forEach(show => items.push({ type: 'gotham', dateStr: show.date, time24: to24hSortable(show.time) || '00:00', show }));
+  bigShows.forEach(evt => items.push({ type: 'big', dateStr: evt.date, time24: to24hSortable(evt.time) || '00:00', show: evt }));
+
+  // Keep the view focused on the near term: today through +45 days. Drops
+  // far-future one-off big shows that would otherwise each own a lone date.
+  const todayStr = formatDateParam(new Date());
+  const capD = new Date(); capD.setDate(capD.getDate() + 45);
+  const capStr = formatDateParam(capD);
+  items = items.filter(item => item.dateStr && item.dateStr >= todayStr && item.dateStr <= capStr);
+
+  // Drop past shows and (unless "only sold out") sold-out ones
+  items = items.filter(item => !isShowPast(item.dateStr, item.show.time));
+  items = items.filter(item => {
+    const soldOut = item.type === 'cellar' ? isShowSoldOut(item.dateStr, item.show.time) : !!item.show.soldout;
+    return !shouldHideShow(soldOut);
+  });
+
+  // Score each item by the user's own faves/skips
+  items.forEach(item => {
+    const names = topPickComedians(item);
+    let faves = 0, skips = 0;
+    const faveNames = [];
+    for (const n of names) {
+      if (isFav(n) || isLike(n)) { faves++; faveNames.push(n); }
+      else if (isSkip(n)) skips++;
+    }
+    item.faveCount = faves;
+    item.faveNames = faveNames;
+    item.lineupSize = names.length;
+    item.score = (faves * 2) - skips;
+  });
+
+  // Keep the single best show per date
+  const bestByDate = {};
+  items.forEach(item => {
+    const cur = bestByDate[item.dateStr];
+    const better = !cur
+      || item.score > cur.score
+      || (item.score === cur.score && item.faveCount > cur.faveCount)
+      || (item.score === cur.score && item.faveCount === cur.faveCount && item.lineupSize > cur.lineupSize)
+      || (item.score === cur.score && item.faveCount === cur.faveCount && item.lineupSize === cur.lineupSize && item.time24 < cur.time24);
+    if (better) bestByDate[item.dateStr] = item;
+  });
+
+  // Only surface nights with an actual announced lineup — never present a
+  // "Lineup TBD" show (0 known comedians) as the pick of the night. Cellar posts
+  // day-of and future Stand shows fill in later, so those dates appear as they firm up.
+  let picks = Object.values(bestByDate)
+    .filter(item => item.lineupSize > 0)
+    .sort((a, b) => a.dateStr.localeCompare(b.dateStr) || a.time24.localeCompare(b.time24));
+
+  // Honor a specific date if one is selected via the calendar
+  if (activeDate === 'calendar') picks = picks.filter(p => calendarSelectedDates.has(p.dateStr));
+  else if (activeDate && activeDate !== 'all') picks = picks.filter(p => p.dateStr === activeDate);
+
+  const VENUE_LABEL = { cellar: 'Comedy Cellar', stand: 'The Stand', gotham: 'Gotham', big: 'Big Shows' };
+  let html = '';
+  html += `<div class="top-pick-intro">⭐ <strong>Top Pick</strong> — the single best show each night, ranked by ${hasPrefs ? 'your favorite comedians' : 'lineup'}.` +
+    (hasPrefs ? '' : ` <button class="top-pick-setup" onclick="openModal()">Add your faves</button> to personalize these picks.`) + `</div>`;
+
+  if (!picks.length) {
+    html += `<p class="top-pick-empty">No upcoming shows in the schedule yet — check back soon.</p>`;
+    container.innerHTML = html;
+    return;
+  }
+
+  html += '<div class="schedule-view">';
+  picks.forEach(item => {
+    try {
+      const d = new Date(item.dateStr + 'T12:00:00');
+      html += `<h2 class="schedule-day-header">${getDayHeaderLabel(d)}</h2>`;
+      // Why-this-pick line
+      let why;
+      if (item.faveNames.length) {
+        why = `⭐ ${item.faveNames.slice(0, 4).join(', ')}${item.faveNames.length > 4 ? ` +${item.faveNames.length - 4} more` : ''} on the bill`;
+      } else if (hasPrefs) {
+        why = `Best available at ${VENUE_LABEL[item.type] || 'a top club'} — no faves booked this night`;
+      } else {
+        why = `Biggest lineup at ${VENUE_LABEL[item.type] || 'a top club'}`;
+      }
+      html += `<div class="top-pick-why">${why}</div>`;
+      if (item.type === 'cellar') html += renderShowCard(item.show, hideSkips, false, item.dateStr);
+      else if (item.type === 'stand') html += renderStandShowCard(item.show);
+      else if (item.type === 'gotham') {
+        const show = item.show;
+        html += `<div class="show-card"><div class="show-header"><div><span class="show-time">${formatTime(show.time)}</span></div><span class="show-name">${show.title}</span><span class="show-venue">Gotham</span></div><div class="show-footer">${show.url ? `<a href="${show.url}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Tickets</a>` : '<span></span>'}<span class="fav-count"></span></div></div>`;
+      } else {
+        const evt = item.show;
+        const evtSoldOut = !!evt.soldout;
+        const evtPerformers = evt.performers ? evt.performers.split(',').map(p => p.split(' - ')[0].trim()).filter(Boolean) : [evt.title];
+        const evtChips = renderComedianChips(evtPerformers, hideSkips, 'big');
+        const links = evt.ticketLinks || (evt.url ? [{ source: evt.source || 'tickets', url: evt.url }] : []);
+        const preferred = links.find(l => l.source === 'seatgeek') || links[0];
+        const ticketUrl = venueTicketUrl(evt.venue) || preferred?.url || evt.url;
+        html += `<div class="show-card${evtSoldOut ? ' sold-out' : ''}" data-venue-source="big"><div class="show-header"><div><span class="show-time">${formatTime(evt.time)}</span></div><span class="show-name">${evt.title}</span><span class="show-venue">${cleanVenueName(evt.venue) || ''}</span></div><div class="show-lineup">${evtChips}</div><div class="show-footer">${ticketUrl ? `<a href="${ticketUrl}" target="_blank" class="reserve-btn${evtSoldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${evtSoldOut ? 'Sold Out' : 'Tickets'}</a>` : '<span></span>'}<span class="fav-count"></span></div></div>`;
+      }
+    } catch (e) { console.error('renderTopPick card error:', e, item); }
+  });
+  html += '</div>';
+  container.innerHTML = html;
+}
+
 function renderAllVenues(container) {
   const hideSkips = document.getElementById('hide-skips')?.checked;
   const pictureMode = document.getElementById('picture-mode')?.checked;

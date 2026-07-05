@@ -1540,3 +1540,23 @@ html.native-ios .dir-section-header { top: calc(60px + var(--dir-ctrl-h, 0px)); 
 }
 .dir-lightbox-close:hover { background: rgba(255,255,255,0.2); }
 .dir-card-photo { cursor: zoom-in; }
+
+/* ---- Top Pick view ---- */
+.top-pick-intro {
+  margin: 14px 0 18px; padding: 12px 14px;
+  background: var(--card); border: 1px solid var(--border);
+  border-left: 3px solid var(--accent); border-radius: 8px;
+  font-size: 14px; line-height: 1.5; color: var(--text);
+}
+.top-pick-intro strong { color: var(--accent); }
+.top-pick-setup {
+  background: var(--accent); color: #fff; border: none;
+  border-radius: 6px; padding: 3px 10px; font-size: 13px; font-weight: 600;
+  cursor: pointer; margin: 0 2px;
+}
+.top-pick-setup:hover { filter: brightness(1.1); }
+.top-pick-why {
+  font-size: 12.5px; color: var(--text-dim); margin: -2px 0 8px 2px;
+  display: flex; align-items: center; gap: 4px;
+}
+.top-pick-empty { color: var(--text-dim); padding: 24px 4px; font-size: 15px; }

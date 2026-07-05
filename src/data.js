@@ -453,6 +453,7 @@ function jumpToDay(dateStr) {
 function dateInActiveSource(dateStr) {
   if (!dateStr || dateStr === 'all') return true;
   switch (activeSource) {
+    case 'top-pick':
     case 'all':
       return !!(allData[dateStr] && allData[dateStr].length)
         || (typeof standShows !== 'undefined' && standShows.some(s => s.date === dateStr))
@@ -707,6 +708,9 @@ function renderTabs() {
   nav.innerHTML = '';
 
   nav.style.display = '';
+
+  // Top Pick shows one curated card per date already — no day strip needed.
+  if (activeSource === 'top-pick') { nav.style.display = 'none'; return; }
 
   // "Full Schedule" tab first (far left)
   const allTab = document.createElement('button');

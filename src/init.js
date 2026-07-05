@@ -396,6 +396,7 @@ init();
 // path only chooses which tab is active. The prefs hash (#p=...) lives in a
 // separate slot, so path and shared-picks never collide (e.g. /cellar#p=abc).
 const VIEW_BY_PATH = {
+  '/tonight': 'top-pick',
   '/cellar': 'cellar',
   '/stand': 'the-stand',
   '/big': 'big-shows',
@@ -403,6 +404,7 @@ const VIEW_BY_PATH = {
 };
 const VIEW_META = {
   'all':       { path: '/',       title: 'Tonight NYC — Comedy Lineups' },
+  'top-pick':  { path: '/tonight', title: 'Top Pick Tonight — The Best NYC Comedy Show Each Night | Tonight NYC' },
   'cellar':    { path: '/cellar', title: 'Comedy Cellar Tonight — Lineups | Tonight NYC' },
   'the-stand': { path: '/stand',  title: 'The Stand Tonight — Lineups | Tonight NYC' },
   'big-shows': { path: '/big',    title: 'Big Comedy Shows in NYC | Tonight NYC' },

@@ -18,6 +18,7 @@
   ],
   "rewrites": [
     { "source": "/api/lineup", "destination": "/api/lineup" },
+    { "source": "/tonight", "destination": "/index.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/support", "destination": "/support.html" },
     { "source": "/cellar", "destination": "/index.html" },
