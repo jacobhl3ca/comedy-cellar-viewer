@@ -32,14 +32,15 @@ module.exports = async (req, res) => {
 };
 
 // Fetch HTML from a URL with timeout
-function fetchHTML(url) {
+function fetchHTML(url, depth = 0) {
+  if (depth > 4) return Promise.reject(new Error('Too many redirects'));
   return new Promise((resolve, reject) => {
     const request = https.get(url, {
       headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)' }
     }, resp => {
       if (resp.statusCode === 301 || resp.statusCode === 302) {
-        // Follow redirect
-        return fetchHTML(resp.headers.location).then(resolve).catch(reject);
+        resp.resume(); // drain so the socket is released
+        return fetchHTML(resp.headers.location, depth + 1).then(resolve).catch(reject);
       }
       if (resp.statusCode !== 200) return reject(new Error(`HTTP ${resp.statusCode}`));
       let data = '';
