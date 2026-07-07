@@ -48,17 +48,26 @@ module.exports = async (req, res) => {
     let data;
     try { data = JSON.parse(body); } catch { return res.status(400).json({ error: 'Invalid JSON' }); }
 
-    if (!data.email || !data.comedians || !Array.isArray(data.comedians)) {
-      return res.status(400).json({ error: 'Need email and comedians array' });
+    if (!data.email || typeof data.email !== 'string' || !/.+@.+\..+/.test(data.email.trim())) {
+      return res.status(400).json({ error: 'Need a valid email address' });
     }
+    if (!Array.isArray(data.comedians)) {
+      return res.status(400).json({ error: 'comedians must be an array' });
+    }
+    if (data.comedians.length > 100) {
+      return res.status(400).json({ error: 'Too many comedians (max 100)' });
+    }
+    const comedians = data.comedians
+      .map(n => (typeof n === 'string' ? n.trim().substring(0, 100) : ''))
+      .filter(Boolean);
 
-    const record = { email: data.email, comedians: data.comedians, updatedAt: new Date().toISOString() };
+    const record = { email: data.email.trim(), comedians, updatedAt: new Date().toISOString() };
 
     if (store) {
       try {
-        await store.set(ALERTS_PREFIX + data.email, record);
+        await store.set(ALERTS_PREFIX + record.email, record);
         // Also add to index for cron scanning
-        await store.sadd('alert_emails', data.email);
+        await store.sadd('alert_emails', record.email);
       } catch (e) {
         return res.status(500).json({ error: 'Failed to save alerts' });
       }
@@ -69,7 +78,7 @@ module.exports = async (req, res) => {
       ...record,
       persisted: !!store,
       message: store
-        ? `Alert set for ${data.comedians.length} comedians. You'll get an email when they appear.`
+        ? `Alert set for ${comedians.length} comedians. You'll get an email when they appear.`
         : `Alert saved locally. Set up Vercel KV for email notifications.`
     });
   }
