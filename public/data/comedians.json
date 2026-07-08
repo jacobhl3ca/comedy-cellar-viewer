@@ -8547,7 +8547,8 @@
     "name": "Learnmore Jonasi",
     "venues": [],
     "bio": "AMERICA'S GOT TALENT (GOLDEN BUZZER), STEVE HARVEY'S SPOTLIGHT, BOSTON COMEDY FESTIVAL WINNER",
-    "tagline_cellar": "AMERICA'S GOT TALENT (GOLDEN BUZZER), STEVE HARVEY'S SPOTLIGHT, BOSTON COMEDY FESTIVAL WINNER"
+    "tagline_cellar": "AMERICA'S GOT TALENT (GOLDEN BUZZER), STEVE HARVEY'S SPOTLIGHT, BOSTON COMEDY FESTIVAL WINNER",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Long_John_The_Comedian.jpg/330px-Long_John_The_Comedian.jpg"
   },
   {
     "name": "Sam Rocha",
@@ -8670,5 +8671,10 @@
   {
     "name": "Zae Jordan",
     "venues": []
+  },
+  {
+    "name": "Dustin Nickerson",
+    "venues": [],
+    "bio_stand": "Dustin Nickerson is “the world’s most average person.” A comedian who performs in over 300 shows a year, his videos have been viewed over 20 million times, and he has appeared on Comedy Central, Hulu, Fox, and Netflix alongside Kevin Hart. His stand-up comedy special, Overwhelmed, which was produced by KevOnStage, was one of the highest-rated comedy specials on Amazon Prime and has been viewed over 155,000 times on YouTube. He has been married to his high school sweetheart, Melissa, for over seventeen years, and together, they host the popular ‘Don’t Make Me Come Back There’ podcast in between raising their three children. They live in San Diego, California."
   }
 ]
