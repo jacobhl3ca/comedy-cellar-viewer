@@ -5512,7 +5512,8 @@
       "comedy_cellar"
     ],
     "bio": "Andy Haynes is a stand-up comedian. He has appeared on The Late Show, Conan, and Comedy Central. He performs at clubs across the country.",
-    "tagline_cellar": "LATE NIGHT WITH JIMMY FALLON, CONAN, COMEDY CENTRAL PRESENTS, ROAST BATTLE"
+    "tagline_cellar": "LATE NIGHT WITH JIMMY FALLON, CONAN, COMEDY CENTRAL PRESENTS, ROAST BATTLE",
+    "bio_stand": "Andy Haynes is a writer, stand up and actor from Seattle, WA currently living in New York. His standup can be seen on Late Night with Jimmy Fallon, Conan, Comedy Central Presents, the Pete Holmes show, and Comedy Central’s Roast Battle. His debut album Greatest Hits was released in 2014. He has been featured in Another Period (Comedy Central), Adam Ruins Everything (TruTV) and most recently in Loosely Exactly with Nicole Byer (MTV). Andy served as the head writer for HOT TAKES with Brandon Wardell on Comedy Central and was the creator and star of ‘AFTER SHELDON WITH ANDY HAYNES’ on JASH. He is the creator of the animated show ‘THE CHAMPIONS’ for Bleacher Report which is going into its second season."
   },
   {
     "name": "Are You Garbage",
@@ -8676,5 +8677,29 @@
     "name": "Dustin Nickerson",
     "venues": [],
     "bio_stand": "Dustin Nickerson is “the world’s most average person.” A comedian who performs in over 300 shows a year, his videos have been viewed over 20 million times, and he has appeared on Comedy Central, Hulu, Fox, and Netflix alongside Kevin Hart. His stand-up comedy special, Overwhelmed, which was produced by KevOnStage, was one of the highest-rated comedy specials on Amazon Prime and has been viewed over 155,000 times on YouTube. He has been married to his high school sweetheart, Melissa, for over seventeen years, and together, they host the popular ‘Don’t Make Me Come Back There’ podcast in between raising their three children. They live in San Diego, California."
+  },
+  {
+    "name": "Timmy No Brakes",
+    "venues": []
+  },
+  {
+    "name": "Ty Marion",
+    "venues": []
+  },
+  {
+    "name": "Dusty Carter",
+    "venues": []
+  },
+  {
+    "name": "Dedrick Flynn",
+    "venues": []
+  },
+  {
+    "name": "Pat O’Neill",
+    "venues": []
+  },
+  {
+    "name": "Alaina Hirschi",
+    "venues": []
   }
 ]
