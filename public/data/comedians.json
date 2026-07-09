@@ -5321,8 +5321,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/tim-butterly",
     "bio_stand": "Tim Butterly is a fat bearded comedian from Philadelphia. In addition to co hosting Dad Meat Podcast, he performs stand up and has acted in numerous commercials, television shows and films, with his defining role coming as a cheese pervert in the film Zeroes. He recently grew a mustache and got jacked, so prepare to be wet.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Tim_Butterly.jpg",
-    "bio": "Tim Butterly is a stand-up comedian based in New York City. He performs at clubs across the city and has appeared on multiple podcasts."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Tim_Butterly.jpg"
   },
   {
     "name": "Tim Dillon",
@@ -6371,7 +6370,8 @@
   },
   {
     "name": "Zac Amico",
-    "venues": []
+    "venues": [],
+    "bio_stand": "A comedian, broadcaster, and filmmaker from New Jersey who currently lives in Brooklyn. Zac has appeared on Comedy Central, SiriusXM, and on Tru TV's Impractical Jokers. He has also had a hand in writing and filmmaking with legendary indie film production company Troma. He has worked on movies such as Shakespeare's Shit Storm, Return to Return to Nuke 'Em High Volume 1 and 2, Grindsploitation 3: Video Nasty, and more. Zac also hosts popular podcasts Zac Amico's Midnight Spookshow, Real Ass Podcast, and Bi Guys. In addition, he moonlights as professional wrestling manager for Catalyst Wrestling, Pro Wrestling Magic, and many other independent companies"
   },
   {
     "name": "Nick Rochefort",
