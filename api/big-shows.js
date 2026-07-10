@@ -22,11 +22,11 @@ module.exports = async (req, res) => {
     };
 
     const events = (data.events || []).filter(isComedyEvent).map(evt => {
-      const dt = new Date(evt.datetime_local);
+      const dt = evt.datetime_local ? new Date(evt.datetime_local) : null;
       return {
         title: evt.short_title || evt.title,
         date: evt.datetime_local?.split('T')[0] || '',
-        time: dt.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }),
+        time: dt ? dt.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) : '',
         venue: evt.venue?.name || '',
         performers: (evt.performers || []).map(p => p.name).join(', '),
         performerImages: (evt.performers || []).reduce((acc, p) => {
