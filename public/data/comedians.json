@@ -5489,7 +5489,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "tagline_cellar": "JUST FOR LAUGHS, DONT TELL COMEDY"
+    "tagline_cellar": "JUST FOR LAUGHS, DONT TELL COMEDY",
+    "bio_stand": "Adam Gilbert is happy to see you. The Fort Wayne native cut his teeth in the midwest alternative comedy circuit, opening for touring comics such as Doug Stanhope, Robert Kelly, Todd Barry, and Brian Posehn. A Chicago transplant, he has performed at the Laugh Factory, Zanies, and Comedians You Should Know. Adam was a featured performer at the Limestone Comedy Festival and was featured in Pique Magazine."
   },
   {
     "name": "Alex Kumin",
@@ -8714,6 +8715,14 @@
   },
   {
     "name": "New York Comedy Festival",
+    "venues": []
+  },
+  {
+    "name": "Kat Smith",
+    "venues": []
+  },
+  {
+    "name": "Noah Snyder",
     "venues": []
   }
 ]
