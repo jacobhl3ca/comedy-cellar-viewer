@@ -1,0 +1,28 @@
+name: Lighthouse
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install & build
+        run: |
+          npm ci || npm install
+          npm run build
+      - name: Serve site
+        run: |
+          npx --yes serve -l 3000 public &
+          npx --yes wait-on -t 60000 http://localhost:3000/
+      - name: Run Lighthouse
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: http://localhost:3000/
+          uploadArtifacts: true
+          temporaryPublicStorage: true
