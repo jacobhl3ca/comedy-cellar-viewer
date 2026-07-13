@@ -7547,7 +7547,8 @@
   {
     "name": "Josh Thomas",
     "venues": [],
-    "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/emmyblotnick-bebb0ac0-thumb-image.jpg?1628622711"
+    "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/emmyblotnick-bebb0ac0-thumb-image.jpg?1628622711",
+    "bio_wiki": "Joshua Michael Thomas is an Australian comedian, actor, and writer. In 2005, he won the Melbourne International Comedy Festival's Raw Comedy Competition. He has since appeared on television numerous times, including as a regular and Generation Y team captain on Network 10's Talkin' 'Bout Your Generation. In 2013, Thomas created the award-winning ABC2 and Pivot television series Please Like Me, which he also co-wrote and starred in."
   },
   {
     "name": "Reg Thomas",
@@ -8723,6 +8724,10 @@
   },
   {
     "name": "Noah Snyder",
+    "venues": []
+  },
+  {
+    "name": "Ziwe",
     "venues": []
   }
 ]
