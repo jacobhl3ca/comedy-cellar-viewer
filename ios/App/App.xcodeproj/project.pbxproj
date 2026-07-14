@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01446B3801DB9C08352AF3B0 /* TonightWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BFF9386BA975684DE28AFEE1 /* TonightWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		094FA8CCD3515AC58D1D24F6 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE96D40DC3820674B956AC7C /* WidgetKit.framework */; };
+		2ECD59DC62D59AC56CB3826D /* TonightWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EF8FE3C102F03F46602F15 /* TonightWidgetBundle.swift */; };
 		2FAD9763203C412B000D30F8 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2FAD9762203C412B000D30F8 /* config.xml */; };
 		4D22ABE92AF431CB00220026 /* CapApp-SPM in Frameworks */ = {isa = PBXBuildFile; productRef = 4D22ABE82AF431CB00220026 /* CapApp-SPM */; };
 		50379B232058CBB4000EE86E /* capacitor.config.json in Resources */ = {isa = PBXBuildFile; fileRef = 50379B222058CBB4000EE86E /* capacitor.config.json */; };
@@ -15,10 +18,40 @@
 		504EC30F1FED79650016851F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504EC30E1FED79650016851F /* Assets.xcassets */; };
 		504EC3121FED79650016851F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 504EC3101FED79650016851F /* LaunchScreen.storyboard */; };
 		50B271D11FEDC1A000F3C39B /* public in Resources */ = {isa = PBXBuildFile; fileRef = 50B271D01FEDC1A000F3C39B /* public */; };
+		7802C276F0051ED89CEF28E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D452DDDCF44716E54A1AF082 /* Foundation.framework */; };
+		8616B6D8546A9A9AA42CA67F /* TonightWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F53C404EDC92696598D5D3B /* TonightWidget.swift */; };
+		9CB294CB9274C454F0CCB959 /* LineupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C23A3344114FDFFD9BC0E9 /* LineupService.swift */; };
+		B3794E5F543EE74FCE2AE01B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75FB057B41394A7ECB9124B6 /* SwiftUI.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		44EEECA5FB64D1EEE4F05DE3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 504EC2FC1FED79650016851F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 977EABE72C6D7B092E5765E9;
+			remoteInfo = TonightWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B38CE42C6D43CE2C452C26D4 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				01446B3801DB9C08352AF3B0 /* TonightWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		10C23A3344114FDFFD9BC0E9 /* LineupService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineupService.swift; path = TonightWidget/LineupService.swift; sourceTree = "<group>"; };
 		2FAD9762203C412B000D30F8 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
+		32EF8FE3C102F03F46602F15 /* TonightWidgetBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TonightWidgetBundle.swift; path = TonightWidget/TonightWidgetBundle.swift; sourceTree = "<group>"; };
 		50379B222058CBB4000EE86E /* capacitor.config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = capacitor.config.json; sourceTree = "<group>"; };
 		504EC3041FED79650016851F /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		504EC3071FED79650016851F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -27,7 +60,13 @@
 		504EC3111FED79650016851F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		504EC3131FED79650016851F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50B271D01FEDC1A000F3C39B /* public */ = {isa = PBXFileReference; lastKnownFileType = folder; path = public; sourceTree = "<group>"; };
+		75FB057B41394A7ECB9124B6 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/SwiftUI.framework; sourceTree = DEVELOPER_DIR; };
 		958DCC722DB07C7200EA8C5F /* debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = debug.xcconfig; path = ../debug.xcconfig; sourceTree = SOURCE_ROOT; };
+		9F53C404EDC92696598D5D3B /* TonightWidget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TonightWidget.swift; path = TonightWidget/TonightWidget.swift; sourceTree = "<group>"; };
+		B69DD525296C729BB0E508D2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = TonightWidget/Info.plist; sourceTree = "<group>"; };
+		BFF9386BA975684DE28AFEE1 /* TonightWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TonightWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D452DDDCF44716E54A1AF082 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		EE96D40DC3820674B956AC7C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/WidgetKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,15 +78,45 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A0A5629360985471CEAE1BAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7802C276F0051ED89CEF28E9 /* Foundation.framework in Frameworks */,
+				094FA8CCD3515AC58D1D24F6 /* WidgetKit.framework in Frameworks */,
+				B3794E5F543EE74FCE2AE01B /* SwiftUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31BFE75A839E2BF1D241954D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				36F65E4139ACF0CE1D423630 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		36F65E4139ACF0CE1D423630 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D452DDDCF44716E54A1AF082 /* Foundation.framework */,
+				EE96D40DC3820674B956AC7C /* WidgetKit.framework */,
+				75FB057B41394A7ECB9124B6 /* SwiftUI.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 		504EC2FB1FED79650016851F = {
 			isa = PBXGroup;
 			children = (
 				958DCC722DB07C7200EA8C5F /* debug.xcconfig */,
 				504EC3061FED79650016851F /* App */,
 				504EC3051FED79650016851F /* Products */,
+				31BFE75A839E2BF1D241954D /* Frameworks */,
+				82F5550280B1FB9377C513C9 /* TonightWidget */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				504EC3041FED79650016851F /* App.app */,
+				BFF9386BA975684DE28AFEE1 /* TonightWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,6 +144,17 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		82F5550280B1FB9377C513C9 /* TonightWidget */ = {
+			isa = PBXGroup;
+			children = (
+				10C23A3344114FDFFD9BC0E9 /* LineupService.swift */,
+				9F53C404EDC92696598D5D3B /* TonightWidget.swift */,
+				32EF8FE3C102F03F46602F15 /* TonightWidgetBundle.swift */,
+				B69DD525296C729BB0E508D2 /* Info.plist */,
+			);
+			name = TonightWidget;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -84,10 +165,12 @@
 				504EC3001FED79650016851F /* Sources */,
 				504EC3011FED79650016851F /* Frameworks */,
 				504EC3021FED79650016851F /* Resources */,
+				B38CE42C6D43CE2C452C26D4 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				025B9BA5B9EE6F8915D62C86 /* PBXTargetDependency */,
 			);
 			name = App;
 			packageProductDependencies = (
@@ -96,6 +179,23 @@
 			productName = App;
 			productReference = 504EC3041FED79650016851F /* App.app */;
 			productType = "com.apple.product-type.application";
+		};
+		977EABE72C6D7B092E5765E9 /* TonightWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8EE6949E0F29C87B3E948C35 /* Build configuration list for PBXNativeTarget "TonightWidget" */;
+			buildPhases = (
+				4902A1628569B0FBF6B4F63B /* Sources */,
+				A0A5629360985471CEAE1BAF /* Frameworks */,
+				D397E25D26595353690955C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TonightWidget;
+			productName = TonightWidget;
+			productReference = BFF9386BA975684DE28AFEE1 /* TonightWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -130,6 +230,7 @@
 			projectRoot = "";
 			targets = (
 				504EC3031FED79650016851F /* App */,
+				977EABE72C6D7B092E5765E9 /* TonightWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -148,9 +249,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D397E25D26595353690955C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4902A1628569B0FBF6B4F63B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CB294CB9274C454F0CCB959 /* LineupService.swift in Sources */,
+				8616B6D8546A9A9AA42CA67F /* TonightWidget.swift in Sources */,
+				2ECD59DC62D59AC56CB3826D /* TonightWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		504EC3001FED79650016851F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -160,6 +278,15 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		025B9BA5B9EE6F8915D62C86 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TonightWidget;
+			target = 977EABE72C6D7B092E5765E9 /* TonightWidget */;
+			targetProxy = 44EEECA5FB64D1EEE4F05DE3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		504EC30B1FED79650016851F /* Main.storyboard */ = {
@@ -334,6 +461,57 @@
 			};
 			name = Release;
 		};
+		9B0CAC27218DAED9840FC8FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = V45QZXMDAW;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = TonightWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jacobhl.tonightnyc.TonightWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E5435BDDC58F6D3D25DF68A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = V45QZXMDAW;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = TonightWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jacobhl.tonightnyc.TonightWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -351,6 +529,15 @@
 			buildConfigurations = (
 				504EC3171FED79650016851F /* Debug */,
 				504EC3181FED79650016851F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8EE6949E0F29C87B3E948C35 /* Build configuration list for PBXNativeTarget "TonightWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5435BDDC58F6D3D25DF68A1 /* Release */,
+				9B0CAC27218DAED9840FC8FD /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
