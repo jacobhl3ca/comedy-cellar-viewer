@@ -5464,7 +5464,8 @@
     "bio": "Yannis Pappas is a stand-up comedian and podcaster. He hosts the Long Days podcast and has created viral characters like Mr. Panos on YouTube. He performs at clubs and theaters across the country.",
     "bio_stand": "Yannis Pappas is a stand-up comedian and current host of AOL's Original Series, 2 Point Lead. He was the Co-Anchor of Fusion Live, a live, primetime, one-hour news magazine program which focused on current events, pop culture and satire. Fusion TV network launched in September 2013 as a joint venture of ABC and Univision. Yannis' Half Hour Comedy Central Special aired in June of 2014 and is available on Amazon, iTunes, ComedyCentral.com and whenever Comedy Central re-runs it. Yannis was also the co-host of MSG's sports fan show, The Bracket. He has also been featured on AXS TV, TRUTV's How To Be a Grown Up, VH1's \"Best Week Ever\", Fox Business, Good Morning America on ABC. He was the first comedian to ever do stand up on the New Tonight Show with Jimmy Fallon–It was a test show and didn't air, but that's kind of a cool thing. He tours the world as a stand-up comedian and is known for his immensely popular characters Mr. Panos and Maurica.",
     "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Yannis_Pappas_-_The_Stand.jpg/330px-Yannis_Pappas_-_The_Stand.jpg",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Yannis_Pappas.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Yannis_Pappas.jpg",
+    "tagline_cellar": "CSPECIAL, TONIGHT SHOWOMEDY CENTRAL HALF HOUR"
   },
   {
     "name": "Zach Brazao",
@@ -5986,7 +5987,8 @@
     "name": "Leslie Jones",
     "bio": "Leslie Jones is a stand-up comedian and actress. She was a cast member on SNL from 2014-2019 and starred in Ghostbusters (2016). She hosted the Supermarket Sweep reboot and continues to perform stand-up.",
     "venues": [],
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Leslie_Jones_at_The_Stress_Factory_%2843785886122%29.jpg/330px-Leslie_Jones_at_The_Stress_Factory_%2843785886122%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Leslie_Jones_at_The_Stress_Factory_%2843785886122%29.jpg/330px-Leslie_Jones_at_The_Stress_Factory_%2843785886122%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "tagline_cellar": "THE FKRY PODCAST, \"OUR FLAG MEANS DEATH\" (HBO MAX), HOST OF SUPERMARKET SWEEP, FROM THE MOVIE \"COMING TO AMERICA 2\", FROM THE MOVIE \"TRAINWRECK\", SNL WRITER/ACTOR, CHRIS ROCK MOVIE WORKAHOLCS, SHOWTIME SPECIAL \"PROB CHILD\""
   },
   {
     "name": "Cedric the Entertainer",
@@ -8712,7 +8714,8 @@
   },
   {
     "name": "Ms. Pat",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Patricia Williams Lee, better known by her stage name Ms. Pat, is an American stand-up comedian and actress best known as the lead and namesake of The Ms. Pat Show. She is host of the podcast The Patdown with Ms. Pat."
   },
   {
     "name": "New York Comedy Festival",
@@ -8728,6 +8731,30 @@
   },
   {
     "name": "Ziwe",
+    "venues": []
+  },
+  {
+    "name": "History Hyenas",
+    "venues": [],
+    "bio": "Comedians Yannis Pappas and Chris Distefano are smoothie-drinking history cuties who bring wild energy to every episode of their podcast, History Hyenas! Join these two as they blend history and humor like never before. Get ready to laugh and learn with the boys!",
+    "tagline_cellar": "Comedians Yannis Pappas and Chris Distefano are smoothie-drinking history cuties who bring wild energy to every episode of their podcast, History Hyenas! Join these two as they blend history and humor like never before. Get ready to laugh and learn with the boys!"
+  },
+  {
+    "name": "Patti Harrison",
+    "venues": [],
+    "bio_wiki": "Patti Harrison is an American actress and comedian. She is best known for her roles in Shrill (2019–2021), I Think You Should Leave with Tim Robinson (2019–2023), and Together Together (2021). For her role in Together Together, she earned a nomination for the Independent Spirit Award for Best Female"
+  },
+  {
+    "name": "KevOnStage",
+    "venues": []
+  },
+  {
+    "name": "Billy Eichner",
+    "venues": [],
+    "bio_wiki": "Billy Eichner is an American comedian, actor, screenwriter, and television show host. He is the star, executive producer, and creator of Funny or Die's Billy on the Street, a comedy game show that aired on various platforms."
+  },
+  {
+    "name": "Julie Klausner",
     "venues": []
   }
 ]
