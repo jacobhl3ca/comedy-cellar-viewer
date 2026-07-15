@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
   const store = getStore();
 
   if (req.method === 'GET') {
-    const email = req.query.email;
+    const email = (req.query.email || '').toLowerCase() || undefined;
     if (!email) {
       return res.status(200).json({
         status: store ? 'active' : 'not_configured',
@@ -61,7 +61,7 @@ module.exports = async (req, res) => {
       .map(n => (typeof n === 'string' ? n.trim().substring(0, 100) : ''))
       .filter(Boolean);
 
-    const record = { email: data.email.trim(), comedians, updatedAt: new Date().toISOString() };
+    const record = { email: data.email.trim().toLowerCase(), comedians, updatedAt: new Date().toISOString() };
 
     if (store) {
       try {
@@ -84,7 +84,7 @@ module.exports = async (req, res) => {
   }
 
   if (req.method === 'DELETE') {
-    const email = req.query.email;
+    const email = (req.query.email || '').toLowerCase() || undefined;
     if (!email) return res.status(400).json({ error: 'Need email query param' });
 
     if (store) {
