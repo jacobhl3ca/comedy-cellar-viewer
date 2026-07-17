@@ -18,6 +18,8 @@ const https = require('https');
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+// Union Hall has no bio/photo enrichment, so reuse the live scraper as-is.
+const { scrapeUnionHall } = require('../lib/club-scrapers');
 
 
 const ROOT = path.resolve(__dirname, '..');
@@ -478,20 +480,38 @@ async function scrapeStandupNY() {
     let h = parseInt(m[1], 10) % 12; if (/PM/i.test(m[3])) h += 12;
     return h * 60 + parseInt(m[2], 10);
   };
+  // Announced headliner extraction — see lib/club-scrapers.js standupnyHeadliners.
+  const NAME_TOKEN = "[A-Z][A-Za-z.'’-]+";
+  const PERSON_RE = new RegExp(`^${NAME_TOKEN}(?:\\s+${NAME_TOKEN}){0,3}$`);
+  const GENERIC_NAME_RE = /\b(house show|open mic|showcase|show|mic|night|day|benefit|new faces|late|early|comedy|presents|tba|anniversary|festival|party|special)\b/i;
+  const nameReal = (s) => !!s && PERSON_RE.test(s) && !GENERIC_NAME_RE.test(s);
+  const headliners = (title, description) => {
+    const out = [];
+    const stripped = (title || '').replace(/^.*?\bpresents\s*:\s*/i, '').replace(/^stand\s*up\s*ny\s*:\s*/i, '').trim();
+    if (stripped && stripped !== title && nameReal(stripped)) out.push(stripped);
+    const dm = (description || '').match(new RegExp(`^(${NAME_TOKEN}(?:\\s+${NAME_TOKEN}){0,3})\\s+is\\s+(?:an?\\s+)?[\\w\\s,'’-]{0,60}?\\b(?:stand-?up|comedian|comic)\\b`, 'i'));
+    if (dm && nameReal(dm[1])) out.push(dm[1].trim());
+    return [...new Map(out.map(n => [n.toLowerCase(), n])).values()];
+  };
   try {
     const todayNY = new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
-    const query = `{ paginatedEvents(arguments:{accountIds:[2535], startDate:"${todayNY}", limit:200}){ collection { id name date startTime status images } } }`;
+    const query = `{ paginatedEvents(arguments:{accountIds:[2535], startDate:"${todayNY}", limit:200}){ collection { id name date startTime status images description } } }`;
     const data = await postGraphQL('www.venuepilot.co', '/graphql', JSON.stringify({ query }));
     const collection = data?.data?.paginatedEvents?.collection || [];
     const shows = collection
       .filter(e => e.date && e.date >= todayNY)
-      .map(e => ({
-        title: decode(e.name), date: e.date, time: fmtTime(e.startTime),
-        venue: 'Stand Up NY', price: null,
-        url: `https://standupny.com/#/events/${e.id}`, description: '',
-        image: Array.isArray(e.images) ? (e.images[0] || '') : '',
-        soldOut: /sold\s*out/i.test(e.status || ''),
-      }))
+      .map(e => {
+        const title = decode(e.name);
+        const description = decode(e.description).slice(0, 500);
+        return {
+          title, date: e.date, time: fmtTime(e.startTime),
+          venue: 'Stand Up NY', price: null,
+          url: `https://standupny.com/#/events/${e.id}`, description,
+          image: Array.isArray(e.images) ? (e.images[0] || '') : '',
+          comedians: headliners(title, description),
+          soldOut: /sold\s*out/i.test(e.status || ''),
+        };
+      })
       .sort((a, b) => a.date.localeCompare(b.date) || parseTime(a.time) - parseTime(b.time));
     log(`Stand Up NY: ${shows.length} shows`);
     return shows;
@@ -984,12 +1004,13 @@ async function main() {
   const dbByName = new Map(comedianDB.map(c => [c.name, c]));
 
   // Scrape all sources in parallel
-  const [cellarResult, standResult, gothamShows, nyccShows, standupnyShows, seatgeekEvents, ticketmasterEvents, availability] = await Promise.all([
+  const [cellarResult, standResult, gothamShows, nyccShows, standupnyShows, unionhallShows, seatgeekEvents, ticketmasterEvents, availability] = await Promise.all([
     scrapeCellar(),
     scrapeStand(),
     scrapeGotham(),
     scrapeNYCC(),
     scrapeStandupNY(),
+    scrapeUnionHall().catch(e => { log(`Union Hall: ERROR - ${e.message}`); return []; }),
     scrapeBigShows(),
     scrapeTicketmaster(),
     scrapeAvailability(),
@@ -1038,6 +1059,13 @@ async function main() {
     prebaked: new Date().toISOString()
   }) + '\n');
   log(`Saved standupny-cache.json (${standupnyShows.length} shows)`);
+
+  // Union Hall — same { shows, count, source } shape as /api/clubs?venue=union-hall
+  fs.writeFileSync(path.join(CACHE_DIR, 'unionhall-cache.json'), JSON.stringify({
+    shows: unionhallShows, count: unionhallShows.length, source: 'unionhallny.com (Eventbrite)',
+    prebaked: new Date().toISOString()
+  }) + '\n');
+  log(`Saved unionhall-cache.json (${unionhallShows.length} shows)`);
 
   // Big Shows — same format as /api/big-shows response
   fs.writeFileSync(path.join(CACHE_DIR, 'big-shows-cache.json'), JSON.stringify({

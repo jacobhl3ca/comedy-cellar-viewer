@@ -26,6 +26,7 @@
     { "source": "/gotham", "destination": "/index.html" },
     { "source": "/nycc", "destination": "/index.html" },
     { "source": "/standupny", "destination": "/index.html" },
+    { "source": "/unionhall", "destination": "/index.html" },
     { "source": "/big", "destination": "/index.html" },
     { "source": "/comics", "destination": "/index.html" }
   ],

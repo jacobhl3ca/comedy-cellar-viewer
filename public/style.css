@@ -1052,8 +1052,15 @@ html.native-ios .app-store-badge-link { display: none; }
   border: 2px solid var(--border); background: var(--surface);
   pointer-events: none;
 }
+/* Tapped-open (pinned) poster: bigger so the printed lineup is actually readable,
+   with a dim full-screen backdrop. Tapping anywhere closes it (JS-handled). */
+#global-poster-preview.pinned {
+  width: min(90vw, 460px); max-height: 84vh;
+  box-shadow: 0 0 0 100vmax rgba(0,0,0,0.72), 0 12px 40px rgba(0,0,0,0.7);
+}
 @media (max-width: 480px) {
   #global-poster-preview { width: 60vw; max-width: 200px; max-height: 50vh; }
+  #global-poster-preview.pinned { width: 90vw; max-width: 90vw; max-height: 84vh; }
 }
 @media (max-width: 480px) {
   .poster-preview { width: 60vw; max-width: 200px; max-height: 50vh; }

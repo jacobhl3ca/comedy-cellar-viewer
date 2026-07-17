@@ -54,6 +54,7 @@ const STATIC_STAND = '/data/stand-cache.json';
 const STATIC_GOTHAM = '/data/gotham-cache.json';
 const STATIC_NYCC = '/data/nycc-cache.json';
 const STATIC_STANDUPNY = '/data/standupny-cache.json';
+const STATIC_UNIONHALL = '/data/unionhall-cache.json';
 const STATIC_BIG_SHOWS = '/data/big-shows-cache.json';
 const STATIC_AVAILABILITY = '/data/availability-cache.json';
 
@@ -541,6 +542,7 @@ let bigShows = [];
 let nyccShows = [];
 let gothamShows = [];
 let standupnyShows = [];
+let unionhallShows = [];
 
 async function fetchNYCC() {
   try {
@@ -566,6 +568,19 @@ async function fetchStandupNY() {
     return standupnyShows;
   } catch (e) {
     console.error('Failed to fetch Stand Up NY:', e);
+    return [];
+  }
+}
+
+async function fetchUnionHall() {
+  try {
+    const resp = await fetchWithTimeout(STATIC_UNIONHALL, {}, 5000)
+      .catch(() => fetchWithTimeout('/api/clubs?venue=union-hall', {}, 15000));
+    const data = await resp.json();
+    unionhallShows = (data.shows || []).filter(s => !isShowPast(s.date, s.time));
+    return unionhallShows;
+  } catch (e) {
+    console.error('Failed to fetch Union Hall:', e);
     return [];
   }
 }

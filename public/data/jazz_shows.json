@@ -1,33 +1,78 @@
 {
-  "generated_at": "2026-06-28T14:25:24",
-  "today": "2026-06-28",
+  "generated_at": "2026-07-17T08:37:30",
+  "today": "2026-07-17",
   "shows": [
     {
-      "id": "6475195aa07a6185",
+      "id": "20ab10eb561317ee",
       "artists": [
-        "Gilad Hekselman",
-        "John Patitucci",
-        "Nate Wood",
-        "Taylor Eigsti"
+        "Tyshawn Sorey"
       ],
-      "date": "2026-07-06",
+      "date": "2026-07-21",
       "venue_label": "Village Vanguard",
-      "title": "with Gilad Hekselman, Taylor Eigsti, John Patitucci, Nate Wood",
+      "title": "KRIS DAVIS | TYSHAWN SOREY | INGRID LAUBROCK",
       "city": "Village Vanguard",
       "source": "venue",
       "ticket_url": "https://villagevanguard.com/"
     },
     {
-      "id": "ac297e7edcda7212",
+      "id": "2a7c3033f96390ab",
       "artists": [
-        "Tyshawn Sorey"
+        "Ron Carter"
       ],
-      "date": "2026-07-13",
+      "date": "2026-07-25",
+      "venue_label": "Other",
+      "title": "Ron Carter",
+      "city": "The 92nd Street Y",
+      "source": "artist",
+      "ticket_url": null
+    },
+    {
+      "id": "bdde84f2bd50b995",
+      "artists": [
+        "Eric Alexander"
+      ],
+      "date": "2026-07-27",
+      "venue_label": "Jazzcultural",
+      "title": "Eric Alexander Quartet",
+      "city": "Jazzcultural (SmallsLIVE)",
+      "source": "venue",
+      "ticket_url": "https://jazzculturaltheatre.com/"
+    },
+    {
+      "id": "a1659a6a12da1b42",
+      "artists": [
+        "Marquis Hill"
+      ],
+      "date": "2026-07-28",
       "venue_label": "Village Vanguard",
-      "title": "Kris Davis | Ingrid Laubrock | Tyshawn Sorey",
+      "title": "Marquis Hill",
       "city": "Village Vanguard",
       "source": "venue",
       "ticket_url": "https://villagevanguard.com/"
+    },
+    {
+      "id": "4c6e289edfc626d4",
+      "artists": [
+        "Buster Williams"
+      ],
+      "date": "2026-07-31",
+      "venue_label": "Mezzrow",
+      "title": "Brandon Goldberg & Buster Williams",
+      "city": "Mezzrow (SmallsLIVE)",
+      "source": "venue",
+      "ticket_url": "https://mezzrow.com/events/"
+    },
+    {
+      "id": "1e22b5fa9d5c7125",
+      "artists": [
+        "Buster Williams"
+      ],
+      "date": "2026-08-01",
+      "venue_label": "Mezzrow",
+      "title": "Brandon Goldberg & Buster Williams",
+      "city": "Mezzrow (SmallsLIVE)",
+      "source": "venue",
+      "ticket_url": "https://mezzrow.com/events/"
     },
     {
       "id": "4eec77842efb901d",
@@ -35,11 +80,469 @@
         "Ron Carter"
       ],
       "date": "2026-08-01",
-      "venue_label": "Emelin Theatre",
-      "title": "Ron Carter's Foursight Quartet (with Renee Rosnes)",
-      "city": "Ron Carter's Foursight Quartet (with Renee Rosnes) at Emelin Theatre in Mamaroneck, NY",
+      "venue_label": "Other",
+      "title": "Ron Carter",
+      "city": "in Mamaroneck, NY",
       "source": "artist",
-      "ticket_url": "https://www.emelin.org/"
+      "ticket_url": null
+    },
+    {
+      "id": "e9c897bad59e7987",
+      "artists": [
+        "Bill Frisell"
+      ],
+      "date": "2026-08-04",
+      "venue_label": "Village Vanguard",
+      "title": "Bill Frisell",
+      "city": "Village Vanguard",
+      "source": "artist",
+      "ticket_url": "https://villagevanguard.com/"
+    },
+    {
+      "id": "0bba83670757646f",
+      "artists": [
+        "Bill Frisell"
+      ],
+      "date": "2026-08-05",
+      "venue_label": "Village Vanguard",
+      "title": "Bill Frisell",
+      "city": "New York, NY",
+      "source": "artist",
+      "ticket_url": "https://villagevanguard.com/"
+    },
+    {
+      "id": "2b918b24d999f34c",
+      "artists": [
+        "Bill Frisell"
+      ],
+      "date": "2026-08-06",
+      "venue_label": "Village Vanguard",
+      "title": "Bill Frisell",
+      "city": "New York, NY",
+      "source": "artist",
+      "ticket_url": "https://villagevanguard.com/"
+    },
+    {
+      "id": "565a5344e5f245b0",
+      "artists": [
+        "Bill Frisell"
+      ],
+      "date": "2026-08-07",
+      "venue_label": "Village Vanguard",
+      "title": "Bill Frisell",
+      "city": "New York, NY",
+      "source": "artist",
+      "ticket_url": "https://villagevanguard.com/"
+    },
+    {
+      "id": "f6ccf5a4cfafa8ad",
+      "artists": [
+        "Bill Frisell"
+      ],
+      "date": "2026-08-08",
+      "venue_label": "Village Vanguard",
+      "title": "Bill Frisell",
+      "city": "New York, NY",
+      "source": "artist",
+      "ticket_url": "https://villagevanguard.com/"
+    },
+    {
+      "id": "3590b76b26148cbc",
+      "artists": [
+        "Brad Mehldau"
+      ],
+      "date": "2026-08-10",
+      "venue_label": "Jazzcultural",
+      "title": "Brad Mehldau Quartet",
+      "city": "Jazzcultural (SmallsLIVE)",
+      "source": "venue",
+      "ticket_url": "https://jazzculturaltheatre.com/"
+    },
+    {
+      "id": "589811347953976e",
+      "artists": [
+        "Brad Mehldau"
+      ],
+      "date": "2026-08-11",
+      "venue_label": "Jazzcultural",
+      "title": "Brad Mehldau Quartet",
+      "city": "Jazzcultural (SmallsLIVE)",
+      "source": "venue",
+      "ticket_url": "https://jazzculturaltheatre.com/"
+    },
+    {
+      "id": "8b4c5f5031a79eff",
+      "artists": [
+        "Bill Frisell"
+      ],
+      "date": "2026-08-11",
+      "venue_label": "Village Vanguard",
+      "title": "Bill Frisell Trio",
+      "city": "Village Vanguard",
+      "source": "venue",
+      "ticket_url": "https://villagevanguard.com/"
+    },
+    {
+      "id": "3440d7d35e6126c0",
+      "artists": [
+        "Brad Mehldau"
+      ],
+      "date": "2026-08-12",
+      "venue_label": "Smoke Jazz",
+      "title": "Brad Mehldau",
+      "city": "New York, NY",
+      "source": "artist",
+      "ticket_url": "https://smokejazz.com/calendar/"
+    },
+    {
+      "id": "8220b69d50ae325c",
+      "artists": [
+        "Brad Mehldau"
+      ],
+      "date": "2026-08-13",
+      "venue_label": "Smoke Jazz",
+      "title": "Brad Mehldau",
+      "city": "New York, NY",
+      "source": "artist",
+      "ticket_url": "https://smokejazz.com/calendar/"
+    },
+    {
+      "id": "1765d80fce322da8",
+      "artists": [
+        "Brad Mehldau"
+      ],
+      "date": "2026-08-14",
+      "venue_label": "Smoke Jazz",
+      "title": "Brad Mehldau",
+      "city": "New York, NY",
+      "source": "artist",
+      "ticket_url": "https://smokejazz.com/calendar/"
+    },
+    {
+      "id": "768154dface54adb",
+      "artists": [
+        "Brad Mehldau"
+      ],
+      "date": "2026-08-15",
+      "venue_label": "Smoke Jazz",
+      "title": "Brad Mehldau",
+      "city": "New York, NY",
+      "source": "artist",
+      "ticket_url": "https://smokejazz.com/calendar/"
+    },
+    {
+      "id": "646b697646b5ea14",
+      "artists": [
+        "Brad Mehldau"
+      ],
+      "date": "2026-08-16",
+      "venue_label": "Smoke Jazz",
+      "title": "Brad Mehldau",
+      "city": "New York, NY",
+      "source": "artist",
+      "ticket_url": "https://smokejazz.com/calendar/"
+    },
+    {
+      "id": "76590d019de850cd",
+      "artists": [
+        "Bill Frisell"
+      ],
+      "date": "2026-08-18",
+      "venue_label": "Village Vanguard",
+      "title": "Bill Frisell Four",
+      "city": "Village Vanguard",
+      "source": "venue",
+      "ticket_url": "https://villagevanguard.com/"
+    },
+    {
+      "id": "431b16f7c9081de1",
+      "artists": [
+        "Joe Lovano"
+      ],
+      "date": "2026-08-25",
+      "venue_label": "Village Vanguard",
+      "title": "Joe Lovano\u2019s Paramount Quartet",
+      "city": "Village Vanguard",
+      "source": "venue",
+      "ticket_url": "https://villagevanguard.com/"
+    },
+    {
+      "id": "14f837ac4273de41",
+      "artists": [
+        "Julian Lage"
+      ],
+      "date": "2026-08-25",
+      "venue_label": "Village Vanguard",
+      "title": "Julian Lage",
+      "city": "Village Vanguard",
+      "source": "venue",
+      "ticket_url": "https://villagevanguard.com/"
+    },
+    {
+      "id": "665e3975b9bcc554",
+      "artists": [
+        "Joshua Redman"
+      ],
+      "date": "2026-08-29",
+      "venue_label": "Other",
+      "title": "Charlie Parker Jazz Festival 2026",
+      "city": "New York, NY",
+      "source": "artist",
+      "ticket_url": null
+    },
+    {
+      "id": "72c6c2a499f4b17c",
+      "artists": [
+        "Immanuel Wilkins"
+      ],
+      "date": "2026-09-08",
+      "venue_label": "Village Vanguard",
+      "title": "Immanuel Wilkins",
+      "city": "Village Vanguard",
+      "source": "venue",
+      "ticket_url": "https://villagevanguard.com/"
+    },
+    {
+      "id": "3c372d870d6cbccc",
+      "artists": [
+        "Wynton Marsalis"
+      ],
+      "date": "2026-09-17",
+      "venue_label": "Jazz at Lincoln Center",
+      "title": "Wynton Marsalis",
+      "city": "Jazz at Lincoln Center",
+      "source": "venue",
+      "ticket_url": "https://www.jazz.org/whats-on/calendar/"
+    },
+    {
+      "id": "e279e1fcc8bdabce",
+      "artists": [
+        "Ron Carter"
+      ],
+      "date": "2026-10-07",
+      "venue_label": "Birdland",
+      "title": "Rontober",
+      "city": "Rontober at Birdland Jazz Club: Foursight Quartet",
+      "source": "artist",
+      "ticket_url": "https://www.birdlandjazz.com/calendar/"
+    },
+    {
+      "id": "4d2032a28436b876",
+      "artists": [
+        "Ron Carter"
+      ],
+      "date": "2026-10-08",
+      "venue_label": "Birdland",
+      "title": "Rontober",
+      "city": "Rontober at Birdland Jazz Club: Foursight Quartet",
+      "source": "artist",
+      "ticket_url": "https://www.birdlandjazz.com/calendar/"
+    },
+    {
+      "id": "b48cf623971e3481",
+      "artists": [
+        "Wynton Marsalis"
+      ],
+      "date": "2026-10-09",
+      "venue_label": "Jazz at Lincoln Center",
+      "title": "Wynton Marsalis",
+      "city": "Jazz at Lincoln Center",
+      "source": "venue",
+      "ticket_url": "https://www.jazz.org/whats-on/calendar/"
+    },
+    {
+      "id": "a8ee872d69ce034c",
+      "artists": [
+        "Ron Carter"
+      ],
+      "date": "2026-10-14",
+      "venue_label": "Birdland",
+      "title": "Rontober",
+      "city": "Rontober at Birdland Jazz Club: Duo with Bill Frisell",
+      "source": "artist",
+      "ticket_url": "https://www.birdlandjazz.com/calendar/"
+    },
+    {
+      "id": "9f910b7f5c7cab62",
+      "artists": [
+        "Ron Carter"
+      ],
+      "date": "2026-10-15",
+      "venue_label": "Birdland",
+      "title": "Rontober",
+      "city": "Rontober at Birdland Jazz Club: Duo with Bill Frisell",
+      "source": "artist",
+      "ticket_url": "https://www.birdlandjazz.com/calendar/"
+    },
+    {
+      "id": "f047b8dff9bd8ea4",
+      "artists": [
+        "Ron Carter"
+      ],
+      "date": "2026-10-16",
+      "venue_label": "Birdland",
+      "title": "Rontober",
+      "city": "Rontober at Birdland Jazz Club: Duo with Bill Frisell",
+      "source": "artist",
+      "ticket_url": "https://www.birdlandjazz.com/calendar/"
+    },
+    {
+      "id": "a1216af5542350b0",
+      "artists": [
+        "Joe Lovano",
+        "Special Guests Joe Lovano",
+        "Terence Blanchard"
+      ],
+      "date": "2026-10-16",
+      "venue_label": "Jazz at Lincoln Center",
+      "title": "Chucho Vald\u00e9s 85th Birthday Celebration With Special Guests Joe Lovano and Terence Blanchard",
+      "city": "Jazz at Lincoln Center",
+      "source": "venue",
+      "ticket_url": "https://www.jazz.org/whats-on/calendar/"
+    },
+    {
+      "id": "2b8724b97cc653a6",
+      "artists": [
+        "John Patitucci"
+      ],
+      "date": "2026-10-16",
+      "venue_label": "Jazz at Lincoln Center",
+      "title": "John Patitucci",
+      "city": "Jazz at Lincoln Center",
+      "source": "venue",
+      "ticket_url": "https://www.jazz.org/whats-on/calendar/"
+    },
+    {
+      "id": "1f164303fb1161b9",
+      "artists": [
+        "Ron Carter"
+      ],
+      "date": "2026-10-17",
+      "venue_label": "Birdland",
+      "title": "Rontober",
+      "city": "Rontober at Birdland Jazz Club: Duo with Bill Frisell",
+      "source": "artist",
+      "ticket_url": "https://www.birdlandjazz.com/calendar/"
+    },
+    {
+      "id": "cd97b5537338f0e7",
+      "artists": [
+        "Ron Carter"
+      ],
+      "date": "2026-10-21",
+      "venue_label": "Birdland",
+      "title": "Rontober",
+      "city": "Rontober at Birdland Jazz Club: Ron Carter's Great Big Band",
+      "source": "artist",
+      "ticket_url": "https://www.birdlandjazz.com/calendar/"
+    },
+    {
+      "id": "c28ee7ff7b9f85c1",
+      "artists": [
+        "Ron Carter"
+      ],
+      "date": "2026-10-22",
+      "venue_label": "Birdland",
+      "title": "Rontober",
+      "city": "Rontober at Birdland Jazz Club: Ron Carter's Great Big Band",
+      "source": "artist",
+      "ticket_url": "https://www.birdlandjazz.com/calendar/"
+    },
+    {
+      "id": "af73634ef8f66d17",
+      "artists": [
+        "Ron Carter"
+      ],
+      "date": "2026-10-23",
+      "venue_label": "Birdland",
+      "title": "Rontober",
+      "city": "Rontober at Birdland Jazz Club: Ron Carter's Great Big Band",
+      "source": "artist",
+      "ticket_url": "https://www.birdlandjazz.com/calendar/"
+    },
+    {
+      "id": "2297e32bf58b32b4",
+      "artists": [
+        "Wynton Marsalis"
+      ],
+      "date": "2026-10-23",
+      "venue_label": "Jazz at Lincoln Center",
+      "title": "Wynton Marsalis",
+      "city": "Jazz at Lincoln Center",
+      "source": "venue",
+      "ticket_url": "https://www.jazz.org/whats-on/calendar/"
+    },
+    {
+      "id": "46950f2a0354ec73",
+      "artists": [
+        "Ron Carter"
+      ],
+      "date": "2026-10-24",
+      "venue_label": "Birdland",
+      "title": "Rontober",
+      "city": "Rontober at Birdland Jazz Club: Ron Carter's Great Big Band",
+      "source": "artist",
+      "ticket_url": "https://www.birdlandjazz.com/calendar/"
+    },
+    {
+      "id": "9815c744a198f325",
+      "artists": [
+        "Ron Carter"
+      ],
+      "date": "2026-10-28",
+      "venue_label": "Birdland",
+      "title": "Rontober",
+      "city": "Rontober at Birdland Jazz Club: Foursight Quartet (with Renee Rosnes)",
+      "source": "artist",
+      "ticket_url": "https://www.birdlandjazz.com/calendar/"
+    },
+    {
+      "id": "359f69728e555b45",
+      "artists": [
+        "Ron Carter"
+      ],
+      "date": "2026-10-29",
+      "venue_label": "Birdland",
+      "title": "Rontober",
+      "city": "Rontober at Birdland Jazz Club: Foursight Quartet (with Renee Rosnes)",
+      "source": "artist",
+      "ticket_url": "https://www.birdlandjazz.com/calendar/"
+    },
+    {
+      "id": "5309e16423c313b5",
+      "artists": [
+        "Ron Carter"
+      ],
+      "date": "2026-10-30",
+      "venue_label": "Birdland",
+      "title": "Rontober",
+      "city": "Rontober at Birdland Jazz Club: Foursight Quartet (with Renee Rosnes)",
+      "source": "artist",
+      "ticket_url": "https://www.birdlandjazz.com/calendar/"
+    },
+    {
+      "id": "8b8dd40597f94bf4",
+      "artists": [
+        "Ron Carter"
+      ],
+      "date": "2026-10-31",
+      "venue_label": "Birdland",
+      "title": "Rontober",
+      "city": "Rontober at Birdland Jazz Club: Foursight Quartet (with Renee Rosnes)",
+      "source": "artist",
+      "ticket_url": "https://www.birdlandjazz.com/calendar/"
+    },
+    {
+      "id": "b40413d11fb0185f",
+      "artists": [
+        "Wynton Marsalis"
+      ],
+      "date": "2026-11-06",
+      "venue_label": "Jazz at Lincoln Center",
+      "title": "Wynton Marsalis",
+      "city": "Jazz at Lincoln Center",
+      "source": "venue",
+      "ticket_url": "https://www.jazz.org/whats-on/calendar/"
     },
     {
       "id": "58faa3edae430a9a",
@@ -59,14 +562,13 @@
     {
       "id": "f610c986aa590a9d",
       "artists": [
-        "Bill Frisell",
         "Charles Lloyd",
         "Kweku Sumbry",
         "Larry Grenadier"
       ],
       "date": "2026-11-18",
       "venue_label": "Blue Note NYC",
-      "title": "Charles Lloyd Quartet featuring Bill Frisell, Larry Grenadier, Kweku Sumbry",
+      "title": "Charles Lloyd Quartet featuring Larry Grenadier, Kweku Sumbry",
       "city": "November 18-19, 2026 \u2013 Blue Note \u2013 New York, NY",
       "source": "artist",
       "ticket_url": "https://www.bluenotejazz.com/nyc/shows.html"
@@ -100,6 +602,114 @@
       "city": "November 21, 2026 \u2013 NJPAC \u2013 Newark, NJ",
       "source": "artist",
       "ticket_url": null
+    },
+    {
+      "id": "756795c4ea0827b0",
+      "artists": [
+        "Joshua Redman"
+      ],
+      "date": "2026-11-21",
+      "venue_label": "Other",
+      "title": "Purchase College",
+      "city": "Harrison, NY",
+      "source": "artist",
+      "ticket_url": null
+    },
+    {
+      "id": "b096ab32d84b42e2",
+      "artists": [
+        "Wynton Marsalis"
+      ],
+      "date": "2027-01-07",
+      "venue_label": "Jazz at Lincoln Center",
+      "title": "Wynton Marsalis Quintet",
+      "city": "Jazz at Lincoln Center",
+      "source": "venue",
+      "ticket_url": "https://www.jazz.org/whats-on/calendar/"
+    },
+    {
+      "id": "e09bf2ecda431738",
+      "artists": [
+        "Wynton Marsalis"
+      ],
+      "date": "2027-01-21",
+      "venue_label": "Jazz at Lincoln Center",
+      "title": "Wynton Marsalis",
+      "city": "Jazz at Lincoln Center",
+      "source": "venue",
+      "ticket_url": "https://www.jazz.org/whats-on/calendar/"
+    },
+    {
+      "id": "1a2c304d5a549640",
+      "artists": [
+        "Wynton Marsalis"
+      ],
+      "date": "2027-02-05",
+      "venue_label": "Jazz at Lincoln Center",
+      "title": "Wynton Marsalis",
+      "city": "Jazz at Lincoln Center",
+      "source": "venue",
+      "ticket_url": "https://www.jazz.org/whats-on/calendar/"
+    },
+    {
+      "id": "386857761303b565",
+      "artists": [
+        "Dianne Reeves"
+      ],
+      "date": "2027-02-12",
+      "venue_label": "Jazz at Lincoln Center",
+      "title": "Dianne Reeves",
+      "city": "Jazz at Lincoln Center",
+      "source": "venue",
+      "ticket_url": "https://www.jazz.org/whats-on/calendar/"
+    },
+    {
+      "id": "75d0b738e1612cc7",
+      "artists": [
+        "Wynton Marsalis"
+      ],
+      "date": "2027-03-19",
+      "venue_label": "Jazz at Lincoln Center",
+      "title": "Wynton Marsalis",
+      "city": "Jazz at Lincoln Center",
+      "source": "venue",
+      "ticket_url": "https://www.jazz.org/whats-on/calendar/"
+    },
+    {
+      "id": "63ac24d47fa43b6b",
+      "artists": [
+        "Wynton Marsalis"
+      ],
+      "date": "2027-04-08",
+      "venue_label": "Jazz at Lincoln Center",
+      "title": "Wynton Marsalis",
+      "city": "Jazz at Lincoln Center",
+      "source": "venue",
+      "ticket_url": "https://www.jazz.org/whats-on/calendar/"
+    },
+    {
+      "id": "289006533c0207d1",
+      "artists": [
+        "Wynton Marsalis"
+      ],
+      "date": "2027-04-30",
+      "venue_label": "Jazz at Lincoln Center",
+      "title": "Wynton Marsalis",
+      "city": "Jazz at Lincoln Center",
+      "source": "venue",
+      "ticket_url": "https://www.jazz.org/whats-on/calendar/"
+    },
+    {
+      "id": "956f0888cb955d19",
+      "artists": [
+        "Sullivan Fortner"
+      ],
+      "date": "2027-05-13",
+      "venue_label": "Jazz at Lincoln Center",
+      "title": "Sullivan Fortner",
+      "city": "Jazz at Lincoln Center",
+      "source": "venue",
+      "ticket_url": "https://www.jazz.org/whats-on/calendar/"
     }
   ]
 }

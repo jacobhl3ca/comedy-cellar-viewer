@@ -1,4 +1,4 @@
-const { scrapeGotham, scrapeStandupNY, scrapeTheStand, scrapeNYCC } = require('../lib/club-scrapers');
+const { scrapeGotham, scrapeStandupNY, scrapeTheStand, scrapeNYCC, scrapeUnionHall } = require('../lib/club-scrapers');
 
 // One serverless function for every scraped club, dispatched by ?venue=.
 // Replaces the separate api/gotham.js, api/nycc.js, api/the-stand.js and
@@ -10,6 +10,7 @@ const VENUES = {
   nycc:        { fn: scrapeNYCC,      source: 'newyorkcomedyclub.com/calendar' },
   'the-stand': { fn: scrapeTheStand,  source: 'thestandnyc.com' },
   standupny:   { fn: scrapeStandupNY, source: 'standupny.com' },
+  'union-hall': { fn: scrapeUnionHall, source: 'unionhallny.com (Eventbrite)' },
 };
 
 module.exports = async (req, res) => {

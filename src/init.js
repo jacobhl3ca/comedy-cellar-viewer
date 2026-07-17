@@ -402,6 +402,7 @@ const VIEW_BY_PATH = {
   '/gotham': 'gotham',
   '/nycc': 'nycc',
   '/standupny': 'standupny',
+  '/unionhall': 'union-hall',
   '/big': 'big-shows',
   '/comics': 'comedians',
 };
@@ -413,6 +414,7 @@ const VIEW_META = {
   'gotham':    { path: '/gotham', title: 'Gotham Comedy Club Tonight — Shows | Tonight NYC' },
   'nycc':      { path: '/nycc',   title: 'NY Comedy Club Tonight — Lineups | Tonight NYC' },
   'standupny': { path: '/standupny', title: 'Stand Up NY Tonight — Shows | Tonight NYC' },
+  'union-hall': { path: '/unionhall', title: 'Union Hall Tonight — Brooklyn Comedy Shows | Tonight NYC' },
   'big-shows': { path: '/big',    title: 'Big Comedy Shows in NYC | Tonight NYC' },
   'comedians': { path: '/comics', title: "NYC Comedians — Who's On Tonight | Tonight NYC" },
 };
@@ -592,24 +594,48 @@ function resetToHome() {
   document.addEventListener(ev, (e) => e.preventDefault())
 );
 
-// Global poster preview — renders outside card stacking contexts so opacity doesn't trap it
+// Global poster preview — renders outside card stacking contexts so opacity doesn't trap it.
+// Desktop shows it on hover; touch devices have no hover, so a tap opens a "pinned"
+// (sticky) preview that stays until you tap again/anywhere. This is what makes the
+// Stand Up NY & Union Hall posters — where the actual bill lives — readable on phones.
 (function() {
   let overlay = null;
+  let pinned = false; // opened by tap/click; ignore hover in/out until dismissed
+  function show(src, alt, pin) {
+    if (overlay) overlay.remove();
+    overlay = document.createElement('img');
+    overlay.id = 'global-poster-preview';
+    if (pin) overlay.classList.add('pinned');
+    overlay.src = src;
+    overlay.alt = alt || '';
+    document.body.appendChild(overlay);
+    pinned = !!pin;
+  }
+  function hide() { if (overlay) overlay.remove(); overlay = null; pinned = false; }
+
   document.addEventListener('mouseover', e => {
+    if (pinned) return;
     const wrap = e.target.closest('.poster-wrap');
     if (!wrap) return;
     const img = wrap.querySelector('.poster-preview');
     if (!img) return;
-    if (overlay) overlay.remove();
-    overlay = document.createElement('img');
-    overlay.id = 'global-poster-preview';
-    overlay.src = img.src;
-    overlay.alt = img.alt;
-    document.body.appendChild(overlay);
+    show(img.src, img.alt, false);
   });
   document.addEventListener('mouseout', e => {
+    if (pinned) return;
     const wrap = e.target.closest('.poster-wrap');
-    if (wrap && overlay) { overlay.remove(); overlay = null; }
+    if (wrap && overlay) hide();
+  });
+  // Tap/click: on touch (no hover) this is the only way to open the poster.
+  // While pinned, a tap anywhere closes it (the overlay itself is pointer-events:none).
+  document.addEventListener('click', e => {
+    if (pinned) { hide(); return; }
+    const wrap = e.target.closest('.poster-wrap');
+    if (!wrap) return;
+    const img = wrap.querySelector('.poster-preview');
+    if (!img) return;
+    e.preventDefault();
+    show(img.src, img.alt, true);
   });
 })();
 
@@ -757,6 +783,7 @@ async function refreshShowsInPlace() {
       fetchNYCC(),
       fetchGotham(),
       fetchStandupNY(),
+      fetchUnionHall(),
       fetchAvailability()
     ]);
     if (batchData?.results) {
