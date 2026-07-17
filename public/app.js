@@ -894,7 +894,10 @@ function getPhotoForVenue(name, venueSource) {
   if (comedianPhotosCellar[name]) return comedianPhotosCellar[name];
   if (comedianPhotosStand[name]) return comedianPhotosStand[name];
   if (dbEntry?.photo_stand) return dbEntry.photo_stand;
-  // 4. Legacy pool (Wikipedia, SeatGeek, etc.) — reject bad URLs
+  // 4. Wikipedia headshot (prebaked into the DB for touring/marquee names —
+  //    e.g. the Stand Up NY / Union Hall headliners we extract from titles).
+  if (dbEntry?.photo_wiki && !isBadPhotoUrl(dbEntry.photo_wiki)) return dbEntry.photo_wiki;
+  // 5. Legacy pool (Wikipedia, SeatGeek, etc.) — reject bad URLs
   const legacy = comedianPhotos[name] || '';
   return isBadPhotoUrl(legacy) ? '' : legacy;
 }
@@ -1253,6 +1256,13 @@ async function fetchStandupNY() {
       .catch(() => fetchWithTimeout('/api/clubs?venue=standupny', {}, 15000));
     const data = await resp.json();
     standupnyShows = (data.shows || []).filter(s => !isShowPast(s.date, s.time));
+    // Seed poster-OCR headshots (name->url) into the shared photo pool so the
+    // extracted comedian tiles aren't blank.
+    standupnyShows.forEach(s => {
+      if (s.comedianPhotos) Object.entries(s.comedianPhotos).forEach(([n, u]) => {
+        if (u && !comedianPhotos[n]) comedianPhotos[n] = u;
+      });
+    });
     return standupnyShows;
   } catch (e) {
     console.error('Failed to fetch Stand Up NY:', e);
@@ -2449,7 +2459,7 @@ function renderStandShowCard(show) {
       <div class="show-header">
         <div><span class="show-time">${formatTime(show.time)}</span></div>
         ${posterHtml}
-        <span class="show-venue">${venueText}</span>
+        <span class="show-venue">${venueText}${priceChip(show.price)}</span>
       </div>
       <div class="show-lineup">${chips}</div>
       <div class="show-footer">
@@ -2513,6 +2523,17 @@ function renderGothamShows(container) {
 // enlarge) so it's readable. For Stand Up NY we ALSO extract announced headliners
 // into show.comedians (see lib/club-scrapers.js), rendered as favable chips that
 // feed search + Top Pick.
+// Subtle price tag — only where a source actually exposes a price (The Stand,
+// Union Hall via Eventbrite, big shows). Most clubs return null → no tag.
+function priceChip(price) {
+  if (price == null || price === '') return '';
+  const p = String(price).trim();
+  if (p === '0' || /free/i.test(p)) return `<span class="price-tag">Free</span>`;
+  const n = parseFloat(p.replace(/[^\d.]/g, ''));
+  if (!isFinite(n) || n <= 0) return '';
+  return `<span class="price-tag">$${Math.round(n)}</span>`;
+}
+
 function renderPosterVenueCard(show, venueLabel, source, hideSkips) {
   const soldOut = !!show.soldOut;
   const nameHtml = show.image
@@ -2525,7 +2546,7 @@ function renderPosterVenueCard(show, venueLabel, source, hideSkips) {
       <div class="show-header">
         <div><span class="show-time">${formatTime(show.time)}</span></div>
         ${nameHtml}
-        <span class="show-venue">${venueLabel}</span>
+        <span class="show-venue">${venueLabel}${priceChip(show.price)}</span>
       </div>
       ${chips}
       <div class="show-footer">
@@ -4924,17 +4945,29 @@ function resetToHome() {
 (function() {
   let overlay = null;
   let pinned = false; // opened by tap/click; ignore hover in/out until dismissed
+  let hint = null;
   function show(src, alt, pin) {
     if (overlay) overlay.remove();
+    if (hint) { hint.remove(); hint = null; }
     overlay = document.createElement('img');
     overlay.id = 'global-poster-preview';
     if (pin) overlay.classList.add('pinned');
     overlay.src = src;
     overlay.alt = alt || '';
     document.body.appendChild(overlay);
+    if (pin) {
+      hint = document.createElement('div');
+      hint.id = 'poster-close-hint';
+      hint.textContent = '✕  tap anywhere or Esc to close';
+      document.body.appendChild(hint);
+    }
     pinned = !!pin;
   }
-  function hide() { if (overlay) overlay.remove(); overlay = null; pinned = false; }
+  function hide() {
+    if (overlay) overlay.remove(); overlay = null;
+    if (hint) { hint.remove(); hint = null; }
+    pinned = false;
+  }
 
   document.addEventListener('mouseover', e => {
     if (pinned) return;
@@ -4959,6 +4992,10 @@ function resetToHome() {
     if (!img) return;
     e.preventDefault();
     show(img.src, img.alt, true);
+  });
+  // Escape closes the pinned (tapped-open) poster.
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && pinned) { hide(); e.stopPropagation(); }
   });
 })();
 
@@ -5465,11 +5502,10 @@ async function refreshShowsInPlace() {
     }
   }
   function refreshSwatches(){
-    if (!swatches) return;
-    const cur = (settings.accent || '').toLowerCase();
-    swatches.querySelectorAll('.color-swatch').forEach(b => {
-      b.classList.toggle('active', (b.dataset.color || '').toLowerCase() === cur);
-    });
+    // Position the brand-color slider thumb at the closest point to the current
+    // accent. (Preset dots + gradient are built once when handlers are wired.)
+    const sl = document.getElementById('color-slider');
+    if (sl && typeof nearestVal === 'function') sl.value = nearestVal(settings.accent || DEFAULTS.accent);
   }
   function refreshShareUI(){
     const show = !isDefault(settings) || hasAnyPrefs();
@@ -5526,14 +5562,44 @@ async function refreshShowsInPlace() {
   doneBtn?.addEventListener('click', closeSettings);
   overlay?.addEventListener('click', (e) => { if (e.target === overlay) closeSettings(); });
 
-  // ---- Brand color ----
-  swatches?.addEventListener('click', (e) => {
-    const btn = e.target.closest('.color-swatch');
-    if (!btn) return;
-    settings.accent = btn.dataset.color;
+  // ---- Brand color (gradient slider + preset dots) ----
+  const PRESETS = ['#e63636', '#f59e0b', '#10b981', '#3b82f6', '#8b5cf6', '#ec4899', '#ffffff'];
+  const colorSlider = document.getElementById('color-slider');
+  const presetMarks = document.getElementById('color-preset-marks');
+  const hex2rgb = h => { h = (h || '').replace('#', ''); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16) || 0); };
+  const rgb2hex = a => '#' + a.map(x => Math.max(0, Math.min(255, Math.round(x))).toString(16).padStart(2, '0')).join('');
+  const colorAt = t => { // t in 0..1 across the preset gradient
+    const seg = t * (PRESETS.length - 1);
+    const i = Math.min(PRESETS.length - 2, Math.floor(seg));
+    const f = seg - i, a = hex2rgb(PRESETS[i]), b = hex2rgb(PRESETS[i + 1]);
+    return rgb2hex(a.map((v, k) => v + (b[k] - v) * f));
+  };
+  const nearestVal = hex => { // slider value (0..1000) closest to a color
+    const target = hex2rgb(hex); let best = 0, bd = Infinity;
+    for (let v = 0; v <= 1000; v += 4) {
+      const c = hex2rgb(colorAt(v / 1000));
+      const d = c.reduce((s, x, k) => s + (x - target[k]) ** 2, 0);
+      if (d < bd) { bd = d; best = v; }
+    }
+    return best;
+  };
+  if (colorSlider) colorSlider.style.background =
+    `linear-gradient(to right, ${PRESETS.map((c, i) => `${c} ${i / (PRESETS.length - 1) * 100}%`).join(', ')})`;
+  if (presetMarks) presetMarks.innerHTML = PRESETS.map((c, i) =>
+    `<button type="button" class="color-preset-mark" data-color="${c}" style="left:${i / (PRESETS.length - 1) * 100}%;--c:${c}" aria-label="Preset color ${i + 1}"></button>`).join('');
+
+  colorSlider?.addEventListener('input', () => {
+    settings.accent = colorAt(colorSlider.value / 1000);
     persist(); applyAccent(settings);
     if (custom) custom.value = settings.accent;
-    refreshSwatches();
+  });
+  presetMarks?.addEventListener('click', (e) => {
+    const m = e.target.closest('.color-preset-mark');
+    if (!m) return;
+    settings.accent = m.dataset.color;
+    if (colorSlider) colorSlider.value = nearestVal(settings.accent);
+    persist(); applyAccent(settings);
+    if (custom) custom.value = settings.accent;
   });
   custom?.addEventListener('input', () => {
     settings.accent = custom.value;

@@ -309,15 +309,10 @@
       <div class="modal-sections">
         <div class="modal-section">
           <h3>Brand color</h3>
-          <p class="settings-desc">Pick a brand color.</p>
-          <div class="color-swatches" id="color-swatches">
-            <button class="color-swatch" data-color="#e63636" style="--c:#e63636" title="Red (default)" aria-label="Red"></button>
-            <button class="color-swatch" data-color="#f59e0b" style="--c:#f59e0b" title="Amber" aria-label="Amber"></button>
-            <button class="color-swatch" data-color="#10b981" style="--c:#10b981" title="Emerald" aria-label="Emerald"></button>
-            <button class="color-swatch" data-color="#3b82f6" style="--c:#3b82f6" title="Blue" aria-label="Blue"></button>
-            <button class="color-swatch" data-color="#8b5cf6" style="--c:#8b5cf6" title="Violet" aria-label="Violet"></button>
-            <button class="color-swatch" data-color="#ec4899" style="--c:#ec4899" title="Pink" aria-label="Pink"></button>
-            <button class="color-swatch" data-color="#ffffff" style="--c:#ffffff" title="White" aria-label="White"></button>
+          <p class="settings-desc">Drag anywhere on the bar, or tap a preset dot.</p>
+          <div class="color-slider-row">
+            <input type="range" class="color-slider" id="color-slider" min="0" max="1000" step="1" value="0" aria-label="Brand color">
+            <div class="color-preset-marks" id="color-preset-marks" aria-hidden="true"></div>
           </div>
           <div class="color-custom-row">
             <label for="color-custom-input" style="font-size:13px;color:var(--text-dim);">Custom:</label>
@@ -526,7 +521,7 @@
     <button id="pwa-install-btn" onclick="pwaInstall()" style="display:none;"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Add to Home Screen</button>
   </footer>
 
-  <script defer src="app.min.js?v=bd6b3e8"></script>
+  <script defer src="app.min.js?v=4ce6034"></script>
   <!-- Vercel Web Analytics + Speed Insights + Cloudflare Web Analytics — gated to skip Capacitor native shell so iOS app stays "No data collected" on App Store -->
   <script>
     if (!window.Capacitor?.isNativePlatform?.()) {

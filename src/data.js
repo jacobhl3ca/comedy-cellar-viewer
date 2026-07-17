@@ -206,7 +206,10 @@ function getPhotoForVenue(name, venueSource) {
   if (comedianPhotosCellar[name]) return comedianPhotosCellar[name];
   if (comedianPhotosStand[name]) return comedianPhotosStand[name];
   if (dbEntry?.photo_stand) return dbEntry.photo_stand;
-  // 4. Legacy pool (Wikipedia, SeatGeek, etc.) — reject bad URLs
+  // 4. Wikipedia headshot (prebaked into the DB for touring/marquee names —
+  //    e.g. the Stand Up NY / Union Hall headliners we extract from titles).
+  if (dbEntry?.photo_wiki && !isBadPhotoUrl(dbEntry.photo_wiki)) return dbEntry.photo_wiki;
+  // 5. Legacy pool (Wikipedia, SeatGeek, etc.) — reject bad URLs
   const legacy = comedianPhotos[name] || '';
   return isBadPhotoUrl(legacy) ? '' : legacy;
 }
@@ -565,6 +568,13 @@ async function fetchStandupNY() {
       .catch(() => fetchWithTimeout('/api/clubs?venue=standupny', {}, 15000));
     const data = await resp.json();
     standupnyShows = (data.shows || []).filter(s => !isShowPast(s.date, s.time));
+    // Seed poster-OCR headshots (name->url) into the shared photo pool so the
+    // extracted comedian tiles aren't blank.
+    standupnyShows.forEach(s => {
+      if (s.comedianPhotos) Object.entries(s.comedianPhotos).forEach(([n, u]) => {
+        if (u && !comedianPhotos[n]) comedianPhotos[n] = u;
+      });
+    });
     return standupnyShows;
   } catch (e) {
     console.error('Failed to fetch Stand Up NY:', e);

@@ -1,0 +1,85 @@
+{
+  "184510": {
+    "comedians": [
+      "Patton Oswalt"
+    ],
+    "photos": {}
+  },
+  "187186": {
+    "comedians": [
+      "Eman Morgan",
+      "Erin Maguire",
+      "Brian Scolaro",
+      "Darlene Bereznicki",
+      "Allie Arasi",
+      "Isiah Givens"
+    ],
+    "photos": {
+      "Erin Maguire": "https://thestandnyc.com/images/comedians/_square/EM-headshot.jpg",
+      "Brian Scolaro": "https://www.newyorkcomedyclub.com/img/comedians/brian-scolaro-c7d20aec-main-image.jpg",
+      "Darlene Bereznicki": "https://thestandnyc.com/images/comedians/_square/Darlene_Bereznicki.jpg",
+      "Allie Arasi": "https://thestandnyc.com/images/comedians/_square/Allie_Arasi.jpg"
+    }
+  },
+  "187275": {
+    "comedians": [
+      "Eman Morgan",
+      "Aaron Berg",
+      "Paul Mecurio",
+      "Ann Votow",
+      "Allie Arasi",
+      "Kyle Wayne"
+    ],
+    "photos": {
+      "Aaron Berg": "https://thestandnyc.com/images/comedians/_square/Aaron_Berg.jpg",
+      "Paul Mecurio": "https://thestandnyc.com/images/comedians/_square/paul-mecurio.jpg",
+      "Allie Arasi": "https://thestandnyc.com/images/comedians/_square/Allie_Arasi.jpg",
+      "Kyle Wayne": "https://www.newyorkcomedyclub.com/img/comedians/Kyle-Wayne-a1d3097d-main-image.jpg"
+    }
+  },
+  "189350": {
+    "comedians": [
+      "Jeff Garlin"
+    ],
+    "photos": {
+      "Jeff Garlin": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Jeff_Garlin_2024_Curb_Your_Enthusiasm_premiere_%28cropped%29.png/330px-Jeff_Garlin_2024_Curb_Your_Enthusiasm_premiere_%28cropped%29.png"
+    }
+  },
+  "189397": {
+    "comedians": [
+      "Thom Tran",
+      "Elyse Delucci",
+      "Brittany Schmitt",
+      "Ray Bentley",
+      "Julian Hewitt"
+    ],
+    "photos": {
+      "Thom Tran": "https://www.newyorkcomedyclub.com/img/comedians/Thom-Tran-953b0904-main-image.jpg",
+      "Elyse Delucci": "https://thestandnyc.com/images/comedians/_square/elysed.jpg",
+      "Brittany Schmitt": "https://thestandnyc.com/images/comedians/_square/Brittany_Schmitt_1.jpg"
+    }
+  },
+  "189399": {
+    "comedians": [
+      "Brian Scolaro",
+      "Teddy Smith",
+      "Paul Mecurio",
+      "Olga Namer",
+      "Brittany Brave",
+      "Chris Min"
+    ],
+    "photos": {
+      "Brian Scolaro": "https://www.newyorkcomedyclub.com/img/comedians/brian-scolaro-c7d20aec-main-image.jpg",
+      "Teddy Smith": "https://thestandnyc.com/images/comedians/_square/tsmith.jpg",
+      "Paul Mecurio": "https://thestandnyc.com/images/comedians/_square/paul-mecurio.jpg",
+      "Olga Namer": "https://thestandnyc.com/images/comedians/_square/olganamer.jpg",
+      "Brittany Brave": "https://thestandnyc.com/images/comedians/_square/Brittany_Brave.jpg"
+    }
+  },
+  "189406": {
+    "comedians": [
+      "Ksenia"
+    ],
+    "photos": {}
+  }
+}

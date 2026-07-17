@@ -465,6 +465,11 @@ html.ios-mobile.native-ios .header-share-btn { right: 46px; }
   overflow: visible; -webkit-line-clamp: unset; -webkit-box-orient: unset;
 }
 
+.price-tag {
+  display: inline-block; margin-left: 7px; font-size: 11px; font-weight: 600;
+  color: var(--text-dim); opacity: .85; letter-spacing: .2px;
+  vertical-align: baseline;
+}
 .show-badge {
   display: inline-block; font-size: 11px; font-weight: 700;
   padding: 3px 8px; border-radius: 4px; margin-left: 8px;
@@ -1062,6 +1067,13 @@ html.native-ios .app-store-badge-link { display: none; }
   #global-poster-preview { width: 60vw; max-width: 200px; max-height: 50vh; }
   #global-poster-preview.pinned { width: 90vw; max-width: 90vw; max-height: 84vh; }
 }
+#poster-close-hint {
+  position: fixed; left: 50%; bottom: max(18px, env(safe-area-inset-bottom));
+  transform: translateX(-50%); z-index: 10000; pointer-events: none;
+  background: rgba(0,0,0,.72); color: #fff; font-size: 12px; font-weight: 600;
+  padding: 7px 14px; border-radius: 20px; border: 1px solid rgba(255,255,255,.18);
+  letter-spacing: .2px; white-space: nowrap;
+}
 @media (max-width: 480px) {
   .poster-preview { width: 60vw; max-width: 200px; max-height: 50vh; }
 }
@@ -1141,6 +1153,32 @@ html.native-ios .app-store-badge-link { display: none; }
 }
 .settings-toast button:hover { border-color: var(--accent); color: var(--accent); }
 #settings-toast-close { padding: 4px 8px; font-size: 16px; border: 0; }
+/* Brand-color slider: drag anywhere along a gradient of the presets, or tap a
+   preset dot marked on the bar. */
+.color-slider-row { position: relative; padding: 10px 8px 20px; }
+.color-slider {
+  -webkit-appearance: none; appearance: none; width: 100%; height: 16px;
+  border-radius: 10px; outline: none; cursor: pointer; margin: 0;
+  background: linear-gradient(to right, #888, #888); /* JS overwrites with preset gradient */
+  border: 1px solid var(--border);
+}
+.color-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 24px; height: 24px;
+  border-radius: 50%; background: #fff; border: 3px solid rgba(0,0,0,.35);
+  box-shadow: 0 1px 4px rgba(0,0,0,.5); cursor: grab;
+}
+.color-slider::-moz-range-thumb {
+  width: 22px; height: 22px; border-radius: 50%; background: #fff;
+  border: 3px solid rgba(0,0,0,.35); box-shadow: 0 1px 4px rgba(0,0,0,.5); cursor: grab;
+}
+.color-preset-marks { position: absolute; left: 8px; right: 8px; top: 10px; height: 16px; pointer-events: none; }
+.color-preset-mark {
+  position: absolute; top: 50%; width: 12px; height: 12px; padding: 0;
+  transform: translate(-50%, -50%); border-radius: 50%;
+  background: var(--c, #888); border: 2px solid rgba(255,255,255,.9);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.45); cursor: pointer; pointer-events: auto;
+}
+.color-preset-mark:hover { transform: translate(-50%, -50%) scale(1.25); }
 .color-swatches { display: flex; flex-wrap: wrap; gap: 8px; padding: 4px 0 10px; }
 .color-swatch {
   width: 28px; height: 28px; border-radius: 50%;

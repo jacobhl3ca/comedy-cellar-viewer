@@ -19,7 +19,8 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 // Union Hall has no bio/photo enrichment, so reuse the live scraper as-is.
-const { scrapeUnionHall } = require('../lib/club-scrapers');
+// applyStandupnyEnrichment merges the committed poster-OCR names/photos.
+const { scrapeUnionHall, applyStandupnyEnrichment } = require('../lib/club-scrapers');
 
 
 const ROOT = path.resolve(__dirname, '..');
@@ -513,6 +514,7 @@ async function scrapeStandupNY() {
         };
       })
       .sort((a, b) => a.date.localeCompare(b.date) || parseTime(a.time) - parseTime(b.time));
+    applyStandupnyEnrichment(shows);
     log(`Stand Up NY: ${shows.length} shows`);
     return shows;
   } catch (e) {

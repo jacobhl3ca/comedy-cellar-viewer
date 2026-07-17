@@ -1005,7 +1005,7 @@ function renderStandShowCard(show) {
       <div class="show-header">
         <div><span class="show-time">${formatTime(show.time)}</span></div>
         ${posterHtml}
-        <span class="show-venue">${venueText}</span>
+        <span class="show-venue">${venueText}${priceChip(show.price)}</span>
       </div>
       <div class="show-lineup">${chips}</div>
       <div class="show-footer">
@@ -1069,6 +1069,17 @@ function renderGothamShows(container) {
 // enlarge) so it's readable. For Stand Up NY we ALSO extract announced headliners
 // into show.comedians (see lib/club-scrapers.js), rendered as favable chips that
 // feed search + Top Pick.
+// Subtle price tag — only where a source actually exposes a price (The Stand,
+// Union Hall via Eventbrite, big shows). Most clubs return null → no tag.
+function priceChip(price) {
+  if (price == null || price === '') return '';
+  const p = String(price).trim();
+  if (p === '0' || /free/i.test(p)) return `<span class="price-tag">Free</span>`;
+  const n = parseFloat(p.replace(/[^\d.]/g, ''));
+  if (!isFinite(n) || n <= 0) return '';
+  return `<span class="price-tag">$${Math.round(n)}</span>`;
+}
+
 function renderPosterVenueCard(show, venueLabel, source, hideSkips) {
   const soldOut = !!show.soldOut;
   const nameHtml = show.image
@@ -1081,7 +1092,7 @@ function renderPosterVenueCard(show, venueLabel, source, hideSkips) {
       <div class="show-header">
         <div><span class="show-time">${formatTime(show.time)}</span></div>
         ${nameHtml}
-        <span class="show-venue">${venueLabel}</span>
+        <span class="show-venue">${venueLabel}${priceChip(show.price)}</span>
       </div>
       ${chips}
       <div class="show-footer">

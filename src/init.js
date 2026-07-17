@@ -601,17 +601,29 @@ function resetToHome() {
 (function() {
   let overlay = null;
   let pinned = false; // opened by tap/click; ignore hover in/out until dismissed
+  let hint = null;
   function show(src, alt, pin) {
     if (overlay) overlay.remove();
+    if (hint) { hint.remove(); hint = null; }
     overlay = document.createElement('img');
     overlay.id = 'global-poster-preview';
     if (pin) overlay.classList.add('pinned');
     overlay.src = src;
     overlay.alt = alt || '';
     document.body.appendChild(overlay);
+    if (pin) {
+      hint = document.createElement('div');
+      hint.id = 'poster-close-hint';
+      hint.textContent = '✕  tap anywhere or Esc to close';
+      document.body.appendChild(hint);
+    }
     pinned = !!pin;
   }
-  function hide() { if (overlay) overlay.remove(); overlay = null; pinned = false; }
+  function hide() {
+    if (overlay) overlay.remove(); overlay = null;
+    if (hint) { hint.remove(); hint = null; }
+    pinned = false;
+  }
 
   document.addEventListener('mouseover', e => {
     if (pinned) return;
@@ -636,6 +648,10 @@ function resetToHome() {
     if (!img) return;
     e.preventDefault();
     show(img.src, img.alt, true);
+  });
+  // Escape closes the pinned (tapped-open) poster.
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && pinned) { hide(); e.stopPropagation(); }
   });
 })();
 
@@ -1142,11 +1158,10 @@ async function refreshShowsInPlace() {
     }
   }
   function refreshSwatches(){
-    if (!swatches) return;
-    const cur = (settings.accent || '').toLowerCase();
-    swatches.querySelectorAll('.color-swatch').forEach(b => {
-      b.classList.toggle('active', (b.dataset.color || '').toLowerCase() === cur);
-    });
+    // Position the brand-color slider thumb at the closest point to the current
+    // accent. (Preset dots + gradient are built once when handlers are wired.)
+    const sl = document.getElementById('color-slider');
+    if (sl && typeof nearestVal === 'function') sl.value = nearestVal(settings.accent || DEFAULTS.accent);
   }
   function refreshShareUI(){
     const show = !isDefault(settings) || hasAnyPrefs();
@@ -1203,14 +1218,44 @@ async function refreshShowsInPlace() {
   doneBtn?.addEventListener('click', closeSettings);
   overlay?.addEventListener('click', (e) => { if (e.target === overlay) closeSettings(); });
 
-  // ---- Brand color ----
-  swatches?.addEventListener('click', (e) => {
-    const btn = e.target.closest('.color-swatch');
-    if (!btn) return;
-    settings.accent = btn.dataset.color;
+  // ---- Brand color (gradient slider + preset dots) ----
+  const PRESETS = ['#e63636', '#f59e0b', '#10b981', '#3b82f6', '#8b5cf6', '#ec4899', '#ffffff'];
+  const colorSlider = document.getElementById('color-slider');
+  const presetMarks = document.getElementById('color-preset-marks');
+  const hex2rgb = h => { h = (h || '').replace('#', ''); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16) || 0); };
+  const rgb2hex = a => '#' + a.map(x => Math.max(0, Math.min(255, Math.round(x))).toString(16).padStart(2, '0')).join('');
+  const colorAt = t => { // t in 0..1 across the preset gradient
+    const seg = t * (PRESETS.length - 1);
+    const i = Math.min(PRESETS.length - 2, Math.floor(seg));
+    const f = seg - i, a = hex2rgb(PRESETS[i]), b = hex2rgb(PRESETS[i + 1]);
+    return rgb2hex(a.map((v, k) => v + (b[k] - v) * f));
+  };
+  const nearestVal = hex => { // slider value (0..1000) closest to a color
+    const target = hex2rgb(hex); let best = 0, bd = Infinity;
+    for (let v = 0; v <= 1000; v += 4) {
+      const c = hex2rgb(colorAt(v / 1000));
+      const d = c.reduce((s, x, k) => s + (x - target[k]) ** 2, 0);
+      if (d < bd) { bd = d; best = v; }
+    }
+    return best;
+  };
+  if (colorSlider) colorSlider.style.background =
+    `linear-gradient(to right, ${PRESETS.map((c, i) => `${c} ${i / (PRESETS.length - 1) * 100}%`).join(', ')})`;
+  if (presetMarks) presetMarks.innerHTML = PRESETS.map((c, i) =>
+    `<button type="button" class="color-preset-mark" data-color="${c}" style="left:${i / (PRESETS.length - 1) * 100}%;--c:${c}" aria-label="Preset color ${i + 1}"></button>`).join('');
+
+  colorSlider?.addEventListener('input', () => {
+    settings.accent = colorAt(colorSlider.value / 1000);
     persist(); applyAccent(settings);
     if (custom) custom.value = settings.accent;
-    refreshSwatches();
+  });
+  presetMarks?.addEventListener('click', (e) => {
+    const m = e.target.closest('.color-preset-mark');
+    if (!m) return;
+    settings.accent = m.dataset.color;
+    if (colorSlider) colorSlider.value = nearestVal(settings.accent);
+    persist(); applyAccent(settings);
+    if (custom) custom.value = settings.accent;
   });
   custom?.addEventListener('input', () => {
     settings.accent = custom.value;
