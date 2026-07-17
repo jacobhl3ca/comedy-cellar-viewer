@@ -53,6 +53,7 @@ const STATIC_CELLAR = '/data/cellar-cache.json';
 const STATIC_STAND = '/data/stand-cache.json';
 const STATIC_GOTHAM = '/data/gotham-cache.json';
 const STATIC_NYCC = '/data/nycc-cache.json';
+const STATIC_STANDUPNY = '/data/standupny-cache.json';
 const STATIC_BIG_SHOWS = '/data/big-shows-cache.json';
 const STATIC_AVAILABILITY = '/data/availability-cache.json';
 
@@ -412,6 +413,7 @@ function dayMaxFaves(dateStr) {
   if (typeof standShows !== 'undefined') bump(standShows);
   if (typeof nyccShows !== 'undefined') bump(nyccShows);
   if (typeof gothamShows !== 'undefined') bump(gothamShows);
+  if (typeof standupnyShows !== 'undefined') bump(standupnyShows);
   if (typeof bigShows !== 'undefined') bump(bigShows);
   return max;
 }
@@ -459,6 +461,7 @@ function dateInActiveSource(dateStr) {
         || (typeof standShows !== 'undefined' && standShows.some(s => s.date === dateStr))
         || (typeof nyccShows !== 'undefined' && nyccShows.some(s => s.date === dateStr))
         || (typeof gothamShows !== 'undefined' && gothamShows.some(s => s.date === dateStr))
+        || (typeof standupnyShows !== 'undefined' && standupnyShows.some(s => s.date === dateStr))
         || (typeof bigShows !== 'undefined' && bigShows.some(e => e.date === dateStr));
     case 'cellar':
       return !!(allData[dateStr] && allData[dateStr].length);
@@ -470,6 +473,8 @@ function dateInActiveSource(dateStr) {
       return typeof gothamShows !== 'undefined' && gothamShows.some(s => s.date === dateStr);
     case 'nycc':
       return typeof nyccShows !== 'undefined' && nyccShows.some(s => s.date === dateStr);
+    case 'standupny':
+      return typeof standupnyShows !== 'undefined' && standupnyShows.some(s => s.date === dateStr);
     default:
       return false; // comedians directory etc. — no date concept
   }
@@ -535,6 +540,7 @@ async function fetchTheStand() {
 let bigShows = [];
 let nyccShows = [];
 let gothamShows = [];
+let standupnyShows = [];
 
 async function fetchNYCC() {
   try {
@@ -547,6 +553,19 @@ async function fetchNYCC() {
     return nyccShows;
   } catch (e) {
     console.error('Failed to fetch NYCC:', e);
+    return [];
+  }
+}
+
+async function fetchStandupNY() {
+  try {
+    const resp = await fetchWithTimeout(STATIC_STANDUPNY, {}, 5000)
+      .catch(() => fetchWithTimeout('/api/standupny', {}, 15000));
+    const data = await resp.json();
+    standupnyShows = (data.shows || []).filter(s => !isShowPast(s.date, s.time));
+    return standupnyShows;
+  } catch (e) {
+    console.error('Failed to fetch Stand Up NY:', e);
     return [];
   }
 }

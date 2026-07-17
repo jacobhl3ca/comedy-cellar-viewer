@@ -750,6 +750,7 @@ async function refreshShowsInPlace() {
       fetchBigShows(),
       fetchNYCC(),
       fetchGotham(),
+      fetchStandupNY(),
       fetchAvailability()
     ]);
     if (batchData?.results) {

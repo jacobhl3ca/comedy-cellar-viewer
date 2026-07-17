@@ -741,6 +741,7 @@ const STATIC_CELLAR = '/data/cellar-cache.json';
 const STATIC_STAND = '/data/stand-cache.json';
 const STATIC_GOTHAM = '/data/gotham-cache.json';
 const STATIC_NYCC = '/data/nycc-cache.json';
+const STATIC_STANDUPNY = '/data/standupny-cache.json';
 const STATIC_BIG_SHOWS = '/data/big-shows-cache.json';
 const STATIC_AVAILABILITY = '/data/availability-cache.json';
 
@@ -1100,6 +1101,7 @@ function dayMaxFaves(dateStr) {
   if (typeof standShows !== 'undefined') bump(standShows);
   if (typeof nyccShows !== 'undefined') bump(nyccShows);
   if (typeof gothamShows !== 'undefined') bump(gothamShows);
+  if (typeof standupnyShows !== 'undefined') bump(standupnyShows);
   if (typeof bigShows !== 'undefined') bump(bigShows);
   return max;
 }
@@ -1147,6 +1149,7 @@ function dateInActiveSource(dateStr) {
         || (typeof standShows !== 'undefined' && standShows.some(s => s.date === dateStr))
         || (typeof nyccShows !== 'undefined' && nyccShows.some(s => s.date === dateStr))
         || (typeof gothamShows !== 'undefined' && gothamShows.some(s => s.date === dateStr))
+        || (typeof standupnyShows !== 'undefined' && standupnyShows.some(s => s.date === dateStr))
         || (typeof bigShows !== 'undefined' && bigShows.some(e => e.date === dateStr));
     case 'cellar':
       return !!(allData[dateStr] && allData[dateStr].length);
@@ -1158,6 +1161,8 @@ function dateInActiveSource(dateStr) {
       return typeof gothamShows !== 'undefined' && gothamShows.some(s => s.date === dateStr);
     case 'nycc':
       return typeof nyccShows !== 'undefined' && nyccShows.some(s => s.date === dateStr);
+    case 'standupny':
+      return typeof standupnyShows !== 'undefined' && standupnyShows.some(s => s.date === dateStr);
     default:
       return false; // comedians directory etc. — no date concept
   }
@@ -1223,6 +1228,7 @@ async function fetchTheStand() {
 let bigShows = [];
 let nyccShows = [];
 let gothamShows = [];
+let standupnyShows = [];
 
 async function fetchNYCC() {
   try {
@@ -1235,6 +1241,19 @@ async function fetchNYCC() {
     return nyccShows;
   } catch (e) {
     console.error('Failed to fetch NYCC:', e);
+    return [];
+  }
+}
+
+async function fetchStandupNY() {
+  try {
+    const resp = await fetchWithTimeout(STATIC_STANDUPNY, {}, 5000)
+      .catch(() => fetchWithTimeout('/api/standupny', {}, 15000));
+    const data = await resp.json();
+    standupnyShows = (data.shows || []).filter(s => !isShowPast(s.date, s.time));
+    return standupnyShows;
+  } catch (e) {
+    console.error('Failed to fetch Stand Up NY:', e);
     return [];
   }
 }
@@ -1470,6 +1489,7 @@ function renderTabs() {
     standShows.forEach(s => inRange(s.date) && union.add(s.date));
     nyccShows.forEach(s => inRange(s.date) && union.add(s.date));
     if (typeof gothamShows !== 'undefined') gothamShows.forEach(s => inRange(s.date) && union.add(s.date));
+    if (typeof standupnyShows !== 'undefined') standupnyShows.forEach(s => inRange(s.date) && union.add(s.date));
     bigShows.forEach(e => inRange(e.date) && union.add(e.date));
     renderDates = [...union].sort().map(s => new Date(s + 'T12:00:00'));
   }
@@ -1482,7 +1502,7 @@ function renderTabs() {
     let noLineup;
     if (activeSource === 'all') {
       // All Venues: check all sources
-      noLineup = !hasCellar && !standShows.some(s => s.date === dateStr) && !nyccShows.some(s => s.date === dateStr) && !gothamShows.some(s => s.date === dateStr) && !bigShows.some(e => e.date === dateStr);
+      noLineup = !hasCellar && !standShows.some(s => s.date === dateStr) && !nyccShows.some(s => s.date === dateStr) && !gothamShows.some(s => s.date === dateStr) && !(typeof standupnyShows !== 'undefined' && standupnyShows.some(s => s.date === dateStr)) && !bigShows.some(e => e.date === dateStr);
     } else {
       // Cellar tab (default): only check Cellar data
       noLineup = !hasCellar;
@@ -1581,12 +1601,14 @@ function renderCalendar() {
       case 'big-shows': return arr(bigShows);
       case 'gotham':    return arr(typeof gothamShows !== 'undefined' ? gothamShows : undefined);
       case 'nycc':      return arr(typeof nyccShows !== 'undefined' ? nyccShows : undefined);
+      case 'standupny': return arr(typeof standupnyShows !== 'undefined' ? standupnyShows : undefined);
       default:          return [
         ...cellar(),
         ...arr(standShows),
         ...arr(bigShows),
         ...arr(typeof nyccShows !== 'undefined' ? nyccShows : undefined),
         ...arr(typeof gothamShows !== 'undefined' ? gothamShows : undefined),
+        ...arr(typeof standupnyShows !== 'undefined' ? standupnyShows : undefined),
       ];
     }
   })();
@@ -2457,7 +2479,7 @@ function renderGothamShows(container) {
 function topPickComedians(item) {
   const s = item.show;
   if (item.type === 'cellar' || item.type === 'stand') return s.comedians || [];
-  if (item.type === 'gotham') return s.title ? [s.title] : [];
+  if (item.type === 'gotham' || item.type === 'standupny') return s.title ? [s.title] : [];
   // big shows: performers string "Name - role, Name2" or fall back to title
   if (s.performers) return s.performers.split(',').map(p => p.split(' - ')[0].trim()).filter(Boolean);
   return s.title ? [s.title] : [];
@@ -2478,6 +2500,7 @@ function renderTopPick(container) {
   });
   standShows.forEach(show => items.push({ type: 'stand', dateStr: show.date, time24: to24hSortable(show.time) || '00:00', show }));
   if (typeof gothamShows !== 'undefined') gothamShows.forEach(show => items.push({ type: 'gotham', dateStr: show.date, time24: to24hSortable(show.time) || '00:00', show }));
+  if (typeof standupnyShows !== 'undefined') standupnyShows.forEach(show => items.push({ type: 'standupny', dateStr: show.date, time24: to24hSortable(show.time) || '00:00', show }));
   bigShows.forEach(evt => items.push({ type: 'big', dateStr: evt.date, time24: to24hSortable(evt.time) || '00:00', show: evt }));
 
   // Keep the view focused on the near term: today through +45 days. Drops
@@ -2532,7 +2555,7 @@ function renderTopPick(container) {
   if (activeDate === 'calendar') picks = picks.filter(p => calendarSelectedDates.has(p.dateStr));
   else if (activeDate && activeDate !== 'all') picks = picks.filter(p => p.dateStr === activeDate);
 
-  const VENUE_LABEL = { cellar: 'Comedy Cellar', stand: 'The Stand', gotham: 'Gotham', big: 'Big Shows' };
+  const VENUE_LABEL = { cellar: 'Comedy Cellar', stand: 'The Stand', gotham: 'Gotham', standupny: 'Stand Up NY', big: 'Big Shows' };
   let html = '';
   html += `<div class="top-pick-intro">⭐ <strong>Top Pick</strong> — the single best show each night, ranked by ${hasPrefs ? 'your favorite comedians' : 'lineup'}.` +
     (hasPrefs ? '' : ` <button class="top-pick-setup" onclick="openModal()">Add your faves</button> to personalize these picks.`) + `</div>`;
@@ -2563,6 +2586,9 @@ function renderTopPick(container) {
       else if (item.type === 'gotham') {
         const show = item.show;
         html += `<div class="show-card"><div class="show-header"><div><span class="show-time">${formatTime(show.time)}</span></div><span class="show-name">${show.title}</span><span class="show-venue">Gotham</span></div><div class="show-footer">${show.url ? `<a href="${show.url}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Tickets</a>` : '<span></span>'}<span class="fav-count"></span></div></div>`;
+      } else if (item.type === 'standupny') {
+        const show = item.show;
+        html += `<div class="show-card"><div class="show-header"><div><span class="show-time">${formatTime(show.time)}</span></div><span class="show-name">${show.title}</span><span class="show-venue">Stand Up NY</span></div><div class="show-footer">${show.url ? `<a href="${show.url}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Tickets</a>` : '<span></span>'}<span class="fav-count"></span></div></div>`;
       } else {
         const evt = item.show;
         const evtSoldOut = !!evt.soldout;
@@ -2616,6 +2642,12 @@ function renderAllVenues(container) {
   gothamShows.forEach(show => {
     const time24 = to24hSortable(show.time) || '00:00';
     allItems.push({ type: 'gotham', dateStr: show.date, time24, show });
+  });
+
+  // Stand Up NY shows
+  if (typeof standupnyShows !== 'undefined') standupnyShows.forEach(show => {
+    const time24 = to24hSortable(show.time) || '00:00';
+    allItems.push({ type: 'standupny', dateStr: show.date, time24, show });
   });
 
   // Big Shows
@@ -2726,6 +2758,21 @@ function renderAllVenues(container) {
             <span class="fav-count"></span>
           </div>
         </div>`;
+    } else if (item.type === 'standupny') {
+      const show = item.show;
+      const soldOut = !!show.soldOut;
+      html += `
+        <div class="show-card${soldOut ? ' sold-out' : ''}">
+          <div class="show-header">
+            <div><span class="show-time">${formatTime(show.time)}</span></div>
+            <span class="show-name">${show.title}</span>
+            <span class="show-venue">Stand Up NY</span>
+          </div>
+          <div class="show-footer">
+            ${show.url ? `<a href="${show.url}" target="_blank" class="reserve-btn${soldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${soldOut ? 'Sold Out' : 'Tickets'}</a>` : '<span></span>'}
+            <span class="fav-count"></span>
+          </div>
+        </div>`;
     } else {
       const evt = item.show;
       const evtSoldOut = !!evt.soldout;
@@ -2770,6 +2817,7 @@ function renderAllVenues(container) {
 function getNeighborhood(item) {
   if (item.type === 'cellar' || item.type === 'stand') return 'downtown';
   if (item.type === 'gotham') return 'midtown';
+  if (item.type === 'standupny') return 'uptown'; // Upper West Side
   const venue = (item.show.venue || '').toLowerCase();
   if (venue.includes('beacon') || venue.includes('apollo')) return 'uptown';
   if (venue.includes('gramercy theatre') || venue.includes('irving plaza')) return 'downtown';
@@ -3139,7 +3187,7 @@ function renderBottomTabs() {
     const hasCellar = shows && shows.length > 0;
     let noLineup;
     if (activeSource === 'all') {
-      noLineup = !hasCellar && !standShows.some(s => s.date === dateStr) && !nyccShows.some(s => s.date === dateStr) && !gothamShows.some(s => s.date === dateStr) && !bigShows.some(e => e.date === dateStr);
+      noLineup = !hasCellar && !standShows.some(s => s.date === dateStr) && !nyccShows.some(s => s.date === dateStr) && !gothamShows.some(s => s.date === dateStr) && !(typeof standupnyShows !== 'undefined' && standupnyShows.some(s => s.date === dateStr)) && !bigShows.some(e => e.date === dateStr);
     } else {
       noLineup = !hasCellar;
     }
@@ -3349,7 +3397,7 @@ function showMatchesSearch(show, venueLabel) {
   return parts.filter(Boolean).join(' | ').toLowerCase().includes(activeSearchQuery);
 }
 
-const VENUE_LABEL_BY_TYPE = { cellar: 'Comedy Cellar', stand: 'The Stand', gotham: 'Gotham Comedy Club', big: 'Big Show', nycc: 'NY Comedy Club' };
+const VENUE_LABEL_BY_TYPE = { cellar: 'Comedy Cellar', stand: 'The Stand', gotham: 'Gotham Comedy Club', standupny: 'Stand Up NY', big: 'Big Show', nycc: 'NY Comedy Club' };
 
 function setPref(name, type) {
   const prefs = loadPrefs();
@@ -4151,6 +4199,7 @@ async function init() {
     fetchNYCC(),
     loadComedianDB(),
     fetchGotham(),
+    fetchStandupNY(),
     fetchAvailability()
   ]);
 
@@ -4913,6 +4962,7 @@ async function refreshShowsInPlace() {
       fetchBigShows(),
       fetchNYCC(),
       fetchGotham(),
+      fetchStandupNY(),
       fetchAvailability()
     ]);
     if (batchData?.results) {
