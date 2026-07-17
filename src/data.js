@@ -509,7 +509,7 @@ async function fetchTheStand() {
   try {
     // Try prebaked static data first (CDN, no function invocation)
     const resp = await fetchWithTimeout(STATIC_STAND, {}, 5000)
-      .catch(() => fetchWithTimeout('/api/the-stand', {}, 15000));
+      .catch(() => fetchWithTimeout('/api/clubs?venue=the-stand', {}, 15000));
     const data = await resp.json();
     standShows = data.shows || [];
     // Extract comedian photos from Stand data into venue-specific map
@@ -545,7 +545,7 @@ let standupnyShows = [];
 async function fetchNYCC() {
   try {
     const resp = await fetchWithTimeout(STATIC_NYCC, {}, 5000)
-      .catch(() => fetchWithTimeout('/api/nycc', {}, 15000));
+      .catch(() => fetchWithTimeout('/api/clubs?venue=nycc', {}, 15000));
     const data = await resp.json();
     // Drop past shows — the NYCC feed/cache retains weeks-old dates, which
     // otherwise pollute the All-Venues date strip and show list.
@@ -560,7 +560,7 @@ async function fetchNYCC() {
 async function fetchStandupNY() {
   try {
     const resp = await fetchWithTimeout(STATIC_STANDUPNY, {}, 5000)
-      .catch(() => fetchWithTimeout('/api/standupny', {}, 15000));
+      .catch(() => fetchWithTimeout('/api/clubs?venue=standupny', {}, 15000));
     const data = await resp.json();
     standupnyShows = (data.shows || []).filter(s => !isShowPast(s.date, s.time));
     return standupnyShows;
@@ -605,7 +605,7 @@ function renderNYCCShows(container) {
 async function fetchGotham() {
   try {
     const resp = await fetchWithTimeout(STATIC_GOTHAM, {}, 5000)
-      .catch(() => fetchWithTimeout('/api/gotham', {}, 15000));
+      .catch(() => fetchWithTimeout('/api/clubs?venue=gotham', {}, 15000));
     const data = await resp.json();
     gothamShows = data.shows || [];
     return gothamShows;

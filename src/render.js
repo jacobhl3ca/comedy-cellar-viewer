@@ -353,6 +353,8 @@ function renderSourceTabs() {
     else if (src === 'the-stand') count = standCount;
     else if (src === 'big-shows') count = bigCount;
     else if (src === 'gotham') count = gothamShows.length;
+    else if (src === 'nycc') count = (typeof nyccShows !== 'undefined') ? nyccShows.length : 0;
+    else if (src === 'standupny') count = (typeof standupnyShows !== 'undefined') ? standupnyShows.length : 0;
     const existing = btn.querySelector('.source-count');
     if (existing) existing.remove();
     if (count > 0) {
@@ -429,10 +431,20 @@ function renderShows() {
   }
   if (activeSource === 'nycc') {
     renderNYCCShows(container);
+    renderBottomTabs();
+    _insertFilterBanner(container);
     return;
   }
   if (activeSource === 'gotham') {
     renderGothamShows(container);
+    renderBottomTabs();
+    _insertFilterBanner(container);
+    return;
+  }
+  if (activeSource === 'standupny') {
+    renderStandupNYShows(container);
+    renderBottomTabs();
+    _insertFilterBanner(container);
     return;
   }
 
@@ -1041,6 +1053,61 @@ function renderGothamShows(container) {
   renderBottomTabs();
 }
 
+// ---- Stand Up NY Renderer ----
+// Stand Up NY doesn't publish a structured lineup — the performer names live on
+// the poster image — so we surface the poster (via the poster-wrap pattern, which
+// enlarges in Big Pics mode) so the bill is actually readable.
+function renderStandupNYShows(container) {
+  const pictureMode = document.getElementById('picture-mode')?.checked;
+  if (pictureMode) container.classList.add('picture-mode');
+  else container.classList.remove('picture-mode');
+  const vf = document.getElementById('venue-filters');
+  if (vf) vf.innerHTML = '';
+
+  if (typeof standupnyShows === 'undefined' || standupnyShows.length === 0) {
+    container.innerHTML = '<div class="no-shows">Loading Stand Up NY shows...<br><a href="https://standupny.com/" target="_blank" style="color:var(--accent);font-size:13px;margin-top:8px;display:inline-block;">View on their site →</a></div>';
+    return;
+  }
+
+  let filtered = activeDate === 'all' || activeDate === 'calendar'
+    ? (activeDate === 'calendar' ? standupnyShows.filter(s => calendarSelectedDates.has(s.date)) : standupnyShows)
+    : standupnyShows.filter(s => s.date === activeDate);
+  filtered = filtered.filter(s => !isShowPast(s.date, s.time));
+  filtered = filtered.filter(s => showMatchesSearch(s, 'Stand Up NY'));
+  filtered = filtered.filter(s => !shouldHideShow(!!s.soldOut));
+
+  let html = '<div class="schedule-view">';
+  let lastDate = '';
+  filtered.forEach(show => {
+    try {
+    if (show.date !== lastDate) {
+      const d = new Date(show.date + 'T12:00:00');
+      html += `<h2 class="schedule-day-header">${getDayHeaderLabel(d)}</h2>`;
+      lastDate = show.date;
+    }
+    const soldOut = !!show.soldOut;
+    const nameHtml = show.image
+      ? `<span class="show-name poster-wrap">${show.title}<img class="poster-preview" src="${show.image}" alt="${show.title}" loading="lazy"></span>`
+      : `<span class="show-name">${show.title}</span>`;
+    html += `
+      <div class="show-card${soldOut ? ' sold-out' : ''}">
+        <div class="show-header">
+          <div><span class="show-time">${formatTime(show.time)}</span></div>
+          ${nameHtml}
+          <span class="show-venue">Stand Up NY</span>
+        </div>
+        <div class="show-footer">
+          ${show.url ? `<a href="${show.url}" target="_blank" class="reserve-btn${soldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${soldOut ? 'Sold Out' : 'Tickets'}</a>` : '<span></span>'}
+          <span class="fav-count"></span>
+        </div>
+      </div>`;
+    } catch (e) { console.error('renderStandupNYShows card error:', e, show); }
+  });
+  html += '</div>';
+  container.innerHTML = html;
+  renderBottomTabs();
+}
+
 // ---- Big Shows (SeatGeek) Renderer ----
 // ---- All Venues combined view ----
 // ---- Top Pick: the single best show per date, scored by YOUR faves ----
@@ -1332,11 +1399,14 @@ function renderAllVenues(container) {
     } else if (item.type === 'standupny') {
       const show = item.show;
       const soldOut = !!show.soldOut;
+      const nameHtml = show.image
+        ? `<span class="show-name poster-wrap">${show.title}<img class="poster-preview" src="${show.image}" alt="${show.title}" loading="lazy"></span>`
+        : `<span class="show-name">${show.title}</span>`;
       html += `
         <div class="show-card${soldOut ? ' sold-out' : ''}">
           <div class="show-header">
             <div><span class="show-time">${formatTime(show.time)}</span></div>
-            <span class="show-name">${show.title}</span>
+            ${nameHtml}
             <span class="show-venue">Stand Up NY</span>
           </div>
           <div class="show-footer">

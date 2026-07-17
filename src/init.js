@@ -399,6 +399,9 @@ const VIEW_BY_PATH = {
   '/tonight': 'top-pick',
   '/cellar': 'cellar',
   '/stand': 'the-stand',
+  '/gotham': 'gotham',
+  '/nycc': 'nycc',
+  '/standupny': 'standupny',
   '/big': 'big-shows',
   '/comics': 'comedians',
 };
@@ -407,6 +410,9 @@ const VIEW_META = {
   'top-pick':  { path: '/tonight', title: 'Top Pick Tonight — The Best NYC Comedy Show Each Night | Tonight NYC' },
   'cellar':    { path: '/cellar', title: 'Comedy Cellar Tonight — Lineups | Tonight NYC' },
   'the-stand': { path: '/stand',  title: 'The Stand Tonight — Lineups | Tonight NYC' },
+  'gotham':    { path: '/gotham', title: 'Gotham Comedy Club Tonight — Shows | Tonight NYC' },
+  'nycc':      { path: '/nycc',   title: 'NY Comedy Club Tonight — Lineups | Tonight NYC' },
+  'standupny': { path: '/standupny', title: 'Stand Up NY Tonight — Shows | Tonight NYC' },
   'big-shows': { path: '/big',    title: 'Big Comedy Shows in NYC | Tonight NYC' },
   'comedians': { path: '/comics', title: "NYC Comedians — Who's On Tonight | Tonight NYC" },
 };
@@ -780,6 +786,8 @@ async function refreshShowsInPlace() {
     sort: 'none',
     bioMode: 'none',
     ratingsMode: 'off',
+    hiddenTabs: [],   // venue-source-tab data-source values the user hid
+    hiddenTools: [],  // toolbar control ids the user hid
   };
   const PILL_GROUPS = {
     defaultTab: 'default-tab-pills',
@@ -806,8 +814,35 @@ async function refreshShowsInPlace() {
   }
   function save(s){ localStorage.setItem(KEY, JSON.stringify(s)); }
   function isDefault(s){
-    for (const k of Object.keys(DEFAULTS)) if (s[k] !== DEFAULTS[k]) return false;
+    for (const k of Object.keys(DEFAULTS)) {
+      if (Array.isArray(DEFAULTS[k])) {
+        if ((s[k] || []).length !== DEFAULTS[k].length) return false;
+      } else if (s[k] !== DEFAULTS[k]) {
+        return false;
+      }
+    }
     return true;
+  }
+
+  // Show/hide venue tabs + toolbar controls per the user's settings. A hidden
+  // active tab falls back to All Venues so the schedule is never left blank.
+  function applyVisibility(s){
+    const hiddenTabs = s.hiddenTabs || [];
+    document.querySelectorAll('.venue-source-tab').forEach(tab => {
+      const src = tab.dataset.source;
+      if (src === 'all') return; // All Venues is always available
+      tab.style.display = hiddenTabs.includes(src) ? 'none' : '';
+    });
+    if (typeof activeSource !== 'undefined' && activeSource !== 'all' && hiddenTabs.includes(activeSource)) {
+      activeSource = 'all';
+      if (typeof syncUrlToSource === 'function') syncUrlToSource('all');
+    }
+    const hiddenTools = s.hiddenTools || [];
+    ['quick-mode-label', 'big-pics-toggle', 'soldout-filter', 'sort-select', 'search-btn', 'filters-toggle']
+      .forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = hiddenTools.includes(id) ? 'none' : '';
+      });
   }
 
   // ---- Unified share encoding (prefs + settings) using CompressionStream when available ----
@@ -1037,6 +1072,7 @@ async function refreshShowsInPlace() {
     activeSource = settings.defaultTab;
   }
   applyFilterDefaults(settings);
+  applyVisibility(settings);
   const soldSel = document.getElementById('soldout-filter');
   if (soldSel && settings.soldOutMode) soldSel.value = settings.soldOutMode;
   const hideCb = document.getElementById('hide-sold-out');
@@ -1106,6 +1142,7 @@ async function refreshShowsInPlace() {
   function syncToolbarFromSettings(){
     // Push current settings.* into live toolbar controls + re-render.
     applyFilterDefaults(settings);
+    applyVisibility(settings);
     if (soldSel) soldSel.value = settings.soldOutMode;
     if (hideCb) hideCb.checked = settings.soldOutMode === 'hide';
     // Switch venue tab + reset date when starting tab changes.
@@ -1124,6 +1161,8 @@ async function refreshShowsInPlace() {
     if (!overlay) return;
     if (custom) custom.value = settings.accent;
     Object.keys(PILL_GROUPS).forEach(refreshPills);
+    refreshToggles('visible-tabs-toggles', 'tab', 'hiddenTabs');
+    refreshToggles('visible-tools-toggles', 'tool', 'hiddenTools');
     refreshSwatches();
     refreshShareUI();
     if (importStatus) importStatus.textContent = '';
@@ -1170,6 +1209,37 @@ async function refreshShowsInPlace() {
       syncToolbarFromSettings();
     });
   });
+
+  // ---- Visibility toggle chips (venue tabs + toolbar controls) — multi-select ----
+  // Each chip is a switch: aria-checked=true means SHOWN. The settings store the
+  // HIDDEN ids, so the app defaults to showing everything.
+  function refreshToggles(groupId, attr, hiddenKey){
+    const group = document.getElementById(groupId);
+    if (!group) return;
+    const hidden = settings[hiddenKey] || [];
+    group.querySelectorAll('.settings-pill').forEach(chip => {
+      chip.setAttribute('aria-checked', hidden.includes(chip.dataset[attr]) ? 'false' : 'true');
+    });
+  }
+  function wireToggles(groupId, attr, hiddenKey){
+    const group = document.getElementById(groupId);
+    group?.addEventListener('click', (e) => {
+      const chip = e.target.closest('.settings-pill');
+      if (!chip) return;
+      const id = chip.dataset[attr];
+      const hidden = new Set(settings[hiddenKey] || []);
+      if (hidden.has(id)) hidden.delete(id); else hidden.add(id);
+      settings[hiddenKey] = [...hidden];
+      persist();
+      refreshToggles(groupId, attr, hiddenKey);
+      applyVisibility(settings);
+      // Re-render so a freshly hidden active tab (now switched to All) repaints.
+      if (typeof renderSourceTabs === 'function') renderSourceTabs();
+      if (typeof renderShows === 'function') renderShows();
+    });
+  }
+  wireToggles('visible-tabs-toggles', 'tab', 'hiddenTabs');
+  wireToggles('visible-tools-toggles', 'tool', 'hiddenTools');
 
   // ---- Copy share link ----
   shareBtn?.addEventListener('click', async () => {

@@ -1197,7 +1197,7 @@ async function fetchTheStand() {
   try {
     // Try prebaked static data first (CDN, no function invocation)
     const resp = await fetchWithTimeout(STATIC_STAND, {}, 5000)
-      .catch(() => fetchWithTimeout('/api/the-stand', {}, 15000));
+      .catch(() => fetchWithTimeout('/api/clubs?venue=the-stand', {}, 15000));
     const data = await resp.json();
     standShows = data.shows || [];
     // Extract comedian photos from Stand data into venue-specific map
@@ -1233,7 +1233,7 @@ let standupnyShows = [];
 async function fetchNYCC() {
   try {
     const resp = await fetchWithTimeout(STATIC_NYCC, {}, 5000)
-      .catch(() => fetchWithTimeout('/api/nycc', {}, 15000));
+      .catch(() => fetchWithTimeout('/api/clubs?venue=nycc', {}, 15000));
     const data = await resp.json();
     // Drop past shows — the NYCC feed/cache retains weeks-old dates, which
     // otherwise pollute the All-Venues date strip and show list.
@@ -1248,7 +1248,7 @@ async function fetchNYCC() {
 async function fetchStandupNY() {
   try {
     const resp = await fetchWithTimeout(STATIC_STANDUPNY, {}, 5000)
-      .catch(() => fetchWithTimeout('/api/standupny', {}, 15000));
+      .catch(() => fetchWithTimeout('/api/clubs?venue=standupny', {}, 15000));
     const data = await resp.json();
     standupnyShows = (data.shows || []).filter(s => !isShowPast(s.date, s.time));
     return standupnyShows;
@@ -1293,7 +1293,7 @@ function renderNYCCShows(container) {
 async function fetchGotham() {
   try {
     const resp = await fetchWithTimeout(STATIC_GOTHAM, {}, 5000)
-      .catch(() => fetchWithTimeout('/api/gotham', {}, 15000));
+      .catch(() => fetchWithTimeout('/api/clubs?venue=gotham', {}, 15000));
     const data = await resp.json();
     gothamShows = data.shows || [];
     return gothamShows;
@@ -1782,6 +1782,8 @@ function renderSourceTabs() {
     else if (src === 'the-stand') count = standCount;
     else if (src === 'big-shows') count = bigCount;
     else if (src === 'gotham') count = gothamShows.length;
+    else if (src === 'nycc') count = (typeof nyccShows !== 'undefined') ? nyccShows.length : 0;
+    else if (src === 'standupny') count = (typeof standupnyShows !== 'undefined') ? standupnyShows.length : 0;
     const existing = btn.querySelector('.source-count');
     if (existing) existing.remove();
     if (count > 0) {
@@ -1858,10 +1860,20 @@ function renderShows() {
   }
   if (activeSource === 'nycc') {
     renderNYCCShows(container);
+    renderBottomTabs();
+    _insertFilterBanner(container);
     return;
   }
   if (activeSource === 'gotham') {
     renderGothamShows(container);
+    renderBottomTabs();
+    _insertFilterBanner(container);
+    return;
+  }
+  if (activeSource === 'standupny') {
+    renderStandupNYShows(container);
+    renderBottomTabs();
+    _insertFilterBanner(container);
     return;
   }
 
@@ -2470,6 +2482,61 @@ function renderGothamShows(container) {
   renderBottomTabs();
 }
 
+// ---- Stand Up NY Renderer ----
+// Stand Up NY doesn't publish a structured lineup — the performer names live on
+// the poster image — so we surface the poster (via the poster-wrap pattern, which
+// enlarges in Big Pics mode) so the bill is actually readable.
+function renderStandupNYShows(container) {
+  const pictureMode = document.getElementById('picture-mode')?.checked;
+  if (pictureMode) container.classList.add('picture-mode');
+  else container.classList.remove('picture-mode');
+  const vf = document.getElementById('venue-filters');
+  if (vf) vf.innerHTML = '';
+
+  if (typeof standupnyShows === 'undefined' || standupnyShows.length === 0) {
+    container.innerHTML = '<div class="no-shows">Loading Stand Up NY shows...<br><a href="https://standupny.com/" target="_blank" style="color:var(--accent);font-size:13px;margin-top:8px;display:inline-block;">View on their site →</a></div>';
+    return;
+  }
+
+  let filtered = activeDate === 'all' || activeDate === 'calendar'
+    ? (activeDate === 'calendar' ? standupnyShows.filter(s => calendarSelectedDates.has(s.date)) : standupnyShows)
+    : standupnyShows.filter(s => s.date === activeDate);
+  filtered = filtered.filter(s => !isShowPast(s.date, s.time));
+  filtered = filtered.filter(s => showMatchesSearch(s, 'Stand Up NY'));
+  filtered = filtered.filter(s => !shouldHideShow(!!s.soldOut));
+
+  let html = '<div class="schedule-view">';
+  let lastDate = '';
+  filtered.forEach(show => {
+    try {
+    if (show.date !== lastDate) {
+      const d = new Date(show.date + 'T12:00:00');
+      html += `<h2 class="schedule-day-header">${getDayHeaderLabel(d)}</h2>`;
+      lastDate = show.date;
+    }
+    const soldOut = !!show.soldOut;
+    const nameHtml = show.image
+      ? `<span class="show-name poster-wrap">${show.title}<img class="poster-preview" src="${show.image}" alt="${show.title}" loading="lazy"></span>`
+      : `<span class="show-name">${show.title}</span>`;
+    html += `
+      <div class="show-card${soldOut ? ' sold-out' : ''}">
+        <div class="show-header">
+          <div><span class="show-time">${formatTime(show.time)}</span></div>
+          ${nameHtml}
+          <span class="show-venue">Stand Up NY</span>
+        </div>
+        <div class="show-footer">
+          ${show.url ? `<a href="${show.url}" target="_blank" class="reserve-btn${soldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${soldOut ? 'Sold Out' : 'Tickets'}</a>` : '<span></span>'}
+          <span class="fav-count"></span>
+        </div>
+      </div>`;
+    } catch (e) { console.error('renderStandupNYShows card error:', e, show); }
+  });
+  html += '</div>';
+  container.innerHTML = html;
+  renderBottomTabs();
+}
+
 // ---- Big Shows (SeatGeek) Renderer ----
 // ---- All Venues combined view ----
 // ---- Top Pick: the single best show per date, scored by YOUR faves ----
@@ -2761,11 +2828,14 @@ function renderAllVenues(container) {
     } else if (item.type === 'standupny') {
       const show = item.show;
       const soldOut = !!show.soldOut;
+      const nameHtml = show.image
+        ? `<span class="show-name poster-wrap">${show.title}<img class="poster-preview" src="${show.image}" alt="${show.title}" loading="lazy"></span>`
+        : `<span class="show-name">${show.title}</span>`;
       html += `
         <div class="show-card${soldOut ? ' sold-out' : ''}">
           <div class="show-header">
             <div><span class="show-time">${formatTime(show.time)}</span></div>
-            <span class="show-name">${show.title}</span>
+            ${nameHtml}
             <span class="show-venue">Stand Up NY</span>
           </div>
           <div class="show-footer">
@@ -4611,6 +4681,9 @@ const VIEW_BY_PATH = {
   '/tonight': 'top-pick',
   '/cellar': 'cellar',
   '/stand': 'the-stand',
+  '/gotham': 'gotham',
+  '/nycc': 'nycc',
+  '/standupny': 'standupny',
   '/big': 'big-shows',
   '/comics': 'comedians',
 };
@@ -4619,6 +4692,9 @@ const VIEW_META = {
   'top-pick':  { path: '/tonight', title: 'Top Pick Tonight — The Best NYC Comedy Show Each Night | Tonight NYC' },
   'cellar':    { path: '/cellar', title: 'Comedy Cellar Tonight — Lineups | Tonight NYC' },
   'the-stand': { path: '/stand',  title: 'The Stand Tonight — Lineups | Tonight NYC' },
+  'gotham':    { path: '/gotham', title: 'Gotham Comedy Club Tonight — Shows | Tonight NYC' },
+  'nycc':      { path: '/nycc',   title: 'NY Comedy Club Tonight — Lineups | Tonight NYC' },
+  'standupny': { path: '/standupny', title: 'Stand Up NY Tonight — Shows | Tonight NYC' },
   'big-shows': { path: '/big',    title: 'Big Comedy Shows in NYC | Tonight NYC' },
   'comedians': { path: '/comics', title: "NYC Comedians — Who's On Tonight | Tonight NYC" },
 };
@@ -4992,6 +5068,8 @@ async function refreshShowsInPlace() {
     sort: 'none',
     bioMode: 'none',
     ratingsMode: 'off',
+    hiddenTabs: [],   // venue-source-tab data-source values the user hid
+    hiddenTools: [],  // toolbar control ids the user hid
   };
   const PILL_GROUPS = {
     defaultTab: 'default-tab-pills',
@@ -5018,8 +5096,35 @@ async function refreshShowsInPlace() {
   }
   function save(s){ localStorage.setItem(KEY, JSON.stringify(s)); }
   function isDefault(s){
-    for (const k of Object.keys(DEFAULTS)) if (s[k] !== DEFAULTS[k]) return false;
+    for (const k of Object.keys(DEFAULTS)) {
+      if (Array.isArray(DEFAULTS[k])) {
+        if ((s[k] || []).length !== DEFAULTS[k].length) return false;
+      } else if (s[k] !== DEFAULTS[k]) {
+        return false;
+      }
+    }
     return true;
+  }
+
+  // Show/hide venue tabs + toolbar controls per the user's settings. A hidden
+  // active tab falls back to All Venues so the schedule is never left blank.
+  function applyVisibility(s){
+    const hiddenTabs = s.hiddenTabs || [];
+    document.querySelectorAll('.venue-source-tab').forEach(tab => {
+      const src = tab.dataset.source;
+      if (src === 'all') return; // All Venues is always available
+      tab.style.display = hiddenTabs.includes(src) ? 'none' : '';
+    });
+    if (typeof activeSource !== 'undefined' && activeSource !== 'all' && hiddenTabs.includes(activeSource)) {
+      activeSource = 'all';
+      if (typeof syncUrlToSource === 'function') syncUrlToSource('all');
+    }
+    const hiddenTools = s.hiddenTools || [];
+    ['quick-mode-label', 'big-pics-toggle', 'soldout-filter', 'sort-select', 'search-btn', 'filters-toggle']
+      .forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = hiddenTools.includes(id) ? 'none' : '';
+      });
   }
 
   // ---- Unified share encoding (prefs + settings) using CompressionStream when available ----
@@ -5249,6 +5354,7 @@ async function refreshShowsInPlace() {
     activeSource = settings.defaultTab;
   }
   applyFilterDefaults(settings);
+  applyVisibility(settings);
   const soldSel = document.getElementById('soldout-filter');
   if (soldSel && settings.soldOutMode) soldSel.value = settings.soldOutMode;
   const hideCb = document.getElementById('hide-sold-out');
@@ -5318,6 +5424,7 @@ async function refreshShowsInPlace() {
   function syncToolbarFromSettings(){
     // Push current settings.* into live toolbar controls + re-render.
     applyFilterDefaults(settings);
+    applyVisibility(settings);
     if (soldSel) soldSel.value = settings.soldOutMode;
     if (hideCb) hideCb.checked = settings.soldOutMode === 'hide';
     // Switch venue tab + reset date when starting tab changes.
@@ -5336,6 +5443,8 @@ async function refreshShowsInPlace() {
     if (!overlay) return;
     if (custom) custom.value = settings.accent;
     Object.keys(PILL_GROUPS).forEach(refreshPills);
+    refreshToggles('visible-tabs-toggles', 'tab', 'hiddenTabs');
+    refreshToggles('visible-tools-toggles', 'tool', 'hiddenTools');
     refreshSwatches();
     refreshShareUI();
     if (importStatus) importStatus.textContent = '';
@@ -5382,6 +5491,37 @@ async function refreshShowsInPlace() {
       syncToolbarFromSettings();
     });
   });
+
+  // ---- Visibility toggle chips (venue tabs + toolbar controls) — multi-select ----
+  // Each chip is a switch: aria-checked=true means SHOWN. The settings store the
+  // HIDDEN ids, so the app defaults to showing everything.
+  function refreshToggles(groupId, attr, hiddenKey){
+    const group = document.getElementById(groupId);
+    if (!group) return;
+    const hidden = settings[hiddenKey] || [];
+    group.querySelectorAll('.settings-pill').forEach(chip => {
+      chip.setAttribute('aria-checked', hidden.includes(chip.dataset[attr]) ? 'false' : 'true');
+    });
+  }
+  function wireToggles(groupId, attr, hiddenKey){
+    const group = document.getElementById(groupId);
+    group?.addEventListener('click', (e) => {
+      const chip = e.target.closest('.settings-pill');
+      if (!chip) return;
+      const id = chip.dataset[attr];
+      const hidden = new Set(settings[hiddenKey] || []);
+      if (hidden.has(id)) hidden.delete(id); else hidden.add(id);
+      settings[hiddenKey] = [...hidden];
+      persist();
+      refreshToggles(groupId, attr, hiddenKey);
+      applyVisibility(settings);
+      // Re-render so a freshly hidden active tab (now switched to All) repaints.
+      if (typeof renderSourceTabs === 'function') renderSourceTabs();
+      if (typeof renderShows === 'function') renderShows();
+    });
+  }
+  wireToggles('visible-tabs-toggles', 'tab', 'hiddenTabs');
+  wireToggles('visible-tools-toggles', 'tool', 'hiddenTools');
 
   // ---- Copy share link ----
   shareBtn?.addEventListener('click', async () => {

@@ -23,6 +23,9 @@
     { "source": "/support", "destination": "/support.html" },
     { "source": "/cellar", "destination": "/index.html" },
     { "source": "/stand", "destination": "/index.html" },
+    { "source": "/gotham", "destination": "/index.html" },
+    { "source": "/nycc", "destination": "/index.html" },
+    { "source": "/standupny", "destination": "/index.html" },
     { "source": "/big", "destination": "/index.html" },
     { "source": "/comics", "destination": "/index.html" }
   ],
