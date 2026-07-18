@@ -205,9 +205,9 @@ body.mode-jazz .modal-overlay { display: none !important; }
 .header-settings-btn { right: 0; }
 .header-appstore-btn { right: 92px; }
 .header-share-btn { right: 138px; }
-/* Hide App Store icon inside the native iOS app — they're already in the app. */
-html.native-ios .header-appstore-btn { display: none; }
-html.native-ios .header-share-btn { right: 92px; }
+/* Hide the App Store icon inside either native app shell. */
+html.native-app .header-appstore-btn { display: none; }
+html.native-app .header-share-btn { right: 92px; }
 
 /* Theme toggle hidden on narrow screens and iOS; everything shifts left to fill its slot. */
 @media (max-width: 380px) {
@@ -215,10 +215,14 @@ html.native-ios .header-share-btn { right: 92px; }
   .header-appstore-btn { right: 46px; }
   .header-share-btn { right: 92px; }
 }
-html.ios-mobile .theme-toggle { display: none; }
-html.ios-mobile .header-appstore-btn { right: 46px; }
-html.ios-mobile .header-share-btn { right: 92px; }
-html.ios-mobile.native-ios .header-share-btn { right: 46px; }
+html.ios-mobile .theme-toggle,
+html.native-mobile .theme-toggle { display: none; }
+html.ios-mobile .header-appstore-btn,
+html.native-mobile .header-appstore-btn { right: 46px; }
+html.ios-mobile .header-share-btn,
+html.native-mobile .header-share-btn { right: 92px; }
+html.ios-mobile.native-ios .header-share-btn,
+html.native-mobile.native-app .header-share-btn { right: 46px; }
 
 /* Day Tabs */
 .day-tabs-row {
@@ -946,7 +950,7 @@ html.ios-mobile.native-ios .header-share-btn { right: 46px; }
 
 .site-footer a.app-store-badge-link { display: inline-block; line-height: 0; margin: 12px 0 6px; }
 .site-footer a.app-store-badge-link img { display: block; height: 40px; width: auto; margin: 0 auto; }
-html.native-ios .app-store-badge-link { display: none; }
+html.native-app .app-store-badge-link { display: none; }
 
 /* Schedule view */
 .schedule-view { display: flex; flex-direction: column; gap: 12px; }
@@ -971,19 +975,33 @@ html.native-ios .app-store-badge-link { display: none; }
 
 /* Venue source tabs */
 .venue-source-tabs {
-  display: flex; gap: 6px; padding: 4px 0 4px;
+  display: flex; gap: 8px; padding: 4px 0 6px;
   overflow-x: auto; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; -ms-overflow-style: none;
+  scroll-snap-type: x proximity;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 14px, #000 calc(100% - 22px), transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 14px, #000 calc(100% - 22px), transparent 100%);
 }
+.venue-source-tabs::-webkit-scrollbar { display: none; }
 .venue-source-tab {
-  padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500;
+  flex: 0 0 auto; white-space: nowrap; scroll-snap-align: start;
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 8px 15px; border-radius: 999px; font-size: 13px; font-weight: 500;
+  line-height: 1; letter-spacing: -0.01em;
   background: var(--surface); border: 1px solid var(--border); color: var(--text-dim);
-  cursor: pointer; transition: all 0.15s;
+  cursor: pointer; transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.1s, box-shadow 0.15s;
 }
 .venue-source-tab:hover { border-color: var(--accent); color: var(--text); }
-.venue-source-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
-.venue-source-tab .source-count {
-  font-size: 10px; font-weight: 400; opacity: 0.7; margin-left: 4px;
+.venue-source-tab:active { transform: scale(0.96); }
+.venue-source-tab.active {
+  background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.14);
 }
+.venue-source-tab .source-count {
+  font-size: 11px; font-weight: 600; opacity: 0.55; margin-left: 1px;
+  font-variant-numeric: tabular-nums;
+}
+.venue-source-tab.active .source-count { opacity: 0.85; }
 
 /* Big Shows section */
 .big-shows-section { margin-top: 8px; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }

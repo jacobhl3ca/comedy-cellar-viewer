@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Tonight NYC</string>
+    <string name="title_activity_main">Tonight NYC</string>
+    <string name="package_name">com.jacobhl.tonightnyc</string>
+    <string name="custom_url_scheme">com.jacobhl.tonightnyc</string>
+</resources>
