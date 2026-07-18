@@ -56,13 +56,16 @@
     // current dates off-screen. Upper cap drops far-future TBD placeholders.
     const todayStr = formatDateParam(new Date());
     const inRange = (d) => d && d >= todayStr && d <= capStr;
+    // Only union in dates from venues actually shown in the All feed, so a
+    // hidden venue's far-future shows don't add date tabs that render empty.
+    const hiddenStrip = allFeedHiddenSet();
     const union = new Set(dates.map(formatDateParam));
-    standShows.forEach(s => inRange(s.date) && union.add(s.date));
+    if (!hiddenStrip.has('stand')) standShows.forEach(s => inRange(s.date) && union.add(s.date));
     nyccShows.forEach(s => inRange(s.date) && union.add(s.date));
-    if (typeof gothamShows !== 'undefined') gothamShows.forEach(s => inRange(s.date) && union.add(s.date));
-    if (typeof standupnyShows !== 'undefined') standupnyShows.forEach(s => inRange(s.date) && union.add(s.date));
-    if (typeof unionhallShows !== 'undefined') unionhallShows.forEach(s => inRange(s.date) && union.add(s.date));
-    bigShows.forEach(e => inRange(e.date) && union.add(e.date));
+    if (!hiddenStrip.has('gotham') && typeof gothamShows !== 'undefined') gothamShows.forEach(s => inRange(s.date) && union.add(s.date));
+    if (!hiddenStrip.has('standupny') && typeof standupnyShows !== 'undefined') standupnyShows.forEach(s => inRange(s.date) && union.add(s.date));
+    if (!hiddenStrip.has('union-hall') && typeof unionhallShows !== 'undefined') unionhallShows.forEach(s => inRange(s.date) && union.add(s.date));
+    if (!hiddenStrip.has('big')) bigShows.forEach(e => inRange(e.date) && union.add(e.date));
     renderDates = [...union].sort().map(s => new Date(s + 'T12:00:00'));
   }
 
@@ -73,8 +76,17 @@
     const hasCellar = shows && shows.length > 0;
     let noLineup;
     if (activeSource === 'all') {
-      // All Venues: check all sources
-      noLineup = !hasCellar && !standShows.some(s => s.date === dateStr) && !nyccShows.some(s => s.date === dateStr) && !gothamShows.some(s => s.date === dateStr) && !(typeof standupnyShows !== 'undefined' && standupnyShows.some(s => s.date === dateStr)) && !(typeof unionhallShows !== 'undefined' && unionhallShows.some(s => s.date === dateStr)) && !bigShows.some(e => e.date === dateStr);
+      // All Venues: a day has a lineup if any ENABLED feed venue has a show then.
+      const hv = allFeedHiddenSet();
+      const has =
+        (!hv.has('cellar') && hasCellar) ||
+        (!hv.has('stand') && standShows.some(s => s.date === dateStr)) ||
+        nyccShows.some(s => s.date === dateStr) ||
+        (!hv.has('gotham') && typeof gothamShows !== 'undefined' && gothamShows.some(s => s.date === dateStr)) ||
+        (!hv.has('standupny') && typeof standupnyShows !== 'undefined' && standupnyShows.some(s => s.date === dateStr)) ||
+        (!hv.has('union-hall') && typeof unionhallShows !== 'undefined' && unionhallShows.some(s => s.date === dateStr)) ||
+        (!hv.has('big') && bigShows.some(e => e.date === dateStr));
+      noLineup = !has;
     } else {
       // Cellar tab (default): only check Cellar data
       noLineup = !hasCellar;
@@ -1286,6 +1298,18 @@ function renderTopPick(container) {
   container.innerHTML = html;
 }
 
+// Venue item-types hidden from the "All" feed, per Settings. Returns a Set of
+// tokens matching renderAllVenues() item.type / renderTabs() venue arrays
+// (cellar, stand, gotham, standupny, union-hall, big). Bridged from init.js.
+function allFeedHiddenSet() {
+  try {
+    if (typeof window !== 'undefined' && typeof window.allFeedHidden === 'function') {
+      return new Set(window.allFeedHidden());
+    }
+  } catch {}
+  return new Set(['standupny', 'union-hall', 'gotham']);
+}
+
 function renderAllVenues(container) {
   const hideSkips = document.getElementById('hide-skips')?.checked;
   const pictureMode = document.getElementById('picture-mode')?.checked;
@@ -1342,6 +1366,11 @@ function renderAllVenues(container) {
     const time24 = to24hSortable(evt.time) || '00:00';
     allItems.push({ type: 'big', dateStr: evt.date, time24, show: evt });
   });
+
+  // Drop venues the user has hidden from the "All" feed (Settings → "Show in All
+  // feed"). Gotham etc. are off by default so their blank cards don't clutter it.
+  const hiddenAV = allFeedHiddenSet();
+  if (hiddenAV.size) allItems = allItems.filter(item => !hiddenAV.has(item.type));
 
   // Filter by selected date if not "all"
   if (activeDate === 'calendar') {

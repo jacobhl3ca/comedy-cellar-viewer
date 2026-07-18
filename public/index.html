@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <script>if(window.Capacitor)document.documentElement.classList.add('native-ios');</script>
+  <script>
+    if (window.Capacitor?.isNativePlatform?.()) {
+      const platform = window.Capacitor.getPlatform?.() || 'app';
+      document.documentElement.classList.add('native-app', `native-${platform}`);
+    }
+  </script>
   <title>Tonight NYC — Comedy Lineups</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="manifest" href="manifest.json">
@@ -67,15 +72,17 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=32cd330">
+  <link rel="stylesheet" href="style.min.css?v=a98e10c">
   <script>
     (function() {
       const root = document.documentElement;
-      const isNative = !!(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform());
+      const isNative = !!window.Capacitor?.isNativePlatform?.();
+      const nativePlatform = isNative ? window.Capacitor.getPlatform?.() : null;
       const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      if (isNative) root.classList.add('native-app', 'native-mobile', `native-${nativePlatform || 'app'}`);
       if (isNative || isIOS) {
-        // iOS (app or Safari): follow OS theme, no manual toggle.
-        root.classList.add('ios-mobile');
+        // Native apps and iOS Safari follow the OS theme, with no manual toggle.
+        root.classList.add(isNative ? 'native-mobile' : 'ios-mobile');
         const mq = window.matchMedia('(prefers-color-scheme: light)');
         const apply = () => { root.dataset.theme = mq.matches ? 'light' : 'dark'; };
         apply();
@@ -349,6 +356,19 @@
         </div>
 
         <div class="modal-section">
+          <h3>Show in All feed</h3>
+          <p class="settings-desc">Which venues appear on the "All" tab. Some clubs (like Gotham) don't post lineups, so they're off by default — turn on any you want mixed in.</p>
+          <div class="settings-pills settings-toggles" id="all-venues-toggles" aria-label="Venues shown in the All feed">
+            <button class="settings-pill" data-allvenue="cellar" role="switch" aria-checked="true">Comedy Cellar</button>
+            <button class="settings-pill" data-allvenue="stand" role="switch" aria-checked="true">The Stand</button>
+            <button class="settings-pill" data-allvenue="big" role="switch" aria-checked="true">Big Shows</button>
+            <button class="settings-pill" data-allvenue="standupny" role="switch" aria-checked="false">Stand Up NY</button>
+            <button class="settings-pill" data-allvenue="union-hall" role="switch" aria-checked="false">Union Hall</button>
+            <button class="settings-pill" data-allvenue="gotham" role="switch" aria-checked="false">Gotham</button>
+          </div>
+        </div>
+
+        <div class="modal-section">
           <h3>Show venue tabs</h3>
           <p class="settings-desc">Turn off the tabs you don't use — they disappear from the bar.</p>
           <div class="settings-pills settings-toggles" id="visible-tabs-toggles" aria-label="Visible venue tabs">
@@ -521,7 +541,7 @@
     <button id="pwa-install-btn" onclick="pwaInstall()" style="display:none;"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Add to Home Screen</button>
   </footer>
 
-  <script defer src="app.min.js?v=4ce6034"></script>
+  <script defer src="app.min.js?v=a98e10c"></script>
   <!-- Vercel Web Analytics + Speed Insights + Cloudflare Web Analytics — gated to skip Capacitor native shell so iOS app stays "No data collected" on App Store -->
   <script>
     if (!window.Capacitor?.isNativePlatform?.()) {

@@ -1510,13 +1510,16 @@ function renderTabs() {
     // current dates off-screen. Upper cap drops far-future TBD placeholders.
     const todayStr = formatDateParam(new Date());
     const inRange = (d) => d && d >= todayStr && d <= capStr;
+    // Only union in dates from venues actually shown in the All feed, so a
+    // hidden venue's far-future shows don't add date tabs that render empty.
+    const hiddenStrip = allFeedHiddenSet();
     const union = new Set(dates.map(formatDateParam));
-    standShows.forEach(s => inRange(s.date) && union.add(s.date));
+    if (!hiddenStrip.has('stand')) standShows.forEach(s => inRange(s.date) && union.add(s.date));
     nyccShows.forEach(s => inRange(s.date) && union.add(s.date));
-    if (typeof gothamShows !== 'undefined') gothamShows.forEach(s => inRange(s.date) && union.add(s.date));
-    if (typeof standupnyShows !== 'undefined') standupnyShows.forEach(s => inRange(s.date) && union.add(s.date));
-    if (typeof unionhallShows !== 'undefined') unionhallShows.forEach(s => inRange(s.date) && union.add(s.date));
-    bigShows.forEach(e => inRange(e.date) && union.add(e.date));
+    if (!hiddenStrip.has('gotham') && typeof gothamShows !== 'undefined') gothamShows.forEach(s => inRange(s.date) && union.add(s.date));
+    if (!hiddenStrip.has('standupny') && typeof standupnyShows !== 'undefined') standupnyShows.forEach(s => inRange(s.date) && union.add(s.date));
+    if (!hiddenStrip.has('union-hall') && typeof unionhallShows !== 'undefined') unionhallShows.forEach(s => inRange(s.date) && union.add(s.date));
+    if (!hiddenStrip.has('big')) bigShows.forEach(e => inRange(e.date) && union.add(e.date));
     renderDates = [...union].sort().map(s => new Date(s + 'T12:00:00'));
   }
 
@@ -1527,8 +1530,17 @@ function renderTabs() {
     const hasCellar = shows && shows.length > 0;
     let noLineup;
     if (activeSource === 'all') {
-      // All Venues: check all sources
-      noLineup = !hasCellar && !standShows.some(s => s.date === dateStr) && !nyccShows.some(s => s.date === dateStr) && !gothamShows.some(s => s.date === dateStr) && !(typeof standupnyShows !== 'undefined' && standupnyShows.some(s => s.date === dateStr)) && !(typeof unionhallShows !== 'undefined' && unionhallShows.some(s => s.date === dateStr)) && !bigShows.some(e => e.date === dateStr);
+      // All Venues: a day has a lineup if any ENABLED feed venue has a show then.
+      const hv = allFeedHiddenSet();
+      const has =
+        (!hv.has('cellar') && hasCellar) ||
+        (!hv.has('stand') && standShows.some(s => s.date === dateStr)) ||
+        nyccShows.some(s => s.date === dateStr) ||
+        (!hv.has('gotham') && typeof gothamShows !== 'undefined' && gothamShows.some(s => s.date === dateStr)) ||
+        (!hv.has('standupny') && typeof standupnyShows !== 'undefined' && standupnyShows.some(s => s.date === dateStr)) ||
+        (!hv.has('union-hall') && typeof unionhallShows !== 'undefined' && unionhallShows.some(s => s.date === dateStr)) ||
+        (!hv.has('big') && bigShows.some(e => e.date === dateStr));
+      noLineup = !has;
     } else {
       // Cellar tab (default): only check Cellar data
       noLineup = !hasCellar;
@@ -2740,6 +2752,18 @@ function renderTopPick(container) {
   container.innerHTML = html;
 }
 
+// Venue item-types hidden from the "All" feed, per Settings. Returns a Set of
+// tokens matching renderAllVenues() item.type / renderTabs() venue arrays
+// (cellar, stand, gotham, standupny, union-hall, big). Bridged from init.js.
+function allFeedHiddenSet() {
+  try {
+    if (typeof window !== 'undefined' && typeof window.allFeedHidden === 'function') {
+      return new Set(window.allFeedHidden());
+    }
+  } catch {}
+  return new Set(['standupny', 'union-hall', 'gotham']);
+}
+
 function renderAllVenues(container) {
   const hideSkips = document.getElementById('hide-skips')?.checked;
   const pictureMode = document.getElementById('picture-mode')?.checked;
@@ -2796,6 +2820,11 @@ function renderAllVenues(container) {
     const time24 = to24hSortable(evt.time) || '00:00';
     allItems.push({ type: 'big', dateStr: evt.date, time24, show: evt });
   });
+
+  // Drop venues the user has hidden from the "All" feed (Settings → "Show in All
+  // feed"). Gotham etc. are off by default so their blank cards don't clutter it.
+  const hiddenAV = allFeedHiddenSet();
+  if (hiddenAV.size) allItems = allItems.filter(item => !hiddenAV.has(item.type));
 
   // Filter by selected date if not "all"
   if (activeDate === 'calendar') {
@@ -5175,6 +5204,11 @@ async function refreshShowsInPlace() {
     ratingsMode: 'off',
     hiddenTabs: [],   // venue-source-tab data-source values the user hid
     hiddenTools: [],  // toolbar control ids the user hid
+    // Venue item-types NOT shown in the "All" feed (each toggle-able in Settings).
+    // Gotham never publishes names (blank "All-Stars" cards) and the poster
+    // venues have thinner data, so they're off by default; core clubs + big
+    // marquee shows stay on. Values match renderAllVenues() item.type tokens.
+    allHidden: ['standupny', 'union-hall', 'gotham'],
   };
   const PILL_GROUPS = {
     defaultTab: 'default-tab-pills',
@@ -5454,6 +5488,10 @@ async function refreshShowsInPlace() {
   const settings = load();
   applyAccent(settings);
 
+  // Bridge for render.js: which venue types are hidden from the "All" feed.
+  // Falls back to DEFAULTS so the feed is correct even if called very early.
+  window.allFeedHidden = () => (settings && settings.allHidden) || DEFAULTS.allHidden;
+
   // Pre-set the venue tab before init's first render. activeSource is declared in data.js.
   if (settings.defaultTab && typeof activeSource !== 'undefined') {
     activeSource = settings.defaultTab;
@@ -5549,6 +5587,7 @@ async function refreshShowsInPlace() {
     Object.keys(PILL_GROUPS).forEach(refreshPills);
     refreshToggles('visible-tabs-toggles', 'tab', 'hiddenTabs');
     refreshToggles('visible-tools-toggles', 'tool', 'hiddenTools');
+    refreshToggles('all-venues-toggles', 'allvenue', 'allHidden');
     refreshSwatches();
     refreshShareUI();
     if (importStatus) importStatus.textContent = '';
@@ -5656,6 +5695,7 @@ async function refreshShowsInPlace() {
   }
   wireToggles('visible-tabs-toggles', 'tab', 'hiddenTabs');
   wireToggles('visible-tools-toggles', 'tool', 'hiddenTools');
+  wireToggles('all-venues-toggles', 'allvenue', 'allHidden');
 
   // ---- Copy share link ----
   shareBtn?.addEventListener('click', async () => {

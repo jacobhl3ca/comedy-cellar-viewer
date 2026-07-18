@@ -831,6 +831,11 @@ async function refreshShowsInPlace() {
     ratingsMode: 'off',
     hiddenTabs: [],   // venue-source-tab data-source values the user hid
     hiddenTools: [],  // toolbar control ids the user hid
+    // Venue item-types NOT shown in the "All" feed (each toggle-able in Settings).
+    // Gotham never publishes names (blank "All-Stars" cards) and the poster
+    // venues have thinner data, so they're off by default; core clubs + big
+    // marquee shows stay on. Values match renderAllVenues() item.type tokens.
+    allHidden: ['standupny', 'union-hall', 'gotham'],
   };
   const PILL_GROUPS = {
     defaultTab: 'default-tab-pills',
@@ -1110,6 +1115,10 @@ async function refreshShowsInPlace() {
   const settings = load();
   applyAccent(settings);
 
+  // Bridge for render.js: which venue types are hidden from the "All" feed.
+  // Falls back to DEFAULTS so the feed is correct even if called very early.
+  window.allFeedHidden = () => (settings && settings.allHidden) || DEFAULTS.allHidden;
+
   // Pre-set the venue tab before init's first render. activeSource is declared in data.js.
   if (settings.defaultTab && typeof activeSource !== 'undefined') {
     activeSource = settings.defaultTab;
@@ -1205,6 +1214,7 @@ async function refreshShowsInPlace() {
     Object.keys(PILL_GROUPS).forEach(refreshPills);
     refreshToggles('visible-tabs-toggles', 'tab', 'hiddenTabs');
     refreshToggles('visible-tools-toggles', 'tool', 'hiddenTools');
+    refreshToggles('all-venues-toggles', 'allvenue', 'allHidden');
     refreshSwatches();
     refreshShareUI();
     if (importStatus) importStatus.textContent = '';
@@ -1312,6 +1322,7 @@ async function refreshShowsInPlace() {
   }
   wireToggles('visible-tabs-toggles', 'tab', 'hiddenTabs');
   wireToggles('visible-tools-toggles', 'tool', 'hiddenTools');
+  wireToggles('all-venues-toggles', 'allvenue', 'allHidden');
 
   // ---- Copy share link ----
   shareBtn?.addEventListener('click', async () => {
