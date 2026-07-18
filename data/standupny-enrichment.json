@@ -81,5 +81,22 @@
       "Ksenia"
     ],
     "photos": {}
+  },
+  "190622": {
+    "comedians": [
+      "Liz Glazer",
+      "Myq Kaplan",
+      "Dan Ahdoot",
+      "Erin Maguire",
+      "Patrick Holbert",
+      "The Maze"
+    ],
+    "photos": {
+      "Liz Glazer": "https://thestandnyc.com/images/comedians/_square/lizglazer.jpg",
+      "Myq Kaplan": "https://thestandnyc.com/images/comedians/_square/MyqKaplan_CreditMindyTucker.jpg",
+      "Dan Ahdoot": "https://thestandnyc.com/images/comedians/_square/Dan_Ahdoot.jpg",
+      "Erin Maguire": "https://thestandnyc.com/images/comedians/_square/EM-headshot.jpg",
+      "Patrick Holbert": "https://www.newyorkcomedyclub.com/img/comedians/patrick-holbert-e25a0bbf-main-image.jpg"
+    }
   }
 }
