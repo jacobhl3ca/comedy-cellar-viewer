@@ -72,7 +72,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=28d6afb">
+  <link rel="stylesheet" href="style.min.css?v=66b60a1">
   <script>
     (function() {
       const root = document.documentElement;
@@ -369,6 +369,15 @@
         </div>
 
         <div class="modal-section">
+          <h3>Ticket prices</h3>
+          <p class="settings-desc">Show a small price on club show cards. Off keeps cards clean — Big Shows always show a price.</p>
+          <div class="settings-pills" id="default-price-pills" role="radiogroup" aria-label="Ticket prices">
+            <button class="settings-pill" data-value="off" role="radio" aria-checked="true">Off</button>
+            <button class="settings-pill" data-value="on" role="radio" aria-checked="false">On</button>
+          </div>
+        </div>
+
+        <div class="modal-section">
           <h3>Show venue tabs</h3>
           <p class="settings-desc">Turn off the tabs you don't use — they disappear from the bar.</p>
           <div class="settings-pills settings-toggles" id="visible-tabs-toggles" aria-label="Visible venue tabs">
@@ -541,7 +550,7 @@
     <button id="pwa-install-btn" onclick="pwaInstall()" style="display:none;"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Add to Home Screen</button>
   </footer>
 
-  <script defer src="app.min.js?v=28d6afb"></script>
+  <script defer src="app.min.js?v=66b60a1"></script>
   <!-- Vercel Web Analytics + Speed Insights + Cloudflare Web Analytics — gated to skip Capacitor native shell so iOS app stays "No data collected" on App Store -->
   <script>
     if (!window.Capacitor?.isNativePlatform?.()) {

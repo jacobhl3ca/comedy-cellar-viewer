@@ -1060,7 +1060,7 @@ function renderGothamShows(container) {
         <div class="show-header">
           <div><span class="show-time">${formatTime(show.time)}</span></div>
           <span class="show-name">${show.title}</span>
-          <span class="show-venue">Gotham${show.price ? ` · $${show.price}` : ''}</span>
+          <span class="show-venue">Gotham${priceChip(show.price)}</span>
         </div>
         ${show.description ? `<div style="padding:8px 16px;font-size:12px;color:var(--text-dim);">${show.description}</div>` : ''}
         <div class="show-footer">
@@ -1084,6 +1084,11 @@ function renderGothamShows(container) {
 // Subtle price tag — only where a source actually exposes a price (The Stand,
 // Union Hall via Eventbrite, big shows). Most clubs return null → no tag.
 function priceChip(price) {
+  // Off by default — user opts in via Settings → "Ticket prices". Big Shows have
+  // their own always-on price (top-right of card) and don't go through here.
+  const show = (typeof window !== 'undefined' && typeof window.showClubPrices === 'function')
+    ? window.showClubPrices() : false;
+  if (!show) return '';
   if (price == null || price === '') return '';
   const p = String(price).trim();
   if (p === '0' || /free/i.test(p)) return `<span class="price-tag">Free</span>`;
@@ -1762,12 +1767,19 @@ function renderBigShows(container) {
     const visibleEvents = sortedEvents.filter(evt => !shouldHideShow(!!evt.soldout));
     if (visibleEvents.length === 0) return;
     const allSoldOut = visibleEvents.every(evt => evt.soldout);
+    // Subtle price for the card's top-right corner. Big Shows keep their price
+    // even when club-show prices are toggled off. Uses the lowest across dates.
+    const bigPrices = visibleEvents
+      .map(e => parseFloat(String(e.price || '').replace(/[^\d.]/g, '')))
+      .filter(n => isFinite(n) && n > 0);
+    const bigMinPrice = bigPrices.length ? Math.min(...bigPrices) : null;
+    const bigPriceLabel = bigMinPrice == null ? ''
+      : (Math.max(...bigPrices) > bigMinPrice ? `from $${Math.round(bigMinPrice)}` : `$${Math.round(bigMinPrice)}`);
     const dateBoxes = visibleEvents.map(evt => {
       const d = new Date(evt.date + 'T12:00:00');
       const shortDate = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
       const shortDay = d.toLocaleDateString('en-US', { weekday: 'short' });
       const timeStr = evt.time || '';
-      const priceStr = evt.price ? `$${evt.price}` : '';
       const evtSoldOut = !!evt.soldout;
       const links = evt.ticketLinks || (evt.url ? [{ source: evt.source || 'tickets', url: evt.url }] : []);
 
@@ -1776,7 +1788,7 @@ function renderBigShows(container) {
         return `<div class="bdb-wrap"><span class="big-date-box sold-out"><span class="bdb-day">${shortDay} ${shortDate}</span><span class="bdb-time">${timeStr}</span><span class="bdb-sold-out">SOLD OUT</span></span></div>`;
       }
 
-      const dateContent = `<span class="bdb-day">${shortDay} ${shortDate}</span><span class="bdb-time">${timeStr}</span>${priceStr ? `<span class="bdb-price">${priceStr}</span>` : ''}`;
+      const dateContent = `<span class="bdb-day">${shortDay} ${shortDate}</span><span class="bdb-time">${timeStr}</span>`;
 
       // TODO: Multi-source SG/TM badges — revisit later
       // if (links.length > 1) {
@@ -1795,6 +1807,7 @@ function renderBigShows(container) {
 
     html += `
       <div class="big-show-card${allSoldOut ? ' sold-out' : ''}">
+        ${bigPriceLabel ? `<span class="big-show-price">${bigPriceLabel}</span>` : ''}
         <div class="big-show-info">
           ${photoHtml}
           <div class="big-show-details">

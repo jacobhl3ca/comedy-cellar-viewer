@@ -829,6 +829,7 @@ async function refreshShowsInPlace() {
     sort: 'none',
     bioMode: 'none',
     ratingsMode: 'off',
+    priceMode: 'off',   // 'off' hides the price chip on club cards (Big Shows keep their own)
     hiddenTabs: [],   // venue-source-tab data-source values the user hid
     hiddenTools: [],  // toolbar control ids the user hid
     // Venue item-types NOT shown in the "All" feed (each toggle-able in Settings).
@@ -846,6 +847,7 @@ async function refreshShowsInPlace() {
     sort: 'default-sort-pills',
     bioMode: 'default-bio-pills',
     ratingsMode: 'default-ratings-pills',
+    priceMode: 'default-price-pills',
   };
   // Mirror selects (hidden) we keep so external code that polls these IDs still works.
   const MIRROR_SELECTS = {
@@ -1118,6 +1120,8 @@ async function refreshShowsInPlace() {
   // Bridge for render.js: which venue types are hidden from the "All" feed.
   // Falls back to DEFAULTS so the feed is correct even if called very early.
   window.allFeedHidden = () => (settings && settings.allHidden) || DEFAULTS.allHidden;
+  // Bridge for render.js: whether club-show price chips are shown (off by default).
+  window.showClubPrices = () => !!(settings && settings.priceMode === 'on');
 
   // Pre-set the venue tab before init's first render. activeSource is declared in data.js.
   if (settings.defaultTab && typeof activeSource !== 'undefined') {
