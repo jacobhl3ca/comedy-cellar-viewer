@@ -6380,7 +6380,8 @@
   {
     "name": "Nick Rochefort",
     "venues": [],
-    "bio_wiki": "Million Dollar Extreme (MDE) is an American sketch comedy troupe, founded by comedians Sam Hyde, Nick Rochefort, and Charls Carroll in 2009."
+    "bio_wiki": "Million Dollar Extreme (MDE) is an American sketch comedy troupe, founded by comedians Sam Hyde, Nick Rochefort, and Charls Carroll in 2009.",
+    "bio_stand": "Nick Rochefort is a founding member of the comedy troupe Million Dollar Extreme. Currently co-hosting Perfect Guy Life with Sam Hyde and also current host of Scuffed Realtor – a weekly real estate investment livestream on YouTube. Co-Creator of the Adult Swim hit show World Peace and soon to be released World Peace: Season 2. Nick is currently sporting a rosebud and was an original club kid with Michael Alig. Nick is also an avid antiques dealer and current owner of ChamonixHouse.com."
   },
   {
     "name": "Allie Mae",
@@ -8778,6 +8779,14 @@
   },
   {
     "name": "KevOnStage (Kevin Fredericks)",
+    "venues": []
+  },
+  {
+    "name": "Marco DelVecchio",
+    "venues": []
+  },
+  {
+    "name": "AJ Leidig",
     "venues": []
   }
 ]
