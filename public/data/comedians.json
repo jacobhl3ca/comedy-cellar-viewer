@@ -6076,7 +6076,8 @@
       "comedy_cellar"
     ],
     "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Aziz_Ansari_at_TIFF_2025_02.jpg/330px-Aziz_Ansari_at_TIFF_2025_02.jpg",
-    "featured": true
+    "featured": true,
+    "tagline_cellar": "FROM THE MOVIE \"IN 30 MINUTES OR LESS\", \"PARKS AND RECREATION\", \"UPRIGHT CITIZEN BRIGADE'S\", AND \"CRUSH TEST\". WON BEST MALE STAND-UP AT THE EMERGING COMICS OF NEW YORK. ROLLING STONE'S \"HOT COMIC\"."
   },
   {
     "name": "Margaret Cho",
@@ -8787,6 +8788,15 @@
   },
   {
     "name": "AJ Leidig",
+    "venues": []
+  },
+  {
+    "name": "Rachid Badouri",
+    "venues": [],
+    "bio_stand": "Rachid has taped three comedy specials in his native French and has toured extensively all over the world, with over 1M tickets sold as of 2024. In 2017, Rachid performed in English for the first time at the Just For Laughs Festival and received the gala’s only standing ovation. He continued his English-speaking runs in 2024 when he was invited to perform at the Netflix is A Joke Fest in Los Angeles – after which he presented his 1-hour comedy special at the legendary Comedy Store. His sets have been filmed for All Access on CBC and for Kevin Hart’s LOL Network."
+  },
+  {
+    "name": "Amy Poehler",
     "venues": []
   }
 ]
