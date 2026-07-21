@@ -8751,7 +8751,8 @@
   },
   {
     "name": "KevOnStage",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Kevin Fredericks, known professionally as KevOnStage, is an American comedian, actor, writer, and digital content creator. He is known for his observational comedy centered on family life, faith, and contemporary culture, as well as for building a large audience through platforms such as YouTube and Instagram."
   },
   {
     "name": "Billy Eichner",
@@ -8760,7 +8761,8 @@
   },
   {
     "name": "Julie Klausner",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Julie Klausner is an American writer, comedian, actress, and podcaster. She is best known for creating, writing, and starring in the Hulu sitcom Difficult People (2015–2017), which also starred comedian Billy Eichner."
   },
   {
     "name": "Chance Nichols",
@@ -8797,6 +8799,15 @@
   },
   {
     "name": "Amy Poehler",
+    "venues": []
+  },
+  {
+    "name": "Charles Engle",
+    "venues": [],
+    "bio_stand": "Charles Engle is a Phoenix comic that loves joking about his personal life and observational comedy. Recent winner of the House of Comedy's \"Funniest Comedian with a Day Job\" and Tempe Improv's \"Battle to Florida\", Charles performs standup all over Arizona and the continental U.S. He is also co-creator and co-host of the podcast \"Please Send Nudes\""
+  },
+  {
+    "name": "Joe Nunnink",
     "venues": []
   }
 ]
