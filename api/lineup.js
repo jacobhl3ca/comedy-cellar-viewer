@@ -20,6 +20,7 @@ module.exports = async (req, res) => {
       let data = '';
       req.on('data', c => data += c);
       req.on('end', () => resolve(data));
+      req.on('error', () => resolve(''));
     });
     try {
       const params = new URLSearchParams(rawBody);
@@ -27,6 +28,9 @@ module.exports = async (req, res) => {
       dateStr = json.date;
     } catch (e) {
       return res.status(400).json({ error: 'Invalid POST body' });
+    }
+    if (!dateStr || !/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
+      return res.status(400).json({ error: 'Provide date in JSON body' });
     }
   } else {
     return res.status(405).json({ error: 'GET or POST only' });
