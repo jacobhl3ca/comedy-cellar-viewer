@@ -268,6 +268,8 @@ async function init() {
     fetchNYCC(),
     loadComedianDB(),
     fetchGotham(),
+    fetchStandupNY(),
+    fetchUnionHall(),
     fetchAvailability()
   ]);
 

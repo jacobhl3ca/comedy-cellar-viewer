@@ -6,3 +6,6 @@ backup-*/
 scripts/prebake.log
 data/.gap-fill-*.json
 BACKLOG.md
+
+# Stand Up NY OCR enrichment log
+scripts/.ocr.log

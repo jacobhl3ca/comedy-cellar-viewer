@@ -741,6 +741,8 @@ const STATIC_CELLAR = '/data/cellar-cache.json';
 const STATIC_STAND = '/data/stand-cache.json';
 const STATIC_GOTHAM = '/data/gotham-cache.json';
 const STATIC_NYCC = '/data/nycc-cache.json';
+const STATIC_STANDUPNY = '/data/standupny-cache.json';
+const STATIC_UNIONHALL = '/data/unionhall-cache.json';
 const STATIC_BIG_SHOWS = '/data/big-shows-cache.json';
 const STATIC_AVAILABILITY = '/data/availability-cache.json';
 
@@ -892,7 +894,10 @@ function getPhotoForVenue(name, venueSource) {
   if (comedianPhotosCellar[name]) return comedianPhotosCellar[name];
   if (comedianPhotosStand[name]) return comedianPhotosStand[name];
   if (dbEntry?.photo_stand) return dbEntry.photo_stand;
-  // 4. Legacy pool (Wikipedia, SeatGeek, etc.) — reject bad URLs
+  // 4. Wikipedia headshot (prebaked into the DB for touring/marquee names —
+  //    e.g. the Stand Up NY / Union Hall headliners we extract from titles).
+  if (dbEntry?.photo_wiki && !isBadPhotoUrl(dbEntry.photo_wiki)) return dbEntry.photo_wiki;
+  // 5. Legacy pool (Wikipedia, SeatGeek, etc.) — reject bad URLs
   const legacy = comedianPhotos[name] || '';
   return isBadPhotoUrl(legacy) ? '' : legacy;
 }
@@ -1100,6 +1105,7 @@ function dayMaxFaves(dateStr) {
   if (typeof standShows !== 'undefined') bump(standShows);
   if (typeof nyccShows !== 'undefined') bump(nyccShows);
   if (typeof gothamShows !== 'undefined') bump(gothamShows);
+  if (typeof standupnyShows !== 'undefined') bump(standupnyShows);
   if (typeof bigShows !== 'undefined') bump(bigShows);
   return max;
 }
@@ -1147,6 +1153,7 @@ function dateInActiveSource(dateStr) {
         || (typeof standShows !== 'undefined' && standShows.some(s => s.date === dateStr))
         || (typeof nyccShows !== 'undefined' && nyccShows.some(s => s.date === dateStr))
         || (typeof gothamShows !== 'undefined' && gothamShows.some(s => s.date === dateStr))
+        || (typeof standupnyShows !== 'undefined' && standupnyShows.some(s => s.date === dateStr))
         || (typeof bigShows !== 'undefined' && bigShows.some(e => e.date === dateStr));
     case 'cellar':
       return !!(allData[dateStr] && allData[dateStr].length);
@@ -1158,6 +1165,8 @@ function dateInActiveSource(dateStr) {
       return typeof gothamShows !== 'undefined' && gothamShows.some(s => s.date === dateStr);
     case 'nycc':
       return typeof nyccShows !== 'undefined' && nyccShows.some(s => s.date === dateStr);
+    case 'standupny':
+      return typeof standupnyShows !== 'undefined' && standupnyShows.some(s => s.date === dateStr);
     default:
       return false; // comedians directory etc. — no date concept
   }
@@ -1192,7 +1201,7 @@ async function fetchTheStand() {
   try {
     // Try prebaked static data first (CDN, no function invocation)
     const resp = await fetchWithTimeout(STATIC_STAND, {}, 5000)
-      .catch(() => fetchWithTimeout('/api/the-stand', {}, 15000));
+      .catch(() => fetchWithTimeout('/api/clubs?venue=the-stand', {}, 15000));
     const data = await resp.json();
     standShows = data.shows || [];
     // Extract comedian photos from Stand data into venue-specific map
@@ -1223,11 +1232,13 @@ async function fetchTheStand() {
 let bigShows = [];
 let nyccShows = [];
 let gothamShows = [];
+let standupnyShows = [];
+let unionhallShows = [];
 
 async function fetchNYCC() {
   try {
     const resp = await fetchWithTimeout(STATIC_NYCC, {}, 5000)
-      .catch(() => fetchWithTimeout('/api/nycc', {}, 15000));
+      .catch(() => fetchWithTimeout('/api/clubs?venue=nycc', {}, 15000));
     const data = await resp.json();
     // Drop past shows — the NYCC feed/cache retains weeks-old dates, which
     // otherwise pollute the All-Venues date strip and show list.
@@ -1235,6 +1246,39 @@ async function fetchNYCC() {
     return nyccShows;
   } catch (e) {
     console.error('Failed to fetch NYCC:', e);
+    return [];
+  }
+}
+
+async function fetchStandupNY() {
+  try {
+    const resp = await fetchWithTimeout(STATIC_STANDUPNY, {}, 5000)
+      .catch(() => fetchWithTimeout('/api/clubs?venue=standupny', {}, 15000));
+    const data = await resp.json();
+    standupnyShows = (data.shows || []).filter(s => !isShowPast(s.date, s.time));
+    // Seed poster-OCR headshots (name->url) into the shared photo pool so the
+    // extracted comedian tiles aren't blank.
+    standupnyShows.forEach(s => {
+      if (s.comedianPhotos) Object.entries(s.comedianPhotos).forEach(([n, u]) => {
+        if (u && !comedianPhotos[n]) comedianPhotos[n] = u;
+      });
+    });
+    return standupnyShows;
+  } catch (e) {
+    console.error('Failed to fetch Stand Up NY:', e);
+    return [];
+  }
+}
+
+async function fetchUnionHall() {
+  try {
+    const resp = await fetchWithTimeout(STATIC_UNIONHALL, {}, 5000)
+      .catch(() => fetchWithTimeout('/api/clubs?venue=union-hall', {}, 15000));
+    const data = await resp.json();
+    unionhallShows = (data.shows || []).filter(s => !isShowPast(s.date, s.time));
+    return unionhallShows;
+  } catch (e) {
+    console.error('Failed to fetch Union Hall:', e);
     return [];
   }
 }
@@ -1274,7 +1318,7 @@ function renderNYCCShows(container) {
 async function fetchGotham() {
   try {
     const resp = await fetchWithTimeout(STATIC_GOTHAM, {}, 5000)
-      .catch(() => fetchWithTimeout('/api/gotham', {}, 15000));
+      .catch(() => fetchWithTimeout('/api/clubs?venue=gotham', {}, 15000));
     const data = await resp.json();
     gothamShows = data.shows || [];
     return gothamShows;
@@ -1466,11 +1510,16 @@ function renderTabs() {
     // current dates off-screen. Upper cap drops far-future TBD placeholders.
     const todayStr = formatDateParam(new Date());
     const inRange = (d) => d && d >= todayStr && d <= capStr;
+    // Only union in dates from venues actually shown in the All feed, so a
+    // hidden venue's far-future shows don't add date tabs that render empty.
+    const hiddenStrip = allFeedHiddenSet();
     const union = new Set(dates.map(formatDateParam));
-    standShows.forEach(s => inRange(s.date) && union.add(s.date));
+    if (!hiddenStrip.has('stand')) standShows.forEach(s => inRange(s.date) && union.add(s.date));
     nyccShows.forEach(s => inRange(s.date) && union.add(s.date));
-    if (typeof gothamShows !== 'undefined') gothamShows.forEach(s => inRange(s.date) && union.add(s.date));
-    bigShows.forEach(e => inRange(e.date) && union.add(e.date));
+    if (!hiddenStrip.has('gotham') && typeof gothamShows !== 'undefined') gothamShows.forEach(s => inRange(s.date) && union.add(s.date));
+    if (!hiddenStrip.has('standupny') && typeof standupnyShows !== 'undefined') standupnyShows.forEach(s => inRange(s.date) && union.add(s.date));
+    if (!hiddenStrip.has('union-hall') && typeof unionhallShows !== 'undefined') unionhallShows.forEach(s => inRange(s.date) && union.add(s.date));
+    if (!hiddenStrip.has('big')) bigShows.forEach(e => inRange(e.date) && union.add(e.date));
     renderDates = [...union].sort().map(s => new Date(s + 'T12:00:00'));
   }
 
@@ -1481,8 +1530,17 @@ function renderTabs() {
     const hasCellar = shows && shows.length > 0;
     let noLineup;
     if (activeSource === 'all') {
-      // All Venues: check all sources
-      noLineup = !hasCellar && !standShows.some(s => s.date === dateStr) && !nyccShows.some(s => s.date === dateStr) && !gothamShows.some(s => s.date === dateStr) && !bigShows.some(e => e.date === dateStr);
+      // All Venues: a day has a lineup if any ENABLED feed venue has a show then.
+      const hv = allFeedHiddenSet();
+      const has =
+        (!hv.has('cellar') && hasCellar) ||
+        (!hv.has('stand') && standShows.some(s => s.date === dateStr)) ||
+        nyccShows.some(s => s.date === dateStr) ||
+        (!hv.has('gotham') && typeof gothamShows !== 'undefined' && gothamShows.some(s => s.date === dateStr)) ||
+        (!hv.has('standupny') && typeof standupnyShows !== 'undefined' && standupnyShows.some(s => s.date === dateStr)) ||
+        (!hv.has('union-hall') && typeof unionhallShows !== 'undefined' && unionhallShows.some(s => s.date === dateStr)) ||
+        (!hv.has('big') && bigShows.some(e => e.date === dateStr));
+      noLineup = !has;
     } else {
       // Cellar tab (default): only check Cellar data
       noLineup = !hasCellar;
@@ -1581,12 +1639,16 @@ function renderCalendar() {
       case 'big-shows': return arr(bigShows);
       case 'gotham':    return arr(typeof gothamShows !== 'undefined' ? gothamShows : undefined);
       case 'nycc':      return arr(typeof nyccShows !== 'undefined' ? nyccShows : undefined);
+      case 'standupny': return arr(typeof standupnyShows !== 'undefined' ? standupnyShows : undefined);
+      case 'union-hall': return arr(typeof unionhallShows !== 'undefined' ? unionhallShows : undefined);
       default:          return [
         ...cellar(),
         ...arr(standShows),
         ...arr(bigShows),
         ...arr(typeof nyccShows !== 'undefined' ? nyccShows : undefined),
         ...arr(typeof gothamShows !== 'undefined' ? gothamShows : undefined),
+        ...arr(typeof standupnyShows !== 'undefined' ? standupnyShows : undefined),
+        ...arr(typeof unionhallShows !== 'undefined' ? unionhallShows : undefined),
       ];
     }
   })();
@@ -1760,6 +1822,9 @@ function renderSourceTabs() {
     else if (src === 'the-stand') count = standCount;
     else if (src === 'big-shows') count = bigCount;
     else if (src === 'gotham') count = gothamShows.length;
+    else if (src === 'nycc') count = (typeof nyccShows !== 'undefined') ? nyccShows.length : 0;
+    else if (src === 'standupny') count = (typeof standupnyShows !== 'undefined') ? standupnyShows.length : 0;
+    else if (src === 'union-hall') count = (typeof unionhallShows !== 'undefined') ? unionhallShows.length : 0;
     const existing = btn.querySelector('.source-count');
     if (existing) existing.remove();
     if (count > 0) {
@@ -1836,10 +1901,26 @@ function renderShows() {
   }
   if (activeSource === 'nycc') {
     renderNYCCShows(container);
+    renderBottomTabs();
+    _insertFilterBanner(container);
     return;
   }
   if (activeSource === 'gotham') {
     renderGothamShows(container);
+    renderBottomTabs();
+    _insertFilterBanner(container);
+    return;
+  }
+  if (activeSource === 'standupny') {
+    renderStandupNYShows(container);
+    renderBottomTabs();
+    _insertFilterBanner(container);
+    return;
+  }
+  if (activeSource === 'union-hall') {
+    renderUnionHallShows(container);
+    renderBottomTabs();
+    _insertFilterBanner(container);
     return;
   }
 
@@ -2390,7 +2471,7 @@ function renderStandShowCard(show) {
       <div class="show-header">
         <div><span class="show-time">${formatTime(show.time)}</span></div>
         ${posterHtml}
-        <span class="show-venue">${venueText}</span>
+        <span class="show-venue">${venueText}${priceChip(show.price)}</span>
       </div>
       <div class="show-lineup">${chips}</div>
       <div class="show-footer">
@@ -2433,7 +2514,7 @@ function renderGothamShows(container) {
         <div class="show-header">
           <div><span class="show-time">${formatTime(show.time)}</span></div>
           <span class="show-name">${show.title}</span>
-          <span class="show-venue">Gotham${show.price ? ` · $${show.price}` : ''}</span>
+          <span class="show-venue">Gotham${priceChip(show.price)}</span>
         </div>
         ${show.description ? `<div style="padding:8px 16px;font-size:12px;color:var(--text-dim);">${show.description}</div>` : ''}
         <div class="show-footer">
@@ -2448,6 +2529,97 @@ function renderGothamShows(container) {
   renderBottomTabs();
 }
 
+// ---- Poster-venue Renderer (Stand Up NY, Union Hall) ----
+// Neither venue publishes a structured lineup — the bill lives on the poster
+// image — so we surface the poster (via the poster-wrap pattern, tap/hover to
+// enlarge) so it's readable. For Stand Up NY we ALSO extract announced headliners
+// into show.comedians (see lib/club-scrapers.js), rendered as favable chips that
+// feed search + Top Pick.
+// Subtle price tag — only where a source actually exposes a price (The Stand,
+// Union Hall via Eventbrite, big shows). Most clubs return null → no tag.
+function priceChip(price) {
+  // Off by default — user opts in via Settings → "Ticket prices". Big Shows have
+  // their own always-on price (top-right of card) and don't go through here.
+  const show = (typeof window !== 'undefined' && typeof window.showClubPrices === 'function')
+    ? window.showClubPrices() : false;
+  if (!show) return '';
+  if (price == null || price === '') return '';
+  const p = String(price).trim();
+  if (p === '0' || /free/i.test(p)) return `<span class="price-tag">Free</span>`;
+  const n = parseFloat(p.replace(/[^\d.]/g, ''));
+  if (!isFinite(n) || n <= 0) return '';
+  return `<span class="price-tag">$${Math.round(n)}</span>`;
+}
+
+function renderPosterVenueCard(show, venueLabel, source, hideSkips) {
+  const soldOut = !!show.soldOut;
+  const nameHtml = show.image
+    ? `<span class="show-name poster-wrap">${show.title}<img class="poster-preview" src="${show.image}" alt="${show.title}" loading="lazy"></span>`
+    : `<span class="show-name">${show.title}</span>`;
+  const chips = (show.comedians && show.comedians.length)
+    ? `<div class="show-lineup">${renderComedianChips(show.comedians, hideSkips, source)}</div>` : '';
+  return `
+    <div class="show-card${soldOut ? ' sold-out' : ''}">
+      <div class="show-header">
+        <div><span class="show-time">${formatTime(show.time)}</span></div>
+        ${nameHtml}
+        <span class="show-venue">${venueLabel}${priceChip(show.price)}</span>
+      </div>
+      ${chips}
+      <div class="show-footer">
+        ${show.url ? `<a href="${show.url}" target="_blank" class="reserve-btn${soldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${soldOut ? 'Sold Out' : 'Tickets'}</a>` : '<span></span>'}
+        <span class="fav-count"></span>
+      </div>
+    </div>`;
+}
+
+function renderPosterVenueShows(container, shows, opts) {
+  const { venueLabel, siteUrl, source } = opts;
+  const pictureMode = document.getElementById('picture-mode')?.checked;
+  if (pictureMode) container.classList.add('picture-mode');
+  else container.classList.remove('picture-mode');
+  const vf = document.getElementById('venue-filters');
+  if (vf) vf.innerHTML = '';
+  const hideSkips = document.getElementById('hide-skips')?.checked;
+
+  if (!shows || shows.length === 0) {
+    container.innerHTML = `<div class="no-shows">Loading ${venueLabel} shows...<br><a href="${siteUrl}" target="_blank" style="color:var(--accent);font-size:13px;margin-top:8px;display:inline-block;">View on their site →</a></div>`;
+    return;
+  }
+
+  let filtered = activeDate === 'all' || activeDate === 'calendar'
+    ? (activeDate === 'calendar' ? shows.filter(s => calendarSelectedDates.has(s.date)) : shows)
+    : shows.filter(s => s.date === activeDate);
+  filtered = filtered.filter(s => !isShowPast(s.date, s.time));
+  filtered = filtered.filter(s => showMatchesSearch(s, venueLabel));
+  filtered = filtered.filter(s => !shouldHideShow(!!s.soldOut));
+
+  let html = '<div class="schedule-view">';
+  let lastDate = '';
+  filtered.forEach(show => {
+    try {
+      if (show.date !== lastDate) {
+        const d = new Date(show.date + 'T12:00:00');
+        html += `<h2 class="schedule-day-header">${getDayHeaderLabel(d)}</h2>`;
+        lastDate = show.date;
+      }
+      html += renderPosterVenueCard(show, venueLabel, source, hideSkips);
+    } catch (e) { console.error('renderPosterVenueShows card error:', e, show); }
+  });
+  html += '</div>';
+  container.innerHTML = html;
+  renderBottomTabs();
+}
+
+function renderStandupNYShows(container) {
+  renderPosterVenueShows(container, (typeof standupnyShows !== 'undefined' ? standupnyShows : []),
+    { venueLabel: 'Stand Up NY', siteUrl: 'https://standupny.com/', source: 'standupny' });
+}
+function renderUnionHallShows(container) {
+  renderPosterVenueShows(container, (typeof unionhallShows !== 'undefined' ? unionhallShows : []),
+    { venueLabel: 'Union Hall', siteUrl: 'https://www.unionhallny.com/', source: 'unionhall' });
+}
+
 // ---- Big Shows (SeatGeek) Renderer ----
 // ---- All Venues combined view ----
 // ---- Top Pick: the single best show per date, scored by YOUR faves ----
@@ -2458,6 +2630,7 @@ function topPickComedians(item) {
   const s = item.show;
   if (item.type === 'cellar' || item.type === 'stand') return s.comedians || [];
   if (item.type === 'gotham') return s.title ? [s.title] : [];
+  if (item.type === 'standupny' || item.type === 'union-hall') return (s.comedians && s.comedians.length) ? s.comedians : (s.title ? [s.title] : []);
   // big shows: performers string "Name - role, Name2" or fall back to title
   if (s.performers) return s.performers.split(',').map(p => p.split(' - ')[0].trim()).filter(Boolean);
   return s.title ? [s.title] : [];
@@ -2478,6 +2651,8 @@ function renderTopPick(container) {
   });
   standShows.forEach(show => items.push({ type: 'stand', dateStr: show.date, time24: to24hSortable(show.time) || '00:00', show }));
   if (typeof gothamShows !== 'undefined') gothamShows.forEach(show => items.push({ type: 'gotham', dateStr: show.date, time24: to24hSortable(show.time) || '00:00', show }));
+  if (typeof standupnyShows !== 'undefined') standupnyShows.forEach(show => items.push({ type: 'standupny', dateStr: show.date, time24: to24hSortable(show.time) || '00:00', show }));
+  if (typeof unionhallShows !== 'undefined') unionhallShows.forEach(show => items.push({ type: 'union-hall', dateStr: show.date, time24: to24hSortable(show.time) || '00:00', show }));
   bigShows.forEach(evt => items.push({ type: 'big', dateStr: evt.date, time24: to24hSortable(evt.time) || '00:00', show: evt }));
 
   // Keep the view focused on the near term: today through +45 days. Drops
@@ -2532,7 +2707,7 @@ function renderTopPick(container) {
   if (activeDate === 'calendar') picks = picks.filter(p => calendarSelectedDates.has(p.dateStr));
   else if (activeDate && activeDate !== 'all') picks = picks.filter(p => p.dateStr === activeDate);
 
-  const VENUE_LABEL = { cellar: 'Comedy Cellar', stand: 'The Stand', gotham: 'Gotham', big: 'Big Shows' };
+  const VENUE_LABEL = { cellar: 'Comedy Cellar', stand: 'The Stand', gotham: 'Gotham', standupny: 'Stand Up NY', 'union-hall': 'Union Hall', big: 'Big Shows' };
   let html = '';
   html += `<div class="top-pick-intro">⭐ <strong>Top Pick</strong> — the single best show each night, ranked by ${hasPrefs ? 'your favorite comedians' : 'lineup'}.` +
     (hasPrefs ? '' : ` <button class="top-pick-setup" onclick="openModal()">Add your faves</button> to personalize these picks.`) + `</div>`;
@@ -2563,6 +2738,9 @@ function renderTopPick(container) {
       else if (item.type === 'gotham') {
         const show = item.show;
         html += `<div class="show-card"><div class="show-header"><div><span class="show-time">${formatTime(show.time)}</span></div><span class="show-name">${show.title}</span><span class="show-venue">Gotham</span></div><div class="show-footer">${show.url ? `<a href="${show.url}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Tickets</a>` : '<span></span>'}<span class="fav-count"></span></div></div>`;
+      } else if (item.type === 'standupny' || item.type === 'union-hall') {
+        const src = item.type === 'standupny' ? 'standupny' : 'unionhall';
+        html += renderPosterVenueCard(item.show, VENUE_LABEL[item.type], src, hideSkips);
       } else {
         const evt = item.show;
         const evtSoldOut = !!evt.soldout;
@@ -2577,6 +2755,18 @@ function renderTopPick(container) {
   });
   html += '</div>';
   container.innerHTML = html;
+}
+
+// Venue item-types hidden from the "All" feed, per Settings. Returns a Set of
+// tokens matching renderAllVenues() item.type / renderTabs() venue arrays
+// (cellar, stand, gotham, standupny, union-hall, big). Bridged from init.js.
+function allFeedHiddenSet() {
+  try {
+    if (typeof window !== 'undefined' && typeof window.allFeedHidden === 'function') {
+      return new Set(window.allFeedHidden());
+    }
+  } catch {}
+  return new Set(['standupny', 'union-hall', 'gotham']);
 }
 
 function renderAllVenues(container) {
@@ -2618,11 +2808,28 @@ function renderAllVenues(container) {
     allItems.push({ type: 'gotham', dateStr: show.date, time24, show });
   });
 
+  // Stand Up NY shows
+  if (typeof standupnyShows !== 'undefined') standupnyShows.forEach(show => {
+    const time24 = to24hSortable(show.time) || '00:00';
+    allItems.push({ type: 'standupny', dateStr: show.date, time24, show });
+  });
+
+  // Union Hall shows
+  if (typeof unionhallShows !== 'undefined') unionhallShows.forEach(show => {
+    const time24 = to24hSortable(show.time) || '00:00';
+    allItems.push({ type: 'union-hall', dateStr: show.date, time24, show });
+  });
+
   // Big Shows
   bigShows.forEach(evt => {
     const time24 = to24hSortable(evt.time) || '00:00';
     allItems.push({ type: 'big', dateStr: evt.date, time24, show: evt });
   });
+
+  // Drop venues the user has hidden from the "All" feed (Settings → "Show in All
+  // feed"). Gotham etc. are off by default so their blank cards don't clutter it.
+  const hiddenAV = allFeedHiddenSet();
+  if (hiddenAV.size) allItems = allItems.filter(item => !hiddenAV.has(item.type));
 
   // Filter by selected date if not "all"
   if (activeDate === 'calendar') {
@@ -2726,6 +2933,10 @@ function renderAllVenues(container) {
             <span class="fav-count"></span>
           </div>
         </div>`;
+    } else if (item.type === 'standupny' || item.type === 'union-hall') {
+      const src = item.type === 'standupny' ? 'standupny' : 'unionhall';
+      const label = item.type === 'standupny' ? 'Stand Up NY' : 'Union Hall';
+      html += renderPosterVenueCard(item.show, label, src, hideSkips);
     } else {
       const evt = item.show;
       const evtSoldOut = !!evt.soldout;
@@ -2770,6 +2981,8 @@ function renderAllVenues(container) {
 function getNeighborhood(item) {
   if (item.type === 'cellar' || item.type === 'stand') return 'downtown';
   if (item.type === 'gotham') return 'midtown';
+  if (item.type === 'standupny') return 'uptown'; // Upper West Side
+  if (item.type === 'union-hall') return 'brooklyn'; // Park Slope
   const venue = (item.show.venue || '').toLowerCase();
   if (venue.includes('beacon') || venue.includes('apollo')) return 'uptown';
   if (venue.includes('gramercy theatre') || venue.includes('irving plaza')) return 'downtown';
@@ -3008,12 +3221,19 @@ function renderBigShows(container) {
     const visibleEvents = sortedEvents.filter(evt => !shouldHideShow(!!evt.soldout));
     if (visibleEvents.length === 0) return;
     const allSoldOut = visibleEvents.every(evt => evt.soldout);
+    // Subtle price for the card's top-right corner. Big Shows keep their price
+    // even when club-show prices are toggled off. Uses the lowest across dates.
+    const bigPrices = visibleEvents
+      .map(e => parseFloat(String(e.price || '').replace(/[^\d.]/g, '')))
+      .filter(n => isFinite(n) && n > 0);
+    const bigMinPrice = bigPrices.length ? Math.min(...bigPrices) : null;
+    const bigPriceLabel = bigMinPrice == null ? ''
+      : (Math.max(...bigPrices) > bigMinPrice ? `from $${Math.round(bigMinPrice)}` : `$${Math.round(bigMinPrice)}`);
     const dateBoxes = visibleEvents.map(evt => {
       const d = new Date(evt.date + 'T12:00:00');
       const shortDate = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
       const shortDay = d.toLocaleDateString('en-US', { weekday: 'short' });
       const timeStr = evt.time || '';
-      const priceStr = evt.price ? `$${evt.price}` : '';
       const evtSoldOut = !!evt.soldout;
       const links = evt.ticketLinks || (evt.url ? [{ source: evt.source || 'tickets', url: evt.url }] : []);
 
@@ -3022,7 +3242,7 @@ function renderBigShows(container) {
         return `<div class="bdb-wrap"><span class="big-date-box sold-out"><span class="bdb-day">${shortDay} ${shortDate}</span><span class="bdb-time">${timeStr}</span><span class="bdb-sold-out">SOLD OUT</span></span></div>`;
       }
 
-      const dateContent = `<span class="bdb-day">${shortDay} ${shortDate}</span><span class="bdb-time">${timeStr}</span>${priceStr ? `<span class="bdb-price">${priceStr}</span>` : ''}`;
+      const dateContent = `<span class="bdb-day">${shortDay} ${shortDate}</span><span class="bdb-time">${timeStr}</span>`;
 
       // TODO: Multi-source SG/TM badges — revisit later
       // if (links.length > 1) {
@@ -3041,6 +3261,7 @@ function renderBigShows(container) {
 
     html += `
       <div class="big-show-card${allSoldOut ? ' sold-out' : ''}">
+        ${bigPriceLabel ? `<span class="big-show-price">${bigPriceLabel}</span>` : ''}
         <div class="big-show-info">
           ${photoHtml}
           <div class="big-show-details">
@@ -3139,7 +3360,7 @@ function renderBottomTabs() {
     const hasCellar = shows && shows.length > 0;
     let noLineup;
     if (activeSource === 'all') {
-      noLineup = !hasCellar && !standShows.some(s => s.date === dateStr) && !nyccShows.some(s => s.date === dateStr) && !gothamShows.some(s => s.date === dateStr) && !bigShows.some(e => e.date === dateStr);
+      noLineup = !hasCellar && !standShows.some(s => s.date === dateStr) && !nyccShows.some(s => s.date === dateStr) && !gothamShows.some(s => s.date === dateStr) && !(typeof standupnyShows !== 'undefined' && standupnyShows.some(s => s.date === dateStr)) && !(typeof unionhallShows !== 'undefined' && unionhallShows.some(s => s.date === dateStr)) && !bigShows.some(e => e.date === dateStr);
     } else {
       noLineup = !hasCellar;
     }
@@ -3349,7 +3570,7 @@ function showMatchesSearch(show, venueLabel) {
   return parts.filter(Boolean).join(' | ').toLowerCase().includes(activeSearchQuery);
 }
 
-const VENUE_LABEL_BY_TYPE = { cellar: 'Comedy Cellar', stand: 'The Stand', gotham: 'Gotham Comedy Club', big: 'Big Show', nycc: 'NY Comedy Club' };
+const VENUE_LABEL_BY_TYPE = { cellar: 'Comedy Cellar', stand: 'The Stand', gotham: 'Gotham Comedy Club', standupny: 'Stand Up NY', 'union-hall': 'Union Hall', big: 'Big Show', nycc: 'NY Comedy Club' };
 
 function setPref(name, type) {
   const prefs = loadPrefs();
@@ -4151,6 +4372,8 @@ async function init() {
     fetchNYCC(),
     loadComedianDB(),
     fetchGotham(),
+    fetchStandupNY(),
+    fetchUnionHall(),
     fetchAvailability()
   ]);
 
@@ -4562,6 +4785,10 @@ const VIEW_BY_PATH = {
   '/tonight': 'top-pick',
   '/cellar': 'cellar',
   '/stand': 'the-stand',
+  '/gotham': 'gotham',
+  '/nycc': 'nycc',
+  '/standupny': 'standupny',
+  '/unionhall': 'union-hall',
   '/big': 'big-shows',
   '/comics': 'comedians',
 };
@@ -4570,6 +4797,10 @@ const VIEW_META = {
   'top-pick':  { path: '/tonight', title: 'Top Pick Tonight — The Best NYC Comedy Show Each Night | Tonight NYC' },
   'cellar':    { path: '/cellar', title: 'Comedy Cellar Tonight — Lineups | Tonight NYC' },
   'the-stand': { path: '/stand',  title: 'The Stand Tonight — Lineups | Tonight NYC' },
+  'gotham':    { path: '/gotham', title: 'Gotham Comedy Club Tonight — Shows | Tonight NYC' },
+  'nycc':      { path: '/nycc',   title: 'NY Comedy Club Tonight — Lineups | Tonight NYC' },
+  'standupny': { path: '/standupny', title: 'Stand Up NY Tonight — Shows | Tonight NYC' },
+  'union-hall': { path: '/unionhall', title: 'Union Hall Tonight — Brooklyn Comedy Shows | Tonight NYC' },
   'big-shows': { path: '/big',    title: 'Big Comedy Shows in NYC | Tonight NYC' },
   'comedians': { path: '/comics', title: "NYC Comedians — Who's On Tonight | Tonight NYC" },
 };
@@ -4749,24 +4980,64 @@ function resetToHome() {
   document.addEventListener(ev, (e) => e.preventDefault())
 );
 
-// Global poster preview — renders outside card stacking contexts so opacity doesn't trap it
+// Global poster preview — renders outside card stacking contexts so opacity doesn't trap it.
+// Desktop shows it on hover; touch devices have no hover, so a tap opens a "pinned"
+// (sticky) preview that stays until you tap again/anywhere. This is what makes the
+// Stand Up NY & Union Hall posters — where the actual bill lives — readable on phones.
 (function() {
   let overlay = null;
+  let pinned = false; // opened by tap/click; ignore hover in/out until dismissed
+  let hint = null;
+  function show(src, alt, pin) {
+    if (overlay) overlay.remove();
+    if (hint) { hint.remove(); hint = null; }
+    overlay = document.createElement('img');
+    overlay.id = 'global-poster-preview';
+    if (pin) overlay.classList.add('pinned');
+    overlay.src = src;
+    overlay.alt = alt || '';
+    document.body.appendChild(overlay);
+    if (pin) {
+      hint = document.createElement('div');
+      hint.id = 'poster-close-hint';
+      hint.textContent = '✕  tap anywhere or Esc to close';
+      document.body.appendChild(hint);
+    }
+    pinned = !!pin;
+  }
+  function hide() {
+    if (overlay) overlay.remove(); overlay = null;
+    if (hint) { hint.remove(); hint = null; }
+    pinned = false;
+  }
+
   document.addEventListener('mouseover', e => {
+    if (pinned) return;
     const wrap = e.target.closest('.poster-wrap');
     if (!wrap) return;
     const img = wrap.querySelector('.poster-preview');
     if (!img) return;
-    if (overlay) overlay.remove();
-    overlay = document.createElement('img');
-    overlay.id = 'global-poster-preview';
-    overlay.src = img.src;
-    overlay.alt = img.alt;
-    document.body.appendChild(overlay);
+    show(img.src, img.alt, false);
   });
   document.addEventListener('mouseout', e => {
+    if (pinned) return;
     const wrap = e.target.closest('.poster-wrap');
-    if (wrap && overlay) { overlay.remove(); overlay = null; }
+    if (wrap && overlay) hide();
+  });
+  // Tap/click: on touch (no hover) this is the only way to open the poster.
+  // While pinned, a tap anywhere closes it (the overlay itself is pointer-events:none).
+  document.addEventListener('click', e => {
+    if (pinned) { hide(); return; }
+    const wrap = e.target.closest('.poster-wrap');
+    if (!wrap) return;
+    const img = wrap.querySelector('.poster-preview');
+    if (!img) return;
+    e.preventDefault();
+    show(img.src, img.alt, true);
+  });
+  // Escape closes the pinned (tapped-open) poster.
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && pinned) { hide(); e.stopPropagation(); }
   });
 })();
 
@@ -4913,6 +5184,8 @@ async function refreshShowsInPlace() {
       fetchBigShows(),
       fetchNYCC(),
       fetchGotham(),
+      fetchStandupNY(),
+      fetchUnionHall(),
       fetchAvailability()
     ]);
     if (batchData?.results) {
@@ -4942,6 +5215,14 @@ async function refreshShowsInPlace() {
     sort: 'none',
     bioMode: 'none',
     ratingsMode: 'off',
+    priceMode: 'off',   // 'off' hides the price chip on club cards (Big Shows keep their own)
+    hiddenTabs: [],   // venue-source-tab data-source values the user hid
+    hiddenTools: [],  // toolbar control ids the user hid
+    // Venue item-types NOT shown in the "All" feed (each toggle-able in Settings).
+    // Gotham never publishes names (blank "All-Stars" cards) and the poster
+    // venues have thinner data, so they're off by default; core clubs + big
+    // marquee shows stay on. Values match renderAllVenues() item.type tokens.
+    allHidden: ['standupny', 'union-hall', 'gotham'],
   };
   const PILL_GROUPS = {
     defaultTab: 'default-tab-pills',
@@ -4952,6 +5233,7 @@ async function refreshShowsInPlace() {
     sort: 'default-sort-pills',
     bioMode: 'default-bio-pills',
     ratingsMode: 'default-ratings-pills',
+    priceMode: 'default-price-pills',
   };
   // Mirror selects (hidden) we keep so external code that polls these IDs still works.
   const MIRROR_SELECTS = {
@@ -4968,8 +5250,35 @@ async function refreshShowsInPlace() {
   }
   function save(s){ localStorage.setItem(KEY, JSON.stringify(s)); }
   function isDefault(s){
-    for (const k of Object.keys(DEFAULTS)) if (s[k] !== DEFAULTS[k]) return false;
+    for (const k of Object.keys(DEFAULTS)) {
+      if (Array.isArray(DEFAULTS[k])) {
+        if ((s[k] || []).length !== DEFAULTS[k].length) return false;
+      } else if (s[k] !== DEFAULTS[k]) {
+        return false;
+      }
+    }
     return true;
+  }
+
+  // Show/hide venue tabs + toolbar controls per the user's settings. A hidden
+  // active tab falls back to All Venues so the schedule is never left blank.
+  function applyVisibility(s){
+    const hiddenTabs = s.hiddenTabs || [];
+    document.querySelectorAll('.venue-source-tab').forEach(tab => {
+      const src = tab.dataset.source;
+      if (src === 'all') return; // All Venues is always available
+      tab.style.display = hiddenTabs.includes(src) ? 'none' : '';
+    });
+    if (typeof activeSource !== 'undefined' && activeSource !== 'all' && hiddenTabs.includes(activeSource)) {
+      activeSource = 'all';
+      if (typeof syncUrlToSource === 'function') syncUrlToSource('all');
+    }
+    const hiddenTools = s.hiddenTools || [];
+    ['quick-mode-label', 'big-pics-toggle', 'soldout-filter', 'sort-select', 'search-btn', 'filters-toggle']
+      .forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = hiddenTools.includes(id) ? 'none' : '';
+      });
   }
 
   // ---- Unified share encoding (prefs + settings) using CompressionStream when available ----
@@ -5194,11 +5503,18 @@ async function refreshShowsInPlace() {
   const settings = load();
   applyAccent(settings);
 
+  // Bridge for render.js: which venue types are hidden from the "All" feed.
+  // Falls back to DEFAULTS so the feed is correct even if called very early.
+  window.allFeedHidden = () => (settings && settings.allHidden) || DEFAULTS.allHidden;
+  // Bridge for render.js: whether club-show price chips are shown (off by default).
+  window.showClubPrices = () => !!(settings && settings.priceMode === 'on');
+
   // Pre-set the venue tab before init's first render. activeSource is declared in data.js.
   if (settings.defaultTab && typeof activeSource !== 'undefined') {
     activeSource = settings.defaultTab;
   }
   applyFilterDefaults(settings);
+  applyVisibility(settings);
   const soldSel = document.getElementById('soldout-filter');
   if (soldSel && settings.soldOutMode) soldSel.value = settings.soldOutMode;
   const hideCb = document.getElementById('hide-sold-out');
@@ -5241,11 +5557,10 @@ async function refreshShowsInPlace() {
     }
   }
   function refreshSwatches(){
-    if (!swatches) return;
-    const cur = (settings.accent || '').toLowerCase();
-    swatches.querySelectorAll('.color-swatch').forEach(b => {
-      b.classList.toggle('active', (b.dataset.color || '').toLowerCase() === cur);
-    });
+    // Position the brand-color slider thumb at the closest point to the current
+    // accent. (Preset dots + gradient are built once when handlers are wired.)
+    const sl = document.getElementById('color-slider');
+    if (sl && typeof nearestVal === 'function') sl.value = nearestVal(settings.accent || DEFAULTS.accent);
   }
   function refreshShareUI(){
     const show = !isDefault(settings) || hasAnyPrefs();
@@ -5268,6 +5583,7 @@ async function refreshShowsInPlace() {
   function syncToolbarFromSettings(){
     // Push current settings.* into live toolbar controls + re-render.
     applyFilterDefaults(settings);
+    applyVisibility(settings);
     if (soldSel) soldSel.value = settings.soldOutMode;
     if (hideCb) hideCb.checked = settings.soldOutMode === 'hide';
     // Switch venue tab + reset date when starting tab changes.
@@ -5286,6 +5602,9 @@ async function refreshShowsInPlace() {
     if (!overlay) return;
     if (custom) custom.value = settings.accent;
     Object.keys(PILL_GROUPS).forEach(refreshPills);
+    refreshToggles('visible-tabs-toggles', 'tab', 'hiddenTabs');
+    refreshToggles('visible-tools-toggles', 'tool', 'hiddenTools');
+    refreshToggles('all-venues-toggles', 'allvenue', 'allHidden');
     refreshSwatches();
     refreshShareUI();
     if (importStatus) importStatus.textContent = '';
@@ -5299,14 +5618,44 @@ async function refreshShowsInPlace() {
   doneBtn?.addEventListener('click', closeSettings);
   overlay?.addEventListener('click', (e) => { if (e.target === overlay) closeSettings(); });
 
-  // ---- Brand color ----
-  swatches?.addEventListener('click', (e) => {
-    const btn = e.target.closest('.color-swatch');
-    if (!btn) return;
-    settings.accent = btn.dataset.color;
+  // ---- Brand color (gradient slider + preset dots) ----
+  const PRESETS = ['#e63636', '#f59e0b', '#10b981', '#3b82f6', '#8b5cf6', '#ec4899', '#ffffff'];
+  const colorSlider = document.getElementById('color-slider');
+  const presetMarks = document.getElementById('color-preset-marks');
+  const hex2rgb = h => { h = (h || '').replace('#', ''); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16) || 0); };
+  const rgb2hex = a => '#' + a.map(x => Math.max(0, Math.min(255, Math.round(x))).toString(16).padStart(2, '0')).join('');
+  const colorAt = t => { // t in 0..1 across the preset gradient
+    const seg = t * (PRESETS.length - 1);
+    const i = Math.min(PRESETS.length - 2, Math.floor(seg));
+    const f = seg - i, a = hex2rgb(PRESETS[i]), b = hex2rgb(PRESETS[i + 1]);
+    return rgb2hex(a.map((v, k) => v + (b[k] - v) * f));
+  };
+  const nearestVal = hex => { // slider value (0..1000) closest to a color
+    const target = hex2rgb(hex); let best = 0, bd = Infinity;
+    for (let v = 0; v <= 1000; v += 4) {
+      const c = hex2rgb(colorAt(v / 1000));
+      const d = c.reduce((s, x, k) => s + (x - target[k]) ** 2, 0);
+      if (d < bd) { bd = d; best = v; }
+    }
+    return best;
+  };
+  if (colorSlider) colorSlider.style.background =
+    `linear-gradient(to right, ${PRESETS.map((c, i) => `${c} ${i / (PRESETS.length - 1) * 100}%`).join(', ')})`;
+  if (presetMarks) presetMarks.innerHTML = PRESETS.map((c, i) =>
+    `<button type="button" class="color-preset-mark" data-color="${c}" style="left:${i / (PRESETS.length - 1) * 100}%;--c:${c}" aria-label="Preset color ${i + 1}"></button>`).join('');
+
+  colorSlider?.addEventListener('input', () => {
+    settings.accent = colorAt(colorSlider.value / 1000);
     persist(); applyAccent(settings);
     if (custom) custom.value = settings.accent;
-    refreshSwatches();
+  });
+  presetMarks?.addEventListener('click', (e) => {
+    const m = e.target.closest('.color-preset-mark');
+    if (!m) return;
+    settings.accent = m.dataset.color;
+    if (colorSlider) colorSlider.value = nearestVal(settings.accent);
+    persist(); applyAccent(settings);
+    if (custom) custom.value = settings.accent;
   });
   custom?.addEventListener('input', () => {
     settings.accent = custom.value;
@@ -5332,6 +5681,38 @@ async function refreshShowsInPlace() {
       syncToolbarFromSettings();
     });
   });
+
+  // ---- Visibility toggle chips (venue tabs + toolbar controls) — multi-select ----
+  // Each chip is a switch: aria-checked=true means SHOWN. The settings store the
+  // HIDDEN ids, so the app defaults to showing everything.
+  function refreshToggles(groupId, attr, hiddenKey){
+    const group = document.getElementById(groupId);
+    if (!group) return;
+    const hidden = settings[hiddenKey] || [];
+    group.querySelectorAll('.settings-pill').forEach(chip => {
+      chip.setAttribute('aria-checked', hidden.includes(chip.dataset[attr]) ? 'false' : 'true');
+    });
+  }
+  function wireToggles(groupId, attr, hiddenKey){
+    const group = document.getElementById(groupId);
+    group?.addEventListener('click', (e) => {
+      const chip = e.target.closest('.settings-pill');
+      if (!chip) return;
+      const id = chip.dataset[attr];
+      const hidden = new Set(settings[hiddenKey] || []);
+      if (hidden.has(id)) hidden.delete(id); else hidden.add(id);
+      settings[hiddenKey] = [...hidden];
+      persist();
+      refreshToggles(groupId, attr, hiddenKey);
+      applyVisibility(settings);
+      // Re-render so a freshly hidden active tab (now switched to All) repaints.
+      if (typeof renderSourceTabs === 'function') renderSourceTabs();
+      if (typeof renderShows === 'function') renderShows();
+    });
+  }
+  wireToggles('visible-tabs-toggles', 'tab', 'hiddenTabs');
+  wireToggles('visible-tools-toggles', 'tool', 'hiddenTools');
+  wireToggles('all-venues-toggles', 'allvenue', 'allHidden');
 
   // ---- Copy share link ----
   shareBtn?.addEventListener('click', async () => {

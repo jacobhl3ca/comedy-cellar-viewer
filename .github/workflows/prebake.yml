@@ -8,7 +8,7 @@ on:
 
 permissions:
   contents: write
-  issues: write   # for the failure-alert step below
+  actions: read   # alert step reads the previous run's conclusion (grace check)
 
 jobs:
   prebake:
@@ -56,23 +56,30 @@ jobs:
           echo "All 3 push attempts failed."
           exit 1
 
-      # Real-failure alert — only runs if a step above actually FAILED. A job
-      # that never gets a runner runs zero steps, so GitHub-infra blips stay
-      # silent here (lets native Actions emails stay muted). De-dupes onto one
-      # open issue so a sustained problem = one @-mention email.
-      - name: Alert on real failure
+      # Real-failure alert — ntfy ONLY, never a GitHub issue (rewritten 2026-07-20
+      # alongside the nospoilerscores monitors). House rule for ALL monitors:
+      # DOWN-only, grace period, no green "recovered" pings. Opening/commenting on
+      # an issue @-mentions Jacob and emails him on every single failure, which is
+      # exactly the noise this replaces. Only alerts when the PREVIOUS run of this
+      # workflow also failed, so one bad night that self-heals is silent.
+      - name: Alert on sustained failure (ntfy, 1-run grace)
         if: failure()
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
         run: |
-          title="tonightnyc nightly prebake is failing"
           run_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          stamp="$(date -u '+%Y-%m-%d %H:%M UTC')"
-          existing="$(gh issue list --state open --search "$title in:title" --json number --jq '.[0].number // empty')"
-          if [ -n "$existing" ]; then
-            gh issue comment "$existing" --body "Still failing as of $stamp — $run_url"
-          else
-            gh issue create --title "🔴 $title" \
-              --body "$(printf 'The nightly prebake (Comedy Cellar lineups + photos) ran and **failed** — the site may serve stale data. Not a GitHub runner blip.\n\nFirst seen: %s\nRun log: %s\n\ncc @jacobhl3ca' "$stamp" "$run_url")"
+          prev="$(gh run list --workflow prebake.yml --status completed \
+                    --limit 1 --json conclusion --jq '.[0].conclusion // empty')"
+          if [ "$prev" != "failure" ]; then
+            echo "First failure (previous run: ${prev:-none}) — inside grace, staying silent."
+            exit 0
           fi
+          if [ -z "$NTFY_TOPIC" ]; then
+            echo "::warning::NTFY_TOPIC secret unset — cannot alert."
+            exit 0
+          fi
+          curl -s -H "Title: Comedy Cellar prebake failing" -H "Priority: high" -H "Tags: rotating_light" \
+            -d "Nightly prebake has failed twice in a row — site may serve stale lineups. $run_url" \
+            "https://ntfy.sh/$NTFY_TOPIC" > /dev/null

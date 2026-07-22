@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <script>if(window.Capacitor)document.documentElement.classList.add('native-ios');</script>
+  <script>
+    if (window.Capacitor?.isNativePlatform?.()) {
+      const platform = window.Capacitor.getPlatform?.() || 'app';
+      document.documentElement.classList.add('native-app', `native-${platform}`);
+    }
+  </script>
   <title>Tonight NYC — Comedy Lineups</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="manifest" href="manifest.json">
@@ -67,15 +72,17 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=86f1e37">
+  <link rel="stylesheet" href="style.min.css?v=66b60a1">
   <script>
     (function() {
       const root = document.documentElement;
-      const isNative = !!(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform());
+      const isNative = !!window.Capacitor?.isNativePlatform?.();
+      const nativePlatform = isNative ? window.Capacitor.getPlatform?.() : null;
       const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      if (isNative) root.classList.add('native-app', 'native-mobile', `native-${nativePlatform || 'app'}`);
       if (isNative || isIOS) {
-        // iOS (app or Safari): follow OS theme, no manual toggle.
-        root.classList.add('ios-mobile');
+        // Native apps and iOS Safari follow the OS theme, with no manual toggle.
+        root.classList.add(isNative ? 'native-mobile' : 'ios-mobile');
         const mq = window.matchMedia('(prefers-color-scheme: light)');
         const apply = () => { root.dataset.theme = mq.matches ? 'light' : 'dark'; };
         apply();
@@ -145,6 +152,10 @@
       <button class="venue-source-tab" data-source="top-pick">⭐ Top Pick</button>
       <button class="venue-source-tab" data-source="cellar">Comedy Cellar</button>
       <button class="venue-source-tab" data-source="the-stand">The Stand</button>
+      <button class="venue-source-tab" data-source="gotham">Gotham</button>
+      <button class="venue-source-tab" data-source="nycc">NY Comedy Club</button>
+      <button class="venue-source-tab" data-source="standupny">Stand Up NY</button>
+      <button class="venue-source-tab" data-source="union-hall">Union Hall</button>
       <button class="venue-source-tab" data-source="big-shows">Big Shows</button>
       <button class="venue-source-tab" data-source="comedians">Comedians</button>
     </div>
@@ -305,15 +316,10 @@
       <div class="modal-sections">
         <div class="modal-section">
           <h3>Brand color</h3>
-          <p class="settings-desc">Pick a brand color.</p>
-          <div class="color-swatches" id="color-swatches">
-            <button class="color-swatch" data-color="#e63636" style="--c:#e63636" title="Red (default)" aria-label="Red"></button>
-            <button class="color-swatch" data-color="#f59e0b" style="--c:#f59e0b" title="Amber" aria-label="Amber"></button>
-            <button class="color-swatch" data-color="#10b981" style="--c:#10b981" title="Emerald" aria-label="Emerald"></button>
-            <button class="color-swatch" data-color="#3b82f6" style="--c:#3b82f6" title="Blue" aria-label="Blue"></button>
-            <button class="color-swatch" data-color="#8b5cf6" style="--c:#8b5cf6" title="Violet" aria-label="Violet"></button>
-            <button class="color-swatch" data-color="#ec4899" style="--c:#ec4899" title="Pink" aria-label="Pink"></button>
-            <button class="color-swatch" data-color="#ffffff" style="--c:#ffffff" title="White" aria-label="White"></button>
+          <p class="settings-desc">Drag anywhere on the bar, or tap a preset dot.</p>
+          <div class="color-slider-row">
+            <input type="range" class="color-slider" id="color-slider" min="0" max="1000" step="1" value="0" aria-label="Brand color">
+            <div class="color-preset-marks" id="color-preset-marks" aria-hidden="true"></div>
           </div>
           <div class="color-custom-row">
             <label for="color-custom-input" style="font-size:13px;color:var(--text-dim);">Custom:</label>
@@ -329,6 +335,10 @@
             <button class="settings-pill" data-value="all" role="radio" aria-checked="true">All</button>
             <button class="settings-pill" data-value="cellar" role="radio" aria-checked="false">Cellar</button>
             <button class="settings-pill" data-value="the-stand" role="radio" aria-checked="false">The Stand</button>
+            <button class="settings-pill" data-value="gotham" role="radio" aria-checked="false">Gotham</button>
+            <button class="settings-pill" data-value="nycc" role="radio" aria-checked="false">NY Comedy Club</button>
+            <button class="settings-pill" data-value="standupny" role="radio" aria-checked="false">Stand Up NY</button>
+            <button class="settings-pill" data-value="union-hall" role="radio" aria-checked="false">Union Hall</button>
             <button class="settings-pill" data-value="big-shows" role="radio" aria-checked="false">Big shows</button>
             <button class="settings-pill" data-value="comedians" role="radio" aria-checked="false">Comedians</button>
           </div>
@@ -336,9 +346,64 @@
             <option value="all">All</option>
             <option value="cellar">Cellar</option>
             <option value="the-stand">The Stand</option>
+            <option value="gotham">Gotham</option>
+            <option value="nycc">NY Comedy Club</option>
+            <option value="standupny">Stand Up NY</option>
+            <option value="union-hall">Union Hall</option>
             <option value="big-shows">Big shows</option>
             <option value="comedians">Comedians</option>
           </select>
+        </div>
+
+        <div class="modal-section">
+          <h3>Show in All feed</h3>
+          <p class="settings-desc">Which venues appear on the "All" tab. Some clubs (like Gotham) don't post lineups, so they're off by default — turn on any you want mixed in.</p>
+          <div class="settings-pills settings-toggles" id="all-venues-toggles" aria-label="Venues shown in the All feed">
+            <button class="settings-pill" data-allvenue="cellar" role="switch" aria-checked="true">Comedy Cellar</button>
+            <button class="settings-pill" data-allvenue="stand" role="switch" aria-checked="true">The Stand</button>
+            <button class="settings-pill" data-allvenue="big" role="switch" aria-checked="true">Big Shows</button>
+            <button class="settings-pill" data-allvenue="standupny" role="switch" aria-checked="false">Stand Up NY</button>
+            <button class="settings-pill" data-allvenue="union-hall" role="switch" aria-checked="false">Union Hall</button>
+            <button class="settings-pill" data-allvenue="gotham" role="switch" aria-checked="false">Gotham</button>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3>Ticket prices</h3>
+          <p class="settings-desc">Show a small price on club show cards. Off keeps cards clean — Big Shows always show a price.</p>
+          <div class="settings-pills" id="default-price-pills" role="radiogroup" aria-label="Ticket prices">
+            <button class="settings-pill" data-value="off" role="radio" aria-checked="true">Off</button>
+            <button class="settings-pill" data-value="on" role="radio" aria-checked="false">On</button>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3>Show venue tabs</h3>
+          <p class="settings-desc">Turn off the tabs you don't use — they disappear from the bar.</p>
+          <div class="settings-pills settings-toggles" id="visible-tabs-toggles" aria-label="Visible venue tabs">
+            <button class="settings-pill" data-tab="top-pick" role="switch" aria-checked="true">⭐ Top Pick</button>
+            <button class="settings-pill" data-tab="cellar" role="switch" aria-checked="true">Comedy Cellar</button>
+            <button class="settings-pill" data-tab="the-stand" role="switch" aria-checked="true">The Stand</button>
+            <button class="settings-pill" data-tab="gotham" role="switch" aria-checked="true">Gotham</button>
+            <button class="settings-pill" data-tab="nycc" role="switch" aria-checked="true">NY Comedy Club</button>
+            <button class="settings-pill" data-tab="standupny" role="switch" aria-checked="true">Stand Up NY</button>
+            <button class="settings-pill" data-tab="union-hall" role="switch" aria-checked="true">Union Hall</button>
+            <button class="settings-pill" data-tab="big-shows" role="switch" aria-checked="true">Big Shows</button>
+            <button class="settings-pill" data-tab="comedians" role="switch" aria-checked="true">Comedians</button>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3>Show toolbar controls</h3>
+          <p class="settings-desc">Hide the filters and toggles you never touch to declutter the bar.</p>
+          <div class="settings-pills settings-toggles" id="visible-tools-toggles" aria-label="Visible toolbar controls">
+            <button class="settings-pill" data-tool="quick-mode-label" role="switch" aria-checked="true">Ratings mode</button>
+            <button class="settings-pill" data-tool="big-pics-toggle" role="switch" aria-checked="true">Big Pics</button>
+            <button class="settings-pill" data-tool="soldout-filter" role="switch" aria-checked="true">Sold-out</button>
+            <button class="settings-pill" data-tool="sort-select" role="switch" aria-checked="true">Sort</button>
+            <button class="settings-pill" data-tool="search-btn" role="switch" aria-checked="true">Search</button>
+            <button class="settings-pill" data-tool="filters-toggle" role="switch" aria-checked="true">Filters ▾</button>
+          </div>
         </div>
 
         <div class="modal-section">
@@ -485,7 +550,7 @@
     <button id="pwa-install-btn" onclick="pwaInstall()" style="display:none;"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Add to Home Screen</button>
   </footer>
 
-  <script defer src="app.min.js?v=86f1e37"></script>
+  <script defer src="app.min.js?v=66b60a1"></script>
   <!-- Vercel Web Analytics + Speed Insights + Cloudflare Web Analytics — gated to skip Capacitor native shell so iOS app stays "No data collected" on App Store -->
   <script>
     if (!window.Capacitor?.isNativePlatform?.()) {

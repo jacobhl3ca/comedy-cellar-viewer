@@ -53,6 +53,8 @@ const STATIC_CELLAR = '/data/cellar-cache.json';
 const STATIC_STAND = '/data/stand-cache.json';
 const STATIC_GOTHAM = '/data/gotham-cache.json';
 const STATIC_NYCC = '/data/nycc-cache.json';
+const STATIC_STANDUPNY = '/data/standupny-cache.json';
+const STATIC_UNIONHALL = '/data/unionhall-cache.json';
 const STATIC_BIG_SHOWS = '/data/big-shows-cache.json';
 const STATIC_AVAILABILITY = '/data/availability-cache.json';
 
@@ -204,7 +206,10 @@ function getPhotoForVenue(name, venueSource) {
   if (comedianPhotosCellar[name]) return comedianPhotosCellar[name];
   if (comedianPhotosStand[name]) return comedianPhotosStand[name];
   if (dbEntry?.photo_stand) return dbEntry.photo_stand;
-  // 4. Legacy pool (Wikipedia, SeatGeek, etc.) — reject bad URLs
+  // 4. Wikipedia headshot (prebaked into the DB for touring/marquee names —
+  //    e.g. the Stand Up NY / Union Hall headliners we extract from titles).
+  if (dbEntry?.photo_wiki && !isBadPhotoUrl(dbEntry.photo_wiki)) return dbEntry.photo_wiki;
+  // 5. Legacy pool (Wikipedia, SeatGeek, etc.) — reject bad URLs
   const legacy = comedianPhotos[name] || '';
   return isBadPhotoUrl(legacy) ? '' : legacy;
 }
@@ -412,6 +417,7 @@ function dayMaxFaves(dateStr) {
   if (typeof standShows !== 'undefined') bump(standShows);
   if (typeof nyccShows !== 'undefined') bump(nyccShows);
   if (typeof gothamShows !== 'undefined') bump(gothamShows);
+  if (typeof standupnyShows !== 'undefined') bump(standupnyShows);
   if (typeof bigShows !== 'undefined') bump(bigShows);
   return max;
 }
@@ -459,6 +465,7 @@ function dateInActiveSource(dateStr) {
         || (typeof standShows !== 'undefined' && standShows.some(s => s.date === dateStr))
         || (typeof nyccShows !== 'undefined' && nyccShows.some(s => s.date === dateStr))
         || (typeof gothamShows !== 'undefined' && gothamShows.some(s => s.date === dateStr))
+        || (typeof standupnyShows !== 'undefined' && standupnyShows.some(s => s.date === dateStr))
         || (typeof bigShows !== 'undefined' && bigShows.some(e => e.date === dateStr));
     case 'cellar':
       return !!(allData[dateStr] && allData[dateStr].length);
@@ -470,6 +477,8 @@ function dateInActiveSource(dateStr) {
       return typeof gothamShows !== 'undefined' && gothamShows.some(s => s.date === dateStr);
     case 'nycc':
       return typeof nyccShows !== 'undefined' && nyccShows.some(s => s.date === dateStr);
+    case 'standupny':
+      return typeof standupnyShows !== 'undefined' && standupnyShows.some(s => s.date === dateStr);
     default:
       return false; // comedians directory etc. — no date concept
   }
@@ -504,7 +513,7 @@ async function fetchTheStand() {
   try {
     // Try prebaked static data first (CDN, no function invocation)
     const resp = await fetchWithTimeout(STATIC_STAND, {}, 5000)
-      .catch(() => fetchWithTimeout('/api/the-stand', {}, 15000));
+      .catch(() => fetchWithTimeout('/api/clubs?venue=the-stand', {}, 15000));
     const data = await resp.json();
     standShows = data.shows || [];
     // Extract comedian photos from Stand data into venue-specific map
@@ -535,11 +544,13 @@ async function fetchTheStand() {
 let bigShows = [];
 let nyccShows = [];
 let gothamShows = [];
+let standupnyShows = [];
+let unionhallShows = [];
 
 async function fetchNYCC() {
   try {
     const resp = await fetchWithTimeout(STATIC_NYCC, {}, 5000)
-      .catch(() => fetchWithTimeout('/api/nycc', {}, 15000));
+      .catch(() => fetchWithTimeout('/api/clubs?venue=nycc', {}, 15000));
     const data = await resp.json();
     // Drop past shows — the NYCC feed/cache retains weeks-old dates, which
     // otherwise pollute the All-Venues date strip and show list.
@@ -547,6 +558,39 @@ async function fetchNYCC() {
     return nyccShows;
   } catch (e) {
     console.error('Failed to fetch NYCC:', e);
+    return [];
+  }
+}
+
+async function fetchStandupNY() {
+  try {
+    const resp = await fetchWithTimeout(STATIC_STANDUPNY, {}, 5000)
+      .catch(() => fetchWithTimeout('/api/clubs?venue=standupny', {}, 15000));
+    const data = await resp.json();
+    standupnyShows = (data.shows || []).filter(s => !isShowPast(s.date, s.time));
+    // Seed poster-OCR headshots (name->url) into the shared photo pool so the
+    // extracted comedian tiles aren't blank.
+    standupnyShows.forEach(s => {
+      if (s.comedianPhotos) Object.entries(s.comedianPhotos).forEach(([n, u]) => {
+        if (u && !comedianPhotos[n]) comedianPhotos[n] = u;
+      });
+    });
+    return standupnyShows;
+  } catch (e) {
+    console.error('Failed to fetch Stand Up NY:', e);
+    return [];
+  }
+}
+
+async function fetchUnionHall() {
+  try {
+    const resp = await fetchWithTimeout(STATIC_UNIONHALL, {}, 5000)
+      .catch(() => fetchWithTimeout('/api/clubs?venue=union-hall', {}, 15000));
+    const data = await resp.json();
+    unionhallShows = (data.shows || []).filter(s => !isShowPast(s.date, s.time));
+    return unionhallShows;
+  } catch (e) {
+    console.error('Failed to fetch Union Hall:', e);
     return [];
   }
 }
@@ -586,7 +630,7 @@ function renderNYCCShows(container) {
 async function fetchGotham() {
   try {
     const resp = await fetchWithTimeout(STATIC_GOTHAM, {}, 5000)
-      .catch(() => fetchWithTimeout('/api/gotham', {}, 15000));
+      .catch(() => fetchWithTimeout('/api/clubs?venue=gotham', {}, 15000));
     const data = await resp.json();
     gothamShows = data.shows || [];
     return gothamShows;

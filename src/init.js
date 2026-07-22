@@ -399,6 +399,10 @@ const VIEW_BY_PATH = {
   '/tonight': 'top-pick',
   '/cellar': 'cellar',
   '/stand': 'the-stand',
+  '/gotham': 'gotham',
+  '/nycc': 'nycc',
+  '/standupny': 'standupny',
+  '/unionhall': 'union-hall',
   '/big': 'big-shows',
   '/comics': 'comedians',
 };
@@ -407,6 +411,10 @@ const VIEW_META = {
   'top-pick':  { path: '/tonight', title: 'Top Pick Tonight — The Best NYC Comedy Show Each Night | Tonight NYC' },
   'cellar':    { path: '/cellar', title: 'Comedy Cellar Tonight — Lineups | Tonight NYC' },
   'the-stand': { path: '/stand',  title: 'The Stand Tonight — Lineups | Tonight NYC' },
+  'gotham':    { path: '/gotham', title: 'Gotham Comedy Club Tonight — Shows | Tonight NYC' },
+  'nycc':      { path: '/nycc',   title: 'NY Comedy Club Tonight — Lineups | Tonight NYC' },
+  'standupny': { path: '/standupny', title: 'Stand Up NY Tonight — Shows | Tonight NYC' },
+  'union-hall': { path: '/unionhall', title: 'Union Hall Tonight — Brooklyn Comedy Shows | Tonight NYC' },
   'big-shows': { path: '/big',    title: 'Big Comedy Shows in NYC | Tonight NYC' },
   'comedians': { path: '/comics', title: "NYC Comedians — Who's On Tonight | Tonight NYC" },
 };
@@ -586,24 +594,64 @@ function resetToHome() {
   document.addEventListener(ev, (e) => e.preventDefault())
 );
 
-// Global poster preview — renders outside card stacking contexts so opacity doesn't trap it
+// Global poster preview — renders outside card stacking contexts so opacity doesn't trap it.
+// Desktop shows it on hover; touch devices have no hover, so a tap opens a "pinned"
+// (sticky) preview that stays until you tap again/anywhere. This is what makes the
+// Stand Up NY & Union Hall posters — where the actual bill lives — readable on phones.
 (function() {
   let overlay = null;
+  let pinned = false; // opened by tap/click; ignore hover in/out until dismissed
+  let hint = null;
+  function show(src, alt, pin) {
+    if (overlay) overlay.remove();
+    if (hint) { hint.remove(); hint = null; }
+    overlay = document.createElement('img');
+    overlay.id = 'global-poster-preview';
+    if (pin) overlay.classList.add('pinned');
+    overlay.src = src;
+    overlay.alt = alt || '';
+    document.body.appendChild(overlay);
+    if (pin) {
+      hint = document.createElement('div');
+      hint.id = 'poster-close-hint';
+      hint.textContent = '✕  tap anywhere or Esc to close';
+      document.body.appendChild(hint);
+    }
+    pinned = !!pin;
+  }
+  function hide() {
+    if (overlay) overlay.remove(); overlay = null;
+    if (hint) { hint.remove(); hint = null; }
+    pinned = false;
+  }
+
   document.addEventListener('mouseover', e => {
+    if (pinned) return;
     const wrap = e.target.closest('.poster-wrap');
     if (!wrap) return;
     const img = wrap.querySelector('.poster-preview');
     if (!img) return;
-    if (overlay) overlay.remove();
-    overlay = document.createElement('img');
-    overlay.id = 'global-poster-preview';
-    overlay.src = img.src;
-    overlay.alt = img.alt;
-    document.body.appendChild(overlay);
+    show(img.src, img.alt, false);
   });
   document.addEventListener('mouseout', e => {
+    if (pinned) return;
     const wrap = e.target.closest('.poster-wrap');
-    if (wrap && overlay) { overlay.remove(); overlay = null; }
+    if (wrap && overlay) hide();
+  });
+  // Tap/click: on touch (no hover) this is the only way to open the poster.
+  // While pinned, a tap anywhere closes it (the overlay itself is pointer-events:none).
+  document.addEventListener('click', e => {
+    if (pinned) { hide(); return; }
+    const wrap = e.target.closest('.poster-wrap');
+    if (!wrap) return;
+    const img = wrap.querySelector('.poster-preview');
+    if (!img) return;
+    e.preventDefault();
+    show(img.src, img.alt, true);
+  });
+  // Escape closes the pinned (tapped-open) poster.
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && pinned) { hide(); e.stopPropagation(); }
   });
 })();
 
@@ -750,6 +798,8 @@ async function refreshShowsInPlace() {
       fetchBigShows(),
       fetchNYCC(),
       fetchGotham(),
+      fetchStandupNY(),
+      fetchUnionHall(),
       fetchAvailability()
     ]);
     if (batchData?.results) {
@@ -779,6 +829,14 @@ async function refreshShowsInPlace() {
     sort: 'none',
     bioMode: 'none',
     ratingsMode: 'off',
+    priceMode: 'off',   // 'off' hides the price chip on club cards (Big Shows keep their own)
+    hiddenTabs: [],   // venue-source-tab data-source values the user hid
+    hiddenTools: [],  // toolbar control ids the user hid
+    // Venue item-types NOT shown in the "All" feed (each toggle-able in Settings).
+    // Gotham never publishes names (blank "All-Stars" cards) and the poster
+    // venues have thinner data, so they're off by default; core clubs + big
+    // marquee shows stay on. Values match renderAllVenues() item.type tokens.
+    allHidden: ['standupny', 'union-hall', 'gotham'],
   };
   const PILL_GROUPS = {
     defaultTab: 'default-tab-pills',
@@ -789,6 +847,7 @@ async function refreshShowsInPlace() {
     sort: 'default-sort-pills',
     bioMode: 'default-bio-pills',
     ratingsMode: 'default-ratings-pills',
+    priceMode: 'default-price-pills',
   };
   // Mirror selects (hidden) we keep so external code that polls these IDs still works.
   const MIRROR_SELECTS = {
@@ -805,8 +864,35 @@ async function refreshShowsInPlace() {
   }
   function save(s){ localStorage.setItem(KEY, JSON.stringify(s)); }
   function isDefault(s){
-    for (const k of Object.keys(DEFAULTS)) if (s[k] !== DEFAULTS[k]) return false;
+    for (const k of Object.keys(DEFAULTS)) {
+      if (Array.isArray(DEFAULTS[k])) {
+        if ((s[k] || []).length !== DEFAULTS[k].length) return false;
+      } else if (s[k] !== DEFAULTS[k]) {
+        return false;
+      }
+    }
     return true;
+  }
+
+  // Show/hide venue tabs + toolbar controls per the user's settings. A hidden
+  // active tab falls back to All Venues so the schedule is never left blank.
+  function applyVisibility(s){
+    const hiddenTabs = s.hiddenTabs || [];
+    document.querySelectorAll('.venue-source-tab').forEach(tab => {
+      const src = tab.dataset.source;
+      if (src === 'all') return; // All Venues is always available
+      tab.style.display = hiddenTabs.includes(src) ? 'none' : '';
+    });
+    if (typeof activeSource !== 'undefined' && activeSource !== 'all' && hiddenTabs.includes(activeSource)) {
+      activeSource = 'all';
+      if (typeof syncUrlToSource === 'function') syncUrlToSource('all');
+    }
+    const hiddenTools = s.hiddenTools || [];
+    ['quick-mode-label', 'big-pics-toggle', 'soldout-filter', 'sort-select', 'search-btn', 'filters-toggle']
+      .forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = hiddenTools.includes(id) ? 'none' : '';
+      });
   }
 
   // ---- Unified share encoding (prefs + settings) using CompressionStream when available ----
@@ -1031,11 +1117,18 @@ async function refreshShowsInPlace() {
   const settings = load();
   applyAccent(settings);
 
+  // Bridge for render.js: which venue types are hidden from the "All" feed.
+  // Falls back to DEFAULTS so the feed is correct even if called very early.
+  window.allFeedHidden = () => (settings && settings.allHidden) || DEFAULTS.allHidden;
+  // Bridge for render.js: whether club-show price chips are shown (off by default).
+  window.showClubPrices = () => !!(settings && settings.priceMode === 'on');
+
   // Pre-set the venue tab before init's first render. activeSource is declared in data.js.
   if (settings.defaultTab && typeof activeSource !== 'undefined') {
     activeSource = settings.defaultTab;
   }
   applyFilterDefaults(settings);
+  applyVisibility(settings);
   const soldSel = document.getElementById('soldout-filter');
   if (soldSel && settings.soldOutMode) soldSel.value = settings.soldOutMode;
   const hideCb = document.getElementById('hide-sold-out');
@@ -1078,11 +1171,10 @@ async function refreshShowsInPlace() {
     }
   }
   function refreshSwatches(){
-    if (!swatches) return;
-    const cur = (settings.accent || '').toLowerCase();
-    swatches.querySelectorAll('.color-swatch').forEach(b => {
-      b.classList.toggle('active', (b.dataset.color || '').toLowerCase() === cur);
-    });
+    // Position the brand-color slider thumb at the closest point to the current
+    // accent. (Preset dots + gradient are built once when handlers are wired.)
+    const sl = document.getElementById('color-slider');
+    if (sl && typeof nearestVal === 'function') sl.value = nearestVal(settings.accent || DEFAULTS.accent);
   }
   function refreshShareUI(){
     const show = !isDefault(settings) || hasAnyPrefs();
@@ -1105,6 +1197,7 @@ async function refreshShowsInPlace() {
   function syncToolbarFromSettings(){
     // Push current settings.* into live toolbar controls + re-render.
     applyFilterDefaults(settings);
+    applyVisibility(settings);
     if (soldSel) soldSel.value = settings.soldOutMode;
     if (hideCb) hideCb.checked = settings.soldOutMode === 'hide';
     // Switch venue tab + reset date when starting tab changes.
@@ -1123,6 +1216,9 @@ async function refreshShowsInPlace() {
     if (!overlay) return;
     if (custom) custom.value = settings.accent;
     Object.keys(PILL_GROUPS).forEach(refreshPills);
+    refreshToggles('visible-tabs-toggles', 'tab', 'hiddenTabs');
+    refreshToggles('visible-tools-toggles', 'tool', 'hiddenTools');
+    refreshToggles('all-venues-toggles', 'allvenue', 'allHidden');
     refreshSwatches();
     refreshShareUI();
     if (importStatus) importStatus.textContent = '';
@@ -1136,14 +1232,44 @@ async function refreshShowsInPlace() {
   doneBtn?.addEventListener('click', closeSettings);
   overlay?.addEventListener('click', (e) => { if (e.target === overlay) closeSettings(); });
 
-  // ---- Brand color ----
-  swatches?.addEventListener('click', (e) => {
-    const btn = e.target.closest('.color-swatch');
-    if (!btn) return;
-    settings.accent = btn.dataset.color;
+  // ---- Brand color (gradient slider + preset dots) ----
+  const PRESETS = ['#e63636', '#f59e0b', '#10b981', '#3b82f6', '#8b5cf6', '#ec4899', '#ffffff'];
+  const colorSlider = document.getElementById('color-slider');
+  const presetMarks = document.getElementById('color-preset-marks');
+  const hex2rgb = h => { h = (h || '').replace('#', ''); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16) || 0); };
+  const rgb2hex = a => '#' + a.map(x => Math.max(0, Math.min(255, Math.round(x))).toString(16).padStart(2, '0')).join('');
+  const colorAt = t => { // t in 0..1 across the preset gradient
+    const seg = t * (PRESETS.length - 1);
+    const i = Math.min(PRESETS.length - 2, Math.floor(seg));
+    const f = seg - i, a = hex2rgb(PRESETS[i]), b = hex2rgb(PRESETS[i + 1]);
+    return rgb2hex(a.map((v, k) => v + (b[k] - v) * f));
+  };
+  const nearestVal = hex => { // slider value (0..1000) closest to a color
+    const target = hex2rgb(hex); let best = 0, bd = Infinity;
+    for (let v = 0; v <= 1000; v += 4) {
+      const c = hex2rgb(colorAt(v / 1000));
+      const d = c.reduce((s, x, k) => s + (x - target[k]) ** 2, 0);
+      if (d < bd) { bd = d; best = v; }
+    }
+    return best;
+  };
+  if (colorSlider) colorSlider.style.background =
+    `linear-gradient(to right, ${PRESETS.map((c, i) => `${c} ${i / (PRESETS.length - 1) * 100}%`).join(', ')})`;
+  if (presetMarks) presetMarks.innerHTML = PRESETS.map((c, i) =>
+    `<button type="button" class="color-preset-mark" data-color="${c}" style="left:${i / (PRESETS.length - 1) * 100}%;--c:${c}" aria-label="Preset color ${i + 1}"></button>`).join('');
+
+  colorSlider?.addEventListener('input', () => {
+    settings.accent = colorAt(colorSlider.value / 1000);
     persist(); applyAccent(settings);
     if (custom) custom.value = settings.accent;
-    refreshSwatches();
+  });
+  presetMarks?.addEventListener('click', (e) => {
+    const m = e.target.closest('.color-preset-mark');
+    if (!m) return;
+    settings.accent = m.dataset.color;
+    if (colorSlider) colorSlider.value = nearestVal(settings.accent);
+    persist(); applyAccent(settings);
+    if (custom) custom.value = settings.accent;
   });
   custom?.addEventListener('input', () => {
     settings.accent = custom.value;
@@ -1169,6 +1295,38 @@ async function refreshShowsInPlace() {
       syncToolbarFromSettings();
     });
   });
+
+  // ---- Visibility toggle chips (venue tabs + toolbar controls) — multi-select ----
+  // Each chip is a switch: aria-checked=true means SHOWN. The settings store the
+  // HIDDEN ids, so the app defaults to showing everything.
+  function refreshToggles(groupId, attr, hiddenKey){
+    const group = document.getElementById(groupId);
+    if (!group) return;
+    const hidden = settings[hiddenKey] || [];
+    group.querySelectorAll('.settings-pill').forEach(chip => {
+      chip.setAttribute('aria-checked', hidden.includes(chip.dataset[attr]) ? 'false' : 'true');
+    });
+  }
+  function wireToggles(groupId, attr, hiddenKey){
+    const group = document.getElementById(groupId);
+    group?.addEventListener('click', (e) => {
+      const chip = e.target.closest('.settings-pill');
+      if (!chip) return;
+      const id = chip.dataset[attr];
+      const hidden = new Set(settings[hiddenKey] || []);
+      if (hidden.has(id)) hidden.delete(id); else hidden.add(id);
+      settings[hiddenKey] = [...hidden];
+      persist();
+      refreshToggles(groupId, attr, hiddenKey);
+      applyVisibility(settings);
+      // Re-render so a freshly hidden active tab (now switched to All) repaints.
+      if (typeof renderSourceTabs === 'function') renderSourceTabs();
+      if (typeof renderShows === 'function') renderShows();
+    });
+  }
+  wireToggles('visible-tabs-toggles', 'tab', 'hiddenTabs');
+  wireToggles('visible-tools-toggles', 'tool', 'hiddenTools');
+  wireToggles('all-venues-toggles', 'allvenue', 'allHidden');
 
   // ---- Copy share link ----
   shareBtn?.addEventListener('click', async () => {

@@ -205,9 +205,9 @@ body.mode-jazz .modal-overlay { display: none !important; }
 .header-settings-btn { right: 0; }
 .header-appstore-btn { right: 92px; }
 .header-share-btn { right: 138px; }
-/* Hide App Store icon inside the native iOS app — they're already in the app. */
-html.native-ios .header-appstore-btn { display: none; }
-html.native-ios .header-share-btn { right: 92px; }
+/* Hide the App Store icon inside either native app shell. */
+html.native-app .header-appstore-btn { display: none; }
+html.native-app .header-share-btn { right: 92px; }
 
 /* Theme toggle hidden on narrow screens and iOS; everything shifts left to fill its slot. */
 @media (max-width: 380px) {
@@ -215,10 +215,14 @@ html.native-ios .header-share-btn { right: 92px; }
   .header-appstore-btn { right: 46px; }
   .header-share-btn { right: 92px; }
 }
-html.ios-mobile .theme-toggle { display: none; }
-html.ios-mobile .header-appstore-btn { right: 46px; }
-html.ios-mobile .header-share-btn { right: 92px; }
-html.ios-mobile.native-ios .header-share-btn { right: 46px; }
+html.ios-mobile .theme-toggle,
+html.native-mobile .theme-toggle { display: none; }
+html.ios-mobile .header-appstore-btn,
+html.native-mobile .header-appstore-btn { right: 46px; }
+html.ios-mobile .header-share-btn,
+html.native-mobile .header-share-btn { right: 92px; }
+html.ios-mobile.native-ios .header-share-btn,
+html.native-mobile.native-app .header-share-btn { right: 46px; }
 
 /* Day Tabs */
 .day-tabs-row {
@@ -465,6 +469,11 @@ html.ios-mobile.native-ios .header-share-btn { right: 46px; }
   overflow: visible; -webkit-line-clamp: unset; -webkit-box-orient: unset;
 }
 
+.price-tag {
+  display: inline-block; margin-left: 7px; font-size: 11px; font-weight: 600;
+  color: var(--text-dim); opacity: .85; letter-spacing: .2px;
+  vertical-align: baseline;
+}
 .show-badge {
   display: inline-block; font-size: 11px; font-weight: 700;
   padding: 3px 8px; border-radius: 4px; margin-left: 8px;
@@ -941,7 +950,7 @@ html.ios-mobile.native-ios .header-share-btn { right: 46px; }
 
 .site-footer a.app-store-badge-link { display: inline-block; line-height: 0; margin: 12px 0 6px; }
 .site-footer a.app-store-badge-link img { display: block; height: 40px; width: auto; margin: 0 auto; }
-html.native-ios .app-store-badge-link { display: none; }
+html.native-app .app-store-badge-link { display: none; }
 
 /* Schedule view */
 .schedule-view { display: flex; flex-direction: column; gap: 12px; }
@@ -966,19 +975,33 @@ html.native-ios .app-store-badge-link { display: none; }
 
 /* Venue source tabs */
 .venue-source-tabs {
-  display: flex; gap: 6px; padding: 4px 0 4px;
+  display: flex; gap: 8px; padding: 4px 0 6px;
   overflow-x: auto; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; -ms-overflow-style: none;
+  scroll-snap-type: x proximity;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 14px, #000 calc(100% - 22px), transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 14px, #000 calc(100% - 22px), transparent 100%);
 }
+.venue-source-tabs::-webkit-scrollbar { display: none; }
 .venue-source-tab {
-  padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500;
+  flex: 0 0 auto; white-space: nowrap; scroll-snap-align: start;
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 8px 15px; border-radius: 999px; font-size: 13px; font-weight: 500;
+  line-height: 1; letter-spacing: -0.01em;
   background: var(--surface); border: 1px solid var(--border); color: var(--text-dim);
-  cursor: pointer; transition: all 0.15s;
+  cursor: pointer; transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.1s, box-shadow 0.15s;
 }
 .venue-source-tab:hover { border-color: var(--accent); color: var(--text); }
-.venue-source-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
-.venue-source-tab .source-count {
-  font-size: 10px; font-weight: 400; opacity: 0.7; margin-left: 4px;
+.venue-source-tab:active { transform: scale(0.96); }
+.venue-source-tab.active {
+  background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.14);
 }
+.venue-source-tab .source-count {
+  font-size: 11px; font-weight: 600; opacity: 0.55; margin-left: 1px;
+  font-variant-numeric: tabular-nums;
+}
+.venue-source-tab.active .source-count { opacity: 0.85; }
 
 /* Big Shows section */
 .big-shows-section { margin-top: 8px; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
@@ -989,11 +1012,18 @@ html.native-ios .app-store-badge-link { display: none; }
 }
 .big-show-card {
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: 10px; overflow: hidden;
+  border-radius: 10px; overflow: hidden; position: relative;
   box-shadow: var(--shadow-card); transition: all 0.2s;
 }
 .big-show-card:hover { border-color: var(--card-hover); box-shadow: var(--shadow-hover); }
 .big-show-card.sold-out { opacity: 0.6; }
+/* Subtle ticket price, top-right corner of the card. */
+.big-show-price {
+  position: absolute; top: 8px; right: 10px; z-index: 1; pointer-events: none;
+  font-size: 10px; font-weight: 600; color: var(--text-dim);
+  opacity: 0.75; letter-spacing: 0.2px;
+}
+.big-show-title { padding-right: 46px; }
 .big-show-info { padding: 10px 12px; display: flex; gap: 10px; align-items: flex-start; }
 .big-show-photo { width: 48px; height: 48px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
 .big-show-details { flex: 1; min-width: 0; overflow: hidden; }
@@ -1052,8 +1082,22 @@ html.native-ios .app-store-badge-link { display: none; }
   border: 2px solid var(--border); background: var(--surface);
   pointer-events: none;
 }
+/* Tapped-open (pinned) poster: bigger so the printed lineup is actually readable,
+   with a dim full-screen backdrop. Tapping anywhere closes it (JS-handled). */
+#global-poster-preview.pinned {
+  width: min(90vw, 460px); max-height: 84vh;
+  box-shadow: 0 0 0 100vmax rgba(0,0,0,0.72), 0 12px 40px rgba(0,0,0,0.7);
+}
 @media (max-width: 480px) {
   #global-poster-preview { width: 60vw; max-width: 200px; max-height: 50vh; }
+  #global-poster-preview.pinned { width: 90vw; max-width: 90vw; max-height: 84vh; }
+}
+#poster-close-hint {
+  position: fixed; left: 50%; bottom: max(18px, env(safe-area-inset-bottom));
+  transform: translateX(-50%); z-index: 10000; pointer-events: none;
+  background: rgba(0,0,0,.72); color: #fff; font-size: 12px; font-weight: 600;
+  padding: 7px 14px; border-radius: 20px; border: 1px solid rgba(255,255,255,.18);
+  letter-spacing: .2px; white-space: nowrap;
 }
 @media (max-width: 480px) {
   .poster-preview { width: 60vw; max-width: 200px; max-height: 50vh; }
@@ -1134,6 +1178,32 @@ html.native-ios .app-store-badge-link { display: none; }
 }
 .settings-toast button:hover { border-color: var(--accent); color: var(--accent); }
 #settings-toast-close { padding: 4px 8px; font-size: 16px; border: 0; }
+/* Brand-color slider: drag anywhere along a gradient of the presets, or tap a
+   preset dot marked on the bar. */
+.color-slider-row { position: relative; padding: 10px 8px 20px; }
+.color-slider {
+  -webkit-appearance: none; appearance: none; width: 100%; height: 16px;
+  border-radius: 10px; outline: none; cursor: pointer; margin: 0;
+  background: linear-gradient(to right, #888, #888); /* JS overwrites with preset gradient */
+  border: 1px solid var(--border);
+}
+.color-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 24px; height: 24px;
+  border-radius: 50%; background: #fff; border: 3px solid rgba(0,0,0,.35);
+  box-shadow: 0 1px 4px rgba(0,0,0,.5); cursor: grab;
+}
+.color-slider::-moz-range-thumb {
+  width: 22px; height: 22px; border-radius: 50%; background: #fff;
+  border: 3px solid rgba(0,0,0,.35); box-shadow: 0 1px 4px rgba(0,0,0,.5); cursor: grab;
+}
+.color-preset-marks { position: absolute; left: 8px; right: 8px; top: 10px; height: 16px; pointer-events: none; }
+.color-preset-mark {
+  position: absolute; top: 50%; width: 12px; height: 12px; padding: 0;
+  transform: translate(-50%, -50%); border-radius: 50%;
+  background: var(--c, #888); border: 2px solid rgba(255,255,255,.9);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.45); cursor: pointer; pointer-events: auto;
+}
+.color-preset-mark:hover { transform: translate(-50%, -50%) scale(1.25); }
 .color-swatches { display: flex; flex-wrap: wrap; gap: 8px; padding: 4px 0 10px; }
 .color-swatch {
   width: 28px; height: 28px; border-radius: 50%;
