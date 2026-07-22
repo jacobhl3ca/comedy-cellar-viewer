@@ -25,9 +25,13 @@
   },
   "189350": {
     "comedians": [
-      "Jeff Garlin"
+      "Jeff Garlin",
+      "Dan Levy"
     ],
-    "photos": {}
+    "photos": {
+      "Jeff Garlin": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Jeff_Garlin_2024_Curb_Your_Enthusiasm_premiere_%28cropped%29.png/330px-Jeff_Garlin_2024_Curb_Your_Enthusiasm_premiere_%28cropped%29.png",
+      "Dan Levy": "https://thestandnyc.com/images/comedians/_square/danlevy.jpg"
+    }
   },
   "189397": {
     "comedians": [
@@ -53,6 +57,8 @@
       "Chris Min"
     ],
     "photos": {
+      "Brian Scolaro": "https://www.newyorkcomedyclub.com/img/comedians/brian-scolaro-c7d20aec-main-image.jpg",
+      "Teddy Smith": "https://thestandnyc.com/images/comedians/_square/tsmith.jpg",
       "Paul Mecurio": "https://thestandnyc.com/images/comedians/_square/paul-mecurio.jpg",
       "Olga Namer": "https://thestandnyc.com/images/comedians/_square/olganamer.jpg",
       "Brittany Brave": "https://thestandnyc.com/images/comedians/_square/Brittany_Brave.jpg"
@@ -74,6 +80,7 @@
       "The Maze"
     ],
     "photos": {
+      "Liz Glazer": "https://thestandnyc.com/images/comedians/_square/lizglazer.jpg",
       "Myq Kaplan": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg/330px-Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg",
       "Dan Ahdoot": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Dan_Ahdoot.jpg/330px-Dan_Ahdoot.jpg",
       "Erin Maguire": "https://thestandnyc.com/images/comedians/_square/EM-headshot.jpg",
