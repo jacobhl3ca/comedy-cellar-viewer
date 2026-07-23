@@ -699,7 +699,8 @@
     "bio": "Greg Stone is a NYC based comedian who has been on AXS TV's Gotham Comedy Live, America's Got Talent and is a regular on Sirius XM and NPR’s Snap Judgement",
     "venues": [
       "nycc"
-    ]
+    ],
+    "tagline_cellar": "WRITER ON \"THE BREAK WITH MICHELLE WOLF\", \"THE RAD DUDE CAST\""
   },
   {
     "name": "Nathan Macintosh",
@@ -2902,7 +2903,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/amy-miller",
     "bio": "Amy Miller is a stand-up comedian and podcaster based in Los Angeles. She's appeared on @midnight, Doug Loves Movies, and performs at clubs across the country.",
     "bio_stand": "Amy Miller is a fast-rising talent on the West Coast and national scene. Originally from Oakland, California Amy found her comedy chops in the Bay Area scene and is still a favorite at the San Francisco Punch Line and Cobb’s Comedy Club. After a move to Portland, Amy quickly rose to the top of the Northwest comedy scene, winning Portland’s Funniest Comedian in Helium Comedy Club’s contest, as well as being voted Portland’s Funniest 2013 and 2015 in the Willamette Week. Amy was a breakout favorite in Season 9 of Last Comic Standing. Roseanne Barr called her “a star” and a “contender for next alpha female comedian.” Keenen Ivory Wayans said she had one of the “fiercest jokes he had ever heard.” Amy is currently in Portland being alpha and fierce and getting rained on, but works comedy clubs and festivals around the country, working with headliners from Norm Macdonald to Arsenio Hall to singer Ryan Adams. - Last Comic Standing Semi-Finalist, Season 9 - Winner, Portland’s Funniest Person, Helium Comedy Club - San Francisco Sketchfest - Bridgetown Comedy Festival - Riot LA Festival - Doug Loves Movies - NPR’s Marketplace - The Bennington Show - Put Your Hands Together with Cameron Esposito and Rhea Butcher",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/amy-miller-sized.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/amy-miller-sized.jpg",
+    "tagline_cellar": "LAST COMIC STANDING, COMEDY CENTRAL, EPIX HALF HOUR, SIRUS XM/THE BENNINGTON SHOW, VICELAND"
   },
   {
     "name": "Andre De Freitas",
@@ -4984,7 +4986,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/rocky-dale-davis",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Rocky_Dale_Davis_1.jpeg",
     "bio": "Rocky Dale Davis is a stand-up comedian from Tennessee. He's appeared on The Tonight Show, Conan, and Comedy Central. Known for his Southern charm and storytelling ability, he performs at clubs across the country.",
-    "bio_stand": "Rocky Dale Davis is a stand up comedian who’s videos on TikTok and Instagram have over 400 million views and 600,000 followers. Rocky has also appeared on “Dating No Filter on E! & NBC’s “Bring The Funny”."
+    "bio_stand": "Rocky Dale Davis is a stand up comedian who’s videos on TikTok and Instagram have over 400 million views and 600,000 followers. Rocky has also appeared on “Dating No Filter on E! & NBC’s “Bring The Funny”.",
+    "tagline_cellar": "EPIX COMEDY SPECIAL, \"DATING NO FILTER\" ON E, \"HART OF THE CITY\" ON COMEDY CENTRAL, \"GREATEST PARTY STORIES EVER\" ON MTV"
   },
   {
     "name": "Ron Bennington",
@@ -8798,7 +8801,8 @@
   },
   {
     "name": "Amy Poehler",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Amy Meredith Poehler is an American actress and comedian. Known for her roles in sketch comedy, sitcoms and comedy films, she has earned acclaim and several accolades including a Primetime Emmy Award and two Golden Globe Awards as well as nominations for a Peabody Award and a Grammy Award. Poehler w"
   },
   {
     "name": "Charles Engle",
@@ -8817,5 +8821,11 @@
   {
     "name": "Lee Syatt",
     "venues": []
+  },
+  {
+    "name": "Charles McBee",
+    "venues": [],
+    "bio": "HEAD WRITER FOR COMEDY CENTRAL'S HELL OF A WEEK WITH CHARLAMAGNE THE GOD. WRITER FOR THE GOLDEN GLOBES AND MTV VMA's",
+    "tagline_cellar": "HEAD WRITER FOR COMEDY CENTRAL'S HELL OF A WEEK WITH CHARLAMAGNE THE GOD. WRITER FOR THE GOLDEN GLOBES AND MTV VMA's"
   }
 ]
