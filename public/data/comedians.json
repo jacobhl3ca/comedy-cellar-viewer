@@ -4599,7 +4599,8 @@
     "bio": "Mike Lawrence is a stand-up comedian and writer. He's appeared on @midnight, The Meltdown, and has a Comedy Central special. Known for his nerd-culture comedy.",
     "bio_stand": "Mike Lawrence is an Emmy nominated New York City based comedian from South Florida who has found success in both writing and stand up. He is the winner of the first season of Jeff Ross Presents Roast Battle. He was a staff writer on season four of Inside Amy Schumer, Comedy Central’s Roast of Rob Lowe, Black and White on A&E, Triumph’s Election Special on Hulu and was a writer on the 2015 MTV Movie Awards, the 2015 Webby Awards, and We Have Issues on E! Mike is a recurring guest on the Comedy Central TV show @midnight and his stand up has been featured on NBC’s Late Night with Seth Meyers, TBS’ Conan, FX’s Totally Biased, and John Oliver’s New York Stand-Up Show on Comedy Central. In 2013 His half hour special for Comedy Central aired in conjunction with the release of his album “Sadamantium”, produced by Comedy Central Records. Additionally, Mike had his own Comedy Central Snapchat series You’re Wrong, and co-hosts the podcast Nerd of Mouth on Cave Comedy Radio and has appeared on countless others such as WTF with Marc Maron, Robert Kelly’s You Know What Dude, You Made It Weird with Pete Holmes, Sklarboro County, My Wife Hates Me, Legion of Skanks, Who Charted, The Dana Gould Hour, The Adam Corolla Show, and The Artie Lange Show.",
     "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Mike_Lawrence_performing_live.jpeg/330px-Mike_Lawrence_performing_live.jpeg",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/mike-lawrence.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/mike-lawrence.jpg",
+    "tagline_cellar": "FROM \"INSIDE AMY SHUMER\",  FROM CONAN"
   },
   {
     "name": "Mike Recine",
@@ -8871,5 +8872,15 @@
     "name": "Brian Redban",
     "venues": [],
     "bio_wiki": "Brian Reichle, known professionally as Brian Redban or redban, is an American podcast producer and podcast host. He is the original producer and co-host of The Joe Rogan Experience, co-host of the Kill Tony podcast and founder of the Deathsquad podcast network, the original publishing network of You"
+  },
+  {
+    "name": "Matthew Joffus",
+    "venues": [],
+    "bio": "FROM HBO, NETFLIX",
+    "tagline_cellar": "FROM HBO, NETFLIX"
+  },
+  {
+    "name": "Dr. Anthony Drew",
+    "venues": []
   }
 ]
