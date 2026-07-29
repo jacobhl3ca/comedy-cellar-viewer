@@ -7,16 +7,6 @@
       "Patton Oswalt": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Patton_Oswalt_at_MCM_Comic_Con_London%2C_May_2025_01.jpg/330px-Patton_Oswalt_at_MCM_Comic_Con_London%2C_May_2025_01.jpg"
     }
   },
-  "189350": {
-    "comedians": [
-      "Jeff Garlin",
-      "Dan Levy"
-    ],
-    "photos": {
-      "Jeff Garlin": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Jeff_Garlin_2024_Curb_Your_Enthusiasm_premiere_%28cropped%29.png/330px-Jeff_Garlin_2024_Curb_Your_Enthusiasm_premiere_%28cropped%29.png",
-      "Dan Levy": "https://thestandnyc.com/images/comedians/_square/danlevy.jpg"
-    }
-  },
   "189397": {
     "comedians": [
       "Thom Tran",
@@ -24,13 +14,15 @@
       "Brittany Schmitt",
       "Ray Bentley",
       "Julian Hewitt",
-      "Chloe Labranche"
+      "Chloe Labranche",
+      "Tyler Fischer"
     ],
     "photos": {
       "Thom Tran": "https://www.newyorkcomedyclub.com/img/comedians/Thom-Tran-953b0904-main-image.jpg",
       "Elyse Delucci": "https://thestandnyc.com/images/comedians/_square/elysed.jpg",
       "Brittany Schmitt": "https://thestandnyc.com/images/comedians/_square/Brittany_Schmitt_1.jpg",
-      "Chloe Labranche": "https://thestandnyc.com/images/comedians/_square/chlo.jpg"
+      "Chloe Labranche": "https://thestandnyc.com/images/comedians/_square/chlo.jpg",
+      "Tyler Fischer": "https://thestandnyc.com/images/comedians/_square/Tyler_Fischer.jpg"
     }
   },
   "189399": {
@@ -52,7 +44,8 @@
   },
   "189406": {
     "comedians": [
-      "Ksenia"
+      "Ksenia",
+      "With Friends"
     ],
     "photos": {}
   },
