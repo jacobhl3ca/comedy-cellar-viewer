@@ -223,7 +223,7 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/elle-orlando",
-    "tagline_cellar": "DONT TELL COMEDY, CREATOR TO WATCH 2024",
+    "tagline_cellar": "JUST FOR LAUGHS NEW FACE 2026, COMICS UNLEASHED, DONT TELL COMEDY",
     "bio_stand": "Elle has made an appearance on The Bonfire on Sirius XM with Dan Soder and Big Jay Oakerson and has been featured in Milwaukee Comedy Festival, SLO Comedy Festival, and New York Comedy Festival. Elle was named a 2023 “Creator to Watch” By New York Comedy Festival",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Elle_Orlando.png"
   },
@@ -8881,6 +8881,21 @@
   },
   {
     "name": "Dr. Anthony Drew",
+    "venues": []
+  },
+  {
+    "name": "Tyler Fischer",
+    "venues": [],
+    "bio": "FROM \"LAST WEEK TONIGHT\" (HBO), \"AMERICA'S GOT TALENT\", \"COLBERT\", \"STARTUB\" (NETFLIX) \"CHICAGO MED\" (NBC), \"YOUNGER\" (TV LAND), \"TERROR ON THE PRAIRIE\" (DAILY WIRE)",
+    "tagline_cellar": "FROM \"LAST WEEK TONIGHT\" (HBO), \"AMERICA'S GOT TALENT\", \"COLBERT\", \"STARTUB\" (NETFLIX) \"CHICAGO MED\" (NBC), \"YOUNGER\" (TV LAND), \"TERROR ON THE PRAIRIE\" (DAILY WIRE)"
+  },
+  {
+    "name": "Aaron McCann",
+    "venues": [],
+    "bio_stand": "Aaron McCann burst onto the Irish comedy scene in 2012 gigging extensively across Northern Ireland’s top venues including Laverys Comedy Club &amp; The Empire. In 2014 McCann performed his first hour special “The Height Of Nonsense” to a sold out Strule arts centre theatre in Omagh. This would quickly be followed with another sold out hour the following year in Mandela Hall with “Buckfast Die Young”. The next year mccann would be part of the comedy squad sell out show in Ulster Hall which featured 6 local acts doing their own show in one of Northern Ireland’s most prestigious venues. Mccann has found himself playing support to some of his comedic idols including Daniel Sloss, Tom Stade &amp; Patrick Kielty. Aaron has just returned from a year in Los Angeles where he gigged regularly on the Kill Tony Podcast infront of the likes of Tom Segura, Tony Hinchcliffe and Whitney Cummings. Tony would ask mccann to do a special slot when the podcast came to a sold out whelans in Dublin. Currently McCann is wrapping up his first tour Culchie In America which features 9 dates across the country including whelans in Dublin and The Limelight in Belfast."
+  },
+  {
+    "name": "Thalia Romina",
     "venues": []
   }
 ]
