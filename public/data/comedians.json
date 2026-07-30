@@ -3832,8 +3832,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/jason-ellis",
     "bio_stand": "Retired professional skateboarder from Australia, and retired professional MMA fighter, hosted The Jason Ellis Show on SiriusXM for 15 years. Now a Comedian and Podcaster of multiple podcasts including The Jason Ellis Show, Hawk vs. Wolf, and Awesome World. In 2013 became a New York Times bestseller with I’m Awesome and then wrote the successful follow-up I’m Still Awesome. Founder of the MMA-meets-music festival, Ellismania. Husband and proud father. Advocate of the LGBTQ community.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/jasonellis.jpg",
-    "bio": "Jason Ellis is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/jasonellis.jpg"
   },
   {
     "name": "Jay Pharoah",
@@ -8922,5 +8921,10 @@
   {
     "name": "Ask A F*ckboy",
     "venues": []
+  },
+  {
+    "name": "Nate Jackson",
+    "venues": [],
+    "bio_stand": "Known as the \"King of Crowd Work\" for his completely improvised sets that have redefined how comedians interact with audiences in the digital age, he's not just a \"local favorite\" anymore—he's a global touring powerhouse. In 2025, Nate reached a career milestone with the release of his Netflix special, Nate Jackson: Super Funny, showcasing the high-energy, improvisational style that makes every one of his shows a one-of-a-kind experience. From his recurring role as \"The Junk Yard Dog\" on NBC’s Young Rock to his appearances on Curb Your Enthusiasm, Wild 'N Out, All Def Comedy, and Hart of the City, Nate has proven he’s a powerhouse. He’s appeared in films like Spirited and Good Fortune, and his writing talent has been tapped for major stages like the BET Awards. You will see him soon in a recurring role on Apple+ in Bad Monkey. Despite the fame, Nate remains a person of the people, always willing to share the spotlight and help the comedy community grow stronger, one laugh at a time. Whether he’s sold-out on his tours—spanning the UK, Ireland, Australia, and New Zealand—or recording his hit podcast, OpinioNATEd (now with over 150 episodes), Nate remains a kid from Lacey, Washington, who never forgot where he came from. He truly believes that laughter is medicine for the soul, with the power to heal no matter what’s happening in the world. There is a unique joy in a deep belly laugh that can change a person's entire perspective, even after their hardest days or biggest challenges. His mission is to help people find that place of joy within themselves, because he knows that a little bit of laughter can truly change the world."
   }
 ]
