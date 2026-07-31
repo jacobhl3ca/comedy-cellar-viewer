@@ -1,10 +1,16 @@
 {
   "184510": {
     "comedians": [
-      "Patton Oswalt"
+      "Patton Oswalt",
+      "Michael Lenoci",
+      "Skyler Higley",
+      "Thash Mose"
     ],
     "photos": {
-      "Patton Oswalt": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Patton_Oswalt_at_MCM_Comic_Con_London%2C_May_2025_01.jpg/330px-Patton_Oswalt_at_MCM_Comic_Con_London%2C_May_2025_01.jpg"
+      "Patton Oswalt": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Patton_Oswalt_at_MCM_Comic_Con_London%2C_May_2025_01.jpg/330px-Patton_Oswalt_at_MCM_Comic_Con_London%2C_May_2025_01.jpg",
+      "Michael Lenoci": "https://www.newyorkcomedyclub.com/img/imagetest/lenoci-headshot-16x9-jpg-5ce40e5b-lenoci-headshot-16x9-jpg.jpg",
+      "Skyler Higley": "https://thestandnyc.com/images/comedians/_square/skyler-higley-c9c30af9-main-image.jpg",
+      "Thash Mose": "https://thestandnyc.com/images/comedians/_square/Thash%2BMose%2BComic%2BHeadshot.jpg"
     }
   },
   "189397": {
