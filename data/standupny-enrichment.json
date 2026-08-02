@@ -13,24 +13,6 @@
       "Thash Mose": "https://thestandnyc.com/images/comedians/_square/Thash%2BMose%2BComic%2BHeadshot.jpg"
     }
   },
-  "189397": {
-    "comedians": [
-      "Thom Tran",
-      "Elyse Delucci",
-      "Brittany Schmitt",
-      "Ray Bentley",
-      "Julian Hewitt",
-      "Chloe Labranche",
-      "Tyler Fischer"
-    ],
-    "photos": {
-      "Thom Tran": "https://www.newyorkcomedyclub.com/img/comedians/Thom-Tran-953b0904-main-image.jpg",
-      "Elyse Delucci": "https://thestandnyc.com/images/comedians/_square/elysed.jpg",
-      "Brittany Schmitt": "https://thestandnyc.com/images/comedians/_square/Brittany_Schmitt_1.jpg",
-      "Chloe Labranche": "https://thestandnyc.com/images/comedians/_square/chlo.jpg",
-      "Tyler Fischer": "https://thestandnyc.com/images/comedians/_square/Tyler_Fischer.jpg"
-    }
-  },
   "189406": {
     "comedians": [
       "Ksenia",
@@ -53,6 +35,23 @@
       "Dan Ahdoot": "https://thestandnyc.com/images/comedians/_square/Dan_Ahdoot.jpg",
       "Erin Maguire": "https://thestandnyc.com/images/comedians/_square/EM-headshot.jpg",
       "Patrick Holbert": "https://www.newyorkcomedyclub.com/img/comedians/patrick-holbert-e25a0bbf-main-image.jpg"
+    }
+  },
+  "192658": {
+    "comedians": [
+      "Gomedy Killers",
+      "Neko White",
+      "Rashad Bashir",
+      "Dominic Leonelli",
+      "Calise Hawkins",
+      "Julio Diaz"
+    ],
+    "photos": {
+      "Neko White": "https://thestandnyc.com/images/comedians/_square/6D8A3121.jpg",
+      "Rashad Bashir": "https://thestandnyc.com/images/comedians/_square/Rashad-Bashir-c16f0a8a-main-image.jpg",
+      "Dominic Leonelli": "https://thestandnyc.com/images/comedians/_square/domleonelli.JPG",
+      "Calise Hawkins": "https://thestandnyc.com/images/comedians/_square/headshot-tall.jpg",
+      "Julio Diaz": "https://thestandnyc.com/images/comedians/_square/juliodiaz.jpg"
     }
   }
 }
