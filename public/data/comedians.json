@@ -7777,7 +7777,8 @@
     "venues": [],
     "bio": "COMEDY CENTRAL. APPLETV \"BAD MONKEY\" SEASON 2",
     "tagline_cellar": "COMEDY CENTRAL. APPLETV \"BAD MONKEY\" SEASON 2",
-    "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Joe-Avery-headshot-01700c74-main-image.png?1761143537"
+    "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Joe-Avery-headshot-01700c74-main-image.png?1761143537",
+    "bio_stand": "Joey Avery is a comedian on the rise headlining comedy clubs across the world. He was featured on the Don’t Tell Comedy “Batting Cage Series” and Season 10 of Comedy Central’s Featuring with clips from each appearance achieving viral success. He has quickly amassed an online following through a mix of improvised standup and precise material. His first album debuted at #1 on iTunes and he was featured twice in the San Francisco Chronicle as one of the Bay Area’s top comics before moving to New York. He has featured for Andrew Schulz, Mark Normand, Trevor Wallace, Shane Gillis and other staples of the comedy scene."
   },
   {
     "name": "Alingon Mitra",
@@ -8959,6 +8960,19 @@
   },
   {
     "name": "Grace Bahler",
+    "venues": []
+  },
+  {
+    "name": "Sunny Laprade",
+    "venues": []
+  },
+  {
+    "name": "Brennan Tasseff",
+    "venues": [],
+    "bio_stand": "I am a very high energy story teller. I grew up in Florida, which should tell you enough right there. I have traveled across this whole country performing, and I have had the pleasure to work with some big names in stand up comedy. Growing up with crippling anxiety and depression it is my ultimate goal to show people no matter how bad it seems, humor can be found in any situation (because through self medicating with booze, I have been in many a “situation”). Now sober, much of my stand up is a funny and insightful take on how I made it through all those shenanigans. Taking the most interesting things from my checkered and sketchy past and putting them on full display to total strangers. From a young stage performer to International Baccalaureate to D1 college football player this story should end with a promising career in some sort of professional field, but no I prefer shining a light on a dark path that went off the rails for a time too anyone that will listen."
+  },
+  {
+    "name": "Max Meisel",
     "venues": []
   }
 ]
