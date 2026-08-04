@@ -20,6 +20,15 @@
     ],
     "photos": {}
   },
+  "190537": {
+    "comedians": [
+      "Hiss-Terrical Caturday",
+      "Michael Winslow"
+    ],
+    "photos": {
+      "Michael Winslow": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Michael_Winslow_Photo_Op_GalaxyCon_Richmond_2026.jpg/330px-Michael_Winslow_Photo_Op_GalaxyCon_Richmond_2026.jpg"
+    }
+  },
   "190622": {
     "comedians": [
       "Liz Glazer",
@@ -52,6 +61,68 @@
       "Dominic Leonelli": "https://thestandnyc.com/images/comedians/_square/domleonelli.JPG",
       "Calise Hawkins": "https://thestandnyc.com/images/comedians/_square/headshot-tall.jpg",
       "Julio Diaz": "https://thestandnyc.com/images/comedians/_square/juliodiaz.jpg"
+    }
+  },
+  "192659": {
+    "comedians": [
+      "Eman Morgan",
+      "Erin Maguire",
+      "Ted Jones",
+      "Alvin Williams",
+      "Carmen Lagala",
+      "Matt Benjamin"
+    ],
+    "photos": {
+      "Erin Maguire": "https://thestandnyc.com/images/comedians/_square/EM-headshot.jpg",
+      "Ted Jones": "https://thestandnyc.com/images/comedians/_square/tedjones.jpg",
+      "Carmen Lagala": "https://thestandnyc.com/images/comedians/_square/carmen_lagala.jpg",
+      "Matt Benjamin": "https://www.newyorkcomedyclub.com/img/comedians/Matt-Benjamin-Headshot-1-58c10e49-main-image.jpg"
+    }
+  },
+  "192660": {
+    "comedians": [
+      "Myq Kaplan",
+      "Leah Lamarr",
+      "Dan Ahdoot",
+      "Jimmy Mccullough",
+      "Morning Good",
+      "Olga Namer"
+    ],
+    "photos": {
+      "Myq Kaplan": "https://thestandnyc.com/images/comedians/_square/MyqKaplan_CreditMindyTucker.jpg",
+      "Leah Lamarr": "https://thestandnyc.com/images/comedians/_square/Leah_Lamarr.jpg",
+      "Dan Ahdoot": "https://thestandnyc.com/images/comedians/_square/Dan_Ahdoot.jpg",
+      "Jimmy Mccullough": "https://thestandnyc.com/images/comedians/_square/jimmymccullough.jpg",
+      "Olga Namer": "https://thestandnyc.com/images/comedians/_square/olganamer.jpg"
+    }
+  },
+  "192661": {
+    "comedians": [
+      "Feraz Shere",
+      "Jerik Angel",
+      "Sekou Ali",
+      "Jimmy Mccullough"
+    ],
+    "photos": {
+      "Feraz Shere": "https://thestandnyc.com/images/comedians/_square/ferazshere.jpg",
+      "Jimmy Mccullough": "https://thestandnyc.com/images/comedians/_square/jimmymccullough.jpg"
+    }
+  },
+  "192662": {
+    "comedians": [
+      "Zach Zimmerman",
+      "Wali Collins",
+      "Gibran Saleem",
+      "Jonah Bowen",
+      "Zeam Studios",
+      "Kyle Wayne",
+      "Isiah Givens"
+    ],
+    "photos": {
+      "Zach Zimmerman": "https://thestandnyc.com/images/comedians/_square/Zach_Zimmerman.jpg",
+      "Wali Collins": "https://www.newyorkcomedyclub.com/img/comedians/wali-collins-bae10a7b-main-image.jpg",
+      "Gibran Saleem": "https://thestandnyc.com/images/comedians/_square/72-og.gif",
+      "Kyle Wayne": "https://www.newyorkcomedyclub.com/img/comedians/Kyle-Wayne-a1d3097d-main-image.jpg"
     }
   }
 }
