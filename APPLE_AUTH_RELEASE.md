@@ -1,6 +1,6 @@
 # Tonight NYC Apple account release gate
 
-Status: web auth deployed and user-verified in Firefox on 2026-08-05; Apple identifiers and production secrets configured; v1.0.2/build 5 is the native release target, with App Store privacy disclosure required before submission.
+Status: v1.0.2/build 5 was submitted to Apple on 2026-08-05 and independently read back as `WAITING_FOR_REVIEW`; web auth is deployed and user-verified in Firefox.
 
 ## Behavior
 
@@ -39,7 +39,7 @@ Production has all required variables; values remain encrypted and out of the re
 
 The existing Upstash `KV_REST_API_URL` and `KV_REST_API_TOKEN` back account records and sync data.
 
-## Acceptance checks before release
+## Remaining post-approval QA
 
 1. Web: real Apple login passed in Firefox; still verify reload, sign-out, and sign-back-in persistence.
 2. Native: use the Face ID Apple sheet and verify its session lands inside the app WebView.
@@ -47,4 +47,6 @@ The existing Upstash `KV_REST_API_URL` and `KV_REST_API_TOKEN` back account reco
 4. Authority/deletion: prove account B cannot read account A, then delete account A in-app and verify its current, previous, and user Redis keys are gone.
 5. Recovery: export the account keyspace, restore it to a disposable store, and verify a synced setup can be read there.
 
-App Store submission remains gated on updating App Privacy from “Data Not Collected” to disclose the optional Apple identifier/email and synced preferences. Optional sign-in still transmits these values off-device and therefore counts as collection under Apple's definition. App Privacy is not exposed by the App Store Connect API, so this disclosure is a manual portal step.
+Jacob published the required App Privacy disclosure for Email Address, User ID, and Product Interaction before submission. App Privacy is not exposed by the App Store Connect API, so this remains a manual portal attestation for future changes.
+
+App Store Connect read-back: version `1.0.2`, build `5`, build state `VALID`, version and review-submission state `WAITING_FOR_REVIEW`, submitted at `2026-08-05T21:23:49.289Z`.
