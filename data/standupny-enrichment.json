@@ -38,13 +38,7 @@
       "Patrick Holbert",
       "The Maze"
     ],
-    "photos": {
-      "Liz Glazer": "https://thestandnyc.com/images/comedians/_square/lizglazer.jpg",
-      "Myq Kaplan": "https://thestandnyc.com/images/comedians/_square/MyqKaplan_CreditMindyTucker.jpg",
-      "Dan Ahdoot": "https://thestandnyc.com/images/comedians/_square/Dan_Ahdoot.jpg",
-      "Erin Maguire": "https://thestandnyc.com/images/comedians/_square/EM-headshot.jpg",
-      "Patrick Holbert": "https://www.newyorkcomedyclub.com/img/comedians/patrick-holbert-e25a0bbf-main-image.jpg"
-    }
+    "photos": {}
   },
   "192658": {
     "comedians": [
@@ -89,9 +83,9 @@
       "Olga Namer"
     ],
     "photos": {
-      "Myq Kaplan": "https://thestandnyc.com/images/comedians/_square/MyqKaplan_CreditMindyTucker.jpg",
+      "Myq Kaplan": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg/330px-Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "Leah Lamarr": "https://thestandnyc.com/images/comedians/_square/Leah_Lamarr.jpg",
-      "Dan Ahdoot": "https://thestandnyc.com/images/comedians/_square/Dan_Ahdoot.jpg",
+      "Dan Ahdoot": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Dan_Ahdoot.jpg/330px-Dan_Ahdoot.jpg",
       "Jimmy Mccullough": "https://thestandnyc.com/images/comedians/_square/jimmymccullough.jpg",
       "Olga Namer": "https://thestandnyc.com/images/comedians/_square/olganamer.jpg"
     }
@@ -119,10 +113,7 @@
       "Isiah Givens"
     ],
     "photos": {
-      "Zach Zimmerman": "https://thestandnyc.com/images/comedians/_square/Zach_Zimmerman.jpg",
-      "Wali Collins": "https://www.newyorkcomedyclub.com/img/comedians/wali-collins-bae10a7b-main-image.jpg",
-      "Gibran Saleem": "https://thestandnyc.com/images/comedians/_square/72-og.gif",
-      "Kyle Wayne": "https://www.newyorkcomedyclub.com/img/comedians/Kyle-Wayne-a1d3097d-main-image.jpg"
+      "Zach Zimmerman": "https://thestandnyc.com/images/comedians/_square/Zach_Zimmerman.jpg"
     }
   }
 }
