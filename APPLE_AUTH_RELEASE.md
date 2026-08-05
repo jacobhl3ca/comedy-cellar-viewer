@@ -1,6 +1,6 @@
 # Tonight NYC Apple account release gate
 
-Status: implemented and tested locally on 2026-08-05; Apple identifiers configured; production secrets and release pending.
+Status: implemented and tested locally on 2026-08-05; Apple identifiers and production secrets configured; web deployment retry and App Store privacy/native release pending.
 
 ## Behavior
 
@@ -21,11 +21,11 @@ App Store Connect API read-back on 2026-08-05 confirms:
 
 Tonight NYC deliberately does not share The Island's Services ID or Apple consent group. Automatic signing must regenerate the affected provisioning profile for the iOS release.
 
-The dedicated primary App ID also requires its own Sign in with Apple private key. Create it in Apple Developer Keys, associate it with primary App ID `com.jacobhl.tonightnyc`, and download its one-time `.p8` file before configuring Vercel.
+Dedicated key `C3VUQ6U34T` is associated with the Tonight NYC primary App ID. Its validated `.p8` is stored owner-only at `~/.secrets/apple-signin/AuthKey_C3VUQ6U34T.p8`.
 
-## Vercel configuration still required
+## Vercel configuration completed
 
-Set these as Production secrets without writing values into the repository:
+Production has all required variables; values remain encrypted and out of the repository:
 
 - `APPLE_SERVICES_ID=com.jacobhl.tonightnyc.web`
 - `APPLE_TEAM_ID`
@@ -35,7 +35,7 @@ Set these as Production secrets without writing values into the repository:
 - `APPLE_APP_BUNDLE_ID=com.jacobhl.tonightnyc`
 - `APP_ORIGIN=https://tonightnyc.com`
 
-The existing Upstash `KV_REST_API_URL` and `KV_REST_API_TOKEN` back account records and sync data. Until Apple and Redis are both configured, `/api/me` reports Apple unavailable and the UI remains inert.
+The existing Upstash `KV_REST_API_URL` and `KV_REST_API_TOKEN` back account records and sync data.
 
 ## Acceptance checks before release
 
@@ -45,4 +45,4 @@ The existing Upstash `KV_REST_API_URL` and `KV_REST_API_TOKEN` back account reco
 4. Authority/deletion: prove account B cannot read account A, then delete account A in-app and verify its current, previous, and user Redis keys are gone.
 5. Recovery: export the account keyspace, restore it to a disposable store, and verify a synced setup can be read there.
 
-App Store submission also requires updating the App Privacy answers from “Data Not Collected” to disclose the optional Apple identifier/email and synced preferences. App Privacy is not exposed by the App Store Connect API, so that one disclosure is a manual portal step.
+App Store submission remains gated on updating App Privacy from “Data Not Collected” to disclose the optional Apple identifier/email and synced preferences. Optional sign-in still transmits these values off-device and therefore counts as collection under Apple's definition. App Privacy is not exposed by the App Store Connect API, so this disclosure is a manual portal step.

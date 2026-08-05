@@ -17,6 +17,13 @@
     { "source": "/comedians", "destination": "/comics", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/api/account", "destination": "/api/account-router?action=account" },
+    { "source": "/api/auth/apple/callback", "destination": "/api/account-router?action=callback" },
+    { "source": "/api/auth/apple/login", "destination": "/api/account-router?action=login" },
+    { "source": "/api/auth/apple/native", "destination": "/api/account-router?action=native" },
+    { "source": "/api/auth/logout", "destination": "/api/account-router?action=logout" },
+    { "source": "/api/me", "destination": "/api/account-router?action=me" },
+    { "source": "/api/prefs", "destination": "/api/account-router?action=prefs" },
     { "source": "/api/lineup", "destination": "/api/lineup" },
     { "source": "/tonight", "destination": "/index.html" },
     { "source": "/privacy", "destination": "/privacy.html" },

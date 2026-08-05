@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const { _test } = require('../server/account-auth');
 const auth = require('../server/account-auth');
+const accountRouter = require('../api/account-router');
 
 function request(method, headers = {}) {
   return { method, headers, query: {}, [Symbol.asyncIterator]: async function* () {} };
@@ -123,4 +124,13 @@ test('account identity comes only from a valid signed cookie', async () => {
     if (priorSecret === undefined) delete process.env.SESSION_SECRET;
     else process.env.SESSION_SECRET = priorSecret;
   }
+});
+
+test('one account function dispatches every public account route', async () => {
+  assert.deepEqual(accountRouter._test.actions, [
+    'account', 'callback', 'login', 'logout', 'me', 'native', 'prefs',
+  ]);
+  const missing = response();
+  await accountRouter(request('GET'), missing);
+  assert.equal(missing.statusCode, 404);
 });
