@@ -156,4 +156,4 @@ To capture:
 
 - **Why is the app loading a website?** Capacitor server.url points to https://tonightnyc.com so users always get the latest data and bug fixes without app store updates. The fallback bundle inside the .ipa renders the same UI offline.
 - **Where is the privacy policy?** /privacy on tonightnyc.com (also linked in About section in-app)
-- **No email collection.** All notifications are local — scheduled on-device via Capacitor LocalNotifications, fire 1 hour before any show with a favorited comedian. No server, no account, no opt-in beyond iOS's standard notification permission.
+- **Accounts are optional.** Sign in with Apple stores the Apple identifier, provided email/relay address, and synced favorites/settings. Settings → Account includes in-app deletion. Notifications remain local and do not use push tokens.

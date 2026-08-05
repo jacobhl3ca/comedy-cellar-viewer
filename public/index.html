@@ -314,6 +314,25 @@
       </div>
 
       <div class="modal-sections">
+        <div class="modal-section account-section">
+          <h3>Account</h3>
+          <div id="account-signed-out" hidden>
+            <button class="account-apple-btn" id="account-apple-signin" type="button">
+              <svg viewBox="0 0 17 17" fill="currentColor" aria-hidden="true"><path d="M13.79 9.06c-.02-1.86 1.52-2.75 1.59-2.79-.87-1.27-2.22-1.44-2.7-1.46-1.15-.12-2.24.68-2.82.68-.58 0-1.48-.66-2.43-.64-1.25.02-2.4.73-3.04 1.85-1.3 2.25-.33 5.58.93 7.41.62.9 1.35 1.9 2.31 1.86.93-.04 1.28-.6 2.4-.6 1.12 0 1.43.6 2.41.58 1-.02 1.63-.91 2.24-1.81.71-1.04 1-2.05 1.01-2.1-.02-.01-1.94-.74-1.96-2.95l.01-.34zM11.9 3.38c.51-.62.86-1.48.76-2.34-.74.03-1.64.49-2.17 1.11-.47.55-.89 1.43-.78 2.27.83.07 1.67-.42 2.19-1.04z"/></svg>
+              Sign in with Apple
+            </button>
+          </div>
+          <div id="account-signed-in" hidden>
+            <p class="account-signed-in-copy">Signed in as <strong id="account-email"></strong>.</p>
+            <div class="account-actions">
+              <button class="btn-reset" id="account-signout" type="button">Sign out</button>
+              <button class="btn-reset account-delete-btn" id="account-delete" type="button">Delete account</button>
+            </div>
+          </div>
+          <p class="settings-desc account-status" id="account-status">Checking account…</p>
+          <p class="settings-desc">Optional. Tonight NYC still works without an account; signing in syncs My Comedians and app settings across your devices.</p>
+        </div>
+
         <div class="modal-section">
           <h3>Brand color</h3>
           <p class="settings-desc">Drag anywhere on the bar, or tap a preset dot.</p>

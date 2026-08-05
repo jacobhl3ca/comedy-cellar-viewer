@@ -28,24 +28,27 @@
   <div class="wrap">
     <a href="/" class="back">← Tonight NYC</a>
     <h1>Privacy Policy</h1>
-    <div class="updated">Last updated: April 24, 2026</div>
+    <div class="updated">Last updated: August 5, 2026</div>
 
     <p>Tonight NYC ("the app") is operated by Jacob HL as a free utility for browsing NYC comedy lineups. This page explains what data the app does and doesn't collect.</p>
 
-    <h2>What we don't collect</h2>
+    <h2>Using Tonight NYC without an account</h2>
     <ul>
       <li>No account, email, or login is required to use the app.</li>
-      <li>We do not collect, store, or transmit your name, contact info, device identifiers, location, or browsing history.</li>
       <li>We do not use advertising SDKs or cross-site tracking.</li>
-      <li>We do not sell, share, or transfer any user data to third parties.</li>
+      <li>We do not sell personal information or share it for targeted advertising.</li>
     </ul>
 
     <h2>What stays on your device</h2>
     <ul>
-      <li><strong>Favorites and ratings:</strong> the comedians you mark as favorites or skip are stored in your browser's localStorage (web) or the app's local storage (iOS). This data never leaves your device unless you choose to share a preferences URL.</li>
+      <li><strong>Favorites, ratings, and settings:</strong> these are stored in your browser's localStorage (web) or the app's local storage (iOS). They leave your device only if you sign in to sync them or choose to share a preferences URL.</li>
       <li><strong>Local notifications:</strong> if you enable reminders for favorited sets, notifications are scheduled and delivered entirely on your device by iOS. No server is involved. No push tokens are sent anywhere.</li>
       <li><strong>Theme preference:</strong> your light/dark mode choice is stored locally.</li>
     </ul>
+
+    <h2>Optional account and sync</h2>
+    <p>If you choose Sign in with Apple, Apple provides a stable account identifier and may provide your email address or a private relay address. We store that identifier, the provided email address, basic account timestamps, and your synced favorites, ratings, and app settings. This data is used only to keep your setup consistent across devices.</p>
+    <p>An encrypted, HttpOnly session cookie keeps you signed in. Synced data is hosted by Vercel and Upstash, our infrastructure providers. You can sign out at any time. Settings → Account → Delete account permanently removes the account record and synced data from our servers; the local copy on your current device remains unless you reset it separately.</p>
 
     <h2>Analytics</h2>
     <p>The tonightnyc.com website uses Vercel Web Analytics and Cloudflare Web Analytics, both privacy-first services, to count aggregate page views. Neither sets cookies nor collects personally identifiable information, and individual users cannot be identified from this data. The iOS app runs no analytics at all.</p>
