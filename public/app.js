@@ -5869,8 +5869,6 @@ async function refreshShowsInPlace() {
   const SETTINGS_KEY = 'tonight-nyc-settings';
   const SYNC_META_KEY = 'tonight-nyc-sync-meta';
   const SYNC_BACKUP_KEY = 'tonight-nyc-sync-backup';
-  const WEB_CLIENT_ID = 'com.jacobhl.web.signin';
-  const CALLBACK_URL = 'https://tonightnyc.com/api/auth/apple/callback';
   let signedIn = false;
   let pushTimer = null;
   let lastPull = 0;
@@ -5993,12 +5991,7 @@ async function refreshShowsInPlace() {
     signInBtn.disabled = true;
     try {
       const nonce = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`;
-      const result = await plugin.authorize({
-        clientId: WEB_CLIENT_ID,
-        redirectURI: CALLBACK_URL,
-        scopes: 'name email',
-        nonce,
-      });
+      const result = await plugin.authorize({ nonce });
       const response = await fetch('/api/auth/apple/native', {
         method: 'POST',
         credentials: 'include',

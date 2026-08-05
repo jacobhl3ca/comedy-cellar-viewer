@@ -1,6 +1,6 @@
 # Tonight NYC Apple account release gate
 
-Status: implemented and tested locally on 2026-08-05; not configured or released.
+Status: implemented and tested locally on 2026-08-05; Apple identifiers configured; production secrets and release pending.
 
 ## Behavior
 
@@ -11,22 +11,23 @@ Status: implemented and tested locally on 2026-08-05; not configured or released
 - Each update retains the preceding server copy for 30 days. A local backup is also written before a remote setup replaces this device's setup.
 - Settings provides sign-out and permanent server-side account deletion.
 
-## Apple setup still required
+## Apple setup completed
 
-The registered bundle `com.jacobhl.tonightnyc` currently has only In-App Purchase enabled. In Certificates, Identifiers & Profiles:
+App Store Connect API read-back on 2026-08-05 confirms:
 
-1. Open the Tonight NYC App ID.
-2. Enable Sign in with Apple.
-3. Configure it consistently with the existing shared Services ID `com.jacobhl.web.signin` and its primary App ID, so web and native tokens resolve to the same Apple user.
-4. Save. Automatic signing must then regenerate the affected provisioning profile.
+- App ID `com.jacobhl.tonightnyc` is enabled for Sign in with Apple as a primary App ID.
+- Dedicated Services ID `com.jacobhl.tonightnyc.web` exists with Sign in with Apple enabled.
+- Jacob configured domain `tonightnyc.com` and return URL `https://tonightnyc.com/api/auth/apple/callback` in the Apple portal.
 
-The Services ID already needs `tonightnyc.com` and `https://tonightnyc.com/api/auth/apple/callback` in its website configuration. Confirm those entries before release.
+Tonight NYC deliberately does not share The Island's Services ID or Apple consent group. Automatic signing must regenerate the affected provisioning profile for the iOS release.
+
+The dedicated primary App ID also requires its own Sign in with Apple private key. Create it in Apple Developer Keys, associate it with primary App ID `com.jacobhl.tonightnyc`, and download its one-time `.p8` file before configuring Vercel.
 
 ## Vercel configuration still required
 
 Set these as Production secrets without writing values into the repository:
 
-- `APPLE_SERVICES_ID`
+- `APPLE_SERVICES_ID=com.jacobhl.tonightnyc.web`
 - `APPLE_TEAM_ID`
 - `APPLE_KEY_ID`
 - `APPLE_PRIVATE_KEY`
