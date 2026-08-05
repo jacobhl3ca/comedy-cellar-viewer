@@ -1,6 +1,6 @@
 # Tonight NYC — App Store Submission Pack
 
-Everything you need to copy-paste into App Store Connect for the v1.0 submission.
+Current metadata and release notes for App Store Connect.
 
 ## Identity
 - **App name (max 30 chars):** `Tonight NYC`
@@ -27,7 +27,7 @@ WHAT YOU CAN DO:
 • Share your filtered lineup with friends — copy a link with all your picks
 
 NO ACCOUNT REQUIRED.
-Your favorites, skips, and notifications stay on your device. No tracking, no signup.
+Keep favorites and settings only on your device, or optionally use Sign in with Apple to sync them across your devices. No advertising or cross-app tracking.
 
 VENUES TRACKED:
 Comedy Cellar (MacDougal, Village Underground, Fat Black Pussycat) · The Stand · New York Comedy Club · Gotham Comedy Club · Carolines · Madison Square Garden · Beacon Theatre · Town Hall · Apollo · Gramercy · Sony Hall · Strand Book Store · Radio City · and more via Ticketmaster + SeatGeek.
@@ -45,9 +45,9 @@ comedy,nyc,standup,comedy cellar,the stand,tickets,lineup,shows,manhattan,bookin
 Every NYC comedy lineup in one place. Filter by your favorite comics, hide skips, get a 1-hour-before reminder for their shows. Updated live from 30+ venues.
 ```
 
-## What's New in This Version (v1.0)
+## What's New in This Version (v1.0.2)
 ```
-First release.
+Sign in with Apple to sync your comedians and settings across devices, plus mobile layout and reliability improvements.
 ```
 
 ## Support URL
@@ -66,24 +66,20 @@ First release.
 
 ## Privacy Nutrition Labels (App Store Connect → App Privacy)
 
-### Data NOT collected
-- Contact info, email, financial info, location, search history, browsing history,
-  user content, sensitive info, health info, contacts.
-
 ### Data collected
-**Identifiers — Device ID** (Vercel Analytics + Speed Insights, no IDFA)
-- Used for: Analytics
-- Linked to user: No
+**Contact Info — Email Address** (only when provided by Sign in with Apple)
+- Used for: App Functionality
+- Linked to user: Yes
 - Used for tracking: No
 
-**Usage Data — Product Interaction** (Vercel Web Analytics page hits)
-- Used for: Analytics
-- Linked to user: No
+**Identifiers — User ID** (Apple account identifier)
+- Used for: App Functionality
+- Linked to user: Yes
 - Used for tracking: No
 
-**Diagnostics — Performance Data** (Vercel Speed Insights)
-- Used for: App Functionality, Analytics
-- Linked to user: No
+**Usage Data — Product Interaction** (synced favorites and settings)
+- Used for: App Functionality, Product Personalization
+- Linked to user: Yes
 - Used for tracking: No
 
 ### Tracking

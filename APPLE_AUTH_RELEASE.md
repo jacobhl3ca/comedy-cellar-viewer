@@ -1,6 +1,6 @@
 # Tonight NYC Apple account release gate
 
-Status: web auth deployed and user-verified in Firefox on 2026-08-05; Apple identifiers and production secrets configured; App Store privacy/native release pending.
+Status: web auth deployed and user-verified in Firefox on 2026-08-05; Apple identifiers and production secrets configured; v1.0.2/build 5 is the native release target, with App Store privacy disclosure required before submission.
 
 ## Behavior
 
