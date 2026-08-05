@@ -1,6 +1,6 @@
 # Tonight NYC Apple account release gate
 
-Status: implemented and tested locally on 2026-08-05; Apple identifiers and production secrets configured; web deployment retry and App Store privacy/native release pending.
+Status: web auth deployed and user-verified in Firefox on 2026-08-05; Apple identifiers and production secrets configured; App Store privacy/native release pending.
 
 ## Behavior
 
@@ -23,6 +23,8 @@ Tonight NYC deliberately does not share The Island's Services ID or Apple consen
 
 Dedicated key `C3VUQ6U34T` is associated with the Tonight NYC primary App ID. Its validated `.p8` is stored owner-only at `~/.secrets/apple-signin/AuthKey_C3VUQ6U34T.p8`.
 
+The released App Store shell predates the native Apple-auth bridge but loads the live web bundle. Until a bridge-enabled build is actually available, the web bundle hides account controls inside that old shell instead of displaying an unavailable-update prompt.
+
 ## Vercel configuration completed
 
 Production has all required variables; values remain encrypted and out of the repository:
@@ -39,7 +41,7 @@ The existing Upstash `KV_REST_API_URL` and `KV_REST_API_TOKEN` back account reco
 
 ## Acceptance checks before release
 
-1. Web: complete a real Apple login, reload, sign out, and sign back in.
+1. Web: real Apple login passed in Firefox; still verify reload, sign-out, and sign-back-in persistence.
 2. Native: use the Face ID Apple sheet and verify its session lands inside the app WebView.
 3. Sync: change a favorite and a setting on device A; verify device B receives both on resume.
 4. Authority/deletion: prove account B cannot read account A, then delete account A in-app and verify its current, previous, and user Redis keys are gone.

@@ -15,6 +15,7 @@
   const signInBtn = document.getElementById('account-apple-signin');
   const signOutBtn = document.getElementById('account-signout');
   const deleteBtn = document.getElementById('account-delete');
+  const accountSection = document.querySelector('.account-section');
 
   function readJson(key, fallback){
     try { return JSON.parse(localStorage.getItem(key)) || fallback; }
@@ -120,7 +121,7 @@
     }
     const plugin = nativeBridge();
     if (!plugin) {
-      alert('Update Tonight NYC from the App Store to use Sign in with Apple.');
+      if (accountSection) accountSection.hidden = true;
       return;
     }
     signInBtn.disabled = true;
@@ -172,6 +173,13 @@
   });
 
   (async () => {
+    // The released native shell predates the Apple-auth bridge but loads the
+    // current web bundle. Keep account controls out of that version until an
+    // App Store build containing the bridge is actually available.
+    if (window.Capacitor?.isNativePlatform?.() && !nativeBridge()) {
+      if (accountSection) accountSection.hidden = true;
+      return;
+    }
     const error = new URLSearchParams(window.location.search).get('auth_error');
     if (error) setStatus('Apple sign-in did not finish. Please try again.', true);
     try {
