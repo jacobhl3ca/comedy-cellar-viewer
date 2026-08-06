@@ -7,7 +7,7 @@
       "Thash Mose"
     ],
     "photos": {
-      "Patton Oswalt": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Patton_Oswalt_at_MCM_Comic_Con_London%2C_May_2025_01.jpg/330px-Patton_Oswalt_at_MCM_Comic_Con_London%2C_May_2025_01.jpg",
+      "Patton Oswalt": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Patton_Oswalt_at_MCM_Comic_Con_London%2C_May_2025_01.jpg/330px-Patton_Oswalt_at_MCM_Comic_Con_London%2C_May_2025_01.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "Michael Lenoci": "https://www.newyorkcomedyclub.com/img/imagetest/lenoci-headshot-16x9-jpg-5ce40e5b-lenoci-headshot-16x9-jpg.jpg",
       "Skyler Higley": "https://thestandnyc.com/images/comedians/_square/skyler-higley-c9c30af9-main-image.jpg",
       "Thash Mose": "https://thestandnyc.com/images/comedians/_square/Thash%2BMose%2BComic%2BHeadshot.jpg"
@@ -23,10 +23,12 @@
   "190537": {
     "comedians": [
       "Hiss-Terrical Caturday",
-      "Michael Winslow"
+      "Michael Winslow",
+      "Jeff Garlin"
     ],
     "photos": {
-      "Michael Winslow": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Michael_Winslow_Photo_Op_GalaxyCon_Richmond_2026.jpg/330px-Michael_Winslow_Photo_Op_GalaxyCon_Richmond_2026.jpg"
+      "Michael Winslow": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Michael_Winslow_Photo_Op_GalaxyCon_Richmond_2026.jpg/330px-Michael_Winslow_Photo_Op_GalaxyCon_Richmond_2026.jpg",
+      "Jeff Garlin": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Jeff_Garlin_2024_Curb_Your_Enthusiasm_premiere_%28cropped%29.png/330px-Jeff_Garlin_2024_Curb_Your_Enthusiasm_premiere_%28cropped%29.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     }
   },
   "190622": {
@@ -38,7 +40,13 @@
       "Patrick Holbert",
       "The Maze"
     ],
-    "photos": {}
+    "photos": {
+      "Liz Glazer": "https://thestandnyc.com/images/comedians/_square/lizglazer.jpg",
+      "Myq Kaplan": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg/330px-Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "Dan Ahdoot": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Dan_Ahdoot.jpg/330px-Dan_Ahdoot.jpg",
+      "Erin Maguire": "https://thestandnyc.com/images/comedians/_square/EM-headshot.jpg",
+      "Patrick Holbert": "https://www.newyorkcomedyclub.com/img/comedians/patrick-holbert-e25a0bbf-main-image.jpg"
+    }
   },
   "192658": {
     "comedians": [
@@ -113,7 +121,10 @@
       "Isiah Givens"
     ],
     "photos": {
-      "Zach Zimmerman": "https://thestandnyc.com/images/comedians/_square/Zach_Zimmerman.jpg"
+      "Zach Zimmerman": "https://thestandnyc.com/images/comedians/_square/Zach_Zimmerman.jpg",
+      "Wali Collins": "https://www.newyorkcomedyclub.com/img/comedians/wali-collins-bae10a7b-main-image.jpg",
+      "Gibran Saleem": "https://thestandnyc.com/images/comedians/_square/72-og.gif",
+      "Kyle Wayne": "https://www.newyorkcomedyclub.com/img/comedians/Kyle-Wayne-a1d3097d-main-image.jpg"
     }
   }
 }
