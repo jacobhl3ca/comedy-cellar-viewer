@@ -1165,6 +1165,13 @@ html.native-app .app-store-badge-link { display: none; }
 .account-google-btn:hover { opacity: .88; }
 .account-google-btn:disabled { opacity: .55; cursor: wait; }
 .account-google-btn svg { width: 17px; height: 17px; }
+.account-email-form { margin-top: 8px; }
+.account-email-form .modal-search { width: 100%; box-sizing: border-box; margin-bottom: 8px; }
+.account-email-form .btn-reset { width: 100%; min-height: 40px; }
+.account-email-change {
+  width: 100%; margin-top: 8px; border: 0; background: transparent; color: var(--text-dim);
+  font: inherit; font-size: 12px; cursor: pointer; text-decoration: underline;
+}
 .account-signed-in-copy { margin: 0 0 10px; color: var(--text); font-size: 13px; }
 .account-link-actions { display: flex; gap: 8px; margin-bottom: 8px; }
 .account-link-actions button { flex: 1; }

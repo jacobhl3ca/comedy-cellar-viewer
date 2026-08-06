@@ -12,6 +12,8 @@ const SESSION_TTL = 60 * 60 * 24 * 90;
 const STATE_TTL = 60 * 10;
 const PREVIOUS_TTL = 60 * 60 * 24 * 30;
 const MAX_BODY = 64 * 1024;
+const LOGIN_CODE_TTL_MS = 10 * 60 * 1000;
+const LOGIN_CODE_MAX_ATTEMPTS = 5;
 const SETTINGS_KEYS = new Set([
   'accent', 'defaultTab', 'scheduleDay', 'neighborhood', 'soldOutMode',
   'timeFilter', 'sort', 'bioMode', 'ratingsMode', 'priceMode',
@@ -41,6 +43,10 @@ function appleConfigured() {
 
 function googleConfigured() {
   return Boolean(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET && process.env.SESSION_SECRET);
+}
+
+function emailConfigured() {
+  return Boolean(process.env.RESEND_API_KEY && process.env.SESSION_SECRET && getStore());
 }
 
 function json(res, status, body, extraHeaders = {}) {
@@ -254,6 +260,57 @@ function privateIndex(kind, value) {
 
 function sha256Hex(value) {
   return crypto.createHash('sha256').update(value).digest('hex');
+}
+
+function normalizeEmail(value) {
+  const email = typeof value === 'string' ? value.trim().toLowerCase() : '';
+  if (!email || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return null;
+  return email;
+}
+
+function clientIp(req) {
+  return String(req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || 'unknown')
+    .split(',')[0].trim().slice(0, 64) || 'unknown';
+}
+
+async function rateLimited(store, key, limit, ttlSeconds = 60 * 60) {
+  const count = await store.incr(key);
+  if (count === 1) await store.expire(key, ttlSeconds);
+  return count > limit;
+}
+
+function loginCodeKey(email) {
+  return `tn:login-code:${privateIndex('login-code-email', email)}`;
+}
+
+function timingSafeHashMatch(code, expectedHash) {
+  const actual = Buffer.from(sha256Hex(code), 'hex');
+  const expected = Buffer.from(String(expectedHash || ''), 'hex');
+  return actual.length === expected.length && crypto.timingSafeEqual(actual, expected);
+}
+
+async function sendLoginCodeEmail(email, code) {
+  try {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: process.env.EMAIL_FROM || 'Tonight NYC <login@tonightnyc.com>',
+        to: [email],
+        subject: `${code} is your Tonight NYC sign-in code`,
+        text: `Your Tonight NYC sign-in code is ${code}\n\nType it back into the app. It works once and expires in 10 minutes.\n\nIf you didn't ask to sign in, ignore this email. We will never ask you for this code by phone, text or reply.`,
+        html: `<!doctype html><html><body style="margin:0;background:#111;padding:28px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#f8f8f8"><div style="max-width:520px;margin:0 auto;background:#1b1b1b;border:1px solid #383838;border-radius:14px;overflow:hidden"><div style="height:5px;background:#e63636"></div><div style="padding:26px 28px 30px"><p style="margin:0 0 14px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#e63636;font-weight:700">Tonight NYC</p><h1 style="margin:0 0 14px;font-size:22px">Your sign-in code</h1><p style="margin:0 0 18px;font-size:15px;line-height:1.6">Type this back into the app:</p><p style="margin:0 0 18px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:38px;font-weight:700;letter-spacing:.18em">${code}</p><p style="margin:0 0 12px;font-size:14px;line-height:1.6;color:#aaa">It works once and expires in 10 minutes.</p><p style="margin:0;font-size:14px;line-height:1.6;color:#aaa">If you didn't ask to sign in, ignore this email. We'll never ask you for this code by phone, text or reply.</p></div></div></body></html>`,
+      }),
+    });
+    if (!response.ok) console.error('[login-code] Resend rejected', response.status);
+    return response.ok;
+  } catch {
+    console.error('[login-code] delivery failed');
+    return false;
+  }
 }
 
 function normalizeStored(value) {
@@ -621,6 +678,107 @@ async function handleGoogleNative(req, res) {
   });
 }
 
+// Two-step email sign-in. Codes are CSPRNG-generated, stored only as SHA-256,
+// expire after ten minutes, burn after five misses, and are claimed atomically.
+// Request responses never reveal whether an account already exists.
+async function handleEmailRequest(req, res) {
+  if (req.method !== 'POST') return json(res, 405, { error: 'method_not_allowed' });
+  if (!mutationAllowed(req)) return json(res, 403, { error: 'cross_site' });
+  const store = getStore();
+  if (!emailConfigured() || !store) return json(res, 503, { error: 'not_configured' });
+  let body;
+  try { body = await jsonBody(req); } catch { return json(res, 400, { error: 'bad_request' }); }
+  const email = normalizeEmail(body.email);
+  if (!email) return json(res, 400, { error: 'bad_email' });
+  const ipKey = privateIndex('login-code-ip', clientIp(req));
+  const emailKey = privateIndex('login-code-rate-email', email);
+  if (await rateLimited(store, `tn:rate:login-email:${emailKey}`, 5) ||
+      await rateLimited(store, `tn:rate:login-ip:${ipKey}`, 10)) {
+    return json(res, 429, { error: 'throttled' });
+  }
+
+  const code = String(crypto.randomInt(0, 1_000_000)).padStart(6, '0');
+  const record = {
+    id: b64url(crypto.randomBytes(18)), email, codeHash: sha256Hex(code),
+    expiresAt: Date.now() + LOGIN_CODE_TTL_MS, attempts: 0,
+  };
+  await store.set(loginCodeKey(email), record, { px: LOGIN_CODE_TTL_MS });
+  const delivered = await sendLoginCodeEmail(email, code);
+  if (!delivered) await store.eval(`
+    local raw = redis.call('GET', KEYS[1])
+    if not raw then return 0 end
+    local item = cjson.decode(raw)
+    if item.id ~= ARGV[1] then return 0 end
+    redis.call('DEL', KEYS[1])
+    return 1
+  `, [loginCodeKey(email)], [record.id]);
+  return json(res, 200, { ok: true });
+}
+
+async function handleEmailVerify(req, res) {
+  if (req.method !== 'POST') return json(res, 405, { error: 'method_not_allowed' });
+  if (!mutationAllowed(req)) return json(res, 403, { error: 'cross_site' });
+  const store = getStore();
+  if (!emailConfigured() || !store) return json(res, 503, { error: 'not_configured' });
+  let body;
+  try { body = await jsonBody(req); } catch { return json(res, 400, { error: 'bad_request' }); }
+  const email = normalizeEmail(body.email);
+  const code = String(body.code || '').replace(/\D/g, '');
+  const ipKey = privateIndex('login-code-verify-ip', clientIp(req));
+  if (await rateLimited(store, `tn:rate:login-verify:${ipKey}`, 20)) {
+    return json(res, 429, { error: 'throttled' });
+  }
+  if (!email || code.length !== 6) return json(res, 401, { error: 'bad_code' });
+
+  const key = loginCodeKey(email);
+  const record = normalizeStored(await store.get(key));
+  if (!record || record.expiresAt < Date.now() || record.attempts >= LOGIN_CODE_MAX_ATTEMPTS) {
+    if (record) await store.del(key);
+    return json(res, 401, { error: 'bad_code' });
+  }
+  if (!timingSafeHashMatch(code, record.codeHash)) {
+    await store.eval(`
+      local raw = redis.call('GET', KEYS[1])
+      if not raw then return 0 end
+      local item = cjson.decode(raw)
+      if item.id ~= ARGV[1] then return 0 end
+      item.attempts = (item.attempts or 0) + 1
+      if item.attempts >= tonumber(ARGV[2]) then redis.call('DEL', KEYS[1])
+      else redis.call('SET', KEYS[1], cjson.encode(item), 'KEEPTTL') end
+      return item.attempts
+    `, [key], [record.id, String(LOGIN_CODE_MAX_ATTEMPTS)]);
+    return json(res, 401, { error: 'bad_code' });
+  }
+  const claimed = await store.eval(`
+    local raw = redis.call('GET', KEYS[1])
+    if not raw then return 0 end
+    local item = cjson.decode(raw)
+    if item.id ~= ARGV[1] or item.codeHash ~= ARGV[2] then return 0 end
+    redis.call('DEL', KEYS[1])
+    return 1
+  `, [key], [record.id, record.codeHash]);
+  if (Number(claimed) !== 1) return json(res, 401, { error: 'bad_code' });
+
+  let linkUid = null;
+  const current = readSession(req);
+  if (current) linkUid = (await resolveAccount(store, {
+    sub: current.sub, email: current.email, emailVerified: true,
+  })).uid;
+  const identity = {
+    sub: `email:${privateIndex('email-identity', email)}`,
+    email,
+    emailVerified: true,
+  };
+  let account;
+  try { account = await resolveAccount(store, identity, linkUid); }
+  catch { return json(res, 409, { error: 'identity_already_linked' }); }
+  const session = makeSession({
+    sub: identity.sub, uid: account.uid, email,
+    exp: Math.floor(Date.now() / 1000) + SESSION_TTL,
+  });
+  return json(res, 200, { ok: true }, { 'Set-Cookie': sessionCookie(session, SESSION_TTL) });
+}
+
 async function handleLogout(req, res) {
   if (req.method !== 'POST') return json(res, 405, { error: 'method_not_allowed' });
   if (!mutationAllowed(req)) return json(res, 403, { error: 'cross_site' });
@@ -641,7 +799,11 @@ async function handleMe(req, res) {
     uid: account?.uid || session?.uid || (session ? uidForSub(session.sub) : null),
     provider: session?.sub?.split(':')[0] || null,
     linkedProviders: account?.linkedProviders || [],
-    providers: { apple: appleConfigured() && Boolean(store), google: googleConfigured() && Boolean(store) },
+    providers: {
+      apple: appleConfigured() && Boolean(store),
+      google: googleConfigured() && Boolean(store),
+      email: emailConfigured() && Boolean(store),
+    },
     store: { sync: Boolean(store) },
   };
   if (session && store && account) await touchUser(store, session, account).catch(() => {});
@@ -704,9 +866,14 @@ module.exports = {
   handleGoogleCallback,
   handleGoogleLogin,
   handleGoogleNative,
+  handleEmailRequest,
+  handleEmailVerify,
   handleLogout,
   handleMe,
   handleNative,
   handlePrefs,
-  _test: { cleanSyncPayload, makeSignedToken, readSignedToken, safeReturnTo },
+  _test: {
+    cleanSyncPayload, makeSignedToken, readSignedToken, safeReturnTo,
+    normalizeEmail, timingSafeHashMatch,
+  },
 };

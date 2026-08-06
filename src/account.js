@@ -14,6 +14,14 @@
   const emailOut = document.getElementById('account-email');
   const signInBtn = document.getElementById('account-apple-signin');
   const googleBtn = document.getElementById('account-google-signin');
+  const emailForm = document.getElementById('account-email-form');
+  const emailRequestRow = document.getElementById('account-email-request-row');
+  const emailCodeRow = document.getElementById('account-email-code-row');
+  const emailInput = document.getElementById('account-email-input');
+  const emailCode = document.getElementById('account-email-code');
+  const emailSendBtn = document.getElementById('account-email-send');
+  const emailVerifyBtn = document.getElementById('account-email-verify');
+  const emailChangeBtn = document.getElementById('account-email-change');
   const linkActions = document.getElementById('account-link-actions');
   const linkAppleBtn = document.getElementById('account-link-apple');
   const linkGoogleBtn = document.getElementById('account-link-google');
@@ -53,19 +61,21 @@
     signedIn = Boolean(auth?.signedIn);
     const appleAvailable = auth?.providers?.apple !== false && (!isNative() || !!nativeAppleBridge());
     const googleAvailable = auth?.providers?.google === true && (!isNative() || !!nativeGoogleBridge());
+    const emailAvailable = auth?.providers?.email === true;
     const linked = Array.isArray(auth?.linkedProviders) && auth.linkedProviders.length
       ? auth.linkedProviders
       : auth?.provider ? [auth.provider] : [];
     if (signInBtn) signInBtn.hidden = !appleAvailable;
     if (googleBtn) googleBtn.hidden = !googleAvailable;
-    if (signedOut) signedOut.hidden = signedIn || (!appleAvailable && !googleAvailable);
+    if (signedOut) signedOut.hidden = signedIn || (!appleAvailable && !googleAvailable && !emailAvailable);
     if (signedInBox) signedInBox.hidden = !signedIn;
+    if (emailForm) emailForm.hidden = !emailAvailable || (signedIn && linked.includes('email'));
     if (emailOut) emailOut.textContent = auth?.email || 'your account';
     if (linkAppleBtn) linkAppleBtn.hidden = !signedIn || !appleAvailable || linked.includes('apple');
     if (linkGoogleBtn) linkGoogleBtn.hidden = !signedIn || !googleAvailable || linked.includes('google');
     if (linkActions) linkActions.hidden = linkAppleBtn?.hidden !== false && linkGoogleBtn?.hidden !== false;
     if (signedIn) setStatus('Synced automatically.');
-    else if (!appleAvailable && !googleAvailable) setStatus('Account sync is not configured yet.');
+    else if (!appleAvailable && !googleAvailable && !emailAvailable) setStatus('Account sync is not configured yet.');
     else setStatus('Sign in to sync your comedians and settings across devices.');
   }
 
@@ -236,6 +246,37 @@
     }
   }
 
+  async function emailCodeStep(event){
+    event.preventDefault();
+    const verifying = emailCodeRow?.hidden === false;
+    const button = verifying ? emailVerifyBtn : emailSendBtn;
+    button && (button.disabled = true);
+    try {
+      const response = await fetch(verifying ? '/api/auth/email/verify' : '/api/auth/email/request', {
+        method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: emailInput?.value || '', code: verifying ? emailCode?.value || '' : undefined }),
+      });
+      if (!response.ok) {
+        if (response.status === 429) throw new Error('Too many tries. Wait a little and try again.');
+        if (verifying && response.status === 401) throw new Error('That code is wrong or expired.');
+        throw new Error(verifying ? 'Could not verify that code.' : 'Could not send a code.');
+      }
+      if (verifying) {
+        window.location.reload();
+        return;
+      }
+      if (emailRequestRow) emailRequestRow.hidden = true;
+      if (emailCodeRow) emailCodeRow.hidden = false;
+      emailInput && (emailInput.readOnly = true);
+      emailCode?.focus();
+      setStatus('Check your email for a six-digit code.');
+    } catch (caught) {
+      setStatus(caught?.message || 'Email sign-in failed. Please try again.', true);
+    } finally {
+      button && (button.disabled = false);
+    }
+  }
+
   async function signOut(){
     const response = await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
     if (response.ok) window.location.reload();
@@ -253,6 +294,13 @@
 
   signInBtn?.addEventListener('click', () => signIn(false));
   googleBtn?.addEventListener('click', () => signInGoogle(false));
+  emailForm?.addEventListener('submit', emailCodeStep);
+  emailChangeBtn?.addEventListener('click', () => {
+    if (emailRequestRow) emailRequestRow.hidden = false;
+    if (emailCodeRow) emailCodeRow.hidden = true;
+    if (emailInput) { emailInput.readOnly = false; emailInput.focus(); }
+    if (emailCode) emailCode.value = '';
+  });
   linkAppleBtn?.addEventListener('click', () => signIn(true));
   linkGoogleBtn?.addEventListener('click', () => signInGoogle(true));
   signOutBtn?.addEventListener('click', signOut);
@@ -267,10 +315,6 @@
     // The released native shell predates the Apple-auth bridge but loads the
     // current web bundle. Keep account controls out of that version until an
     // App Store build containing the bridge is actually available.
-    if (window.Capacitor?.isNativePlatform?.() && !nativeAppleBridge() && !nativeGoogleBridge()) {
-      if (accountSection) accountSection.hidden = true;
-      return;
-    }
     const error = new URLSearchParams(window.location.search).get('auth_error');
     if (error) setStatus('Apple sign-in did not finish. Please try again.', true);
     try {
@@ -280,7 +324,7 @@
       renderAuth(auth);
       if (auth.signedIn) await pullRemote();
     } catch {
-      renderAuth({ signedIn: false, providers: { apple: false, google: false } });
+      renderAuth({ signedIn: false, providers: { apple: false, google: false, email: false } });
     }
   })();
 })();

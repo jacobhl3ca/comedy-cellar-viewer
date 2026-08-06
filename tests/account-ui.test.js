@@ -16,7 +16,7 @@ function element() {
   };
 }
 
-test('released native shell hides unavailable account controls without requesting an update', async () => {
+test('released native shell keeps bridge-free email sign-in available', async () => {
   const accountSection = element();
   let fetchCount = 0;
   const context = {
@@ -25,7 +25,10 @@ test('released native shell hides unavailable account controls without requestin
     clearTimeout,
     crypto: { randomUUID: () => 'test-nonce' },
     localStorage: { getItem: () => null, setItem() {} },
-    fetch: async () => { fetchCount += 1; throw new Error('unexpected fetch'); },
+    fetch: async () => {
+      fetchCount += 1;
+      return { ok: true, json: async () => ({ signedIn: false, providers: { apple: true, google: true, email: true } }) };
+    },
     document: {
       visibilityState: 'visible',
       getElementById: () => element(),
@@ -42,7 +45,8 @@ test('released native shell hides unavailable account controls without requestin
   vm.runInNewContext(accountSource, context);
   await new Promise(resolve => setImmediate(resolve));
 
-  assert.equal(accountSection.hidden, true);
-  assert.equal(fetchCount, 0);
+  assert.equal(accountSection.hidden, false);
+  assert.equal(fetchCount, 1);
   assert.doesNotMatch(accountSource, /Update Tonight NYC from the App Store/);
+  assert.match(accountSource, /\/api\/auth\/email\/request/);
 });

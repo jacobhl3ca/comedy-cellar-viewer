@@ -24,6 +24,8 @@
     { "source": "/api/auth/google/callback", "destination": "/api/account-router?action=googleCallback" },
     { "source": "/api/auth/google/login", "destination": "/api/account-router?action=googleLogin" },
     { "source": "/api/auth/google/native", "destination": "/api/account-router?action=googleNative" },
+    { "source": "/api/auth/email/request", "destination": "/api/account-router?action=emailRequest" },
+    { "source": "/api/auth/email/verify", "destination": "/api/account-router?action=emailVerify" },
     { "source": "/api/auth/logout", "destination": "/api/account-router?action=logout" },
     { "source": "/api/me", "destination": "/api/account-router?action=me" },
     { "source": "/api/prefs", "destination": "/api/account-router?action=prefs" },

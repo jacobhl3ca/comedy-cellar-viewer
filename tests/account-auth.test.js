@@ -63,6 +63,14 @@ test('sync payloads reject missing or non-object sections', () => {
   assert.equal(_test.cleanSyncPayload({ prefs: {}, settings: null }), null);
 });
 
+test('email codes accept normalized addresses and compare only six-digit hashes', () => {
+  assert.equal(_test.normalizeEmail(' Person@Example.COM '), 'person@example.com');
+  assert.equal(_test.normalizeEmail('missing-at.example.com'), null);
+  assert.equal(_test.normalizeEmail('a@b'), null);
+  assert.equal(_test.timingSafeHashMatch('123456', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92'), true);
+  assert.equal(_test.timingSafeHashMatch('123457', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92'), false);
+});
+
 test('account discovery stays inert when providers are not configured', async () => {
   const res = response();
   await auth.handleMe(request('GET'), res);
@@ -73,7 +81,7 @@ test('account discovery stays inert when providers are not configured', async ()
     uid: null,
     provider: null,
     linkedProviders: [],
-    providers: { apple: false, google: false },
+    providers: { apple: false, google: false, email: false },
     store: { sync: false },
   });
 });
@@ -86,6 +94,10 @@ test('auth and sync routes fail closed', async () => {
   const googleLogin = response();
   await auth.handleGoogleLogin(request('GET'), googleLogin);
   assert.equal(googleLogin.statusCode, 503);
+
+  const email = response();
+  await auth.handleEmailRequest(request('POST'), email);
+  assert.equal(email.statusCode, 503);
 
   const prefs = response();
   await auth.handlePrefs(request('GET'), prefs);
@@ -134,7 +146,7 @@ test('account identity comes only from a valid signed cookie', async () => {
 
 test('one account function dispatches every public account route', async () => {
   assert.deepEqual(accountRouter._test.actions, [
-    'account', 'callback', 'googleCallback', 'googleLogin', 'googleNative',
+    'account', 'callback', 'emailRequest', 'emailVerify', 'googleCallback', 'googleLogin', 'googleNative',
     'login', 'logout', 'me', 'native', 'prefs',
   ]);
   const missing = response();

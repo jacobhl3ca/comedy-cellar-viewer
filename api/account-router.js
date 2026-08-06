@@ -6,6 +6,8 @@ const HANDLERS = {
   googleCallback: auth.handleGoogleCallback,
   googleLogin: auth.handleGoogleLogin,
   googleNative: auth.handleGoogleNative,
+  emailRequest: auth.handleEmailRequest,
+  emailVerify: auth.handleEmailVerify,
   login: auth.handleLogin,
   logout: auth.handleLogout,
   me: auth.handleMe,
