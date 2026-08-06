@@ -23,6 +23,7 @@
 		9CB294CB9274C454F0CCB959 /* LineupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C23A3344114FDFFD9BC0E9 /* LineupService.swift */; };
 		A11E00000000000000000001 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11E00000000000000000002 /* MainViewController.swift */; };
 		A11E00000000000000000003 /* AppleAuthPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11E00000000000000000004 /* AppleAuthPlugin.swift */; };
+		A11E00000000000000000005 /* GoogleAuthPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11E00000000000000000006 /* GoogleAuthPlugin.swift */; };
 		B3794E5F543EE74FCE2AE01B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75FB057B41394A7ECB9124B6 /* SwiftUI.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		9F53C404EDC92696598D5D3B /* TonightWidget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TonightWidget.swift; path = TonightWidget/TonightWidget.swift; sourceTree = "<group>"; };
 		A11E00000000000000000002 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A11E00000000000000000004 /* AppleAuthPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthPlugin.swift; sourceTree = "<group>"; };
+		A11E00000000000000000006 /* GoogleAuthPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthPlugin.swift; sourceTree = "<group>"; };
 		B69DD525296C729BB0E508D2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = TonightWidget/Info.plist; sourceTree = "<group>"; };
 		BFF9386BA975684DE28AFEE1 /* TonightWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TonightWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D452DDDCF44716E54A1AF082 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -140,6 +142,7 @@
 				504EC3071FED79650016851F /* AppDelegate.swift */,
 				A11E00000000000000000002 /* MainViewController.swift */,
 				A11E00000000000000000004 /* AppleAuthPlugin.swift */,
+				A11E00000000000000000006 /* GoogleAuthPlugin.swift */,
 				504EC30B1FED79650016851F /* Main.storyboard */,
 				504EC30E1FED79650016851F /* Assets.xcassets */,
 				504EC3101FED79650016851F /* LaunchScreen.storyboard */,
@@ -282,6 +285,7 @@
 				504EC3081FED79650016851F /* AppDelegate.swift in Sources */,
 				A11E00000000000000000001 /* MainViewController.swift in Sources */,
 				A11E00000000000000000003 /* AppleAuthPlugin.swift in Sources */,
+				A11E00000000000000000005 /* GoogleAuthPlugin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

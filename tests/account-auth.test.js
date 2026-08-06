@@ -63,7 +63,7 @@ test('sync payloads reject missing or non-object sections', () => {
   assert.equal(_test.cleanSyncPayload({ prefs: {}, settings: null }), null);
 });
 
-test('account discovery stays inert when Apple is not configured', async () => {
+test('account discovery stays inert when providers are not configured', async () => {
   const res = response();
   await auth.handleMe(request('GET'), res);
   assert.equal(res.statusCode, 200);
@@ -71,7 +71,9 @@ test('account discovery stays inert when Apple is not configured', async () => {
     signedIn: false,
     email: null,
     uid: null,
-    providers: { apple: false },
+    provider: null,
+    linkedProviders: [],
+    providers: { apple: false, google: false },
     store: { sync: false },
   });
 });
@@ -80,6 +82,10 @@ test('auth and sync routes fail closed', async () => {
   const login = response();
   await auth.handleLogin(request('GET'), login);
   assert.equal(login.statusCode, 503);
+
+  const googleLogin = response();
+  await auth.handleGoogleLogin(request('GET'), googleLogin);
+  assert.equal(googleLogin.statusCode, 503);
 
   const prefs = response();
   await auth.handlePrefs(request('GET'), prefs);
@@ -128,7 +134,8 @@ test('account identity comes only from a valid signed cookie', async () => {
 
 test('one account function dispatches every public account route', async () => {
   assert.deepEqual(accountRouter._test.actions, [
-    'account', 'callback', 'login', 'logout', 'me', 'native', 'prefs',
+    'account', 'callback', 'googleCallback', 'googleLogin', 'googleNative',
+    'login', 'logout', 'me', 'native', 'prefs',
   ]);
   const missing = response();
   await accountRouter(request('GET'), missing);

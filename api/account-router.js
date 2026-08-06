@@ -3,6 +3,9 @@ const auth = require('../server/account-auth');
 const HANDLERS = {
   account: auth.handleAccount,
   callback: auth.handleCallback,
+  googleCallback: auth.handleGoogleCallback,
+  googleLogin: auth.handleGoogleLogin,
+  googleNative: auth.handleGoogleNative,
   login: auth.handleLogin,
   logout: auth.handleLogout,
   me: auth.handleMe,

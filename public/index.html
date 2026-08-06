@@ -72,7 +72,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=eadf54a">
+  <link rel="stylesheet" href="style.min.css?v=3571bfc">
   <script>
     (function() {
       const root = document.documentElement;
@@ -321,9 +321,17 @@
               <svg viewBox="0 0 17 17" fill="currentColor" aria-hidden="true"><path d="M13.79 9.06c-.02-1.86 1.52-2.75 1.59-2.79-.87-1.27-2.22-1.44-2.7-1.46-1.15-.12-2.24.68-2.82.68-.58 0-1.48-.66-2.43-.64-1.25.02-2.4.73-3.04 1.85-1.3 2.25-.33 5.58.93 7.41.62.9 1.35 1.9 2.31 1.86.93-.04 1.28-.6 2.4-.6 1.12 0 1.43.6 2.41.58 1-.02 1.63-.91 2.24-1.81.71-1.04 1-2.05 1.01-2.1-.02-.01-1.94-.74-1.96-2.95l.01-.34zM11.9 3.38c.51-.62.86-1.48.76-2.34-.74.03-1.64.49-2.17 1.11-.47.55-.89 1.43-.78 2.27.83.07 1.67-.42 2.19-1.04z"/></svg>
               Sign in with Apple
             </button>
+            <button class="account-google-btn" id="account-google-signin" type="button" hidden>
+              <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8a10.1 10.1 0 0 1-4.4 6.6v5.5h7.1c4.2-3.8 6.6-9.5 6.6-16.1Z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.4l-7.1-5.5a13.3 13.3 0 0 1-19.7-7H4.3v5.7A22 22 0 0 0 24 46Z"/><path fill="#FBBC05" d="M11.7 28.1A13.2 13.2 0 0 1 11 24c0-1.5.2-2.9.7-4.2v-5.7H4.3A22 22 0 0 0 2 24c0 3.5.8 6.9 2.3 9.8l7.4-5.7Z"/><path fill="#EA4335" d="M24 10.8c3.2 0 6.1 1.1 8.4 3.2l6.3-6.3A21.1 21.1 0 0 0 4.3 14.1l7.4 5.7A13.2 13.2 0 0 1 24 10.8Z"/></svg>
+              Sign in with Google
+            </button>
           </div>
           <div id="account-signed-in" hidden>
             <p class="account-signed-in-copy">Signed in as <strong id="account-email"></strong>.</p>
+            <div class="account-link-actions" id="account-link-actions" hidden>
+              <button class="btn-reset" id="account-link-apple" type="button" hidden>Link Apple</button>
+              <button class="btn-reset" id="account-link-google" type="button" hidden>Link Google</button>
+            </div>
             <div class="account-actions">
               <button class="btn-reset" id="account-signout" type="button">Sign out</button>
               <button class="btn-reset account-delete-btn" id="account-delete" type="button">Delete account</button>
@@ -569,7 +577,7 @@
     <button id="pwa-install-btn" onclick="pwaInstall()" style="display:none;"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Add to Home Screen</button>
   </footer>
 
-  <script defer src="app.min.js?v=eadf54a"></script>
+  <script defer src="app.min.js?v=3571bfc"></script>
   <!-- Vercel Web Analytics + Speed Insights + Cloudflare Web Analytics — gated to skip Capacitor native shell so iOS app stays "No data collected" on App Store -->
   <script>
     if (!window.Capacitor?.isNativePlatform?.()) {

@@ -5878,6 +5878,10 @@ async function refreshShowsInPlace() {
   const signedInBox = document.getElementById('account-signed-in');
   const emailOut = document.getElementById('account-email');
   const signInBtn = document.getElementById('account-apple-signin');
+  const googleBtn = document.getElementById('account-google-signin');
+  const linkActions = document.getElementById('account-link-actions');
+  const linkAppleBtn = document.getElementById('account-link-apple');
+  const linkGoogleBtn = document.getElementById('account-link-google');
   const signOutBtn = document.getElementById('account-signout');
   const deleteBtn = document.getElementById('account-delete');
   const accountSection = document.querySelector('.account-section');
@@ -5912,11 +5916,21 @@ async function refreshShowsInPlace() {
 
   function renderAuth(auth){
     signedIn = Boolean(auth?.signedIn);
-    if (signedOut) signedOut.hidden = signedIn || auth?.providers?.apple === false;
+    const appleAvailable = auth?.providers?.apple !== false && (!isNative() || !!nativeAppleBridge());
+    const googleAvailable = auth?.providers?.google === true && (!isNative() || !!nativeGoogleBridge());
+    const linked = Array.isArray(auth?.linkedProviders) && auth.linkedProviders.length
+      ? auth.linkedProviders
+      : auth?.provider ? [auth.provider] : [];
+    if (signInBtn) signInBtn.hidden = !appleAvailable;
+    if (googleBtn) googleBtn.hidden = !googleAvailable;
+    if (signedOut) signedOut.hidden = signedIn || (!appleAvailable && !googleAvailable);
     if (signedInBox) signedInBox.hidden = !signedIn;
-    if (emailOut) emailOut.textContent = auth?.email || 'your Apple account';
+    if (emailOut) emailOut.textContent = auth?.email || 'your account';
+    if (linkAppleBtn) linkAppleBtn.hidden = !signedIn || !appleAvailable || linked.includes('apple');
+    if (linkGoogleBtn) linkGoogleBtn.hidden = !signedIn || !googleAvailable || linked.includes('google');
+    if (linkActions) linkActions.hidden = linkAppleBtn?.hidden !== false && linkGoogleBtn?.hidden !== false;
     if (signedIn) setStatus('Synced automatically.');
-    else if (auth?.providers?.apple === false) setStatus('Account sync is not configured yet.');
+    else if (!appleAvailable && !googleAvailable) setStatus('Account sync is not configured yet.');
     else setStatus('Sign in to sync your comedians and settings across devices.');
   }
 
@@ -5972,19 +5986,50 @@ async function refreshShowsInPlace() {
     window.location.reload();
   }
 
-  function nativeBridge(){
+  function isNative(){
+    return !!window.Capacitor?.isNativePlatform?.();
+  }
+
+  function nativeAppleBridge(){
     const cap = window.Capacitor;
     if (!cap?.isNativePlatform?.()) return null;
     return cap.Plugins?.TonightAppleAuth || null;
   }
 
-  async function signIn(){
+  function nativeGoogleBridge(){
+    const cap = window.Capacitor;
+    if (!cap?.isNativePlatform?.()) return null;
+    return cap.Plugins?.TonightGoogleAuth || null;
+  }
+
+  function base64url(bytes){
+    let binary = '';
+    for (const byte of bytes) binary += String.fromCharCode(byte);
+    return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  }
+
+  async function googleVerifier(){
+    const verifier = base64url(crypto.getRandomValues(new Uint8Array(32)));
+    const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(verifier));
+    return { verifier, challenge: base64url(new Uint8Array(digest)) };
+  }
+
+  async function waitForGoogleCallback(plugin){
+    for (let attempt = 0; attempt < 240; attempt += 1) {
+      const result = await plugin.consumeCallback?.();
+      if (result?.callbackUrl) return result.callbackUrl;
+      await new Promise((resolve) => setTimeout(resolve, 500));
+    }
+    throw new Error('Google sign-in timed out');
+  }
+
+  async function signIn(link){
     const cap = window.Capacitor;
     if (!cap?.isNativePlatform?.()) {
-      window.location.href = '/api/auth/apple/login?returnTo=/';
+      window.location.href = `/api/auth/apple/login?returnTo=/${link ? '&link=1' : ''}`;
       return;
     }
-    const plugin = nativeBridge();
+    const plugin = nativeAppleBridge();
     if (!plugin) {
       if (accountSection) accountSection.hidden = true;
       return;
@@ -6001,6 +6046,7 @@ async function refreshShowsInPlace() {
           identityToken: result?.identityToken,
           email: result?.email || null,
           nonce,
+          link: Boolean(link),
         }),
       });
       if (!response.ok) throw new Error(`native sign-in failed: ${response.status}`);
@@ -6010,6 +6056,48 @@ async function refreshShowsInPlace() {
         setStatus('Apple sign-in failed. Please try again.', true);
       }
       signInBtn.disabled = false;
+    }
+  }
+
+  async function signInGoogle(link){
+    const plugin = nativeGoogleBridge();
+    if (!isNative()) {
+      window.location.href = `/api/auth/google/login?returnTo=/${link ? '&link=1' : ''}`;
+      return;
+    }
+    if (!plugin) return;
+    googleBtn && (googleBtn.disabled = true);
+    linkGoogleBtn && (linkGoogleBtn.disabled = true);
+    try {
+      const { verifier, challenge } = await googleVerifier();
+      const start = new URL('/api/auth/google/login', window.location.origin);
+      start.searchParams.set('returnTo', '/');
+      start.searchParams.set('nativeChallenge', challenge);
+      if (link) {
+        const proofResponse = await fetch('/api/auth/google/native', {
+          method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'link_token' }),
+        });
+        if (!proofResponse.ok) throw new Error('could not authorize account linking');
+        const proof = await proofResponse.json();
+        if (!proof.linkToken) throw new Error('server returned no link token');
+        start.searchParams.set('nativeLinkToken', proof.linkToken);
+      }
+      const launched = await plugin.authorize({ url: start.toString(), callbackScheme: 'tonight-auth' });
+      const callbackUrl = launched.callbackUrl || await waitForGoogleCallback(plugin);
+      const callback = new URL(callbackUrl);
+      const code = callback.searchParams.get('code');
+      if (!code) throw new Error('Google returned no handoff code');
+      const response = await fetch('/api/auth/google/native', {
+        method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code, verifier }),
+      });
+      if (!response.ok) throw new Error(`native sign-in failed: ${response.status}`);
+      window.location.reload();
+    } catch (error) {
+      if (!/cancel/i.test(String(error?.message || error))) setStatus('Google sign-in failed. Please try again.', true);
+      googleBtn && (googleBtn.disabled = false);
+      linkGoogleBtn && (linkGoogleBtn.disabled = false);
     }
   }
 
@@ -6028,7 +6116,10 @@ async function refreshShowsInPlace() {
     else setStatus('Could not delete the account. Please try again.', true);
   }
 
-  signInBtn?.addEventListener('click', signIn);
+  signInBtn?.addEventListener('click', () => signIn(false));
+  googleBtn?.addEventListener('click', () => signInGoogle(false));
+  linkAppleBtn?.addEventListener('click', () => signIn(true));
+  linkGoogleBtn?.addEventListener('click', () => signInGoogle(true));
   signOutBtn?.addEventListener('click', signOut);
   deleteBtn?.addEventListener('click', deleteAccount);
   window.addEventListener('pagehide', flushSync);
@@ -6041,7 +6132,7 @@ async function refreshShowsInPlace() {
     // The released native shell predates the Apple-auth bridge but loads the
     // current web bundle. Keep account controls out of that version until an
     // App Store build containing the bridge is actually available.
-    if (window.Capacitor?.isNativePlatform?.() && !nativeBridge()) {
+    if (window.Capacitor?.isNativePlatform?.() && !nativeAppleBridge() && !nativeGoogleBridge()) {
       if (accountSection) accountSection.hidden = true;
       return;
     }
@@ -6054,7 +6145,7 @@ async function refreshShowsInPlace() {
       renderAuth(auth);
       if (auth.signedIn) await pullRemote();
     } catch {
-      renderAuth({ signedIn: false, providers: { apple: false } });
+      renderAuth({ signedIn: false, providers: { apple: false, google: false } });
     }
   })();
 })();

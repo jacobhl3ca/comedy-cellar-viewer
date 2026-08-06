@@ -41,23 +41,23 @@
 
     <h2>What stays on your device</h2>
     <ul>
-      <li><strong>Favorites, ratings, and settings:</strong> these are stored in your browser's localStorage (web) or the app's local storage (iOS). They leave your device only if you sign in to sync them or choose to share a preferences URL.</li>
-      <li><strong>Local notifications:</strong> if you enable reminders for favorited sets, notifications are scheduled and delivered entirely on your device by iOS. No server is involved. No push tokens are sent anywhere.</li>
+      <li><strong>Favorites, ratings, and settings:</strong> these are stored in your browser's localStorage (web) or the mobile app's local storage. They leave your device only if you sign in to sync them or choose to share a preferences URL.</li>
+      <li><strong>Local notifications:</strong> if you enable reminders for favorited sets, notifications are scheduled and delivered entirely on your device by its operating system. No server is involved. No push tokens are sent anywhere.</li>
       <li><strong>Theme preference:</strong> your light/dark mode choice is stored locally.</li>
     </ul>
 
     <h2>Optional account and sync</h2>
-    <p>If you choose Sign in with Apple, Apple provides a stable account identifier and may provide your email address or a private relay address. We store that identifier, the provided email address, basic account timestamps, and your synced favorites, ratings, and app settings. This data is used only to keep your setup consistent across devices.</p>
-    <p>An encrypted, HttpOnly session cookie keeps you signed in. Synced data is hosted by Vercel and Upstash, our infrastructure providers. You can sign out at any time. Settings → Account → Delete account permanently removes the account record and synced data from our servers; the local copy on your current device remains unless you reset it separately.</p>
+    <p>If you choose Sign in with Apple or Google, that provider gives us a stable account identifier and a verified email address (which may be an Apple private relay address). We store those identifiers, the provided email, basic account timestamps, and your synced favorites, ratings, and app settings. You can link both providers to one account; we use this data only to keep your setup consistent across devices.</p>
+    <p>A secure, HttpOnly session cookie keeps you signed in. Synced data is hosted by Vercel and Upstash, our infrastructure providers. You can sign out at any time. Settings → Account → Delete account permanently removes the account record and synced data from our servers; the local copy on your current device remains unless you reset it separately.</p>
 
     <h2>Analytics</h2>
-    <p>The tonightnyc.com website uses Vercel Web Analytics and Cloudflare Web Analytics, both privacy-first services, to count aggregate page views. Neither sets cookies nor collects personally identifiable information, and individual users cannot be identified from this data. The iOS app runs no analytics at all.</p>
+    <p>The tonightnyc.com website uses Vercel Web Analytics and Cloudflare Web Analytics, both privacy-first services, to count aggregate page views. Neither sets cookies nor collects personally identifiable information, and individual users cannot be identified from this data. The mobile app runs no analytics at all.</p>
 
     <h2>External data sources</h2>
-    <p>The app displays publicly available comedy lineup data fetched from venues including the Comedy Cellar. Your device fetches these listings directly from our static JSON endpoints (prebaked nightly). No identifying information is attached to those requests beyond what your browser or iOS sends by default.</p>
+    <p>The app displays publicly available comedy lineup data fetched from venues including the Comedy Cellar. Your device fetches these listings directly from our static JSON endpoints (prebaked nightly). No identifying information is attached to those requests beyond what your browser or mobile operating system sends by default.</p>
 
     <h2>Shareable preference URLs</h2>
-    <p>If you tap the Share button in the app to share your favorites list, a URL is generated containing your preferences encoded in the link. This URL is only sent to recipients you choose (via the iOS share sheet or clipboard). We do not receive a copy or log these shares.</p>
+    <p>If you tap the Share button in the app to share your favorites list, a URL is generated containing your preferences encoded in the link. This URL is only sent to recipients you choose (via the system share sheet or clipboard). We do not receive a copy or log these shares.</p>
 
     <h2>Children</h2>
     <p>The app is not directed at children under 13 and does not knowingly collect data from them.</p>
