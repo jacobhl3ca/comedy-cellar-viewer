@@ -27,7 +27,7 @@ WHAT YOU CAN DO:
 • Share your filtered lineup with friends — copy a link with all your picks
 
 NO ACCOUNT REQUIRED.
-Keep favorites and settings only on your device, or optionally use Sign in with Apple to sync them across your devices. No advertising or cross-app tracking.
+Keep favorites and settings only on your device, or optionally sign in with Apple, Google, or a six-digit email code to sync them across your devices. No advertising or cross-app tracking.
 
 VENUES TRACKED:
 Comedy Cellar (MacDougal, Village Underground, Fat Black Pussycat) · The Stand · New York Comedy Club · Gotham Comedy Club · Carolines · Madison Square Garden · Beacon Theatre · Town Hall · Apollo · Gramercy · Sony Hall · Strand Book Store · Radio City · and more via Ticketmaster + SeatGeek.
@@ -47,7 +47,7 @@ Every NYC comedy lineup in one place. Filter by your favorite comics, hide skips
 
 ## What's New in This Version (v1.0.2)
 ```
-Sign in with Apple to sync your comedians and settings across devices, plus mobile layout and reliability improvements.
+Optional Apple, Google, and email-code sign-in to sync your comedians and settings across devices, plus mobile layout and reliability improvements.
 ```
 
 ## Support URL
@@ -67,12 +67,12 @@ Sign in with Apple to sync your comedians and settings across devices, plus mobi
 ## Privacy Nutrition Labels (App Store Connect → App Privacy)
 
 ### Data collected
-**Contact Info — Email Address** (only when provided by Sign in with Apple)
+**Contact Info — Email Address** (provided by Apple/Google or entered for email-code sign-in)
 - Used for: App Functionality
 - Linked to user: Yes
 - Used for tracking: No
 
-**Identifiers — User ID** (Apple account identifier)
+**Identifiers — User ID** (Apple/Google identifier or Tonight NYC internal account identity)
 - Used for: App Functionality
 - Linked to user: Yes
 - Used for tracking: No
@@ -152,4 +152,4 @@ To capture:
 
 - **Why is the app loading a website?** Capacitor server.url points to https://tonightnyc.com so users always get the latest data and bug fixes without app store updates. The fallback bundle inside the .ipa renders the same UI offline.
 - **Where is the privacy policy?** /privacy on tonightnyc.com (also linked in About section in-app)
-- **Accounts are optional.** Sign in with Apple stores the Apple identifier, provided email/relay address, and synced favorites/settings. Settings → Account includes in-app deletion. Notifications remain local and do not use push tokens.
+- **Accounts are optional.** Apple, Google, and email-code sign-in store the applicable identifier, email address, session, and synced favorites/settings. Settings → Account includes in-app deletion. Notifications remain local and do not use push tokens.
