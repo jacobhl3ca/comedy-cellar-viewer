@@ -4219,12 +4219,14 @@ function updateFooterInfo() {
       <p class="footer-venue-detail">Cover: $0 (2-drink minimum, ~$12-15/drink). Cash &amp; card accepted.</p>
       <p class="footer-venue-detail">Shows are about 1 hour 15 min (5-7 comics). Arrive 15 min early — seats are first-come in your reservation group.</p>
       <p class="footer-venue-detail">3 rooms: MacDougal St (original), Village Underground (bigger stage), Fat Black Pussycat (intimate)</p>
+      <p class="footer-venue-detail"><a href="https://www.google.com/maps/search/?api=1&query=Comedy%20Cellar%20NYC" target="_blank" rel="noopener" onclick="trackMap('cellar')">Map &amp; directions</a></p>
     `;
   } else if (activeSource === 'the-stand') {
     el.innerHTML = `
       <p class="footer-venue-detail">The Stand NYC — 239 Third Ave (between 19th &amp; 20th St), Gramercy</p>
       <p class="footer-venue-detail">Tickets: $20-25 + 2-drink minimum. Full food menu available.</p>
       <p class="footer-venue-detail">Shows run ~90 min. Reserved seating — book early for front rows.</p>
+      <p class="footer-venue-detail"><a href="https://www.google.com/maps/search/?api=1&query=The%20Stand%20NYC" target="_blank" rel="noopener" onclick="trackMap('the-stand')">Map &amp; directions</a></p>
     `;
   } else {
     el.innerHTML = '';
@@ -4321,12 +4323,26 @@ function toProperCase(str) {
 }
 
 // ---- Reserve button click tracking ----
+function trackUmami(name, data) {
+  if (window.umami && typeof window.umami.track === 'function') window.umami.track(name, data);
+}
+
+function reserveVenue(el) {
+  const raw = el?.closest?.('[data-venue-source]')?.dataset?.venueSource || 'unknown';
+  return String(raw).toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 32) || 'unknown';
+}
+
 function trackReserve(el) {
   // Increment localStorage counter
   const count = parseInt(localStorage.getItem('cellar-reserve-clicks') || '0') + 1;
   localStorage.setItem('cellar-reserve-clicks', count.toString());
   // Log for Vercel Analytics custom event (if available)
   if (window.va) window.va('event', { name: 'reserve_click', data: { url: el?.href || '', count } });
+  trackUmami('ticket-open', { venue: reserveVenue(el) });
+}
+
+function trackMap(venue) {
+  trackUmami('map-open', { venue: String(venue || 'unknown').slice(0, 32) });
 }
 
 // ---- Close info popups on click outside ----
@@ -4495,6 +4511,7 @@ async function init() {
         ? prevDate
         : 'all';
       if (window.va) window.va('event', { name: 'tab_switch', data: { source: activeSource } });
+      if (activeSource !== 'all') trackUmami('venue-open', { venue: activeSource });
       renderSourceTabs();
       renderTabs();
       renderShows();

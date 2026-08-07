@@ -108,6 +108,7 @@
         ? prevDate
         : 'all';
       if (window.va) window.va('event', { name: 'tab_switch', data: { source: activeSource } });
+      if (activeSource !== 'all') trackUmami('venue-open', { venue: activeSource });
       renderSourceTabs();
       renderTabs();
       renderShows();

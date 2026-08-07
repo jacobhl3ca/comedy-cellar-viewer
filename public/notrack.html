@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Don't count my visits — Tonight NYC</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0d0d0d;--card:#181818;--line:#333;--text:#eee;--muted:#aaa;--accent:#e63636}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:48px 20px}.wrap{max-width:580px;margin:auto}h1{font-size:28px;line-height:1.2}.muted{color:var(--muted)}.card{margin-top:24px;padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--card)}button{margin-top:12px;border:1px solid var(--line);border-radius:999px;padding:10px 16px;color:white;background:var(--accent);font:inherit;font-weight:700;cursor:pointer}a{color:var(--accent)}
+  </style>
+</head>
+<body><main class="wrap"><a href="/">← Tonight NYC</a><h1>Don't count my visits</h1><p class="muted">This turns off Tonight NYC's self-hosted traffic measurement in this browser, across network and VPN changes.</p><section class="card"><p id="state">Checking…</p><button id="toggle" type="button" hidden></button></section><p class="muted">Repeat once in each browser. Clearing this site's browser data resets the choice.</p></main>
+<script>
+(() => {
+  const key='umami.disabled', state=document.getElementById('state'), button=document.getElementById('toggle');
+  function render(){ const off=localStorage.getItem(key)==='1'; state.textContent=off?'Off — this browser is not counted.':'On — this browser is currently counted.'; button.textContent=off?'Start counting again':'Stop counting my visits'; button.hidden=false; button.onclick=()=>{ if(off)localStorage.removeItem(key);else localStorage.setItem(key,'1');render(); }; }
+  try{render();}catch{state.textContent='Browser storage is unavailable, so this setting cannot be saved.';}
+})();
+</script></body></html>
