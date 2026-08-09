@@ -28,33 +28,37 @@
   <div class="wrap">
     <a href="/" class="back">← Tonight NYC</a>
     <h1>Privacy Policy</h1>
-    <div class="updated">Last updated: April 24, 2026</div>
+    <div class="updated">Last updated: August 6, 2026</div>
 
     <p>Tonight NYC ("the app") is operated by Jacob HL as a free utility for browsing NYC comedy lineups. This page explains what data the app does and doesn't collect.</p>
 
-    <h2>What we don't collect</h2>
+    <h2>Using Tonight NYC without an account</h2>
     <ul>
       <li>No account, email, or login is required to use the app.</li>
-      <li>We do not collect, store, or transmit your name, contact info, device identifiers, location, or browsing history.</li>
       <li>We do not use advertising SDKs or cross-site tracking.</li>
-      <li>We do not sell, share, or transfer any user data to third parties.</li>
+      <li>We do not sell personal information or share it for targeted advertising.</li>
     </ul>
 
     <h2>What stays on your device</h2>
     <ul>
-      <li><strong>Favorites and ratings:</strong> the comedians you mark as favorites or skip are stored in your browser's localStorage (web) or the app's local storage (iOS). This data never leaves your device unless you choose to share a preferences URL.</li>
-      <li><strong>Local notifications:</strong> if you enable reminders for favorited sets, notifications are scheduled and delivered entirely on your device by iOS. No server is involved. No push tokens are sent anywhere.</li>
+      <li><strong>Favorites, ratings, and settings:</strong> these are stored in your browser's localStorage (web) or the mobile app's local storage. They leave your device only if you sign in to sync them or choose to share a preferences URL.</li>
+      <li><strong>Local notifications:</strong> if you enable reminders for favorited sets, notifications are scheduled and delivered entirely on your device by its operating system. No server is involved. No push tokens are sent anywhere.</li>
       <li><strong>Theme preference:</strong> your light/dark mode choice is stored locally.</li>
     </ul>
 
+    <h2>Optional account and sync</h2>
+    <p>You can sign in with Apple, Google, or a six-digit code sent to your email. Apple and Google provide a stable account identifier and verified email address (which may be an Apple private relay address); email-code sign-in uses your address and an internal identity record. We store the applicable identifier, email address, basic account timestamps, session, and your synced favorites, ratings, and app settings. You can link supported sign-in methods to one account; we use this data only to provide and secure your account and keep your setup consistent across devices.</p>
+    <p>A secure, HttpOnly session cookie keeps you signed in. Synced data is hosted by Vercel and Upstash, our infrastructure providers. You can sign out at any time. Settings → Account → Delete account permanently removes the account record and synced data from our servers; the local copy on your current device remains unless you reset it separately.</p>
+
     <h2>Analytics</h2>
-    <p>The tonightnyc.com website uses Vercel Web Analytics and Cloudflare Web Analytics, both privacy-first services, to count aggregate page views. Neither sets cookies nor collects personally identifiable information, and individual users cannot be identified from this data. The iOS app runs no analytics at all.</p>
+    <p>The tonightnyc.com website uses privacy-friendly, cookieless analytics, including a self-hosted Umami instance, to count aggregate page views and product actions such as opening a venue, map, or ticket link. These events contain only a short venue label, not the show title or your identity. The mobile app runs no analytics at all.</p>
+    <p>You can <a href="/notrack.html">turn off self-hosted analytics in this browser</a>. The choice stays on this device until you clear Tonight NYC's browser data.</p>
 
     <h2>External data sources</h2>
-    <p>The app displays publicly available comedy lineup data fetched from venues including the Comedy Cellar. Your device fetches these listings directly from our static JSON endpoints (prebaked nightly). No identifying information is attached to those requests beyond what your browser or iOS sends by default.</p>
+    <p>The app displays publicly available comedy lineup data fetched from venues including the Comedy Cellar. Your device fetches these listings directly from our static JSON endpoints (prebaked nightly). No identifying information is attached to those requests beyond what your browser or mobile operating system sends by default.</p>
 
     <h2>Shareable preference URLs</h2>
-    <p>If you tap the Share button in the app to share your favorites list, a URL is generated containing your preferences encoded in the link. This URL is only sent to recipients you choose (via the iOS share sheet or clipboard). We do not receive a copy or log these shares.</p>
+    <p>If you tap the Share button in the app to share your favorites list, a URL is generated containing your preferences encoded in the link. This URL is only sent to recipients you choose (via the system share sheet or clipboard). We do not receive a copy or log these shares.</p>
 
     <h2>Children</h2>
     <p>The app is not directed at children under 13 and does not knowingly collect data from them.</p>

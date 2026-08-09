@@ -26,6 +26,7 @@ async function loadPrefsFromHash() {
 function savePrefs(prefs) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
   updateShareBtn();
+  if (typeof window.__tonightNycQueueSync === 'function') window.__tonightNycQueueSync();
 }
 
 function updateShareBtn() {

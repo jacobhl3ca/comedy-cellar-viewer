@@ -1,6 +1,6 @@
 # Tonight NYC — App Store Submission Pack
 
-Everything you need to copy-paste into App Store Connect for the v1.0 submission.
+Current metadata and release notes for App Store Connect.
 
 ## Identity
 - **App name (max 30 chars):** `Tonight NYC`
@@ -27,7 +27,7 @@ WHAT YOU CAN DO:
 • Share your filtered lineup with friends — copy a link with all your picks
 
 NO ACCOUNT REQUIRED.
-Your favorites, skips, and notifications stay on your device. No tracking, no signup.
+Keep favorites and settings only on your device, or optionally sign in with Apple, Google, or a six-digit email code to sync them across your devices. No advertising or cross-app tracking.
 
 VENUES TRACKED:
 Comedy Cellar (MacDougal, Village Underground, Fat Black Pussycat) · The Stand · New York Comedy Club · Gotham Comedy Club · Carolines · Madison Square Garden · Beacon Theatre · Town Hall · Apollo · Gramercy · Sony Hall · Strand Book Store · Radio City · and more via Ticketmaster + SeatGeek.
@@ -45,9 +45,9 @@ comedy,nyc,standup,comedy cellar,the stand,tickets,lineup,shows,manhattan,bookin
 Every NYC comedy lineup in one place. Filter by your favorite comics, hide skips, get a 1-hour-before reminder for their shows. Updated live from 30+ venues.
 ```
 
-## What's New in This Version (v1.0)
+## What's New in This Version (v1.0.2)
 ```
-First release.
+Optional Apple, Google, and email-code sign-in to sync your comedians and settings across devices, plus mobile layout and reliability improvements.
 ```
 
 ## Support URL
@@ -66,24 +66,20 @@ First release.
 
 ## Privacy Nutrition Labels (App Store Connect → App Privacy)
 
-### Data NOT collected
-- Contact info, email, financial info, location, search history, browsing history,
-  user content, sensitive info, health info, contacts.
-
 ### Data collected
-**Identifiers — Device ID** (Vercel Analytics + Speed Insights, no IDFA)
-- Used for: Analytics
-- Linked to user: No
+**Contact Info — Email Address** (provided by Apple/Google or entered for email-code sign-in)
+- Used for: App Functionality
+- Linked to user: Yes
 - Used for tracking: No
 
-**Usage Data — Product Interaction** (Vercel Web Analytics page hits)
-- Used for: Analytics
-- Linked to user: No
+**Identifiers — User ID** (Apple/Google identifier or Tonight NYC internal account identity)
+- Used for: App Functionality
+- Linked to user: Yes
 - Used for tracking: No
 
-**Diagnostics — Performance Data** (Vercel Speed Insights)
-- Used for: App Functionality, Analytics
-- Linked to user: No
+**Usage Data — Product Interaction** (synced favorites and settings)
+- Used for: App Functionality, Product Personalization
+- Linked to user: Yes
 - Used for tracking: No
 
 ### Tracking
@@ -156,4 +152,4 @@ To capture:
 
 - **Why is the app loading a website?** Capacitor server.url points to https://tonightnyc.com so users always get the latest data and bug fixes without app store updates. The fallback bundle inside the .ipa renders the same UI offline.
 - **Where is the privacy policy?** /privacy on tonightnyc.com (also linked in About section in-app)
-- **No email collection.** All notifications are local — scheduled on-device via Capacitor LocalNotifications, fire 1 hour before any show with a favorited comedian. No server, no account, no opt-in beyond iOS's standard notification permission.
+- **Accounts are optional.** Apple, Google, and email-code sign-in store the applicable identifier, email address, session, and synced favorites/settings. Settings → Account includes in-app deletion. Notifications remain local and do not use push tokens.

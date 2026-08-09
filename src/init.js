@@ -108,6 +108,7 @@
         ? prevDate
         : 'all';
       if (window.va) window.va('event', { name: 'tab_switch', data: { source: activeSource } });
+      if (activeSource !== 'all') trackUmami('venue-open', { venue: activeSource });
       renderSourceTabs();
       renderTabs();
       renderShows();
@@ -862,7 +863,10 @@ async function refreshShowsInPlace() {
     try { return Object.assign({}, DEFAULTS, JSON.parse(localStorage.getItem(KEY)) || {}); }
     catch { return { ...DEFAULTS }; }
   }
-  function save(s){ localStorage.setItem(KEY, JSON.stringify(s)); }
+  function save(s){
+    localStorage.setItem(KEY, JSON.stringify(s));
+    if (typeof window.__tonightNycQueueSync === 'function') window.__tonightNycQueueSync();
+  }
   function isDefault(s){
     for (const k of Object.keys(DEFAULTS)) {
       if (Array.isArray(DEFAULTS[k])) {

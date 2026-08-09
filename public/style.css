@@ -924,7 +924,7 @@ html.native-mobile.native-app .header-share-btn { right: 46px; }
 .filter-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .reset-row {
   display: none; align-items: center; justify-content: flex-end; margin-top: 4px;
-  height: 34px;
+  min-height: 34px; height: auto; gap: 8px; flex-wrap: wrap;
 }
 .reset-row.visible {
   display: flex;
@@ -1147,6 +1147,40 @@ html.native-app .app-store-badge-link { display: none; }
   background: var(--accent); border-color: var(--accent); color: #fff;
 }
 
+.account-apple-btn {
+  width: 100%; min-height: 42px; display: flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 9px 14px; border: 0; border-radius: 8px; cursor: pointer;
+  background: #000; color: #fff; font-size: 15px; font-weight: 600;
+}
+.account-apple-btn:hover { opacity: .88; }
+.account-apple-btn:disabled { opacity: .55; cursor: wait; }
+.account-apple-btn svg { width: 17px; height: 17px; }
+[data-theme="dark"] .account-apple-btn { background: #fff; color: #000; }
+.account-google-btn {
+  width: 100%; min-height: 42px; display: flex; align-items: center; justify-content: center;
+  gap: 8px; margin-top: 8px; padding: 9px 14px; border: 1px solid #dadce0;
+  border-radius: 8px; cursor: pointer; background: #fff; color: #1f1f1f;
+  font-size: 15px; font-weight: 600;
+}
+.account-google-btn:hover { opacity: .88; }
+.account-google-btn:disabled { opacity: .55; cursor: wait; }
+.account-google-btn svg { width: 17px; height: 17px; }
+.account-email-form { margin-top: 8px; }
+.account-email-form .modal-search { width: 100%; box-sizing: border-box; margin-bottom: 8px; }
+.account-email-form .btn-reset { width: 100%; min-height: 40px; }
+.account-email-change {
+  width: 100%; margin-top: 8px; border: 0; background: transparent; color: var(--text-dim);
+  font: inherit; font-size: 12px; cursor: pointer; text-decoration: underline;
+}
+.account-signed-in-copy { margin: 0 0 10px; color: var(--text); font-size: 13px; }
+.account-link-actions { display: flex; gap: 8px; margin-bottom: 8px; }
+.account-link-actions button { flex: 1; }
+.account-actions { display: flex; gap: 8px; margin-bottom: 8px; }
+.account-actions button { flex: 1; }
+.account-delete-btn { color: #e63636; border-color: #e63636; }
+.account-status { min-height: 1em; margin-top: 8px; }
+.account-status.account-error { color: var(--accent); }
+
 .settings-import-row { display: flex; gap: 8px; }
 .settings-import-row .modal-search { flex: 1; }
 
@@ -1243,6 +1277,13 @@ html.native-app .app-store-badge-link { display: none; }
   .modal { max-height: 90vh; }
   .toolbar-main { gap: 6px; }
   .toolbar-btn { padding: 6px 10px; font-size: 12px; }
+  /* The expanded controls can occupy two rows on an iPhone. The old fixed
+     34px parent let the second row paint over the first show heading. */
+  .reset-row.visible { align-items: flex-start; }
+  .filters-inline { flex: 1 1 100%; width: 100%; gap: 8px; }
+  .filters-inline .bio-select { flex: 1 1 130px; }
+  .filters-inline .time-filter { flex: 1 1 130px; }
+  .filters-inline .time-select { flex: 1; min-width: 0; }
   .filters-grid { gap: 8px 14px; }
   /* These are the primary way to move between clubs on a phone. Keep enough
      height and side padding to drag the rail without needing a fingertip. */

@@ -8862,7 +8862,8 @@
   },
   {
     "name": "Ahren Belisle",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Ahren Belisle is a Canadian stand-up comedian from North Bay, Ontario, best known as a finalist in the eighteenth season of America's Got Talent."
   },
   {
     "name": "Matt Taylor",
@@ -8980,6 +8981,43 @@
   },
   {
     "name": "Anthony Cumia",
+    "venues": [],
+    "bio_wiki": "Anthony Cumia is an American shock jock, podcaster and broadcaster. He is the host of The Anthony Cumia Show on WABC's Talkradio 77 and the online video platform Compound Censored. He was the co-host of the Opie and Anthony radio show, along with Gregg \"Opie\" Hughes, which aired from 1995 to 2014."
+  },
+  {
+    "name": "Joey Coco Diaz",
+    "venues": []
+  },
+  {
+    "name": "Richard Perez",
+    "venues": []
+  },
+  {
+    "name": "Mike Binder",
+    "venues": []
+  },
+  {
+    "name": "Mike Troy",
+    "venues": []
+  },
+  {
+    "name": "Finessica",
+    "venues": []
+  },
+  {
+    "name": "Tyrone Thornhill",
+    "venues": []
+  },
+  {
+    "name": "Terrance Parker",
+    "venues": []
+  },
+  {
+    "name": "Black Rose Severino",
+    "venues": []
+  },
+  {
+    "name": "Kenny Lee",
     "venues": []
   }
 ]
