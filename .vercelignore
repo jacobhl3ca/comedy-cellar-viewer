@@ -1,0 +1,12 @@
+# Vercel only ever serves the web app (public/ + api/). The native shells are
+# checked in alongside it and android/ alone is ~1.1 GB of Gradle build output,
+# which pushed a `vercel --prod` upload past the 100 MB per-file limit and made
+# CLI deploys fail outright. None of it is used by the build.
+android/
+ios/
+node_modules/
+
+# Local scratch that should never reach a deploy
+*.apk
+*.aab
+app-store-screenshots/
