@@ -1173,12 +1173,16 @@ html.native-app .app-store-badge-link { display: none; }
   font: inherit; font-size: 12px; cursor: pointer; text-decoration: underline;
 }
 .account-signed-in-copy { margin: 0 0 10px; color: var(--text); font-size: 13px; }
-.account-link-actions { display: flex; gap: 8px; margin-bottom: 8px; }
-.account-link-actions button { flex: 1; }
+.account-link-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.account-link-actions button { flex: 1 1 30%; }
 .account-actions { display: flex; gap: 8px; margin-bottom: 8px; }
 .account-actions button { flex: 1; }
 .account-delete-btn { color: #e63636; border-color: #e63636; }
 .account-status { min-height: 1em; margin-top: 8px; }
+/* Privacy link at the very bottom of the Settings modal (it used to sit in the
+   site footer). Quiet by design — findable, never a call to action. */
+.settings-legal { margin: 4px 0 2px; text-align: center; font-size: 12px; }
+.settings-legal a { color: var(--text-dim); text-decoration: underline; }
 .account-status.account-error { color: var(--accent); }
 
 .settings-import-row { display: flex; gap: 8px; }

@@ -72,7 +72,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=71ce394">
+  <link rel="stylesheet" href="style.min.css?v=f991c15">
   <script>
     (function() {
       const root = document.documentElement;
@@ -326,6 +326,21 @@
               Sign in with Google
             </button>
           </div>
+          <div id="account-signed-in" hidden>
+            <p class="account-signed-in-copy">Signed in as <strong id="account-email"></strong>.</p>
+            <div class="account-link-actions" id="account-link-actions" hidden>
+              <button class="btn-reset" id="account-link-apple" type="button" hidden>Link Apple</button>
+              <button class="btn-reset" id="account-link-google" type="button" hidden>Link Google</button>
+              <button class="btn-reset" id="account-link-email" type="button" hidden>Link email</button>
+            </div>
+            <div class="account-actions">
+              <button class="btn-reset" id="account-signout" type="button">Sign out</button>
+              <button class="btn-reset account-delete-btn" id="account-delete" type="button">Delete account</button>
+            </div>
+          </div>
+          <!-- Signed out this is the third sign-in choice; signed in it is the
+               "Link email" flow and stays collapsed until that button is tapped,
+               so an Apple/Google account never shows a bare sign-in form. -->
           <form class="account-email-form" id="account-email-form" hidden>
             <div id="account-email-request-row">
               <input class="modal-search" id="account-email-input" type="email" autocomplete="email" inputmode="email" placeholder="Email address" aria-label="Email address" required>
@@ -337,17 +352,6 @@
               <button class="account-email-change" id="account-email-change" type="button">Use a different email</button>
             </div>
           </form>
-          <div id="account-signed-in" hidden>
-            <p class="account-signed-in-copy">Signed in as <strong id="account-email"></strong>.</p>
-            <div class="account-link-actions" id="account-link-actions" hidden>
-              <button class="btn-reset" id="account-link-apple" type="button" hidden>Link Apple</button>
-              <button class="btn-reset" id="account-link-google" type="button" hidden>Link Google</button>
-            </div>
-            <div class="account-actions">
-              <button class="btn-reset" id="account-signout" type="button">Sign out</button>
-              <button class="btn-reset account-delete-btn" id="account-delete" type="button">Delete account</button>
-            </div>
-          </div>
           <p class="settings-desc account-status" id="account-status">Checking account…</p>
           <p class="settings-desc">Optional. Tonight NYC still works without an account; signing in syncs My Comedians and app settings across your devices.</p>
         </div>
@@ -548,6 +552,8 @@
           </div>
           <p id="settings-import-status" class="settings-desc" style="margin-top:6px;min-height:1em;"></p>
         </div>
+
+        <p class="settings-legal"><a href="/privacy.html">Privacy</a></p>
       </div>
 
       <div class="modal-footer">
@@ -582,16 +588,18 @@
     <div id="footer-venue-info"></div>
     <p>Built by fans, for fans.</p>
     <p><a href="mailto:hello@tonightnyc.com">hello@tonightnyc.com</a></p>
-    <!-- In the Capacitor shell the webview origin IS tonightnyc.com, so /notrack.html
-         writes the same localStorage the beacon checks — this is the in-app opt-out. -->
-    <p class="footer-legal"><a href="/privacy.html">Privacy</a> &middot; <a href="/notrack.html">Don't count my visits</a></p>
+    <!-- Privacy now lives at the bottom of Settings instead of here. The
+         analytics opt-out is no longer surfaced in the UI at all; /notrack.html
+         still exists and is linked from privacy.html for anyone who wants it.
+         (In the Capacitor shell the webview origin IS tonightnyc.com, so that
+         page writes the same localStorage the beacon checks.) -->
     <a class="app-store-badge-link" href="https://apps.apple.com/us/app/tonight-nyc/id6763027650" target="_blank" rel="noopener" aria-label="Download Tonight NYC on the App Store">
       <img src="/app-store-badge.svg" alt="Download on the App Store" height="40">
     </a>
     <button id="pwa-install-btn" onclick="pwaInstall()" style="display:none;"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Add to Home Screen</button>
   </footer>
 
-  <script defer src="app.min.js?v=71ce394"></script>
+  <script defer src="app.min.js?v=f991c15"></script>
   <!-- Vercel Web Analytics + Speed Insights + Cloudflare Web Analytics — gated to skip Capacitor native shell so iOS app stays "No data collected" on App Store -->
   <script>
     if (!window.Capacitor?.isNativePlatform?.()) {

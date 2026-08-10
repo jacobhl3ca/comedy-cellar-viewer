@@ -25,6 +25,7 @@
   const linkActions = document.getElementById('account-link-actions');
   const linkAppleBtn = document.getElementById('account-link-apple');
   const linkGoogleBtn = document.getElementById('account-link-google');
+  const linkEmailBtn = document.getElementById('account-link-email');
   const signOutBtn = document.getElementById('account-signout');
   const deleteBtn = document.getElementById('account-delete');
   const accountSection = document.querySelector('.account-section');
@@ -69,11 +70,19 @@
     if (googleBtn) googleBtn.hidden = !googleAvailable;
     if (signedOut) signedOut.hidden = signedIn || (!appleAvailable && !googleAvailable && !emailAvailable);
     if (signedInBox) signedInBox.hidden = !signedIn;
-    if (emailForm) emailForm.hidden = !emailAvailable || (signedIn && linked.includes('email'));
+    // Signed in, the email form is the *link* flow, not a sign-in prompt: it
+    // stays collapsed behind "Link email" so an Apple/Google account never shows
+    // an empty "Email address / Email me a code" box under "Signed in as …".
+    if (emailForm) emailForm.hidden = !emailAvailable || signedIn;
     if (emailOut) emailOut.textContent = auth?.email || 'your account';
     if (linkAppleBtn) linkAppleBtn.hidden = !signedIn || !appleAvailable || linked.includes('apple');
     if (linkGoogleBtn) linkGoogleBtn.hidden = !signedIn || !googleAvailable || linked.includes('google');
-    if (linkActions) linkActions.hidden = linkAppleBtn?.hidden !== false && linkGoogleBtn?.hidden !== false;
+    if (linkEmailBtn) linkEmailBtn.hidden = !signedIn || !emailAvailable || linked.includes('email');
+    if (linkActions) {
+      linkActions.hidden = linkAppleBtn?.hidden !== false &&
+        linkGoogleBtn?.hidden !== false &&
+        linkEmailBtn?.hidden !== false;
+    }
     if (signedIn) setStatus('Synced automatically.');
     else if (!appleAvailable && !googleAvailable && !emailAvailable) setStatus('Account sync is not configured yet.');
     else setStatus('Sign in to sync your comedians and settings across devices.');
@@ -303,6 +312,16 @@
   });
   linkAppleBtn?.addEventListener('click', () => signIn(true));
   linkGoogleBtn?.addEventListener('click', () => signInGoogle(true));
+  linkEmailBtn?.addEventListener('click', () => {
+    // /api/auth/email/verify links onto the live session when one exists, so the
+    // same two-step form doubles as "add email to this account".
+    if (emailForm) emailForm.hidden = false;
+    linkEmailBtn.hidden = true;
+    if (emailRequestRow) emailRequestRow.hidden = false;
+    if (emailCodeRow) emailCodeRow.hidden = true;
+    if (emailInput) { emailInput.readOnly = false; emailInput.focus(); }
+    setStatus('Enter an email to add it as another way into this account.');
+  });
   signOutBtn?.addEventListener('click', signOut);
   deleteBtn?.addEventListener('click', deleteAccount);
   window.addEventListener('pagehide', flushSync);
