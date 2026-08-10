@@ -1,139 +1,7 @@
 {
-  "generated_at": "2026-08-05T14:05:36",
-  "today": "2026-08-05",
+  "generated_at": "2026-08-10T14:53:15",
+  "today": "2026-08-10",
   "shows": [
-    {
-      "id": "d3e1de2a06009633",
-      "artists": [
-        "Kenny Garrett"
-      ],
-      "date": "2026-08-05",
-      "venue_label": "Blue Note NYC",
-      "title": "Kenny Garrett",
-      "city": "Blue Note NYC",
-      "source": "venue",
-      "ticket_url": "https://www.bluenotejazz.com/nyc/shows.html"
-    },
-    {
-      "id": "b31f6cedbd252e1c",
-      "artists": [
-        "Bill Frisell"
-      ],
-      "date": "2026-08-05",
-      "venue_label": "Village Vanguard",
-      "title": "Bill Frisell",
-      "city": "New York, NY",
-      "source": "artist",
-      "ticket_url": "https://villagevanguard.com/"
-    },
-    {
-      "id": "f1e2c9d30fe99102",
-      "artists": [
-        "Kenny Garrett"
-      ],
-      "date": "2026-08-06",
-      "venue_label": "Blue Note NYC",
-      "title": "Kenny Garrett",
-      "city": "New York, NY",
-      "source": "artist",
-      "ticket_url": "https://www.bluenotejazz.com/nyc/shows.html"
-    },
-    {
-      "id": "3278f6bb1118c1ce",
-      "artists": [
-        "Bill Frisell"
-      ],
-      "date": "2026-08-06",
-      "venue_label": "Village Vanguard",
-      "title": "Bill Frisell",
-      "city": "New York, NY",
-      "source": "artist",
-      "ticket_url": "https://villagevanguard.com/"
-    },
-    {
-      "id": "7f71fb906c573d7e",
-      "artists": [
-        "Kenny Garrett"
-      ],
-      "date": "2026-08-07",
-      "venue_label": "Blue Note NYC",
-      "title": "Kenny Garrett",
-      "city": "New York, NY",
-      "source": "artist",
-      "ticket_url": "https://www.bluenotejazz.com/nyc/shows.html"
-    },
-    {
-      "id": "6a4107a6279747e8",
-      "artists": [
-        "Bill Frisell"
-      ],
-      "date": "2026-08-07",
-      "venue_label": "Village Vanguard",
-      "title": "Bill Frisell",
-      "city": "New York, NY",
-      "source": "artist",
-      "ticket_url": "https://villagevanguard.com/"
-    },
-    {
-      "id": "6bb486e953de0c59",
-      "artists": [
-        "Kenny Garrett"
-      ],
-      "date": "2026-08-08",
-      "venue_label": "Blue Note NYC",
-      "title": "Kenny Garrett",
-      "city": "New York, NY",
-      "source": "artist",
-      "ticket_url": "https://www.bluenotejazz.com/nyc/shows.html"
-    },
-    {
-      "id": "ac40249bdeb8d606",
-      "artists": [
-        "Bill Frisell"
-      ],
-      "date": "2026-08-08",
-      "venue_label": "Village Vanguard",
-      "title": "Bill Frisell",
-      "city": "New York, NY",
-      "source": "artist",
-      "ticket_url": "https://villagevanguard.com/"
-    },
-    {
-      "id": "97661d52df951a44",
-      "artists": [
-        "Kenny Garrett"
-      ],
-      "date": "2026-08-09",
-      "venue_label": "Blue Note NYC",
-      "title": "Kenny Garrett",
-      "city": "New York, NY",
-      "source": "artist",
-      "ticket_url": "https://www.bluenotejazz.com/nyc/shows.html"
-    },
-    {
-      "id": "019e55ddd6b03167",
-      "artists": [
-        "Bill Frisell"
-      ],
-      "date": "2026-08-09",
-      "venue_label": "Other",
-      "title": "UPAC :: Celebrating Jack DeJohnette: Sound Travels",
-      "city": "Kingston, NY",
-      "source": "artist",
-      "ticket_url": null
-    },
-    {
-      "id": "c031f0e399e50481",
-      "artists": [
-        "Joe Lovano"
-      ],
-      "date": "2026-08-09",
-      "venue_label": "Other",
-      "title": "Celebrating Jack DeJohnette: Sound Travels @ UPAC",
-      "city": "Kingston, NY",
-      "source": "artist",
-      "ticket_url": null
-    },
     {
       "id": "3590b76b26148cbc",
       "artists": [
@@ -207,6 +75,31 @@
       "ticket_url": "https://smokejazz.com/calendar/"
     },
     {
+      "id": "910794eceb4ccad2",
+      "artists": [
+        "Brad Mehldau",
+        "Larry Grenadier"
+      ],
+      "date": "2026-08-12",
+      "venue_label": "Smoke Jazz",
+      "title": "Joe Farnsworth Trio featuring Brad Mehldau & Larry Grenadier",
+      "city": "Smoke Jazz",
+      "source": "venue",
+      "ticket_url": "https://smokejazz.com/calendar/"
+    },
+    {
+      "id": "25e7760ca205cb81",
+      "artists": [
+        "Joel Ross"
+      ],
+      "date": "2026-08-12",
+      "venue_label": "Smoke Jazz",
+      "title": ", which features artists such as Joel Ross, Sarah Hanahan, and Emmet Cohen.",
+      "city": "Smoke Jazz",
+      "source": "venue",
+      "ticket_url": "https://smokejazz.com/calendar/"
+    },
+    {
       "id": "82d6453b5adb29ab",
       "artists": [
         "Bill Frisell"
@@ -231,6 +124,31 @@
       "ticket_url": "https://smokejazz.com/calendar/"
     },
     {
+      "id": "4c6ce3babc770803",
+      "artists": [
+        "Brad Mehldau",
+        "Larry Grenadier"
+      ],
+      "date": "2026-08-13",
+      "venue_label": "Smoke Jazz",
+      "title": "Joe Farnsworth Trio featuring Brad Mehldau & Larry Grenadier",
+      "city": "Smoke Jazz",
+      "source": "venue",
+      "ticket_url": "https://smokejazz.com/calendar/"
+    },
+    {
+      "id": "1ab139b032122777",
+      "artists": [
+        "Joel Ross"
+      ],
+      "date": "2026-08-13",
+      "venue_label": "Smoke Jazz",
+      "title": ", which features artists such as Joel Ross, Sarah Hanahan, and Emmet Cohen.",
+      "city": "Smoke Jazz",
+      "source": "venue",
+      "ticket_url": "https://smokejazz.com/calendar/"
+    },
+    {
       "id": "c9c40c559b4a238b",
       "artists": [
         "Bill Frisell"
@@ -252,6 +170,31 @@
       "title": "Brad Mehldau",
       "city": "New York, NY",
       "source": "artist",
+      "ticket_url": "https://smokejazz.com/calendar/"
+    },
+    {
+      "id": "bd89d761fce37526",
+      "artists": [
+        "Brad Mehldau",
+        "Larry Grenadier"
+      ],
+      "date": "2026-08-14",
+      "venue_label": "Smoke Jazz",
+      "title": "Joe Farnsworth Trio featuring Brad Mehldau & Larry Grenadier",
+      "city": "Smoke Jazz",
+      "source": "venue",
+      "ticket_url": "https://smokejazz.com/calendar/"
+    },
+    {
+      "id": "dce26d10aab7aa33",
+      "artists": [
+        "Joel Ross"
+      ],
+      "date": "2026-08-14",
+      "venue_label": "Smoke Jazz",
+      "title": ", which features artists such as Joel Ross, Sarah Hanahan, and Emmet Cohen.",
+      "city": "Smoke Jazz",
+      "source": "venue",
       "ticket_url": "https://smokejazz.com/calendar/"
     },
     {
@@ -522,11 +465,12 @@
       "id": "c14266a9b9266a67",
       "artists": [
         "Brian Blade",
-        "Chris Potter"
+        "Chris Potter",
+        "John Patitucci"
       ],
       "date": "2026-09-01",
       "venue_label": "Village Vanguard",
-      "title": "featuring Chris Potter & Brian Blade",
+      "title": "John Patitucci Trio Featuring Chris Potter & Brian Blade",
       "city": "Village Vanguard",
       "source": "venue",
       "ticket_url": "https://villagevanguard.com/"
@@ -544,18 +488,6 @@
       "ticket_url": "https://villagevanguard.com/"
     },
     {
-      "id": "1b876b0d62c359b6",
-      "artists": [
-        "John Patitucci"
-      ],
-      "date": "2026-09-01",
-      "venue_label": "Village Vanguard",
-      "title": "John Patitucci",
-      "city": "Village Vanguard",
-      "source": "venue",
-      "ticket_url": "https://villagevanguard.com/"
-    },
-    {
       "id": "0c7df759d56c5ac0",
       "artists": [
         "Bill Frisell"
@@ -568,16 +500,28 @@
       "ticket_url": null
     },
     {
-      "id": "f4aef391a5e0a3ba",
+      "id": "3c372d870d6cbccc",
       "artists": [
         "Wynton Marsalis"
       ],
-      "date": "2026-09-12",
+      "date": "2026-09-17",
       "venue_label": "Jazz at Lincoln Center",
       "title": "Celebrate the music, vision, and lasting influence of Wynton Marsalis, our founding artistic director, through more than",
       "city": "Jazz at Lincoln Center",
       "source": "venue",
       "ticket_url": "https://www.jazz.org/whats-on/calendar/"
+    },
+    {
+      "id": "69b896203fd6785e",
+      "artists": [
+        "Immanuel Wilkins"
+      ],
+      "date": "2026-09-29",
+      "venue_label": "Village Vanguard",
+      "title": "Immanuel Wilkins Quartet",
+      "city": "Village Vanguard",
+      "source": "venue",
+      "ticket_url": "https://villagevanguard.com/"
     },
     {
       "id": "13d5a26bdac98e8c",
@@ -1470,6 +1414,18 @@
         "Wynton Marsalis"
       ],
       "date": "2027-05-20",
+      "venue_label": "Jazz at Lincoln Center",
+      "title": "Wynton Marsalis",
+      "city": "Jazz at Lincoln Center",
+      "source": "venue",
+      "ticket_url": "https://www.jazz.org/whats-on/calendar/"
+    },
+    {
+      "id": "8c91ed529216095a",
+      "artists": [
+        "Wynton Marsalis"
+      ],
+      "date": "2027-06-10",
       "venue_label": "Jazz at Lincoln Center",
       "title": "Wynton Marsalis",
       "city": "Jazz at Lincoln Center",
