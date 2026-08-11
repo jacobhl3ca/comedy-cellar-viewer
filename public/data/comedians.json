@@ -8996,7 +8996,8 @@
   },
   {
     "name": "Mike Binder",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Mike Binder is an American filmmaker, stand-up comedian, and actor."
   },
   {
     "name": "Mike Troy",
@@ -9045,5 +9046,11 @@
   {
     "name": "Eli Halpern",
     "venues": []
+  },
+  {
+    "name": "Allan Havey",
+    "venues": [],
+    "bio": "FROM \"MAD MEN\", \"THE OFFICE\", \"BILLIONS\",  \"LOUIE\", \"CURB YOUR ENTHUSIASM\",  \"CRASHING\", THE DAVID LETTERMAN SHOW.",
+    "tagline_cellar": "FROM \"MAD MEN\", \"THE OFFICE\", \"BILLIONS\",  \"LOUIE\", \"CURB YOUR ENTHUSIASM\",  \"CRASHING\", THE DAVID LETTERMAN SHOW."
   }
 ]
