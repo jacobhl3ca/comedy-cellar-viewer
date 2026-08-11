@@ -1128,7 +1128,8 @@
     "bio": "Alex Quow is a New York City–based stand-up comedian with over 100,000 followers across social platforms, whose work has been featured on HBO, Amazon Prime, and in the New York Comedy Festival. A veteran of nearly a decade on stage, Alex has performed at clubs and theaters nationwide.",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio_stand": "ALEX QUOW is a New York City based comedian and voice actor, with a lively personality and a knack for making people laugh. Growing up in the city, Alex was inspired by the diverse cultures and personalities around him, which led him to develop his own unique style of humor. After years of performing stand-up comedy in clubs around the city, Alex decided to take his talents to YouTube, where he has amassed a large following with his hilarious sketches and vlogs. Alex's goal is to spread joy and laughter to as many people as possible, and he hopes to one day have his own TV show or movie."
   },
   {
     "name": "Peter Revello",
@@ -2153,7 +2154,8 @@
     "bio": "\"Danny Braff is a NJ based comedian who’s dark observational style has entertained audiences at clubs and bars across the country including The Comedy Store, The Stress Factory Comedy Club, New York Comedy Club, The Comedy Connection, etc. Danny has made 2 appearances on the popular comedy podcast Kill Tony and is one of very few people to have received a standing ovation on the show. He has opened for comics such as Tim Dillon, Mark Normand, Jessica Kirson, Rich Vos, Yannis Pappas, and more. A Comedy reviewer in Florida once described Danny’s act in print as: “exhaustive list of Costco jokes” but Danny prefers to think of it as Costco Jokes in bulk.\"",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio_stand": "Danny Braff is a stand up comedian who's dark observational style has had him performing at clubs across the country from The Stress Factory in NJ to New York Comedy Club to The World Famous Comedy Store in LA. Danny has made two appearances on the #1 live podcast in the world, \"Kill Tony\" in which he received a standing ovation and ranked in 125, 000 views on Youtube. Dany has been on shows with some of the best comics in the world including Michael Che, Big Jay Oakerson, Mark Normand, Tim Dillon, Rich Vos, Adam Ray, Jessica Kirson, and more."
   },
   {
     "name": "Erik Angel",
@@ -9038,6 +9040,10 @@
   },
   {
     "name": "LeMaire Lee",
+    "venues": []
+  },
+  {
+    "name": "Eli Halpern",
     "venues": []
   }
 ]
