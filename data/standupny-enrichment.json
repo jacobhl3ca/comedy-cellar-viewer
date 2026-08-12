@@ -1,18 +1,4 @@
 {
-  "184510": {
-    "comedians": [
-      "Patton Oswalt",
-      "Michael Lenoci",
-      "Skyler Higley",
-      "Thash Mose"
-    ],
-    "photos": {
-      "Patton Oswalt": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Patton_Oswalt_at_MCM_Comic_Con_London%2C_May_2025_01.jpg/330px-Patton_Oswalt_at_MCM_Comic_Con_London%2C_May_2025_01.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "Michael Lenoci": "https://www.newyorkcomedyclub.com/img/imagetest/lenoci-headshot-16x9-jpg-5ce40e5b-lenoci-headshot-16x9-jpg.jpg",
-      "Skyler Higley": "https://thestandnyc.com/images/comedians/_square/skyler-higley-c9c30af9-main-image.jpg",
-      "Thash Mose": "https://thestandnyc.com/images/comedians/_square/Thash%2BMose%2BComic%2BHeadshot.jpg"
-    }
-  },
   "189406": {
     "comedians": [
       "Ksenia",
@@ -64,9 +50,9 @@
       "Olga Namer"
     ],
     "photos": {
-      "Myq Kaplan": "https://thestandnyc.com/images/comedians/_square/MyqKaplan_CreditMindyTucker.jpg",
+      "Myq Kaplan": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg/330px-Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "Leah Lamarr": "https://thestandnyc.com/images/comedians/_square/Leah_Lamarr.jpg",
-      "Dan Ahdoot": "https://thestandnyc.com/images/comedians/_square/Dan_Ahdoot.jpg",
+      "Dan Ahdoot": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Dan_Ahdoot.jpg/330px-Dan_Ahdoot.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "Jimmy Mccullough": "https://thestandnyc.com/images/comedians/_square/jimmymccullough.jpg",
       "Olga Namer": "https://thestandnyc.com/images/comedians/_square/olganamer.jpg"
     }
