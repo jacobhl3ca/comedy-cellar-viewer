@@ -5626,6 +5626,9 @@ async function refreshShowsInPlace() {
     refreshToggles('visible-tabs-toggles', 'tab', 'hiddenTabs');
     refreshToggles('visible-tools-toggles', 'tool', 'hiddenTools');
     refreshToggles('all-venues-toggles', 'allvenue', 'allHidden');
+    // Read on every open, not once at load: notrack.html can flip the same key
+    // in another tab, and the panel must not show a stale state.
+    refreshNotrackPills();
     refreshSwatches();
     refreshShareUI();
     if (importStatus) importStatus.textContent = '';
@@ -5701,6 +5704,32 @@ async function refreshShowsInPlace() {
       // Live-apply the change to the home page so the user sees the effect immediately.
       syncToolbarFromSettings();
     });
+  });
+
+  // ---- Analytics opt-out — deliberately NOT a settings key ----
+  // It flips localStorage['umami.disabled'], the same switch notrack.html
+  // writes and the analytics beacon reads. Keeping it OUT of `settings` keeps
+  // it out of account sync and out of shared setup links: it is a choice about
+  // this browser, and importing someone else's link must never silently make
+  // it. Reset-to-defaults leaves it alone for the same reason.
+  const NOTRACK_KEY = 'umami.disabled';
+  function refreshNotrackPills(){
+    const group = document.getElementById('notrack-pills');
+    if (!group) return;
+    let off = false;
+    try { off = localStorage.getItem(NOTRACK_KEY) === '1'; } catch { off = false; }
+    group.querySelectorAll('.settings-pill').forEach(p => {
+      p.setAttribute('aria-checked', String((p.dataset.value === 'off') === off));
+    });
+  }
+  document.getElementById('notrack-pills')?.addEventListener('click', (e) => {
+    const pill = e.target.closest('.settings-pill');
+    if (!pill) return;
+    try {
+      if (pill.dataset.value === 'off') localStorage.setItem(NOTRACK_KEY, '1');
+      else localStorage.removeItem(NOTRACK_KEY);
+    } catch { /* private mode: the refresh below reports what actually stuck */ }
+    refreshNotrackPills();
   });
 
   // ---- Visibility toggle chips (venue tabs + toolbar controls) — multi-select ----

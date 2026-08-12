@@ -20,3 +20,17 @@ const updated = html
   .replace(/(app\.min\.js|style\.min\.css)\?v=[A-Za-z0-9]+/g, `$1?v=${hash}`);
 fs.writeFileSync(file, updated);
 console.log(`cachebust: stamped ${hash} in ${file}`);
+
+// support.html carries no versioned asset, but its feedback mailto reads this
+// meta so a bug report says which build it came from. Rewriting the whole
+// content attribute (not just the CACHEBUST token) keeps it idempotent — after
+// the first build there is no token left to match.
+const supportFile = 'public/support.html';
+const support = fs.readFileSync(supportFile, 'utf8');
+const supportTag = /(<meta name="build" content=")[^"]*(">)/;
+if (!supportTag.test(support)) {
+  console.error(`cachebust: no <meta name="build"> in ${supportFile} — feedback would report build "dev"`);
+  process.exit(1);
+}
+fs.writeFileSync(supportFile, support.replace(supportTag, `$1${hash}$2`));
+console.log(`cachebust: stamped ${hash} in ${supportFile}`);

@@ -72,7 +72,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=4c96dba">
+  <link rel="stylesheet" href="style.min.css?v=fdec11f">
   <script>
     (function() {
       const root = document.documentElement;
@@ -556,6 +556,19 @@
           <p id="settings-import-status" class="settings-desc" style="margin-top:6px;min-height:1em;"></p>
         </div>
 
+        <!-- The opt-out has always existed at /notrack.html, but that page is
+             linked only from the privacy policy, so in practice nobody found
+             it. A visible switch is also what App Review and privacy
+             regulators look for. -->
+        <div class="modal-section">
+          <h3>Analytics</h3>
+          <p class="settings-desc">Anonymous visit counts, self-hosted, no cookies. Set per browser — clearing this site's data resets it.</p>
+          <div class="settings-pills" id="notrack-pills" role="radiogroup" aria-label="Count my visits">
+            <button class="settings-pill" data-value="on" role="radio" aria-checked="true">Count my visits</button>
+            <button class="settings-pill" data-value="off" role="radio" aria-checked="false">Don't count me</button>
+          </div>
+        </div>
+
         <!-- Feedback + Privacy live together at the bottom of Settings. Feedback
              points at the support page's #feedback anchor (not a bare mailto) so
              it still works in the Capacitor shell on a device with no Mail
@@ -594,7 +607,7 @@
   <footer class="site-footer">
     <div id="footer-venue-info"></div>
     <p>Built by fans, for fans.</p>
-    <p><a href="mailto:hello@tonightnyc.com">hello@tonightnyc.com</a></p>
+    <p><a href="mailto:hi@tonightnyc.com">hi@tonightnyc.com</a></p>
     <!-- Privacy now lives at the bottom of Settings instead of here. The
          analytics opt-out is no longer surfaced in the UI at all; /notrack.html
          still exists and is linked from privacy.html for anyone who wants it.
@@ -606,7 +619,7 @@
     <button id="pwa-install-btn" onclick="pwaInstall()" style="display:none;"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Add to Home Screen</button>
   </footer>
 
-  <script defer src="app.min.js?v=4c96dba"></script>
+  <script defer src="app.min.js?v=fdec11f"></script>
   <!-- Vercel Web Analytics + Speed Insights + Cloudflare Web Analytics — gated to skip Capacitor native shell so iOS app stays "No data collected" on App Store -->
   <script>
     if (!window.Capacitor?.isNativePlatform?.()) {

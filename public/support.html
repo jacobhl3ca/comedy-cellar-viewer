@@ -7,6 +7,9 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="theme-color" content="#e63636">
   <meta name="robots" content="index,follow">
+  <!-- Stamped by scripts/cachebust.js at build time; read by the feedback
+       mailto below so a bug report carries the build it came from. -->
+  <meta name="build" content="fdec11f">
   <link rel="canonical" href="https://tonightnyc.com/support">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -92,7 +95,25 @@
     </details>
 
     <h2 id="feedback">Bugs and feedback</h2>
-    <p>Tonight NYC is built by one person. Email <a href="mailto:hi@tonightnyc.com">hi@tonightnyc.com</a> with bug reports, feature requests, or thoughts. I read everything.</p>
+    <p>Tonight NYC is built by one person. Email <a id="feedback-mail" href="mailto:hi@tonightnyc.com">hi@tonightnyc.com</a> with bug reports, feature requests, or thoughts. I read everything.</p>
+    <script>
+      // Seed the draft with the build and whether this is the app or a browser.
+      // Reports used to arrive with no way to tell which version produced them,
+      // so answering one began with a round-trip. Progressive enhancement: with
+      // JS off the link is still a plain, working mailto to the same address.
+      (function () {
+        var a = document.getElementById('feedback-mail');
+        if (!a) return;
+        var meta = document.querySelector('meta[name="build"]');
+        var build = (meta && meta.content) || 'dev';
+        var cap = window.Capacitor;
+        var native = !!(cap && cap.isNativePlatform && cap.isNativePlatform());
+        var platform = native ? ((cap.getPlatform && cap.getPlatform()) || 'app') : 'web';
+        var body = '\n\n---\nBuild ' + build + ' · ' + platform + '\n' + navigator.userAgent + '\n';
+        a.href = 'mailto:hi@tonightnyc.com?subject=' + encodeURIComponent('Tonight NYC feedback') +
+          '&body=' + encodeURIComponent(body);
+      })();
+    </script>
 
     <h2>Privacy</h2>
     <p>See the <a href="/privacy">privacy policy</a>.</p>
