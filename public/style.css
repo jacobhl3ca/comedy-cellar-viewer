@@ -1179,10 +1179,12 @@ html.native-app .app-store-badge-link { display: none; }
 .account-actions button { flex: 1; }
 .account-delete-btn { color: #e63636; border-color: #e63636; }
 .account-status { min-height: 1em; margin-top: 8px; }
-/* Privacy link at the very bottom of the Settings modal (it used to sit in the
-   site footer). Quiet by design — findable, never a call to action. */
-.settings-legal { margin: 4px 0 2px; text-align: center; font-size: 12px; }
+/* Feedback + Privacy links at the very bottom of the Settings modal (they used
+   to sit in the site footer). Quiet by design — findable, never a call to
+   action. The dot separator is muted too so the row reads as one quiet unit. */
+.settings-legal { margin: 4px 0 2px; text-align: center; font-size: 12px; color: var(--text-dim); }
 .settings-legal a { color: var(--text-dim); text-decoration: underline; }
+.settings-legal span { margin: 0 6px; opacity: .65; }
 .account-status.account-error { color: var(--accent); }
 
 .settings-import-row { display: flex; gap: 8px; }
