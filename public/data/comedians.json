@@ -1244,8 +1244,7 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Riley-Lassin-b8a00a4b-thumb-image.jpg?1753902957",
     "venues": [
       "nycc"
-    ],
-    "bio": "Riley Lassin is a stand-up comedian performing in New York City. She performs at clubs across the city."
+    ]
   },
   {
     "name": "Andrew Dice Clay",
@@ -3752,8 +3751,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/jc-mendoza",
     "bio_stand": "JC Mendoza is an NYC based Standup Comedian. He has been featured on Will Ferrell’s “Funny Or Die” network and in the 2021 Red Clay Comedy Festival in Atlanta, GA. This Puerto Rican Prince of Comedy hits the stage with high energy, quick wit, and 2 decades worth of unresolved family trauma.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/JC_Mendoza_1.jpg",
-    "bio": "JC Mendoza is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/JC_Mendoza_1.jpg"
   },
   {
     "name": "Jackie Kashian",
@@ -9076,6 +9074,182 @@
   },
   {
     "name": "Daniel Dellanno",
+    "venues": []
+  },
+  {
+    "name": "Maximilian Spinelli",
+    "venues": []
+  },
+  {
+    "name": "Sarah Cooper",
+    "venues": []
+  },
+  {
+    "name": "Kaneez Surka",
+    "venues": []
+  },
+  {
+    "name": "Jatty Robinson",
+    "venues": []
+  },
+  {
+    "name": "James Davis",
+    "venues": []
+  },
+  {
+    "name": "Anne Stesney",
+    "venues": []
+  },
+  {
+    "name": "Maureen Langan",
+    "venues": []
+  },
+  {
+    "name": "Jack Finnegan",
+    "venues": []
+  },
+  {
+    "name": "Zach McGovern",
+    "venues": []
+  },
+  {
+    "name": "Caitlin Reese",
+    "venues": []
+  },
+  {
+    "name": "Mehran Khaghani",
+    "venues": []
+  },
+  {
+    "name": "Tyler Groce",
+    "venues": []
+  },
+  {
+    "name": "Chris Reiter",
+    "venues": []
+  },
+  {
+    "name": "Laughing Buddha Comedy",
+    "venues": []
+  },
+  {
+    "name": "Pedro Gonzalez",
+    "venues": []
+  },
+  {
+    "name": "Igor Martinez",
+    "venues": []
+  },
+  {
+    "name": "Mike Bramante",
+    "venues": []
+  },
+  {
+    "name": "Terry Thomas Jr.",
+    "venues": []
+  },
+  {
+    "name": "Shivani Dave",
+    "venues": []
+  },
+  {
+    "name": "Gauri B",
+    "venues": []
+  },
+  {
+    "name": "Nice Try",
+    "venues": []
+  },
+  {
+    "name": "LBC Summer Fest Finals",
+    "venues": []
+  },
+  {
+    "name": "Runnin Late",
+    "venues": []
+  },
+  {
+    "name": "Gareth Reynolds",
+    "venues": []
+  },
+  {
+    "name": "Eman Morgan",
+    "venues": []
+  },
+  {
+    "name": "Ted Jones",
+    "venues": []
+  },
+  {
+    "name": "Alvin Williams",
+    "venues": []
+  },
+  {
+    "name": "Matt Benjamin",
+    "venues": []
+  },
+  {
+    "name": "Jimmy Mccullough",
+    "venues": []
+  },
+  {
+    "name": "Morning Good",
+    "venues": []
+  },
+  {
+    "name": "Feraz Shere",
+    "venues": []
+  },
+  {
+    "name": "Jerik Angel",
+    "venues": []
+  },
+  {
+    "name": "Sekou Ali",
+    "venues": []
+  },
+  {
+    "name": "Zach Zimmerman",
+    "venues": []
+  },
+  {
+    "name": "Wali Collins",
+    "venues": []
+  },
+  {
+    "name": "Gibran Saleem",
+    "venues": []
+  },
+  {
+    "name": "Jonah Bowen",
+    "venues": []
+  },
+  {
+    "name": "Zeam Studios",
+    "venues": []
+  },
+  {
+    "name": "Kyle Wayne",
+    "venues": []
+  },
+  {
+    "name": "Isiah Givens",
+    "venues": []
+  },
+  {
+    "name": "The Velvet",
+    "venues": []
+  },
+  {
+    "name": "Patrick Holbert",
+    "venues": []
+  },
+  {
+    "name": "The Maze",
+    "venues": []
+  },
+  {
+    "name": "Serena Kerrigan",
     "venues": []
   }
 ]
