@@ -24,6 +24,18 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="tonight-auth" android:host="google" />
             </intent-filter>
+            <!-- App Links. android:autoVerify makes Android fetch
+                 https://tonightnyc.com/.well-known/assetlinks.json at install time; if
+                 the SHA-256 there doesn't match the Play app-signing key, links keep
+                 opening in Chrome instead. Check with:
+                   adb shell pm get-app-links com.jacobhl.tonightnyc -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="tonightnyc.com" />
+                <data android:scheme="https" android:host="www.tonightnyc.com" />
+            </intent-filter>
         </activity>
 
         <provider

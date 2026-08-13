@@ -6,5 +6,15 @@
 	<array>
 		<string>Default</string>
 	</array>
+	<!-- Universal Links. The matching association file is served by api/aasa.js at
+	     https://tonightnyc.com/.well-known/apple-app-site-association (a vercel.json
+	     rewrite, not a redirect). The App ID also needs the Associated Domains
+	     capability enabled in the Apple Developer portal, or the build will fail
+	     provisioning. -->
+	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>applinks:tonightnyc.com</string>
+		<string>applinks:www.tonightnyc.com</string>
+	</array>
 </dict>
 </plist>

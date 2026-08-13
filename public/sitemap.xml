@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Keep in sync with VIEW_META in src/init.js and the rewrites in vercel.json.
+     Every SPA path is its own indexable page (own <title>), so every one of them
+     belongs here — /gotham, /nycc, /standupny and /unionhall were missing. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tonightnyc.com</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://tonightnyc.com/tonight</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://tonightnyc.com/cellar</loc>
@@ -16,6 +24,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tonightnyc.com/gotham</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tonightnyc.com/nycc</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tonightnyc.com/standupny</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tonightnyc.com/unionhall</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tonightnyc.com/big</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -24,5 +52,15 @@
     <loc>https://tonightnyc.com/comics</loc>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tonightnyc.com/support</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://tonightnyc.com/privacy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>

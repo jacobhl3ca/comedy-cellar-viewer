@@ -41,6 +41,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         // Called when the app was launched with an activity, including Universal Links.
+        //
+        // This app is a `server.url` shell — the WebView loads tonightnyc.com itself —
+        // so handling a universal link means pointing the existing WebView at the
+        // incoming URL. Without this the link opens the app but leaves it on whatever
+        // page it was already showing, which looks identical to the link being ignored.
+        // @capacitor/app isn't a dependency here, so this is done natively rather than
+        // by listening for `appUrlOpen` in JS.
+        if userActivity.activityType == NSUserActivityTypeBrowsingWeb,
+           let url = userActivity.webpageURL,
+           let host = url.host,
+           host == "tonightnyc.com" || host == "www.tonightnyc.com",
+           let bridgeVC = window?.rootViewController as? CAPBridgeViewController,
+           let webView = bridgeVC.webView {
+            webView.load(URLRequest(url: url))
+            return true
+        }
+
         // Feel free to add additional processing here, but if you want the App API to support
         // tracking app url opens, make sure to keep this call
         return ApplicationDelegateProxy.shared.application(application, continue: userActivity, restorationHandler: restorationHandler)

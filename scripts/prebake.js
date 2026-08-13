@@ -193,6 +193,27 @@ function nameToFilename(name) {
     .replace(/^_|_$/g, '');
 }
 
+// The club scrapers put whatever the venue's calendar printed into `comedians[]`,
+// which for NY Comedy Club includes rows like "Closed For Private Event",
+// "Comedy Mob Open Mic" and "Double Edged Co-Headlining Series ft. Alex Gorge &
+// Jared Harvin". Feeding those into the photo lookup wastes requests and, worse,
+// files whatever image comes back under a name that isn't a person. Only names
+// that read like an actual performer get through.
+const NOT_A_PERSON_RE = /\b(open mic|private event|closed|presents?|showcase|series|festival|tickets?|late night|happy hour|all[- ]stars?|lineup|comedy night|surprise guest|and friends|& friends|more tba|tba|tbd|host(ed)? by|doors?|matinee|with|live in)\b/i;
+
+function isLikelyPersonName(name) {
+  if (!name) return false;
+  if (name.length < 3 || name.length > 40) return false;
+  if (/\d/.test(name)) return false;
+  if (/[+&!?/(){}[\]]|\bft\.?\b|\bfeat\.?\b|\bw\/\b/i.test(name)) return false;
+  if (NOT_A_PERSON_RE.test(name)) return false;
+  // Two-to-four words. This does drop mononym comics ("Godfrey"), but a false
+  // negative just means no photo — the same as today — while a false positive
+  // files a stranger's headshot under a show title.
+  const words = name.trim().split(/\s+/);
+  return words.length >= 2 && words.length <= 4;
+}
+
 // ---- Step 1: Scrape Comedy Cellar (next 30 days — covers per-night specials announced ~3 weeks out) ----
 // Returns { comedians: Map, batchResults: object } — batchResults saved as static JSON
 async function scrapeCellar() {
@@ -940,6 +961,11 @@ function isGenericBio(bio) {
 }
 
 // ---- Scrape Comedy Cellar availability (sold out detection) ----
+// Keep AVAILABILITY_DAYS equal to the lineup window in scrapeCellar() — any show
+// we list but never check availability for renders as bookable whether it is or not.
+const AVAILABILITY_DAYS = 30;
+const AVAILABILITY_CONCURRENCY = 6;
+
 async function scrapeAvailability() {
   try {
     // Step 1: Get auth token from reservation page
@@ -950,42 +976,56 @@ async function scrapeAvailability() {
     const config = JSON.parse(configMatch[1]);
     const { cca, created } = config;
 
-    // Step 2: Fetch availability for next 7 days
+    // Step 2: Fetch availability for the same 30-day window scrapeCellar() covers.
+    // It used to stop at 7 days, which meant every show from day 8 onward silently
+    // rendered as "Reserve" — the UI can't tell "not sold out" from "never checked".
+    // The reservation API answers well past 30 days (verified out to ~60), so the
+    // window is now the lineup window; days the API has no shows for come back [].
     const dates = [];
     const now = new Date();
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < AVAILABILITY_DAYS; i++) {
       const d = new Date(now);
       d.setDate(now.getDate() + i);
       dates.push(d.toISOString().split('T')[0]);
     }
 
     const results = {};
-    await Promise.all(dates.map(async dateStr => {
-      try {
-        const resp = await fetchPost(
-          'https://www.comedycellar.com/reservations/api/getShows',
-          { date: dateStr },
-          { 'X-Code-Localize': cca, 'X-Page-Creation': String(created) }
-        );
-        const data = JSON.parse(resp.toString());
-        const shows = data?.data?.showInfo?.shows || [];
-        results[dateStr] = shows.map(s => ({
-          time: s.time,
-          description: s.description,
-          soldout: s.soldout || (s.max - s.totalGuests < 1),
-          seatsLeft: Math.max(0, s.max - s.totalGuests),
-          cover: s.cover,
-          timestamp: s.timestamp
-        }));
-      } catch (e) {
-        log(`Availability: failed for ${dateStr}: ${e.message}`);
-        results[dateStr] = [];
-      }
-    }));
+    const failed = [];
+    // Chunked rather than one big Promise.all — 30 simultaneous POSTs to the
+    // reservation API is a good way to start getting rate-limited.
+    for (let i = 0; i < dates.length; i += AVAILABILITY_CONCURRENCY) {
+      const chunk = dates.slice(i, i + AVAILABILITY_CONCURRENCY);
+      await Promise.all(chunk.map(async dateStr => {
+        try {
+          const resp = await fetchPost(
+            'https://www.comedycellar.com/reservations/api/getShows',
+            { date: dateStr },
+            { 'X-Code-Localize': cca, 'X-Page-Creation': String(created) }
+          );
+          const data = JSON.parse(resp.toString());
+          const shows = data?.data?.showInfo?.shows || [];
+          results[dateStr] = shows.map(s => ({
+            time: s.time,
+            description: s.description,
+            soldout: s.soldout || (s.max - s.totalGuests < 1),
+            seatsLeft: Math.max(0, s.max - s.totalGuests),
+            cover: s.cover,
+            timestamp: s.timestamp
+          }));
+        } catch (e) {
+          // Leave the key absent instead of writing []. An empty array reads as
+          // "checked, nothing sold out"; absent reads as "not checked", which is
+          // the truth and is what `coverage` below reports on.
+          log(`Availability: failed for ${dateStr}: ${e.message}`);
+          failed.push(dateStr);
+        }
+      }));
+    }
 
     const totalSoldOut = Object.values(results).flat().filter(s => s.soldout).length;
     const totalShows = Object.values(results).flat().length;
-    log(`Availability: ${totalShows} shows across ${dates.length} days, ${totalSoldOut} sold out`);
+    log(`Availability: ${totalShows} shows across ${Object.keys(results).length}/${dates.length} days, ${totalSoldOut} sold out` +
+        (failed.length ? ` — ${failed.length} day(s) failed: ${failed.join(', ')}` : ''));
     return results;
   } catch (e) {
     log(`Availability scrape failed: ${e.message}`);
@@ -1098,6 +1138,34 @@ async function main() {
       allComedians.set(name, { ...data });
     } else if (!allComedians.get(name).photoUrl && data.photoUrl) {
       allComedians.get(name).photoUrl = data.photoUrl;
+    }
+  }
+
+  // Add the club-scraper venues to the photo pipeline.
+  //
+  // Until now only Cellar, The Stand and big shows fed `allComedians`, so a comedian
+  // who only ever plays NY Comedy Club or Stand Up NY got a photo purely by accident —
+  // if their name happened to also appear on a Cellar lineup. That's why those tabs
+  // looked bare next to the Cellar tab: Stand Up NY sat at 25% photo coverage and
+  // NY Comedy Club at 54%, against Cellar's near-complete set.
+  //
+  // Gotham and Union Hall are not listed here on purpose: their scrapers return
+  // title-only shows with no `comedians` array (Union Hall comes from Eventbrite,
+  // Gotham from a calendar widget), so there are no names to look up. Fixing those
+  // means parsing performers out of event titles, which is a separate job.
+  for (const [venueLabel, shows] of [['nycc', nyccShows], ['standupny', standupnyShows]]) {
+    for (const show of shows || []) {
+      for (const rawName of show.comedians || []) {
+        const name = normalizeName(String(rawName || '').trim());
+        if (!isLikelyPersonName(name)) continue;
+        // Stand Up NY's poster OCR carries its own headshots; prefer those.
+        const photoUrl = show.comedianPhotos?.[rawName] || show.comedianPhotos?.[name] || '';
+        if (!allComedians.has(name)) {
+          allComedians.set(name, { photoUrl, tagline: '', source: venueLabel });
+        } else if (!allComedians.get(name).photoUrl && photoUrl) {
+          allComedians.get(name).photoUrl = photoUrl;
+        }
+      }
     }
   }
 

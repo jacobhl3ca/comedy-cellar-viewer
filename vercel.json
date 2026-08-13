@@ -17,6 +17,9 @@
     { "source": "/comedians", "destination": "/comics", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/.well-known/apple-app-site-association", "destination": "/api/aasa" },
+    { "source": "/apple-app-site-association", "destination": "/api/aasa" },
+    { "source": "/.well-known/assetlinks.json", "destination": "/api/aasa?file=assetlinks" },
     { "source": "/api/account", "destination": "/api/account-router?action=account" },
     { "source": "/api/auth/apple/callback", "destination": "/api/account-router?action=callback" },
     { "source": "/api/auth/apple/login", "destination": "/api/account-router?action=login" },
