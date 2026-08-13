@@ -46,6 +46,7 @@
   updateShareBtn();
   applyPathToSource();
   syncUrlToSource(activeSource);
+  applyDateFromUrl();
   renderSourceTabs();
   renderTabs();
   renderShows();
@@ -107,6 +108,7 @@
       activeDate = (prevDate && prevDate !== 'all' && dateInActiveSource(prevDate))
         ? prevDate
         : 'all';
+      syncUrlToDate(activeDate);
       if (window.va) window.va('event', { name: 'tab_switch', data: { source: activeSource } });
       if (activeSource !== 'all') trackUmami('venue-open', { venue: activeSource });
       renderSourceTabs();
@@ -266,7 +268,7 @@
   document.getElementById('reset-prefs').addEventListener('click', () => {
     if (confirm('Reset all favorites and skips?')) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ faves: [], skips: [], likes: [] }));
-      history.replaceState(null, '', window.location.pathname);
+      history.replaceState(null, '', urlKeepingSearch());
       document.getElementById('comedian-search').value = '';
       renderModal();
       renderTabs();
@@ -425,6 +427,47 @@ function viewSourceFromPath() {
   return VIEW_BY_PATH[p] || null;
 }
 
+// ---- Date deep-links (?date=YYYY-MM-DD) ----------------------------------
+// The path picks the venue tab and the hash carries shared prefs, so the day
+// lives in the query string — the one slot nothing else writes to. That makes
+// /cellar?date=2026-08-16 shareable and bookmarkable, and it survives a
+// tab switch (syncUrlToSource preserves the search).
+// Also accepts ?date=today and ?date=tomorrow.
+function localISODate(offsetDays) {
+  const d = new Date();
+  if (offsetDays) d.setDate(d.getDate() + offsetDays);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
+function dateParamFromUrl() {
+  const raw = (new URLSearchParams(window.location.search).get('date') || '').trim().toLowerCase();
+  if (!raw) return null;
+  if (raw === 'today') return localISODate(0);
+  if (raw === 'tomorrow') return localISODate(1);
+  if (raw === 'all') return 'all';
+  return /^\d{4}-\d{2}-\d{2}$/.test(raw) ? raw : null;
+}
+
+// Set the active day from ?date= on load. Only honours a day the loaded data
+// actually has, so a stale bookmark degrades to Full Schedule instead of a
+// blank screen.
+function applyDateFromUrl() {
+  const d = dateParamFromUrl();
+  if (!d || d === 'all') return;
+  // `dates` holds Date objects, not ISO strings — compare on the formatted key.
+  if (typeof dates !== 'undefined' && Array.isArray(dates) && dates.length
+      && !dates.map(formatDateParam).includes(d)) return;
+  activeDate = d;
+}
+
+// Reflect the selected day back into ?date=. 'all'/'calendar' drop the param.
+function syncUrlToDate(dateStr) {
+  const url = new URL(window.location.href);
+  if (!dateStr || dateStr === 'all' || dateStr === 'calendar') url.searchParams.delete('date');
+  else url.searchParams.set('date', dateStr);
+  history.replaceState(null, '', url.pathname + url.search + url.hash);
+}
+
 // Set the active tab from the URL path. An explicit path wins over saved defaultTab.
 function applyPathToSource() {
   const s = viewSourceFromPath();
@@ -436,7 +479,8 @@ function syncUrlToSource(source) {
   const meta = VIEW_META[source] || VIEW_META.all;
   const current = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
   if (current !== meta.path) {
-    history.replaceState(null, '', meta.path + window.location.hash);
+    // Keep ?date= and the prefs hash across a tab switch.
+    history.replaceState(null, '', meta.path + window.location.search + window.location.hash);
   }
   document.title = meta.title;
   const canonical = document.querySelector('link[rel="canonical"]');
@@ -453,6 +497,7 @@ function resetToHome() {
   activeSource = 'all';
   syncUrlToSource('all');
   activeDate = 'all';
+  syncUrlToDate('all');
   activeVenue = 'all';
   activeStandRoom = 'all';
   activeBigVenue = 'all';
@@ -1109,7 +1154,7 @@ async function refreshShowsInPlace() {
       .replace(/[#&]?p=[^&]+/, '')
       .replace(/[#&]?s=[^&]+/, '')
       .replace(/^#&/, '#');
-    history.replaceState(null, '', window.location.pathname + (cleaned === '#' ? '' : cleaned));
+    history.replaceState(null, '', urlKeepingSearch(cleaned === '#' ? '' : cleaned));
     // Toast (after a tick so the modal/render is up).
     setTimeout(() => {
       showImportToast(imported);

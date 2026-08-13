@@ -1,5 +1,12 @@
 // ---- Preferences (localStorage + URL hash sync) ----
 const STORAGE_KEY = 'cellar-tonight-prefs';
+
+// Rewrite the URL keeping the path AND the query string, replacing only the
+// hash. Passing a bare '#p=…' (or just pathname) to replaceState silently drops
+// ?date=, so a shared day link would lose its day the moment you fav a comic.
+function urlKeepingSearch(hash) {
+  return window.location.pathname + window.location.search + (hash || '');
+}
 // bookmarkToastShown removed — only used in commented-out showBookmarkToast()
 
 // Synchronous version — reads from localStorage only (used by isFav/isSkip/isLike/cycleComedian)
@@ -16,7 +23,7 @@ async function loadPrefsFromHash() {
     const hashPrefs = await readHashPrefs();
     if (hashPrefs) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(hashPrefs));
-      history.replaceState(null, '', window.location.pathname);
+      history.replaceState(null, '', urlKeepingSearch());
       return hashPrefs;
     }
     return loadPrefs();
@@ -72,19 +79,19 @@ async function decompressPrefs(compressed) {
 async function updateHashFromPrefs(prefs) {
   try {
     if (prefs.faves.length === 0 && prefs.skips.length === 0 && prefs.likes.length === 0) {
-      history.replaceState(null, '', window.location.pathname);
+      history.replaceState(null, '', urlKeepingSearch());
       return;
     }
     if (typeof CompressionStream !== 'undefined') {
       const compressed = await compressPrefs(prefs);
-      history.replaceState(null, '', '#p=' + compressed);
+      history.replaceState(null, '', urlKeepingSearch('#p=' + compressed));
     } else {
       // Fallback: legacy uncompressed format (Safari < 16.4)
       const params = new URLSearchParams();
       if (prefs.faves.length) params.set('f', prefs.faves.join('|'));
       if (prefs.skips.length) params.set('s', prefs.skips.join('|'));
       if (prefs.likes.length) params.set('l', prefs.likes.join('|'));
-      history.replaceState(null, '', '#' + params.toString());
+      history.replaceState(null, '', urlKeepingSearch('#' + params.toString()));
     }
   } catch (e) {
     console.error('updateHashFromPrefs error:', e);

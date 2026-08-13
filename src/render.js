@@ -293,6 +293,7 @@ function calendarClear() {
   calendarSelectedDates.clear();
   // Reset to default view
   activeDate = 'all';
+  syncUrlToDate('all');
   renderCalendar();
   renderTabs();
   renderShows();
@@ -341,6 +342,7 @@ async function calendarApply() {
     // Multi-select: set to 'all' and filter in render
     activeDate = 'calendar';
   }
+  syncUrlToDate(activeDate);
 
   calendarOpen = false;
   document.getElementById('calendar-btn')?.classList.remove('active');

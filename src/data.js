@@ -439,6 +439,7 @@ function scrollToTop() {
 // re-render, then jump to top so the new day's lineups start at the viewport top.
 function selectDayTab(dateStr) {
   activeDate = activeDate === dateStr ? 'all' : dateStr;
+  syncUrlToDate(activeDate);
   renderTabs();
   renderShows();
   scrollToTop();
@@ -448,6 +449,7 @@ function selectDayTab(dateStr) {
 // snap to top.
 function jumpToDay(dateStr) {
   activeDate = dateStr;
+  syncUrlToDate(activeDate);
   renderTabs();
   renderShows();
   scrollToTop();

@@ -374,6 +374,13 @@ const Native = (function() {
 })();
 // ---- Preferences (localStorage + URL hash sync) ----
 const STORAGE_KEY = 'cellar-tonight-prefs';
+
+// Rewrite the URL keeping the path AND the query string, replacing only the
+// hash. Passing a bare '#p=…' (or just pathname) to replaceState silently drops
+// ?date=, so a shared day link would lose its day the moment you fav a comic.
+function urlKeepingSearch(hash) {
+  return window.location.pathname + window.location.search + (hash || '');
+}
 // bookmarkToastShown removed — only used in commented-out showBookmarkToast()
 
 // Synchronous version — reads from localStorage only (used by isFav/isSkip/isLike/cycleComedian)
@@ -390,7 +397,7 @@ async function loadPrefsFromHash() {
     const hashPrefs = await readHashPrefs();
     if (hashPrefs) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(hashPrefs));
-      history.replaceState(null, '', window.location.pathname);
+      history.replaceState(null, '', urlKeepingSearch());
       return hashPrefs;
     }
     return loadPrefs();
@@ -446,19 +453,19 @@ async function decompressPrefs(compressed) {
 async function updateHashFromPrefs(prefs) {
   try {
     if (prefs.faves.length === 0 && prefs.skips.length === 0 && prefs.likes.length === 0) {
-      history.replaceState(null, '', window.location.pathname);
+      history.replaceState(null, '', urlKeepingSearch());
       return;
     }
     if (typeof CompressionStream !== 'undefined') {
       const compressed = await compressPrefs(prefs);
-      history.replaceState(null, '', '#p=' + compressed);
+      history.replaceState(null, '', urlKeepingSearch('#p=' + compressed));
     } else {
       // Fallback: legacy uncompressed format (Safari < 16.4)
       const params = new URLSearchParams();
       if (prefs.faves.length) params.set('f', prefs.faves.join('|'));
       if (prefs.skips.length) params.set('s', prefs.skips.join('|'));
       if (prefs.likes.length) params.set('l', prefs.likes.join('|'));
-      history.replaceState(null, '', '#' + params.toString());
+      history.replaceState(null, '', urlKeepingSearch('#' + params.toString()));
     }
   } catch (e) {
     console.error('updateHashFromPrefs error:', e);
@@ -1128,6 +1135,7 @@ function scrollToTop() {
 // re-render, then jump to top so the new day's lineups start at the viewport top.
 function selectDayTab(dateStr) {
   activeDate = activeDate === dateStr ? 'all' : dateStr;
+  syncUrlToDate(activeDate);
   renderTabs();
   renderShows();
   scrollToTop();
@@ -1137,6 +1145,7 @@ function selectDayTab(dateStr) {
 // snap to top.
 function jumpToDay(dateStr) {
   activeDate = dateStr;
+  syncUrlToDate(activeDate);
   renderTabs();
   renderShows();
   scrollToTop();
@@ -1748,6 +1757,7 @@ function calendarClear() {
   calendarSelectedDates.clear();
   // Reset to default view
   activeDate = 'all';
+  syncUrlToDate('all');
   renderCalendar();
   renderTabs();
   renderShows();
@@ -1796,6 +1806,7 @@ async function calendarApply() {
     // Multi-select: set to 'all' and filter in render
     activeDate = 'calendar';
   }
+  syncUrlToDate(activeDate);
 
   calendarOpen = false;
   document.getElementById('calendar-btn')?.classList.remove('active');
@@ -4449,6 +4460,7 @@ async function init() {
   updateShareBtn();
   applyPathToSource();
   syncUrlToSource(activeSource);
+  applyDateFromUrl();
   renderSourceTabs();
   renderTabs();
   renderShows();
@@ -4510,6 +4522,7 @@ async function init() {
       activeDate = (prevDate && prevDate !== 'all' && dateInActiveSource(prevDate))
         ? prevDate
         : 'all';
+      syncUrlToDate(activeDate);
       if (window.va) window.va('event', { name: 'tab_switch', data: { source: activeSource } });
       if (activeSource !== 'all') trackUmami('venue-open', { venue: activeSource });
       renderSourceTabs();
@@ -4669,7 +4682,7 @@ async function init() {
   document.getElementById('reset-prefs').addEventListener('click', () => {
     if (confirm('Reset all favorites and skips?')) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ faves: [], skips: [], likes: [] }));
-      history.replaceState(null, '', window.location.pathname);
+      history.replaceState(null, '', urlKeepingSearch());
       document.getElementById('comedian-search').value = '';
       renderModal();
       renderTabs();
@@ -4828,6 +4841,47 @@ function viewSourceFromPath() {
   return VIEW_BY_PATH[p] || null;
 }
 
+// ---- Date deep-links (?date=YYYY-MM-DD) ----------------------------------
+// The path picks the venue tab and the hash carries shared prefs, so the day
+// lives in the query string — the one slot nothing else writes to. That makes
+// /cellar?date=2026-08-16 shareable and bookmarkable, and it survives a
+// tab switch (syncUrlToSource preserves the search).
+// Also accepts ?date=today and ?date=tomorrow.
+function localISODate(offsetDays) {
+  const d = new Date();
+  if (offsetDays) d.setDate(d.getDate() + offsetDays);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
+function dateParamFromUrl() {
+  const raw = (new URLSearchParams(window.location.search).get('date') || '').trim().toLowerCase();
+  if (!raw) return null;
+  if (raw === 'today') return localISODate(0);
+  if (raw === 'tomorrow') return localISODate(1);
+  if (raw === 'all') return 'all';
+  return /^\d{4}-\d{2}-\d{2}$/.test(raw) ? raw : null;
+}
+
+// Set the active day from ?date= on load. Only honours a day the loaded data
+// actually has, so a stale bookmark degrades to Full Schedule instead of a
+// blank screen.
+function applyDateFromUrl() {
+  const d = dateParamFromUrl();
+  if (!d || d === 'all') return;
+  // `dates` holds Date objects, not ISO strings — compare on the formatted key.
+  if (typeof dates !== 'undefined' && Array.isArray(dates) && dates.length
+      && !dates.map(formatDateParam).includes(d)) return;
+  activeDate = d;
+}
+
+// Reflect the selected day back into ?date=. 'all'/'calendar' drop the param.
+function syncUrlToDate(dateStr) {
+  const url = new URL(window.location.href);
+  if (!dateStr || dateStr === 'all' || dateStr === 'calendar') url.searchParams.delete('date');
+  else url.searchParams.set('date', dateStr);
+  history.replaceState(null, '', url.pathname + url.search + url.hash);
+}
+
 // Set the active tab from the URL path. An explicit path wins over saved defaultTab.
 function applyPathToSource() {
   const s = viewSourceFromPath();
@@ -4839,7 +4893,8 @@ function syncUrlToSource(source) {
   const meta = VIEW_META[source] || VIEW_META.all;
   const current = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
   if (current !== meta.path) {
-    history.replaceState(null, '', meta.path + window.location.hash);
+    // Keep ?date= and the prefs hash across a tab switch.
+    history.replaceState(null, '', meta.path + window.location.search + window.location.hash);
   }
   document.title = meta.title;
   const canonical = document.querySelector('link[rel="canonical"]');
@@ -4856,6 +4911,7 @@ function resetToHome() {
   activeSource = 'all';
   syncUrlToSource('all');
   activeDate = 'all';
+  syncUrlToDate('all');
   activeVenue = 'all';
   activeStandRoom = 'all';
   activeBigVenue = 'all';
@@ -5512,7 +5568,7 @@ async function refreshShowsInPlace() {
       .replace(/[#&]?p=[^&]+/, '')
       .replace(/[#&]?s=[^&]+/, '')
       .replace(/^#&/, '#');
-    history.replaceState(null, '', window.location.pathname + (cleaned === '#' ? '' : cleaned));
+    history.replaceState(null, '', urlKeepingSearch(cleaned === '#' ? '' : cleaned));
     // Toast (after a tick so the modal/render is up).
     setTimeout(() => {
       showImportToast(imported);
