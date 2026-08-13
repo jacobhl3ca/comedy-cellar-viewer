@@ -199,10 +199,19 @@ function nameToFilename(name) {
 // Jared Harvin". Feeding those into the photo lookup wastes requests and, worse,
 // files whatever image comes back under a name that isn't a person. Only names
 // that read like an actual performer get through.
-const NOT_A_PERSON_RE = /\b(open mic|private event|closed|presents?|showcase|series|festival|tickets?|late night|happy hour|all[- ]stars?|lineup|comedy night|surprise guest|and friends|& friends|more tba|tba|tbd|host(ed)? by|doors?|matinee|with|live in)\b/i;
+const NOT_A_PERSON_RE = /\b(open mic|private event|closed|presents?|showcase|series|festival|fest|finals?|tickets?|late night|happy hour|all[- ]stars?|lineup|comedy|comedians?|surprise guest|and friends|& friends|more tba|tba|tbd|host(ed)? by|doors?|matinee|with|live in|studios?|productions?|entertainment|tour)\b/i;
+
+// Show and producer names that are structurally indistinguishable from a person's
+// name — nothing about "Nice Try" says it isn't someone called Nice Try. Without
+// this they'd reappear in the comedian directory on every bake.
+const NOT_A_PERSON_EXACT = new Set([
+  'nice try', 'runnin late', 'running late', 'morning good', 'new jokes',
+  'good eggs', 'hot soup', 'the boy friends',
+]);
 
 function isLikelyPersonName(name) {
   if (!name) return false;
+  if (NOT_A_PERSON_EXACT.has(name.trim().toLowerCase())) return false;
   if (name.length < 3 || name.length > 40) return false;
   if (/\d/.test(name)) return false;
   if (/[+&!?/(){}[\]]|\bft\.?\b|\bfeat\.?\b|\bw\/\b/i.test(name)) return false;
