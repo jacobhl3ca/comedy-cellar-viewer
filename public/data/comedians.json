@@ -9082,11 +9082,14 @@
   },
   {
     "name": "Sarah Cooper",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Sarah Anne Cooper is a Jamaican-American author, YouTuber and comedian. Her first two books, 100 Tricks to Appear Smart in Meetings and Draw What Success Looks Like were published in 2016, with her third book, How to Be Successful Without Hurting Men's Feelings, being published in 2018."
   },
   {
     "name": "Kaneez Surka",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Kaneez-e-Fatema Surka is a South African improv comedian, actress, and YouTuber, based in India. She started her career with the show The Week That Wasn't. She has performed on various stand up platforms. She was a judge on the first two seasons of the Amazon Prime Video stand-up comedy reality show",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/XdtlSbNj.jpg_large.jpg/330px-XdtlSbNj.jpg_large.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
     "name": "Jatty Robinson",
@@ -9118,7 +9121,8 @@
   },
   {
     "name": "Mehran Khaghani",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Mehran Khaghani is a British-American standup comedian, comedic director, and comedy event producer based in the Boston Metro area, of Iranian descent. In 2010, a reader survey in the Boston Phoenix named him Boston's best comedian of the year."
   },
   {
     "name": "Tyler Groce",
@@ -9230,6 +9234,7 @@
   },
   {
     "name": "Modi Rosenfeld",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Modi Rosenfeld, known professionally as Modi is an Israeli-American stand-up comedian and actor. He is known for his Jewish humor and has become a mainstay among Orthodox audiences."
   }
 ]
