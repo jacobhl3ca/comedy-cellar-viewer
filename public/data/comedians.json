@@ -9158,7 +9158,8 @@
   },
   {
     "name": "Gareth Reynolds",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "\nGareth Patrick Reynolds is an American comedian, podcaster, producer, and writer. He is best known for co-hosting The Dollop, a weekly comedy history podcast in which his friend and fellow comedian Dave Anthony surprises him each time with a shocking or notable story from American history that he hears for the first time during the recording."
   },
   {
     "name": "Eman Morgan",
@@ -9194,7 +9195,8 @@
   },
   {
     "name": "Zach Zimmerman",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "\nZach Zimmerman is an American comedian and writer."
   },
   {
     "name": "Wali Collins",
@@ -9247,5 +9249,9 @@
     "venues": [],
     "bio": "Jimmy Dore is an American stand-up comedian, political commentator, podcaster, and YouTube personality. He is the host of \"The Jimmy Dore Show,\" a comedic political talk show on YouTube.",
     "tagline_cellar": "Jimmy Dore is an American stand-up comedian, political commentator, podcaster, and YouTube personality. He is the host of \"The Jimmy Dore Show,\" a comedic political talk show on YouTube."
+  },
+  {
+    "name": "Doug Uram",
+    "venues": []
   }
 ]
