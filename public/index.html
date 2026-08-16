@@ -72,7 +72,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=fdec11f">
+  <link rel="stylesheet" href="style.min.css?v=f0299e1">
   <script>
     (function() {
       const root = document.documentElement;
@@ -80,24 +80,42 @@
       const nativePlatform = isNative ? window.Capacitor.getPlatform?.() : null;
       const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
       if (isNative) root.classList.add('native-app', 'native-mobile', `native-${nativePlatform || 'app'}`);
-      if (isNative || isIOS) {
-        // Native apps and iOS Safari follow the OS theme, with no manual toggle.
-        root.classList.add(isNative ? 'native-mobile' : 'ios-mobile');
-        const mq = window.matchMedia('(prefers-color-scheme: light)');
-        const apply = () => { root.dataset.theme = mq.matches ? 'light' : 'dark'; };
-        apply();
-        mq.addEventListener?.('change', apply);
-        return;
-      }
-      // Desktop / Android web: respect saved preference, fall back to OS.
-      const saved = localStorage.getItem('cellar-theme');
-      if (saved) { root.dataset.theme = saved; }
-      else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-        root.dataset.theme = 'light';
-      }
+      if (!isNative && isIOS) root.classList.add('ios-mobile');
+
+      // One stored choice for every surface: 'light', 'dark' or 'system'.
+      //
+      // Native and iOS used to be hard-locked to the OS theme here with an early
+      // return, and the header toggle is display:none on both (and under 380px),
+      // so the Play closed testers correctly reported the Android app as having
+      // no theme control of any kind. The choice now lives in Settings, which
+      // every surface can reach, and this block just reads it.
+      //
+      // Anything that isn't an explicit 'light'/'dark' counts as 'system', which
+      // keeps the old default (follow the OS) for everyone who never picks.
+      // The listener is unconditional and re-reads on each fire so switching to
+      // System at runtime starts tracking the OS again without a reload.
+      const mq = window.matchMedia('(prefers-color-scheme: light)');
+      const apply = () => {
+        let saved = null;
+        try { saved = localStorage.getItem('cellar-theme'); } catch {}
+        const choice = saved === 'light' || saved === 'dark' ? saved : 'system';
+        root.dataset.theme = choice === 'system' ? (mq.matches ? 'light' : 'dark') : choice;
+      };
+      apply();
+      mq.addEventListener?.('change', apply);
+      window.__tonightNycApplyTheme = apply;
     })();
   </script>
-  <script defer src="https://stats.hidescore.com/script.js" data-website-id="3bf5a29c-b205-43f7-b245-ae785382ca96" data-domains="tonightnyc.com,www.tonightnyc.com,cellartonight.com,www.cellartonight.com"></script>
+  <!-- The Android/iOS shells load tonightnyc.com remotely (server.url), so every app
+       open lands in Umami as an ordinary web visit. From Aug 5 2026 the 15 paid Play
+       closed testers pushed this homepage 57 -> 211 views and the weekly insights job
+       scored it a #1 "breakout"; the real web number was flat. Tag app traffic.
+       before-send rather than a load-time data-tag attribute: the tracker reads
+       data-tag once at load, racing the native bridge that injects window.Capacitor,
+       while before-send fires per event. Must return the payload on every path — a
+       throw or an undefined return silently drops the event. -->
+  <script>window.__umamiTagApp=function(t,p){try{var c=window.Capacitor;if(c&&(typeof c.isNativePlatform==="function"?c.isNativePlatform():c.isNative)){p.tag="app"}}catch(e){}return p};</script>
+  <script defer src="https://stats.hidescore.com/script.js" data-website-id="3bf5a29c-b205-43f7-b245-ae785382ca96" data-domains="tonightnyc.com,www.tonightnyc.com,cellartonight.com,www.cellartonight.com" data-before-send="__umamiTagApp"></script>
 <!-- sentry -->
 <script src="https://js.sentry-cdn.com/2b0ccd655533ea28979df00bdb820a8f.min.js" crossorigin="anonymous"></script>
 <!-- /sentry -->
@@ -359,6 +377,20 @@
           <p class="settings-desc">Optional. Tonight NYC still works without an account; signing in syncs My Comedians and app settings across your devices.</p>
         </div>
 
+        <!-- The header's light/dark button is hidden on iOS, inside both native
+             shells, and under 380px, so Settings is the only theme control most
+             phone users can reach. System is the default and matches how the app
+             behaved before this section existed. -->
+        <div class="modal-section">
+          <h3>Appearance</h3>
+          <p class="settings-desc">System follows your phone's light/dark setting.</p>
+          <div class="settings-pills" id="theme-pills" role="radiogroup" aria-label="Appearance">
+            <button class="settings-pill" data-value="system" role="radio" aria-checked="true">System</button>
+            <button class="settings-pill" data-value="light" role="radio" aria-checked="false">Light</button>
+            <button class="settings-pill" data-value="dark" role="radio" aria-checked="false">Dark</button>
+          </div>
+        </div>
+
         <div class="modal-section">
           <h3>Brand color</h3>
           <p class="settings-desc">Drag anywhere on the bar, or tap a preset dot.</p>
@@ -569,6 +601,19 @@
           </div>
         </div>
 
+        <!-- Play shell only (CSS hides it everywhere else): on the web this would
+             point someone at a store page for an app they are demonstrably not
+             using, and iOS has its own store. No target="_blank" and no JS —
+             tonightnyc.com is the server.url host, so Capacitor's launchIntent
+             sees a foreign host and fires an ACTION_VIEW Intent, which the Play
+             Store app claims. That is what makes this leave the WebView instead
+             of loading a store page inside the app. -->
+        <div class="modal-section rate-app-section">
+          <h3>Rate this app</h3>
+          <p class="settings-desc">Ratings are how anyone else finds Tonight NYC. Opens the Play Store.</p>
+          <a class="btn-reset rate-app-link" href="https://play.google.com/store/apps/details?id=com.jacobhl.tonightnyc">Rate on Google Play</a>
+        </div>
+
         <!-- Feedback + Privacy live together at the bottom of Settings. Feedback
              points at the support page's #feedback anchor (not a bare mailto) so
              it still works in the Capacitor shell on a device with no Mail
@@ -619,7 +664,7 @@
     <button id="pwa-install-btn" onclick="pwaInstall()" style="display:none;"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Add to Home Screen</button>
   </footer>
 
-  <script defer src="app.min.js?v=fdec11f"></script>
+  <script defer src="app.min.js?v=f0299e1"></script>
   <!-- Vercel Web Analytics + Speed Insights + Cloudflare Web Analytics — gated to skip Capacitor native shell so iOS app stays "No data collected" on App Store -->
   <script>
     if (!window.Capacitor?.isNativePlatform?.()) {

@@ -4244,19 +4244,61 @@ function updateFooterInfo() {
   }
 }
 
+// 'light' | 'dark' | 'system'. Stored under the same 'cellar-theme' key the
+// inline bootstrap in index.html reads, so there is one source of truth and no
+// flash of the wrong theme on the next load. Deliberately NOT a `settings` key:
+// it stays out of account sync and out of shared "copy my setup" links, because
+// which theme this phone should use is a fact about this phone.
+function readThemeChoice() {
+  let saved = null;
+  try { saved = localStorage.getItem('cellar-theme'); } catch {}
+  return saved === 'light' || saved === 'dark' ? saved : 'system';
+}
+
+function setThemeChoice(choice) {
+  try {
+    if (choice === 'system') localStorage.removeItem('cellar-theme');
+    else localStorage.setItem('cellar-theme', choice);
+  } catch {}
+  // The bootstrap owns resolving system -> light/dark and keeps the OS listener
+  // live; calling it back is what makes System take effect without a reload.
+  if (typeof window.__tonightNycApplyTheme === 'function') window.__tonightNycApplyTheme();
+  else document.documentElement.dataset.theme = choice === 'system' ? 'dark' : choice;
+}
+
 function initTheme() {
   const btn = document.getElementById('theme-toggle');
-  function updateTitle() {
+  const pills = document.getElementById('theme-pills');
+
+  function refresh() {
     const isDark = document.documentElement.dataset.theme === 'dark';
-    btn.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+    if (btn) btn.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+    if (pills) {
+      const choice = readThemeChoice();
+      pills.querySelectorAll('.settings-pill').forEach(p => {
+        p.setAttribute('aria-checked', p.dataset.value === choice ? 'true' : 'false');
+      });
+    }
   }
-  updateTitle();
-  btn.addEventListener('click', () => {
-    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-    document.documentElement.dataset.theme = next;
-    localStorage.setItem('cellar-theme', next);
-    updateTitle();
+  refresh();
+
+  // The header button stays a plain light/dark flip. Someone who taps it wants
+  // the other theme now, not a third state to cycle past.
+  btn?.addEventListener('click', () => {
+    setThemeChoice(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+    refresh();
   });
+
+  pills?.addEventListener('click', (e) => {
+    const pill = e.target.closest('.settings-pill');
+    if (!pill) return;
+    setThemeChoice(pill.dataset.value);
+    refresh();
+  });
+
+  // Following the OS while System is selected repaints the page from the
+  // bootstrap's own listener, so the header title and pills need re-syncing.
+  window.matchMedia('(prefers-color-scheme: light)').addEventListener?.('change', refresh);
 }
 
 function initSettingsJingle() {

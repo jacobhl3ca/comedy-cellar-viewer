@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Tonight NYC — offline</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #000000;
+    --fg: #f5f5f5;
+    --muted: #9a9a9a;
+    --line: #262626;
+    --accent: #e63636;
+    --accent-fg: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(env(safe-area-inset-top) + 24px) 24px calc(env(safe-area-inset-bottom) + 24px);
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  main { width: 100%; max-width: 380px; text-align: center; }
+  .mark {
+    width: 56px; height: 56px; margin: 0 auto 20px;
+    border-radius: 16px; border: 1px solid var(--line);
+    display: grid; place-items: center;
+  }
+  .mark svg { width: 28px; height: 28px; stroke: var(--muted); fill: none; stroke-width: 1.8; stroke-linecap: round; }
+  h1 { font-size: 21px; line-height: 1.3; margin: 0 0 10px; letter-spacing: -0.01em; }
+  p { margin: 0 0 24px; color: var(--muted); font-size: 15px; }
+  button {
+    -webkit-appearance: none; appearance: none;
+    font: inherit; font-weight: 600;
+    background: var(--accent); color: var(--accent-fg);
+    border: 0; border-radius: 12px;
+    padding: 13px 28px; min-width: 160px;
+    cursor: pointer;
+  }
+  button:active { opacity: 0.75; }
+  .note { margin: 20px 0 0; font-size: 13px; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <div class="mark" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M2 8.8a16 16 0 0 1 20 0M5.5 12.6a11 11 0 0 1 13 0M9 16.4a6 6 0 0 1 6 0"/><circle cx="12" cy="20" r="0.9" fill="currentColor" stroke="none"/><path d="M3 3l18 18"/></svg>
+  </div>
+  <h1>No connection</h1>
+  <p>Tonight NYC pulls tonight&rsquo;s lineups live &mdash; a saved copy would show you comics who aren&rsquo;t on the bill anymore. Reconnect and try again.</p>
+  <button type="button" id="retry">Try again</button>
+  <p class="note">tonightnyc.com</p>
+</main>
+<script>
+  document.getElementById('retry').addEventListener('click', function () {
+    location.replace('https://tonightnyc.com/');
+  });
+</script>
+</body>
+</html>

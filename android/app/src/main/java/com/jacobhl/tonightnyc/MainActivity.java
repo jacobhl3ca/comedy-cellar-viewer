@@ -3,13 +3,35 @@ package com.jacobhl.tonightnyc;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.webkit.WebView;
+import androidx.activity.OnBackPressedCallback;
 import com.getcapacitor.BridgeActivity;
 
 public class MainActivity extends BridgeActivity {
     @Override public void onCreate(Bundle savedInstanceState) {
         registerPlugin(TonightGoogleAuthPlugin.class);
         super.onCreate(savedInstanceState);
+        installBackHandler();
         loadAppLink(getIntent());
+    }
+
+    // Capacitor's own Android layer has no back-button handling, and @capacitor/app is
+    // not a dependency here either (see loadAppLink below), so Back fell through to the
+    // default Activity behaviour and closed the app from any depth. Opening a show or a
+    // comedian and pressing Back dropped the user out of Tonight NYC instead of
+    // returning to the lineup, which is what closed testers reported.
+    private void installBackHandler() {
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                WebView webView = getBridge() == null ? null : getBridge().getWebView();
+                if (webView != null && webView.canGoBack()) {
+                    webView.goBack();
+                } else {
+                    finish();
+                }
+            }
+        });
     }
 
     // The activity is singleTask, so a link tapped while the app is already running
