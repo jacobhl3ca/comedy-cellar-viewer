@@ -72,15 +72,34 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=f0299e1">
+  <link rel="stylesheet" href="style.min.css?v=2d8a0a4">
   <script>
     (function() {
       const root = document.documentElement;
-      const isNative = !!window.Capacitor?.isNativePlatform?.();
-      const nativePlatform = isNative ? window.Capacitor.getPlatform?.() : null;
+      // The shells load this site remotely (server.url), so window.Capacitor is
+      // injected by the native bridge and is not guaranteed to exist yet when a
+      // head script parses. Everything keyed off these classes is silently wrong
+      // when the bridge lands late — including .rate-app-section, which is
+      // display:none unless html.native-android, so a late bridge means the Play
+      // shell's "Rate this app" never appears at all. Re-check at the later
+      // lifecycle points; classList.add is idempotent, so a bridge that was
+      // already there costs nothing.
+      const applyPlatform = () => {
+        const cap = window.Capacitor;
+        if (!cap?.isNativePlatform?.()) return false;
+        root.classList.add('native-app', 'native-mobile', `native-${cap.getPlatform?.() || 'app'}`);
+        // Native and ios-mobile are mutually exclusive by design: ios-mobile means
+        // mobile Safari, not the shell. Drop it if the early miss added it.
+        root.classList.remove('ios-mobile');
+        return true;
+      };
+      const isNative = applyPlatform();
       const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-      if (isNative) root.classList.add('native-app', 'native-mobile', `native-${nativePlatform || 'app'}`);
-      if (!isNative && isIOS) root.classList.add('ios-mobile');
+      if (!isNative) {
+        if (isIOS) root.classList.add('ios-mobile');
+        document.addEventListener('DOMContentLoaded', applyPlatform, { once: true });
+        window.addEventListener('load', applyPlatform, { once: true });
+      }
 
       // One stored choice for every surface: 'light', 'dark' or 'system'.
       //
@@ -664,7 +683,7 @@
     <button id="pwa-install-btn" onclick="pwaInstall()" style="display:none;"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Add to Home Screen</button>
   </footer>
 
-  <script defer src="app.min.js?v=f0299e1"></script>
+  <script defer src="app.min.js?v=2d8a0a4"></script>
   <!-- Vercel Web Analytics + Speed Insights + Cloudflare Web Analytics — gated to skip Capacitor native shell so iOS app stays "No data collected" on App Store -->
   <script>
     if (!window.Capacitor?.isNativePlatform?.()) {
