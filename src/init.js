@@ -32,10 +32,17 @@
     const warn = document.createElement('div');
     warn.className = 'data-warning';
     warn.innerHTML = `${ICON.warning} Could not load: ${failedSources.join(', ')}. <button onclick="this.parentElement.remove()">${ICON.x}</button>`;
-    document.getElementById('shows-container').prepend(warn);
+    document.getElementById('shows-container')?.prepend(warn);
   }
 
-  document.getElementById('loading').style.display = 'none';
+  // Guarded: Sentry caught `Cannot read properties of null (reading 'style')`
+  // thrown right here on 2026-08-14, in the Android WebView. init() can run on a
+  // document that never had #loading, and an uncaught throw at this point aborts
+  // the rest of init() — theme, calendar, tabs and share button all never run,
+  // so the whole page is dead rather than just missing a spinner. jazz.js already
+  // guards the same element; this call site did not.
+  const loadingEl = document.getElementById('loading');
+  if (loadingEl) loadingEl.style.display = 'none';
   // Default to big picture mode
   const pmEl = document.getElementById('picture-mode');
   if (pmEl && !pmEl.checked) pmEl.checked = true;
