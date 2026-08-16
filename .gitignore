@@ -9,3 +9,7 @@ BACKLOG.md
 
 # Stand Up NY OCR enrichment log
 scripts/.ocr.log
+
+# Byte-compiled build helpers (created when a script is imported rather than run)
+__pycache__/
+*.pyc

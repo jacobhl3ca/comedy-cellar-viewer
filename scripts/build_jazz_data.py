@@ -212,7 +212,14 @@ def extract_lineup_from_title(title: str) -> list[str]:
 def main():
     if not SRC.exists():
         print(f"Source missing: {SRC} — jazz_alerts cron has not run yet", file=sys.stderr)
-        # Don't fail the build — emit an empty payload so the frontend doesn't break.
+        # The source only exists on Jacob's Mac, so this branch is what runs on EVERY
+        # Vercel build. Overwriting here published an empty payload each deploy: the
+        # committed file had 117 shows and tonightnyc.com served 0, silently, for as long
+        # as this step has existed. The committed file IS the production data — leave it
+        # alone and only write the empty placeholder when there is nothing there at all.
+        if DST.exists():
+            print(f"Keeping the committed {DST.name} — it is the deployed payload", file=sys.stderr)
+            return
         DST.parent.mkdir(parents=True, exist_ok=True)
         DST.write_text(json.dumps({
             "generated_at": datetime.now().isoformat(timespec="seconds"),
