@@ -4306,8 +4306,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/luis-lopez",
     "bio_stand": "Luis Lopez (that's me) is a stand up comedian in New York City. He's a regular at several clubs around the city including New York Comedy Club, Stand Up NY, and more. Luis was a 2022 Comic to Watch for New York Comedy Festival. He was a finalist in the New York Comedy Club Competition and a finalist in the Carolines March Madness Comedy Tournament. He has appeared on Amazon TV, and was also part of All Things Comedy Presents at Stand Up NY. He tours comedy venues across the country and is actually pretty good at it.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Luis_Lopez.jpeg",
-    "bio": "Luis Lopez is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Luis_Lopez.jpeg"
   },
   {
     "name": "Lukas McCrary",
@@ -9234,7 +9233,8 @@
   },
   {
     "name": "Serena Kerrigan",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Serena Kerrigan is a social media influencer, creator and star of Peacock TV show Older Hotter Wiser, creator of the card game Let's Fucking Date, and author of forthcoming Random House book entitled Let's Fcking Date. Her nickname is the Queen of Confidence. Major themes in her work are dating, inc"
   },
   {
     "name": "Modi Rosenfeld",
@@ -9255,5 +9255,38 @@
   {
     "name": "Doug Uram",
     "venues": []
+  },
+  {
+    "name": "St James Jackson",
+    "venues": []
+  },
+  {
+    "name": "Luca Ferro",
+    "venues": []
+  },
+  {
+    "name": "Natasha Chandel",
+    "venues": []
+  },
+  {
+    "name": "Charity Gregory",
+    "venues": []
+  },
+  {
+    "name": "Nick Smith",
+    "venues": []
+  },
+  {
+    "name": "Sadie Hale",
+    "venues": []
+  },
+  {
+    "name": "Standing Tall",
+    "venues": []
+  },
+  {
+    "name": "Lucy Darling",
+    "venues": [],
+    "bio_wiki": "Carisa Hendrix is a Canadian magician, comedian, and fire eater who often performs in the persona of Lucy Darling, inspired by the wisecracking socialite characters from the Golden Age of Hollywood."
   }
 ]
