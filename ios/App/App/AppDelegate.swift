@@ -1,5 +1,6 @@
 import UIKit
 import Capacitor
+import Sentry
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -7,6 +8,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Native crash reporting, started before anything else can crash.
+        //
+        // The WebView loads tonightnyc.com, so this shell's own bundled JS never runs
+        // — a JS-driven Sentry init (@sentry/capacitor) would be inert here. The
+        // site's web SDK reports its own errors from inside the WebView; this
+        // catches what only the native process can see: a hard crash, a watchdog
+        // termination, an app hang. Same Sentry project as the web app, so both
+        // halves of one incident land together.
+        //
+        // Tracing stays off deliberately: crashes are the blind spot, performance
+        // spans are just quota.
+        SentrySDK.start { options in
+            options.dsn = "https://2b0ccd655533ea28979df00bdb820a8f@o4511667913818112.ingest.us.sentry.io/4511892769669120"
+            options.environment = "production"
+            options.tracesSampleRate = 0.0
+        }
+
         // Override point for customization after application launch.
         return true
     }

@@ -6,12 +6,20 @@ import android.os.Bundle;
 import android.webkit.WebView;
 import androidx.activity.OnBackPressedCallback;
 import com.getcapacitor.BridgeActivity;
+import android.os.Build;
+import android.webkit.RenderProcessGoneDetail;
+import com.getcapacitor.WebViewListener;
+import io.sentry.Sentry;
+import io.sentry.SentryEvent;
+import io.sentry.SentryLevel;
+import io.sentry.protocol.Message;
 
 public class MainActivity extends BridgeActivity {
     @Override public void onCreate(Bundle savedInstanceState) {
         registerPlugin(TonightGoogleAuthPlugin.class);
         super.onCreate(savedInstanceState);
         installBackHandler();
+        reportRendererCrashes();
         loadAppLink(getIntent());
     }
 
@@ -57,5 +65,40 @@ public class MainActivity extends BridgeActivity {
         if (getBridge() == null || getBridge().getWebView() == null) return;
         final String url = uri.toString();
         runOnUiThread(() -> getBridge().getWebView().loadUrl(url));
+    }
+
+    // A WebView renderer crash happens in a DIFFERENT process
+    // (com.google.android.webview:sandboxed_process0), so sentry-android — which
+    // lives in this process — cannot see it. Until now it only ever got reported by
+    // accident, on the occasions when the renderer's death dragged this process down
+    // with it. Android hands the event to the app process here instead.
+    //
+    // Returning false is deliberate: the platform then terminates this process,
+    // which is exactly what happens today. This closes the reporting blind spot
+    // without changing behaviour. Recovering the WebView in place (return true,
+    // rebuild it, reload server.url) is a bigger call and a separate one.
+    //
+    // flush() blocks the UI thread for up to two seconds, which is acceptable in a
+    // process that is about to be killed and is the only way the event survives.
+    private void reportRendererCrashes() {
+        getBridge().addWebViewListener(new WebViewListener() {
+            @Override
+            public boolean onRenderProcessGone(WebView view, RenderProcessGoneDetail detail) {
+                boolean crashed = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && detail.didCrash();
+                SentryEvent event = new SentryEvent();
+                event.setLevel(SentryLevel.FATAL);
+                Message message = new Message();
+                // didCrash() false means Android killed the renderer to reclaim
+                // memory rather than the renderer faulting. Same dead app, very
+                // different fix, so keep them in separate Sentry groups.
+                message.setMessage(crashed
+                    ? "WebView renderer crashed"
+                    : "WebView renderer killed by the system (out of memory)");
+                event.setMessage(message);
+                Sentry.captureEvent(event);
+                Sentry.flush(2000);
+                return false;
+            }
+        });
     }
 }
