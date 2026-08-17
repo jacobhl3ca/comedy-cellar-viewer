@@ -71,6 +71,11 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
     implementation project(':capacitor-cordova-android-plugins')
+    // Native crash reporting. This shell points `server.url` at a remote site, so
+    // its bundled JS never runs and a JS-side Sentry init would be inert — only the
+    // native SDK can see a WebView or container crash. Initialised entirely from the
+    // io.sentry.* meta-data in AndroidManifest.xml; no Java changes.
+    implementation "io.sentry:sentry-android:$sentryAndroidVersion"
 }
 
 apply from: 'capacitor.build.gradle'

@@ -7,6 +7,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!-- Native crash reporting (sentry-android auto-init). Reuses this app's
+             existing Sentry project so native crashes land beside its web errors.
+             Tracing is off: crashes and ANRs only, no performance quota. -->
+        <meta-data android:name="io.sentry.dsn" android:value="https://2b0ccd655533ea28979df00bdb820a8f@o4511667913818112.ingest.us.sentry.io/4511892769669120" />
+        <meta-data android:name="io.sentry.environment" android:value="production" />
+        <meta-data android:name="io.sentry.traces.sample-rate" android:value="0.0" />
         <activity
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode|navigation|density"
             android:name=".MainActivity"
