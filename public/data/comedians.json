@@ -98,8 +98,7 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/Jared-Harvin-b5d90a28-thumb-image.jpg?1654831662",
     "venues": [
       "nycc"
-    ],
-    "bio": "Jared Harvin is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    ]
   },
   {
     "name": "Kristal Adams",
@@ -4366,8 +4365,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/maria-decotis",
     "bio_stand": "Maria DeCotis is a NYC based comedian, actress, and writer from Fayetteville, Georgia where she famously Christmas caroled for Big Boi at age 12. She graduated with her BFA in Acting, Cum Laude from Boston University with a concentration in Playwriting and worked with Commedia dell'Arte professionals in Italy. She has been featured in New York Magazine, Vogue, Rolling Stone, The New York Times, Wall Street Journal, The Guardian, New York Daily News, Today, and many more. Maria’s recent credits include opening for Mike Birbiglia on Broadway, Comedy Central, HBO Women in Comedy Festival, New York Comedy Festival, and a JFL showcase. She wrote and hosted a show for the New York Post called Win the Weekend and was a staff comedy writer for Mezu Money Time. She has completed the most advanced level of study at the Upright Citizens Brigade Theatre. She is a ukulele singer-songwriter (iTunes and Spotify) and Lindy Hopper. Onstage, Maria likes to explore feminism and spaghetti.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Maria_DeCotis.jpg",
-    "bio": "Maria DeCotis is a stand-up comedian and regular at the Comedy Cellar in New York City. She's appeared on AXS TV's Gotham Comedy Live and performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Maria_DeCotis.jpg"
   },
   {
     "name": "Marie Faustin",
@@ -5345,8 +5343,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/tom-cassidy",
     "bio_stand": "Tom Cassidy is a comedian who started in Philadelphia at The Laff House Comedy Club (urban clubs spell things wrong due to the deterioration of the public school system) where he became a feature act 2 weeks before the club shut down. After spending a few years in his native land, which has produced many great comedians (Kevin Hart, Tina Fey and up until recently Bill Cosby) he moved to New York City where he performs regularly at clubs, basements and back of bars that vary in quality. He has been featured at The New York, Boston, Staten Island and Hoboken Comedy Festival (placed in the order of respect each festival gets) and has performed at colleges throughout the east coast in beautiful theaters and fluorescent cafeteria's. In addition to performing literally wherever will have him Tom is also a writer who has directed several sketches and short films, including \"Babe Ruth Time Traveler\" and it's sequel (you can guess what it's called). Tom is also a co-host on the Center City Comedy podcast where he can be found arguing and making fun of his friends on a weekly basis.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/tom-cassidy.jpg",
-    "bio": "Tom Cassidy is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/tom-cassidy.jpg"
   },
   {
     "name": "Tom Green",
@@ -8849,7 +8846,8 @@
     "name": "Sam Morrison",
     "venues": [],
     "bio": "FROM LATE NIGHT WITH SETH MEYERS, STAND UP NBC FINALIST, THE DREW BARRYMORE SHOW, WATCH WHAT HAPPENS LIVE AND TAMRON HALL",
-    "tagline_cellar": "FROM LATE NIGHT WITH SETH MEYERS, STAND UP NBC FINALIST, THE DREW BARRYMORE SHOW, WATCH WHAT HAPPENS LIVE AND TAMRON HALL"
+    "tagline_cellar": "FROM LATE NIGHT WITH SETH MEYERS, STAND UP NBC FINALIST, THE DREW BARRYMORE SHOW, WATCH WHAT HAPPENS LIVE AND TAMRON HALL",
+    "bio_stand": "Sam Morrison is a diabetic gay Jew living in Brooklyn. As a stand up, he recently performed on the segment Bananamore's on the Drew Barrymore Show. He has performed in The Stand Up NBC Finals, The Tonight Show Showcase, and RuPaul's DragCon. As a writer, Sam was staffed on the first season of Blind Date, hosted by Nikki Glaser, currently airing on Bravo. His solo show Hello, Daddy! was critically lauded at the 2019 Edinburgh Fringe Festival and received 4 stars+ from The List, Deadline, Scotsgay, and Fringe Review."
   },
   {
     "name": "Adrian Uribe",
@@ -9302,5 +9300,71 @@
     "name": "Matt Maran",
     "venues": [],
     "bio_stand": "Matt Maran has been entertaining crowds since he was a 17-year-old travelling and performing on independent professional wrestling shows. He has since traded in his steel folding chair for jokes. Born and raised in Queens, NY but looks like he was conceived at a Lynyrd Skynyrd concert. Matt is currently the Commissioner and host of the underground roast show, Comedy Fight Club. He loves mean jokes and hates shirts with sleeves"
+  },
+  {
+    "name": "Denise Taylor",
+    "venues": [],
+    "bio_stand": "Denise Taylor knew she wanted to be a comedian ever since her fourth grade teacher called her a \"ringleader\" for distracting the class with jokes. Today she is a regular at venues like the DC Improv Comedy Club, the Kennedy Center, the Drafthouse Comedy Theatre, and Underground Comedy DC's Big Hunt. At 26, Denise's sharp material and commanding stage presence has led her to open for several national touring headliners, including Judah Friedlander, Chris Gethard, Kamau Bell, Moshe Kasher, and many more. Denise also appears frequently on two of DC's most popular comedy shows: Fale University and The Time Machine Roast. Her podcast The Sixty Minute Hate is available on iTunes. Denise just graduated from law school, where teachers were still frustrated with her. Please book her so she doesn't have to be a lawyer forever."
+  },
+  {
+    "name": "Justin Stagner",
+    "venues": []
+  },
+  {
+    "name": "Trish Suhr",
+    "venues": []
+  },
+  {
+    "name": "Johana Coca",
+    "venues": []
+  },
+  {
+    "name": "Jenn Sterger",
+    "venues": [],
+    "bio_stand": "Comedian. Actress. VO artist. Gym rat. Nerd. Recovering Playmate & two time Maxim Hot 100 model. Premium content creator. Professional tomboy."
+  },
+  {
+    "name": "Alex Dragicevich",
+    "venues": []
+  },
+  {
+    "name": "Emily Walsh",
+    "venues": []
+  },
+  {
+    "name": "James Pontillo",
+    "venues": []
+  },
+  {
+    "name": "Dave Temple",
+    "venues": []
+  },
+  {
+    "name": "James Goff",
+    "venues": []
+  },
+  {
+    "name": "Rick Younger",
+    "venues": []
+  },
+  {
+    "name": "Michele Durante",
+    "venues": []
+  },
+  {
+    "name": "Napoleon Emill",
+    "venues": []
+  },
+  {
+    "name": "Salma Zaky",
+    "venues": []
+  },
+  {
+    "name": "Tayler Yarish",
+    "venues": []
+  },
+  {
+    "name": "Rojo Perez",
+    "venues": []
   }
 ]
