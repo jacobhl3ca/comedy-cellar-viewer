@@ -9337,7 +9337,8 @@
   },
   {
     "name": "Dave Temple",
-    "venues": []
+    "venues": [],
+    "tagline_cellar": "TRUETV LAFTRACKS, COMEDY CEENTRAL, NO NEED FOR APOLOGIES,"
   },
   {
     "name": "James Goff",
@@ -9365,6 +9366,22 @@
   },
   {
     "name": "Rojo Perez",
+    "venues": []
+  },
+  {
+    "name": "Jason Cheny",
+    "venues": [],
+    "bio": "COMEDY CENTRAL'S FEATURING, FORBES COMEDIANS TO WATCH, \"LAUGHS\" ON FOX AND HULU,\"LAFF TRACKS\" ON TRU TV WINNER OF WORLD SERIES OF COMEDY 2017",
+    "tagline_cellar": "COMEDY CENTRAL'S FEATURING, FORBES COMEDIANS TO WATCH, \"LAUGHS\" ON FOX AND HULU,\"LAFF TRACKS\" ON TRU TV WINNER OF WORLD SERIES OF COMEDY 2017"
+  },
+  {
+    "name": "Matt Kirshen",
+    "venues": [],
+    "bio": "FROM THE TONIGHT SHOW, THE LATA LATE SHOW, LAST COMIC STANDING",
+    "tagline_cellar": "FROM THE TONIGHT SHOW, THE LATA LATE SHOW, LAST COMIC STANDING"
+  },
+  {
+    "name": "Brett Forte",
     "venues": []
   }
 ]
