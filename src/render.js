@@ -1077,6 +1077,113 @@ function renderGothamShows(container) {
   renderBottomTabs();
 }
 
+// ---- NY Comedy Club Renderer ----
+// NYCC publishes a real structured lineup (206 of 219 cached shows carry a
+// `comedians` array), so it gets the full Stand treatment — day headers, the
+// day picker, search, hide-skips and favable comedian chips with photos —
+// rather than the bare time/title rows it used to render.
+function renderNYCCShows(container) {
+  const pictureMode = document.getElementById('picture-mode')?.checked;
+  if (pictureMode) container.classList.add('picture-mode');
+  else container.classList.remove('picture-mode');
+  const vf = document.getElementById('venue-filters');
+  if (vf) vf.innerHTML = '';
+
+  const all = (typeof nyccShows !== 'undefined') ? nyccShows : [];
+  if (all.length === 0) {
+    container.innerHTML = '<div class="no-shows">Loading NY Comedy Club shows...<br><a href="https://newyorkcomedyclub.com/shows" target="_blank" style="color:var(--accent);font-size:13px;margin-top:8px;display:inline-block;">View on their site &rarr;</a></div>';
+    return;
+  }
+
+  const hideSkips = document.getElementById('hide-skips')?.checked;
+
+  let filtered = activeDate === 'all' || activeDate === 'calendar'
+    ? (activeDate === 'calendar' ? all.filter(s => calendarSelectedDates.has(s.date)) : all)
+    : all.filter(s => s.date === activeDate);
+  filtered = filtered.filter(s => !isShowPast(s.date, s.time));
+  filtered = filtered.filter(s => showMatchesSearch(s, 'NY Comedy Club'));
+  filtered = filtered.filter(s => !shouldHideShow(!!s.soldout));
+  if (activeComedianFilter) {
+    const fl = activeComedianFilter.toLowerCase();
+    filtered = filtered.filter(s => (s.comedians || []).some(c => c.toLowerCase() === fl));
+  }
+  // Match the Stand: a lineup containing someone you've skipped drops out entirely.
+  if (hideSkips) filtered = filtered.filter(s => !(s.comedians || []).some(n => isSkip(n)));
+
+  filtered = filtered.slice().sort((a, b) =>
+    a.date.localeCompare(b.date) || (to24hSortable(a.time) || '00:00').localeCompare(to24hSortable(b.time) || '00:00'));
+
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="no-shows">No NY Comedy Club shows for this day.</div>';
+    renderBottomTabs();
+    return;
+  }
+
+  let html = '<div class="schedule-view">';
+  let lastDate = '';
+  filtered.forEach(show => {
+    try {
+      if (show.date !== lastDate) {
+        const d = new Date(show.date + 'T12:00:00');
+        html += `<h2 class="schedule-day-header">${getDayHeaderLabel(d)}</h2>`;
+        lastDate = show.date;
+      }
+      html += renderNYCCShowCard(show, hideSkips);
+    } catch (e) { console.error('renderNYCCShows card error:', e, show); }
+  });
+  html += '</div>';
+  container.innerHTML = html;
+  renderBottomTabs();
+}
+
+function renderNYCCShowCard(show, hideSkips) {
+  const comedians = show.comedians || [];
+  const soldOut = !!show.soldout;
+  // NYCC's title IS the bill on the nights it announces one ("Elon Gold, Mike
+  // Britt, ..."), so repeating it above the chips just says the same thing twice.
+  const title = (show.title || '').trim();
+  // Strike the chip names out of the title; if only separators and filler like
+  // "+ Surprise Guest" survive, the title was the bill and adds nothing.
+  let residue = title;
+  comedians.forEach(n => {
+    residue = residue.replace(new RegExp(n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), ' ');
+  });
+  residue = residue.replace(/[\s,&+\-\u2013\u2014:.]+/g, ' ').trim();
+  const titleIsLineup = comedians.length > 0
+    && (residue === '' || /^(?:surprise guests?|special guests?|guests?|and more|more|others?)$/i.test(residue));
+  let showLabel = title;
+  if (titleIsLineup) {
+    showLabel = '';
+  } else if (comedians.length > 0) {
+    // "Anxiety Attack ft: Maddy Smith, Sean Patton, ..." -> just "Anxiety Attack";
+    // the bill is already the chip row underneath.
+    const head = title.match(/^(.*?)\s(?:ft|feat|featuring|presents|presented\s+by|starring)\.?\s*:?\s+/i)
+      || title.match(/^([^:]{2,}):\s+/);
+    if (head && head[1].trim() && comedians.some(n => title.slice(head[0].length).includes(n))) {
+      showLabel = head[1].trim();
+    }
+  }
+  // No announced lineup means the title is the show ("Yerrrlywood", "Chris
+  // Distefano") — a "Lineup TBD" row would be a lie, so drop the row entirely
+  // and let it read like the Gotham card.
+  const lineupRow = comedians.length > 0
+    ? `<div class="show-lineup">${renderComedianChips(comedians, hideSkips, 'nycc')}</div>`
+    : '';
+  return `
+    <div class="show-card${soldOut ? ' sold-out' : ''}" data-venue-source="nycc">
+      <div class="show-header">
+        <div><span class="show-time">${formatTime(show.time)}</span></div>
+        <span class="show-name">${showLabel}</span>
+        <span class="show-venue">NY Comedy Club${priceChip(show.price)}</span>
+      </div>
+      ${lineupRow}
+      <div class="show-footer">
+        ${show.url ? `<a href="${show.url}" target="_blank" class="reserve-btn${soldOut ? ' sold-out-btn' : ''}" onclick="trackReserve(this)">${soldOut ? 'Sold Out' : 'Tickets'}</a>` : '<span></span>'}
+        ${soldOut ? hideSoldOutToggle(soldOut) : '<span class="fav-count"></span>'}
+      </div>
+    </div>`;
+}
+
 // ---- Poster-venue Renderer (Stand Up NY, Union Hall) ----
 // Neither venue publishes a structured lineup — the bill lives on the poster
 // image — so we surface the poster (via the poster-wrap pattern, tap/hover to
@@ -1176,7 +1283,7 @@ function renderUnionHallShows(container) {
 // show on each date. Falls back to biggest lineup when no faves are set yet.
 function topPickComedians(item) {
   const s = item.show;
-  if (item.type === 'cellar' || item.type === 'stand') return s.comedians || [];
+  if (item.type === 'cellar' || item.type === 'stand' || item.type === 'nycc') return s.comedians || [];
   if (item.type === 'gotham') return s.title ? [s.title] : [];
   if (item.type === 'standupny' || item.type === 'union-hall') return (s.comedians && s.comedians.length) ? s.comedians : (s.title ? [s.title] : []);
   // big shows: performers string "Name - role, Name2" or fall back to title
@@ -1199,6 +1306,7 @@ function renderTopPick(container) {
   });
   standShows.forEach(show => items.push({ type: 'stand', dateStr: show.date, time24: to24hSortable(show.time) || '00:00', show }));
   if (typeof gothamShows !== 'undefined') gothamShows.forEach(show => items.push({ type: 'gotham', dateStr: show.date, time24: to24hSortable(show.time) || '00:00', show }));
+  if (typeof nyccShows !== 'undefined') nyccShows.forEach(show => items.push({ type: 'nycc', dateStr: show.date, time24: to24hSortable(show.time) || '00:00', show }));
   if (typeof standupnyShows !== 'undefined') standupnyShows.forEach(show => items.push({ type: 'standupny', dateStr: show.date, time24: to24hSortable(show.time) || '00:00', show }));
   if (typeof unionhallShows !== 'undefined') unionhallShows.forEach(show => items.push({ type: 'union-hall', dateStr: show.date, time24: to24hSortable(show.time) || '00:00', show }));
   bigShows.forEach(evt => items.push({ type: 'big', dateStr: evt.date, time24: to24hSortable(evt.time) || '00:00', show: evt }));
@@ -1255,7 +1363,7 @@ function renderTopPick(container) {
   if (activeDate === 'calendar') picks = picks.filter(p => calendarSelectedDates.has(p.dateStr));
   else if (activeDate && activeDate !== 'all') picks = picks.filter(p => p.dateStr === activeDate);
 
-  const VENUE_LABEL = { cellar: 'Comedy Cellar', stand: 'The Stand', gotham: 'Gotham', standupny: 'Stand Up NY', 'union-hall': 'Union Hall', big: 'Big Shows' };
+  const VENUE_LABEL = { cellar: 'Comedy Cellar', stand: 'The Stand', gotham: 'Gotham', nycc: 'NY Comedy Club', standupny: 'Stand Up NY', 'union-hall': 'Union Hall', big: 'Big Shows' };
   let html = '';
   html += `<div class="top-pick-intro">⭐ <strong>Top Pick</strong> — the single best show each night, ranked by ${hasPrefs ? 'your favorite comedians' : 'lineup'}.` +
     (hasPrefs ? '' : ` <button class="top-pick-setup" onclick="openModal()">Add your faves</button> to personalize these picks.`) + `</div>`;
@@ -1286,6 +1394,8 @@ function renderTopPick(container) {
       else if (item.type === 'gotham') {
         const show = item.show;
         html += `<div class="show-card"><div class="show-header"><div><span class="show-time">${formatTime(show.time)}</span></div><span class="show-name">${show.title}</span><span class="show-venue">Gotham</span></div><div class="show-footer">${show.url ? `<a href="${show.url}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Tickets</a>` : '<span></span>'}<span class="fav-count"></span></div></div>`;
+      } else if (item.type === 'nycc') {
+        html += renderNYCCShowCard(item.show, hideSkips);
       } else if (item.type === 'standupny' || item.type === 'union-hall') {
         const src = item.type === 'standupny' ? 'standupny' : 'unionhall';
         html += renderPosterVenueCard(item.show, VENUE_LABEL[item.type], src, hideSkips);
@@ -1354,6 +1464,12 @@ function renderAllVenues(container) {
   gothamShows.forEach(show => {
     const time24 = to24hSortable(show.time) || '00:00';
     allItems.push({ type: 'gotham', dateStr: show.date, time24, show });
+  });
+
+  // NY Comedy Club shows
+  if (typeof nyccShows !== 'undefined') nyccShows.forEach(show => {
+    const time24 = to24hSortable(show.time) || '00:00';
+    allItems.push({ type: 'nycc', dateStr: show.date, time24, show });
   });
 
   // Stand Up NY shows
@@ -1481,6 +1597,8 @@ function renderAllVenues(container) {
             <span class="fav-count"></span>
           </div>
         </div>`;
+    } else if (item.type === 'nycc') {
+      html += renderNYCCShowCard(item.show, hideSkips);
     } else if (item.type === 'standupny' || item.type === 'union-hall') {
       const src = item.type === 'standupny' ? 'standupny' : 'unionhall';
       const label = item.type === 'standupny' ? 'Stand Up NY' : 'Union Hall';
@@ -1531,6 +1649,7 @@ function getNeighborhood(item) {
   if (item.type === 'gotham') return 'midtown';
   if (item.type === 'standupny') return 'uptown'; // Upper West Side
   if (item.type === 'union-hall') return 'brooklyn'; // Park Slope
+  if (item.type === 'nycc') return 'downtown'; // E 24th St / Gramercy
   const venue = (item.show.venue || '').toLowerCase();
   if (venue.includes('beacon') || venue.includes('apollo')) return 'uptown';
   if (venue.includes('gramercy theatre') || venue.includes('irving plaza')) return 'downtown';
@@ -2012,9 +2131,10 @@ function handleComedianClick(el) {
   const panel = document.createElement('div');
   panel.className = 'comedian-expanded open';
   panel.dataset.for = name;
+  panel.dataset.venueSource = panelVenueSource;
   if (fullBio) panel.dataset.fullBio = fullBio;
   panel.innerHTML = `
-    ${dbPhoto ? `<img src="${dbPhoto}" alt="${name}" class="exp-photo" onclick="event.stopPropagation();_dirOpenPhoto('${dbPhoto.replace(/'/g, "\\'")}','${esc}')">` : ''}
+    ${dbPhoto ? `<img src="${dbPhoto}" alt="${name}" class="exp-photo" onclick="event.stopPropagation();_panelOpenPhoto(this)">` : ''}
     <div class="exp-info">
       <div class="exp-name">${name}</div>
       ${fullBio ? (() => {
@@ -2537,7 +2657,7 @@ function _dirCardHTML(c, prefs, liveSet) {
   const letter = _dirLetterFor(c);
   return `
     <div class="dir-card ${isFavd ? 'is-fav' : ''} ${isSkipd ? 'is-skip' : ''} ${isDeceased ? 'deceased' : ''} ${c.featured ? 'featured' : ''}" data-tier="${tier}" data-letter="${letter}">
-      <div class="dir-card-photo"${photo ? ` onclick="_dirOpenPhoto('${photo.replace(/'/g, "\\'")}','${esc}')"` : ''}><div class="dir-photo-placeholder">${ICON.mic}</div>${photo ? `<img src="${photo}" alt="${name}" loading="lazy" onerror="this.style.display='none'">` : ''}</div>
+      <div class="dir-card-photo"${photo ? ` data-dir-name="${name.replace(/"/g, '&quot;')}" data-dir-photo="${photo.replace(/"/g, '&quot;')}" onclick="_dirCardOpenPhoto(this)"` : ''}><div class="dir-photo-placeholder">${ICON.mic}</div>${photo ? `<img src="${photo}" alt="${name}" loading="lazy" onerror="this.style.display='none'">` : ''}</div>
       <div class="dir-card-body">
         <div class="dir-card-name">${name}${isLive ? ' <span class="dir-live-dot" title="Booked in upcoming lineup">●</span>' : ''}</div>
         ${bio ? (isLong
@@ -2602,25 +2722,186 @@ function _dirBioClick(e, el) {
 }
 window._dirBioClick = _dirBioClick;
 
-function _dirOpenPhoto(photoUrl, name) {
-  if (!photoUrl) return;
+// ---- Photo lightbox, with gallery paging ----
+// Opened from a comedian's expanded bio panel, a directory card, or a big-show
+// poster. When the caller hands over a gallery — the rest of that show's lineup,
+// or the directory grid — the overlay gains prev/next chevrons, a "2 / 6"
+// counter, dots, arrow-key support and horizontal swipe, the same paging
+// HideScore's media modal uses. A single photo still opens exactly as before,
+// with no extra chrome.
+let _lbItems = [];
+let _lbIdx = 0;
+let _lbKeyHandler = null;
+
+const _LB_CHEV_L = '<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>';
+const _LB_CHEV_R = '<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+
+function _lbEsc(v) {
+  return String(v == null ? '' : v).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+}
+
+function _dirOpenPhoto(photoUrl, name, gallery, startIdx) {
+  const items = (Array.isArray(gallery) ? gallery : []).filter(g => g && g.photo);
+  if (!photoUrl && !items.length) return;
+
   const existing = document.querySelector('.dir-lightbox');
   if (existing) existing.remove();
+  if (_lbKeyHandler) { document.removeEventListener('keydown', _lbKeyHandler); _lbKeyHandler = null; }
+
+  _lbItems = items.length ? items : [{ photo: photoUrl, name }];
+  _lbIdx = 0;
+  if (typeof startIdx === 'number' && startIdx >= 0 && startIdx < _lbItems.length) {
+    _lbIdx = startIdx;
+  } else {
+    const hit = _lbItems.findIndex(g => g.name === name);
+    if (hit >= 0) _lbIdx = hit;
+  }
+
+  const multi = _lbItems.length > 1;
   const overlay = document.createElement('div');
-  overlay.className = 'dir-lightbox';
+  overlay.className = 'dir-lightbox' + (multi ? ' has-gallery' : '');
   overlay.innerHTML = `
     <button class="dir-lightbox-close" aria-label="Close">&times;</button>
     <div class="dir-lightbox-content">
-      <img class="dir-lightbox-img" src="${photoUrl}" alt="${name}">
-      <div class="dir-lightbox-name">${name}</div>
+      <div class="dir-lightbox-frame">
+        <img class="dir-lightbox-img" src="" alt="">
+        ${multi ? `
+        <span class="dir-lightbox-counter" aria-hidden="true"></span>
+        <button class="dir-lightbox-nav prev" type="button" aria-label="Previous performer" title="Previous performer">${_LB_CHEV_L}</button>
+        <button class="dir-lightbox-nav next" type="button" aria-label="Next performer" title="Next performer">${_LB_CHEV_R}</button>` : ''}
+      </div>
+      <div class="dir-lightbox-name"></div>
+      ${multi ? '<div class="dir-lightbox-dots" aria-hidden="true"></div><span class="dir-lightbox-live" role="status" aria-live="polite"></span>' : ''}
     </div>
   `;
-  const close = () => overlay.remove();
-  overlay.addEventListener('click', (e) => { if (e.target === overlay || e.target.classList.contains('dir-lightbox-close')) close(); });
+
+  const close = () => {
+    overlay.remove();
+    if (_lbKeyHandler) { document.removeEventListener('keydown', _lbKeyHandler); _lbKeyHandler = null; }
+  };
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay || e.target.closest('.dir-lightbox-close')) close();
+  });
+
+  if (multi) {
+    overlay.querySelector('.dir-lightbox-nav.prev').addEventListener('click', (e) => { e.stopPropagation(); _lbStep(-1); });
+    overlay.querySelector('.dir-lightbox-nav.next').addEventListener('click', (e) => { e.stopPropagation(); _lbStep(1); });
+    // Horizontal swipe — mobile parity with the chevrons. Ignore multi-touch
+    // (pinch-zoom on the photo) and mostly-vertical drags.
+    let sx = 0, sy = 0, tracking = false;
+    const frame = overlay.querySelector('.dir-lightbox-frame');
+    frame.addEventListener('touchstart', (e) => {
+      tracking = e.touches.length === 1;
+      if (tracking) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }
+    }, { passive: true });
+    frame.addEventListener('touchend', (e) => {
+      if (!tracking) return;
+      tracking = false;
+      const t = e.changedTouches && e.changedTouches[0];
+      if (!t) return;
+      const dx = t.clientX - sx, dy = t.clientY - sy;
+      if (Math.abs(dx) < 45 || Math.abs(dx) <= Math.abs(dy)) return;
+      _lbStep(dx < 0 ? 1 : -1);
+    }, { passive: true });
+  }
+
   document.body.appendChild(overlay);
-  const escHandler = (e) => { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', escHandler); } };
-  document.addEventListener('keydown', escHandler);
+  _lbPaint();
+
+  _lbKeyHandler = (e) => {
+    if (e.key === 'Escape') { close(); return; }
+    if (!multi || e.metaKey || e.ctrlKey || e.altKey) return;
+    const t = e.target;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+    if (e.key === 'ArrowLeft') { e.preventDefault(); _lbStep(-1); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); _lbStep(1); }
+  };
+  document.addEventListener('keydown', _lbKeyHandler);
 }
+
+// Wraps at both ends — a show lineup is a small ring, so a dead end at the last
+// face is worse than looping back to the first.
+function _lbStep(dir) {
+  if (_lbItems.length < 2) return;
+  _lbIdx = (_lbIdx + dir + _lbItems.length) % _lbItems.length;
+  _lbPaint();
+}
+
+function _lbPaint() {
+  const overlay = document.querySelector('.dir-lightbox');
+  if (!overlay) return;
+  const item = _lbItems[_lbIdx];
+  if (!item) return;
+  const img = overlay.querySelector('.dir-lightbox-img');
+  img.src = item.photo;
+  img.alt = item.name || '';
+  overlay.querySelector('.dir-lightbox-name').textContent = item.name || '';
+  const counter = overlay.querySelector('.dir-lightbox-counter');
+  if (counter) counter.textContent = `${_lbIdx + 1} / ${_lbItems.length}`;
+  const dots = overlay.querySelector('.dir-lightbox-dots');
+  if (dots) {
+    dots.innerHTML = _lbItems.map((_, i) =>
+      `<span class="dir-lightbox-dot${i === _lbIdx ? ' on' : ''}"></span>`).join('');
+  }
+  const live = overlay.querySelector('.dir-lightbox-live');
+  if (live) live.textContent = `${item.name || 'Photo'} — ${_lbIdx + 1} of ${_lbItems.length}`;
+  // Warm the neighbours so a tap on the chevron swaps instantly.
+  if (_lbItems.length > 1) {
+    [1, -1].forEach(d => {
+      const n = _lbItems[(_lbIdx + d + _lbItems.length) % _lbItems.length];
+      if (n && n.photo) { const pre = new Image(); pre.src = n.photo; }
+    });
+  }
+}
+
+// Distinct names, in bill order, for every comedian on the show card that owns
+// this expanded panel — so the lightbox can page through the whole lineup.
+function _lineupGallery(fromEl, venueSource) {
+  const lineup = fromEl.closest('.show-lineup');
+  if (!lineup) return [];
+  const seen = new Set();
+  const out = [];
+  lineup.querySelectorAll('[data-name]').forEach(el => {
+    const n = el.dataset.name;
+    if (!n || seen.has(n)) return;
+    seen.add(n);
+    const photo = (typeof getPhotoForVenue === 'function') ? getPhotoForVenue(n, venueSource || 'cellar') : '';
+    if (photo) out.push({ name: n, photo });
+  });
+  return out;
+}
+
+// Click handler for the bio panel's photo. Reads the lineup out of the DOM at
+// click time rather than baking a JSON blob into an inline onclick attribute.
+function _panelOpenPhoto(imgEl) {
+  const panel = imgEl.closest('.comedian-expanded');
+  const name = panel?.dataset?.for || imgEl.alt || '';
+  const src = panel?.dataset?.venueSource || 'cellar';
+  const gallery = _lineupGallery(imgEl, src);
+  const at = gallery.findIndex(g => g.name === name);
+  _dirOpenPhoto(imgEl.getAttribute('src'), name, gallery, at >= 0 ? at : 0);
+}
+window._panelOpenPhoto = _panelOpenPhoto;
+
+// Click handler for a comedian-directory card photo — pages through every card
+// currently rendered in the grid.
+function _dirCardOpenPhoto(el) {
+  const name = el.dataset.dirName || '';
+  const grid = el.closest('#shows-container') || document;
+  const seen = new Set();
+  const gallery = [];
+  grid.querySelectorAll('.dir-card-photo[data-dir-name]').forEach(card => {
+    const n = card.dataset.dirName;
+    const photo = card.dataset.dirPhoto;
+    if (!n || !photo || seen.has(n)) return;
+    seen.add(n);
+    gallery.push({ name: n, photo });
+  });
+  const at = gallery.findIndex(g => g.name === name);
+  _dirOpenPhoto(el.dataset.dirPhoto, name, gallery, at >= 0 ? at : 0);
+}
+window._dirCardOpenPhoto = _dirCardOpenPhoto;
+
 window._dirOpenPhoto = _dirOpenPhoto;
 
 window.renderComedianDirectory = renderComedianDirectory;

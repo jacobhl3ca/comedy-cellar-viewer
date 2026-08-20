@@ -889,7 +889,7 @@ async function refreshShowsInPlace() {
     // Gotham never publishes names (blank "All-Stars" cards) and the poster
     // venues have thinner data, so they're off by default; core clubs + big
     // marquee shows stay on. Values match renderAllVenues() item.type tokens.
-    allHidden: ['standupny', 'union-hall', 'gotham'],
+    allHidden: ['standupny', 'union-hall', 'gotham', 'nycc'],
   };
   const PILL_GROUPS = {
     defaultTab: 'default-tab-pills',

@@ -20,7 +20,7 @@ const fs = require('fs');
 const path = require('path');
 // Union Hall has no bio/photo enrichment, so reuse the live scraper as-is.
 // applyStandupnyEnrichment merges the committed poster-OCR names/photos.
-const { scrapeUnionHall, applyStandupnyEnrichment } = require('../lib/club-scrapers');
+const { scrapeUnionHall, applyStandupnyEnrichment, nyccExtractLineup, nyccDecode: _nyccDecode } = require('../lib/club-scrapers');
 
 
 const ROOT = path.resolve(__dirname, '..');
@@ -556,10 +556,6 @@ async function scrapeStandupNY() {
 // ---- Step 2c: Scrape NYCC ----
 // Parses newyorkcomedyclub.com/calendar/<YYYY-MM> — each day cell embeds an event list
 // inside the `data-content` popover attribute (HTML-encoded HTML).
-function _nyccDecode(s) {
-  return s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
-    .replace(/&#039;/g, "'").replace(/&apos;/g, "'").replace(/&amp;/g, '&');
-}
 function _nyccTo24h(t) {
   const m = /^(\d{1,2}):(\d{2})\s*(AM|PM)$/i.exec(t.trim());
   if (!m) return '';
@@ -580,8 +576,7 @@ function _nyccParseCalendar(html) {
     let em;
     while ((em = evPattern.exec(content)) !== null) {
       const titleRaw = em[2].trim();
-      const isLineup = !/^[^,]+ ft:?\s|:\s/i.test(titleRaw);
-      const comedians = isLineup ? titleRaw.split(',').map(s => s.trim()).filter(Boolean) : [];
+      const comedians = nyccExtractLineup(titleRaw);
       shows.push({
         title: titleRaw, date, time: _nyccTo24h(em[3].trim()),
         comedians, url: 'https://newyorkcomedyclub.com' + em[1],

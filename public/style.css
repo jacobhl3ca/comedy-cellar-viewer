@@ -29,6 +29,8 @@
   --card-hover: #444;
   --shadow-card: 0 2px 8px rgba(0,0,0,0.3);
   --shadow-hover: 0 4px 16px rgba(0,0,0,0.4);
+  --tab-primary-bg: #241a1a;
+  --tab-primary-border: #5c2b2b;
 }
 
 /* ---- Theme: Light ---- */
@@ -60,6 +62,8 @@
   --card-hover: #ccc;
   --shadow-card: 0 1px 4px rgba(0,0,0,0.06);
   --shadow-hover: 0 4px 12px rgba(0,0,0,0.1);
+  --tab-primary-bg: #fdf1f1;
+  --tab-primary-border: #e9b5b5;
 }
 
 body {
@@ -1003,6 +1007,22 @@ html.native-app .app-store-badge-link { display: none; }
 }
 .venue-source-tab.active .source-count { opacity: 0.85; }
 
+/* Home clubs. Cellar and The Stand are the two venues that actually get browsed,
+   so among nine look-alike pills they carry a soft accent tint, an accent-tinted
+   border and full-strength text. :not(.active) keeps the selected-tab treatment
+   (solid accent fill) untouched. */
+.venue-source-tab[data-source="cellar"]:not(.active),
+.venue-source-tab[data-source="the-stand"]:not(.active) {
+  background: var(--tab-primary-bg);
+  border-color: var(--tab-primary-border);
+  color: var(--text);
+  font-weight: 600;
+}
+.venue-source-tab[data-source="cellar"]:not(.active) .source-count,
+.venue-source-tab[data-source="the-stand"]:not(.active) .source-count { opacity: 0.75; }
+.venue-source-tab[data-source="cellar"]:not(.active):hover,
+.venue-source-tab[data-source="the-stand"]:not(.active):hover { border-color: var(--accent); }
+
 /* Big Shows section */
 .big-shows-section { margin-top: 8px; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
 .big-shows-header {
@@ -1658,6 +1678,44 @@ html.native-ios .dir-section-header { top: calc(60px + var(--dir-ctrl-h, 0px)); 
   display: flex; align-items: center; justify-content: center;
 }
 .dir-lightbox-close:hover { background: rgba(255,255,255,0.2); }
+/* Gallery paging: chevrons at the overlay edges (the photo itself is often a
+   small headshot, so on-image arrows would cover the face), a counter chip on
+   the frame, and dots under the name. */
+.dir-lightbox-frame { position: relative; display: flex; max-width: 100%; }
+.dir-lightbox-counter {
+  position: absolute; top: 8px; right: 8px;
+  padding: 3px 8px; border-radius: 999px;
+  background: rgba(0,0,0,0.62); color: #fff;
+  font-size: 11px; font-weight: 600; line-height: 1;
+  font-variant-numeric: tabular-nums; pointer-events: none;
+}
+.dir-lightbox-nav {
+  position: fixed; top: 50%; transform: translateY(-50%);
+  width: 46px; height: 46px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.12); color: #fff;
+  border: none; cursor: pointer; padding: 0;
+  transition: background 0.15s;
+}
+.dir-lightbox-nav:hover { background: rgba(255,255,255,0.24); }
+.dir-lightbox-nav:active { transform: translateY(-50%) scale(0.92); }
+.dir-lightbox-nav.prev { left: 10px; }
+.dir-lightbox-nav.next { right: 10px; }
+.dir-lightbox-dots { display: flex; gap: 6px; align-items: center; }
+.dir-lightbox-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,0.38);
+}
+.dir-lightbox-dot.on { background: rgba(255,255,255,0.95); }
+.dir-lightbox-live {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .dir-lightbox-nav { width: 42px; height: 42px; }
+  .dir-lightbox-nav.prev { left: 4px; }
+  .dir-lightbox-nav.next { right: 4px; }
+}
 .dir-card-photo { cursor: zoom-in; }
 
 /* ---- Top Pick view ---- */

@@ -288,8 +288,16 @@ function normalizeName(name) {
 // ---- Time helpers ----
 function to24h(timeStr) {
   // Convert "9:35 pm" -> "21:35", "6:45 pm" -> "18:45"
-  const m = timeStr.match(/(\d+):(\d+)\s*(am|pm)/i);
-  if (!m) return null;
+  const m = (timeStr || '').match(/(\d+):(\d+)\s*(am|pm)/i);
+  // NY Comedy Club's feed ships bare 24-hour clock times ("19:00") with no
+  // meridiem. Without this branch to24h returned null for every NYCC show, which
+  // silently disabled the past-show filter, the time filter and time sorting on
+  // that venue (and left formatTime printing the raw "19:00").
+  if (!m) {
+    const h24 = (timeStr || '').trim().match(/^(\d{1,2}):([0-5]\d)$/);
+    if (h24 && +h24[1] <= 23) return `${h24[1].padStart(2, '0')}:${h24[2]}`;
+    return null;
+  }
   let h = parseInt(m[1]);
   const min = m[2];
   const ampm = m[3].toLowerCase();
@@ -313,8 +321,16 @@ function to24hSortable(timeStr) {
 function formatTime(timeStr) {
   if (!timeStr) return 'TBD';
   const m = timeStr.match(/(\d+:\d+)\s*(am|pm)/i);
-  if (!m) return timeStr;
-  return m[1] + ' ' + m[2].toUpperCase();
+  if (m) return m[1] + ' ' + m[2].toUpperCase();
+  // Bare 24-hour clock (NY Comedy Club) -> the same "7:30 PM" every other
+  // venue's card shows.
+  const h24 = timeStr.trim().match(/^(\d{1,2}):([0-5]\d)$/);
+  if (h24 && +h24[1] <= 23) {
+    const h = +h24[1];
+    const hour12 = h % 12 === 0 ? 12 : h % 12;
+    return `${hour12}:${h24[2]} ${h < 12 ? 'AM' : 'PM'}`;
+  }
+  return timeStr;
 }
 
 // ---- Past show filter ----
@@ -597,37 +613,9 @@ async function fetchUnionHall() {
   }
 }
 
-function renderNYCCShows(container) {
-  container.classList.remove('picture-mode');
-  const vf = document.getElementById('venue-filters');
-  if (vf) vf.innerHTML = '';
-
-  if (nyccShows.length === 0) {
-    container.innerHTML = '<div class="no-shows">Loading NY Comedy Club shows...<br><a href="https://newyorkcomedyclub.com/shows" target="_blank" style="color:var(--accent);font-size:13px;margin-top:8px;display:inline-block;">View on their site →</a></div>';
-    return;
-  }
-
-  const filteredNYCC = nyccShows.filter(s => !isShowPast(s.date, s.time));
-  let html = '<div class="schedule-view">';
-  html += '<h2 class="schedule-day-header">NY Comedy Club</h2>';
-  filteredNYCC.forEach(show => {
-    html += `
-      <div class="show-card">
-        <div class="show-header">
-          <div><span class="show-time">${formatTime(show.time)}</span></div>
-          <span class="show-name">${show.title}</span>
-          <span class="show-venue">NY Comedy Club</span>
-        </div>
-        <div class="show-footer">
-          ${show.url ? `<a href="${show.url}" target="_blank" class="reserve-btn" onclick="trackReserve(this)">Tickets</a>` : '<span></span>'}
-          <span class="fav-count">${show.date || ''}</span>
-        </div>
-      </div>`;
-  });
-  html += '</div>';
-  container.innerHTML = html;
-  renderBottomTabs();
-}
+// NY Comedy Club's renderer lives in render.js beside the other venue renderers
+// (renderGothamShows / renderPosterVenueShows) — it needs their chip + day-header
+// helpers.
 
 async function fetchGotham() {
   try {
