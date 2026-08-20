@@ -1234,8 +1234,7 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/ryan-dacalos-a5e40a06-thumb-image.jpg?1522269492",
     "venues": [
       "nycc"
-    ],
-    "bio": "Ryan Dacalos is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    ]
   },
   {
     "name": "Riley Lassin",
@@ -8840,7 +8839,8 @@
   {
     "name": "Dina Hashem",
     "venues": [],
-    "bio_stand": "Dina Hashem first tried stand-up by auditioning for the 2010 New Jersey Comedy Festival at Rutgers University. After winning 1st place, she continued to pursue comedy and has been performing regularly in New York City. Dina's style involves a subdued delivery with dark observations about her life and Islamic upbringing. She was a competitor on Comedy Central's Roast Battle, and she has performed at the Bridgetown Comedy Festival, Boston Comedy Festival, and popular NYC shows including UCB's Whiplash and Wyatt Cenac's Night Train for Seeso. Her writing has been featured on Comedy Central, Nickelodeon, and TV Land websites. Follow her @dinahashem_"
+    "bio_stand": "Dina Hashem first tried stand-up by auditioning for the 2010 New Jersey Comedy Festival at Rutgers University. After winning 1st place, she continued to pursue comedy and has been performing regularly in New York City. Dina's style involves a subdued delivery with dark observations about her life and Islamic upbringing. She was a competitor on Comedy Central's Roast Battle, and she has performed at the Bridgetown Comedy Festival, Boston Comedy Festival, and popular NYC shows including UCB's Whiplash and Wyatt Cenac's Night Train for Seeso. Her writing has been featured on Comedy Central, Nickelodeon, and TV Land websites. Follow her @dinahashem_",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/en/1/18/Dina_Hashem_Promotional_Photo.jpeg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
   },
   {
     "name": "Sam Morrison",
@@ -9427,6 +9427,70 @@
   },
   {
     "name": "Deric Cahill",
+    "venues": []
+  },
+  {
+    "name": "Rebecca Kaplan",
+    "venues": []
+  },
+  {
+    "name": "Chris Scopo",
+    "venues": []
+  },
+  {
+    "name": "Amanda Gail",
+    "venues": []
+  },
+  {
+    "name": "Dean David",
+    "venues": []
+  },
+  {
+    "name": "Dean Obeidallah",
+    "venues": []
+  },
+  {
+    "name": "Liz Barrett",
+    "venues": []
+  },
+  {
+    "name": "Tommy McNamara",
+    "venues": []
+  },
+  {
+    "name": "Peter Wong",
+    "venues": []
+  },
+  {
+    "name": "Molly Kornfeld",
+    "venues": []
+  },
+  {
+    "name": "Alyce Chan",
+    "venues": []
+  },
+  {
+    "name": "Paige Smith-Hogan",
+    "venues": []
+  },
+  {
+    "name": "Karla Watkins",
+    "venues": []
+  },
+  {
+    "name": "Joey Hamburger",
+    "venues": []
+  },
+  {
+    "name": "Yaro Zubko",
+    "venues": []
+  },
+  {
+    "name": "Naveed Manbub",
+    "venues": []
+  },
+  {
+    "name": "Sonja Savanovic",
     "venues": []
   }
 ]
