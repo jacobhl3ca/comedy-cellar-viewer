@@ -9447,7 +9447,8 @@
   },
   {
     "name": "Dean Obeidallah",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Dean Obeidallah is an American lawyer, comedian, and journalist. He is the host of SiriusXM Progress' The Dean Obeidallah Show and a frequent contributor to CNN, The Daily Beast, and MSNBC."
   },
   {
     "name": "Liz Barrett",
@@ -9491,6 +9492,29 @@
   },
   {
     "name": "Sonja Savanovic",
+    "venues": []
+  },
+  {
+    "name": "Donald Gee",
+    "venues": []
+  },
+  {
+    "name": "Nolawee Mengist",
+    "venues": [],
+    "bio_stand": "Born and raised in the state of Colorado and currently living in New York City, Nolawee is a fast-rising comedic talent. His witty style has been self-described as \"confidently apathetic.\" He was a semi-finalist in the 2015, 2016, and 2017 Comedy Works New Faces contests and has performed at the High Plains Comedy Festival in 2018 and 2021."
+  },
+  {
+    "name": "Dan Toomey",
+    "venues": [],
+    "bio_stand": "Dan Toomey is a writer, comedian, actor and video maker living in Brooklyn, NY. He currently works as a video creator for Morning Brew. You can find their TikTok here, Instagram here and YouTube here. His writing has been featured in outlets like McSweeneys, Slackjaw and Points in Case. He regularly performs standup and improv comedy around New York. He graduated college in 2020."
+  },
+  {
+    "name": "Irene Morales",
+    "venues": [],
+    "bio_stand": "Irene Morales is a New York City–based comedian, writer, and actor who performs regularly in New York City comedy clubs as well as any other place with running water. Her stories and shortcomings combined with sarcasm and a little bit of sass make for a memorable set that audiences enjoy because they can relate. She has opened for Gilbert Gottfried, Jessica Kirson, Hannibal Buress, Nikki Glaser, Ron Funches, Julio Escallon and many other comedians whom you maybe haven’t heard of yet but are incredibly funny and Irene is still real jazzed about it. She has written for Yahoo Mujer, GQ, Someecards, a Latinx Cards Against Humanity that hasn’t come out yet and for Laugh Staff where she wrote Maid of Honor speeches for complete strangers. She co-created, wrote, and starred in the series We Don’t Know with comedian Henry Foley and has a weekly podcast called Dear Nana: Advice From an Idiot. She played the funny friend in an indie-feature film called Asking For It which is streaming on Amazon Prime. When Irene is not writing, performing, or selling her soul day-by-day at the crummy retail job that she hates, she is running around New York City with some of the funniest people on the planet trying to make it on time to another stand-up show."
+  },
+  {
+    "name": "Mycal Dede",
     "venues": []
   }
 ]
