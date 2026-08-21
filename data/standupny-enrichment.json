@@ -17,10 +17,10 @@
       "The Maze"
     ],
     "photos": {
-      "Liz Glazer": "https://thestandnyc.com/images/comedians/_square/lizglazer.jpg",
-      "Myq Kaplan": "https://thestandnyc.com/images/comedians/_square/MyqKaplan_CreditMindyTucker.jpg",
-      "Dan Ahdoot": "https://thestandnyc.com/images/comedians/_square/Dan_Ahdoot.jpg",
-      "Erin Maguire": "https://thestandnyc.com/images/comedians/_square/EM-headshot.jpg",
+      "Liz Glazer": "https://www.newyorkcomedyclub.com/img/imagetest/liz-glazer-jpg-d2120b19-liz-glazer-jpg.jpg",
+      "Myq Kaplan": "https://www.newyorkcomedyclub.com/img/imagetest/myq-kaplan-a39409a5-main-image.jpg",
+      "Dan Ahdoot": "https://www.newyorkcomedyclub.com/img/comedians/Screenshot-2023-09-12-at-11-35-05-AM-eda60f50-main-image.png",
+      "Erin Maguire": "https://www.newyorkcomedyclub.com/img/imagetest/4260-jpg-77eb07af-4260-jpg.jpg",
       "Patrick Holbert": "https://www.newyorkcomedyclub.com/img/comedians/patrick-holbert-e25a0bbf-main-image.jpg"
     }
   },
@@ -36,23 +36,6 @@
       "Jimmy Mccullough": "https://thestandnyc.com/images/comedians/_square/jimmymccullough.jpg"
     }
   },
-  "192662": {
-    "comedians": [
-      "Zach Zimmerman",
-      "Wali Collins",
-      "Gibran Saleem",
-      "Jonah Bowen",
-      "Zeam Studios",
-      "Kyle Wayne",
-      "Isiah Givens"
-    ],
-    "photos": {
-      "Zach Zimmerman": "https://thestandnyc.com/images/comedians/_square/Zach_Zimmerman.jpg",
-      "Wali Collins": "https://www.newyorkcomedyclub.com/img/comedians/wali-collins-bae10a7b-main-image.jpg",
-      "Gibran Saleem": "https://thestandnyc.com/images/comedians/_square/72-og.gif",
-      "Kyle Wayne": "https://www.newyorkcomedyclub.com/img/comedians/Kyle-Wayne-a1d3097d-main-image.jpg"
-    }
-  },
   "194365": {
     "comedians": [
       "Standing Tall",
@@ -63,8 +46,7 @@
       "Sonja Savanovic"
     ],
     "photos": {
-      "Peter Liu": "https://thestandnyc.com/images/comedians/_square/1000014507.jpg",
-      "Thash Mose": "https://thestandnyc.com/images/comedians/_square/Thash%2BMose%2BComic%2BHeadshot.jpg",
+      "Peter Liu": "https://www.newyorkcomedyclub.com/img/comedians/Peter-Liu-9573090f-main-image.jpg",
       "Sonja Savanovic": "https://www.newyorkcomedyclub.com/img/comedians/Sonya-Savonovic-e0a60b9f-main-image.jpg"
     }
   }
