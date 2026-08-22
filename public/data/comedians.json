@@ -1234,8 +1234,7 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/ryan-dacalos-a5e40a06-thumb-image.jpg?1522269492",
     "venues": [
       "nycc"
-    ],
-    "bio": "Ryan Dacalos is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    ]
   },
   {
     "name": "Riley Lassin",
@@ -8840,7 +8839,8 @@
   {
     "name": "Dina Hashem",
     "venues": [],
-    "bio_stand": "Dina Hashem first tried stand-up by auditioning for the 2010 New Jersey Comedy Festival at Rutgers University. After winning 1st place, she continued to pursue comedy and has been performing regularly in New York City. Dina's style involves a subdued delivery with dark observations about her life and Islamic upbringing. She was a competitor on Comedy Central's Roast Battle, and she has performed at the Bridgetown Comedy Festival, Boston Comedy Festival, and popular NYC shows including UCB's Whiplash and Wyatt Cenac's Night Train for Seeso. Her writing has been featured on Comedy Central, Nickelodeon, and TV Land websites. Follow her @dinahashem_"
+    "bio_stand": "Dina Hashem first tried stand-up by auditioning for the 2010 New Jersey Comedy Festival at Rutgers University. After winning 1st place, she continued to pursue comedy and has been performing regularly in New York City. Dina's style involves a subdued delivery with dark observations about her life and Islamic upbringing. She was a competitor on Comedy Central's Roast Battle, and she has performed at the Bridgetown Comedy Festival, Boston Comedy Festival, and popular NYC shows including UCB's Whiplash and Wyatt Cenac's Night Train for Seeso. Her writing has been featured on Comedy Central, Nickelodeon, and TV Land websites. Follow her @dinahashem_",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/en/1/18/Dina_Hashem_Promotional_Photo.jpeg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
   },
   {
     "name": "Sam Morrison",
@@ -9427,6 +9427,102 @@
   },
   {
     "name": "Deric Cahill",
+    "venues": []
+  },
+  {
+    "name": "Rebecca Kaplan",
+    "venues": []
+  },
+  {
+    "name": "Chris Scopo",
+    "venues": []
+  },
+  {
+    "name": "Amanda Gail",
+    "venues": []
+  },
+  {
+    "name": "Dean David",
+    "venues": []
+  },
+  {
+    "name": "Dean Obeidallah",
+    "venues": [],
+    "bio_wiki": "Dean Obeidallah is an American lawyer, comedian, and journalist. He is the host of SiriusXM Progress' The Dean Obeidallah Show and a frequent contributor to CNN, The Daily Beast, and MSNBC."
+  },
+  {
+    "name": "Liz Barrett",
+    "venues": []
+  },
+  {
+    "name": "Tommy McNamara",
+    "venues": []
+  },
+  {
+    "name": "Peter Wong",
+    "venues": []
+  },
+  {
+    "name": "Molly Kornfeld",
+    "venues": []
+  },
+  {
+    "name": "Alyce Chan",
+    "venues": []
+  },
+  {
+    "name": "Paige Smith-Hogan",
+    "venues": []
+  },
+  {
+    "name": "Karla Watkins",
+    "venues": []
+  },
+  {
+    "name": "Joey Hamburger",
+    "venues": []
+  },
+  {
+    "name": "Yaro Zubko",
+    "venues": []
+  },
+  {
+    "name": "Naveed Manbub",
+    "venues": []
+  },
+  {
+    "name": "Sonja Savanovic",
+    "venues": []
+  },
+  {
+    "name": "Donald Gee",
+    "venues": []
+  },
+  {
+    "name": "Nolawee Mengist",
+    "venues": [],
+    "bio_stand": "Born and raised in the state of Colorado and currently living in New York City, Nolawee is a fast-rising comedic talent. His witty style has been self-described as \"confidently apathetic.\" He was a semi-finalist in the 2015, 2016, and 2017 Comedy Works New Faces contests and has performed at the High Plains Comedy Festival in 2018 and 2021."
+  },
+  {
+    "name": "Dan Toomey",
+    "venues": [],
+    "bio_stand": "Dan Toomey is a writer, comedian, actor and video maker living in Brooklyn, NY. He currently works as a video creator for Morning Brew. You can find their TikTok here, Instagram here and YouTube here. His writing has been featured in outlets like McSweeneys, Slackjaw and Points in Case. He regularly performs standup and improv comedy around New York. He graduated college in 2020."
+  },
+  {
+    "name": "Irene Morales",
+    "venues": [],
+    "bio_stand": "Irene Morales is a New York City–based comedian, writer, and actor who performs regularly in New York City comedy clubs as well as any other place with running water. Her stories and shortcomings combined with sarcasm and a little bit of sass make for a memorable set that audiences enjoy because they can relate. She has opened for Gilbert Gottfried, Jessica Kirson, Hannibal Buress, Nikki Glaser, Ron Funches, Julio Escallon and many other comedians whom you maybe haven’t heard of yet but are incredibly funny and Irene is still real jazzed about it. She has written for Yahoo Mujer, GQ, Someecards, a Latinx Cards Against Humanity that hasn’t come out yet and for Laugh Staff where she wrote Maid of Honor speeches for complete strangers. She co-created, wrote, and starred in the series We Don’t Know with comedian Henry Foley and has a weekly podcast called Dear Nana: Advice From an Idiot. She played the funny friend in an indie-feature film called Asking For It which is streaming on Amazon Prime. When Irene is not writing, performing, or selling her soul day-by-day at the crummy retail job that she hates, she is running around New York City with some of the funniest people on the planet trying to make it on time to another stand-up show."
+  },
+  {
+    "name": "Mycal Dede",
+    "venues": []
+  },
+  {
+    "name": "Sarah Adelman",
+    "venues": []
+  },
+  {
+    "name": "Shelley Kim",
     "venues": []
   }
 ]
