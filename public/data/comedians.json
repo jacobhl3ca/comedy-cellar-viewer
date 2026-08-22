@@ -8868,7 +8868,8 @@
   },
   {
     "name": "Fiona Cauley",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Fiona Cauley is an American stand-up comedian working out of Nashville, Tennessee. She has Friedreich's ataxia, a hereditary disorder of the nervous system, and has built much of her act around living with the condition. Cauley became widely known as a frequent guest on the comedy podcast Kill Tony, where she won a \"Golden Ticket\", and she was named the best comedian in the 2024 edition of the Nashville Scene's Best of Nashville awards. In 2025 she performed a stand-up set on The Tonight Show Starring Jimmy Fallon."
   },
   {
     "name": "Brian Redban",
@@ -9527,6 +9528,10 @@
   },
   {
     "name": "Alejandra Jimenez",
+    "venues": []
+  },
+  {
+    "name": "Jesse Eigner",
     "venues": []
   }
 ]
