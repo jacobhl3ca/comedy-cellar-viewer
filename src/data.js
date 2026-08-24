@@ -735,6 +735,7 @@ let activeVenue = 'all'; // venue filter
 let activeStandRoom = 'all'; // Stand room filter
 let activeSource = 'all'; // venue source tab — default to All Venues
 let activeNeighborhood = 'all'; // All Venues tab: all/downtown/midtown/uptown
+let topPickDates = []; // dates that actually have a Top Pick, fed by renderTopPick()
 
 // ---- Render ----
 function renderTabs() {
@@ -743,8 +744,19 @@ function renderTabs() {
 
   nav.style.display = '';
 
-  // Top Pick shows one curated card per date already — no day strip needed.
-  if (activeSource === 'top-pick') { nav.style.display = 'none'; return; }
+  // Hiding just the <nav> used to strand the calendar button alone on an empty
+  // row, so show/hide the whole row together.
+  const tabsRow = nav.closest('.day-tabs-row');
+  if (tabsRow) tabsRow.style.display = '';
+
+  // Top Pick before its picks are computed (first paint) or with every night
+  // filtered out: nothing to point at, so drop the row rather than leave a
+  // lone calendar button hanging.
+  if (activeSource === 'top-pick' && !topPickDates.length) {
+    if (tabsRow) tabsRow.style.display = 'none';
+    nav.style.display = 'none';
+    return;
+  }
 
   // "Full Schedule" tab first (far left)
   const allTab = document.createElement('button');
@@ -752,5 +764,19 @@ function renderTabs() {
   allTab.innerHTML = `<span class="tab-day">Full</span><span class="tab-date">Schedule</span>`;
   allTab.addEventListener('click', () => jumpToDay('all'));
   nav.appendChild(allTab);
+
+  // Top Pick: one tab per night that actually has a pick, so every tab lands on
+  // a card. renderTopPick() keeps topPickDates in sync.
+  if (activeSource === 'top-pick') {
+    topPickDates.forEach(dateStr => {
+      const d = new Date(dateStr + 'T12:00:00');
+      const tab = document.createElement('button');
+      tab.className = 'day-tab' + (dateStr === activeDate ? ' active' : '');
+      tab.innerHTML = `<span class="tab-day">${getDayName(d)}</span><span class="tab-date">${getDateLabel(d)}</span>${faveBadgeHtml(dayMaxFaves(dateStr))}`;
+      tab.addEventListener('click', () => selectDayTab(dateStr));
+      nav.appendChild(tab);
+    });
+    return;
+  }
 
   if (activeSource === 'the-stand') {

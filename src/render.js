@@ -1359,6 +1359,15 @@ function renderTopPick(container) {
     .filter(item => item.lineupSize > 0)
     .sort((a, b) => a.dateStr.localeCompare(b.dateStr) || a.time24.localeCompare(b.time24));
 
+  // Feed the day strip with exactly the nights that have a pick, so no tab can
+  // land on an empty view. Rebuild the strip only when that set changes —
+  // renderShows() reruns on every filter toggle and renderTabs() redraws the nav.
+  const pickDates = picks.map(p => p.dateStr);
+  if (activeSource === 'top-pick' && pickDates.join(',') !== topPickDates.join(',')) {
+    topPickDates = pickDates;
+    renderTabs();
+  }
+
   // Honor a specific date if one is selected via the calendar
   if (activeDate === 'calendar') picks = picks.filter(p => calendarSelectedDates.has(p.dateStr));
   else if (activeDate && activeDate !== 'all') picks = picks.filter(p => p.dateStr === activeDate);

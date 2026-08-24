@@ -1431,6 +1431,7 @@ let activeVenue = 'all'; // venue filter
 let activeStandRoom = 'all'; // Stand room filter
 let activeSource = 'all'; // venue source tab — default to All Venues
 let activeNeighborhood = 'all'; // All Venues tab: all/downtown/midtown/uptown
+let topPickDates = []; // dates that actually have a Top Pick, fed by renderTopPick()
 
 // ---- Render ----
 function renderTabs() {
@@ -1439,8 +1440,19 @@ function renderTabs() {
 
   nav.style.display = '';
 
-  // Top Pick shows one curated card per date already — no day strip needed.
-  if (activeSource === 'top-pick') { nav.style.display = 'none'; return; }
+  // Hiding just the <nav> used to strand the calendar button alone on an empty
+  // row, so show/hide the whole row together.
+  const tabsRow = nav.closest('.day-tabs-row');
+  if (tabsRow) tabsRow.style.display = '';
+
+  // Top Pick before its picks are computed (first paint) or with every night
+  // filtered out: nothing to point at, so drop the row rather than leave a
+  // lone calendar button hanging.
+  if (activeSource === 'top-pick' && !topPickDates.length) {
+    if (tabsRow) tabsRow.style.display = 'none';
+    nav.style.display = 'none';
+    return;
+  }
 
   // "Full Schedule" tab first (far left)
   const allTab = document.createElement('button');
@@ -1448,6 +1460,20 @@ function renderTabs() {
   allTab.innerHTML = `<span class="tab-day">Full</span><span class="tab-date">Schedule</span>`;
   allTab.addEventListener('click', () => jumpToDay('all'));
   nav.appendChild(allTab);
+
+  // Top Pick: one tab per night that actually has a pick, so every tab lands on
+  // a card. renderTopPick() keeps topPickDates in sync.
+  if (activeSource === 'top-pick') {
+    topPickDates.forEach(dateStr => {
+      const d = new Date(dateStr + 'T12:00:00');
+      const tab = document.createElement('button');
+      tab.className = 'day-tab' + (dateStr === activeDate ? ' active' : '');
+      tab.innerHTML = `<span class="tab-day">${getDayName(d)}</span><span class="tab-date">${getDateLabel(d)}</span>${faveBadgeHtml(dayMaxFaves(dateStr))}`;
+      tab.addEventListener('click', () => selectDayTab(dateStr));
+      nav.appendChild(tab);
+    });
+    return;
+  }
 
   if (activeSource === 'the-stand') {
     // The Stand has its own date grouping
@@ -2810,6 +2836,15 @@ function renderTopPick(container) {
   let picks = Object.values(bestByDate)
     .filter(item => item.lineupSize > 0)
     .sort((a, b) => a.dateStr.localeCompare(b.dateStr) || a.time24.localeCompare(b.time24));
+
+  // Feed the day strip with exactly the nights that have a pick, so no tab can
+  // land on an empty view. Rebuild the strip only when that set changes —
+  // renderShows() reruns on every filter toggle and renderTabs() redraws the nav.
+  const pickDates = picks.map(p => p.dateStr);
+  if (activeSource === 'top-pick' && pickDates.join(',') !== topPickDates.join(',')) {
+    topPickDates = pickDates;
+    renderTabs();
+  }
 
   // Honor a specific date if one is selected via the calendar
   if (activeDate === 'calendar') picks = picks.filter(p => calendarSelectedDates.has(p.dateStr));

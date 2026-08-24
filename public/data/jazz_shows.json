@@ -1,176 +1,7 @@
 {
-  "generated_at": "2026-08-16T19:27:32",
-  "today": "2026-08-16",
+  "generated_at": "2026-08-24T07:55:59",
+  "today": "2026-08-24",
   "shows": [
-    {
-      "id": "b90801dd865033ca",
-      "artists": [
-        "Brad Mehldau"
-      ],
-      "date": "2026-08-16",
-      "venue_label": "Smoke Jazz",
-      "title": "Brad Mehldau",
-      "city": "New York, NY",
-      "source": "artist",
-      "ticket_url": "https://smokejazz.com/calendar/"
-    },
-    {
-      "id": "f4132c4cbd687c99",
-      "artists": [
-        "Brad Mehldau",
-        "Larry Grenadier"
-      ],
-      "date": "2026-08-16",
-      "venue_label": "Smoke Jazz",
-      "title": "Joe Farnsworth Trio featuring Brad Mehldau & Larry Grenadier",
-      "city": "Smoke Jazz",
-      "source": "venue",
-      "ticket_url": "https://smokejazz.com/calendar/"
-    },
-    {
-      "id": "7aadd4a283d0fbc9",
-      "artists": [
-        "Joel Ross"
-      ],
-      "date": "2026-08-16",
-      "venue_label": "Smoke Jazz",
-      "title": ", which features artists such as Joel Ross, Sarah Hanahan, and Emmet Cohen.",
-      "city": "Smoke Jazz",
-      "source": "venue",
-      "ticket_url": "https://smokejazz.com/calendar/"
-    },
-    {
-      "id": "36987e79e72da9fd",
-      "artists": [
-        "Bill Frisell"
-      ],
-      "date": "2026-08-16",
-      "venue_label": "Village Vanguard",
-      "title": "Bill Frisell",
-      "city": "New York, NY",
-      "source": "artist",
-      "ticket_url": "https://villagevanguard.com/"
-    },
-    {
-      "id": "876dfdd1b948f932",
-      "artists": [
-        "Bill Frisell"
-      ],
-      "date": "2026-08-18",
-      "venue_label": "Village Vanguard",
-      "title": "Bill Frisell",
-      "city": "New York, NY",
-      "source": "artist",
-      "ticket_url": "https://villagevanguard.com/"
-    },
-    {
-      "id": "76590d019de850cd",
-      "artists": [
-        "Bill Frisell"
-      ],
-      "date": "2026-08-18",
-      "venue_label": "Village Vanguard",
-      "title": "Bill Frisell Four",
-      "city": "Village Vanguard",
-      "source": "venue",
-      "ticket_url": "https://villagevanguard.com/"
-    },
-    {
-      "id": "cf497ff64dc3a0de",
-      "artists": [
-        "Gerald Clayton"
-      ],
-      "date": "2026-08-18",
-      "venue_label": "Village Vanguard",
-      "title": "Gerald Clayton",
-      "city": "Village Vanguard",
-      "source": "venue",
-      "ticket_url": "https://villagevanguard.com/"
-    },
-    {
-      "id": "12f9e5154348daf6",
-      "artists": [
-        "Larry Goldings"
-      ],
-      "date": "2026-08-19",
-      "venue_label": "Smoke Jazz",
-      "title": "Larry Goldings \u2013 Hammond B-3 organ",
-      "city": "Smoke Jazz",
-      "source": "venue",
-      "ticket_url": "https://smokejazz.com/calendar/"
-    },
-    {
-      "id": "c59ca883ddf21fb7",
-      "artists": [
-        "Bill Frisell"
-      ],
-      "date": "2026-08-19",
-      "venue_label": "Village Vanguard",
-      "title": "Bill Frisell",
-      "city": "New York, NY",
-      "source": "artist",
-      "ticket_url": "https://villagevanguard.com/"
-    },
-    {
-      "id": "de28fb7d752898e1",
-      "artists": [
-        "Larry Goldings"
-      ],
-      "date": "2026-08-20",
-      "venue_label": "Smoke Jazz",
-      "title": "Larry Goldings \u2013 Hammond B-3 organ",
-      "city": "Smoke Jazz",
-      "source": "venue",
-      "ticket_url": "https://smokejazz.com/calendar/"
-    },
-    {
-      "id": "f049b5216a06863e",
-      "artists": [
-        "Bill Frisell"
-      ],
-      "date": "2026-08-20",
-      "venue_label": "Village Vanguard",
-      "title": "Bill Frisell",
-      "city": "New York, NY",
-      "source": "artist",
-      "ticket_url": "https://villagevanguard.com/"
-    },
-    {
-      "id": "e5285fdfd5bec814",
-      "artists": [
-        "Bill Frisell"
-      ],
-      "date": "2026-08-21",
-      "venue_label": "Village Vanguard",
-      "title": "Bill Frisell",
-      "city": "New York, NY",
-      "source": "artist",
-      "ticket_url": "https://villagevanguard.com/"
-    },
-    {
-      "id": "d7a17685f849758b",
-      "artists": [
-        "Bill Frisell"
-      ],
-      "date": "2026-08-22",
-      "venue_label": "Village Vanguard",
-      "title": "Bill Frisell",
-      "city": "New York, NY",
-      "source": "artist",
-      "ticket_url": "https://villagevanguard.com/"
-    },
-    {
-      "id": "1c16f608190b6fdf",
-      "artists": [
-        "Bill Frisell"
-      ],
-      "date": "2026-08-23",
-      "venue_label": "Village Vanguard",
-      "title": "Bill Frisell",
-      "city": "New York, NY",
-      "source": "artist",
-      "ticket_url": "https://villagevanguard.com/"
-    },
     {
       "id": "d6518fd97cb136b3",
       "artists": [
@@ -208,6 +39,18 @@
       "ticket_url": "https://villagevanguard.com/"
     },
     {
+      "id": "65bf4f5d5c4635b4",
+      "artists": [
+        "Eric Alexander"
+      ],
+      "date": "2026-08-26",
+      "venue_label": "Smoke Jazz",
+      "title": "Eric Alexander \u2013 tenor saxophone",
+      "city": "Smoke Jazz",
+      "source": "venue",
+      "ticket_url": "https://smokejazz.com/calendar/"
+    },
+    {
       "id": "68987f5d68af8d1b",
       "artists": [
         "Joe Lovano"
@@ -218,6 +61,18 @@
       "city": "New York, NY",
       "source": "artist",
       "ticket_url": "https://villagevanguard.com/"
+    },
+    {
+      "id": "cd804dc42bc39e21",
+      "artists": [
+        "Eric Alexander"
+      ],
+      "date": "2026-08-27",
+      "venue_label": "Smoke Jazz",
+      "title": "Bird Lives! A Charlie Parker Birthday Celebration feat. The Vincent Herring & Eric Alexander Quintet",
+      "city": "Smoke Jazz",
+      "source": "venue",
+      "ticket_url": "https://smokejazz.com/calendar/"
     },
     {
       "id": "6368bd944e533d36",
@@ -304,6 +159,30 @@
       "city": "New York, NY",
       "source": "artist",
       "ticket_url": null
+    },
+    {
+      "id": "4fac5dad0ea95ad3",
+      "artists": [
+        "Bill Frisell"
+      ],
+      "date": "2026-09-03",
+      "venue_label": "Other",
+      "title": "LITTLE ISLAND :: Thomas Bartlett - Allen Ginsburg at 100",
+      "city": "New York, NY",
+      "source": "artist",
+      "ticket_url": null
+    },
+    {
+      "id": "3db0521904b481e2",
+      "artists": [
+        "Theo Croker"
+      ],
+      "date": "2026-09-14",
+      "venue_label": "Blue Note NYC",
+      "title": "Theo Croker x Nicholas Daley: Sonic Tapestry",
+      "city": "Blue Note NYC",
+      "source": "venue",
+      "ticket_url": "https://www.bluenotejazz.com/nyc/shows.html"
     },
     {
       "id": "325acdde11655ac9",
@@ -1442,6 +1321,42 @@
       "date": "2027-06-12",
       "venue_label": "Jazz at Lincoln Center",
       "title": "Wynton Marsalis",
+      "city": "Jazz at Lincoln Center",
+      "source": "venue",
+      "ticket_url": "https://www.jazz.org/whats-on/calendar/"
+    },
+    {
+      "id": "d8df4104aa140246",
+      "artists": [
+        "Wynton Marsalis"
+      ],
+      "date": "2027-06-17",
+      "venue_label": "Jazz at Lincoln Center",
+      "title": "Wynton Marsalis Septet",
+      "city": "Jazz at Lincoln Center",
+      "source": "venue",
+      "ticket_url": "https://www.jazz.org/whats-on/calendar/"
+    },
+    {
+      "id": "1f0ee77c8f35f92d",
+      "artists": [
+        "Wynton Marsalis"
+      ],
+      "date": "2027-06-18",
+      "venue_label": "Jazz at Lincoln Center",
+      "title": "Wynton Marsalis Septet",
+      "city": "Jazz at Lincoln Center",
+      "source": "venue",
+      "ticket_url": "https://www.jazz.org/whats-on/calendar/"
+    },
+    {
+      "id": "bc3acc389f96d395",
+      "artists": [
+        "Wynton Marsalis"
+      ],
+      "date": "2027-06-19",
+      "venue_label": "Jazz at Lincoln Center",
+      "title": "Wynton Marsalis Septet",
       "city": "Jazz at Lincoln Center",
       "source": "venue",
       "ticket_url": "https://www.jazz.org/whats-on/calendar/"
