@@ -397,11 +397,34 @@ function cleanSyncPayload(input) {
   return { version: 1, prefs, settings };
 }
 
-async function touchUser(store, session, account) {
+// Which Tonight NYC client this request came from. The iOS and Android shells
+// load tonightnyc.com remotely (see capacitor.config.json server.url), so their
+// requests are indistinguishable from Safari/Chrome at the network layer — the
+// UA is the plain system browser. The shell therefore announces itself with an
+// explicit X-TN-Client header (set in src/account.js), exactly the way HideScore
+// does it with X-HS-Client. Anything unrecognised is 'web', never a guess.
+function platformOf(req) {
+  const raw = req && req.headers
+    ? String(req.headers['x-tn-client'] || '').trim().toLowerCase()
+    : '';
+  return raw === 'ios' || raw === 'android' ? raw : 'web';
+}
+
+// `platforms` is a first-seen timestamp per client, e.g.
+//   { ios: '2026-08-24T14:02:10.001Z', web: '2026-08-01T09:11:00.000Z' }
+// It only ever grows, and only for signed-in accounts — an anonymous visitor who
+// has the app installed is invisible to us, which is why the header store button
+// stays visible for them.
+async function touchUser(store, session, account, req) {
   const uid = account.uid;
   const key = `tn:user:${uid}`;
   const prior = normalizeStored(await store.get(key)) || {};
   const now = new Date().toISOString();
+  const platforms = (prior.platforms && typeof prior.platforms === 'object')
+    ? { ...prior.platforms }
+    : {};
+  const platform = platformOf(req);
+  if (!platforms[platform]) platforms[platform] = now;
   await store.set(key, {
     uid,
     email: session.email || prior.email || null,
@@ -409,6 +432,7 @@ async function touchUser(store, session, account) {
     linkedProviders: account.linkedProviders || [],
     firstSeen: prior.firstSeen || now,
     lastSeen: now,
+    platforms,
   });
   return uid;
 }
@@ -806,7 +830,15 @@ async function handleMe(req, res) {
     },
     store: { sync: Boolean(store) },
   };
-  if (session && store && account) await touchUser(store, session, account).catch(() => {});
+  // Touch BEFORE building the platforms field so the very first app open already
+  // reports itself — otherwise the header store button would still show once on
+  // the visit that should have retired it.
+  if (session && store && account) await touchUser(store, session, account, req).catch(() => {});
+  if (session && store && account) {
+    const rec = normalizeStored(await store.get(`tn:user:${account.uid}`).catch(() => null));
+    response.platform = platformOf(req);
+    response.platforms = (rec && rec.platforms) || {};
+  }
   return json(res, 200, response);
 }
 
@@ -818,7 +850,7 @@ async function handlePrefs(req, res) {
   const key = `tn:sync:${account.uid}`;
   if (req.method === 'GET') {
     const sync = normalizeStored(await account.store.get(key));
-    await touchUser(account.store, account.session, account.account).catch(() => {});
+    await touchUser(account.store, account.session, account.account, req).catch(() => {});
     return json(res, 200, { sync });
   }
   let input;
@@ -830,7 +862,7 @@ async function handlePrefs(req, res) {
   if (prior) await account.store.set(`tn:sync:previous:${account.uid}`, prior, { ex: PREVIOUS_TTL });
   const record = { ...clean, updatedAt: new Date().toISOString() };
   await account.store.set(key, record);
-  await touchUser(account.store, account.session, account.account).catch(() => {});
+  await touchUser(account.store, account.session, account.account, req).catch(() => {});
   return json(res, 200, { ok: true, updatedAt: record.updatedAt });
 }
 

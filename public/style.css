@@ -211,6 +211,13 @@ body.mode-jazz .modal-overlay { display: none !important; }
 .header-share-btn { right: 138px; }
 /* Hide the App Store icon inside either native app shell. */
 html.native-app .header-appstore-btn { display: none; }
+/* .header-icon-btn above sets display:flex, which outranks the user-agent
+   [hidden] { display: none } rule — so the attribute alone does nothing here.
+   syncStoreButton() in src/account.js sets [hidden] when the signed-in account
+   has already been used inside the iOS or Android app; this is what makes that
+   stick. Same idea as the html.native-app rule directly above, just driven by
+   account history instead of the current shell. */
+.header-appstore-btn[hidden] { display: none; }
 html.native-app .header-share-btn { right: 92px; }
 
 /* Theme toggle hidden on phone widths and iOS; everything shifts left to fill its

@@ -83,6 +83,7 @@
         linkGoogleBtn?.hidden !== false &&
         linkEmailBtn?.hidden !== false;
     }
+    syncStoreButton(auth);
     if (signedIn) setStatus('Synced automatically.');
     else if (!appleAvailable && !googleAvailable && !emailAvailable) setStatus('Account sync is not configured yet.');
     else setStatus('Sign in to sync your comedians and settings across devices.');
@@ -93,7 +94,7 @@
     const response = await fetch('/api/prefs', {
       method: 'PUT',
       credentials: 'include',
-      headers: { 'Content-Type': 'application/json' },
+      headers: tnHeaders({ 'Content-Type': 'application/json' }),
       body: JSON.stringify(localPayload()),
       keepalive: Boolean(keepalive),
     });
@@ -123,7 +124,7 @@
   async function pullRemote(){
     if (!signedIn) return;
     lastPull = Date.now();
-    const response = await fetch('/api/prefs', { credentials: 'include' });
+    const response = await fetch('/api/prefs', { credentials: 'include', headers: tnHeaders() });
     if (!response.ok) throw new Error(`sync failed: ${response.status}`);
     const { sync } = await response.json();
     if (!sync) {
@@ -142,6 +143,37 @@
 
   function isNative(){
     return !!window.Capacitor?.isNativePlatform?.();
+  }
+
+  // Mirrors hsPlatform() in HideScore's src/lib/prefsSync.ts. The native shells
+  // load tonightnyc.com remotely, so the server cannot tell an app open from a
+  // browser visit without this — it is sent as X-TN-Client and read by
+  // platformOf() in server/account-auth.js.
+  function tnPlatform(){
+    const cap = window.Capacitor;
+    if (!cap?.isNativePlatform?.()) return 'web';
+    return cap.getPlatform?.() === 'android' ? 'android' : 'ios';
+  }
+
+  function tnHeaders(extra){
+    return Object.assign({ 'X-TN-Client': tnPlatform() }, extra || {});
+  }
+
+  // Once an account has been used inside the downloaded app on either platform
+  // there is no point advertising the store to it, so the header button retires
+  // itself for good. Anonymous visitors keep seeing it — we have no way to know
+  // they installed. HideScore does the same thing but only checks iOS
+  // (HomeContent.tsx: `!isNativeApp && !hasIosAccountUse`); Jacob asked for
+  // either platform here, 2026-08-24.
+  function syncStoreButton(auth){
+    const btn = document.getElementById('header-appstore');
+    if (!btn) return;
+    const platforms = auth?.platforms || {};
+    const usedTheApp = Boolean(auth?.signedIn) && Boolean(platforms.ios || platforms.android);
+    // Attribute only, never btn.style — .header-icon-btn sets `display: flex`,
+    // which beats the UA's [hidden] rule, so the hiding is done by the
+    // `.header-appstore-btn[hidden]` rule in style.css that outranks it.
+    btn.hidden = usedTheApp;
   }
 
   function nativeAppleBridge(){
@@ -337,7 +369,7 @@
     const error = new URLSearchParams(window.location.search).get('auth_error');
     if (error) setStatus('Apple sign-in did not finish. Please try again.', true);
     try {
-      const response = await fetch('/api/me', { credentials: 'include' });
+      const response = await fetch('/api/me', { credentials: 'include', headers: tnHeaders() });
       if (!response.ok) throw new Error('auth unavailable');
       const auth = await response.json();
       renderAuth(auth);

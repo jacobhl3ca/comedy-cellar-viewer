@@ -5142,10 +5142,14 @@ async function init() {
     }
   });
 
-  document.getElementById('header-share').addEventListener('click', () => {
+  // Null-guarded because the header share button is commented out in index.html
+  // (2026-08-24). Without the guard the whole init function throws here and every
+  // listener bound after this point silently never attaches.
+  const shareBtn = document.getElementById('header-share');
+  if (shareBtn) shareBtn.addEventListener('click', () => {
     Native.impact('Light');
     doShare(null, () => {
-      const btn = document.getElementById('header-share');
+      const btn = shareBtn;
       btn.querySelector('.share-icon-svg').style.display = 'none';
       btn.querySelector('.share-check').style.display = '';
       btn.title = 'Link copied!';
@@ -6035,9 +6039,6 @@ async function refreshShowsInPlace() {
     refreshToggles('visible-tabs-toggles', 'tab', 'hiddenTabs');
     refreshToggles('visible-tools-toggles', 'tool', 'hiddenTools');
     refreshToggles('all-venues-toggles', 'allvenue', 'allHidden');
-    // Read on every open, not once at load: notrack.html can flip the same key
-    // in another tab, and the panel must not show a stale state.
-    refreshNotrackPills();
     refreshSwatches();
     refreshShareUI();
     if (importStatus) importStatus.textContent = '';
@@ -6113,32 +6114,6 @@ async function refreshShowsInPlace() {
       // Live-apply the change to the home page so the user sees the effect immediately.
       syncToolbarFromSettings();
     });
-  });
-
-  // ---- Analytics opt-out — deliberately NOT a settings key ----
-  // It flips localStorage['umami.disabled'], the same switch notrack.html
-  // writes and the analytics beacon reads. Keeping it OUT of `settings` keeps
-  // it out of account sync and out of shared setup links: it is a choice about
-  // this browser, and importing someone else's link must never silently make
-  // it. Reset-to-defaults leaves it alone for the same reason.
-  const NOTRACK_KEY = 'umami.disabled';
-  function refreshNotrackPills(){
-    const group = document.getElementById('notrack-pills');
-    if (!group) return;
-    let off = false;
-    try { off = localStorage.getItem(NOTRACK_KEY) === '1'; } catch { off = false; }
-    group.querySelectorAll('.settings-pill').forEach(p => {
-      p.setAttribute('aria-checked', String((p.dataset.value === 'off') === off));
-    });
-  }
-  document.getElementById('notrack-pills')?.addEventListener('click', (e) => {
-    const pill = e.target.closest('.settings-pill');
-    if (!pill) return;
-    try {
-      if (pill.dataset.value === 'off') localStorage.setItem(NOTRACK_KEY, '1');
-      else localStorage.removeItem(NOTRACK_KEY);
-    } catch { /* private mode: the refresh below reports what actually stuck */ }
-    refreshNotrackPills();
   });
 
   // ---- Visibility toggle chips (venue tabs + toolbar controls) — multi-select ----
@@ -6403,6 +6378,7 @@ async function refreshShowsInPlace() {
         linkGoogleBtn?.hidden !== false &&
         linkEmailBtn?.hidden !== false;
     }
+    syncStoreButton(auth);
     if (signedIn) setStatus('Synced automatically.');
     else if (!appleAvailable && !googleAvailable && !emailAvailable) setStatus('Account sync is not configured yet.');
     else setStatus('Sign in to sync your comedians and settings across devices.');
@@ -6413,7 +6389,7 @@ async function refreshShowsInPlace() {
     const response = await fetch('/api/prefs', {
       method: 'PUT',
       credentials: 'include',
-      headers: { 'Content-Type': 'application/json' },
+      headers: tnHeaders({ 'Content-Type': 'application/json' }),
       body: JSON.stringify(localPayload()),
       keepalive: Boolean(keepalive),
     });
@@ -6443,7 +6419,7 @@ async function refreshShowsInPlace() {
   async function pullRemote(){
     if (!signedIn) return;
     lastPull = Date.now();
-    const response = await fetch('/api/prefs', { credentials: 'include' });
+    const response = await fetch('/api/prefs', { credentials: 'include', headers: tnHeaders() });
     if (!response.ok) throw new Error(`sync failed: ${response.status}`);
     const { sync } = await response.json();
     if (!sync) {
@@ -6462,6 +6438,37 @@ async function refreshShowsInPlace() {
 
   function isNative(){
     return !!window.Capacitor?.isNativePlatform?.();
+  }
+
+  // Mirrors hsPlatform() in HideScore's src/lib/prefsSync.ts. The native shells
+  // load tonightnyc.com remotely, so the server cannot tell an app open from a
+  // browser visit without this — it is sent as X-TN-Client and read by
+  // platformOf() in server/account-auth.js.
+  function tnPlatform(){
+    const cap = window.Capacitor;
+    if (!cap?.isNativePlatform?.()) return 'web';
+    return cap.getPlatform?.() === 'android' ? 'android' : 'ios';
+  }
+
+  function tnHeaders(extra){
+    return Object.assign({ 'X-TN-Client': tnPlatform() }, extra || {});
+  }
+
+  // Once an account has been used inside the downloaded app on either platform
+  // there is no point advertising the store to it, so the header button retires
+  // itself for good. Anonymous visitors keep seeing it — we have no way to know
+  // they installed. HideScore does the same thing but only checks iOS
+  // (HomeContent.tsx: `!isNativeApp && !hasIosAccountUse`); Jacob asked for
+  // either platform here, 2026-08-24.
+  function syncStoreButton(auth){
+    const btn = document.getElementById('header-appstore');
+    if (!btn) return;
+    const platforms = auth?.platforms || {};
+    const usedTheApp = Boolean(auth?.signedIn) && Boolean(platforms.ios || platforms.android);
+    // Attribute only, never btn.style — .header-icon-btn sets `display: flex`,
+    // which beats the UA's [hidden] rule, so the hiding is done by the
+    // `.header-appstore-btn[hidden]` rule in style.css that outranks it.
+    btn.hidden = usedTheApp;
   }
 
   function nativeAppleBridge(){
@@ -6657,7 +6664,7 @@ async function refreshShowsInPlace() {
     const error = new URLSearchParams(window.location.search).get('auth_error');
     if (error) setStatus('Apple sign-in did not finish. Please try again.', true);
     try {
-      const response = await fetch('/api/me', { credentials: 'include' });
+      const response = await fetch('/api/me', { credentials: 'include', headers: tnHeaders() });
       if (!response.ok) throw new Error('auth unavailable');
       const auth = await response.json();
       renderAuth(auth);

@@ -72,7 +72,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=44e9d6a">
+  <link rel="stylesheet" href="style.min.css?v=8845f81">
   <script>
     (function() {
       const root = document.documentElement;
@@ -148,6 +148,11 @@
       </div>
       <p class="subtitle">NYC comedy lineups, filtered your way.</p>
     </div>
+    <!-- Share link hidden 2026-08-24 at Jacob's request ("comment out for now").
+         The button itself is the only thing parked; doShare(), the /?p= import
+         modal and prefs.js's .visible toggle are all left intact, so restoring it
+         is just deleting these comment markers. init.js guards the listener bind
+         because getElementById('header-share') is null while this is commented.
     <button class="header-share-btn" id="header-share" aria-label="Copy share link" title="Copy share link">
       <svg class="share-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
@@ -155,6 +160,7 @@
       </svg>
       <span class="share-check" style="display:none"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>
     </button>
+    -->
     <!-- Tonight NYC went live on Google Play 2026-08-23, so this header button
          follows the visitor's platform instead of always pointing at the App
          Store. The Apple markup below stays the no-JS default (and the right
@@ -640,19 +646,6 @@
           <p id="settings-import-status" class="settings-desc" style="margin-top:6px;min-height:1em;"></p>
         </div>
 
-        <!-- The opt-out has always existed at /notrack.html, but that page is
-             linked only from the privacy policy, so in practice nobody found
-             it. A visible switch is also what App Review and privacy
-             regulators look for. -->
-        <div class="modal-section">
-          <h3>Analytics</h3>
-          <p class="settings-desc">Anonymous visit counts, self-hosted, no cookies. Set per browser — clearing this site's data resets it.</p>
-          <div class="settings-pills" id="notrack-pills" role="radiogroup" aria-label="Count my visits">
-            <button class="settings-pill" data-value="on" role="radio" aria-checked="true">Count my visits</button>
-            <button class="settings-pill" data-value="off" role="radio" aria-checked="false">Don't count me</button>
-          </div>
-        </div>
-
         <!-- Play shell only (CSS hides it everywhere else): on the web this would
              point someone at a store page for an app they are demonstrably not
              using, and iOS has its own store. No target="_blank" and no JS —
@@ -728,7 +721,7 @@
     <button id="pwa-install-btn" onclick="pwaInstall()" style="display:none;"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Add to Home Screen</button>
   </footer>
 
-  <script defer src="app.min.js?v=44e9d6a"></script>
+  <script defer src="app.min.js?v=8845f81"></script>
   <!-- Vercel Web Analytics + Speed Insights + Cloudflare Web Analytics — gated to skip Capacitor native shell so iOS app stays "No data collected" on App Store -->
   <script>
     if (!window.Capacitor?.isNativePlatform?.()) {

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-24T07:55:59",
+  "generated_at": "2026-08-24T12:03:40",
   "today": "2026-08-24",
   "shows": [
     {
@@ -45,7 +45,7 @@
       ],
       "date": "2026-08-26",
       "venue_label": "Smoke Jazz",
-      "title": "Eric Alexander \u2013 tenor saxophone",
+      "title": "Bird Lives! A Charlie Parker Birthday Celebration feat. The Vincent Herring & Eric Alexander Quintet",
       "city": "Smoke Jazz",
       "source": "venue",
       "ticket_url": "https://smokejazz.com/calendar/"
@@ -85,6 +85,18 @@
       "city": "New York, NY",
       "source": "artist",
       "ticket_url": "https://villagevanguard.com/"
+    },
+    {
+      "id": "fea9016dfd57bc46",
+      "artists": [
+        "Eric Alexander"
+      ],
+      "date": "2026-08-28",
+      "venue_label": "Smoke Jazz",
+      "title": "Bird Lives! A Charlie Parker Birthday Celebration feat. The Vincent Herring & Eric Alexander Quintet",
+      "city": "Smoke Jazz",
+      "source": "venue",
+      "ticket_url": "https://smokejazz.com/calendar/"
     },
     {
       "id": "e23783a301e224d7",
