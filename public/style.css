@@ -960,8 +960,14 @@ html.native-mobile.native-app .header-share-btn { right: 46px; }
 .site-footer a { color: var(--accent); text-decoration: none; }
 .site-footer a:hover { text-decoration: underline; }
 
-.site-footer a.app-store-badge-link { display: inline-block; line-height: 0; margin: 12px 0 6px; }
+.site-footer a.app-store-badge-link { display: inline-block; line-height: 0; margin: 12px 0 6px; vertical-align: middle; }
 .site-footer a.app-store-badge-link img { display: block; height: 40px; width: auto; margin: 0 auto; }
+/* Google ships its badge with 41px of required clear space baked into a 646x250
+   canvas, so the pill is only 168 of that height. 59.5px on the whole file puts
+   the pill at 40 and matches the App Store badge. The two links therefore have
+   different box heights, which is why both carry vertical-align: middle — on the
+   default baseline they would line up by their bottoms and sit 10px apart. */
+.site-footer a.play-badge-link img { height: 59.5px; }
 html.native-app .app-store-badge-link { display: none; }
 
 /* Schedule view */
