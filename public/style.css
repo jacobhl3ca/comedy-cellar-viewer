@@ -213,8 +213,16 @@ body.mode-jazz .modal-overlay { display: none !important; }
 html.native-app .header-appstore-btn { display: none; }
 html.native-app .header-share-btn { right: 92px; }
 
-/* Theme toggle hidden on narrow screens and iOS; everything shifts left to fill its slot. */
-@media (max-width: 380px) {
+/* Theme toggle hidden on phone widths and iOS; everything shifts left to fill its
+   slot. The cutoff was 380px, which no longer matches any current handset — 390
+   (iPhone 12-15), 412 (Pixel) and 430 (Pro Max) all sat above it and kept the
+   third button, so the centred "Tonight NYC" ran underneath the icon row (8px of
+   real overlap measured at 390, and only 3px of clearance at 412). Raising it to
+   430 puts every phone on the two-button layout, which clears the title by 30px
+   or more. No feature is lost: Appearance already lives in the Settings modal,
+   which the comment beside that section calls the only theme control most phone
+   users can reach. */
+@media (max-width: 430px) {
   .theme-toggle { display: none; }
   .header-appstore-btn { right: 46px; }
   .header-share-btn { right: 92px; }
