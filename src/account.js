@@ -4,6 +4,9 @@
   const SETTINGS_KEY = 'tonight-nyc-settings';
   const SYNC_META_KEY = 'tonight-nyc-sync-meta';
   const SYNC_BACKUP_KEY = 'tonight-nyc-sync-backup';
+  // Last answer syncStoreButton got, so the inline script in index.html can
+  // apply it before first paint instead of after /api/me comes back.
+  const STORE_HIDDEN_KEY = 'tonight-nyc-store-hidden';
   let signedIn = false;
   let pushTimer = null;
   let lastPull = 0;
@@ -166,10 +169,18 @@
   // (HomeContent.tsx: `!isNativeApp && !hasIosAccountUse`); Jacob asked for
   // either platform here, 2026-08-24.
   function syncStoreButton(auth){
-    const btn = document.getElementById('header-appstore');
-    if (!btn) return;
     const platforms = auth?.platforms || {};
     const usedTheApp = Boolean(auth?.signedIn) && Boolean(platforms.ios || platforms.android);
+    // Remember it. /api/me takes a second or so to answer for a signed-in
+    // account, and until 2026-08-24 that was a second of App Store button
+    // sitting in the header of someone who already had the app, followed by it
+    // disappearing. The inline script next to the button in index.html replays
+    // this before the first paint; this write is what gives it something to
+    // replay. Written on every real answer, including false, so signing out on
+    // another device brings the button back on the next load.
+    try { localStorage.setItem(STORE_HIDDEN_KEY, usedTheApp ? '1' : '0'); } catch { /* private mode — the cache is an optimisation */ }
+    const btn = document.getElementById('header-appstore');
+    if (!btn) return;
     // Attribute only, never btn.style — .header-icon-btn sets `display: flex`,
     // which beats the UA's [hidden] rule, so the hiding is done by the
     // `.header-appstore-btn[hidden]` rule in style.css that outranks it.
