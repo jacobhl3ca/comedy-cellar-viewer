@@ -8370,7 +8370,8 @@
   },
   {
     "name": "Dan Docimo",
-    "venues": []
+    "venues": [],
+    "tagline_cellar": "TOURING ALL OVER THE WORLD"
   },
   {
     "name": "Sam Kochman",
@@ -9605,5 +9606,23 @@
   {
     "name": "Courtney Fearrington",
     "venues": []
+  },
+  {
+    "name": "Monique Marvez",
+    "venues": [],
+    "bio": "FROM COMEDY CENTRAL. HBO",
+    "tagline_cellar": "FROM COMEDY CENTRAL. HBO"
+  },
+  {
+    "name": "Vanessa Graddick",
+    "venues": [],
+    "bio": "COMICS UNLEASHED, LAUGH OUT LOUD, FUNNY YOU SHOULD ASK AND REALHUSBANDS OF HOLYWOOD",
+    "tagline_cellar": "COMICS UNLEASHED, LAUGH OUT LOUD, FUNNY YOU SHOULD ASK AND REALHUSBANDS OF HOLYWOOD"
+  },
+  {
+    "name": "Zainab Johnson",
+    "venues": [],
+    "bio": "VARIETY'S TOP 10 COMICS TO WATCH, LATE NIGHT WITH SETH MEYERS",
+    "tagline_cellar": "VARIETY'S TOP 10 COMICS TO WATCH, LATE NIGHT WITH SETH MEYERS"
   }
 ]
