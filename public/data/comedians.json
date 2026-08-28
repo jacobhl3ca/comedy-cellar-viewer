@@ -9553,7 +9553,8 @@
   },
   {
     "name": "Star Trek",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Star Trek is an American science fiction media franchise created by Gene Roddenberry and owned by Paramount, which began with the series of the same name and became a worldwide pop culture phenomenon. Since its creation, the franchise has expanded into various films, television series, video games, novels, and comic books, and it has become one of the most recognizable and highest-grossing media franchises of all time."
   },
   {
     "name": "Sean Mallory",
@@ -9642,5 +9643,11 @@
   {
     "name": "Jay Simpson",
     "venues": []
+  },
+  {
+    "name": "Kat Timpf",
+    "venues": [],
+    "bio_wiki": "Katherine Clare Timpf is an American libertarian columnist, television personality, reporter, comedian and author. She is a regular panelist on Fox News Channel's Gutfeld! and appears as a contributor on various other Fox News shows. In 2017, Timpf co-hosted Fox News Specialists alongside Eric Bolli",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Kat_Timpf_%2851250642134%29_%28cropped%29.jpg/330px-Kat_Timpf_%2851250642134%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   }
 ]
