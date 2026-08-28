@@ -1801,7 +1801,8 @@
     "venues": [
       "nycc"
     ],
-    "tagline_cellar": "LAST COMIC STANDING FINALIST, LATE NIGHT WITH JIMMY FALLON, RED EYE ON FOX NEWS"
+    "tagline_cellar": "LAST COMIC STANDING FINALIST, LATE NIGHT WITH JIMMY FALLON, RED EYE ON FOX NEWS",
+    "bio_stand": "Since taking 4th place on Last Comic Standing’s 8th season, Joe Machi has been busy touring the United States as a headlining stand-up comedian. He has performed on Late Night with Jimmy Fallon, and has become a regular on Red Eye with Greg Gutfeld on Fox News. Joe also won the 2013 NY Comedy Festival’s Funniest Comedian Competition, and the 2010 NY Underground Comedy Festival's Emerging Comics Competition."
   },
   {
     "name": "Ted Alexandro",
@@ -3698,8 +3699,7 @@
     "venues": [
       "the_stand"
     ],
-    "stand_profile": "https://thestandnyc.com/comedians/harry-settel",
-    "bio": "Harry Settel is a stand-up comedian performing in New York City. He's a regular on the NYC comedy circuit."
+    "stand_profile": "https://thestandnyc.com/comedians/harry-settel"
   },
   {
     "name": "Ian Fidance",
@@ -4504,8 +4504,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/max-manticof",
     "bio_stand": "Max Manticof is a Latino and Jewish standup comedian, writer, and actor born and raised in Queens, NY. He has been seen on Amazon Prime’s “Basement Yard” with host Joe Santagato, as well as “Lyft Comics” on Kevin Hart's LOL Network. When he's not headlining around the country Max has enjoyed touring with Tim Dillon, Leonard Ouzts, Matt Rife, and more. Known for his wildly popular “Street Talk Comedy” which has since produced 100+ shows in 15+ cities around the country and was selected as a Just For Laughs New Face of Comedy in 2023.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Max_Manticof.jpg",
-    "bio": "Max Manticof is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Max_Manticof.jpg"
   },
   {
     "name": "Maz Jobrani",
@@ -8169,7 +8168,8 @@
     "venues": [],
     "bio": "NETFLIX BONDING, PBS' STORIES FROM THE STAGE, HERE TODAY WITH BILLY CRYSTAL, \"HUSTLERS\" WITH J-LO, COMEDY CENTRAL",
     "tagline_cellar": "NETFLIX BONDING, PBS' STORIES FROM THE STAGE, HERE TODAY WITH BILLY CRYSTAL, \"HUSTLERS\" WITH J-LO, COMEDY CENTRAL",
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/GianmarcoSoresi-byPhilipRomano2.jpg/330px-GianmarcoSoresi-byPhilipRomano2.jpg"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/GianmarcoSoresi-byPhilipRomano2.jpg/330px-GianmarcoSoresi-byPhilipRomano2.jpg",
+    "bio_stand": "Gianmarco Soresi is a stand up comic, actor and writer but the first line of his obituary will probably say “guy from all those General Electric commercials.” With a BFA in musical theater and a PHD in imagination, he made his television debut on CBS’ Blue Bloods playing Tom Selleck’s waiter, a role he prepared for by actually becoming a waiter for twelve years. Now a nationally touring stand up comedian, Gianmarco is waiting for Jeff Goldblum to get in some kind of trouble so he can portray him on Lifetime. Gianmarco’s stand up has been featured on Netflix’s Bonding, PBS’ Stories from the Stage, SeeSo’s New York’s Funniest, Real Housewives of New York, NY1, New York LIVE, Vanity Fair, George Takei presents and he was the winner of Amazon’s Comics Watching Comics Season 8. 1st Place at the Laughing Devil Comedy Festival, Devil’s Cup Comedy Festival, Empire State Comedy Festival, and Last Comix Standing at Mohegan Sun, he regularly headlines clubs, colleges and sordid basements around the country. While it’s embarrassing to use the word storyteller, Gianmarco has also told tales on the RISK! podcast, The Moth (StorySLAM winner), Suitcase Stories, PBS’ Stories for the Stage, Story Collider and his autobiographical play, Less Than 50%, premiered at the New York City Fringe Festival before being accepted into the Fringe Encores Festival and then receiving a full Off-Broadway run at 59E59 produced by Tony-winner Michael Rubenstein and Robin Milling and directed by Jen Wineman. As an actor, Gianmarco has professionally pretended in the movie Hustlers with Jennifer Lopez, TBS’s The Last OG with Tracy Morgan, Apple’s Little Voices, CBS’s Blue Bloods, ABC’s Deception and What Would You Do?, A&E’s Unforgettable, Lifetime’s I love You But I Lied, TruTV, Comedy Central, and he can be seen in the upcoming Billy Crystal/Tiffany Haddish movie Here Today. He was also the former spokesman for General Electric and Baby Bottle Pop and has done voice over work for GE, Coca-Cola, Audible, various podcasts. Gianmarco is a member of the sketch team Uncle Function, which was recently granted a monthly show at the Upright Citizens Brigade that ran for three sold out performances before the entire theater shutdown forever. He’s also the creator of the sketch series Matza Pizza, which lead to Funny or Die greenlighting one of his pitches as an FOD original. His sketches, tweets, and other writing has been featured in Esquire, The Atlantic, The AV Club, ABC News, The Huffington Post, The Daily Dot, Perez Hilton, Laughspin, Splitsider, Tubefilter, Metro NY (made the cover), Fast Company and he’s written branded content for spoiledNYC, Hyperbolic Audio, and South Eastern Washington Help."
   },
   {
     "name": "Zach Noe Towers",
@@ -9648,6 +9648,16 @@
     "name": "Kat Timpf",
     "venues": [],
     "bio_wiki": "Katherine Clare Timpf is an American libertarian columnist, television personality, reporter, comedian and author. She is a regular panelist on Fox News Channel's Gutfeld! and appears as a contributor on various other Fox News shows. In 2017, Timpf co-hosted Fox News Specialists alongside Eric Bolli",
-    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Kat_Timpf_%2851250642134%29_%28cropped%29.jpg/330px-Kat_Timpf_%2851250642134%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Kat_Timpf_%2851250642134%29_%28cropped%29.jpg/330px-Kat_Timpf_%2851250642134%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "bio_stand": "Kat Timpf is a comedian, writer, and television personality best known as a co-host of the top late-night show Gutfeld! She spent six years as a columnist for National Review and has served as a contributor to outlets ranging from The Washington Times to Barstool Sports — after first breaking into the working world by cleaning bathrooms at Boston Market. A two-time New York Times bestselling author, Kat is known for her fearless humor, sharp insights, and ability to joke about anything — especially herself. With her sharp wit and independent point of view, Kat uses humor and satire to cut through political and cultural noise, earning her a spot on Variety's New Power of New York list in 2023. Her stand-up explores relationships, motherhood, and her experience beating breast cancer at 36, all delivered with her signature blend of honesty and edge. She lives in New York City with her husband, Cam, their son, their dog, Carl, and Juan, their one-eyed cat."
+  },
+  {
+    "name": "Lisa Curry",
+    "venues": [],
+    "bio_stand": "LISA CURRY is a nationally and internationally touring comedian and award-winning writer based in Los Angeles. She began her career as part of Second City Hollywood's house improv ensemble where she performed with heavy hitters like Keegan Michael Key and Maribeth Monroe. Lisa’s quick mind and sharp wit have landed her jobs as a correspondent covering events such as the first Women’s March in New York. Lisa appeared on the four time Emmy award-winning “The Mystery Hour” as both a guest comedian and panelist. Shortly after, she was the subject of an episode of the PBS docu-series, 'Angeleno,’ which followed her for a day in her life as an up-and-coming comedian. In 2019, Lisa toured overseas for eight weeks, performing 51 shows in 9 countries with two separate hours of material. On that same tour, she headlined two festivals, recorded her debut comedy album, “Alive For a While” in London and performed for the U.S. troops at an undisclosed location (ooh dangerous!) in Jordan. Lisa’s album debuted at #1 on iTunes, received an exclusive release on SiriusXM, and was submitted for Grammy consideration. Lisa is the creator, host, and producer of “Long Story Long” which is SiriusXM’s “She’s So Funny” channel’s premiere and flagship show. She has worked as a creative on ad campaigns for both “The Marvelous Mrs. Maisel\" and “The Nightly Show with Larry Wilmore.” Lisa has also written for NBC, TruTV, Fuse, and Comedy Central, where she was a staff writer on “The Jim Jefferies Show.” After the series finale, Lisa began opening for Jim on his theatre tours. She has co-hosted “The Adam Carolla show” multiple times and she is a fill-in act for the Daily Show writers standup tour. Lisa wrote for the multi award-winning podcast “Stacking Benjamins” and wrote and co-starred opposite Tom Lennon and Jaime Moyer in an episode of Andy Richter’s podcast, “Novelizers.” Lisa is proud to have studied creative writing at Yale (brag). She released her debut standup special, “Emotionally Edging” in September 2025 and she continues touring regularly."
+  },
+  {
+    "name": "Aidan McCluskey",
+    "venues": []
   }
 ]
