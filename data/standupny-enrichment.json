@@ -10,8 +10,8 @@
     ],
     "photos": {
       "Liz Glazer": "https://thestandnyc.com/images/comedians/_square/lizglazer.jpg",
-      "Myq Kaplan": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg/330px-Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "Dan Ahdoot": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Dan_Ahdoot.jpg/330px-Dan_Ahdoot.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "Myq Kaplan": "https://thestandnyc.com/images/comedians/_square/MyqKaplan_CreditMindyTucker.jpg",
+      "Dan Ahdoot": "https://thestandnyc.com/images/comedians/_square/Dan_Ahdoot.jpg",
       "Erin Maguire": "https://thestandnyc.com/images/comedians/_square/EM-headshot.jpg",
       "Patrick Holbert": "https://www.newyorkcomedyclub.com/img/comedians/patrick-holbert-e25a0bbf-main-image.jpg"
     }
@@ -26,26 +26,9 @@
       "Sonja Savanovic"
     ],
     "photos": {
-      "Peter Liu": "https://www.newyorkcomedyclub.com/img/comedians/Peter-Liu-9573090f-main-image.jpg",
+      "Peter Liu": "https://thestandnyc.com/images/comedians/_square/1000014507.jpg",
+      "Thash Mose": "https://thestandnyc.com/images/comedians/_square/Thash%2BMose%2BComic%2BHeadshot.jpg",
       "Sonja Savanovic": "https://www.newyorkcomedyclub.com/img/comedians/Sonya-Savonovic-e0a60b9f-main-image.jpg"
-    }
-  },
-  "195287": {
-    "comedians": [
-      "Elyse Delucci",
-      "Gibran Saleem",
-      "Chloe Labranche",
-      "Isiah Givens",
-      "Jeremy Crittenden",
-      "Star Trek",
-      "Sean Mallory",
-      "Erik Angel"
-    ],
-    "photos": {
-      "Elyse Delucci": "https://thestandnyc.com/images/comedians/_square/elysed.jpg",
-      "Gibran Saleem": "https://thestandnyc.com/images/comedians/_square/72-og.gif",
-      "Chloe Labranche": "https://thestandnyc.com/images/comedians/_square/chlo.jpg",
-      "Erik Angel": "https://www.newyorkcomedyclub.com/img/imagetest/image0-4-jpeg-bd120a19-image0-4-jpeg.jpg"
     }
   },
   "195288": {
@@ -62,12 +45,21 @@
       "Eman Morgan"
     ],
     "photos": {
-      "Olga Namer": "https://www.newyorkcomedyclub.com/img/imagetest/olga-namer-jpg-d1880b08-olga-namer-jpg.jpg",
-      "Teddy Smith": "https://www.newyorkcomedyclub.com/img/imagetest/teddy-smith-b0800a17-main-image.jpg",
-      "Jimmy Mccullough": "https://www.newyorkcomedyclub.com/img/imagetest/jimmym-png-a5e009c1-jimmym-png.jpg",
-      "Alex Kim": "https://www.newyorkcomedyclub.com/img/comedians/Alex-Kim-88280873-main-image.png",
+      "Olga Namer": "https://thestandnyc.com/images/comedians/_square/olganamer.jpg",
+      "Teddy Smith": "https://thestandnyc.com/images/comedians/_square/tsmith.jpg",
+      "Jimmy Mccullough": "https://thestandnyc.com/images/comedians/_square/jimmymccullough.jpg",
+      "Alex Kim": "https://thestandnyc.com/images/comedians/_square/Alex-Kim.jpeg",
       "Brian Scolaro": "https://www.newyorkcomedyclub.com/img/comedians/brian-scolaro-c7d20aec-main-image.jpg",
-      "Adam Mamawala": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Adam_Dallas_Comedy_Club.jpg/330px-Adam_Dallas_Comedy_Club.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "Adam Mamawala": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Adam_Dallas_Comedy_Club.jpg/330px-Adam_Dallas_Comedy_Club.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "Darlene Bereznicki": "https://thestandnyc.com/images/comedians/_square/Darlene_Bereznicki.jpg"
     }
+  },
+  "195931": {
+    "comedians": [
+      "Certain Age",
+      "Sho Wtime",
+      "Laugh Pass"
+    ],
+    "photos": {}
   }
 }
