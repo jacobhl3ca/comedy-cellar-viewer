@@ -9624,7 +9624,8 @@
     "name": "Zainab Johnson",
     "venues": [],
     "bio": "VARIETY'S TOP 10 COMICS TO WATCH, LATE NIGHT WITH SETH MEYERS",
-    "tagline_cellar": "VARIETY'S TOP 10 COMICS TO WATCH, LATE NIGHT WITH SETH MEYERS"
+    "tagline_cellar": "VARIETY'S TOP 10 COMICS TO WATCH, LATE NIGHT WITH SETH MEYERS",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Zainab_Johnson_jeans_and_colorful_sweater.jpg/330px-Zainab_Johnson_jeans_and_colorful_sweater.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
     "name": "Louie CK",
@@ -9658,6 +9659,22 @@
   },
   {
     "name": "Aidan McCluskey",
+    "venues": []
+  },
+  {
+    "name": "Liam Dalton",
+    "venues": []
+  },
+  {
+    "name": "Miss Falen",
+    "venues": []
+  },
+  {
+    "name": "Angel Contreras",
+    "venues": []
+  },
+  {
+    "name": "Caroline Hanes",
     "venues": []
   }
 ]
