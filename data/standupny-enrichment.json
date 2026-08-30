@@ -9,10 +9,10 @@
       "The Maze"
     ],
     "photos": {
-      "Liz Glazer": "https://thestandnyc.com/images/comedians/_square/lizglazer.jpg",
-      "Myq Kaplan": "https://thestandnyc.com/images/comedians/_square/MyqKaplan_CreditMindyTucker.jpg",
-      "Dan Ahdoot": "https://thestandnyc.com/images/comedians/_square/Dan_Ahdoot.jpg",
-      "Erin Maguire": "https://thestandnyc.com/images/comedians/_square/EM-headshot.jpg",
+      "Liz Glazer": "https://www.newyorkcomedyclub.com/img/imagetest/liz-glazer-jpg-d2120b19-liz-glazer-jpg.jpg",
+      "Myq Kaplan": "https://www.newyorkcomedyclub.com/img/imagetest/myq-kaplan-a39409a5-main-image.jpg",
+      "Dan Ahdoot": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Dan_Ahdoot.jpg/330px-Dan_Ahdoot.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "Erin Maguire": "https://www.newyorkcomedyclub.com/img/imagetest/4260-jpg-77eb07af-4260-jpg.jpg",
       "Patrick Holbert": "https://www.newyorkcomedyclub.com/img/comedians/patrick-holbert-e25a0bbf-main-image.jpg"
     }
   },
@@ -26,32 +26,8 @@
       "Sonja Savanovic"
     ],
     "photos": {
-      "Peter Liu": "https://thestandnyc.com/images/comedians/_square/1000014507.jpg",
-      "Thash Mose": "https://thestandnyc.com/images/comedians/_square/Thash%2BMose%2BComic%2BHeadshot.jpg",
+      "Peter Liu": "https://www.newyorkcomedyclub.com/img/comedians/Peter-Liu-9573090f-main-image.jpg",
       "Sonja Savanovic": "https://www.newyorkcomedyclub.com/img/comedians/Sonya-Savonovic-e0a60b9f-main-image.jpg"
-    }
-  },
-  "195288": {
-    "comedians": [
-      "Olga Namer",
-      "Teddy Smith",
-      "Jimmy Mccullough",
-      "Morning Good",
-      "Alex Kim",
-      "The Wilde",
-      "Brian Scolaro",
-      "Adam Mamawala",
-      "Darlene Bereznicki",
-      "Eman Morgan"
-    ],
-    "photos": {
-      "Olga Namer": "https://thestandnyc.com/images/comedians/_square/olganamer.jpg",
-      "Teddy Smith": "https://thestandnyc.com/images/comedians/_square/tsmith.jpg",
-      "Jimmy Mccullough": "https://thestandnyc.com/images/comedians/_square/jimmymccullough.jpg",
-      "Alex Kim": "https://thestandnyc.com/images/comedians/_square/Alex-Kim.jpeg",
-      "Brian Scolaro": "https://www.newyorkcomedyclub.com/img/comedians/brian-scolaro-c7d20aec-main-image.jpg",
-      "Adam Mamawala": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Adam_Dallas_Comedy_Club.jpg/330px-Adam_Dallas_Comedy_Club.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "Darlene Bereznicki": "https://thestandnyc.com/images/comedians/_square/Darlene_Bereznicki.jpg"
     }
   },
   "195931": {
