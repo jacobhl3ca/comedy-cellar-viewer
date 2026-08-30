@@ -27,7 +27,7 @@
     "@capacitor/core": "^8.3.0",
     "@capacitor/haptics": "^8.0.2",
     "@capacitor/ios": "^8.3.0",
-    "@capacitor/local-notifications": "^8.0.2",
+    "@capacitor/local-notifications": "^8.2.0",
     "@capacitor/share": "^8.0.1",
     "@upstash/redis": "^1.37.0",
     "@vercel/kv": "^3.0.0"
