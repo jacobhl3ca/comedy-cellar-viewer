@@ -5440,8 +5440,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/wilfred-padua",
     "bio_stand": "Wilfred Padua is a comedian in New York who has an MFA in Writing from some place in Chicago. He has performed at Bumbershoot, Bridgetown Comedy Festival, 10,000 Laughs, and was a finalist in the Big Sky Comedy Festival. He has been featured on NPR and Sirius XM, and was named one of the 50 Best Undiscovered Comedians in America by Thrillist where they said his comedy was “impish” for some reason.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/wilfred-image.jpg",
-    "bio": "Wilfred Padua is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/wilfred-image.jpg"
   },
   {
     "name": "Wyatt Cenac",
@@ -9635,7 +9634,9 @@
   },
   {
     "name": "Louis CK",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Louis Alfred Székely, known professionally as Louis C.K., is an American stand-up comedian, actor and filmmaker. C.K. has won six Emmy Awards, and three Grammy Awards, three Critics' Choice Awards, three Peabody Awards and a Screen Actors Guild Award as well as nominations for two Golden Globe Award",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Louis_C.K._on_Your_Moms_House_Podcast_2022.png/330px-Louis_C.K._on_Your_Moms_House_Podcast_2022.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
     "name": "Kevin Sullivan",
@@ -9675,6 +9676,42 @@
   },
   {
     "name": "Caroline Hanes",
+    "venues": []
+  },
+  {
+    "name": "Jill Weiner",
+    "venues": []
+  },
+  {
+    "name": "Pranav Behari",
+    "venues": []
+  },
+  {
+    "name": "Josh Simensky",
+    "venues": []
+  },
+  {
+    "name": "Levi White",
+    "venues": []
+  },
+  {
+    "name": "His Very Funny Friends",
+    "venues": []
+  },
+  {
+    "name": "Brandon Barerra",
+    "venues": []
+  },
+  {
+    "name": "Corey Yoskowitz",
+    "venues": []
+  },
+  {
+    "name": "Ish Gupta",
+    "venues": []
+  },
+  {
+    "name": "Sarah Barnitt",
     "venues": []
   }
 ]
