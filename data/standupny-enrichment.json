@@ -9,10 +9,10 @@
       "The Maze"
     ],
     "photos": {
-      "Liz Glazer": "https://www.newyorkcomedyclub.com/img/imagetest/liz-glazer-jpg-d2120b19-liz-glazer-jpg.jpg",
-      "Myq Kaplan": "https://www.newyorkcomedyclub.com/img/imagetest/myq-kaplan-a39409a5-main-image.jpg",
-      "Dan Ahdoot": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Dan_Ahdoot.jpg/330px-Dan_Ahdoot.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "Erin Maguire": "https://www.newyorkcomedyclub.com/img/imagetest/4260-jpg-77eb07af-4260-jpg.jpg",
+      "Liz Glazer": "https://thestandnyc.com/images/comedians/_square/lizglazer.jpg",
+      "Myq Kaplan": "https://thestandnyc.com/images/comedians/_square/MyqKaplan_CreditMindyTucker.jpg",
+      "Dan Ahdoot": "https://thestandnyc.com/images/comedians/_square/Dan_Ahdoot.jpg",
+      "Erin Maguire": "https://thestandnyc.com/images/comedians/_square/EM-headshot.jpg",
       "Patrick Holbert": "https://www.newyorkcomedyclub.com/img/comedians/patrick-holbert-e25a0bbf-main-image.jpg"
     }
   },
@@ -26,7 +26,8 @@
       "Sonja Savanovic"
     ],
     "photos": {
-      "Peter Liu": "https://www.newyorkcomedyclub.com/img/comedians/Peter-Liu-9573090f-main-image.jpg",
+      "Peter Liu": "https://thestandnyc.com/images/comedians/_square/1000014507.jpg",
+      "Thash Mose": "https://thestandnyc.com/images/comedians/_square/Thash%2BMose%2BComic%2BHeadshot.jpg",
       "Sonja Savanovic": "https://www.newyorkcomedyclub.com/img/comedians/Sonya-Savonovic-e0a60b9f-main-image.jpg"
     }
   },
@@ -37,5 +38,54 @@
       "Laugh Pass"
     ],
     "photos": {}
+  },
+  "196082": {
+    "comedians": [
+      "Natan Badalov",
+      "Tyler Fischer",
+      "Carmen Lagala",
+      "Matt Benjamin",
+      "Rebecca Reingold",
+      "Sean Mallory",
+      "Eman Morgan"
+    ],
+    "photos": {
+      "Natan Badalov": "https://thestandnyc.com/images/comedians/_square/NB%2BHeadshot.jpeg",
+      "Tyler Fischer": "https://thestandnyc.com/images/comedians/_square/Tyler_Fischer.jpg",
+      "Carmen Lagala": "https://thestandnyc.com/images/comedians/_square/carmen_lagala.jpg",
+      "Matt Benjamin": "https://www.newyorkcomedyclub.com/img/comedians/Matt-Benjamin-Headshot-1-58c10e49-main-image.jpg",
+      "Rebecca Reingold": "https://thestandnyc.com/images/comedians/_square/reingold.jpg"
+    }
+  },
+  "196086": {
+    "comedians": [
+      "Teddy Smith",
+      "Eman Morgan",
+      "Christy Miller",
+      "Tawanda Gona",
+      "Desus Mero",
+      "Priya Mehta",
+      "Laugh Factory",
+      "Sean Mallory"
+    ],
+    "photos": {
+      "Teddy Smith": "https://thestandnyc.com/images/comedians/_square/tsmith.jpg",
+      "Christy Miller": "https://thestandnyc.com/images/comedians/_square/christymiller.jpg"
+    }
+  },
+  "196087": {
+    "comedians": [
+      "Oscar Aydin",
+      "Sean Mallory",
+      "Subhah Agarwal",
+      "Harris Stanton",
+      "Brian Grossi"
+    ],
+    "photos": {
+      "Oscar Aydin": "https://thestandnyc.com/images/comedians/_square/Oscar_Aydin_SQ.JPG",
+      "Subhah Agarwal": "https://thestandnyc.com/images/comedians/_square/43-og.jpg",
+      "Harris Stanton": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Harris_Stanton.jpg/330px-Harris_Stanton.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "Brian Grossi": "https://www.newyorkcomedyclub.com/img/imagetest/brian-grossi-bd2d0a98-main-image.jpg"
+    }
   }
 }
