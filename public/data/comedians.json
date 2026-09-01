@@ -3810,7 +3810,7 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/jamie-wolf",
-    "tagline_cellar": "\"NETFLIXIA A JOKE FEST 2026\" TIMEOUT 2025 COMIC TO WATCH,  WINNER NY'S FUNNIEST 2024, AMAZON PRIME, SF SKETCHFEST 2023, NY COMEDY FESTIVAL COMICS TO WATCH, PHILLY'S PHUNNIEST 2019",
+    "tagline_cellar": "EDINBURGH FRINGE COMEDIAN OF THE YEAR 2026\"NETFLIXIA A JOKE FEST 2026\" TIMEOUT 2025 COMIC TO WATCH,  WINNER NY'S FUNNIEST 2024, AMAZON PRIME, SF SKETCHFEST 2023, NY COMEDY FESTIVAL COMICS TO WATCH, PHILLY'S PHUNNIEST 2019",
     "bio_stand": "Jamie is a comedian, writer, actor, and former opiate user with a penchant for tackling dark and taboo subjects with tight writing and a dynamic stage presence that not only makes it work, but makes it kill. He was named a Timeout Comic to Watch in 2025, New York’s Funniest Standup at the New York Comedy Festival in 2024, a New York Comedy Festival “Comic to Watch” in 2019, and won Philly’s Phunniest 2019. He is a regular at The Stand in NYC and has over 290K followers across social media platforms.",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Jamie_Wolf_1.jpg"
   },
@@ -5016,8 +5016,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/ryan-beck",
     "bio_stand": "Ryan Beck is a New York City based comedian from St. Louis, Missouri. Ryan is a regular at the Comedy Cellar in New York and his stand up has been featured on Comedy Central. Ryan has also performed in the New York Comedy Festival, Brooklyn Comedy Festival, and Limestone Comedy Festival. Ryan is a former digital creator for Comedy Central and has appeared on MTV’s Girl Code, Comedy Central’s Alternatino, This Week At The Comedy Cellar, and The Daily Show with Jon Stewart. He's been heard on The Bob and Tom Show and Sirius XM. As a writer, he’s contributed to the Comedy Central Roasts of Bob Saget, Roseanne Barr and James Franco and The Road to Roast Battle. Ryan has also written for the Snapchat original animated series Death Hacks. He has written and produced his web series #RyanBeckShow and the interactive short film We Need To Talk. He is a graduate of the University of Missouri.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/ryanbeck.jpg",
-    "bio": "Ryan Beck is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/ryanbeck.jpg"
   },
   {
     "name": "Ryan Long",
@@ -9323,7 +9322,8 @@
   {
     "name": "Jenn Sterger",
     "venues": [],
-    "bio_stand": "Comedian. Actress. VO artist. Gym rat. Nerd. Recovering Playmate & two time Maxim Hot 100 model. Premium content creator. Professional tomboy."
+    "bio_stand": "Comedian. Actress. VO artist. Gym rat. Nerd. Recovering Playmate & two time Maxim Hot 100 model. Premium content creator. Professional tomboy.",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Jennifer_Sterger.JPG/330px-Jennifer_Sterger.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
     "name": "Alex Dragicevich",
@@ -9718,5 +9718,81 @@
     "name": "Erik Griffin",
     "venues": [],
     "bio_wiki": "Erik Griffin is an American stand-up comedian, writer, podcaster and actor. From 2011 to 2017, he portrayed Montez Walker on television series Workaholics. He also had roles in I'm Dying Up Here and Blunt Talk, as well as the films Mike and Dave Need Wedding Dates (2016) and Murder Mystery (2019)."
+  },
+  {
+    "name": "Joe Mande",
+    "venues": [],
+    "bio": "HULU SPECIAL, FROM CONAN, SETH MEYERS, COMEDY CENTRAL HALF HOUR, WRITER FOR PARKS AND RECREATION",
+    "tagline_cellar": "HULU SPECIAL, FROM CONAN, SETH MEYERS, COMEDY CENTRAL HALF HOUR, WRITER FOR PARKS AND RECREATION",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Joe_Mande.jpg/330px-Joe_Mande.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  {
+    "name": "Kyle Naughton",
+    "venues": []
+  },
+  {
+    "name": "Ahmed Adbelrahman",
+    "venues": []
+  },
+  {
+    "name": "Emily Paige",
+    "venues": []
+  },
+  {
+    "name": "Heidi Grandberry",
+    "venues": []
+  },
+  {
+    "name": "Jay Murphy",
+    "venues": []
+  },
+  {
+    "name": "Amelia Ritthaler",
+    "venues": []
+  },
+  {
+    "name": "Jocelyn Chia",
+    "venues": []
+  },
+  {
+    "name": "Laz Rivero",
+    "venues": []
+  },
+  {
+    "name": "Patricia Dinglasan",
+    "venues": []
+  },
+  {
+    "name": "Matt Pavich",
+    "venues": []
+  },
+  {
+    "name": "Brendan Eyre",
+    "venues": []
+  },
+  {
+    "name": "Will Julian",
+    "venues": []
+  },
+  {
+    "name": "Harris Stanton",
+    "venues": [],
+    "bio_wiki": "Harris Stanton is an American comedian based in Brooklyn, New York. Before entering comedy, Stanton was a Major League Baseball draft pick. He tours nationally and internationally including appearances on European television. Stanton appeared in the opening act lineup for the Tracy Morgan \"Turn It Funny\" tour when the vehicle carrying Morgan, Ardie Fuqua, James McNair, and Jeff Millea was involved in a fatal car crash in June 2014."
+  },
+  {
+    "name": "Natalie Perlin",
+    "venues": []
+  },
+  {
+    "name": "Richard Sarvate",
+    "venues": []
+  },
+  {
+    "name": "Nicky Paris",
+    "venues": []
+  },
+  {
+    "name": "Abby Washuta",
+    "venues": []
   }
 ]
