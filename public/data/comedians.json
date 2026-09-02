@@ -9631,7 +9631,8 @@
     "name": "Louie CK",
     "venues": [],
     "bio": "STAR OF \"LOUIE\",",
-    "tagline_cellar": "STAR OF \"LOUIE\","
+    "tagline_cellar": "STAR OF \"LOUIE\",",
+    "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Louis_C.K._on_Your_Moms_House_Podcast_2022.png/330px-Louis_C.K._on_Your_Moms_House_Podcast_2022.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
     "name": "Louis CK",
@@ -9807,6 +9808,14 @@
   },
   {
     "name": "Dezzy",
+    "venues": []
+  },
+  {
+    "name": "Cole Escola",
+    "venues": []
+  },
+  {
+    "name": "Julian Lucas",
     "venues": []
   }
 ]
