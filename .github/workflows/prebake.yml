@@ -4,14 +4,51 @@ on:
   schedule:
     - cron: '0 7 * * *'   # 3am ET year-round (7am UTC; 3am EDT / 2am EST)
     - cron: '0 22 * * *'  # 6pm ET year-round (22 UTC; 6pm EDT / 5pm EST)
-  workflow_dispatch: {}   # manual trigger from GitHub UI
+  workflow_dispatch:
+    inputs:
+      test_alert:
+        description: 'Send a test alert and stop (proves the alarm channel still works)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
   actions: read   # alert step reads the previous run's conclusion (grace check)
 
 jobs:
+  # Proving the alarm channel still works is a manual job, not a step inside the
+  # prebake. The real alert only fires on a SECOND consecutive failure, so the only
+  # other way to answer "would I actually hear about it?" is to break the prebake
+  # twice on purpose. Run it from the Actions tab, or:
+  #   gh workflow run prebake.yml -f test_alert=true
+  test-alert:
+    if: inputs.test_alert
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Send a test alert
+        env:
+          PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_TOKEN }}
+          PUSHOVER_USER: ${{ secrets.PUSHOVER_USER }}
+        run: |
+          if [ -z "$PUSHOVER_TOKEN" ] || [ -z "$PUSHOVER_USER" ]; then
+            echo "::error::PUSHOVER_TOKEN / PUSHOVER_USER not set — the failure alert would reach nobody."
+            exit 1
+          fi
+          resp="$(curl -s --max-time 20 \
+            --form-string "token=$PUSHOVER_TOKEN" \
+            --form-string "user=$PUSHOVER_USER" \
+            --form-string "title=Prebake alert test" \
+            --form-string "message=Test from the prebake workflow. The real alert channel is working." \
+            --form-string "priority=0" \
+            https://api.pushover.net/1/messages.json)"
+          case "$resp" in
+            *'"status":1'*) echo "Pushover accepted the test push." ;;
+            *) echo "::error::Pushover rejected the test push: $resp"; exit 1 ;;
+          esac
+
   prebake:
+    if: ${{ !inputs.test_alert }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -56,30 +93,54 @@ jobs:
           echo "All 3 push attempts failed."
           exit 1
 
-      # Real-failure alert — ntfy ONLY, never a GitHub issue (rewritten 2026-07-20
+      # Real-failure alert — a PUSH only, never a GitHub issue (rewritten 2026-07-20
       # alongside the nospoilerscores monitors). House rule for ALL monitors:
       # DOWN-only, grace period, no green "recovered" pings. Opening/commenting on
       # an issue @-mentions Jacob and emails him on every single failure, which is
-      # exactly the noise this replaces. Only alerts when the PREVIOUS run of this
-      # workflow also failed, so one bad night that self-heals is silent.
-      - name: Alert on sustained failure (ntfy, 1-run grace)
+      # exactly the noise this replaces. Only alerts when the PREVIOUS scheduled run
+      # of this workflow also failed, so one bad night that self-heals is silent.
+      #
+      # 2026-09-02: transport moved ntfy -> Pushover. ntfy has had no subscriber
+      # since 2026-08-17, so this step had been curling into a void: ntfy.sh returned
+      # 200, the step went green, and a sustained prebake failure would have reached
+      # nobody. The local backstop (cellar-tonight-health.sh on the MacBook, 7am) was
+      # the only surviving alarm. ⛔ ~/scripts/ntfy-push is a LOCAL shim to Pushover
+      # and cannot help a GitHub runner — the runner has to call the API directly.
+      - name: Alert on sustained failure (Pushover, 1-run grace)
         if: failure()
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
-          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_TOKEN }}
+          PUSHOVER_USER: ${{ secrets.PUSHOVER_USER }}
         run: |
           run_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          prev="$(gh run list --workflow prebake.yml --status completed \
+          # --event schedule: a manual test-alert dispatch must not count as "the
+          # previous run" and silently reset the grace window.
+          prev="$(gh run list --workflow prebake.yml --event schedule --status completed \
                     --limit 1 --json conclusion --jq '.[0].conclusion // empty')"
           if [ "$prev" != "failure" ]; then
-            echo "First failure (previous run: ${prev:-none}) — inside grace, staying silent."
+            echo "First failure (previous scheduled run: ${prev:-none}) — inside grace, staying silent."
             exit 0
           fi
-          if [ -z "$NTFY_TOPIC" ]; then
-            echo "::warning::NTFY_TOPIC secret unset — cannot alert."
-            exit 0
+          if [ -z "$PUSHOVER_TOKEN" ] || [ -z "$PUSHOVER_USER" ]; then
+            # ⛔ Loud, not a warning. An alerter that cannot alert is the failure
+            # this step exists to prevent, and it must not exit 0 pretending it did.
+            echo "::error::PUSHOVER_TOKEN / PUSHOVER_USER not set — prebake is failing and the alert reached NOBODY."
+            exit 1
           fi
-          curl -s -H "Title: Comedy Cellar prebake failing" -H "Priority: high" -H "Tags: rotating_light" \
-            -d "Nightly prebake has failed twice in a row — site may serve stale lineups. $run_url" \
-            "https://ntfy.sh/$NTFY_TOPIC" > /dev/null
+          resp="$(curl -s --max-time 20 \
+            --form-string "token=$PUSHOVER_TOKEN" \
+            --form-string "user=$PUSHOVER_USER" \
+            --form-string "title=Comedy Cellar prebake failing" \
+            --form-string "message=Nightly prebake has failed twice in a row - site may serve stale lineups." \
+            --form-string "priority=1" \
+            --form-string "url=$run_url" \
+            --form-string "url_title=Open the failing run" \
+            https://api.pushover.net/1/messages.json)"
+          # Check the API actually took it. The old ntfy call discarded its response
+          # to /dev/null, which is precisely why a dead channel looked healthy.
+          case "$resp" in
+            *'"status":1'*) echo "Pushover accepted the alert." ;;
+            *) echo "::error::Pushover rejected the alert: $resp"; exit 1 ;;
+          esac
