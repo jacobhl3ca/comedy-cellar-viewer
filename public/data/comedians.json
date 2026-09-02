@@ -651,7 +651,8 @@
     "stand_profile": "https://thestandnyc.com/comedians/jenny-zigrino",
     "bio": "Jenny Zigrino is a stand-up comedian and actress. She's appeared on Brooklyn Nine-Nine, Conan, and Comedy Central. She performs at clubs across the country.",
     "bio_stand": "With the sweetness of the Midwest and the iron balls of the East Coast, Jenny Zigrino is a comedian that packs a punch of truly original humor. She's charmed audiences across the country with her wit, keen observations, embarrassing anecdotes, and brilliant honesty for a compelling performance you can't ignore. She made her late night debut on Conan O'Brien and was a finalist in Comedy Central's \"Up Next\" Comics to Watch of 2013. She took 2nd place on the TBS show \"Funniest Wins\", hosted by Marlon Wayans. She was featured on Oxygen's \"My Crazy Love\", IFC's \"Young, Broke, and Beautiful\", and FOX's \"LaughsTV\". She's a regular performer at the Women in Comedy Festival and has also performed at the New York Comedy Festival, RIOTLA Comedy Festival, The 9s Music Festival, Great American Comedy Festival, Cape Fear Comedy Festival, Boston Comedy Festival, and many others. In conclusion, she's kind of a bad ass bitch.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/69-og.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/69-og.jpg",
+    "tagline_cellar": "HBO, COMEDY CENTRAL, NETFLIX"
   },
   {
     "name": "James Mattern",
@@ -9717,7 +9718,8 @@
   {
     "name": "Erik Griffin",
     "venues": [],
-    "bio_wiki": "Erik Griffin is an American stand-up comedian, writer, podcaster and actor. From 2011 to 2017, he portrayed Montez Walker on television series Workaholics. He also had roles in I'm Dying Up Here and Blunt Talk, as well as the films Mike and Dave Need Wedding Dates (2016) and Murder Mystery (2019)."
+    "bio_wiki": "Erik Griffin is an American stand-up comedian, writer, podcaster and actor. From 2011 to 2017, he portrayed Montez Walker on television series Workaholics. He also had roles in I'm Dying Up Here and Blunt Talk, as well as the films Mike and Dave Need Wedding Dates (2016) and Murder Mystery (2019).",
+    "bio_stand": "Erik Griffin doesn't just work in entertainment — he shapes it. A comedian, actor, and director whose fingerprints are all over some of the biggest moments in comedy, Griffin first planted his flag as the iconic Montez Walker on Comedy Central's WORKAHOLICS — and has been building an empire ever since. On the directing side, Griffin has stepped behind the camera in a big way, directing all of Matt Rife's Netflix comedy specials — including Natural Selection (2023), Lucid (2024), and A Christmas Crowd Work Special (2025). Turns out the man is just as sharp calling the shots as he is delivering them. His Hollywood resume keeps growing. Griffin appeared in THE EVERYTHING POT and landed a role in BEHEMOTH — the highly anticipated film starring Pedro Pascal, written and directed by the legendary Tony Gilroy (Andor, Michael Clayton). No big deal. Griffin starred as a series regular in Showtime's dark-comedy I'M DYING UP HERE, set in the infamous L.A. stand-up scene of the '70s, alongside Melissa Leo, Al Madrigal, and Ari Graynor — executive produced by Jim Carrey. He also delivered not one but two Showtime comedy specials: THE UGLY TRUTH and AmERIKan WARRIOR, streaming now. His television credits read like a very fun binge list: BLUNT TALK (Starz) with Patrick Stewart, Netflix's ONE DAY AT A TIME, FX's YOU'RE THE WORST, BOB'S BURGERS, ARRESTED DEVELOPMENT, and Nickelodeon's HARVEY BREAKS. Oh, and MIKE & DAVE NEED WEDDING DATES on the film side, because why not. A nationally touring headliner who owns every stage he steps on, Griffin's comedy DNA is also locked in his debut album Technical Foul: Volume One and his Comedy Central Presents half-hour special. Griffin is represented by IAG and Artists First."
   },
   {
     "name": "Joe Mande",
@@ -9736,11 +9738,13 @@
   },
   {
     "name": "Emily Paige",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Emily Paige is a Jersey-based comedian, poet, and writer who has performed all over the northeast including Gotham Comedy Club in NYC. Emily is often inspired by her own personal experiences as a single mom trying to navigate in a world that is definitely not predictable! Emily's mix of dry and sarcastic humor is a blast to watch both on and off stage (that's right, she performs at breweries, speakeasies, art galleries, and any other eccentric place she can find!). Emily has had the opportunity to train with the American Comedy Institute in NYC and has performed in numerous festivals such as The Ladies Room Comedy Festival and The NY Underground Comedy Festival."
   },
   {
     "name": "Heidi Grandberry",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Heidi Grandberry was brought into this world against her will. Her childhood was spent in the Midwest where she became fluent in the language of Passive Aggression. Her comedy is dark while simultaneously engaging and thoughtful. Heidi has been active on the New York comedy scene for three years. Her first year, she began producing highly anticipated and well-attended shows such as Cat in the Furnace, Heidi's HaHa Halloween, Valentine's Hangover, and the Roast of Congressional Candidate Alex Hubbard. In her second year, Heidi participated the Connecticut Comedy Contest. Though she did not win, she still left a lasting impression on the judges (there was a joke about Heidi's mom's pussy. It was kind of impossible to forget) which led to her immediately getting passed at one of New York's staple comedy clubs: Stand Up New York. In this third year, audiences can look forward to seeing Heidi live as she plans a comedy tour. Heidi is working hard to build her audience in places as far as Rhode Island."
   },
   {
     "name": "Jay Murphy",
@@ -9752,11 +9756,13 @@
   },
   {
     "name": "Jocelyn Chia",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Jocelyn Chia is an American stand-up comedian. She was formerly a lawyer before becoming a comedian in 2013."
   },
   {
     "name": "Laz Rivero",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Laz Rivero is a standup comedian and actor. Laz has become one of the most buzz worthy new comedians in New York City. He burst onto the scene with his unique and hilarious views on life in a gentrified Brooklyn contrasted with recounts of growing up as a Cuban refugee raised in a cult. When not on the road, Laz can be seen regularly at Broadway Comedy Club, The Grisly Pear, Dangerfield’s and all over NYC, or chasing his toddler around Park Slope Laz Rivero is represented by CESD Talent Agency."
   },
   {
     "name": "Patricia Dinglasan",
@@ -9777,7 +9783,7 @@
   {
     "name": "Harris Stanton",
     "venues": [],
-    "bio_wiki": "Harris Stanton is an American comedian based in Brooklyn, New York. Before entering comedy, Stanton was a Major League Baseball draft pick. He tours nationally and internationally including appearances on European television. Stanton appeared in the opening act lineup for the Tracy Morgan \"Turn It Funny\" tour when the vehicle carrying Morgan, Ardie Fuqua, James McNair, and Jeff Millea was involved in a fatal car crash in June 2014."
+    "bio_wiki": "Harris Stanton is an American comedian based in Brooklyn, New York. Before entering comedy, Stanton was a Major League Baseball draft pick. He tours nationally and internationally including appearances on European television. Stanton appeared in the opening act lineup for the Tracy Morgan \"Turn It F"
   },
   {
     "name": "Natalie Perlin",
@@ -9793,6 +9799,14 @@
   },
   {
     "name": "Abby Washuta",
+    "venues": []
+  },
+  {
+    "name": "Lisa Wallen",
+    "venues": []
+  },
+  {
+    "name": "Dezzy",
     "venues": []
   }
 ]
