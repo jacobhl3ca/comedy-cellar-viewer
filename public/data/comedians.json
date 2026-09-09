@@ -2064,7 +2064,7 @@
     "venues": [
       "nycc"
     ],
-    "tagline_cellar": "FROM THE TONIGHT SHOW WITH JIMMY FAJJON, Hour special, “Maybe I’m a Man”,  \"Your 2 Dads\" podcast"
+    "tagline_cellar": "FROM THE TONIGHT SHOW WITH JIMMY FAJJON, FROM THE NATE BARGATZE'S SHOW: \"AVERAGE AMERICAN\" Hour special, “Maybe I’m a Man”,  \"Your 2 Dads\" podcast"
   },
   {
     "name": "Robin Fox",
@@ -5551,7 +5551,7 @@
     "venues": [
       "comedy_cellar"
     ],
-    "tagline_cellar": "BLUE WHALE COMEDY FESTIVAL, THE KNITTING FACTORY,",
+    "tagline_cellar": "FROM THE TONIGHT SHOW, BLUE WHALE COMEDY FESTIVAL, THE KNITTING FACTORY,",
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/emmyblotnick-bebb0ac0-thumb-image.jpg?1628622711"
   },
   {
@@ -9990,5 +9990,17 @@
     "venues": [],
     "bio": "THE BIG BANG THEORY, NIGHT COURT",
     "tagline_cellar": "THE BIG BANG THEORY, NIGHT COURT"
+  },
+  {
+    "name": "Ray Zawodni",
+    "venues": []
+  },
+  {
+    "name": "Will Purpura",
+    "venues": []
+  },
+  {
+    "name": "Daniel Speiser",
+    "venues": []
   }
 ]
