@@ -2063,7 +2063,8 @@
     "bio": "Julian McCullough is an American actor, writer, producer, and comedian best known for his appearances on Love You, Mean It with Whitney Cummings, Chelsea Lately, and Guy Code",
     "venues": [
       "nycc"
-    ]
+    ],
+    "tagline_cellar": "FROM THE TONIGHT SHOW WITH JIMMY FAJJON, Hour special, “Maybe I’m a Man”,  \"Your 2 Dads\" podcast"
   },
   {
     "name": "Robin Fox",
@@ -7070,7 +7071,8 @@
   {
     "name": "Zarna Garg",
     "venues": [],
-    "bio_wiki": "Zarna Garg is an Indian American stand-up comedian and screenwriter. CNBC said she is \"the zany, outspoken voice of the Indian American woman.\" She is also a New York Times bestselling author."
+    "bio_wiki": "Zarna Garg is an Indian American stand-up comedian and screenwriter. CNBC said she is \"the zany, outspoken voice of the Indian American woman.\" She is also a New York Times bestselling author.",
+    "tagline_cellar": "PRACTICAL PEOPLE WIN ON HULU, NY TIMES BESTSELLER: THIS AMERICAN WOMEN, GUTSY WOMEN, THIS AMERICAN LIFE, WINNER KEVIN HART'S LYFT COMICS, WINNER LADIES OF LAUGHTER 2021, WINNER TOP COMEDY FEATURE AUSTIN FILM FESTIVAL"
   },
   {
     "name": "Tom Cotter",
@@ -9925,7 +9927,8 @@
   },
   {
     "name": "Red Richardson",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "\nRed Richardson is an English stand-up comedian, actor and podcaster."
   },
   {
     "name": "The Sklar Brothers",
@@ -9971,5 +9974,21 @@
   {
     "name": "Michael Schulman",
     "venues": []
+  },
+  {
+    "name": "Dan Mahboubian Rosen",
+    "venues": [],
+    "bio": "COMEDY CENTRAL, THE NEW YORKER, NY TIMES, \"BEST COMEDYOF '23\"",
+    "tagline_cellar": "COMEDY CENTRAL, THE NEW YORKER, NY TIMES, \"BEST COMEDYOF '23\""
+  },
+  {
+    "name": "Moshe Cohen",
+    "venues": []
+  },
+  {
+    "name": "Melissa Rauch",
+    "venues": [],
+    "bio": "THE BIG BANG THEORY, NIGHT COURT",
+    "tagline_cellar": "THE BIG BANG THEORY, NIGHT COURT"
   }
 ]
