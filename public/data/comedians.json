@@ -9816,7 +9816,7 @@
   {
     "name": "Cole Escola",
     "venues": [],
-    "bio_wiki": "Cole Escola is an American comedian, actor, and playwright. They are best known for their cabaret work and appearances on the television series Difficult People (2015–2017), At Home with Amy Sedaris (2017–2020), Search Party (2020–2021), and Big Mouth (2022), as well as for writing and starring in the play Oh, Mary! which opened on Broadway in 2024. Escola received two nominations for two Tony Awards for their work on Oh, Mary!, winning the Tony Award for Best Actor in a Play. They were also named a finalist for the Pulitzer Prize for Drama, and won a Laurence Olivier Award when the play moved to the West End.",
+    "bio_wiki": "Cole Escola is an American comedian, actor, and playwright. They are best known for their cabaret work and appearances on the television series Difficult People (2015–2017), At Home with Amy Sedaris (2017–2020), Search Party (2020–2021), and Big Mouth (2022), as well as for writing and starring in t",
     "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Cole_Escola_at_Tony_Awards_2025_01.png/330px-Cole_Escola_at_Tony_Awards_2025_01.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
@@ -10001,6 +10001,34 @@
   },
   {
     "name": "Daniel Speiser",
+    "venues": []
+  },
+  {
+    "name": "Natasha Pearl Hansen",
+    "venues": []
+  },
+  {
+    "name": "Jared Goldstein",
+    "venues": []
+  },
+  {
+    "name": "Off Scrint",
+    "venues": []
+  },
+  {
+    "name": "Arc Beverly",
+    "venues": []
+  },
+  {
+    "name": "Helen Hong",
+    "venues": []
+  },
+  {
+    "name": "Sarah Tiana",
+    "venues": []
+  },
+  {
+    "name": "Danny Jolles",
     "venues": []
   }
 ]
