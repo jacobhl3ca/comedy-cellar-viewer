@@ -61,5 +61,24 @@
       "Art Activism"
     ],
     "photos": {}
+  },
+  "197270": {
+    "comedians": [
+      "Off Scrint",
+      "Arc Beverly",
+      "Helen Hong",
+      "Taylor Williamson",
+      "Sarah Tiana",
+      "Laurie Kilmartin",
+      "Danny Jolles",
+      "Allie Arasi"
+    ],
+    "photos": {
+      "Helen Hong": "https://www.newyorkcomedyclub.com/img/comedians/helen-hong-a1900990-main-image.jpg",
+      "Taylor Williamson": "https://www.newyorkcomedyclub.com/img/comedians/82749kirkland0502-Laughs-3f160d5a-main-image.jpg",
+      "Sarah Tiana": "https://www.newyorkcomedyclub.com/img/imagetest/sarah-tiana-a3e409b6-main-image.jpg",
+      "Laurie Kilmartin": "https://thestandnyc.com/images/comedians/_square/Laurie_Kilmartin.jpg",
+      "Allie Arasi": "https://thestandnyc.com/images/comedians/_square/Allie_Arasi.jpg"
+    }
   }
 }
