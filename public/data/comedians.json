@@ -10023,7 +10023,8 @@
   },
   {
     "name": "Helen Hong",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Helen Hong is an American stand-up comedian, actress, director, and producer. She has appeared in such works as Jane the Virgin, Parks and Recreation, and the Coen Brothers' Inside Llewyn Davis. She has a regular spot on NPR's Wait Wait... Don't Tell Me! and hosts a trivia podcast called Go Fact Yourself. She formerly hosted the podcast Little Ethnic Girls. She has a recurring role on Nickelodeon's The Thundermans and had a recurring role as Mrs. Song in Starz's Blunt Talk. Hong is known for her comedic NowThis videos."
   },
   {
     "name": "Sarah Tiana",
@@ -10045,5 +10046,13 @@
     "name": "Janelle Draper",
     "venues": [],
     "bio_stand": "Janelle Draper is a New York based comedian and writer. She brings her charm and quick wit on-air as a regular Trivia and Bingo host for the offbeat comedy channel, IFC. You can watch her standup on IFC.com “That’s Funny” and listen to it on Audible. She performs all over the country, most notably at Boston Comedy Festival, All Jane Comedy Festival (Portland) and Laugh Factory (LA + Chicago). She produces and hosts Foreplay On A Hump Day at Stand Up NY and The Unhappy Hour Comedy Show at the Lantern Comedy Club. Janelle’s comedy can be described as off the cuff, high energy and honest. She has appeared in commercials for T-Mobile, Bud Light and Levi’s. Janelle is originally from Boston but only has an accent when drinking Chardonnay. She started doing standup in LA when she was an NBC Page in an itchy Brooks Brother’s uniform working on the Tonight Show with Jay Leno."
+  },
+  {
+    "name": "Jana Bernard",
+    "venues": []
+  },
+  {
+    "name": "Tom Eshelman",
+    "venues": []
   }
 ]
