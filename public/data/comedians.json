@@ -2858,8 +2858,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/alexis-guerreros",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Alexis%2BGuerreros%2BHeadshot%2B%281%29.jpg",
-    "bio_stand": "Alexis survived growing up in Newark, NJ and a single Cuban mother with a mean left hook. After being laid-off from a horrible (but well paying) corporate job, Alexis started comedy and never looked back. His wife has, many times, but he has not. Alexis performs nightly in NYC at clubs such as NY Comedy Club, Gotham, Stand Up NY, Carolines, and more. Alexis has performed on television on Gotham Comedy Live, as well as festivals throughout the country from NY Comedy Festival, Laughing Skull, Red Clay Comedy Fest, and more. Alexis is also the cohost of The Cooligans, the #1 show on the Fubo Sports Network, the funniest soccer show in the world. The Cooligans also signed on to be hosts of the official NYCFC pre-game show on the NYCFC YouTube Channel. Alexis also has appeared in many sketches and shows on Comedy Central and was a host on HQ Trivia. You can hear Alexis as three different characters on BoJack Horseman (Netflix) and as the co-host of the wildly popular The Cooligans podcast. The Cooligans tour throughout the country doing live podcasts and hosting soccer events, recently performing stand up and doing a live podcast at Audi Field, the home of DC United (MLS). Alexis was honored to be chosen as part of the ABC Discovers showcase as one of 12 actors, out of 16,000 applicants. Also, pizza, the guy knows way too much about pizza. Please don’t bring him to a pizza place you like, he’ll ruin it for you. I’m being serious. He doesn’t know I’m writing this.",
-    "bio": "Alexis Guerreros is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "bio_stand": "Alexis survived growing up in Newark, NJ and a single Cuban mother with a mean left hook. After being laid-off from a horrible (but well paying) corporate job, Alexis started comedy and never looked back. His wife has, many times, but he has not. Alexis performs nightly in NYC at clubs such as NY Comedy Club, Gotham, Stand Up NY, Carolines, and more. Alexis has performed on television on Gotham Comedy Live, as well as festivals throughout the country from NY Comedy Festival, Laughing Skull, Red Clay Comedy Fest, and more. Alexis is also the cohost of The Cooligans, the #1 show on the Fubo Sports Network, the funniest soccer show in the world. The Cooligans also signed on to be hosts of the official NYCFC pre-game show on the NYCFC YouTube Channel. Alexis also has appeared in many sketches and shows on Comedy Central and was a host on HQ Trivia. You can hear Alexis as three different characters on BoJack Horseman (Netflix) and as the co-host of the wildly popular The Cooligans podcast. The Cooligans tour throughout the country doing live podcasts and hosting soccer events, recently performing stand up and doing a live podcast at Audi Field, the home of DC United (MLS). Alexis was honored to be chosen as part of the ABC Discovers showcase as one of 12 actors, out of 16,000 applicants. Also, pizza, the guy knows way too much about pizza. Please don’t bring him to a pizza place you like, he’ll ruin it for you. I’m being serious. He doesn’t know I’m writing this."
   },
   {
     "name": "Ali Macofsky",
@@ -9847,7 +9846,8 @@
   },
   {
     "name": "Yuriyan Retriever",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Yuriyan Retriever  is a Japanese comedian and actress, hip hop artist, singer, Film director from Yoshino, Nara, Japan. Her real name is Yuri Yoshida . She is represented with Yoshimoto Kogyo."
   },
   {
     "name": "Katie Garcia",
@@ -10053,6 +10053,18 @@
   },
   {
     "name": "Tom Eshelman",
+    "venues": []
+  },
+  {
+    "name": "Alexis Bradby",
+    "venues": []
+  },
+  {
+    "name": "Simi Sepehri",
+    "venues": []
+  },
+  {
+    "name": "Arynne Wexler",
     "venues": []
   }
 ]
