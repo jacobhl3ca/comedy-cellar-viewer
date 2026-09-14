@@ -10,8 +10,8 @@
     ],
     "photos": {
       "Liz Glazer": "https://www.newyorkcomedyclub.com/img/imagetest/liz-glazer-jpg-d2120b19-liz-glazer-jpg.jpg",
-      "Myq Kaplan": "https://www.newyorkcomedyclub.com/img/imagetest/myq-kaplan-a39409a5-main-image.jpg",
-      "Dan Ahdoot": "https://www.newyorkcomedyclub.com/img/comedians/Screenshot-2023-09-12-at-11-35-05-AM-eda60f50-main-image.png",
+      "Myq Kaplan": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg/330px-Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "Dan Ahdoot": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Dan_Ahdoot.jpg/330px-Dan_Ahdoot.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "Erin Maguire": "https://www.newyorkcomedyclub.com/img/imagetest/4260-jpg-77eb07af-4260-jpg.jpg",
       "Patrick Holbert": "https://www.newyorkcomedyclub.com/img/comedians/patrick-holbert-e25a0bbf-main-image.jpg"
     }
@@ -43,11 +43,10 @@
       "Allie Arasi"
     ],
     "photos": {
-      "Helen Hong": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Helen_Hong_2014.jpg/330px-Helen_Hong_2014.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "Helen Hong": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Helen_Hong_2014.jpg/330px-Helen_Hong_2014.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "Taylor Williamson": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Taylor_Williamson.jpg/330px-Taylor_Williamson.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "Sarah Tiana": "https://www.newyorkcomedyclub.com/img/imagetest/sarah-tiana-a3e409b6-main-image.jpg",
-      "Laurie Kilmartin": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Laurie_Kilmartin.jpg/330px-Laurie_Kilmartin.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "Allie Arasi": "https://thestandnyc.com/images/comedians/_square/Allie_Arasi.jpg"
+      "Laurie Kilmartin": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Laurie_Kilmartin.jpg/330px-Laurie_Kilmartin.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     }
   },
   "197786": {
@@ -61,6 +60,7 @@
       "Doc Jud"
     ],
     "photos": {
+      "Behind You": "https://upload.wikimedia.org/wikipedia/en/d/dd/Behind_You_film_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
       "Neema Naz": "https://www.newyorkcomedyclub.com/img/comedians/Neema-Naz-Colour5-f26e0bbb-main-image.jpg",
       "Jeff Scheen": "https://www.newyorkcomedyclub.com/img/comedians/jeff-scheen-adb509fb-main-image.jpg",
       "Tracey Carnazzo": "https://www.newyorkcomedyclub.com/img/comedians/tracy-62210770-main-image.jpg",
