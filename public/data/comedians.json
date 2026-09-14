@@ -9934,7 +9934,8 @@
   },
   {
     "name": "The Sklar Brothers",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Farrell Randal \"Randy\" Sklar and Jason Nathan Sklar, professionally known as the Sklar Brothers, are American identical twin brother comedians and actors best known for hosting the show Cheap Seats, which aired for four seasons on ESPN Classic."
   },
   {
     "name": "Katie Boyle",
@@ -9971,7 +9972,9 @@
   },
   {
     "name": "Benito Skinner",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Benito Skinner is an American comedian and actor. He is known for his online persona Benny Drama, and performs celebrity impressions, skits, and original characters on platforms such as Instagram, YouTube, and TikTok.",
+    "photo_wiki": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Benito_Skinner.webp/330px-Benito_Skinner.webp?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
     "name": "Michael Schulman",
