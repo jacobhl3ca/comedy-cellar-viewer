@@ -10,8 +10,8 @@
     ],
     "photos": {
       "Liz Glazer": "https://thestandnyc.com/images/comedians/_square/lizglazer.jpg",
-      "Myq Kaplan": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg/330px-Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "Dan Ahdoot": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Dan_Ahdoot.jpg/330px-Dan_Ahdoot.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "Myq Kaplan": "https://thestandnyc.com/images/comedians/_square/MyqKaplan_CreditMindyTucker.jpg",
+      "Dan Ahdoot": "https://thestandnyc.com/images/comedians/_square/Dan_Ahdoot.jpg",
       "Erin Maguire": "https://thestandnyc.com/images/comedians/_square/EM-headshot.jpg",
       "Patrick Holbert": "https://www.newyorkcomedyclub.com/img/comedians/patrick-holbert-e25a0bbf-main-image.jpg"
     }
@@ -40,13 +40,14 @@
       "Sarah Tiana",
       "Laurie Kilmartin",
       "Danny Jolles",
-      "Allie Arasi"
+      "Allie Arasi",
+      "Off Script"
     ],
     "photos": {
-      "Helen Hong": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Helen_Hong_2014.jpg/330px-Helen_Hong_2014.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "Taylor Williamson": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Taylor_Williamson.jpg/330px-Taylor_Williamson.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "Helen Hong": "https://www.newyorkcomedyclub.com/img/comedians/helen-hong-a1900990-main-image.jpg",
+      "Taylor Williamson": "https://www.newyorkcomedyclub.com/img/comedians/82749kirkland0502-Laughs-3f160d5a-main-image.jpg",
       "Sarah Tiana": "https://www.newyorkcomedyclub.com/img/imagetest/sarah-tiana-a3e409b6-main-image.jpg",
-      "Laurie Kilmartin": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Laurie_Kilmartin.jpg/330px-Laurie_Kilmartin.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "Laurie Kilmartin": "https://thestandnyc.com/images/comedians/_square/Laurie_Kilmartin.jpg",
       "Allie Arasi": "https://thestandnyc.com/images/comedians/_square/Allie_Arasi.jpg"
     }
   },
@@ -61,11 +62,42 @@
       "Doc Jud"
     ],
     "photos": {
-      "Behind You": "https://upload.wikimedia.org/wikipedia/en/d/dd/Behind_You_film_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
       "Neema Naz": "https://thestandnyc.com/images/comedians/_square/Neema_Naz.jpeg",
       "Jeff Scheen": "https://thestandnyc.com/images/comedians/_square/Jeff-Scheen-2.jpg",
       "Tracey Carnazzo": "https://thestandnyc.com/images/comedians/_square/tracey.jpg",
       "Rebecca Kaplan": "https://thestandnyc.com/images/comedians/_square/Rebecca_Kaplan.jpg"
+    }
+  },
+  "198078": {
+    "comedians": [
+      "Shivant Dave",
+      "Teddy Smith",
+      "Brian Grossi",
+      "Alvin Williams",
+      "Amazon Prime",
+      "Tal Gottfried",
+      "The Invisibles",
+      "Sean Mallory"
+    ],
+    "photos": {
+      "Teddy Smith": "https://thestandnyc.com/images/comedians/_square/tsmith.jpg",
+      "Brian Grossi": "https://www.newyorkcomedyclub.com/img/imagetest/brian-grossi-bd2d0a98-main-image.jpg",
+      "The Invisibles": "https://upload.wikimedia.org/wikipedia/en/6/60/V2_1.PNG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    }
+  },
+  "198080": {
+    "comedians": [
+      "Jeremy Crittenden",
+      "Star Trek",
+      "Dan Ahdoot",
+      "Eman Morgan",
+      "Jimmy Mccullough",
+      "Sashalyn Medina",
+      "Morning Good"
+    ],
+    "photos": {
+      "Dan Ahdoot": "https://thestandnyc.com/images/comedians/_square/Dan_Ahdoot.jpg",
+      "Jimmy Mccullough": "https://thestandnyc.com/images/comedians/_square/jimmymccullough.jpg"
     }
   }
 }
