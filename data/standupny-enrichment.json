@@ -99,5 +99,20 @@
       "Dan Ahdoot": "https://thestandnyc.com/images/comedians/_square/Dan_Ahdoot.jpg",
       "Jimmy Mccullough": "https://thestandnyc.com/images/comedians/_square/jimmymccullough.jpg"
     }
+  },
+  "198506": {
+    "comedians": [
+      "Amanda KnoxAmanda Knox",
+      "Ahri Findling",
+      "Amanda Knox",
+      "Edinburgh Fringe",
+      "Ted Jones",
+      "Teddy Smith"
+    ],
+    "photos": {
+      "Ahri Findling": "https://thestandnyc.com/images/comedians/_square/ahri.jpg",
+      "Ted Jones": "https://thestandnyc.com/images/comedians/_square/tedjones.jpg",
+      "Teddy Smith": "https://thestandnyc.com/images/comedians/_square/tsmith.jpg"
+    }
   }
 }
