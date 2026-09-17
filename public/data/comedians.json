@@ -305,7 +305,7 @@
       "comedy_cellar"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/jay-jurden",
-    "tagline_cellar": "The Tonight Show, Variety's 10 Comics To Watch, The Problem With Jon Stewart, Comedy Central, HBO",
+    "tagline_cellar": "5 appearances on The Tonight Show!, Variety's 10 Comics To Watch, The Problem With Jon Stewart, Comedy Central, HBO",
     "bio_stand": "Tonight Show with Jimmy Fallon",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/JatyJurdenSQ2026.jpg"
   },
@@ -8424,7 +8424,7 @@
   {
     "name": "Mo Amer",
     "venues": [],
-    "bio_wiki": "Mohammed Mustafa Amer is a Palestinian-American stand-up comedian and actor. He is known for his Netflix comedy special Mo Amer: The Vagabond and as a member of the comedy trio Allah Made Me Funny. Amer also appeared in the Hulu sitcom Ramy (2019-2022) where he played the character Mo, Ramy's cousin"
+    "bio_wiki": "Mohammed Mustafa Amer is a Palestinian American comedian and actor. He is known for his Netflix comedy special Mo Amer: The Vagabond and as a member of the comedy trio Allah Made Me Funny. Amer also appeared in the Hulu sitcom Ramy (2019-2022) where he played the character Mo, Ramy's cousin who owns"
   },
   {
     "name": "Luke Kidgell",
@@ -10229,6 +10229,10 @@
   },
   {
     "name": "Edinburgh Fringe",
+    "venues": []
+  },
+  {
+    "name": "Erik Terrell",
     "venues": []
   }
 ]
