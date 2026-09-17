@@ -1088,7 +1088,8 @@
     ],
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/CrystalHeadshot3.jpeg",
     "bio": "Crystal Marie Denha is a stand-up comedian and TV personality. She's appeared on MTV and performs at clubs across the country.",
-    "stand_profile": "https://thestandnyc.com/comedians/crystal-marie"
+    "stand_profile": "https://thestandnyc.com/comedians/crystal-marie",
+    "bio_stand": "Crystal Marie is a comedian, actress, writer, and producer, based in Los Angeles. As a stand-up comedian, Crystal performs throughout the United States and internationally, headlining clubs on her own and opening for the likes of Jay Leno, Russell Peters, Adam Carolla, and Maz Jobrani to name a few. She was also a featured artist at the 2024 Netflix is a Joke Festival, regularly performs at all the major Los Angeles clubs, and is currently working on her debut 1-hour special. As a producer, Crystal also has several unscripted projects set up with various partners across town focusing on an array of topics pulled from her own life as a comic as well as her experience being the proud daughter of Iraqi immigrants. Most recently as an actress, she can be seen in THE GUTTER for Village Roadshow alongside Shameik Moore, Adam Brody, and Susan Sarandon. The film premiered at SXSW 2024 before going on to a November 2024 theatrical release nationwide. Additionally, Crystal recently appeared as a recurring prankster on the reboot of MTV's PUNK'D hosted by Chance the Rapper, On COMICS UNLEASHED and in FUSE's new show WE NEED TO TALK ABOUT AMERICA. Additionally, Crystal began her career as a sports and entertainment news reporter working for esteemed programs such as Extra, The Daily Share, and Hollyscoop to name a few."
   },
   {
     "name": "Dan Carney",
@@ -6132,7 +6133,8 @@
     "name": "Seth Meyers",
     "bio": "Seth Meyers is a comedian, TV host, and writer. He's the host of Late Night with Seth Meyers and was the head writer and Weekend Update anchor on SNL. Known for his political comedy and A Closer Look segment.",
     "venues": [],
-    "featured": true
+    "featured": true,
+    "tagline_cellar": "Emmy Award-winning writer, comedian and host of \"Late Night with Seth Meyers\" on NBC. Meyers began his TV career with \"Saturday Night Live\" in 2001, where he was a cast member for 13 seasons. Seth's comedy specials include Dad Man Walking on HBO and Lobby Baby on Netflix. He also co-created the docu-parody series \"Documentary Now!\" and has a podcast: Family Trips with the Meyers Brothers."
   },
   {
     "name": "Jon Stewart",
@@ -6391,7 +6393,8 @@
   },
   {
     "name": "Meka Mo",
-    "venues": []
+    "venues": [],
+    "bio_stand": "This Queens N.Y. native regularly performs at venues all around New York City. She is producer of Purple Park Comedy, a monthly show in her hometown of Astoria at Q.E.D and Queens² mic, a weekly show at the Tiny Cupboard, committed to featuring BIPOC, AAPI and LGBTQIA comedians. She is also the winner of the 2021 U.S. Comedy Contest, a Finalist for 2021 Ladies of Laughter and a participant in the Coney Island, Rochester Fringe and Oakland Comedy Festivals. When she's not performing, you can catch Meka Mo across your streaming platforms as co-host of We're Done Here , an emotional wellness comedy podcast."
   },
   {
     "name": "Sarah Thomas",
@@ -9968,7 +9971,8 @@
   },
   {
     "name": "Louis Katz",
-    "venues": []
+    "venues": [],
+    "tagline_cellar": "FROM HALF HOUR COMEDY CENTRAL SPECIAL, HBO'S \"DOWN & DIRTY\", AND LATE NIGHT WITH JIMMY FALLON."
   },
   {
     "name": "Benito Skinner",
@@ -10080,6 +10084,151 @@
   },
   {
     "name": "Doc Jud",
+    "venues": []
+  },
+  {
+    "name": "Wayne Federman",
+    "venues": [],
+    "bio": "CURB YOUR ENTHUSIASM, DOCUMENTARY NOW!, DIFFICULT PEOPLE, LOVE, TRANSPARENT, STEP BROTHERS, TONIGHT SHOW, COMEDY CENTRAL PRESENTS",
+    "tagline_cellar": "CURB YOUR ENTHUSIASM, DOCUMENTARY NOW!, DIFFICULT PEOPLE, LOVE, TRANSPARENT, STEP BROTHERS, TONIGHT SHOW, COMEDY CENTRAL PRESENTS"
+  },
+  {
+    "name": "Sophie Buddle",
+    "venues": [],
+    "bio": "FROM CBS'S \"AFTER MIDNIGHT\", LATE LATE SHOW WITH JAMES CORDEN, CBC'THIS HOURHAS 22 MINUTES, JFL CANADIAN KEYNOTE ADDRESS, JUNO AWARD WINNER BEST STAND UP ALBUM",
+    "tagline_cellar": "FROM CBS'S \"AFTER MIDNIGHT\", LATE LATE SHOW WITH JAMES CORDEN, CBC'THIS HOURHAS 22 MINUTES, JFL CANADIAN KEYNOTE ADDRESS, JUNO AWARD WINNER BEST STAND UP ALBUM"
+  },
+  {
+    "name": "Chris Tos",
+    "venues": []
+  },
+  {
+    "name": "Max Higgins",
+    "venues": [],
+    "bio_stand": "Max Higgins is a New York-based comedian from Burlington, VT. Max’s brought his solo show “The Underdog” to the 2024 Edinburgh Fringe Festival. Max has performed on stage at the Bell House, live at VidCon in Anaheim, and opened for the likes of national touring acts Randy Feltface, Geoffrey Asmus, Liz Glazer, and River Butcher. Max wrote and produced a talk show called Talk Show with Max Higgins. In his hometown of Burlington, Max won the Seven Day’s Reader’s Choice award for Best Comedian. You’ve seen Max at Rogue Island Comedy Festival and hitting on your dad at the supermarket."
+  },
+  {
+    "name": "Mary Ryan Brown",
+    "venues": []
+  },
+  {
+    "name": "Landon Bryant",
+    "venues": []
+  },
+  {
+    "name": "Cab Washington",
+    "venues": []
+  },
+  {
+    "name": "Phillip Kostelecky",
+    "venues": []
+  },
+  {
+    "name": "Juli Polise",
+    "venues": []
+  },
+  {
+    "name": "Khairy Creek",
+    "venues": []
+  },
+  {
+    "name": "Allan Fuks",
+    "venues": []
+  },
+  {
+    "name": "Brad Rickert",
+    "venues": [],
+    "bio_stand": "Brad Rickert is a dynamic performer whose act blends in your face stupidity with the relatable charm of a rabid raccoon. His unique style jumps from non-sequiturs and one-liners to grounded twisted tales that can only be concocted from the mind of a lunatic pastor’s kid who grew up in an Indiana trailer park. Topics range from snack cakes, Plan B pills, and being bestowed with the douche name “Brad”. Smoother than a fresh glass of RC Cola and sharper than a porcupine with too much hair gel, Brad is a walking/talking oxymoron and the perfect beer pong partner."
+  },
+  {
+    "name": "Elijah Nevels",
+    "venues": []
+  },
+  {
+    "name": "Craig Gass",
+    "venues": []
+  },
+  {
+    "name": "Jake Velazquez",
+    "venues": []
+  },
+  {
+    "name": "John Sikie",
+    "venues": []
+  },
+  {
+    "name": "Priya Blunts",
+    "venues": []
+  },
+  {
+    "name": "Tim McLaughlin",
+    "venues": []
+  },
+  {
+    "name": "Connor Meade",
+    "venues": []
+  },
+  {
+    "name": "David Nihill",
+    "venues": []
+  },
+  {
+    "name": "Sam Rubinoff",
+    "venues": []
+  },
+  {
+    "name": "Andy Fiori",
+    "venues": []
+  },
+  {
+    "name": "Troy Bond",
+    "venues": []
+  },
+  {
+    "name": "Shivant Dave",
+    "venues": []
+  },
+  {
+    "name": "Brian Grossi",
+    "venues": []
+  },
+  {
+    "name": "Amazon Prime",
+    "venues": []
+  },
+  {
+    "name": "Tal Gottfried",
+    "venues": []
+  },
+  {
+    "name": "The Invisibles",
+    "venues": [],
+    "bio_wiki": "The Invisibles is a comic book series published by the Vertigo imprint of DC Comics from 1994 to 2000. It was created and scripted by Scottish writer Grant Morrison, and drawn by various artists throughout its publication."
+  },
+  {
+    "name": "Off Script",
+    "venues": []
+  },
+  {
+    "name": "Sashalyn Medina",
+    "venues": []
+  },
+  {
+    "name": "Amanda KnoxAmanda Knox",
+    "venues": []
+  },
+  {
+    "name": "Ahri Findling",
+    "venues": []
+  },
+  {
+    "name": "Amanda Knox",
+    "venues": [],
+    "bio_wiki": "Amanda Marie Knox is an American author and stand-up comedian. She came to international prominence during her trial for the November 2007 murder of her roommate, Meredith Kercher, in Perugia, Italy. The trial and her conviction were highly publicized in 2009 as was her acquittal two years later.",
+    "photo_wiki": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Amanda_Knox_OFTV.jpg/330px-Amanda_Knox_OFTV.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  {
+    "name": "Edinburgh Fringe",
     "venues": []
   }
 ]
