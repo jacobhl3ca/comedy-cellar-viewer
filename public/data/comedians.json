@@ -10148,7 +10148,8 @@
   },
   {
     "name": "Craig Gass",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Craig Gass is an American actor, comedian and impressionist best known for his roles in King of Queens, Family Guy, American Dad, and Sex and the City and for auditioning as Jackie Martling's replacement on The Howard Stern Show, coming in second to Artie Lange. Craig is also known for his comedy special Craig Gass: The Worst Comedy Show Ever."
   },
   {
     "name": "Jake Velazquez",
@@ -10235,6 +10236,10 @@
   },
   {
     "name": "Erik Terrell",
+    "venues": []
+  },
+  {
+    "name": "Divya Gunasekaran",
     "venues": []
   }
 ]
