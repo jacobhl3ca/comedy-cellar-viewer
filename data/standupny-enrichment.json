@@ -16,14 +16,6 @@
       "Patrick Holbert": "https://www.newyorkcomedyclub.com/img/comedians/patrick-holbert-e25a0bbf-main-image.jpg"
     }
   },
-  "195931": {
-    "comedians": [
-      "Certain Age",
-      "Sho Wtime",
-      "Laugh Pass"
-    ],
-    "photos": {}
-  },
   "196618": {
     "comedians": [
       "Mj'S Hour",
@@ -77,12 +69,15 @@
       "Amazon Prime",
       "Tal Gottfried",
       "The Invisibles",
-      "Sean Mallory"
+      "Sean Mallory",
+      "Lana Siebel",
+      "Alvaro Gamboa"
     ],
     "photos": {
       "Teddy Smith": "https://thestandnyc.com/images/comedians/_square/tsmith.jpg",
       "Brian Grossi": "https://www.newyorkcomedyclub.com/img/imagetest/brian-grossi-bd2d0a98-main-image.jpg",
-      "The Invisibles": "https://upload.wikimedia.org/wikipedia/en/6/60/V2_1.PNG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+      "The Invisibles": "https://upload.wikimedia.org/wikipedia/en/6/60/V2_1.PNG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "Lana Siebel": "https://thestandnyc.com/images/comedians/_square/lanasiebel.jpg"
     }
   },
   "198080": {
