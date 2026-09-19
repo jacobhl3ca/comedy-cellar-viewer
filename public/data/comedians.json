@@ -9321,7 +9321,8 @@
   {
     "name": "Trish Suhr",
     "venues": [],
-    "bio_wiki": "Patricia Kelley \"Trish\" Suhr is an American stand-up comedian, actress, television personality, and expert best known as the \"Yard Sale Diva\" on Clean House, a home improvement television show on Style Network. In January 2018, she began hosting the Daily Draw drawings nightly on GSN."
+    "bio_wiki": "Patricia Kelley \"Trish\" Suhr is an American stand-up comedian, actress, television personality, and expert best known as the \"Yard Sale Diva\" on Clean House, a home improvement television show on Style Network. In January 2018, she began hosting the Daily Draw drawings nightly on GSN.",
+    "bio_stand": "Trish Suhr is an Emmy Award-winning comedian, actress, and TV personality whose Appalachian roots run deep — this Kentucky girl's stories are the kind that make a room full of strangers feel like a room full of family. You know her as the Yard Sale Diva from the long-running makeover series Clean House, but she's also guest-starred on NBC's The Office, hosted the Daily Draw on Game Show Network, has a Dry Bar Comedy special streaming now, hosted Find My Country House streaming on Hulu, opened for Nate Bargatze's Big Dumb Eyes Tour, and has her own YouTube special Dolly For President — available to watch now. With nearly a million followers across all social media platforms and growing, Trish has built an audience that spans every generation — because real stories told by someone who lived them hit different. A Southern belle with a California soul, Trish Suhr is the best friend you didn't know you needed — pure sunshine with a punchline."
   },
   {
     "name": "Johana Coca",
@@ -10241,5 +10242,10 @@
   {
     "name": "Divya Gunasekaran",
     "venues": []
+  },
+  {
+    "name": "Jimmy Failla",
+    "venues": [],
+    "bio_stand": "Jimmy Failla is the host of \"Fox Across America\" which airs weekdays from 12-3 on Fox News Radio / Fox Nation / FoxNewsRadio.Com. @jimmyfailla"
   }
 ]
