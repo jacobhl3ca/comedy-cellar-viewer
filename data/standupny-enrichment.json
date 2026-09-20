@@ -36,10 +36,10 @@
       "Off Script"
     ],
     "photos": {
-      "Helen Hong": "https://www.newyorkcomedyclub.com/img/comedians/helen-hong-a1900990-main-image.jpg",
-      "Taylor Williamson": "https://www.newyorkcomedyclub.com/img/comedians/82749kirkland0502-Laughs-3f160d5a-main-image.jpg",
+      "Helen Hong": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Helen_Hong_2014.jpg/330px-Helen_Hong_2014.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "Taylor Williamson": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Taylor_Williamson.jpg/330px-Taylor_Williamson.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "Sarah Tiana": "https://www.newyorkcomedyclub.com/img/imagetest/sarah-tiana-a3e409b6-main-image.jpg",
-      "Laurie Kilmartin": "https://thestandnyc.com/images/comedians/_square/Laurie_Kilmartin.jpg",
+      "Laurie Kilmartin": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Laurie_Kilmartin.jpg/330px-Laurie_Kilmartin.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "Allie Arasi": "https://thestandnyc.com/images/comedians/_square/Allie_Arasi.jpg"
     }
   },
@@ -54,30 +54,11 @@
       "Doc Jud"
     ],
     "photos": {
+      "Behind You": "https://upload.wikimedia.org/wikipedia/en/d/dd/Behind_You_film_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
       "Neema Naz": "https://thestandnyc.com/images/comedians/_square/Neema_Naz.jpeg",
       "Jeff Scheen": "https://thestandnyc.com/images/comedians/_square/Jeff-Scheen-2.jpg",
       "Tracey Carnazzo": "https://thestandnyc.com/images/comedians/_square/tracey.jpg",
       "Rebecca Kaplan": "https://thestandnyc.com/images/comedians/_square/Rebecca_Kaplan.jpg"
-    }
-  },
-  "198078": {
-    "comedians": [
-      "Shivant Dave",
-      "Teddy Smith",
-      "Brian Grossi",
-      "Alvin Williams",
-      "Amazon Prime",
-      "Tal Gottfried",
-      "The Invisibles",
-      "Sean Mallory",
-      "Lana Siebel",
-      "Alvaro Gamboa"
-    ],
-    "photos": {
-      "Teddy Smith": "https://thestandnyc.com/images/comedians/_square/tsmith.jpg",
-      "Brian Grossi": "https://www.newyorkcomedyclub.com/img/imagetest/brian-grossi-bd2d0a98-main-image.jpg",
-      "The Invisibles": "https://upload.wikimedia.org/wikipedia/en/6/60/V2_1.PNG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
-      "Lana Siebel": "https://thestandnyc.com/images/comedians/_square/lanasiebel.jpg"
     }
   },
   "198080": {
@@ -105,9 +86,8 @@
       "Teddy Smith"
     ],
     "photos": {
-      "Ahri Findling": "https://thestandnyc.com/images/comedians/_square/ahri.jpg",
-      "Ted Jones": "https://thestandnyc.com/images/comedians/_square/tedjones.jpg",
-      "Teddy Smith": "https://thestandnyc.com/images/comedians/_square/tsmith.jpg"
+      "Ahri Findling": "https://www.newyorkcomedyclub.com/img/imagetest/ahri-headshot-jpg-fa680c3d-ahri-headshot-jpg.jpg",
+      "Teddy Smith": "https://www.newyorkcomedyclub.com/img/imagetest/teddy-smith-b0800a17-main-image.jpg"
     }
   }
 }
