@@ -10034,7 +10034,7 @@
   {
     "name": "Helen Hong",
     "venues": [],
-    "bio_wiki": "Helen Hong is an American stand-up comedian, actress, director, and producer. She has appeared in such works as Jane the Virgin, Parks and Recreation, and the Coen Brothers' Inside Llewyn Davis. She has a regular spot on NPR's Wait Wait... Don't Tell Me! and hosts a trivia podcast called Go Fact Yourself. She formerly hosted the podcast Little Ethnic Girls. She has a recurring role on Nickelodeon's The Thundermans and had a recurring role as Mrs. Song in Starz's Blunt Talk. Hong is known for her comedic NowThis videos."
+    "bio_wiki": "Helen Hong is an American stand-up comedian, actress, director, and producer. She has appeared in such works as Jane the Virgin, Parks and Recreation, and the Coen Brothers' Inside Llewyn Davis. She has a regular spot on NPR's Wait Wait... Don't Tell Me! and hosts a trivia podcast called Go Fact You"
   },
   {
     "name": "Sarah Tiana",
@@ -10247,5 +10247,9 @@
     "name": "Jimmy Failla",
     "venues": [],
     "bio_stand": "Jimmy Failla is the host of \"Fox Across America\" which airs weekdays from 12-3 on Fox News Radio / Fox Nation / FoxNewsRadio.Com. @jimmyfailla"
+  },
+  {
+    "name": "Wally Baram",
+    "venues": []
   }
 ]
