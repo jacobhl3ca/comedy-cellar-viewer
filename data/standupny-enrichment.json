@@ -86,8 +86,15 @@
       "Teddy Smith"
     ],
     "photos": {
-      "Ahri Findling": "https://www.newyorkcomedyclub.com/img/imagetest/ahri-headshot-jpg-fa680c3d-ahri-headshot-jpg.jpg",
-      "Teddy Smith": "https://www.newyorkcomedyclub.com/img/imagetest/teddy-smith-b0800a17-main-image.jpg"
+      "Ahri Findling": "https://thestandnyc.com/images/comedians/_square/ahri.jpg",
+      "Ted Jones": "https://thestandnyc.com/images/comedians/_square/tedjones.jpg",
+      "Teddy Smith": "https://thestandnyc.com/images/comedians/_square/tsmith.jpg"
     }
+  },
+  "198865": {
+    "comedians": [
+      "Lomedy Killers"
+    ],
+    "photos": {}
   }
 }
