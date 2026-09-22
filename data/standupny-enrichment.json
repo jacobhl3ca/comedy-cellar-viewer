@@ -6,14 +6,16 @@
       "Dan Ahdoot",
       "Erin Maguire",
       "Patrick Holbert",
-      "The Maze"
+      "The Maze",
+      "Doug Smith"
     ],
     "photos": {
-      "Liz Glazer": "https://thestandnyc.com/images/comedians/_square/lizglazer.jpg",
-      "Myq Kaplan": "https://thestandnyc.com/images/comedians/_square/MyqKaplan_CreditMindyTucker.jpg",
-      "Dan Ahdoot": "https://thestandnyc.com/images/comedians/_square/Dan_Ahdoot.jpg",
-      "Erin Maguire": "https://thestandnyc.com/images/comedians/_square/EM-headshot.jpg",
-      "Patrick Holbert": "https://www.newyorkcomedyclub.com/img/comedians/patrick-holbert-e25a0bbf-main-image.jpg"
+      "Liz Glazer": "https://www.newyorkcomedyclub.com/img/imagetest/liz-glazer-jpg-d2120b19-liz-glazer-jpg.jpg",
+      "Myq Kaplan": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg/330px-Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "Dan Ahdoot": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Dan_Ahdoot.jpg/330px-Dan_Ahdoot.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "Erin Maguire": "https://www.newyorkcomedyclub.com/img/imagetest/4260-jpg-77eb07af-4260-jpg.jpg",
+      "Patrick Holbert": "https://www.newyorkcomedyclub.com/img/comedians/patrick-holbert-e25a0bbf-main-image.jpg",
+      "Doug Smith": "https://www.newyorkcomedyclub.com/img/imagetest/36079381-f732-402c-9bcd-ac93f0836abd-jpeg-e2391023-36079381-f732-402c-9bcd-ac93f0836abd-jpeg.jpg"
     }
   },
   "196618": {
@@ -35,13 +37,7 @@
       "Allie Arasi",
       "Off Script"
     ],
-    "photos": {
-      "Helen Hong": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Helen_Hong_2014.jpg/330px-Helen_Hong_2014.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "Taylor Williamson": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Taylor_Williamson.jpg/330px-Taylor_Williamson.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "Sarah Tiana": "https://www.newyorkcomedyclub.com/img/imagetest/sarah-tiana-a3e409b6-main-image.jpg",
-      "Laurie Kilmartin": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Laurie_Kilmartin.jpg/330px-Laurie_Kilmartin.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "Allie Arasi": "https://thestandnyc.com/images/comedians/_square/Allie_Arasi.jpg"
-    }
+    "photos": {}
   },
   "197786": {
     "comedians": [
@@ -54,11 +50,9 @@
       "Doc Jud"
     ],
     "photos": {
-      "Behind You": "https://upload.wikimedia.org/wikipedia/en/d/dd/Behind_You_film_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
-      "Neema Naz": "https://thestandnyc.com/images/comedians/_square/Neema_Naz.jpeg",
-      "Jeff Scheen": "https://thestandnyc.com/images/comedians/_square/Jeff-Scheen-2.jpg",
-      "Tracey Carnazzo": "https://thestandnyc.com/images/comedians/_square/tracey.jpg",
-      "Rebecca Kaplan": "https://thestandnyc.com/images/comedians/_square/Rebecca_Kaplan.jpg"
+      "Jeff Scheen": "https://www.newyorkcomedyclub.com/img/comedians/jeff-scheen-adb509fb-main-image.jpg",
+      "Tracey Carnazzo": "https://www.newyorkcomedyclub.com/img/comedians/tracy-62210770-main-image.jpg",
+      "Rebecca Kaplan": "https://www.newyorkcomedyclub.com/img/comedians/Screen-Shot-2022-03-18-at-11-35-20-AM-f6e40f66-main-image.jpg"
     }
   },
   "198080": {
@@ -72,8 +66,8 @@
       "Morning Good"
     ],
     "photos": {
-      "Dan Ahdoot": "https://thestandnyc.com/images/comedians/_square/Dan_Ahdoot.jpg",
-      "Jimmy Mccullough": "https://thestandnyc.com/images/comedians/_square/jimmymccullough.jpg"
+      "Dan Ahdoot": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Dan_Ahdoot.jpg/330px-Dan_Ahdoot.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "Jimmy Mccullough": "https://www.newyorkcomedyclub.com/img/comedians/Screenshot-2026-09-17-at-11-06-38-AM-f1240f5f-main-image.png"
     }
   },
   "198506": {
@@ -83,12 +77,13 @@
       "Amanda Knox",
       "Edinburgh Fringe",
       "Ted Jones",
-      "Teddy Smith"
+      "Teddy Smith",
+      "Amazon Prime",
+      "Ted Jones-World"
     ],
     "photos": {
-      "Ahri Findling": "https://thestandnyc.com/images/comedians/_square/ahri.jpg",
-      "Ted Jones": "https://thestandnyc.com/images/comedians/_square/tedjones.jpg",
-      "Teddy Smith": "https://thestandnyc.com/images/comedians/_square/tsmith.jpg"
+      "Ahri Findling": "https://www.newyorkcomedyclub.com/img/imagetest/ahri-headshot-jpg-fa680c3d-ahri-headshot-jpg.jpg",
+      "Teddy Smith": "https://www.newyorkcomedyclub.com/img/imagetest/teddy-smith-b0800a17-main-image.jpg"
     }
   },
   "198865": {
@@ -96,5 +91,14 @@
       "Lomedy Killers"
     ],
     "photos": {}
+  },
+  "199034": {
+    "comedians": [
+      "Featured Host",
+      "Amada Caba"
+    ],
+    "photos": {
+      "Amada Caba": "https://www.newyorkcomedyclub.com/img/imagetest/amada-press-10-2-jpg-15250c5a-amada-press-10-2-jpg.jpg"
+    }
   }
 }
