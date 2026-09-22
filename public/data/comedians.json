@@ -1860,7 +1860,8 @@
     "bio": "Rory Albanese is the Executive Producer and Writer of Comedy Central’s next great late night franchise, “The Nightly Show with Larry Wilmore.” Previously, Albanese was Executive Producer and Writer of “The Daily Show with Jon Stewart” from 2009-2013 where he held various posts for over a decade and won nine Primetime Emmy® Awards.  Outside of his television career, Albanese is an accomplished stand-up comedian. Beyond touring the country as a headliner, he has been a featured performer on Comedy Central’s “John Oliver’s New York Stand-Up Show,” starred in his own Comedy Central half-hour special and entertained the American troops in a two-country, morale boosting USO/Armed Forces Entertainment tour in the Middle East. Albanese spends his free time keeping the streets of New York City safe by employing the lost art of “Vigilante Justice.”",
     "venues": [
       "nycc"
-    ]
+    ],
+    "tagline_cellar": "EMMY WINNING WRITER/EXECUTIVE PRODUCER - DAILY SHOW, NIGHTLY SHOW WITH LARRY WILMORE, HALF HOUR SPECIAL ON COMEDY CENTRAL"
   },
   {
     "name": "Stavros Halkias",
@@ -4425,7 +4426,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/mary-santora",
     "bio_stand": "The slightly dark, incredibly quick, observational style of Mary Santora's comedy is one that is uniquely her own. Drawing from real life experiences, Mary takes the audience on a storytelling driven ride, while seamlessly weaving in and out of crowd interactions, leaving a lasting impression on anyone who sees her. Santora's debut album, \"Hillbilly Boujee\" hit #1 on both iTunes and Amazon, #5 on Billboard, and can be heard regularly on SiriusXM.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/marysantoraSQ2026.jpeg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/marysantoraSQ2026.jpeg",
+    "tagline_cellar": "SIRIUS XM. IHEART RADIO"
   },
   {
     "name": "Mat Edgar",
@@ -8423,7 +8425,7 @@
   {
     "name": "Mo Amer",
     "venues": [],
-    "bio_wiki": "Mohammed Mustafa Amer is a Palestinian American comedian and actor. He is known for his Netflix comedy special Mo Amer: The Vagabond and as a member of the comedy trio Allah Made Me Funny. Amer also appeared in the Hulu sitcom Ramy (2019-2022) where he played the character Mo, Ramy's cousin who owns"
+    "bio_wiki": "Mohammed Mustafa Amer is a Palestinian-American stand-up comedian and actor. He is known for his Netflix comedy special Mo Amer: The Vagabond and as a member of the comedy trio Allah Made Me Funny. Amer also appeared in the Hulu sitcom Ramy (2019-2022) where he played the character Mo, Ramy's cousin"
   },
   {
     "name": "Luke Kidgell",
@@ -9103,7 +9105,8 @@
   },
   {
     "name": "James Davis",
-    "venues": []
+    "venues": [],
+    "tagline_cellar": "COMEDY CENTRAL'S HOOD ADJACENT WITH JAMES DAVIS,  AN HOUR COMEDY SPECIAL"
   },
   {
     "name": "Anne Stesney",
@@ -10270,6 +10273,48 @@
   },
   {
     "name": "Eeland Stribling",
+    "venues": []
+  },
+  {
+    "name": "Ruth Gordon",
+    "venues": [],
+    "bio": "FROM THE MOVIES,  COMEDY CENTRAL ROASTS,  SATURDAY NIGHT LIVE, TONIGHT SHOW, THE DAVID LETTERMAN SHOW",
+    "tagline_cellar": "FROM THE MOVIES,  COMEDY CENTRAL ROASTS,  SATURDAY NIGHT LIVE, TONIGHT SHOW, THE DAVID LETTERMAN SHOW"
+  },
+  {
+    "name": "Lucie Pohl",
+    "venues": []
+  },
+  {
+    "name": "Michael Lenoci",
+    "venues": []
+  },
+  {
+    "name": "Phil Hunt",
+    "venues": []
+  },
+  {
+    "name": "Luisa Lange",
+    "venues": []
+  },
+  {
+    "name": "Ellen Harrold",
+    "venues": []
+  },
+  {
+    "name": "Doug Smith",
+    "venues": []
+  },
+  {
+    "name": "Featured Host",
+    "venues": []
+  },
+  {
+    "name": "Amada Caba",
+    "venues": []
+  },
+  {
+    "name": "Ted Jones-World",
     "venues": []
   }
 ]
