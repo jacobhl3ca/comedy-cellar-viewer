@@ -4119,8 +4119,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/kareem-green",
     "bio_stand": "As a three-time champion at Showtime at the Apollo, Kareem Green is a multi-faceted entertainer and comedian whose talents include stand-up, improv, acting and writing. Kareems relatable comedic style has earned him television appearances on BETComicView and TV-Ones Bill Bellamys Whos Got Jokes. Often compared to Dave Chapelle, Kareem shares a wittiness that keeps audiences in stitches throughout the U.S., Europe and the Caribbean Islands about his experiences in foster care, summer camp programs, and having an extremely unsuccessful criminal career. As well as being an accomplished comedian, Kareem is a skilled actor and has had key roles in the movies Gold Digger Killer, Holla If I Kill You and Comedy In The Hood. His headliner appearances at colleges and comedy clubs proves Kareem is soon to be a household name. Kareem has been featured at New Yorks top comedy clubs, including Carolines on Broadway, Standup New York, Gotham Comedy Club and the Comic Strip Live. He has received national recognition in nationwide comedy competitions such as Comedy Centrals Laugh Riots and The Salem Orb Contest. And in 2009, Kareem was crowned Winner of the Bay Area Black Comedy Competition and Top Finalist in NBC’s Standup for Diversity. Kareem Green is, by far, a rising star!",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Kareem_Green.jpg",
-    "bio": "Kareem Green is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Kareem_Green.jpg"
   },
   {
     "name": "Kate Quigley",
@@ -10258,6 +10257,18 @@
   },
   {
     "name": "Lomedy Killers",
+    "venues": []
+  },
+  {
+    "name": "Alex Castagne",
+    "venues": []
+  },
+  {
+    "name": "Jason Choi",
+    "venues": []
+  },
+  {
+    "name": "Eeland Stribling",
     "venues": []
   }
 ]
