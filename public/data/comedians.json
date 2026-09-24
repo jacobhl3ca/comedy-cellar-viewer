@@ -7260,7 +7260,8 @@
   {
     "name": "Gary Simons",
     "venues": [],
-    "bio_stand": "Gary Simons is a Connecticut raised, NYC based comedian, writer, and actor. He’s known for his inviting narrative style and witty introspective observations. He’s performed and produced all over the country. While in college, he won Georgetown’s Funniest Human competition which notable past alumni winners include Mike Birbiglia, John Mulaney, and Nick Kroll. He was recently the tour opener for Mike Birbiglia’s Working It Out tour. He produces and hosts a quarterly live variety show called The Comedy Kickback featuring stand up, music, and sketches he wrote and directed."
+    "bio_stand": "Gary Simons is a Connecticut raised, NYC based comedian, writer, and actor. He’s known for his inviting narrative style and witty introspective observations. He’s performed and produced all over the country. While in college, he won Georgetown’s Funniest Human competition which notable past alumni winners include Mike Birbiglia, John Mulaney, and Nick Kroll. He was recently the tour opener for Mike Birbiglia’s Working It Out tour. He produces and hosts a quarterly live variety show called The Comedy Kickback featuring stand up, music, and sketches he wrote and directed.",
+    "tagline_cellar": "NY COMEDY FESTIVAL, COMICS TO WATCH 2024"
   },
   {
     "name": "Britt Migs",
@@ -10077,7 +10078,8 @@
   },
   {
     "name": "Arynne Wexler",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Arynne Wexler is an American stand-up comedian, writer, and conservative political commentator. A former finance professional, she rose to prominence in 2024 and 2025 through short-form political video commentary, amassing several hundred thousand followers across X, TikTok, and Instagram, and has p"
   },
   {
     "name": "Behind You",
@@ -10283,7 +10285,8 @@
   },
   {
     "name": "Lucie Pohl",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Hi. I'm a comedian, actress and writer. I like to make people laugh, Nutella, David Hasselhoff and I'd like to get a chammer and chit you on the chead with it. I was born in Germany and grew up in NYC. I'm The Last Germinican. Ich spreche Deutsch."
   },
   {
     "name": "Michael Lenoci",
@@ -10315,6 +10318,10 @@
   },
   {
     "name": "Ted Jones-World",
+    "venues": []
+  },
+  {
+    "name": "Mada Caba",
     "venues": []
   }
 ]
