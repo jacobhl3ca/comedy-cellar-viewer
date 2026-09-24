@@ -45,23 +45,6 @@
       "Allie Arasi": "https://thestandnyc.com/images/comedians/_square/Allie_Arasi.jpg"
     }
   },
-  "197786": {
-    "comedians": [
-      "Behind You",
-      "Neema Naz",
-      "Jeff Scheen",
-      "Tracey Carnazzo",
-      "Rebecca Kaplan",
-      "Alex Macleod",
-      "Doc Jud"
-    ],
-    "photos": {
-      "Neema Naz": "https://thestandnyc.com/images/comedians/_square/Neema_Naz.jpeg",
-      "Jeff Scheen": "https://thestandnyc.com/images/comedians/_square/Jeff-Scheen-2.jpg",
-      "Tracey Carnazzo": "https://thestandnyc.com/images/comedians/_square/tracey.jpg",
-      "Rebecca Kaplan": "https://thestandnyc.com/images/comedians/_square/Rebecca_Kaplan.jpg"
-    }
-  },
   "198080": {
     "comedians": [
       "Jeremy Crittenden",
@@ -90,6 +73,7 @@
     ],
     "photos": {
       "Ahri Findling": "https://thestandnyc.com/images/comedians/_square/ahri.jpg",
+      "Amanda Knox": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Amanda_Knox_OFTV.jpg/330px-Amanda_Knox_OFTV.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "Ted Jones": "https://thestandnyc.com/images/comedians/_square/tedjones.jpg",
       "Teddy Smith": "https://thestandnyc.com/images/comedians/_square/tsmith.jpg"
     }
@@ -108,6 +92,35 @@
     ],
     "photos": {
       "Amada Caba": "https://www.newyorkcomedyclub.com/img/imagetest/amada-press-10-2-jpg-15250c5a-amada-press-10-2-jpg.jpg"
+    }
+  },
+  "199293": {
+    "comedians": [
+      "Maureen Langan",
+      "Chase Durousseau",
+      "Brian Scolaro",
+      "Ray Bentley"
+    ],
+    "photos": {
+      "Maureen Langan": "https://www.newyorkcomedyclub.com/img/comedians/unnamed-24-a0560932-main-image.jpg",
+      "Chase Durousseau": "https://thestandnyc.com/images/comedians/_square/chase.jpeg",
+      "Brian Scolaro": "https://www.newyorkcomedyclub.com/img/comedians/brian-scolaro-c7d20aec-main-image.jpg"
+    }
+  },
+  "199294": {
+    "comedians": [
+      "Seth Herzog",
+      "Wali Collins",
+      "Brian Grossi",
+      "Jocelyn Chia",
+      "Chanel Ali"
+    ],
+    "photos": {
+      "Seth Herzog": "https://thestandnyc.com/images/comedians/_square/Thumbnail%2BSeth%2BInterview.jpg",
+      "Wali Collins": "https://www.newyorkcomedyclub.com/img/comedians/wali-collins-bae10a7b-main-image.jpg",
+      "Brian Grossi": "https://www.newyorkcomedyclub.com/img/imagetest/brian-grossi-bd2d0a98-main-image.jpg",
+      "Jocelyn Chia": "https://thestandnyc.com/images/comedians/_square/Jocelyn-Chia-e1663378450755-6def0d6f-main-image.jpg",
+      "Chanel Ali": "https://thestandnyc.com/images/comedians/_square/Chanel_Ali.jpg"
     }
   }
 }
