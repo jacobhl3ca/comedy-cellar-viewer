@@ -25,26 +25,6 @@
     ],
     "photos": {}
   },
-  "197270": {
-    "comedians": [
-      "Off Scrint",
-      "Arc Beverly",
-      "Helen Hong",
-      "Taylor Williamson",
-      "Sarah Tiana",
-      "Laurie Kilmartin",
-      "Danny Jolles",
-      "Allie Arasi",
-      "Off Script"
-    ],
-    "photos": {
-      "Helen Hong": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Helen_Hong_2014.jpg/330px-Helen_Hong_2014.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "Taylor Williamson": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Taylor_Williamson.jpg/330px-Taylor_Williamson.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "Sarah Tiana": "https://www.newyorkcomedyclub.com/img/imagetest/sarah-tiana-a3e409b6-main-image.jpg",
-      "Laurie Kilmartin": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Laurie_Kilmartin.jpg/330px-Laurie_Kilmartin.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "Allie Arasi": "https://thestandnyc.com/images/comedians/_square/Allie_Arasi.jpg"
-    }
-  },
   "198080": {
     "comedians": [
       "Jeremy Crittenden",
@@ -73,7 +53,6 @@
     ],
     "photos": {
       "Ahri Findling": "https://thestandnyc.com/images/comedians/_square/ahri.jpg",
-      "Amanda Knox": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Amanda_Knox_OFTV.jpg/330px-Amanda_Knox_OFTV.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "Ted Jones": "https://thestandnyc.com/images/comedians/_square/tedjones.jpg",
       "Teddy Smith": "https://thestandnyc.com/images/comedians/_square/tsmith.jpg"
     }
