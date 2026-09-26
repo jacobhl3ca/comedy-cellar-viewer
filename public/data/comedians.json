@@ -10341,5 +10341,24 @@
   {
     "name": "Ray Bentley",
     "venues": []
+  },
+  {
+    "name": "Work In Progresso Show",
+    "venues": [],
+    "bio": "A show with a secret headliner!",
+    "tagline_cellar": "A show with a secret headliner!"
+  },
+  {
+    "name": "Steve Rinaldi",
+    "venues": [],
+    "bio_stand": "Steve Rinaldi started performing comedy when he decided to sign up for an open mic night in his home town of Philadelphia back in 2012. From there he would go out night after night working on finding his comedic voice at local bars and comedy clubs around the Philadelphia area. In 2015, Steve made his way out to Chicago where he took improv classes at both the Second City & IO. Steve performed standup at Chicago comedy clubs like Laugh Factory, Zanies, & Jokes & Notes. He now performs regularly at the Funny Bone Comedy Clubs in the northeast area. You can see him often performing in Philly, Atlantic City & New York. Steve has shared the stage with Dom Irrera, Hannibal Burress, Paul Virzi, Andrew Schulz, Rick Vos, Dan Soder, “The Reverend” Bob Levy, Artie Lange, SNL’s Chris Redd, Jay Chandrasekhar, Lil Rel Howery, Vic Dibitetto and many more! In 2022 Steve started co hosting a podcast with comedy legend Dom Irrera titled YO DOM. Check it out on YouTube, Spotify, Apple podcast and anywhere else you can find a podcast. Steve brings you into his world of “South Philly Italian” which means topics consist of a lot of family, relationship, and disfunction through out his set."
+  },
+  {
+    "name": "Joe Gatto",
+    "venues": []
+  },
+  {
+    "name": "Brooks Wheelen",
+    "venues": []
   }
 ]
