@@ -1,44 +1,10 @@
 {
-  "190622": {
-    "comedians": [
-      "Liz Glazer",
-      "Myq Kaplan",
-      "Dan Ahdoot",
-      "Erin Maguire",
-      "Patrick Holbert",
-      "The Maze",
-      "Doug Smith"
-    ],
-    "photos": {
-      "Liz Glazer": "https://thestandnyc.com/images/comedians/_square/lizglazer.jpg",
-      "Myq Kaplan": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg/330px-Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "Dan Ahdoot": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Dan_Ahdoot.jpg/330px-Dan_Ahdoot.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "Erin Maguire": "https://thestandnyc.com/images/comedians/_square/EM-headshot.jpg",
-      "Patrick Holbert": "https://www.newyorkcomedyclub.com/img/comedians/patrick-holbert-e25a0bbf-main-image.jpg",
-      "Doug Smith": "https://thestandnyc.com/images/comedians/_square/dougsmith.jpeg"
-    }
-  },
   "196618": {
     "comedians": [
       "Mj'S Hour",
       "Art Activism"
     ],
     "photos": {}
-  },
-  "198080": {
-    "comedians": [
-      "Jeremy Crittenden",
-      "Star Trek",
-      "Dan Ahdoot",
-      "Eman Morgan",
-      "Jimmy Mccullough",
-      "Sashalyn Medina",
-      "Morning Good"
-    ],
-    "photos": {
-      "Dan Ahdoot": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Dan_Ahdoot.jpg/330px-Dan_Ahdoot.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "Jimmy Mccullough": "https://thestandnyc.com/images/comedians/_square/jimmymccullough.jpg"
-    }
   },
   "198506": {
     "comedians": [
@@ -52,8 +18,10 @@
       "Ted Jones-World"
     ],
     "photos": {
-      "Ahri Findling": "https://www.newyorkcomedyclub.com/img/imagetest/ahri-headshot-jpg-fa680c3d-ahri-headshot-jpg.jpg",
-      "Teddy Smith": "https://www.newyorkcomedyclub.com/img/imagetest/teddy-smith-b0800a17-main-image.jpg"
+      "Ahri Findling": "https://thestandnyc.com/images/comedians/_square/ahri.jpg",
+      "Amanda Knox": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Amanda_Knox_OFTV.jpg/330px-Amanda_Knox_OFTV.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "Ted Jones": "https://thestandnyc.com/images/comedians/_square/tedjones.jpg",
+      "Teddy Smith": "https://thestandnyc.com/images/comedians/_square/tsmith.jpg"
     }
   },
   "198865": {
@@ -81,7 +49,7 @@
     ],
     "photos": {
       "Maureen Langan": "https://www.newyorkcomedyclub.com/img/comedians/unnamed-24-a0560932-main-image.jpg",
-      "Chase Durousseau": "https://www.newyorkcomedyclub.com/img/comedians/image0-12-8f8f0876-main-image.jpg",
+      "Chase Durousseau": "https://thestandnyc.com/images/comedians/_square/chase.jpeg",
       "Brian Scolaro": "https://www.newyorkcomedyclub.com/img/comedians/brian-scolaro-c7d20aec-main-image.jpg"
     }
   },
@@ -94,11 +62,11 @@
       "Chanel Ali"
     ],
     "photos": {
-      "Seth Herzog": "https://www.newyorkcomedyclub.com/img/comedians/Seth-Headshot-b7fd0a6a-main-image.jpg",
+      "Seth Herzog": "https://thestandnyc.com/images/comedians/_square/Thumbnail%2BSeth%2BInterview.jpg",
       "Wali Collins": "https://www.newyorkcomedyclub.com/img/comedians/wali-collins-bae10a7b-main-image.jpg",
       "Brian Grossi": "https://www.newyorkcomedyclub.com/img/imagetest/brian-grossi-bd2d0a98-main-image.jpg",
-      "Jocelyn Chia": "https://www.newyorkcomedyclub.com/img/comedians/Jocelyn-Chia-e1663378450755-6def0d6f-main-image.jpg",
-      "Chanel Ali": "https://www.newyorkcomedyclub.com/img/comedians/ali-5e0006f3-main-image.jpg"
+      "Jocelyn Chia": "https://thestandnyc.com/images/comedians/_square/Jocelyn-Chia-e1663378450755-6def0d6f-main-image.jpg",
+      "Chanel Ali": "https://thestandnyc.com/images/comedians/_square/Chanel_Ali.jpg"
     }
   }
 }
