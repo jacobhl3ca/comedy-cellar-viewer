@@ -2651,7 +2651,8 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/paul-virzi",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/virzi2020_02.jpeg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/virzi2020_02.jpeg",
+    "bio_stand": "Comedian Paul Virzi headlines comedy clubs and theatres across North America, and currently hosts The Virzi Effect podcast and co-hosts the Anything Better and Bone to Pick podcasts. Paul has performed all over the world, including many of the United States' most prestigious venues such as Madison Square Garden, the Chicago Theatre, and Carnegie Hall. Paul’s debut hour-long comedy special, I'll Say This, premiered on Comedy Central in November of 2018 and is available to stream on CC. Comedy Central featured clips from the special on its official stand-up page on TikTok that have since garnered millions of views and likes. Paul's second special, Nocturnal Admissions, premiered on Netflix in June of 2022. His highly-anticipated third special, Reasonable Man, premiered in October of 2024 and is now available to stream on YouTube. His 2015 debut comedy album, Paul Virzi: Night at the Stand, ranked #1 on iTunes, and reached #4 on Billboard's Top 100. Off the stage, Paul has made appearances on a variety of TV shows, including TruTV's Comedy Knockout, AXS TV's Gotham Comedy Live, and the NFL Network's Good Morning Football, and has written for ESPN's highly coveted ESPY Awards. Paul grew up in the suburbs outside of New York City. He loves his family, cigars, and having pointless arguments about sports with his friends. For more about Paul, visit his Twitter, Instagram, Tiktok, and Facebook."
   },
   {
     "name": "Jo Firestone",
@@ -3369,8 +3370,7 @@
       "the_stand"
     ],
     "stand_profile": "https://thestandnyc.com/comedians/dan-donohue",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/donohue.jpg",
-    "bio": "Dan Donohue is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/donohue.jpg"
   },
   {
     "name": "Dan Naturman",
@@ -7896,7 +7896,8 @@
   {
     "name": "Tatiana Frank",
     "venues": [],
-    "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/tatiana-frank-headshot-46ba0e50-main-image.png?1727965309"
+    "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/tatiana-frank-headshot-46ba0e50-main-image.png?1727965309",
+    "bio_stand": "Named a Comic to Watch, Tatiana Frank headlines comedy clubs across the country with her unique brand of personal storytelling and absurdist humor. She has a viral Don’t Tell set online and recently taped her first half-hour special. Tatiana is based in New York but was raised in Miami by immigrant parents, which is why she kind of has an accent you can’t quite place. She also writes, produces, and hosts the web series Thought Daughter, where she dismantles gender-war myths, and hosts a podcast where she hangs out with her fellow comedians."
   },
   {
     "name": "Luke Abranches",
@@ -9530,7 +9531,8 @@
   },
   {
     "name": "Mycal Dede",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Mycal Latravious Dédé III (or Myke Dédé for short) is a New York City–based stand-up comedian, writer, and attorney. Originally from Houston, Texas, Myke’s comedy combines sharp social commentary, personal storytelling, and stories about soup. He has performed across the country and occasionally opens for Nick Mullen and Nimesh Patel. He has been featured at Skankfest, SXSW, the New York Comedy Festival, and the Moontower Comedy Festival. Myke is also a co-host of the comedy podcast Dumb As Hell and writes monthly essays on Substack, where he has ranked among the top 20 rising writers in humor and satire. He is also incredibly kind hearted and very respectful. People describe him as the \"Light Skinned Eddie Griffin\" and he can be found volunteering at various shelters across the city."
   },
   {
     "name": "Sarah Adelman",
@@ -10374,6 +10376,21 @@
   },
   {
     "name": "Splou",
+    "venues": []
+  },
+  {
+    "name": "Roy Wood jr",
+    "venues": [],
+    "bio": "CNN'S  \"HAVE I GOT NEWS FOR YOU\"', \"A CORRESPONDENT ON THE DAILY SHOW W/TREVOR NOAH, THE LETTERMAN SHOW, THE SETH MEYERS SHOW, ESPN'S SPORT- NATION, CONAN, @MIDNIGHT",
+    "tagline_cellar": "CNN'S  \"HAVE I GOT NEWS FOR YOU\"', \"A CORRESPONDENT ON THE DAILY SHOW W/TREVOR NOAH, THE LETTERMAN SHOW, THE SETH MEYERS SHOW, ESPN'S SPORT- NATION, CONAN, @MIDNIGHT"
+  },
+  {
+    "name": "Murahd Shawki",
+    "venues": [],
+    "bio_stand": "Murahd Shawki is an Egyptian-American comedian from San Fransisco. His clips from his taping of “Dirty Little Immigrant Boy” garnered over 30 million views across major social media platforms and YouTube Shorts. He is a regular at The San Francisco Punch Line, Cobb’s Comedy Club, SF Sketchfest and The San Jose Improv and has opened for the likes of Vir Das, Kyle Kinane, Michael Longfellow, Daman Wayans Sr, Sugar Sammy and Brandon Wardell."
+  },
+  {
+    "name": "Ben Kirschenbaum",
     "venues": []
   }
 ]
