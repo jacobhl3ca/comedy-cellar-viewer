@@ -18,9 +18,10 @@
       "Ted Jones-World"
     ],
     "photos": {
-      "Ahri Findling": "https://www.newyorkcomedyclub.com/img/imagetest/ahri-headshot-jpg-fa680c3d-ahri-headshot-jpg.jpg",
+      "Ahri Findling": "https://thestandnyc.com/images/comedians/_square/ahri.jpg",
       "Amanda Knox": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Amanda_Knox_OFTV.jpg/330px-Amanda_Knox_OFTV.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "Teddy Smith": "https://www.newyorkcomedyclub.com/img/imagetest/teddy-smith-b0800a17-main-image.jpg"
+      "Ted Jones": "https://thestandnyc.com/images/comedians/_square/tedjones.jpg",
+      "Teddy Smith": "https://thestandnyc.com/images/comedians/_square/tsmith.jpg"
     }
   },
   "198865": {
@@ -33,8 +34,8 @@
       "Wali Collins"
     ],
     "photos": {
-      "Jocelyn Chia": "https://www.newyorkcomedyclub.com/img/comedians/Jocelyn-Chia-e1663378450755-6def0d6f-main-image.jpg",
-      "Simeon Goodson": "https://www.newyorkcomedyclub.com/img/imagetest/simeon-goodson-d5e30b53-main-image.jpg",
+      "Jocelyn Chia": "https://thestandnyc.com/images/comedians/_square/Jocelyn-Chia-e1663378450755-6def0d6f-main-image.jpg",
+      "Simeon Goodson": "https://thestandnyc.com/images/comedians/_square/simgoodson.jpg",
       "Roddy Macinnes": "https://www.newyorkcomedyclub.com/img/imagetest/roddy-macinnes-d48e0b4d-main-image.jpg",
       "Wali Collins": "https://www.newyorkcomedyclub.com/img/comedians/wali-collins-bae10a7b-main-image.jpg"
     }
@@ -58,7 +59,7 @@
     ],
     "photos": {
       "Maureen Langan": "https://www.newyorkcomedyclub.com/img/comedians/unnamed-24-a0560932-main-image.jpg",
-      "Chase Durousseau": "https://www.newyorkcomedyclub.com/img/comedians/image0-12-8f8f0876-main-image.jpg",
+      "Chase Durousseau": "https://thestandnyc.com/images/comedians/_square/chase.jpeg",
       "Brian Scolaro": "https://www.newyorkcomedyclub.com/img/comedians/brian-scolaro-c7d20aec-main-image.jpg"
     }
   },
@@ -71,11 +72,21 @@
       "Chanel Ali"
     ],
     "photos": {
-      "Seth Herzog": "https://www.newyorkcomedyclub.com/img/comedians/Seth-Headshot-b7fd0a6a-main-image.jpg",
+      "Seth Herzog": "https://thestandnyc.com/images/comedians/_square/Thumbnail%2BSeth%2BInterview.jpg",
       "Wali Collins": "https://www.newyorkcomedyclub.com/img/comedians/wali-collins-bae10a7b-main-image.jpg",
       "Brian Grossi": "https://www.newyorkcomedyclub.com/img/imagetest/brian-grossi-bd2d0a98-main-image.jpg",
-      "Jocelyn Chia": "https://www.newyorkcomedyclub.com/img/comedians/Jocelyn-Chia-e1663378450755-6def0d6f-main-image.jpg",
-      "Chanel Ali": "https://www.newyorkcomedyclub.com/img/comedians/ali-5e0006f3-main-image.jpg"
+      "Jocelyn Chia": "https://thestandnyc.com/images/comedians/_square/Jocelyn-Chia-e1663378450755-6def0d6f-main-image.jpg",
+      "Chanel Ali": "https://thestandnyc.com/images/comedians/_square/Chanel_Ali.jpg"
+    }
+  },
+  "199771": {
+    "comedians": [
+      "Cobra Kai",
+      "Zeam Studios",
+      "Paul Mecurio"
+    ],
+    "photos": {
+      "Paul Mecurio": "https://thestandnyc.com/images/comedians/_square/paul-mecurio.jpg"
     }
   }
 }
