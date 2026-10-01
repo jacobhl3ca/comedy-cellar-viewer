@@ -4946,8 +4946,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/remy-kassimir",
     "bio_stand": "Remy Kassimir is a New York City native stand up comedian and actor. She hosts the popular podcast “How Cum” on iTunes and is a regular guest on Sirius XM’s Insight Channel. She has been seen on The Meredith Veiera Show and in the background of one episode of 30 Rock (but for like, the whole episode. It’s cool).",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/remy2020.jpeg",
-    "bio": "Remy Kassimir is a stand-up comedian performing in New York City. She performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/remy2020.jpeg"
   },
   {
     "name": "Richie Redding",
@@ -10361,7 +10360,7 @@
   {
     "name": "Joe Gatto",
     "venues": [],
-    "bio_wiki": "Joseph Anthony Gatto Jr. is an American improvisational comedian, actor, and producer. He is a former member of the Tenderloins, a comedy troupe consisting of lifelong friends Sal Vulcano, James Murray, and Brian Quinn. Along with the other members of the Tenderloins, he starred in the comedy televi",
+    "bio_wiki": "Joseph Anthony Gatto Jr. is an American improvisational comedian, actor, and producer. He is a former member of The Tenderloins, a comedy troupe consisting of lifelong friends Sal Vulcano, James Murray, and Brian Quinn. Along with the other members of the Tenderloins, Gatto starred in the comedy tel",
     "photo_wiki": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Joe_Gatto_12_7_2024_%282%29_%28cropped%29.jpg/330px-Joe_Gatto_12_7_2024_%282%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
@@ -10447,7 +10446,8 @@
   },
   {
     "name": "The Moth",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "The Moth is a nonprofit group based in New York City, dedicated to the craft of storytelling. Founded in 1997, the organization presents a wide range of theme-based storytelling events across the United States and abroad, often featuring prominent literary and cultural personalities alongside everyd"
   },
   {
     "name": "Cobra Kai",
@@ -10455,6 +10455,30 @@
   },
   {
     "name": "Paul Mecurio",
+    "venues": []
+  },
+  {
+    "name": "Jilberto Soto",
+    "venues": []
+  },
+  {
+    "name": "Ryan Thomas",
+    "venues": []
+  },
+  {
+    "name": "Lucas O'Neil",
+    "venues": []
+  },
+  {
+    "name": "Mia Wilson",
+    "venues": []
+  },
+  {
+    "name": "Ja-Ron Young",
+    "venues": []
+  },
+  {
+    "name": "Ben DeMarco",
     "venues": []
   }
 ]
