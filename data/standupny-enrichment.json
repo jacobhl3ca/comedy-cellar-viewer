@@ -88,5 +88,23 @@
     "photos": {
       "Paul Mecurio": "https://thestandnyc.com/images/comedians/_square/paul-mecurio.jpg"
     }
+  },
+  "200118": {
+    "comedians": [
+      "Happy Time Apocalypse",
+      "Alex Gardes",
+      "Sara Huntington",
+      "Molly Densmore",
+      "Gina Brillon",
+      "Two Jews",
+      "Reg Thomas"
+    ],
+    "photos": {
+      "Alex Gardes": "https://thestandnyc.com/images/comedians/_square/Alex-Gardes.jpeg",
+      "Sara Huntington": "https://thestandnyc.com/images/comedians/_square/Sara_Huntington_1.jpg",
+      "Molly Densmore": "https://thestandnyc.com/images/comedians/_square/densmore.jpg",
+      "Gina Brillon": "https://thestandnyc.com/images/comedians/_square/Gina_Brillon.jpg",
+      "Reg Thomas": "https://thestandnyc.com/images/comedians/_square/Reg_Thomas.jpeg"
+    }
   }
 }
