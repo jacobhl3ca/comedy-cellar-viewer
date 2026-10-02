@@ -5091,8 +5091,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/sara-huntington",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Sara_Huntington_1.jpg",
-    "bio_stand": "Sara is awkwardly fierce. She’s a lovely balance between self-depreciating and an absolute joy. She is edgy and hits topics of relationships and growing up in the country. She’s a viral sensation on social media as sarapoptarts. Sara started making videos online because she was a stand-up comic living in Indiana but desperate to be seen. She’s headlined clubs around the Midwest and performed at festivals such as Rise Comedy Festival and Let’s Fest Comedy. Outside of comedy she enjoys cats, smelling candles, and dipping sauces.",
-    "bio": "Sara Huntington is a stand-up comedian performing in New York City. She performs at clubs across the city."
+    "bio_stand": "Sara is awkwardly fierce. She’s a lovely balance between self-depreciating and an absolute joy. She is edgy and hits topics of relationships and growing up in the country. She’s a viral sensation on social media as sarapoptarts. Sara started making videos online because she was a stand-up comic living in Indiana but desperate to be seen. She’s headlined clubs around the Midwest and performed at festivals such as Rise Comedy Festival and Let’s Fest Comedy. Outside of comedy she enjoys cats, smelling candles, and dipping sauces."
   },
   {
     "name": "Sara Weinshenk",
@@ -10495,6 +10494,10 @@
   },
   {
     "name": "Hannah Renee",
+    "venues": []
+  },
+  {
+    "name": "Two Jews",
     "venues": []
   }
 ]
