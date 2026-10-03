@@ -10441,7 +10441,8 @@
   },
   {
     "name": "Comic Relief",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Comic Relief is a British charity, founded in 1985 by the comedy scriptwriter Richard Curtis and comedian Sir Lenny Henry in response to the 1983–1985 famine in Ethiopia. The concept of Comic Relief was to get British comedians to make the public laugh, while raising money to help people around the "
   },
   {
     "name": "The Moth",
@@ -10499,5 +10500,10 @@
   {
     "name": "Two Jews",
     "venues": []
+  },
+  {
+    "name": "Jordan Klepper",
+    "venues": [],
+    "bio_wiki": "Jordan Klepper is an American comedian. He began his career as a member of The Second City and Upright Citizens Brigade. From 2014 to 2017, he was a correspondent on The Daily Show. He started his own satirical program, The Opposition with Jordan Klepper, which was canceled in 2018. He then starred "
   }
 ]
