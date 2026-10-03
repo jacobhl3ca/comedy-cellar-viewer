@@ -6,14 +6,14 @@
 - This repo is the comedy-lineup viewer plus the merged jazz mode; standalone `~/Tonight Jazz/tonight-jazz-viewer` is an archive.
 - `src/` files are concatenated into `public/app.js`, then minified to `public/app.min.js`.
 - `api/` contains Vercel serverless functions and cron handlers; `public/` is the browser output.
-- Capacitor iOS wrapper lives in `ios/`.
+- Capacitor wrappers live in `ios/` and `android/`.
 
 ## Workflow
 
 - Before changes, read `README.md`, `BACKLOG.md`, and any touched `api/`, `src/`, or `scripts/` files.
 - Run `npm run build` after frontend/source changes; it also bakes jazz data, concatenates source files, minifies JS/CSS, and cache-busts `public/index.html`.
 - Use `npm run dev:vercel` when API behavior must be exercised locally; static preview is `npm run dev`.
-- Keep concat order intact unless deliberately changing the boot pipeline: `jazz.js`, `native.js`, `prefs.js`, `data.js`, `render.js`, `ui.js`, `init.js`.
+- Keep concat order intact unless deliberately changing the boot pipeline: `jazz.js`, `native.js`, `prefs.js`, `data.js`, `render.js`, `ui.js`, `init.js`, `account.js`.
 
 ## Guardrails
 
