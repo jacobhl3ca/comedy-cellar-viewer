@@ -39,17 +39,17 @@
     { "source": "/api/me", "destination": "/api/account-router?action=me" },
     { "source": "/api/prefs", "destination": "/api/account-router?action=prefs" },
     { "source": "/api/lineup", "destination": "/api/lineup" },
-    { "source": "/tonight", "destination": "/index.html" },
+    { "source": "/tonight", "destination": "/tonight.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/support", "destination": "/support.html" },
-    { "source": "/cellar", "destination": "/index.html" },
-    { "source": "/stand", "destination": "/index.html" },
-    { "source": "/gotham", "destination": "/index.html" },
-    { "source": "/nycc", "destination": "/index.html" },
-    { "source": "/standupny", "destination": "/index.html" },
-    { "source": "/unionhall", "destination": "/index.html" },
-    { "source": "/big", "destination": "/index.html" },
-    { "source": "/comics", "destination": "/index.html" }
+    { "source": "/cellar", "destination": "/cellar.html" },
+    { "source": "/stand", "destination": "/stand.html" },
+    { "source": "/gotham", "destination": "/gotham.html" },
+    { "source": "/nycc", "destination": "/nycc.html" },
+    { "source": "/standupny", "destination": "/standupny.html" },
+    { "source": "/unionhall", "destination": "/unionhall.html" },
+    { "source": "/big", "destination": "/big.html" },
+    { "source": "/comics", "destination": "/comics.html" }
   ],
   "headers": [
     {
