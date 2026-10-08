@@ -1312,7 +1312,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/pete-davidson",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/pete-davidson.jpg",
-    "featured": true
+    "featured": true,
+    "bio_stand": "Stand-up comedian Pete Davidson returns to “Saturday Night Live” for his fifth season. Davidson, 25, is the youngest member of the current cast, as well as the first “SNL” cast member to be born in the 1990s. Davidson shot his first one-hour stand up special for Comedy Central in 2016 and was named one of Forbes’ 2016 “30 Under 30.” He made headlines as one of the featured comedians on the 2015 Comedy Central “Roast of Justin Bieber.” Davidson can be seen in the Netflix comedy “Set It Up,” the independent film “Big Time Adolescence” and Paramount Players’ “What Men Want.” Most recently, he was in Netflix’s Mötley Crüe biopic “The Dirt.” Davidson is from Staten Island, N.Y., and his birthday is Nov. 16."
   },
   {
     "name": "Dave Attell",
@@ -10547,7 +10548,8 @@
   },
   {
     "name": "Romy Rosner",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Romy Rosner is a stand-up comedian from Philly that is now based out of New York. Romy has performed at clubs such as Helium, Punchline as well as The Stand. Romy has been roast battling for the past two years and is undefeated in both Philly and New York."
   },
   {
     "name": "Shyam Subramanian",
@@ -10609,11 +10611,13 @@
   },
   {
     "name": "Devon Walker",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Devon Walker is a stand-up comic from Austin, TX currently based in Brooklyn. Devon has been named as one of Comedy Central's \"Up Next\" comics to watch, and has been featured on Clusterfest, Moontower Comedy Festival, and the Big Sky Comedy Festival. Devon's dad is really proud of him."
   },
   {
     "name": "Medha Gandhi",
-    "venues": []
+    "venues": [],
+    "bio_stand": "The newest co-host of the wildly popular Elvis Duran and the Morning Show, Medha Gandhi has quickly become one of the most beloved cast members. The Ohio State University graduate and great-great-granddaughter of Mahatma Gandhi is known for her daily “3 Things You Need to Know” segment that runs within the first 15 minutes of each hour during the show. Known for her wild travel stories and love of nature and animals, Gandhi is adventurous, loves cartoons, game shows, and Tyler Perry movies. She is involved in various charitable organizations, including the Muscular Dystrophy Association (MDA) and The Alzheimer’s Association, among others."
   },
   {
     "name": "Adam Mamawala",
@@ -10629,6 +10633,18 @@
   },
   {
     "name": "Cam Leedy",
+    "venues": []
+  },
+  {
+    "name": "Rebecca Joey Schwab",
+    "venues": []
+  },
+  {
+    "name": "Justin Brown",
+    "venues": []
+  },
+  {
+    "name": "Perry Strong",
     "venues": []
   }
 ]
