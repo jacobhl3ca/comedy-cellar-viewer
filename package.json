@@ -22,12 +22,12 @@
   },
   "homepage": "https://github.com/jacobhl3ca/comedy-cellar-viewer#readme",
   "dependencies": {
-    "@capacitor/android": "8.3.0",
+    "@capacitor/android": "8.5.2",
     "@capacitor/cli": "^8.5.2",
     "@capacitor/core": "^8.5.2",
     "@capacitor/haptics": "^8.0.2",
     "@capacitor/ios": "^8.5.2",
-    "@capacitor/local-notifications": "^8.0.2",
+    "@capacitor/local-notifications": "^8.3.1",
     "@capacitor/share": "^8.0.1",
     "@upstash/redis": "^1.37.0",
     "@vercel/kv": "^3.0.0"
