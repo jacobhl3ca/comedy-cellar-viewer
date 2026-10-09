@@ -6,24 +6,6 @@
     ],
     "photos": {}
   },
-  "198506": {
-    "comedians": [
-      "Amanda KnoxAmanda Knox",
-      "Ahri Findling",
-      "Amanda Knox",
-      "Edinburgh Fringe",
-      "Ted Jones",
-      "Teddy Smith",
-      "Amazon Prime",
-      "Ted Jones-World"
-    ],
-    "photos": {
-      "Ahri Findling": "https://thestandnyc.com/images/comedians/_square/ahri.jpg",
-      "Amanda Knox": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Amanda_Knox_OFTV.jpg/330px-Amanda_Knox_OFTV.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "Ted Jones": "https://thestandnyc.com/images/comedians/_square/tedjones.jpg",
-      "Teddy Smith": "https://thestandnyc.com/images/comedians/_square/tsmith.jpg"
-    }
-  },
   "198865": {
     "comedians": [
       "Lomedy Killers",
@@ -66,6 +48,16 @@
       "Molly Densmore": "https://thestandnyc.com/images/comedians/_square/densmore.jpg",
       "Gina Brillon": "https://thestandnyc.com/images/comedians/_square/Gina_Brillon.jpg",
       "Reg Thomas": "https://thestandnyc.com/images/comedians/_square/Reg_Thomas.jpeg"
+    }
+  },
+  "201072": {
+    "comedians": [
+      "Socially Matched",
+      "Jocelyn Chia",
+      "Free Drinks"
+    ],
+    "photos": {
+      "Jocelyn Chia": "https://thestandnyc.com/images/comedians/_square/Jocelyn-Chia-e1663378450755-6def0d6f-main-image.jpg"
     }
   }
 }
