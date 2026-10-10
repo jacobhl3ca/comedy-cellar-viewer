@@ -10670,5 +10670,64 @@
   {
     "name": "Free Drinks",
     "venues": []
+  },
+  {
+    "name": "Lea’h Sampson",
+    "venues": []
+  },
+  {
+    "name": "Michael Green",
+    "venues": []
+  },
+  {
+    "name": "Andy Aluise",
+    "venues": [],
+    "bio_stand": "Andy Aluise is a stand up comedian and writer based in New York City. Andy has performed in shows all over the country with names such as Adam Sandler, Sherrod Small, and many more. He can be seen on stage nightly in Manhattan."
+  },
+  {
+    "name": "Colin Armstrong",
+    "venues": []
+  },
+  {
+    "name": "Freddie Shanel",
+    "venues": []
+  },
+  {
+    "name": "Jake Vevera",
+    "venues": []
+  },
+  {
+    "name": "Osei Caleb",
+    "venues": []
+  },
+  {
+    "name": "Valerie David",
+    "venues": []
+  },
+  {
+    "name": "Carlos Frias",
+    "venues": []
+  },
+  {
+    "name": "Francisco Aldorando",
+    "venues": []
+  },
+  {
+    "name": "Spencer Earl",
+    "venues": []
+  },
+  {
+    "name": "Khris Black",
+    "venues": []
+  },
+  {
+    "name": "Sabrina Wu",
+    "venues": [],
+    "bio_stand": "Sabrina Wu is a Brooklyn-based stand up comedian. She's been selected for the Women in Comedy Festival, Laughing Skull Comedy Festival, and Boston Comedy Festival. She's also a staff writer on the Disney+ reboot of Doogie Howser.",
+    "photo_wiki": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/SabrinaWu-byPhilipRomano.jpg/330px-SabrinaWu-byPhilipRomano.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  {
+    "name": "Eleanor Conway",
+    "venues": []
   }
 ]
