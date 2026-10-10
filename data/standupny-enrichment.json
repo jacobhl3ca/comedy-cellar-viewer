@@ -6,22 +6,6 @@
     ],
     "photos": {}
   },
-  "198865": {
-    "comedians": [
-      "Lomedy Killers",
-      "Jocelyn Chia",
-      "Simeon Goodson",
-      "Caitlin Pellufo",
-      "Roddy Macinnes",
-      "Wali Collins"
-    ],
-    "photos": {
-      "Jocelyn Chia": "https://thestandnyc.com/images/comedians/_square/Jocelyn-Chia-e1663378450755-6def0d6f-main-image.jpg",
-      "Simeon Goodson": "https://thestandnyc.com/images/comedians/_square/simgoodson.jpg",
-      "Roddy Macinnes": "https://www.newyorkcomedyclub.com/img/imagetest/roddy-macinnes-d48e0b4d-main-image.jpg",
-      "Wali Collins": "https://www.newyorkcomedyclub.com/img/comedians/wali-collins-bae10a7b-main-image.jpg"
-    }
-  },
   "199771": {
     "comedians": [
       "Cobra Kai",
@@ -29,6 +13,7 @@
       "Paul Mecurio"
     ],
     "photos": {
+      "Cobra Kai": "https://thumb.wikimedia.org/wikipedia/en/thumb/d/d6/CobraKaiTitleScreen.png/330px-CobraKaiTitleScreen.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "Paul Mecurio": "https://thestandnyc.com/images/comedians/_square/paul-mecurio.jpg"
     }
   },
@@ -46,7 +31,7 @@
       "Alex Gardes": "https://thestandnyc.com/images/comedians/_square/Alex-Gardes.jpeg",
       "Sara Huntington": "https://thestandnyc.com/images/comedians/_square/Sara_Huntington_1.jpg",
       "Molly Densmore": "https://thestandnyc.com/images/comedians/_square/densmore.jpg",
-      "Gina Brillon": "https://thestandnyc.com/images/comedians/_square/Gina_Brillon.jpg",
+      "Gina Brillon": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Gina_Brillon_-_Photo_1.jpg/330px-Gina_Brillon_-_Photo_1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "Reg Thomas": "https://thestandnyc.com/images/comedians/_square/Reg_Thomas.jpeg"
     }
   },
