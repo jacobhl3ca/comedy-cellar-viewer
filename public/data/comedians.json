@@ -10458,7 +10458,8 @@
   },
   {
     "name": "Paul Mecurio",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Paul Mecurio is an American comedian, actor, writer and producer. Mecurio has dozens of TV and film appearances and has won an Emmy Award and a Peabody Award. Mecurio worked as an investment banker and mergers and acquisitions lawyer before he turned to stand-up comedy full time."
   },
   {
     "name": "Jilberto Soto",
@@ -10728,6 +10729,14 @@
   },
   {
     "name": "Eleanor Conway",
+    "venues": []
+  },
+  {
+    "name": "It's Happening with Snooki & Joey",
+    "venues": []
+  },
+  {
+    "name": "Spill It",
     "venues": []
   }
 ]
