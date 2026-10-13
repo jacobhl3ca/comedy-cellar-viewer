@@ -44,5 +44,20 @@
     "photos": {
       "Jocelyn Chia": "https://thestandnyc.com/images/comedians/_square/Jocelyn-Chia-e1663378450755-6def0d6f-main-image.jpg"
     }
+  },
+  "201342": {
+    "comedians": [
+      "Brian Grossi",
+      "Tori Piskin",
+      "Liz Glazer",
+      "Sunny Mashari",
+      "Edinburgh Fringe",
+      "Steve Wyatt"
+    ],
+    "photos": {
+      "Brian Grossi": "https://www.newyorkcomedyclub.com/img/imagetest/brian-grossi-bd2d0a98-main-image.jpg",
+      "Tori Piskin": "https://thestandnyc.com/images/comedians/_square/tori-piskin-203-WEB.jpg",
+      "Liz Glazer": "https://thestandnyc.com/images/comedians/_square/lizglazer.jpg"
+    }
   }
 }
