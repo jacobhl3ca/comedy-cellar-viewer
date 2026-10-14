@@ -639,7 +639,8 @@
       "nycc",
       "comedy_cellar"
     ],
-    "tagline_cellar": "From \"BOLO\" and \"SUBSTANCE\" YouTube specials"
+    "tagline_cellar": "From \"BOLO\" and \"SUBSTANCE\" YouTube specials",
+    "bio_stand": "Matt Ruby is a comedian, writer, and filmmaker from New York City. His comedy has been filmed by Comedy Central, MTV, NBC/Seeso, and FOX. He hosts the podcast Kind of a Lot with Matt Ruby. In his latest special, Substance, he performs 4 sets on 4 nights, 1 high, 1 drunk, 1 sober, and 1 on shrooms. His previous special, Feels Like Matt Ruby (“funny\" according to the NY Times) is also available on YouTube. His two albums, Feels Like Matt Ruby and Hot Flashes, are in regular rotation on Sirius and went top 10 on the iTunes Comedy charts. He's also been featured on CNN, The Huffington Post, New York magazine, Time Out, and many more. Misguided Meditation is his one-man show about mindfulness, psychedelics, therapy, and death. He's a regular at the legendary Comedy Cellar and co-produces Hot Soup there (Tuesdays), one of NYC’s longest running independently produced comedy shows, and Good Eggs (Wednesdays) at NY Comedy Club. He’s also a writer-for-hire, co-author of the NY Times bestseller REWORK, and former frontman of the indie rock band Plastics Hi-Fi. Here’s a headshot."
   },
   {
     "name": "Jenny Zigrino",
@@ -5585,7 +5586,8 @@
     "venues": [
       "comedy_cellar"
     ],
-    "bio": "Janelle James is a stand-up comedian and actress. She stars as Ava Coleman on the hit ABC series Abbott Elementary. She's appeared on The Tonight Show and multiple comedy specials. A Comedy Cellar regular who's become a major TV star."
+    "bio": "Janelle James is a stand-up comedian and actress. She stars as Ava Coleman on the hit ABC series Abbott Elementary. She's appeared on The Tonight Show and multiple comedy specials. A Comedy Cellar regular who's become a major TV star.",
+    "tagline_cellar": "FROM ABBOTT ELEMENTARY, NETFLIX, HBO, BET"
   },
   {
     "name": "Jeff Bailey",
@@ -5605,7 +5607,7 @@
     "venues": [
       "comedy_cellar"
     ],
-    "tagline_cellar": "\"NETFLIX IS A JOKE\", 2025 COMICS TO WATCH, DON'T TELL COMEDY",
+    "tagline_cellar": "WINNER OF BIG SKY COMEDY FESTIVAL, \"NETFLIX IS A JOKE\", 2025 COMICS TO WATCH, DON'T TELL COMEDY",
     "bio_stand": "Josh Ocean Thomas is a Tunisian-American stand-up comedian based in Chicago. J.O.T. is headed to NYC to bring his energetic stage presence, quick wit, and larger-than-life physicality to the stage, along with some of his favorite comedians. From stories about his family and past relationships to sharp observations on his mixed cultural background, Josh delivers vibrant, relatable humor that connects with audiences everywhere. Standing six feet tall (well, 5’11”), and weighing in at 160 pounds, Josh was named one of the “2025 Comics to Watch” by the New York City Comedy Festival. He’s performed at top comedy clubs and has toured theaters nationwide alongside comedians like Tim Dillon, Morgan Jay, and more"
   },
   {
@@ -9776,7 +9778,8 @@
   {
     "name": "Jocelyn Chia",
     "venues": [],
-    "bio_wiki": "Jocelyn Chia is an American stand-up comedian. She was formerly a lawyer before becoming a comedian in 2013."
+    "bio_wiki": "Jocelyn Chia is an American stand-up comedian. She was formerly a lawyer before becoming a comedian in 2013.",
+    "tagline_cellar": "GUTFELD, VICE TV, COMEDY CENTRAL, MTV, AXS TV"
   },
   {
     "name": "Laz Rivero",
@@ -10757,6 +10760,54 @@
   },
   {
     "name": "Steve Wyatt",
+    "venues": []
+  },
+  {
+    "name": "Joey Vega",
+    "venues": [],
+    "bio": "FROM COMEDY CENTRAL, HBO",
+    "tagline_cellar": "FROM COMEDY CENTRAL, HBO"
+  },
+  {
+    "name": "Chloe Hilliard",
+    "venues": [],
+    "bio": "FROM THE TONIGHT SHOW, FROM LAST COMIC STANDING",
+    "tagline_cellar": "FROM THE TONIGHT SHOW, FROM LAST COMIC STANDING"
+  },
+  {
+    "name": "Nikhil Mehta",
+    "venues": []
+  },
+  {
+    "name": "Mariel O'Reilly",
+    "venues": []
+  },
+  {
+    "name": "Shosh Brodman",
+    "venues": []
+  },
+  {
+    "name": "Ben Herwitz",
+    "venues": []
+  },
+  {
+    "name": "Nonye Grown-West",
+    "venues": []
+  },
+  {
+    "name": "Marc Theobald",
+    "venues": []
+  },
+  {
+    "name": "Travis Grant",
+    "venues": []
+  },
+  {
+    "name": "Dylan O'Keeffe",
+    "venues": []
+  },
+  {
+    "name": "Rosey Catherine",
     "venues": []
   }
 ]
