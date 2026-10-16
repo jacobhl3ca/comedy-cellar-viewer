@@ -38,5 +38,35 @@
       "Rsvp Required"
     ],
     "photos": {}
+  },
+  "201766": {
+    "comedians": [
+      "Off Scrint",
+      "Arc Beverly",
+      "Nadiv Molcho",
+      "Wellie Jackson",
+      "Aiko Tanaka",
+      "Lan Edwards"
+    ],
+    "photos": {
+      "Wellie Jackson": "https://www.newyorkcomedyclub.com/img/comedians/WellieJackson-bb330aa2-main-image.jpg",
+      "Aiko Tanaka": "https://thestandnyc.com/images/comedians/_square/aikotanaka.jpg"
+    }
+  },
+  "201767": {
+    "comedians": [
+      "Off Scrint",
+      "Arc Beverly",
+      "Erica Rhodes",
+      "Grant Cotter",
+      "Tori Piskin",
+      "Chaunte Wayans"
+    ],
+    "photos": {
+      "Erica Rhodes": "https://thestandnyc.com/images/comedians/_square/Erica_Rhodes.jpg",
+      "Grant Cotter": "https://www.newyorkcomedyclub.com/img/comedians/grantcotter-b52d0a65-main-image.jpg",
+      "Tori Piskin": "https://thestandnyc.com/images/comedians/_square/tori-piskin-203-WEB.jpg",
+      "Chaunte Wayans": "https://thestandnyc.com/images/comedians/_square/chaunte.jpg"
+    }
   }
 }
