@@ -74,7 +74,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=3d74809">
+  <link rel="stylesheet" href="style.min.css?v=d85b0d3">
   <script>
     (function() {
       const root = document.documentElement;
@@ -138,6 +138,11 @@
   <script>window.__umamiTagApp=function(t,p){try{var c=window.Capacitor;if(c&&(typeof c.isNativePlatform==="function"?c.isNativePlatform():c.isNative)){p.tag="app"}}catch(e){}return p};</script>
   <script defer src="https://stats.hidescore.com/script.js" data-website-id="3bf5a29c-b205-43f7-b245-ae785382ca96" data-domains="tonightnyc.com,www.tonightnyc.com,cellartonight.com,www.cellartonight.com" data-before-send="__umamiTagApp"></script>
 <!-- sentry -->
+<!-- Sentry #21: "Object Not Found Matching Id:N, MethodName:update, ParamCount:N"
+     is a non-Error rejection thrown by an injected host bridge (the Outlook/Teams
+     SafeLinks link scanner and some WebView hosts call window methods by id).
+     No app code uses a MethodName/postMessage bridge, so drop that pattern only. -->
+<script>window.sentryOnLoad=function(){Sentry.init({ignoreErrors:[/Object Not Found Matching Id:\d+, MethodName:\w+, ParamCount:\d+/]})};</script>
 <script src="https://js.sentry-cdn.com/2b0ccd655533ea28979df00bdb820a8f.min.js" crossorigin="anonymous"></script>
 <!-- /sentry -->
 </head>
@@ -736,7 +741,7 @@
     <button id="pwa-install-btn" onclick="pwaInstall()" style="display:none;"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Add to Home Screen</button>
   </footer>
 
-  <script defer src="app.min.js?v=3d74809"></script>
+  <script defer src="app.min.js?v=d85b0d3"></script>
   <!-- Vercel Web Analytics + Speed Insights + Cloudflare Web Analytics — gated to skip Capacitor native shell so iOS app stays "No data collected" on App Store -->
   <script>
     if (!window.Capacitor?.isNativePlatform?.()) {
