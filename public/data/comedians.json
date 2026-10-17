@@ -764,7 +764,8 @@
     "bio": "Gracie Canaan began her comedy career in Philadelphia in 2015, and since then has performed at major comedy clubs, colleges and notable venues in New York and along the east coast. She has made appearances at various festivals including The Hoboken Comedy Festival, Lady Laughs Comedy Festival in Madison, WI, and most recently, Laugh Your Asheville Off in Asheville, NC.",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio_stand": "Gracie fell in love with stand-up comedy in 2015 after discovering that it combined her three favorite artforms: writing, performance, and gaining validation from strangers. She has since performed at notable festivals like San Francisco Sketchfest, Laugh Your Asheville off, has written and produced sketches that have appeared in places like Funny or Die! and in the Quickie Film Festival, and contributed satire pieces to Little Old Lady Comedy and WICF Daily. She was one of seven writers chosen for the prestigious NBC Late Night Writer's Workshop in August 2020. Her style can be described as dry, cheeky, and by one audience member at a corporate event, \"off-putting.\" Her immediate life goals are to land a job in a writer's room, and to curb her frequent use of Good Will Hunting quotes in everyday conversation."
   },
   {
     "name": "Corey O&#039;Brien",
@@ -10854,6 +10855,34 @@
   },
   {
     "name": "Lauren Ash",
+    "venues": []
+  },
+  {
+    "name": "Ariel Elias",
+    "venues": []
+  },
+  {
+    "name": "Nadiv Molcho",
+    "venues": []
+  },
+  {
+    "name": "Wellie Jackson",
+    "venues": []
+  },
+  {
+    "name": "Aiko Tanaka",
+    "venues": []
+  },
+  {
+    "name": "Lan Edwards",
+    "venues": []
+  },
+  {
+    "name": "Grant Cotter",
+    "venues": []
+  },
+  {
+    "name": "Dovi Neuburger",
     "venues": []
   }
 ]
