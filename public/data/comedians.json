@@ -472,7 +472,8 @@
     "bio": "Funny, smart, fresh, and magnetic, Neko White is a star. A comedian born and raised in Harlem, Neko has brought his unique perspective and sharp comedy from New York to international audiences. Beginning his career at just fourteen years old, the then high school freshman was sitting in class when a teacher asked, “Does anyone have a talent?” Something in Neko’s mind said, “Go tell jokes!“ He went up in front of his classmates and it worked. And, as they say, the rest is history.   As a stand-up, Neko has been featured on Netflix’s \"Pete Davidson Presents: The Best Friends,\" Cracked Comedy Club, TruTV’s \"Laff Tracks,\" AXS TV’s \"Gotham Comedy Live,\" STARZ’s \"New York’s Funniest,\" and Kevin Hart’s LOL Network. He was named one of the \"New Faces\" in the Just For Laughs Festival, performed in Netflix is a Joke Festival, and won Carolines’ prestigious March Madness competition. Neko released a comedy album titled \"Marscellus,\" then produced one of the most original filmed specials in recent memory with his self-released \"Dark Out.\" Shot with no audience, a pitch-black background, and recorded with an old-fashioned microphone, Neko’s special received critical acclaim. One publication said \"Dark Out\" made Neko one of the “innovators changing comedy.” Neko also self-produced his first hour special, \"Neko White: Introducing Me.” He was the subject of the award-winning documentary, “One Mic.”  Neko is an accomplished television personality. He hosted Vice News’ popular series, \"How To Be A Person\" and has been a regular guest on MTV2’s \"Hip Hop Hollywood Squares\" and Comedy Central’s \"Dark Humor.\" Neko made his film acting debut in the movie, \"Midlife.\"",
     "venues": [
       "nycc"
-    ]
+    ],
+    "tagline_cellar": "TruTV's Laff Tracks, Kevin Hart's LOL Network, AXS TV's Gotham Comedy Live, Fox's Laughs, and Seeso's New York's Funniest."
   },
   {
     "name": "Jon Fisch",
@@ -2923,7 +2924,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/andre-de-freitas",
     "bio_stand": "André De Freitas is a critically acclaimed and award-winning comedian known for his sharp, personal comedy and global perspective. He has performed across Europe, the U.S., Dubai, and Australia — where he won Best International New Act at the Melbourne International Comedy Festival. In 2023, André’s debut solo hour What If premiered at the Edinburgh Fringe Festival to critical acclaim, earning multiple 5-star reviews and a spot on The Telegraph’s list of the funniest jokes of the Fringe. The full special was released on YouTube in June 2025. He is the co-creator and star of Comedy Therapy, a live show and podcast blending humor and mental health, which became a box office success and charted as the #3 podcast in Portugal. André has generated over 50 million views across social platforms. He was featured in the BBC World Service Arts Hour Comedy Special (2024), and previously co-wrote and co-starred in a global ad campaign for Bybit alongside Formula 1 champions Max Verstappen and Sergio “Checo” Perez.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/andre_defreitasSQ.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/andre_defreitasSQ.jpg",
+    "tagline_cellar": "BBC, NEW YORK COMEDY FESTIVAL \"NEW YORK FUNIEST\""
   },
   {
     "name": "Andre Kim",
@@ -5609,7 +5611,7 @@
     "venues": [
       "comedy_cellar"
     ],
-    "tagline_cellar": "WINNER OF BIG SKY COMEDY FESTIVAL, \"NETFLIX IS A JOKE\", 2025 COMICS TO WATCH, DON'T TELL COMEDY",
+    "tagline_cellar": "WINNER OF BIG SKY COMEDY FESTIVAL, \"NETFLIX IS A JOKE\", NEW YORK COMEDY FESTIVAL \"NEW YORK FUNNIEST\", Y2025 COMICS TO WATCH, DON'T TELL COMEDY",
     "bio_stand": "Josh Ocean Thomas is a Tunisian-American stand-up comedian based in Chicago. J.O.T. is headed to NYC to bring his energetic stage presence, quick wit, and larger-than-life physicality to the stage, along with some of his favorite comedians. From stories about his family and past relationships to sharp observations on his mixed cultural background, Josh delivers vibrant, relatable humor that connects with audiences everywhere. Standing six feet tall (well, 5’11”), and weighing in at 160 pounds, Josh was named one of the “2025 Comics to Watch” by the New York City Comedy Festival. He’s performed at top comedy clubs and has toured theaters nationwide alongside comedians like Tim Dillon, Morgan Jay, and more"
   },
   {
@@ -10910,6 +10912,47 @@
   },
   {
     "name": "Yang Meng'en",
+    "venues": []
+  },
+  {
+    "name": "Tony Dabas",
+    "venues": [],
+    "bio_stand": "Tony Dabas is a stand-up comedian and actor from New York City. Born and raised in Brooklyn and Staten Island Tony got his start in comedy in 2013 at the age of 22 years old performing at various venues around the NYC Open Mic Circuit. He’s played all around NYC and played shows in Florida and specializes in character and impersonation based comedy. His comedy his based on his family experiences as well as all of the friends and relatives he’s encountered throughout this life."
+  },
+  {
+    "name": "Konner Kienzle",
+    "venues": []
+  },
+  {
+    "name": "Maggie Crane",
+    "venues": []
+  },
+  {
+    "name": "Kevin Israel",
+    "venues": []
+  },
+  {
+    "name": "Danny Rathbun",
+    "venues": []
+  },
+  {
+    "name": "Humzah Azeem",
+    "venues": []
+  },
+  {
+    "name": "Joey Rinaldi",
+    "venues": []
+  },
+  {
+    "name": "Juan Nicolón",
+    "venues": []
+  },
+  {
+    "name": "Alifornia Acep",
+    "venues": []
+  },
+  {
+    "name": "Beverly Hills",
     "venues": []
   }
 ]
