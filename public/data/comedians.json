@@ -10963,7 +10963,8 @@
   },
   {
     "name": "Prime Video",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Amazon Prime Video, known simply as Prime Video, is an American subscription video on-demand over-the-top streaming television service owned by Amazon. The service primarily distributes films and television series produced or co-produced by Amazon MGM Studios or licensed to Amazon, as Amazon Origina"
   },
   {
     "name": "Christiana Jackson",
@@ -10975,6 +10976,10 @@
   },
   {
     "name": "Guys We F@#ked",
+    "venues": []
+  },
+  {
+    "name": "Chris Simpson",
     "venues": []
   }
 ]
