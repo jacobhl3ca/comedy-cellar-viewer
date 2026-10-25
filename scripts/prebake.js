@@ -1099,9 +1099,15 @@ async function main() {
   }) + '\n');
   log(`Saved nycc-cache.json (${nyccShows.length} shows)`);
 
-  // Stand Up NY — same format as /api/standupny response
+  // Stand Up NY — same format as /api/standupny response.
+  // Some VenuePilot posters are presigned S3 links (`?X-Amz-Credential=AKIA…&X-Amz-Expires=900`).
+  // They expire 15 min after the scrape, and the bare URL is private (403), so a cached copy never
+  // loads, and its AKIA key id trips gitleaks (security check FAIL 2026-10-24). Drop those images
+  // from the cache only; the live /api/standupny response still carries the fresh link.
+  const standupnyCacheShows = standupnyShows.map(s =>
+    /[?&]X-Amz-/.test(s.image || '') ? { ...s, image: '' } : s);
   fs.writeFileSync(path.join(CACHE_DIR, 'standupny-cache.json'), JSON.stringify({
-    shows: standupnyShows, count: standupnyShows.length, source: 'standupny.com',
+    shows: standupnyCacheShows, count: standupnyCacheShows.length, source: 'standupny.com',
     prebaked: new Date().toISOString()
   }) + '\n');
   log(`Saved standupny-cache.json (${standupnyShows.length} shows)`);
