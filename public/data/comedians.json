@@ -10863,7 +10863,8 @@
   },
   {
     "name": "Ariel Elias",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Ariel Elias is an American comedian. She first gained prominence after a viral video showed her handling a heckler who threw a can of alcoholic seltzer at her onstage. She has appeared on numerous late night television talk shows. Her comedic work has drawn on her experiences growing up Jewish in Kentucky, being married, and being a millennial woman."
   },
   {
     "name": "Nadiv Molcho",
@@ -11000,6 +11001,10 @@
   },
   {
     "name": "Veronica Kwiatkowski",
+    "venues": []
+  },
+  {
+    "name": "Chef Stephen Cusato",
     "venues": []
   }
 ]
