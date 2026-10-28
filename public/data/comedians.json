@@ -4344,8 +4344,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/maddi-mays",
     "bio_stand": "Maddi Mays is Houston-raised, Los Angeles-based Artist, Costume Designer, Stylist & Illustrator, who approaches every project as a new world to dive into. Maddi has experience working in TV/Film, Theatre & Music Videos. She has worked on TV shows like Hulu's Dollface and NBC's Bust Down as a costume illustrator and PA, additionally graphic designing the logo for Bust Down. Maddi has also worked as a stylist for the artist Peyton on her music video Perfect Peach and for BRS Kash on his music video, I'm Hot, and has assistant styled for Migos & Brent Faiyaz. Additionally, Maddi has licensed her original artwork for HBO's \"PAUSE with Sam Jay\", which can be seen on the walls of every episode. Maddi's work explores character, identity and femininity. She is passionate about creating work that is striking and thought-provoking, whilst capturing subtle nuances that create an honest and fully-grounded world.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Maddi_Mays.jpeg",
-    "bio": "Maddi Mays is a stand-up comedian performing in New York City. She performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Maddi_Mays.jpeg"
   },
   {
     "name": "Madison Sinclair",
@@ -10867,7 +10866,7 @@
   {
     "name": "Ariel Elias",
     "venues": [],
-    "bio_wiki": "Ariel Elias is an American comedian. She first gained prominence after a viral video showed her handling a heckler who threw a can of alcoholic seltzer at her onstage. She has appeared on numerous late night television talk shows. Her comedic work has drawn on her experiences growing up Jewish in Kentucky, being married, and being a millennial woman."
+    "bio_wiki": "Ariel Elias is an American comedian. She first gained prominence after a viral video showed her handling a heckler who threw a can of alcoholic seltzer at her onstage. She has appeared on numerous late night television talk shows. Her comedic work has drawn on her experiences growing up Jewish in Ke"
   },
   {
     "name": "Nadiv Molcho",
@@ -11028,6 +11027,36 @@
   },
   {
     "name": "J.P. Mcdade",
+    "venues": []
+  },
+  {
+    "name": "Devin Bockrath",
+    "venues": []
+  },
+  {
+    "name": "Chris Condren",
+    "venues": [],
+    "bio_stand": "A stand up comic of 10 years described by the Chicago tribune “His act is absurdist, provocative, disturbing, often unnervingly personal”. A frequent performer of the Just For Laughs comedy festival and festivals alike. Some highlights include being featured on Comedy Central Radio and His musical comedy album Total Garbage debuting as the #11 Fitness/Workout album on iTunes."
+  },
+  {
+    "name": "Sam Froum",
+    "venues": []
+  },
+  {
+    "name": "Clay Horwitz",
+    "venues": []
+  },
+  {
+    "name": "Kyle Mara",
+    "venues": [],
+    "bio_stand": "Kyle Mara is a standup comedian, writer, and actor from Rockville Centre, NY. He's been honing his punchy conversational style in NYC clubs and is excited to make your campus laugh! Kyle has been seen on Showtime’s “City on a Hill” and you can check out his podcast \"Kyle Mara gets...\" on all platforms."
+  },
+  {
+    "name": "Valeria Vulpe",
+    "venues": []
+  },
+  {
+    "name": "Jeff Wright",
     "venues": []
   }
 ]
