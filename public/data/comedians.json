@@ -5089,7 +5089,8 @@
     "bio": "Sam Jay is a stand-up comedian and writer. She was a writer on Saturday Night Live and released her Netflix special 3 in the Morning. She hosted the HBO series Pause with Sam Jay. Known for her sharp, honest comedy about relationships, race, and culture.",
     "bio_stand": "Sam Jay is an emerging stand up comedian, actress, and speaker who hones her skills on the Boston comedy scene. Now a resident of Los Angeles, Sam is considered one of the industry’s hottest up-and-coming talents and she was selected as one of Comedy Central’s Comics To Watch in 2015. In addition to headlining some of the best comedy festival across the country, Sam is the star of Viceland’s new TV series ‘Flop House.’ As a queer woman of color, Sam is breaking ground in comedy every day. When asked how long she has been doing comedy Samaria Sam Jay Johnson smiles and replies 'For as long as I could speak'. Hailing from Boston MA a city that is no stranger to comedic prowess; a place that can lay claim to the comedic talents of Jay Leno, Louis C.K., Conan O'Brien and many others, Sam Jay is setting her own stage. Some would say the fact that she's female, African American, and a lesbian has allowed her to stand out in a male dominated industry. But it is more so how she can take these experiences and make them not only funny but relatable. Witty, candid, and raw she is bringing about a brand of comedy that has yet to be seen. Provoking audiences by pushing their thinking while still giving her sets the feel of a barroom conversation with one of your funniest friends. Her familiar personality on and off stage has allowed her to build quite the buzz in and around Boston comedy circles. Her 2013 invite to Laugh Your Asheville Off Comedy Festival and her 2014 acceptance into the Women In Comedy Festival as well as a stellar performance at the auditions for BET Comic View return to TV has got the industry insiders buzzing about this young lady. Opening for power house/veteran acts like Joe Clair BET, Hannibal Burres Comedy Central, and Rob StapletonComedy Central has not only helped this rising star hone her skills but has allowed her to branch out booking shows up and down the east coast. Performing at comedic institutions like Gotham NYC to the Comedy Studio in Cambridge Ma. Sam Johnson is wowing audiences and building her fan base. Her fresh, unique and warm approach makes Sam Jay a comedian worth seeing and one you will be talking about long after you do.",
     "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/6/65/Sam_Jay%2C_2025_%28cropped%29.png",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Sam_Jay.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Sam_Jay.jpg",
+    "tagline_cellar": "FROM THE MOVIE \"YOU PEOPLE\", WRITER SNL, 3 IN THE MORNING ON NETFLIX, \"PAUSE\" WITH SAM JAY ON HBO"
   },
   {
     "name": "Sara Huntington",
@@ -9544,7 +9545,8 @@
   },
   {
     "name": "Sarah Adelman",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Hi! My name is Sarah Adelman and I am a born and bred New Yorker and stand up comedian. I am a former reproductive health Research Scientist and now perform all over the city at venues including Stand Up NY, Littlefield, Union Hall, The Stand, Greenwich Village Comedy Club, New York Comedy Club, Caveat, DontTellComedy, and more. I’ve also opened for Judy Gold in and out of NYC as well as Mohanad Elsheiky and can be seen on two episodes of HBO’s Game Theory season 2. I was an Ars Nova resident for the 2023-2024 season in their Comedy Artist Makers’ Program where I developed and premiered my comedy solo show show EGG off-broadway in June of 2024. The show is directed by Iris Bahr (Curb Your Enthusiasm, Hacks). EGG is touring in 2024 and is an official selection of the 2024 New York Comedy Festival. My short film “BUSTED!” was shot in July 2024 and will premiere in 2025. My content has been featured on The Today Show, The Daily Mail, Bumble, Book of the Month, NewYorkers, SecretNYC, The Nudge, NowThis, 92nd Street Y, RISK! Podcast, Meta, NBC News, and others."
   },
   {
     "name": "Shelley Kim",
@@ -10859,7 +10861,8 @@
   },
   {
     "name": "Lauren Ash",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Lauren Elizabeth Ash is a Canadian actress, musician, comedian and writer. Ash is best known among television audiences for her role as Dina Fox on the sitcom Superstore, in which she was also a writer for an episode. She is also an alumna of both Second City Toronto Mainstage and is one half of the sketch comedy duo \"Cory!\". She is a two-time Canadian Comedy Award winner for Best Female Improviser in 2006 and 2007 and has also won for Best Performance by a Female - Television for Almost Heroes in 2012 and in 2015 won Best Female Performance in a Feature Film for her role as Carol in the film Dirty Singles. Since 2020, Lauren co-hosts her own podcast, \"True Crime and Cocktails\" along with her cousin, Christy Oxborrow. In 2023, Ash began a music career and in September 2025 she released her debut album."
   },
   {
     "name": "Ariel Elias",
@@ -11005,6 +11008,26 @@
   },
   {
     "name": "Chef Stephen Cusato",
+    "venues": []
+  },
+  {
+    "name": "Sean Conrad",
+    "venues": []
+  },
+  {
+    "name": "Adam Nate Levine",
+    "venues": []
+  },
+  {
+    "name": "Ali Sultan",
+    "venues": []
+  },
+  {
+    "name": "Talal Alyan",
+    "venues": []
+  },
+  {
+    "name": "J.P. Mcdade",
     "venues": []
   }
 ]
