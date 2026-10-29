@@ -3924,8 +3924,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/jetski-johnson",
     "bio_stand": "Jessie Johnson is a music school drop-out and trumpet player turned standup comedian from Phoenix, now blossoming in Los Angeles. She is a \"Door Guy\" at the World Famous Comedy Store and is a former full time cast member of the Kill Tony Podcast and a current member of the Bad Friends Podcast with Andrew Santino and Bobby Lee.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Jetski_Johnson.jpg",
-    "bio": "Jetski Johnson is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Jetski_Johnson.jpg"
   },
   {
     "name": "Jiaoying Summers",
@@ -11061,6 +11060,23 @@
   },
   {
     "name": "Mohtasham Yaqub",
+    "venues": []
+  },
+  {
+    "name": "Esther Ku",
+    "venues": [],
+    "bio_stand": "Esther Ku is a Korean-American stand-up comedian born and raised in Chicago. She honed her act at many of New York City’s comedy clubs such as Caroline’s, Stand-Up NY and Broadway. Ku made her television debut as a contestant on NBC’s Last Comic Standing Season Six, advancing to the semi-finals in Vegas, then becoming one of the top ten finalists in Hollywood. She made her radio debut on the Howard Stern show as a finalist on The Hottest Funniest Chick Contest. She was a regular cast member on MTV’s Girl Code for three seasons. She's also made guest appearances on MTV2’s Wild’n Out with Nick Cannon. She hosted the 2019 AVN Awards for Showtime. Ku played a receptionist in The Jack and Triumph Show sitcom alongside Jack MacBrayer, June Squibb, and Triumph the Insult Comic Dog, aka Robert Smigel on Adult Swim. She’s recorded several voices for Family Guy on Fox. She’s made cameos on The Jim Gaffigan Show, @Midnight, Boy Band, and The Fiddling Horse. She recently hosted the 2023 Cynthia Rowley Fashion Show for New York Fashion Week at Sony Hall. Ku has also garnered over a million views on her Tik Tok series I Grew Up In A Cult Parts 1 - 42. She is the host of her own podcast Ku and the Gang which has reached the top ten comedy podcasts on iTunes. She has been a guest on The Joe Rogan Experience, The Craig Ferguson Show, The Jenny McCarthy Show, The Church of What’s Happening Now with Joey Diaz, Tigerbelly Podcast with Bobby Lee, The Frazer Smith Show on KLOS, The Opie & Jim Norton Show on Sirius XM, the Guys We F*cked Podcast, Playboy Morning Show, Controlled Chaos with Josh Wolf, the Jason Ellis Show, Getting Doug with High, Bertcast with Bert Kreischer, Storyworthy Podcast, and more."
+  },
+  {
+    "name": "Mickey Farrow",
+    "venues": []
+  },
+  {
+    "name": "Nicci Hoo",
+    "venues": []
+  },
+  {
+    "name": "Maya Ghaderi",
     "venues": []
   }
 ]
