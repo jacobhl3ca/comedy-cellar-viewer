@@ -17,23 +17,6 @@
     ],
     "photos": {}
   },
-  "201766": {
-    "comedians": [
-      "Off Scrint",
-      "Arc Beverly",
-      "Nadiv Molcho",
-      "Wellie Jackson",
-      "Aiko Tanaka",
-      "Lan Edwards",
-      "Off Script",
-      "Maddi Mays"
-    ],
-    "photos": {
-      "Wellie Jackson": "https://www.newyorkcomedyclub.com/img/comedians/WellieJackson-bb330aa2-main-image.jpg",
-      "Aiko Tanaka": "https://thestandnyc.com/images/comedians/_square/aikotanaka.jpg",
-      "Maddi Mays": "https://thestandnyc.com/images/comedians/_square/Maddi_Mays.jpeg"
-    }
-  },
   "201767": {
     "comedians": [
       "Off Scrint",
@@ -44,7 +27,7 @@
       "Chaunte Wayans"
     ],
     "photos": {
-      "Erica Rhodes": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Erica_Rhodes_Magic_Shoot_Group_-_April_2012_%28crop%29.jpg/330px-Erica_Rhodes_Magic_Shoot_Group_-_April_2012_%28crop%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "Erica Rhodes": "https://thestandnyc.com/images/comedians/_square/Erica_Rhodes.jpg",
       "Grant Cotter": "https://www.newyorkcomedyclub.com/img/comedians/grantcotter-b52d0a65-main-image.jpg",
       "Tori Piskin": "https://thestandnyc.com/images/comedians/_square/tori-piskin-203-WEB.jpg",
       "Chaunte Wayans": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Chaunte_Wayans.jpg/330px-Chaunte_Wayans.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
@@ -67,7 +50,22 @@
       "Chanel Ali": "https://thestandnyc.com/images/comedians/_square/Chanel_Ali.jpg",
       "Onika Mclean": "https://thestandnyc.com/images/comedians/_square/IMG_20250820_232214~2.jpg",
       "Kristal Adams": "https://thestandnyc.com/images/comedians/_square/Kristal_Adams.jpg",
+      "Prime Video": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Amazon_Prime_Video_example_screenshot.png/330px-Amazon_Prime_Video_example_screenshot.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "Christiana Jackson": "https://thestandnyc.com/images/comedians/_square/Christiana%2BJackson%2Bw%2BGold%2BBag%2BHi%2BRes.jpg"
+    }
+  },
+  "203723": {
+    "comedians": [
+      "Mickey Farrow",
+      "Thash Mose",
+      "Seth Herzog",
+      "Nicci Hoo",
+      "Maya Ghaderi"
+    ],
+    "photos": {
+      "Mickey Farrow": "https://www.newyorkcomedyclub.com/img/comedians/Mickey-78b00810-main-image.jpg",
+      "Thash Mose": "https://thestandnyc.com/images/comedians/_square/Thash%2BMose%2BComic%2BHeadshot.jpg",
+      "Seth Herzog": "https://thestandnyc.com/images/comedians/_square/Thumbnail%2BSeth%2BInterview.jpg"
     }
   }
 }
