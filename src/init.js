@@ -421,25 +421,25 @@ const VIEW_BY_PATH = {
   '/comics': 'comedians',
 };
 const VIEW_META = {
-  'all':       { path: '/',       title: 'Tonight NYC — Comedy Lineups',
+  'all':       { path: '/', h1: 'Tonight NYC',       title: 'Tonight NYC — Comedy Lineups',
     description: 'NYC comedy lineups from Comedy Cellar, The Stand, and more. Per-show breakdowns, favorites, skips, and direct booking.' },
-  'top-pick':  { path: '/tonight', title: 'Top Pick Tonight — The Best NYC Comedy Show Each Night | Tonight NYC',
+  'top-pick':  { path: '/tonight', h1: 'Top Pick Tonight', title: 'Top Pick Tonight — The Best NYC Comedy Show Each Night | Tonight NYC',
     description: 'The best NYC comedy show tonight, picked from every club lineup. See who is on, compare sets, and book the right show.' },
-  'cellar':    { path: '/cellar', title: 'Comedy Cellar Tonight — Lineups | Tonight NYC',
+  'cellar':    { path: '/cellar', h1: 'Comedy Cellar', title: 'Comedy Cellar Tonight — Lineups | Tonight NYC',
     description: 'Comedy Cellar lineups tonight for every room and show time. See which comedians are on, mark favorites, and book a set.' },
-  'the-stand': { path: '/stand',  title: 'The Stand Tonight — Lineups | Tonight NYC',
+  'the-stand': { path: '/stand', h1: 'The Stand',  title: 'The Stand Tonight — Lineups | Tonight NYC',
     description: 'The Stand NYC lineups tonight. See which comedians are on each show, mark favorites, skip regulars, and book tickets.' },
-  'gotham':    { path: '/gotham', title: 'Gotham Comedy Club Tonight — Shows | Tonight NYC',
+  'gotham':    { path: '/gotham', h1: 'Gotham Comedy Club', title: 'Gotham Comedy Club Tonight — Shows | Tonight NYC',
     description: 'Gotham Comedy Club shows tonight. See the lineups and headliners for each show time, mark favorites, and book tickets.' },
-  'nycc':      { path: '/nycc',   title: 'NY Comedy Club Tonight — Lineups | Tonight NYC',
+  'nycc':      { path: '/nycc', h1: 'New York Comedy Club',   title: 'NY Comedy Club Tonight — Lineups | Tonight NYC',
     description: 'New York Comedy Club lineups tonight. See which comedians are on each show, mark favorites, and book the right set.' },
-  'standupny': { path: '/standupny', title: 'Stand Up NY Tonight — Shows | Tonight NYC',
+  'standupny': { path: '/standupny', h1: 'Stand Up NY', title: 'Stand Up NY Tonight — Shows | Tonight NYC',
     description: 'Stand Up NY shows tonight on the Upper West Side. See the lineups for each show time, mark favorites, and book tickets.' },
-  'union-hall': { path: '/unionhall', title: 'Union Hall Tonight — Brooklyn Comedy Shows | Tonight NYC',
+  'union-hall': { path: '/unionhall', h1: 'Union Hall', title: 'Union Hall Tonight — Brooklyn Comedy Shows | Tonight NYC',
     description: 'Union Hall comedy shows tonight in Park Slope, Brooklyn. See the lineups for each show, mark favorites, and book tickets.' },
-  'big-shows': { path: '/big',    title: 'Big Comedy Shows in NYC | Tonight NYC',
+  'big-shows': { path: '/big', h1: 'Big Comedy Shows in NYC',    title: 'Big Comedy Shows in NYC | Tonight NYC',
     description: 'Big-name comedy shows at NYC theaters and arenas. See upcoming dates, venues, and ticket links in one list.' },
-  'comedians': { path: '/comics', title: "NYC Comedians — Who's On Tonight | Tonight NYC",
+  'comedians': { path: '/comics', h1: 'NYC Comedians', title: "NYC Comedians — Who's On Tonight | Tonight NYC",
     description: 'A directory of NYC comedians with photos and bios. Search for a comic, see who is booked this week, and mark favorites.' },
 };
 
@@ -504,6 +504,9 @@ function syncUrlToSource(source) {
     history.replaceState(null, '', meta.path + window.location.search + window.location.hash);
   }
   document.title = meta.title;
+  // Venue pages carry a visually hidden H1 (scripts/build-pages.js). It follows the tab.
+  const venueH1 = document.querySelector('#venue-static h1');
+  if (venueH1 && meta.h1) venueH1.textContent = meta.h1;
   const canonical = document.querySelector('link[rel="canonical"]');
   if (canonical) {
     canonical.setAttribute('href', 'https://tonightnyc.com' + (meta.path === '/' ? '' : meta.path));

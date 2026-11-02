@@ -28,7 +28,6 @@
   <meta name="twitter:image" content="https://tonightnyc.com/og-image.png">
   <meta name="description" content="Comedy Cellar lineups tonight for every room and show time. See which comedians are on, mark favorites, and book a set.">
   <link rel="canonical" href="https://tonightnyc.com/cellar">
-  <!-- Google Search Console ownership (URL-prefix property https://tonightnyc.com/). Keep: removing it un-verifies the property. -->
   <meta name="google-site-verification" content="Ix5us4T51mOMGvfGcoLcNOJJ7B4qEvPh2jAMi_2-cD8" />
   <meta name="twitter:title" content="Comedy Cellar Tonight — Lineups | Tonight NYC">
   <meta name="twitter:description" content="Comedy Cellar lineups tonight for every room and show time. See which comedians are on, mark favorites, and book a set.">
@@ -74,7 +73,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=3d74809">
+  <link rel="stylesheet" href="style.min.css?v=2678f38">
   <script>
     (function() {
       const root = document.documentElement;
@@ -127,49 +126,19 @@
       window.__tonightNycApplyTheme = apply;
     })();
   </script>
-  <!-- The Android/iOS shells load tonightnyc.com remotely (server.url), so every app
-       open lands in Umami as an ordinary web visit. From Aug 5 2026 the 15 paid Play
-       closed testers pushed this homepage 57 -> 211 views and the weekly insights job
-       scored it a #1 "breakout"; the real web number was flat. Tag app traffic.
-       before-send rather than a load-time data-tag attribute: the tracker reads
-       data-tag once at load, racing the native bridge that injects window.Capacitor,
-       while before-send fires per event. Must return the payload on every path — a
-       throw or an undefined return silently drops the event. -->
   <script>window.__umamiTagApp=function(t,p){try{var c=window.Capacitor;if(c&&(typeof c.isNativePlatform==="function"?c.isNativePlatform():c.isNative)){p.tag="app"}}catch(e){}return p};</script>
   <script defer src="https://stats.hidescore.com/script.js" data-website-id="3bf5a29c-b205-43f7-b245-ae785382ca96" data-domains="tonightnyc.com,www.tonightnyc.com,cellartonight.com,www.cellartonight.com" data-before-send="__umamiTagApp"></script>
-<!-- sentry -->
 <script src="https://js.sentry-cdn.com/2b0ccd655533ea28979df00bdb820a8f.min.js" crossorigin="anonymous"></script>
-<!-- /sentry -->
 </head>
 <body>
   <div id="ptr-indicator" aria-hidden="true"><div class="ptr-spin"></div></div>
   <header>
     <div class="header-clickable" id="header-home" role="button" tabindex="0" aria-label="Reset filters and go home">
       <div class="header-row">
-        <h1>Tonight <span class="accent">NYC</span></h1>
+        <div class="site-title">Tonight <span class="accent">NYC</span></div>
       </div>
       <p class="subtitle">NYC comedy lineups, filtered your way.</p>
     </div>
-    <!-- Share link hidden 2026-08-24 at Jacob's request ("comment out for now").
-         The button itself is the only thing parked; doShare(), the /?p= import
-         modal and prefs.js's .visible toggle are all left intact, so restoring it
-         is just deleting these comment markers. init.js guards the listener bind
-         because getElementById('header-share') is null while this is commented.
-    <button class="header-share-btn" id="header-share" aria-label="Copy share link" title="Copy share link">
-      <svg class="share-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-      </svg>
-      <span class="share-check" style="display:none"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>
-    </button>
-    -->
-    <!-- Tonight NYC went live on Google Play 2026-08-23, so this header button
-         follows the visitor's platform instead of always pointing at the App
-         Store. The Apple markup below stays the no-JS default (and the right
-         answer on Mac/desktop); the inline swap after it rewrites the link and
-         glyph for Android before first paint, so an Android visitor never sees
-         an Apple logo telling them to visit the App Store. Hidden entirely in
-         the native shell via the html.native-app rule in style.min.css. -->
     <a class="header-icon-btn header-appstore-btn" id="header-appstore" href="https://apps.apple.com/us/app/tonight-nyc/id6763027650" target="_blank" rel="noopener" aria-label="Download on the App Store" title="Download on the App Store">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M17.05 12.04a4.74 4.74 0 0 1 2.27-3.98 4.86 4.86 0 0 0-3.82-2.07c-1.6-.17-3.14.96-3.96.96-.84 0-2.09-.94-3.45-.91a5.1 5.1 0 0 0-4.3 2.62c-1.84 3.2-.47 7.9 1.33 10.49.88 1.27 1.92 2.69 3.28 2.64 1.32-.05 1.82-.85 3.42-.85s2.05.85 3.45.82c1.43-.02 2.33-1.28 3.21-2.55a11.32 11.32 0 0 0 1.46-3 4.6 4.6 0 0 1-2.89-4.17M14.85 4.27a4.66 4.66 0 0 0 1.07-3.35 4.76 4.76 0 0 0-3.07 1.59 4.45 4.45 0 0 0-1.1 3.23 3.93 3.93 0 0 0 3.1-1.47Z"></path>
@@ -329,7 +298,6 @@
     </div>
   </div>
 
-  <!-- Hidden elements kept for JS compatibility -->
   <input type="checkbox" id="only-faves" style="display:none;">
   <input type="checkbox" id="hide-skips" style="display:none;">
   <input type="checkbox" id="hide-sold-out" style="display:none;">
@@ -345,11 +313,27 @@
     <option value="23:00">By 11pm</option>
   </select>
 
+  <section id="venue-static" class="venue-static" aria-label="Comedy Cellar">
+  <h1>Comedy Cellar</h1>
+  <ol id="venue-shows">
+    <li><b>Soyboyz: Pre-Election Cucktacular</b> · Mon, Nov 2 · 6:00 PM · with Jeff Maurer, Jesse Singal · <a href="https://www.comedycellar.com/reservations-newyork/?showid=1793642400" rel="nofollow noopener">Tickets</a></li>
+    <li><b>Colin Quinn Returns to The CQ Room</b> · Mon, Nov 2 · 7:00 PM · with Nick Griffin · <a href="https://www.comedycellar.com/reservations-newyork/?showid=1793646000" rel="nofollow noopener">Tickets</a></li>
+    <li><b>MacDougal Street</b> · Mon, Nov 2 · 7:30 PM · with Regina DeCicco, Isiah Kelly, Geoff Chaser, Ethan Simmons-Patterson, Kc Shornima, Lenny Marcus · <a href="https://www.comedycellar.com/reservations-newyork/?showid=1793647800" rel="nofollow noopener">Tickets</a></li>
+    <li><b>Fat Black Pussycat (Bar)</b> · Mon, Nov 2 · 7:35 PM · with Gray West, Ophira Eisenberg, Gary Simons, Lenny Marcus, Gary Vider, Dan Soder · <a href="https://www.comedycellar.com/reservations-newyork/?showid=1793648100" rel="nofollow noopener">Tickets</a></li>
+    <li><b>Village Underground</b> · Mon, Nov 2 · 8:00 PM · with Ashley Austin Morris, Josh Ocean Thomas, Geoff Chaser, Ethan Simmons-Patterson, Kc Shornima, Dan Soder · <a href="https://www.comedycellar.com/reservations-newyork/?showid=1793649600" rel="nofollow noopener">Tickets</a></li>
+    <li><b>New Joke Night in the FBPC</b> · Mon, Nov 2 · 8:30 PM · with Will Sylvince, Daniel Simonsen, Emma Willmann, Mike Feeney, Nimesh Patel, Subhah Agarwal · <a href="https://www.comedycellar.com/reservations-newyork/?showid=1793651400" rel="nofollow noopener">Tickets</a></li>
+    <li><b>MacDougal Street</b> · Mon, Nov 2 · 9:30 PM · with Matt Richards, Julian McCullough, Janet McNamara, Philipp Kostelecky, Amos Gill, Tommy Brennan · <a href="https://www.comedycellar.com/reservations-newyork/?showid=1793655000" rel="nofollow noopener">Tickets</a></li>
+    <li><b>Fat Black Pussycat (Bar)</b> · Mon, Nov 2 · 9:35 PM · with James Mattern, Ethan Simmons-Patterson, Amos Gill, Tommy Brennan, Emma Willmann, Brendan Sagalow · <a href="https://www.comedycellar.com/reservations-newyork/?showid=1793655300" rel="nofollow noopener">Tickets</a></li>
+    <li><b>Village Underground</b> · Mon, Nov 2 · 10:00 PM · with Petey DeAbreu, Dan Soder, Mike Yard, Erica Nicole Clark, Philipp Kostelecky, Andre De Freitas · <a href="https://www.comedycellar.com/reservations-newyork/?showid=1793656800" rel="nofollow noopener">Tickets</a></li>
+    <li><b>MacDougal Street</b> · Mon, Nov 2 · 11:30 PM · with Eric Neumann, Mike Feeney, Blake Freeman, Lucas Zelnick, Jackie Fabulous, Godfrey, Bobby St. Petersburg · <a href="https://www.comedycellar.com/reservations-newyork/?showid=1793662200" rel="nofollow noopener">Tickets</a></li>
+  </ol>
+  <script>(function(){var l=document.getElementById('venue-shows');if(l)l.remove();document.getElementById('venue-static').classList.add('venue-static-js')})();</script>
+</section>
+
   <main id="shows-container" class="shows-container">
     <div class="loading" id="loading">Loading lineups...</div>
   </main>
 
-  <!-- Settings Modal -->
   <div class="modal-overlay hidden" id="modal-overlay">
     <div class="modal">
       <div class="modal-header">
@@ -398,7 +382,6 @@
     </div>
   </div>
 
-  <!-- App Settings Modal -->
   <div class="modal-overlay hidden" id="app-settings-overlay">
     <div class="modal app-settings-modal">
       <div class="modal-header">
@@ -431,9 +414,6 @@
               <button class="btn-reset account-delete-btn" id="account-delete" type="button">Delete account</button>
             </div>
           </div>
-          <!-- Signed out this is the third sign-in choice; signed in it is the
-               "Link email" flow and stays collapsed until that button is tapped,
-               so an Apple/Google account never shows a bare sign-in form. -->
           <form class="account-email-form" id="account-email-form" hidden>
             <div id="account-email-request-row">
               <input class="modal-search" id="account-email-input" type="email" autocomplete="email" inputmode="email" placeholder="Email address" aria-label="Email address" required>
@@ -449,10 +429,6 @@
           <p class="settings-desc">Optional. Tonight NYC still works without an account; signing in syncs My Comedians and app settings across your devices.</p>
         </div>
 
-        <!-- The header's light/dark button is hidden on iOS, inside both native
-             shells, and at 430px and under, so Settings is the only theme control
-             most phone users can reach. System is the default and matches how the app
-             behaved before this section existed. -->
         <div class="modal-section">
           <h3>Appearance</h3>
           <p class="settings-desc">System follows your phone's light/dark setting.</p>
@@ -661,23 +637,12 @@
           <p id="settings-import-status" class="settings-desc" style="margin-top:6px;min-height:1em;"></p>
         </div>
 
-        <!-- Play shell only (CSS hides it everywhere else): on the web this would
-             point someone at a store page for an app they are demonstrably not
-             using, and iOS has its own store. No target="_blank" and no JS —
-             tonightnyc.com is the server.url host, so Capacitor's launchIntent
-             sees a foreign host and fires an ACTION_VIEW Intent, which the Play
-             Store app claims. That is what makes this leave the WebView instead
-             of loading a store page inside the app. -->
         <div class="modal-section rate-app-section">
           <h3>Rate this app</h3>
           <p class="settings-desc">Ratings are how anyone else finds Tonight NYC. Opens the Play Store.</p>
           <a class="btn-reset rate-app-link" href="https://play.google.com/store/apps/details?id=com.jacobhl.tonightnyc">Rate on Google Play</a>
         </div>
 
-        <!-- Feedback + Privacy live together at the bottom of Settings. Feedback
-             points at the support page's #feedback anchor (not a bare mailto) so
-             it still works in the Capacitor shell on a device with no Mail
-             account configured. -->
         <p class="settings-legal"><a href="/support#feedback">Feedback</a><span aria-hidden="true">·</span><a href="/privacy">Privacy</a></p>
       </div>
 
@@ -688,7 +653,6 @@
         <button class="btn-done" id="app-settings-done">Done</button>
       </div>
 
-      <!-- QR overlay (lazy) -->
       <div class="settings-qr-overlay hidden" id="settings-qr-overlay">
         <div class="settings-qr-card">
           <button class="modal-close" id="settings-qr-close" aria-label="Close QR">&times;</button>
@@ -700,7 +664,6 @@
     </div>
   </div>
 
-  <!-- Auto-import toast -->
   <div class="settings-toast hidden" id="settings-toast" role="status">
     <span id="settings-toast-msg"></span>
     <button id="settings-toast-undo" type="button">Undo</button>
@@ -713,31 +676,16 @@
     <div id="footer-venue-info"></div>
     <p>Built by fans, for fans.</p>
     <p><a href="mailto:hi@tonightnyc.com">hi@tonightnyc.com</a></p>
-    <!-- Privacy now lives at the bottom of Settings instead of here. The
-         analytics opt-out is no longer surfaced in the UI at all; /notrack.html
-         still exists and is linked from privacy.html for anyone who wants it.
-         (In the Capacitor shell the webview origin IS tonightnyc.com, so that
-         page writes the same localStorage the beacon checks.) -->
     <a class="app-store-badge-link" href="https://apps.apple.com/us/app/tonight-nyc/id6763027650" target="_blank" rel="noopener" aria-label="Download Tonight NYC on the App Store">
       <img src="/app-store-badge.svg" alt="Download on the App Store" height="40">
     </a>
-    <!-- Live on Google Play since 2026-08-23. Sits beside the App Store badge so
-         the footer offers both stores from one row.
-
-         Google's own artwork, unmodified. Its 646x250 canvas carries 41px of
-         required clear space on every side, so the visible pill is 168 of 250.
-         The play-badge-link modifier renders the whole file at 59.5px, which
-         puts that pill at exactly 40 and matches the App Store badge next to
-         it. Dropping it in at 40 like an ordinary badge would shrink the pill
-         to 27 and make Play read as the lesser of the two. -->
     <a class="app-store-badge-link play-badge-link" href="https://play.google.com/store/apps/details?id=com.jacobhl.tonightnyc" target="_blank" rel="noopener" aria-label="Get Tonight NYC on Google Play">
       <img src="/google-play-badge.png" alt="Get it on Google Play" width="154" height="59.5">
     </a>
     <button id="pwa-install-btn" onclick="pwaInstall()" style="display:none;"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Add to Home Screen</button>
   </footer>
 
-  <script defer src="app.min.js?v=3d74809"></script>
-  <!-- Vercel Web Analytics + Speed Insights + Cloudflare Web Analytics — gated to skip Capacitor native shell so iOS app stays "No data collected" on App Store -->
+  <script defer src="app.min.js?v=2678f38"></script>
   <script>
     if (!window.Capacitor?.isNativePlatform?.()) {
       const a = document.createElement('script'); a.defer = true; a.src = '/_vercel/insights/script.js'; document.head.appendChild(a);

@@ -74,7 +74,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=3d74809">
+  <link rel="stylesheet" href="style.min.css?v=2678f38">
   <script>
     (function() {
       const root = document.documentElement;
@@ -128,9 +128,7 @@
     })();
   </script>
   <!-- The Android/iOS shells load tonightnyc.com remotely (server.url), so every app
-       open lands in Umami as an ordinary web visit. From Aug 5 2026 the 15 paid Play
-       closed testers pushed this homepage 57 -> 211 views and the weekly insights job
-       scored it a #1 "breakout"; the real web number was flat. Tag app traffic.
+       open lands in Umami as an ordinary web visit. Tag app traffic.
        before-send rather than a load-time data-tag attribute: the tracker reads
        data-tag once at load, racing the native bridge that injects window.Capacitor,
        while before-send fires per event. Must return the payload on every path — a
@@ -736,7 +734,7 @@
     <button id="pwa-install-btn" onclick="pwaInstall()" style="display:none;"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Add to Home Screen</button>
   </footer>
 
-  <script defer src="app.min.js?v=3d74809"></script>
+  <script defer src="app.min.js?v=2678f38"></script>
   <!-- Vercel Web Analytics + Speed Insights + Cloudflare Web Analytics — gated to skip Capacitor native shell so iOS app stays "No data collected" on App Store -->
   <script>
     if (!window.Capacitor?.isNativePlatform?.()) {
