@@ -58,6 +58,96 @@ test('build-pages is idempotent', () => {
   assert.deepEqual(after, before);
 });
 
+// ---- The static venue H1 + show list ----------------------------------------
+const pageHtml = (e) => fs.readFileSync(path.join(outDir, `${e.path.slice(1)}.html`), 'utf8');
+
+test('each venue page has one H1, the venue name, and no HTML comments', () => {
+  for (const e of venues) {
+    const html = pageHtml(e);
+    const h1s = [...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/g)].map((m) => m[1]);
+    assert.deepEqual(h1s.map(unescape), [e.h1], e.path);
+    assert.ok(!/<!--/.test(html.replace(/<script\b[\s\S]*?<\/script>/g, '')), `${e.path} has an HTML comment`);
+    assert.match(html, /<div class="site-title">Tonight <span class="accent">NYC<\/span><\/div>/, e.path);
+    assert.match(html, /google-site-verification/, `${e.path} lost the Search Console tag`);
+  }
+});
+
+test('the home page keeps its own H1', () => {
+  const html = fs.readFileSync(path.join(ROOT, 'public/index.html'), 'utf8');
+  assert.match(html, /<h1>Tonight <span class="accent">NYC<\/span><\/h1>/);
+  assert.ok(!html.includes('insights job'));
+});
+
+function buildWithCaches(caches, buildDate) {
+  const cacheDir = fs.mkdtempSync(path.join(os.tmpdir(), 'build-pages-cache-'));
+  const out = fs.mkdtempSync(path.join(os.tmpdir(), 'build-pages-out-'));
+  for (const [file, body] of Object.entries(caches)) {
+    fs.writeFileSync(path.join(cacheDir, file), typeof body === 'string' ? body : JSON.stringify(body));
+  }
+  execFileSync(process.execPath, [path.join(ROOT, 'scripts/build-pages.js')], {
+    env: { ...process.env, OUT_DIR: out, CACHE_DIR: cacheDir, BUILD_DATE: buildDate },
+    stdio: 'ignore',
+  });
+  const read = (slug) => fs.readFileSync(path.join(out, `${slug}.html`), 'utf8');
+  fs.rmSync(cacheDir, { recursive: true, force: true });
+  test.after(() => fs.rmSync(out, { recursive: true, force: true }));
+  return read;
+}
+
+const titlesIn = (html) => [...html.matchAll(/<li><b>([^<]*)<\/b>/g)].map((m) => m[1]);
+
+test('the list holds the next 10 shows in date and time order, from today on', () => {
+  const shows = [
+    { title: 'Yesterday', date: '2026-11-01', time: '8:00 PM', url: 'https://x.test/old' },
+    { title: 'Late', date: '2026-11-02', time: '9:30 PM', url: 'https://x.test/late' },
+    { title: 'Early', date: '2026-11-02', time: '19:00', url: 'https://x.test/early' },
+    ...Array.from({ length: 12 }, (_, i) => ({
+      title: `Later ${String(i).padStart(2, '0')}`, date: '2026-11-05', time: '8:00 PM', url: 'https://x.test/l',
+    })),
+  ];
+  const html = buildWithCaches({ 'unionhall-cache.json': { shows } }, '2026-11-02')('unionhall');
+  const titles = titlesIn(html);
+  assert.equal(titles.length, 10);
+  assert.deepEqual(titles.slice(0, 3), ['Early', 'Late', 'Later 00']);
+  assert.ok(!titles.includes('Yesterday'));
+  assert.match(html, /<li><b>Early<\/b> · Mon, Nov 2 · 7:00 PM · <a href="https:\/\/x\.test\/early" rel="nofollow noopener">Tickets<\/a><\/li>/);
+});
+
+test('show text is escaped and a non-http link is dropped', () => {
+  const shows = [{ title: 'A <img src=x onerror=1> & B', date: '2026-11-02', time: '8:00 PM', url: 'javascript:alert(1)' }];
+  const html = buildWithCaches({ 'unionhall-cache.json': { shows } }, '2026-11-02')('unionhall');
+  assert.ok(html.includes('<b>A &lt;img src=x onerror=1> &amp; B</b>'));
+  assert.ok(!html.includes('<img src=x'));
+  assert.ok(!html.includes('javascript:alert'));
+});
+
+test('the Cellar list reads its show HTML, with lineup and booking link', () => {
+  const set = '<div><div class="set-header"><div class="info"><span class="bold">7:00 pm<span class="hide-mobile"> show</span></span>'
+    + '<span class="title">Fat Black &amp; Co</span></div></div><span class="name">Dave Attell</span> bio'
+    + '<div class="make-reservation"><a href="/reservations-newyork/?showid=17">Make A Reservation</a></div></div>';
+  const html = buildWithCaches(
+    { 'cellar-cache.json': { results: { '2026-11-02': { show: { html: set } } } } }, '2026-11-02')('cellar');
+  assert.match(html, /<li><b>Fat Black &amp; Co<\/b> · Mon, Nov 2 · 7:00 PM · with Dave Attell · <a href="https:\/\/www\.comedycellar\.com\/reservations-newyork\/\?showid=17"/);
+});
+
+test('/tonight spans every club and names the venue', () => {
+  const read = buildWithCaches({
+    'unionhall-cache.json': { shows: [{ title: 'UH', date: '2026-11-02', time: '8:00 PM', venue: 'Union Hall', url: '' }] },
+    'gotham-cache.json': { shows: [{ title: 'GO', date: '2026-11-02', time: '7:00 PM', venue: 'Gotham Comedy Club', url: '' }] },
+  }, '2026-11-02');
+  assert.deepEqual(titlesIn(read('tonight')), ['GO', 'UH']);
+  assert.match(read('tonight'), /<b>UH<\/b> · Mon, Nov 2 · 8:00 PM · Union Hall/);
+  assert.deepEqual(titlesIn(read('unionhall')), ['UH']);
+});
+
+test('a missing or broken cache leaves the H1 and never fails the build', () => {
+  const read = buildWithCaches({ 'unionhall-cache.json': '{not json' }, '2026-11-02');
+  const html = read('unionhall');
+  assert.match(html, /<h1>Union Hall<\/h1>/);
+  assert.ok(!html.includes('<ol id="venue-shows">'));
+  assert.match(read('gotham'), /<h1>Gotham Comedy Club<\/h1>/);
+});
+
 test('vercel.json rewrites each venue path to its own page', () => {
   const { rewrites } = JSON.parse(fs.readFileSync(path.join(ROOT, 'vercel.json'), 'utf8'));
   for (const e of venues) {
