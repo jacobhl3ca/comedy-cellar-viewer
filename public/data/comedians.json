@@ -10635,7 +10635,8 @@
   },
   {
     "name": "Adam Mamawala",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Adam Mamawala is an American stand-up comedian based out of New York City."
   },
   {
     "name": "Eric Walsh",
@@ -11128,6 +11129,14 @@
   },
   {
     "name": "Logan Malin",
+    "venues": []
+  },
+  {
+    "name": "Katie Blunt",
+    "venues": []
+  },
+  {
+    "name": "Grey'S Anatomy",
     "venues": []
   }
 ]
