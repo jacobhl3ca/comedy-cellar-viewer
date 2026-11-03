@@ -1592,7 +1592,8 @@
     "bio": "Born in Havana, Cuba and raised in North Bergen, NJ, Joey ‘Coco’ Diaz has quickly become one of the most sought after actors and comedians in the entertainment industry today. His love of storytelling is reflected in each role he takes: whether it is on film or on stage, his passion for entertaining and delighting audiences shines through every performance. This winter, Diaz can next be seen starring as ‘Mikey’ opposite Sylvester Stallone, Robert De Niro, Kevin Hart, and Kim Basinger in the highly anticipated feature film Grudge Match (Warner Bros.). Diaz’s start in comedy began while serving a short stint at a correctional facility in Denver, CO in 1988. “Each Wednesday we would watch movies on the projector, but sometimes it would break,” he shares, “so I would get up and do stand up to fill the time.” Learning he had the skills to make an audience laugh, he pursued comedy after his release and began performing at an assortment of comedy clubs in the area. While he was touring as a working comic, he began acting in a variety television and film roles. You may recognize him from his appearances in The Mentalist, Children’s Hospital, My Name is Earl, or General Hospital- to name a few. On the film front, Diaz has held roles in The Longest Yard, Spider Man 2, Smiley Face, and Taxi, among others. In 2013, Diaz continues to perform stand up and act, while also staying on top of the new media move in podcasting. Currently, Diaz hosts his bi-weekly podcast The Church of What’s Happening Now, which ranks among some of the most highly downloaded podcasts online. He is also a regular guest on Joe Rogan’s popular podcast The Joe Rogan Experience. On the comedy front, Diaz continues to tour and perform at the biggest comedy clubs in the country. His comedy specials in “The Testicle Testaments” have sold thousands of downloads, and have even made it to the Billboard Top 100. Diaz’s raw style of comedy is highlighted on television with recurring sketch roles on Stand Up Revolution and Jimmy Kimmel Live. Later this year, Diaz will release his new DVD/CD special – which will surely top the charts once more.",
     "venues": [
       "nycc"
-    ]
+    ],
+    "bio_stand": "Born in Havana, Cuba and raised in North Bergen, NJ, Joey ‘Coco’ Diaz has quickly become one of the most sought after actors and comedians in the entertainment industry today. His love of storytelling is reflected in each role he takes: whether it is on film or on stage, his passion for entertaining and delighting audiences shines through every performance. This winter, Diaz can next be seen starring as ‘Mikey’ opposite Sylvester Stallone, Robert De Niro, Kevin Hart, and Kim Basinger in the highly anticipated feature film Grudge Match (Warner Bros.). Diaz’s start in comedy began while serving a short stint at a correctional facility in Denver, CO in 1988. “Each Wednesday we would watch movies on the projector, but sometimes it would break,” he shares, “so I would get up and do stand up to fill the time.” Learning he had the skills to make an audience laugh, he pursued comedy after his release and began performing at an assortment of comedy clubs in the area. While he was touring as a working comic, he began acting in a variety television and film roles. You may recognize him from his appearances in The Mentalist, Children’s Hospital, My Name is Earl, or General Hospital- to name a few. On the film front, Diaz has held roles in The Longest Yard, Spider Man 2, Smiley Face, and Taxi, among others. In 2013, Diaz continues to perform stand up and act, while also staying on top of the new media move in podcasting. Currently, Diaz hosts his bi-weekly podcast The Church of What’s Happening Now, which ranks among some of the most highly downloaded podcasts online. He is also a regular guest on Joe Rogan’s popular podcast The Joe Rogan Experience. On the comedy front, Diaz continues to tour and perform at the biggest comedy clubs in the country. His comedy specials in “The Testicle Testaments” have sold thousands of downloads, and have even made it to the Billboard Top 100. Diaz’s raw style of comedy is highlighted on television with recurring sketch roles on Stand Up Revolution and Jimmy Kimmel Live. Later this year, Diaz will release his new DVD/CD special - which will surely top the charts once more."
   },
   {
     "name": "Marion Grodin",
@@ -10423,7 +10424,8 @@
     "name": "Byron Bowers",
     "venues": [],
     "bio": "FROM JIMMY KIMMEL, COMEDY CENTRAL, MIRACLE WHIPS, OPEN FOR HANNIBAL BURES AND DAVE CHAPPELLE",
-    "tagline_cellar": "FROM JIMMY KIMMEL, COMEDY CENTRAL, MIRACLE WHIPS, OPEN FOR HANNIBAL BURES AND DAVE CHAPPELLE"
+    "tagline_cellar": "FROM JIMMY KIMMEL, COMEDY CENTRAL, MIRACLE WHIPS, OPEN FOR HANNIBAL BURES AND DAVE CHAPPELLE",
+    "photo_wiki": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Byron_Bowers_%2815551372157%29.jpg/330px-Byron_Bowers_%2815551372157%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
     "name": "Matt Goldich",
@@ -11118,6 +11120,14 @@
   },
   {
     "name": "Mario Pisano",
+    "venues": []
+  },
+  {
+    "name": "Pedro Garcia",
+    "venues": []
+  },
+  {
+    "name": "Logan Malin",
     "venues": []
   }
 ]
