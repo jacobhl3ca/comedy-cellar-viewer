@@ -2216,7 +2216,8 @@
       "nycc",
       "comedy_cellar"
     ],
-    "tagline_cellar": "ARE YOU GARBAGE? PODCAST"
+    "tagline_cellar": "ARE YOU GARBAGE? PODCAST",
+    "bio_stand": "Kevin is a Philadelphia born stand up comic and podcaster now living in New York City. He is quickly becoming an audience favorite with his easy going yet straightforward point of view. Kevin is also the co-host of the popular new podcast ARE YOU GARBAGE? and has appeared on The Bonfire on Comedy Central Radio, Legion of Skanks, and the Bennington Show on Sirius XM."
   },
   {
     "name": "Bonnie McFarlane",
@@ -11137,6 +11138,56 @@
   },
   {
     "name": "Grey'S Anatomy",
+    "venues": []
+  },
+  {
+    "name": "Andrea Jin",
+    "venues": [],
+    "bio": "ON TOUR OPENING FOR JOHN MULANEY, NETFLIX, COMEDY CENTRAL",
+    "tagline_cellar": "ON TOUR OPENING FOR JOHN MULANEY, NETFLIX, COMEDY CENTRAL"
+  },
+  {
+    "name": "Mandal Man",
+    "venues": [],
+    "bio": "LATE SHOW WITH JIMMY FALLON, ADULT SWIM, NETFLIX IS A JOKE",
+    "tagline_cellar": "LATE SHOW WITH JIMMY FALLON, ADULT SWIM, NETFLIX IS A JOKE"
+  },
+  {
+    "name": "Joe Wong",
+    "venues": [],
+    "bio": "FROM THE LATE SHOW WITH STEPHEN COLBERT, THE LETTERMAN SHOW, RADIO AND CORRESPONDENTS DINNER",
+    "tagline_cellar": "FROM THE LATE SHOW WITH STEPHEN COLBERT, THE LETTERMAN SHOW, RADIO AND CORRESPONDENTS DINNER"
+  },
+  {
+    "name": "Oussama Tabbara",
+    "venues": []
+  },
+  {
+    "name": "Lizabanks Campagna",
+    "venues": []
+  },
+  {
+    "name": "Isabel Hagen",
+    "venues": []
+  },
+  {
+    "name": "Carly Polistina",
+    "venues": []
+  },
+  {
+    "name": "Tanner Riley",
+    "venues": []
+  },
+  {
+    "name": "Molly Brenner",
+    "venues": []
+  },
+  {
+    "name": "Adam Hmada",
+    "venues": []
+  },
+  {
+    "name": "Yemi Afolabi",
     "venues": []
   }
 ]
