@@ -5192,8 +5192,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/shannon-fiedler",
     "bio_stand": "I’m a writer, director, and stand-up comedian, but you already know that. I used to be a competitive figure skater, I’ve been to Disney World more times than I should probably admit to, and I’m an absolute trivia fiend. I often get caught dancing at my desk, but hey, if you’re not having fun, what’s the point? Oh and…yeah, you should use the Oxford Comma.",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Shannon_Fiedler.jpg",
-    "bio": "Shannon Fiedler is a stand-up comedian performing in New York City. She performs at clubs across the city."
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Shannon_Fiedler.jpg"
   },
   {
     "name": "Shari Diaz",
@@ -11205,6 +11204,14 @@
   },
   {
     "name": "Gorilla Nems",
+    "venues": []
+  },
+  {
+    "name": "Akeem Woods",
+    "venues": []
+  },
+  {
+    "name": "Rohan Joshi",
     "venues": []
   }
 ]
