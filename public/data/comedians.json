@@ -8359,7 +8359,8 @@
     "name": "Erica Nicole Clark",
     "venues": [],
     "bio": "MOTH GRAND SLAM WINNER, COMEDY CENTRAL KEVIN HART- HART OF THE CITY, JUST FOR LAUGHS NEW FACES, INTRODUCING ERICA NICOLE CLARK COMEDY SPECIAL. DONT TELL COMEDY SPECIAL",
-    "tagline_cellar": "MOTH GRAND SLAM WINNER, COMEDY CENTRAL KEVIN HART- HART OF THE CITY, JUST FOR LAUGHS NEW FACES, INTRODUCING ERICA NICOLE CLARK COMEDY SPECIAL. DONT TELL COMEDY SPECIAL"
+    "tagline_cellar": "MOTH GRAND SLAM WINNER, COMEDY CENTRAL KEVIN HART- HART OF THE CITY, JUST FOR LAUGHS NEW FACES, INTRODUCING ERICA NICOLE CLARK COMEDY SPECIAL. DONT TELL COMEDY SPECIAL",
+    "bio_stand": "Erica Nicole Clark is a chicago native who studied at the famed Improv Olympic before deciding to venture out into Stand up. Her unique upbringing and her day job make for a style all her own in comedy. She has performed at Laugh Factory, Comedy Store, the Improv and TBS Just For Laughs Festival"
   },
   {
     "name": "Ali Kolbert",
@@ -11213,6 +11214,10 @@
   },
   {
     "name": "Rohan Joshi",
+    "venues": []
+  },
+  {
+    "name": "Pranit More",
     "venues": []
   }
 ]
