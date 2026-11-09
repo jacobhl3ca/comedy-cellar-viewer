@@ -8584,7 +8584,8 @@
   },
   {
     "name": "Sam Rocha",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Sam Rocha is a Chicago-based comic and creator. She has traveled throughout the country performing stand-up and has opened for comedians like Cameron Esposito, Rhys Nicholson, Geoffrey Asmus and SNL’s Alex Moffat. She has headlined Don’t Tell Comedy and Laugh Factory Chicago, where she produces SASHAY the last Sunday of every month. She also has understudied for the Second City touring company, was a finalist on the sixth season of Improvised Survivor, and is known for her character Aunt Dipsy on TikTok! You can follow her @samhandleyrocha across all platforms for fun content and to get tickets to a show!"
   },
   {
     "name": "Mo Mussa",
@@ -11218,6 +11219,14 @@
   },
   {
     "name": "Pranit More",
+    "venues": []
+  },
+  {
+    "name": "Peter Antoniou",
+    "venues": []
+  },
+  {
+    "name": "Alfred Robles",
     "venues": []
   }
 ]
