@@ -39,8 +39,7 @@
       "Star Trek"
     ],
     "photos": {
-      "Brian Scolaro": "https://www.newyorkcomedyclub.com/img/comedians/brian-scolaro-c7d20aec-main-image.jpg",
-      "Star Trek": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Emblem.svg/330px-Emblem.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "Brian Scolaro": "https://www.newyorkcomedyclub.com/img/comedians/brian-scolaro-c7d20aec-main-image.jpg"
     }
   },
   "204719": {
@@ -56,6 +55,21 @@
       "Katie Blunt": "https://thestandnyc.com/images/comedians/_square/katieblunt.jpg",
       "Wali Collins": "https://www.newyorkcomedyclub.com/img/comedians/wali-collins-bae10a7b-main-image.jpg",
       "Kyle Wayne": "https://www.newyorkcomedyclub.com/img/comedians/Kyle-Wayne-a1d3097d-main-image.jpg"
+    }
+  },
+  "205623": {
+    "comedians": [
+      "The Menu",
+      "Got Talent",
+      "Liz Glazer",
+      "Myq Kaplan",
+      "Combining Delicious",
+      "Just For"
+    ],
+    "photos": {
+      "Got Talent": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Got_Talent_logo.PNG/330px-Got_Talent_logo.PNG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "Liz Glazer": "https://thestandnyc.com/images/comedians/_square/lizglazer.jpg",
+      "Myq Kaplan": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg/330px-Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     }
   }
 }
