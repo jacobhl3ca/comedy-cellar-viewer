@@ -21,6 +21,7 @@ const path = require('path');
 // Union Hall has no bio/photo enrichment, so reuse the live scraper as-is.
 // applyStandupnyEnrichment merges the committed poster-OCR names/photos.
 const { scrapeUnionHall, applyStandupnyEnrichment, nyccExtractLineup, nyccDecode: _nyccDecode } = require('../lib/club-scrapers');
+const { writeShowCache } = require('./lib/keep-last-good');
 
 
 const ROOT = path.resolve(__dirname, '..');
@@ -37,7 +38,15 @@ function log(msg) {
 }
 
 // ---- HTTP helpers ----
-function fetch(url, options = {}) {
+// One retry after 20s on a 5xx or a timeout (Gotham's one 503 at 10:50 PM ET on
+// 2026-11-09 blanked the venue). A 404 does not retry, so photo lookups stay fast.
+// The run-wide budget keeps a host that times out on every photo from pushing the
+// job past its 10 min GitHub timeout.
+const RETRY_DELAY_MS = process.env.PREBAKE_RETRY_DELAY_MS != null && process.env.PREBAKE_RETRY_DELAY_MS !== ''
+  ? Number(process.env.PREBAKE_RETRY_DELAY_MS) : 20000;
+let retryBudget = 10;
+
+function fetchOnce(url, options) {
   return new Promise((resolve, reject) => {
     const mod = url.startsWith('https') ? https : http;
     const req = mod.get(url, {
@@ -46,16 +55,40 @@ function fetch(url, options = {}) {
     }, (resp) => {
       // Follow redirects
       if (resp.statusCode === 301 || resp.statusCode === 302) {
+        resp.resume();
         return fetch(resp.headers.location, options).then(resolve).catch(reject);
       }
-      if (resp.statusCode !== 200) return reject(new Error(`HTTP ${resp.statusCode} for ${url}`));
+      if (resp.statusCode !== 200) {
+        resp.resume();
+        const err = new Error(`HTTP ${resp.statusCode} for ${url}`);
+        err.status = resp.statusCode;
+        return reject(err);
+      }
       const chunks = [];
       resp.on('data', c => chunks.push(c));
       resp.on('end', () => resolve(Buffer.concat(chunks)));
     });
-    req.setTimeout(15000, () => { req.destroy(); reject(new Error(`Timeout: ${url}`)); });
+    req.setTimeout(15000, () => {
+      const err = new Error(`Timeout: ${url}`);
+      err.timeout = true;
+      req.destroy();
+      reject(err);
+    });
     req.on('error', reject);
   });
+}
+
+async function fetch(url, options = {}) {
+  try {
+    return await fetchOnce(url, options);
+  } catch (e) {
+    const retryable = e.status >= 500 || e.timeout === true;
+    if (!retryable || retryBudget <= 0) throw e;
+    retryBudget--;
+    log(`  ${e.message} — retrying once in ${RETRY_DELAY_MS / 1000}s`);
+    await new Promise(r => setTimeout(r, RETRY_DELAY_MS));
+    return fetchOnce(url, options);
+  }
 }
 
 function fetchJSON(url) {
@@ -1078,26 +1111,20 @@ async function main() {
   }) + '\n');
   log(`Saved cellar-cache.json (${cellarDates.length} days)`);
 
+  // Club caches + big shows. An empty scrape keeps the last good list (minus past
+  // dates) and the old `prebaked` stamp — see scripts/lib/keep-last-good.js. A single
+  // Gotham 503 on 2026-11-09 wrote [] over 107 good shows and blanked the venue.
+  const bake = (file, list, source, listKey = 'shows') =>
+    writeShowCache(CACHE_DIR, file, list, { listKey, source, log });
+
   // Stand shows — same format as /api/the-stand response
-  fs.writeFileSync(path.join(CACHE_DIR, 'stand-cache.json'), JSON.stringify({
-    shows: standShows, count: standShows.length, source: 'thestandnyc.com',
-    prebaked: new Date().toISOString()
-  }) + '\n');
-  log(`Saved stand-cache.json (${standShows.length} shows)`);
+  bake('stand-cache.json', standShows, 'thestandnyc.com');
 
   // Gotham — same format as /api/gotham response
-  fs.writeFileSync(path.join(CACHE_DIR, 'gotham-cache.json'), JSON.stringify({
-    shows: gothamShows, count: gothamShows.length, source: 'gothamcomedyclub.com',
-    prebaked: new Date().toISOString()
-  }) + '\n');
-  log(`Saved gotham-cache.json (${gothamShows.length} shows)`);
+  bake('gotham-cache.json', gothamShows, 'gothamcomedyclub.com');
 
   // NYCC — same format as /api/nycc response
-  fs.writeFileSync(path.join(CACHE_DIR, 'nycc-cache.json'), JSON.stringify({
-    shows: nyccShows, count: nyccShows.length, source: 'newyorkcomedyclub.com',
-    prebaked: new Date().toISOString()
-  }) + '\n');
-  log(`Saved nycc-cache.json (${nyccShows.length} shows)`);
+  bake('nycc-cache.json', nyccShows, 'newyorkcomedyclub.com');
 
   // Stand Up NY — same format as /api/standupny response.
   // Some VenuePilot posters are presigned S3 links (`?X-Amz-Credential=AKIA…&X-Amz-Expires=900`).
@@ -1106,25 +1133,13 @@ async function main() {
   // from the cache only; the live /api/standupny response still carries the fresh link.
   const standupnyCacheShows = standupnyShows.map(s =>
     /[?&]X-Amz-/.test(s.image || '') ? { ...s, image: '' } : s);
-  fs.writeFileSync(path.join(CACHE_DIR, 'standupny-cache.json'), JSON.stringify({
-    shows: standupnyCacheShows, count: standupnyCacheShows.length, source: 'standupny.com',
-    prebaked: new Date().toISOString()
-  }) + '\n');
-  log(`Saved standupny-cache.json (${standupnyShows.length} shows)`);
+  bake('standupny-cache.json', standupnyCacheShows, 'standupny.com');
 
   // Union Hall — same { shows, count, source } shape as /api/clubs?venue=union-hall
-  fs.writeFileSync(path.join(CACHE_DIR, 'unionhall-cache.json'), JSON.stringify({
-    shows: unionhallShows, count: unionhallShows.length, source: 'unionhallny.com (Eventbrite)',
-    prebaked: new Date().toISOString()
-  }) + '\n');
-  log(`Saved unionhall-cache.json (${unionhallShows.length} shows)`);
+  bake('unionhall-cache.json', unionhallShows, 'unionhallny.com (Eventbrite)');
 
   // Big Shows — same format as /api/big-shows response
-  fs.writeFileSync(path.join(CACHE_DIR, 'big-shows-cache.json'), JSON.stringify({
-    events: bigShowEvents, count: bigShowEvents.length, source: 'seatgeek.com+ticketmaster.com',
-    prebaked: new Date().toISOString()
-  }) + '\n');
-  log(`Saved big-shows-cache.json (${bigShowEvents.length} events)`);
+  bake('big-shows-cache.json', bigShowEvents, 'seatgeek.com+ticketmaster.com', 'events');
 
   // Availability — sold out status per show per day
   fs.writeFileSync(path.join(CACHE_DIR, 'availability-cache.json'), JSON.stringify({
@@ -1319,10 +1334,8 @@ async function main() {
   if (enrichedCount > 0) {
     log(`Enriched ${enrichedCount} Big Shows performers with local photos`);
     // Re-write big-shows-cache.json with enriched images
-    fs.writeFileSync(path.join(CACHE_DIR, 'big-shows-cache.json'), JSON.stringify({
-      events: bigShowEvents, count: bigShowEvents.length, source: 'seatgeek.com+ticketmaster.com',
-      prebaked: new Date().toISOString()
-    }) + '\n');
+    writeShowCache(CACHE_DIR, 'big-shows-cache.json', bigShowEvents,
+      { listKey: 'events', source: 'seatgeek.com+ticketmaster.com' });
   }
 
   // ---- Step 7: Self-healing Wikipedia gap-fill ----
@@ -1414,7 +1427,12 @@ async function main() {
   log(`=== PREBAKE DONE in ${elapsed}s ===\n`);
 }
 
-main().catch(e => {
-  log(`FATAL: ${e.message}`);
-  process.exit(1);
-});
+// `require('./prebake')` (tests) loads the helpers without running the bake.
+if (require.main === module) {
+  main().catch(e => {
+    log(`FATAL: ${e.message}`);
+    process.exit(1);
+  });
+}
+
+module.exports = { fetch };
