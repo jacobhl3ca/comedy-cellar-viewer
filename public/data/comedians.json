@@ -11257,7 +11257,8 @@
   },
   {
     "name": "Got Talent",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Got Talent is a British talent show TV format conceived and owned by Simon Cowell's Syco Entertainment. It has spawned spin-offs in over 60 countries, in what is now referred to as the 'Got Talent' format, similar to that described by Fremantle of the Idol and The X Factor formats. Unlike those show"
   },
   {
     "name": "Combining Delicious",
@@ -11278,6 +11279,14 @@
   },
   {
     "name": "Flora Manon",
+    "venues": []
+  },
+  {
+    "name": "Kbs- Korean",
+    "venues": []
+  },
+  {
+    "name": "Myo Kaplan",
     "venues": []
   }
 ]
