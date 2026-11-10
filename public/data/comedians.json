@@ -6319,7 +6319,8 @@
     "name": "Max Fine",
     "venues": [],
     "bio": "SIRIUS XM, CRACKED, IN THE MINIVAN PODCAST, NETFLIX IS A JOKE RADIO",
-    "tagline_cellar": "SIRIUS XM, CRACKED, IN THE MINIVAN PODCAST, NETFLIX IS A JOKE RADIO"
+    "tagline_cellar": "SIRIUS XM, CRACKED, IN THE MINIVAN PODCAST, NETFLIX IS A JOKE RADIO",
+    "bio_stand": "Known cool guy, Max Fine, is a comedian from Atlanta, GA, currently accepting hate mail in Brooklyn, New York. Highly praised for his colorful storytelling, Max taps into his own personal experiences for laughs. He performs all over the country and was once asked to leave the Edinburgh Fringe Festival. He has never taken acid but probably won’t say no if you offer it. Max is currently mansplaining Seinfeld theories to his roommate, David."
   },
   {
     "name": "Harrison Greenbaum",
@@ -7081,7 +7082,8 @@
     "name": "Erica Spera",
     "venues": [],
     "bio": "THE LATELATE SHOW WITH JAMES CORDEN, TBS COMICS TO WATCH, SHOOTERS GOTTA SHOOT PODCAST",
-    "tagline_cellar": "THE LATELATE SHOW WITH JAMES CORDEN, TBS COMICS TO WATCH, SHOOTERS GOTTA SHOOT PODCAST"
+    "tagline_cellar": "THE LATELATE SHOW WITH JAMES CORDEN, TBS COMICS TO WATCH, SHOOTERS GOTTA SHOOT PODCAST",
+    "bio_stand": "Erica Spera is the girl next door who's tall, dark, and one of the guys. Originally from Binghamton NY, Spera is the producer of 607 Comedy, where she hosts shows throughout the Upstate New York area. When she isn't having dinner with her ridiculously large family, you can find Erica performing nightly all over the big apple; doing stand up comedy clubs such as Gotham, The Stand, New York Comedy Club, and Caroline's. She has recently opened for Patton Oswalt, Judah Friedlander and Tim Meadows. Spera was recently named a 2017 TBS Comics to Watch as part of the NY Comedy Festival. You may have seen her on TLC's Cake Boss, or Gotham Comedy Live! on AXSTV. Every Friday at 8:30pm, she co-hosts Bitches Brew, at Halyard's Bar in Brooklyn, which has been named one of TimeOut NY’s “Best Comedy Shows”. You should come see a show and meet Erica's parents."
   },
   {
     "name": "Zarna Garg",
@@ -11263,6 +11265,19 @@
   },
   {
     "name": "Just For",
+    "venues": []
+  },
+  {
+    "name": "Patricia Galván",
+    "venues": []
+  },
+  {
+    "name": "Leclerc Andre",
+    "venues": [],
+    "bio_stand": "LeClerc Andre is a stand-up comedian from New York who is quickly building a name for himself. His quick wit and charm can be seen dazzling clubs and colleges across the country. LeClerc was featured last year at Just For Laughs Comedy Festival as one of the New Faces of Comedy which quickly spring-boarded him into his TV network debut on The Tonight Show w/Jimmy Fallon in October, 2018 as well as on NBC’s “Bring the Funny” in 2019. Make sure to keep an eye out for this hilarious budding star."
+  },
+  {
+    "name": "Flora Manon",
     "venues": []
   }
 ]
