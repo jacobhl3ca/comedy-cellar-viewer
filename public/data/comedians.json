@@ -4660,7 +4660,8 @@
     "bio": "Moses Storm is a stand-up comedian, actor, and writer. He starred in Calls on Apple TV+ and his HBO special Trash White was critically acclaimed. Known for his comedy about growing up homeless.",
     "bio_stand": "Moses is a talented comedian and actor who can be seen on the NBC comedy SUNNYSIDE, from Mike Schur and Kal Penn. On television, you may have seen him in I’M DYING UP HERE on Showtime, ARRESTED DEVELOPMENT for Netflix and THIS IS US on NBC. Film credits include the 2015 high-concept Universal horror film UNFRIENDED, and the Adam Sandler Netflix film FATHER OF THE YEAR. In late night, he has appeared twice as a performer on CONAN, including one visit where he was the performer and only guest for the evening. He hosts Conan O'Brien's live variety show 'Team Coco’s Up & Up' at the Dynasty Typewriter Theater in LA and joined Conan for his first multi city live tour in 8 years in late 2018 titled the “Team Coco Presents Conan & Friends: An Evening of Stand-Up and Investment Tips.” In 2015, he had the prestigious honor of being chosen as a “New Face” at the Just for Laughs comedy festival in Montreal.",
     "photo_wiki": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Moses_Jacob_Storm_%2816871695930%29.jpg/330px-Moses_Jacob_Storm_%2816871695930%29.jpg",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Moses_Storm.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Moses_Storm.jpg",
+    "tagline_cellar": "HBO SPECIAL:\" TRASH WHITE\", TONIGHT SHOW WITH JIMMY FALLON, CONAN O'BRIEN, THE LOVEBIRDS ON NETFLIX, NAMED ONE OF VERIETY 10 COMICS TO WATCH IN 2022"
   },
   {
     "name": "Nacya Marreiro",
@@ -5636,7 +5637,7 @@
     "venues": [
       "comedy_cellar"
     ],
-    "tagline_cellar": "THE TONIGHT SHOW,"
+    "tagline_cellar": "THE TONIGHT SHOW, Netflix, JFL"
   },
   {
     "name": "Liza Treyger",
@@ -11288,5 +11289,16 @@
   {
     "name": "Myo Kaplan",
     "venues": []
+  },
+  {
+    "name": "Connor Burns",
+    "venues": [],
+    "bio": "JUST FOR LAUGHS, BBC {UK}",
+    "tagline_cellar": "JUST FOR LAUGHS, BBC {UK}"
+  },
+  {
+    "name": "Emma Dalenberg",
+    "venues": [],
+    "bio_stand": "Emma Dalenberg approaches her sets with good vibes and a genuine love to connect with her audience. Beginning her career in Minneapolis MN, she has now performed all around the US and overseas. In 2022, she started her year as a 'Racket Magazine Minnesota Comic to Watch’, produced and hosted the 3 times sold out and Star Tribune featured Underground Roast Battle, opened a Don't Tell show for Michael Che, and shared the stage with Dave Attell at Acme Comedy Club. August 2022, she moved to Germany. Within 6 months, she became a regular in the Berlin comedy scene and toured with a solo show through Germany, Switzerland, Luxembourg, and the Netherlands, and got deported. Now back in the United States, Emma is bringing her goofy semi sober energy to whichever stage in the country she can stand on."
   }
 ]
