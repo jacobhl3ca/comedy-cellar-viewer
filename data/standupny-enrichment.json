@@ -23,7 +23,7 @@
       "Wellie Jackson"
     ],
     "photos": {
-      "Erica Rhodes": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Erica_Rhodes_Magic_Shoot_Group_-_April_2012_%28crop%29.jpg/330px-Erica_Rhodes_Magic_Shoot_Group_-_April_2012_%28crop%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "Erica Rhodes": "https://thestandnyc.com/images/comedians/_square/Erica_Rhodes.jpg",
       "Grant Cotter": "https://www.newyorkcomedyclub.com/img/comedians/grantcotter-b52d0a65-main-image.jpg",
       "Tori Piskin": "https://thestandnyc.com/images/comedians/_square/tori-piskin-203-WEB.jpg",
       "Chaunte Wayans": "https://thestandnyc.com/images/comedians/_square/chaunte.jpg",
@@ -39,8 +39,7 @@
       "Star Trek"
     ],
     "photos": {
-      "Brian Scolaro": "https://www.newyorkcomedyclub.com/img/comedians/brian-scolaro-c7d20aec-main-image.jpg",
-      "Star Trek": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Emblem.svg/330px-Emblem.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "Brian Scolaro": "https://www.newyorkcomedyclub.com/img/comedians/brian-scolaro-c7d20aec-main-image.jpg"
     }
   },
   "204719": {
@@ -71,7 +70,7 @@
     "photos": {
       "Got Talent": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Got_Talent_logo.PNG/330px-Got_Talent_logo.PNG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "Liz Glazer": "https://thestandnyc.com/images/comedians/_square/lizglazer.jpg",
-      "Myq Kaplan": "https://thestandnyc.com/images/comedians/_square/MyqKaplan_CreditMindyTucker.jpg"
+      "Myq Kaplan": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg/330px-Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     }
   },
   "205738": {
@@ -82,6 +81,27 @@
     ],
     "photos": {
       "Allie Arasi": "https://thestandnyc.com/images/comedians/_square/Allie_Arasi.jpg"
+    }
+  },
+  "205904": {
+    "comedians": [
+      "Teddy Smith",
+      "Tyler Groce",
+      "The Invisibles"
+    ],
+    "photos": {
+      "Teddy Smith": "https://thestandnyc.com/images/comedians/_square/tsmith.jpg",
+      "Tyler Groce": "https://www.newyorkcomedyclub.com/img/imagetest/screenshot-2023-10-05-at-11-34-57-am-ebf80f47-main-image-png-e3e517c0-screenshot-2023-10-05-at-11-34-57-am-ebf80f47-main-image-png.jpg"
+    }
+  },
+  "205906": {
+    "comedians": [
+      "Brett Druck",
+      "Lee Syatt"
+    ],
+    "photos": {
+      "Brett Druck": "https://thestandnyc.com/images/comedians/_square/brettdruck.jpg",
+      "Lee Syatt": "https://thestandnyc.com/images/comedians/_square/Lee_Syatt.jpg"
     }
   }
 }
