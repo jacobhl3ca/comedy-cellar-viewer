@@ -70,7 +70,7 @@
     "photos": {
       "Got Talent": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Got_Talent_logo.PNG/330px-Got_Talent_logo.PNG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "Liz Glazer": "https://thestandnyc.com/images/comedians/_square/lizglazer.jpg",
-      "Myq Kaplan": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg/330px-Myq_Kaplan%2C_the_Meltdown%2C_December_2011.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "Myq Kaplan": "https://thestandnyc.com/images/comedians/_square/MyqKaplan_CreditMindyTucker.jpg"
     }
   },
   "205738": {
@@ -102,6 +102,21 @@
     "photos": {
       "Brett Druck": "https://thestandnyc.com/images/comedians/_square/brettdruck.jpg",
       "Lee Syatt": "https://thestandnyc.com/images/comedians/_square/Lee_Syatt.jpg"
+    }
+  },
+  "206058": {
+    "comedians": [
+      "Sasha Merci",
+      "Righteous Thieves",
+      "Marion Grodin",
+      "Eman Morgan",
+      "Thalia Romina",
+      "Jessica Hirsh"
+    ],
+    "photos": {
+      "Sasha Merci": "https://thestandnyc.com/images/comedians/_square/sashamerci.jpg",
+      "Marion Grodin": "https://thestandnyc.com/images/comedians/_square/mariongrodin.jpg",
+      "Thalia Romina": "https://thestandnyc.com/images/comedians/_square/thaliaromina.jpg"
     }
   }
 }
