@@ -5131,8 +5131,7 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/sasha-merci",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/sashamerci.jpg",
-    "bio_stand": "Second-generation Dominican American comedian, actress, and digital creator Sasha Merci is a Bronx native now based in Los Angeles. Sasha can be seen starring in the feature film De Lo Mio (HBO), her very own series Like, Subscribe Demilo (FUSE), and in the popular web-series Group Therapy (COMPLEX). Sasha has amassed a social media following of over 180k and has collaborated with brands like Bumble, AT&T, Heineken, Old Spice and many more. Last year Sasha was selected as one of Freeform TV's #YoungBlackAndFreeform inaugural honoree's which celebrates diverse content creators and thought leaders, and this year you can catch her starring in the feature film SHELTER opposite Lisa Vidal and Cam Gigandet.",
-    "bio": "Sasha Merci is a stand-up comedian performing in New York City. She performs at clubs across the city."
+    "bio_stand": "Second-generation Dominican American comedian, actress, and digital creator Sasha Merci is a Bronx native now based in Los Angeles. Sasha can be seen starring in the feature film De Lo Mio (HBO), her very own series Like, Subscribe Demilo (FUSE), and in the popular web-series Group Therapy (COMPLEX). Sasha has amassed a social media following of over 180k and has collaborated with brands like Bumble, AT&T, Heineken, Old Spice and many more. Last year Sasha was selected as one of Freeform TV's #YoungBlackAndFreeform inaugural honoree's which celebrates diverse content creators and thought leaders, and this year you can catch her starring in the feature film SHELTER opposite Lisa Vidal and Cam Gigandet."
   },
   {
     "name": "Sean Donnelly",
@@ -11319,6 +11318,14 @@
   },
   {
     "name": "Marcus D Wiley",
+    "venues": []
+  },
+  {
+    "name": "Righteous Thieves",
+    "venues": []
+  },
+  {
+    "name": "Jessica Hirsh",
     "venues": []
   }
 ]
