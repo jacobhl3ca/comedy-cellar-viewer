@@ -39,7 +39,8 @@
       "Star Trek"
     ],
     "photos": {
-      "Brian Scolaro": "https://www.newyorkcomedyclub.com/img/comedians/brian-scolaro-c7d20aec-main-image.jpg"
+      "Brian Scolaro": "https://www.newyorkcomedyclub.com/img/comedians/brian-scolaro-c7d20aec-main-image.jpg",
+      "Star Trek": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Emblem.svg/330px-Emblem.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     }
   },
   "204719": {
@@ -68,7 +69,6 @@
       "Myo Kaplan"
     ],
     "photos": {
-      "Got Talent": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Got_Talent_logo.PNG/330px-Got_Talent_logo.PNG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "Liz Glazer": "https://thestandnyc.com/images/comedians/_square/lizglazer.jpg",
       "Myq Kaplan": "https://thestandnyc.com/images/comedians/_square/MyqKaplan_CreditMindyTucker.jpg"
     }
@@ -77,10 +77,18 @@
     "comedians": [
       "Sean Mallory",
       "Allie Arasi",
-      "Kbs- Korean"
+      "Kbs- Korean",
+      "Adam- Mamawala",
+      "Tom Eschelman",
+      "Chloe Labranche",
+      "Kill Tony"
     ],
     "photos": {
-      "Allie Arasi": "https://thestandnyc.com/images/comedians/_square/Allie_Arasi.jpg"
+      "Allie Arasi": "https://thestandnyc.com/images/comedians/_square/Allie_Arasi.jpg",
+      "Adam- Mamawala": "https://thestandnyc.com/images/comedians/_square/adam-mamawala.jpg",
+      "Tom Eschelman": "https://www.newyorkcomedyclub.com/img/comedians/tom-eschelman-c6bd0ad7-main-image.jpg",
+      "Chloe Labranche": "https://thestandnyc.com/images/comedians/_square/chlo.jpg",
+      "Kill Tony": "https://upload.wikimedia.org/wikipedia/en/b/bf/Kill_Tony_logo.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     }
   },
   "205904": {
