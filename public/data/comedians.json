@@ -9386,7 +9386,8 @@
   },
   {
     "name": "Napoleon Emill",
-    "venues": []
+    "venues": [],
+    "tagline_cellar": "NEW YORK FUNNIEST 2018, JUST FOR LAUGHS NEW FACES 2019, FLATBUSH MISDEMEANORS ON SHOWTIME."
   },
   {
     "name": "Salma Zaky",
@@ -11351,6 +11352,16 @@
   },
   {
     "name": "Tio Pito Colon",
+    "venues": []
+  },
+  {
+    "name": "Jay Oakerson",
+    "venues": [],
+    "bio": "FROM HBO'S \"CRASHING\",  FROM \"LOUIE\", \"RON & FEZ SHOW\", HIS PODCAST \"LEGION OF SKANKS\", FROM SHOW ON IFC CHANNEL \"Z ROCK\", COMEDY CENTRALS \"HALF HOUR SPECIAL\", HOST OF \"MOVIES ON TAP\".",
+    "tagline_cellar": "FROM HBO'S \"CRASHING\",  FROM \"LOUIE\", \"RON & FEZ SHOW\", HIS PODCAST \"LEGION OF SKANKS\", FROM SHOW ON IFC CHANNEL \"Z ROCK\", COMEDY CENTRALS \"HALF HOUR SPECIAL\", HOST OF \"MOVIES ON TAP\"."
+  },
+  {
+    "name": "Nurse John",
     "venues": []
   }
 ]
