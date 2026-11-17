@@ -10279,7 +10279,8 @@
   },
   {
     "name": "Wally Baram",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Larissa Ringor Baram, known professionally as Wally Baram is an American comedian, television writer, and actress."
   },
   {
     "name": "Chris Metcalfe",
@@ -11344,7 +11345,8 @@
   },
   {
     "name": "Vir Das",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Vir Das is an Indian comedian, actor and musician. After beginning a career in standup comedy, Das moved to Hindi cinema starring in films like Badmaash Company (2010), Delhi Belly (2011), and Go Goa Gone (2013) in supporting roles. In 2017, he performed the Netflix special Abroad Understanding. Das"
   },
   {
     "name": "Jess Hilarious",
@@ -11367,6 +11369,14 @@
   },
   {
     "name": "Jordan Rock",
+    "venues": []
+  },
+  {
+    "name": "Tom Kelly",
+    "venues": []
+  },
+  {
+    "name": "Davinci Beau",
     "venues": []
   }
 ]
