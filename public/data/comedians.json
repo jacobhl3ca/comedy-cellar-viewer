@@ -441,7 +441,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/maddy-smith",
     "bio_stand": "Maddy Smith is a NYC-based stand up comedian and writer. She regularly appears as both an MC and comic throughout the city and its surrounding region. Maddy has performed at the Rochester Fringe Festival and Hoboken Comedy Festival, was a finalist in both the Finger Lakes Comedy Festival (Ithaca) and the Stand Up NY Festival (Manhattan), and a semi-finalist in the New York Comedy Club competition and Caroline’s 2019 March Madness competition. In 2017 Maddy took up roasting — she won first place in the “You Look Like” roast battle competition at the Memphis Comedy Festival is a regular at Roast Battle, RoastMasters, and Comedy Fight Club, all in NYC. She recently appeared at the Friar’s Club for the Roast of Gloria Allred and was a contributing writer for the Roast of Ric Flair. Maddy’s writing has appeared in McSweeney’s and of course in her own wildly successful YouTube-based webseries NYC Pads. Along with stand up, Maddy is the newest castmember of MTV’s Wild N Out. Season 14 will premiere in fall 2019. Tune in!",
-    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Maddy_Smith.jpg"
+    "photo_stand": "https://thestandnyc.com/images/comedians/_square/Maddy_Smith.jpg",
+    "tagline_cellar": "FROM HBO'S \"GAME THEORY\" WITH BOMANI JONES, MTV'S WILD N OUT, BET"
   },
   {
     "name": "Nick Griffin",
@@ -596,7 +597,8 @@
     ],
     "stand_profile": "https://thestandnyc.com/comedians/rich-vos",
     "photo_stand": "https://thestandnyc.com/images/comedians/_square/Rich_Vos.jpg",
-    "bio_stand": "Best known from NBC's hit reality show \"Last Comic Standing,\" Rich Vos is one of the most exciting and broadest headlining comedians in the country. Back Stage Magazine says of Vos, \"He has an uncanny 'Everyman' ability to likeably bond with anyone in the audience…\" The excitement of a Rich Vos show stems from his unique, no-holds-barred perspective on relationships, divorce and parenthood. Vos pulls no punches when it comes to comedy. On many occasions, he will deliver some of the quickest crowd banter, leaving audiences not knowing what to expect next. Vos is a \"comic's comic\" who is quick, off-the-cuff and appeals to all types of audiences, best represented by his extensive resume of television and radio appearances. He has two Comedy Central Half-Hour Specials and appeared in two other Comedy Central specials. He was a regular guest on \"Tough Crowd with Colin Quinn,\" and has been a regular guest on \"The Opie and Anthony Show\" for the past 10 years. Vos has appeared on HBO, Showtime, Starz, \"Jimmy Kimmel Live,\" \"The Rosie O'Donnell Show,\" NBC's \"American Dreams\" and \"The View.\" He is also a regular on the Joy Behar show, made three appearances at the Apollo, four appearances on BET, and was the first white comic to perform on HBO's \"Def Comedy Jam.\" He also wrote for the 2005 Oscars, and has appeared on and wrote for many roasts. Growing up on the wrong side of the tracks, Vos struggled to beat drug and alcohol addictions. He now celebrates his victories on stage with stories about kids, divorce, marriage and recovery. Besides being a proud parent of three beautiful girls, he just celebrated 25 years, clean and sober. His strength as a live performer comes from years of headlining clubs across the country and performing shows for colleges, corporations and charities. He is inundated with letters of thanks and gratitude for the good work he has done. When he is not on the road, he can be seen regularly at Caroline's and The Comedy Cellar as well as other clubs all over New York City, which he calls home."
+    "bio_stand": "Best known from NBC's hit reality show \"Last Comic Standing,\" Rich Vos is one of the most exciting and broadest headlining comedians in the country. Back Stage Magazine says of Vos, \"He has an uncanny 'Everyman' ability to likeably bond with anyone in the audience…\" The excitement of a Rich Vos show stems from his unique, no-holds-barred perspective on relationships, divorce and parenthood. Vos pulls no punches when it comes to comedy. On many occasions, he will deliver some of the quickest crowd banter, leaving audiences not knowing what to expect next. Vos is a \"comic's comic\" who is quick, off-the-cuff and appeals to all types of audiences, best represented by his extensive resume of television and radio appearances. He has two Comedy Central Half-Hour Specials and appeared in two other Comedy Central specials. He was a regular guest on \"Tough Crowd with Colin Quinn,\" and has been a regular guest on \"The Opie and Anthony Show\" for the past 10 years. Vos has appeared on HBO, Showtime, Starz, \"Jimmy Kimmel Live,\" \"The Rosie O'Donnell Show,\" NBC's \"American Dreams\" and \"The View.\" He is also a regular on the Joy Behar show, made three appearances at the Apollo, four appearances on BET, and was the first white comic to perform on HBO's \"Def Comedy Jam.\" He also wrote for the 2005 Oscars, and has appeared on and wrote for many roasts. Growing up on the wrong side of the tracks, Vos struggled to beat drug and alcohol addictions. He now celebrates his victories on stage with stories about kids, divorce, marriage and recovery. Besides being a proud parent of three beautiful girls, he just celebrated 25 years, clean and sober. His strength as a live performer comes from years of headlining clubs across the country and performing shows for colleges, corporations and charities. He is inundated with letters of thanks and gratitude for the good work he has done. When he is not on the road, he can be seen regularly at Caroline's and The Comedy Cellar as well as other clubs all over New York City, which he calls home.",
+    "tagline_cellar": "REGULAR ON GUTFIELD, VOS ROAST, FROM THE MOVIE \"WOMEN AREN'T FUNNY\", RADIO SHOW \"MY WIFE HATES ME\""
   },
   {
     "name": "Tocarra Elise",
@@ -11377,6 +11379,45 @@
   },
   {
     "name": "Davinci Beau",
+    "venues": []
+  },
+  {
+    "name": "Caroline Rhea",
+    "venues": [],
+    "bio": "7 SPECIALS AT SYDNEY OPERA HOUSE, SABRINA THE TEENAGE WITCH, LETTERMAN",
+    "tagline_cellar": "7 SPECIALS AT SYDNEY OPERA HOUSE, SABRINA THE TEENAGE WITCH, LETTERMAN"
+  },
+  {
+    "name": "Jonathan Van Halem",
+    "venues": []
+  },
+  {
+    "name": "Jordan Adams",
+    "venues": []
+  },
+  {
+    "name": "Sam Frank",
+    "venues": []
+  },
+  {
+    "name": "Ivi Demi",
+    "venues": []
+  },
+  {
+    "name": "Dj Collins",
+    "venues": []
+  },
+  {
+    "name": "Bronston Jones",
+    "venues": []
+  },
+  {
+    "name": "Marcello Hernández",
+    "venues": [],
+    "bio_wiki": "Marcello André Hernández is an American stand-up comedian and actor. He has been a cast member of the NBC sketch comedy series Saturday Night Live since the show's 48th season in 2022."
+  },
+  {
+    "name": "George Wallace",
     "venues": []
   }
 ]
