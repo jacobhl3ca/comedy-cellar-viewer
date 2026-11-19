@@ -334,7 +334,7 @@ async function scrapeStand() {
         const block = blocks[i];
 
         // Extract URL and title (same logic as api/the-stand.js)
-        const urlMatch = block.match(/showtitle d-none d-sm-block"><a href="https:\/\/thestandnyc\.com\/?\/?([^"]*)">(.*?)<\/a>/);
+        const urlMatch = block.match(/(?:showtitle d-none d-sm-block|d-none d-sm-block showtitle)"><a href="https:\/\/thestandnyc\.com\/*([^"]*)"[^>]*>(.*?)<\/a>/);
         if (!urlMatch) continue;
         const showPath = urlMatch[1];
         const title = urlMatch[2].trim();
