@@ -11352,7 +11352,8 @@
   },
   {
     "name": "Jess Hilarious",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Jessica Robin Moore, known professionally as Jess Hilarious, is an American comedian, actress, radio personality, and social media personality. Since 2024, she has co-hosted the radio show The Breakfast Club."
   },
   {
     "name": "Tio Pito Colon",
@@ -11434,6 +11435,14 @@
   },
   {
     "name": "Georgie Carroll",
+    "venues": []
+  },
+  {
+    "name": "Missy Baker",
+    "venues": []
+  },
+  {
+    "name": "Kid Mero",
     "venues": []
   }
 ]
