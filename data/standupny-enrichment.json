@@ -23,7 +23,7 @@
       "Wellie Jackson"
     ],
     "photos": {
-      "Erica Rhodes": "https://thestandnyc.com/images/comedians/_square/Erica_Rhodes.jpg",
+      "Erica Rhodes": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Erica_Rhodes_Magic_Shoot_Group_-_April_2012_%28crop%29.jpg/330px-Erica_Rhodes_Magic_Shoot_Group_-_April_2012_%28crop%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "Grant Cotter": "https://www.newyorkcomedyclub.com/img/comedians/grantcotter-b52d0a65-main-image.jpg",
       "Tori Piskin": "https://thestandnyc.com/images/comedians/_square/tori-piskin-203-WEB.jpg",
       "Chaunte Wayans": "https://thestandnyc.com/images/comedians/_square/chaunte.jpg",
@@ -39,7 +39,8 @@
       "Star Trek"
     ],
     "photos": {
-      "Brian Scolaro": "https://www.newyorkcomedyclub.com/img/comedians/brian-scolaro-c7d20aec-main-image.jpg"
+      "Brian Scolaro": "https://www.newyorkcomedyclub.com/img/comedians/brian-scolaro-c7d20aec-main-image.jpg",
+      "Star Trek": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Emblem.svg/330px-Emblem.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     }
   },
   "205906": {
@@ -50,23 +51,6 @@
     "photos": {
       "Brett Druck": "https://thestandnyc.com/images/comedians/_square/brettdruck.jpg",
       "Lee Syatt": "https://thestandnyc.com/images/comedians/_square/Lee_Syatt.jpg"
-    }
-  },
-  "206058": {
-    "comedians": [
-      "Sasha Merci",
-      "Righteous Thieves",
-      "Marion Grodin",
-      "Eman Morgan",
-      "Thalia Romina",
-      "Jessica Hirsh",
-      "Tom Kelly"
-    ],
-    "photos": {
-      "Sasha Merci": "https://thestandnyc.com/images/comedians/_square/sashamerci.jpg",
-      "Marion Grodin": "https://thestandnyc.com/images/comedians/_square/mariongrodin.jpg",
-      "Thalia Romina": "https://thestandnyc.com/images/comedians/_square/thaliaromina.jpg",
-      "Tom Kelly": "https://www.newyorkcomedyclub.com/img/comedians/TomKelly-8d0608db-main-image.jpg"
     }
   }
 }
