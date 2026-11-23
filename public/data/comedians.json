@@ -11154,7 +11154,8 @@
     "name": "Andrea Jin",
     "venues": [],
     "bio": "ON TOUR OPENING FOR JOHN MULANEY, NETFLIX, COMEDY CENTRAL",
-    "tagline_cellar": "ON TOUR OPENING FOR JOHN MULANEY, NETFLIX, COMEDY CENTRAL"
+    "tagline_cellar": "ON TOUR OPENING FOR JOHN MULANEY, NETFLIX, COMEDY CENTRAL",
+    "bio_stand": "Andrea Jin is a stand-up comedian and writer born in Shanghai, currently based in Vancouver BC. She was just selected as New Face at Just for Laugh’s Montreal Festival, and has performed at JFL Northwest, SiriusXM’s Top Comic, Seattle International Comedy Competition, CBC’s The Debaters, and the Winnipeg Comedy Festival. Her writing has been featured on Vice, CBC Comedy, and the Vancouver Sun among other publications. You can hear her on JFL’s Best of the West Comedy Album and on her debut solo comedy album 'Grandma's Girl'"
   },
   {
     "name": "Mandal Man",
@@ -11498,6 +11499,14 @@
   },
   {
     "name": "Marcus D. Wiley",
+    "venues": []
+  },
+  {
+    "name": "Brian Shea",
+    "venues": []
+  },
+  {
+    "name": "Third Opinion",
     "venues": []
   }
 ]
