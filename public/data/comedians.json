@@ -11552,7 +11552,8 @@
   },
   {
     "name": "Joanna Briley",
-    "venues": []
+    "venues": [],
+    "bio_stand": "Joanna M. Briley is the founder of Black Women In Comedy Laff Fest and also a premier comedian! As a shining star on the comedy circuit and a true visionary, Joanna created the Black Women In Comedy Laff Fest and produced Joke Sistas to showcase the brightest and funniest Black Women, those who identify as women and those from the LGBTQ+ community, in a safe space. \"I believe the Black Women in Comedy Laff Fest represents a close knit sisterhood sort of like an “unofficial sorority” filled with hilarious Black Women who understands the assignment,” Briley says. “We are NOT monolithic, we are each strong advocates for telling it like it is with love, emotional dexterity, and punchlines!\""
   },
   {
     "name": "Harry Terjanian",
@@ -11564,6 +11565,14 @@
   },
   {
     "name": "Dave Sirus",
+    "venues": []
+  },
+  {
+    "name": "The Late",
+    "venues": []
+  },
+  {
+    "name": "Funniest Comedions",
     "venues": []
   }
 ]
