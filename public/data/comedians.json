@@ -2101,8 +2101,7 @@
     "photo_nycc": "https://newyorkcomedyclub.com/img/comedians/BERGSTROM-8cb10863-thumb-image.jpg?1631830589",
     "venues": [
       "nycc"
-    ],
-    "bio": "Erik Bergstrom is a stand-up comedian performing in New York City. He performs at clubs across the city."
+    ]
   },
   {
     "name": "Matty Litwack",
@@ -11531,6 +11530,40 @@
   },
   {
     "name": "Emergency Laughs",
+    "venues": []
+  },
+  {
+    "name": "Nick Simmons",
+    "venues": [],
+    "bio": "CBS, SIRIUSXM",
+    "tagline_cellar": "CBS, SIRIUSXM"
+  },
+  {
+    "name": "Ismo Leikola",
+    "venues": [],
+    "bio": "FROM FINLAND, FROM CONAN OBRIEN, JUST FOR LAUGHS FESTIVALS,",
+    "tagline_cellar": "FROM FINLAND, FROM CONAN OBRIEN, JUST FOR LAUGHS FESTIVALS,"
+  },
+  {
+    "name": "Sklar Brothers",
+    "venues": [],
+    "bio": "NETFLIX SPECIAL\"WHAT ARE WE TALKING ABOUT\", DUMB PEOPLE TOWN PODCAST, STARZ SPECIAL \"HIPSTER GHOSTS, LIGHTS OUT WITH DAVID SPADE @MIDNIGHT, 2 COMEDY CENTRAL HALF HOUR SPECIALS, CURB YOUR ENTHUSIASM, ENTOURAGE, ESPN, BETTER CALL SAUL, WILD HOGS, CHEAP SEATS ON ESPN",
+    "tagline_cellar": "NETFLIX SPECIAL\"WHAT ARE WE TALKING ABOUT\", DUMB PEOPLE TOWN PODCAST, STARZ SPECIAL \"HIPSTER GHOSTS, LIGHTS OUT WITH DAVID SPADE @MIDNIGHT, 2 COMEDY CENTRAL HALF HOUR SPECIALS, CURB YOUR ENTHUSIASM, ENTOURAGE, ESPN, BETTER CALL SAUL, WILD HOGS, CHEAP SEATS ON ESPN"
+  },
+  {
+    "name": "Joanna Briley",
+    "venues": []
+  },
+  {
+    "name": "Harry Terjanian",
+    "venues": []
+  },
+  {
+    "name": "Kenice Mobley",
+    "venues": []
+  },
+  {
+    "name": "Dave Sirus",
     "venues": []
   }
 ]
