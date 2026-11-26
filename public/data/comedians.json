@@ -11565,7 +11565,8 @@
   },
   {
     "name": "Dave Sirus",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Dave Sirus is an American writer and stand-up comedian. He produces and writes sketch comedy, is known for interviewing members of the Westboro Baptist Church, and appeared as a guest and recurring comedic correspondent on RT's The Alyona Show and HuffPost Live. He has been a writer for Saturday Night Live since 2015."
   },
   {
     "name": "The Late",
@@ -11573,6 +11574,18 @@
   },
   {
     "name": "Funniest Comedions",
+    "venues": []
+  },
+  {
+    "name": "Kenny Reed",
+    "venues": []
+  },
+  {
+    "name": "Esther Chen",
+    "venues": []
+  },
+  {
+    "name": "Wavy Maguire",
     "venues": []
   }
 ]
