@@ -11562,7 +11562,9 @@
   },
   {
     "name": "Kenice Mobley",
-    "venues": []
+    "venues": [],
+    "bio_wiki": "Kenice Mobley is an American comedian. She was named to the 2021 Vulture list of Comedians You Should and Will Know. Her debut comedy album Follow Up Question was released in December 2022.",
+    "photo_wiki": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Kenice_Mobley_2024_Edinburgh_Festival_Fringe.jpg/330px-Kenice_Mobley_2024_Edinburgh_Festival_Fringe.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
     "name": "Dave Sirus",
@@ -11591,6 +11593,18 @@
   },
   {
     "name": "Jamie Lissow",
+    "venues": []
+  },
+  {
+    "name": "Andrew Ginsberg",
+    "venues": []
+  },
+  {
+    "name": "Laughing Buddha Comedy",
+    "venues": []
+  },
+  {
+    "name": "Billy Crystal",
     "venues": []
   }
 ]
