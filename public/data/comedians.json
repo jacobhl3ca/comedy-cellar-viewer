@@ -11537,7 +11537,8 @@
     "name": "Nick Simmons",
     "venues": [],
     "bio": "CBS, SIRIUSXM",
-    "tagline_cellar": "CBS, SIRIUSXM"
+    "tagline_cellar": "CBS, SIRIUSXM",
+    "photo_wiki": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Nick_Simmons_%28cropped%29.jpg/330px-Nick_Simmons_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
   },
   {
     "name": "Ismo Leikola",
@@ -11605,6 +11606,10 @@
   },
   {
     "name": "Billy Crystal",
+    "venues": []
+  },
+  {
+    "name": "Josh Martier",
     "venues": []
   }
 ]
