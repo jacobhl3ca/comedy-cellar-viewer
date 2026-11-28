@@ -24,16 +24,6 @@
       "Star Trek": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Emblem.svg/330px-Emblem.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     }
   },
-  "205906": {
-    "comedians": [
-      "Brett Druck",
-      "Lee Syatt"
-    ],
-    "photos": {
-      "Brett Druck": "https://thestandnyc.com/images/comedians/_square/brettdruck.jpg",
-      "Lee Syatt": "https://thestandnyc.com/images/comedians/_square/Lee_Syatt.jpg"
-    }
-  },
   "207463": {
     "comedians": [
       "Third Opinion",
@@ -63,9 +53,8 @@
     "photos": {
       "The Menu": "https://upload.wikimedia.org/wikipedia/en/d/db/The_Menu_%282022_film%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
       "Cobra Kai": "https://thumb.wikimedia.org/wikipedia/en/thumb/d/d6/CobraKaiTitleScreen.png/330px-CobraKaiTitleScreen.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "Bret Raybould": "https://thestandnyc.com/images/comedians/_square/raybould_1.jpg",
-      "Seth Herzog": "https://thestandnyc.com/images/comedians/_square/Thumbnail%2BSeth%2BInterview.jpg",
-      "Dan Ahdoot": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Dan_Ahdoot.jpg/330px-Dan_Ahdoot.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "Seth Herzog": "https://www.newyorkcomedyclub.com/img/comedians/Seth-Headshot-b7fd0a6a-main-image.jpg",
+      "Dan Ahdoot": "https://www.newyorkcomedyclub.com/img/comedians/Screenshot-2023-09-12-at-11-35-05-AM-eda60f50-main-image.png"
     }
   }
 }
